@@ -36,17 +36,63 @@
                         "type": "integer"
                     },
                     "quality": {
-                        "type": "integer",
-                        "enum": [2,3,4,5,6]
+                        "type": "string",
+                        "enum": [
+                            "2+",
+                            "3+",
+                            "4+",
+                            "5+",
+                            "6+"
+                        ]
                     },
                     "defense": {
-                        "type": "integer",
-                        "enum": [2,3,4,5,6]
+                        "type": "string",
+                        "enum": [
+                            "2+",
+                            "3+",
+                            "4+",
+                            "5+",
+                            "6+"
+                        ]
+                    },
+                    "equipment": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "equipment_id": {
+                                    "type": "string"
+                                },
+                                "count": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
                     }
                 }
             },
             "minItems": 1,
             "uniqueItems": true
+        },
+        "equipment": {
+            "type": "array",
+            "description": "Equipment definitions",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "range": { "type": "integer" },
+                    "attacks": { "type": "integer" },
+                    "specialRules": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [ "id", "name" ]
+            }
         },
         "upgrades": {
             "type": "array",
