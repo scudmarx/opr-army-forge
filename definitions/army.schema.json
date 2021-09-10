@@ -29,8 +29,19 @@
                 "type": "object",
                 "description": "Unit definition",
                 "properties": {
+                    "name": {
+                        "type": "string"
+                    },
                     "size": {
                         "type": "integer"
+                    },
+                    "quality": {
+                        "type": "integer",
+                        "enum": [2,3,4,5,6]
+                    },
+                    "defense": {
+                        "type": "integer",
+                        "enum": [2,3,4,5,6]
                     }
                 }
             },
