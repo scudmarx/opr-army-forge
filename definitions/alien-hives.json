@@ -1,3 +1,210 @@
 {
-    "$schema": "https://github.com/adamlay/opr-army-forge/definitions/army.schema.json"
+    "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/definitions/army.schema.json",
+    "name": "Alien Hives",
+    "version": "2.13",
+    "units": [
+        {
+            "name": "Hive Lord",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "specialRules": [
+                "Fear",
+                "Fearless",
+                "Hero",
+                "Tough(12)"
+            ],
+            "equipment": [
+                {
+                    "equipment_id": "razor_claws_a4_ap2",
+                    "count": 3
+                }
+            ],
+            "upgrade_sets": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F"
+            ],
+            "cost": 345
+        }
+    ],
+    "equipment": [
+        {
+            "id": "stomp",
+            "name": "Stomp",
+            "attacks": 2,
+            "specialRules": [
+                "AP(2)"
+            ]
+        },
+        {
+            "id": "razor_claws_a4_ap2",
+            "name": "Razor Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(2)"
+            ]
+        },
+        {
+            "id": "piercing_claws_a3",
+            "name": "Piercing Claws",
+            "attacks": 3,
+            "specialRules": [
+                "Rending"
+            ]
+        },
+        {
+            "id": "piercing_claws_a3_ap2",
+            "name": "Piercing Claws",
+            "attacks": 3,
+            "specialRules": [
+                "AP(2)",
+                "Rending"
+            ]
+        },
+        {
+            "id": "piercing_claws_a4_ap1",
+            "name": "Piercing Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(1)",
+                "Rending"
+            ]
+        },
+        {
+            "id": "piercing_claws_a4_ap2",
+            "name": "Piercing Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(2)",
+                "Rending"
+            ]
+        },
+        {
+            "id": "smashing_claws_a3_ap2",
+            "name": "Smashing Claws",
+            "attacks": 3,
+            "specialRules": [
+                "AP(2)"
+            ]
+        },
+        {
+            "id": "smashing_claws_a4_ap3",
+            "name": "Smashing Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(3)"
+            ]
+        },
+        {
+            "id": "smashing_claws_a4_ap4",
+            "name": "Smashing Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(4)"
+            ]
+        },
+        {
+            "id": "serrated_claws_a6",
+            "name": "Serrated Claws",
+            "attacks": 6
+        },
+        {
+            "id": "serrated_claws_a8_ap1",
+            "name": "Serrated Claws",
+            "attacks": 8,
+            "specialRules": [
+                "AP(1)"
+            ]
+        },
+        {
+            "id": "serrated_claws_a8_ap2",
+            "name": "Serrated Claws",
+            "attacks": 8,
+            "specialRules": [
+                "AP(2)"
+            ]
+        },
+        {
+            "id": "sword_claws_a3",
+            "name": "Sword Claws",
+            "attacks": 3,
+            "specialRules": [
+                "Deadly(3)"
+            ]
+        },
+        {
+            "id": "sword_claws_a4_ap1",
+            "name": "Sword Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(1)",
+                "Deadly(3)"
+            ]
+        },
+        {
+            "id": "sword_claws_a4_ap2",
+            "name": "Sword Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(2)",
+                "Deadly(3)"
+            ]
+        },
+        {
+            "id": "whip_limb_sword_claw_a3",
+            "name": "Sword Claws",
+            "attacks": 3,
+            "specialRules": [
+                "Deadly(6)"
+            ]
+        },
+        {
+            "id": "whip_limb_sword_claw_a3_ap1",
+            "name": "Sword Claws",
+            "attacks": 3,
+            "specialRules": [
+                "AP(1)",
+                "Deadly(6)"
+            ]
+        }
+    ],
+    "upgrade_sets": [
+        {
+            "id": "A",
+            "upgrades": [
+                {
+                    "type": "replace",
+                    "affects": "any",
+                    "select": "one",
+                    "replaces": "any",
+                    "options": [
+                        {
+                            "equipment_id": "piercing_claws_a4_ap2",
+                            "cost": 5
+                        },
+                        {
+                            "equipment_id": "smashing_claws_a4_ap4",
+                            "cost": 10
+                        },
+                        {
+                            "equipment_id": "serrated_claws_a8_ap2",
+                            "cost": 15
+                        },
+                        {
+                            "equipment_id": "sword_claws_a4_ap2",
+                            "cost": 15
+                        },
+                        {
+                            "equipment_id": "whip_limb_sword_claw_a3_ap1",
+                            "cost": 20
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
