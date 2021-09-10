@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/adamlay/opr-army-forge/definitions/army.schema.json",
+    "title": "Army definition schema",
+    "description": "Army definition schema",
+    "type": "object",
+    "required": [
+        "name",
+        "version",
+        "units",
+        "upgrades"
+    ],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Army name"
+        },
+        "version": {
+            "type": "string",
+            "description": "Army document version"
+        },
+        "url": {
+            "type": "string"
+        },
+        "units": {
+            "type": "array",
+            "description": "Unit definitions",
+            "items": {
+                "type": "object",
+                "description": "Unit definition",
+                "properties": {
+                    "size": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "upgrades": {
+            "type": "array",
+            "description": "Upgrade definitions",
+            "items": {
+                "type": "object",
+                "description": "Unit definition",
+                "properties": {
+                    "size": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "uniqueItems": true
+        }
+    }
+}
