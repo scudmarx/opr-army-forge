@@ -35,6 +35,9 @@
                     "size": {
                         "type": "integer"
                     },
+                    "cost": {
+                        "type": "integer"
+                    },
                     "quality": {
                         "type": "string",
                         "enum": [
@@ -55,6 +58,13 @@
                             "6+"
                         ]
                     },
+                    "specialRules": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "uniqueItems": true
+                    },
                     "equipment": {
                         "type": "array",
                         "items": {
@@ -67,6 +77,15 @@
                                     "type": "integer"
                                 }
                             }
+                        },
+                        "uniqueItems": true
+                    },
+                    "upgrade_sets": {
+                        "description": "Array of upgrade set IDs available to this unit",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "uniqueItems": true
                         }
                     }
                 }
@@ -80,29 +99,80 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "id": { "type": "string" },
-                    "name": { "type": "string" },
-                    "range": { "type": "integer" },
-                    "attacks": { "type": "integer" },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "range": {
+                        "type": "integer"
+                    },
+                    "attacks": {
+                        "type": "integer"
+                    },
                     "specialRules": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "uniqueItems": true
                     }
                 },
-                "required": [ "id", "name" ]
+                "required": [
+                    "id",
+                    "name"
+                ]
             }
         },
-        "upgrades": {
+        "upgrade_sets": {
             "type": "array",
-            "description": "Upgrade definitions",
+            "description": "Upgrade set definitions",
             "items": {
                 "type": "object",
-                "description": "Unit definition",
+                "description": "Upgrade set definition",
                 "properties": {
-                    "size": {
-                        "type": "integer"
+                    "id": {
+                        "type": "string"
+                    },
+                    "upgrades": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "enum": [ "replace", "upgrade" ]
+                                },
+                                "affects": {
+                                    "description": "e.g. Upgrade ANY model with, Upgrade ONE model with, Upgrade ALL models with",
+                                    "enum": [ "any", "one", "all" ]
+                                },
+                                "select": {
+                                    "description": "e.g. Upgrade with ONE, Upgrade with ANY",
+                                    "enum": [ "any", "one" ]
+                                },
+                                "replaces": {
+                                    "description": "e.g. Replace ANY [weapon] with, Replace ONE [weapon] with,",
+                                    "enum": [ "any", "one", "all" ]
+                                },
+                                "options": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "equipment_id": {
+                                                "type": "string"
+                                            },
+                                            "cost": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "uniqueItems": true
+                                }
+                            }
+                        },
+                        "uniqueItems": true
                     }
                 }
             },
