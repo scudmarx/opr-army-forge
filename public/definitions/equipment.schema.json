@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/adamlay/opr-army-forge/definitions/equipment.schema.json",
+    "title": "Equipment definition schema",
+    "description": "Equipment definition schema",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "range": {
+            "type": "integer"
+        },
+        "attacks": {
+            "type": "integer"
+        },
+        "specialRules": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "id",
+        "name"
+    ]
+}

@@ -175,9 +175,7 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "equipment_id": {
-                                                "type": "string"
-                                            },
+                                            "$ref": "https://github.com/adamlay/opr-army-forge/definitions/equipment.schema.json",
                                             "cost": {
                                                 "type": "integer"
                                             }
