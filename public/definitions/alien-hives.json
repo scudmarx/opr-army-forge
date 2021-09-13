@@ -73,6 +73,98 @@
             ]
         },
         {
+            "name": "Veteran Warrior",
+            "category": "Heroes",
+            "size": 1,
+            "cost": 100,
+            "quality": "4+",
+            "defense": "3+",
+            "equipment": [
+                {
+                    "name": "Bio-Carbine",
+                    "range": 18,
+                    "attacks": 3
+                },
+                {
+                    "name": "Razor Claws",
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Hero",
+                "Tough(6)"
+            ],
+            "upgradeSets": [
+                "C",
+                "E",
+                "F",
+                "I",
+                "J"
+            ]
+        },
+        {
+            "name": "Snatcher Lord",
+            "category": "Heroes",
+            "size": 1,
+            "cost": 190,
+            "quality": "3+",
+            "defense": "3+",
+            "equipment": [
+                {
+                    "name": "Piercing Claws",
+                    "attacks": 3,
+                    "count": 2,
+                    "specialRules": [
+                        "AP(2)",
+                        "Rending"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fear",
+                "Hero",
+                "Psychic(1)",
+                "Scout",
+                "Strider",
+                "Tough(6)"
+            ],
+            "upgradeSets": [
+                "G"
+            ]
+        },
+        {
+            "name": "Snatcher Veteran",
+            "category": "Heroes",
+            "size": 1,
+            "cost": 80,
+            "quality": "3+",
+            "defense": "4+",
+            "equipment": [
+                {
+                    "name": "Piercing Claws",
+                    "attacks": 3,
+                    "count": 2,
+                    "specialRules": [
+                        "Rending"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Hero",
+                "Scout",
+                "Strider",
+                "Tough(3)"
+            ],
+            "upgradeSets": [
+                "H"
+            ]
+        },
+        {
             "name": "Grunts",
             "category": "Infantry",
             "size": 10,

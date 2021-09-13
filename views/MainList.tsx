@@ -38,6 +38,7 @@ export function MainList() {
             <th>Quality</th>
             <th>Defense</th>
             <th>Equipment</th>
+            <th>Special Rules</th>
             <th>Cost</th>
             <th></th>
           </tr>
@@ -60,6 +61,7 @@ export function MainList() {
                       </p>
                     ))}
                   </td>
+                  <td>{(s.specialRules || []).join(", ")}</td>
                   <td>{UpgradeService.calculateUnitTotal(s)}pts</td>
                   <td></td>
                 </tr>
