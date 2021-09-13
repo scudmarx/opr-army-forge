@@ -173,13 +173,7 @@
                                 "options": {
                                     "type": "array",
                                     "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "$ref": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/equipment.schema.json",
-                                            "cost": {
-                                                "type": "integer"
-                                            }
-                                        }
+                                        "$ref": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/equipment.schema.json"
                                     },
                                     "uniqueItems": true
                                 }
