@@ -5,7 +5,9 @@
     "units": [
         {
             "name": "Hive Lord",
+            "category": "Heroes",
             "size": 1,
+            "cost": 345,
             "quality": "3+",
             "defense": "2+",
             "specialRules": [
@@ -27,17 +29,133 @@
                 "D",
                 "E",
                 "F"
+            ]
+        },
+        {
+            "name": "Prime Warrior",
+            "category": "Heroes",
+            "size": 1,
+            "cost": 170,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "equipment_id": "razor_claws_a4_ap2",
+                    "count": 2
+                }
             ],
-            "cost": 345
+            "specialRules": [
+                "Fear",
+                "Hero",
+                "Tough(6)"
+            ],
+            "upgrade_sets": [
+                "A",
+                "B",
+                "C",
+                "E",
+                "F"
+            ]
+        },
+        {
+            "name": "Grunts",
+            "category": "Infantry",
+            "size": 10,
+            "quality": "5+",
+            "defense": "5+",
+            "cost": 130,
+            "specialRules": [
+                "Strider"
+            ],
+            "equipment": [
+                {
+                    "equipment_id": "razor_claws_a2"
+                },
+                {
+                    "equipment_id": "bio-guns"
+                }
+            ],
+            "upgrade_sets": [
+                "L"
+            ]
+        },
+        {
+            "name": "Assault Grunts",
+            "category": "Infantry",
+            "size": 10,
+            "quality": "5+",
+            "defense": "5+",
+            "cost": 170,
+            "specialRules": [
+                "Strider",
+                "Fast"
+            ],
+            "equipment": [
+                {
+                    "equipment_id": "razor_claws_a3"
+                }
+            ],
+            "upgrade_sets": [
+                "M"
+            ]
+        },
+        {
+            "name": "Hive Warriors",
+            "category": "Infantry",
+            "size": 3,
+            "quality": "4+",
+            "defense": "3+",
+            "cost": 190,
+            "specialRules": [
+                "Fearless",
+                "Tough(3)"
+            ],
+            "equipment": [
+                {
+                    "equipment_id": "razor_claws_a4_ap1"
+                }
+            ],
+            "upgrade_sets": [
+                "C",
+                "F",
+                "I",
+                "J",
+                "K"
+            ]
         }
     ],
     "equipment": [
+        {
+            "id": "bio-guns",
+            "name": "Bio-Guns",
+            "range": 12,
+            "attacks": 1
+        },
+        {
+            "id": "bio-carbines",
+            "name": "Bio-Carbines",
+            "range": 18,
+            "attacks": 3
+        },
         {
             "id": "stomp",
             "name": "Stomp",
             "attacks": 2,
             "specialRules": [
                 "AP(2)"
+            ]
+        },
+        {
+            "id": "razor_claws_a2",
+            "name": "Razor Claws",
+            "attacks": 2
+        },
+        {
+            "id": "razor_claws_a4_ap1",
+            "name": "Razor Claws",
+            "attacks": 4,
+            "specialRules": [
+                "AP(1)"
             ]
         },
         {
@@ -170,6 +288,14 @@
                 "AP(1)",
                 "Deadly(6)"
             ]
+        },
+        {
+            "id": "wings",
+            "name": "Wings",
+            "specialRules": [
+                "Ambush",
+                "Flying"
+            ]
         }
     ],
     "upgrade_sets": [
@@ -179,8 +305,7 @@
                 {
                     "type": "replace",
                     "affects": "any",
-                    "select": "one",
-                    "replaces": "any",
+                    "replacesWhat": "Razor Claws",
                     "options": [
                         {
                             "equipment_id": "piercing_claws_a4_ap2",
@@ -201,6 +326,90 @@
                         {
                             "equipment_id": "whip_limb_sword_claw_a3_ap1",
                             "cost": 20
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "C",
+            "upgrades": [
+                {
+                    "type": "upgrade",
+                    "affects": "any",
+                    "select": "one",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "id": "D",
+            "upgrades": [
+                {
+                    "type": "upgrade",
+                    "select": "any",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "id": "E",
+            "upgrades": [
+                {
+                    "type": "upgrade",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "id": "F",
+            "upgrades": [
+                {
+                    "type": "upgrade",
+                    "affects": "one",
+                    "select": "any",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "id": "I",
+            "upgrades": [
+                {
+                    "type": "replace",
+                    "affects": "any",
+                    "replacesWhat": "Razor Claws",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "id": "J",
+            "upgrades": [
+                {
+                    "type": "replace",
+                    "affects": "any",
+                    "replacesWhat": "Bio-Carbine",
+                    "options": []
+                },
+                {
+                    "type": "replace",
+                    "affects": "one",
+                    "replacesWhat": "Bio-Carbine",
+                    "options": []
+                }
+            ]
+        },
+        {
+            "id": "K",
+            "upgrades": [
+                {
+                    "type": "upgrade",
+                    "affects": "all",
+                    "options": [
+                        {
+                            "cost": 35,
+                            "equipment_id": "wings"
                         }
                     ]
                 }
