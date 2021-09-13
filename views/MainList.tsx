@@ -99,6 +99,7 @@ export function MainList() {
                                   {u.options.map((opt, i) => (
                                     <button
                                       key={i}
+                                      className={"button " + (UpgradeService.isApplied(s, u, opt) ? "is-primary" : "")}
                                       onClick={() => handleUpgrade(s, u, opt)}
                                     >
                                       {EquipmentService.formatString(opt)} {opt.cost}pts

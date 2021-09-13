@@ -10,6 +10,14 @@ export default class UpgradeService {
         return cost;
     }
 
+    static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
+        return unit
+            .selectedEquipment
+            .map(eqp => eqp.name)
+            .filter(name => name === option.name)
+            .length > 0;
+    }
+
     static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
         console.log(unit);
         console.log(upgrade);
@@ -20,7 +28,7 @@ export default class UpgradeService {
 
             // "Replace any [weapon]"
             if (upgrade.affects === "any") {
-                
+
                 const toReplace = unit
                     .selectedEquipment
                     .filter(eqp => eqp.name === upgrade.replacesWhat)[0];
