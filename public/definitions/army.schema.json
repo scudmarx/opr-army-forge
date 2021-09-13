@@ -89,39 +89,7 @@
             "minItems": 1,
             "uniqueItems": true
         },
-        "equipment": {
-            "type": "array",
-            "description": "Equipment definitions",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "range": {
-                        "type": "integer"
-                    },
-                    "attacks": {
-                        "type": "integer"
-                    },
-                    "specialRules": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "uniqueItems": true
-                    }
-                },
-                "required": [
-                    "id",
-                    "name"
-                ]
-            }
-        },
-        "upgrade_sets": {
+        "upgradeSets": {
             "type": "array",
             "description": "Upgrade set definitions",
             "items": {
