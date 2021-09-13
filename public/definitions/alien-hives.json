@@ -4,26 +4,19 @@
     "version": "2.13",
     "units": [
         {
-            "name": "Hive Lord",
             "category": "Heroes",
+            "name": "Hive Lord",
             "size": 1,
-            "cost": 345,
             "quality": "3+",
             "defense": "2+",
-            "specialRules": [
-                "Fear",
-                "Fearless",
-                "Hero",
-                "Tough(12)"
-            ],
             "equipment": [
                 {
                     "name": "Razor Claws",
+                    "count": 3,
                     "attacks": 4,
                     "specialRules": [
-                        "AP(2)"
-                    ],
-                    "count": 3
+                        "AP(2"
+                    ]
                 },
                 {
                     "name": "Stomp",
@@ -33,57 +26,66 @@
                     ]
                 }
             ],
-            "upgradeSets": [
+            "specials": [
+                "Fear",
+                "Fearless",
+                "Hero",
+                "Tough(12)"
+            ],
+            "upgrades": [
                 "A",
                 "B",
                 "C",
                 "D",
                 "E",
                 "F"
-            ]
+            ],
+            "cost": 345
         },
         {
-            "name": "Prime Warrior",
             "category": "Heroes",
+            "name": "Prime Warrior",
             "size": 1,
-            "cost": 170,
             "quality": "3+",
             "defense": "2+",
             "equipment": [
                 {
                     "name": "Razor Claws",
+                    "count": 2,
                     "attacks": 4,
                     "specialRules": [
                         "AP(2)"
-                    ],
-                    "count": 2
+                    ]
                 }
             ],
-            "specialRules": [
+            "specials": [
                 "Fear",
                 "Hero",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "A",
+                "Tough(6) A",
                 "B",
                 "C",
                 "E",
+                ""
+            ],
+            "upgrades": [
                 "F"
-            ]
+            ],
+            "cost": 170
         },
         {
-            "name": "Veteran Warrior",
             "category": "Heroes",
+            "name": "Veteran Warrior",
             "size": 1,
-            "cost": 100,
             "quality": "4+",
             "defense": "3+",
             "equipment": [
                 {
                     "name": "Bio-Carbine",
+                    "attacks": 3,
                     "range": 18,
-                    "attacks": 3
+                    "specialRules": [
+                        "18”"
+                    ]
                 },
                 {
                     "name": "Razor Claws",
@@ -93,37 +95,37 @@
                     ]
                 }
             ],
-            "specialRules": [
+            "specials": [
                 "Hero",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "C",
+                "Tough(6) C",
                 "E",
                 "F",
                 "I",
+                ""
+            ],
+            "upgrades": [
                 "J"
-            ]
+            ],
+            "cost": 100
         },
         {
-            "name": "Snatcher Lord",
             "category": "Heroes",
+            "name": "Snatcher Lord",
             "size": 1,
-            "cost": 190,
             "quality": "3+",
             "defense": "3+",
             "equipment": [
                 {
                     "name": "Piercing Claws",
-                    "attacks": 3,
                     "count": 2,
+                    "attacks": 3,
                     "specialRules": [
                         "AP(2)",
                         "Rending"
                     ]
                 }
             ],
-            "specialRules": [
+            "specials": [
                 "Fast",
                 "Fear",
                 "Hero",
@@ -132,96 +134,181 @@
                 "Strider",
                 "Tough(6)"
             ],
-            "upgradeSets": [
+            "upgrades": [
                 "G"
-            ]
+            ],
+            "cost": 190
         },
         {
-            "name": "Snatcher Veteran",
             "category": "Heroes",
+            "name": "Snatcher Veteran",
             "size": 1,
-            "cost": 80,
             "quality": "3+",
             "defense": "4+",
             "equipment": [
                 {
                     "name": "Piercing Claws",
-                    "attacks": 3,
                     "count": 2,
+                    "attacks": 3,
                     "specialRules": [
                         "Rending"
                     ]
                 }
             ],
-            "specialRules": [
+            "specials": [
                 "Fast",
                 "Hero",
                 "Scout",
                 "Strider",
                 "Tough(3)"
             ],
-            "upgradeSets": [
+            "upgrades": [
                 "H"
-            ]
+            ],
+            "cost": 80
         },
         {
-            "name": "Grunts",
             "category": "Infantry",
+            "name": "Grunts",
             "size": 10,
             "quality": "5+",
             "defense": "5+",
-            "cost": 130,
-            "specialRules": [
-                "Strider"
-            ],
             "equipment": [
                 {
                     "name": "Bio-Guns",
                     "attacks": 1,
-                    "range": 12
+                    "range": 12,
+                    "specialRules": [
+                        "12”"
+                    ]
                 },
                 {
                     "name": "Razor Claws",
                     "attacks": 2
                 }
             ],
-            "upgradeSets": [
+            "specials": [
+                "Strider"
+            ],
+            "upgrades": [
                 "L"
-            ]
+            ],
+            "cost": 130
         },
         {
-            "name": "Assault Grunts",
             "category": "Infantry",
+            "name": "Assault Grunts",
             "size": 10,
             "quality": "5+",
             "defense": "5+",
-            "cost": 170,
-            "specialRules": [
-                "Strider",
-                "Fast"
-            ],
             "equipment": [
                 {
                     "name": "Razor Claws",
                     "attacks": 3
                 }
             ],
-            "upgradeSets": [
+            "specials": [
+                "Fast",
+                "Strider"
+            ],
+            "upgrades": [
                 "M"
-            ]
+            ],
+            "cost": 170
         },
         {
-            "name": "Hive Warriors",
             "category": "Infantry",
+            "name": "Winged Grunts",
+            "size": 10,
+            "quality": "5+",
+            "defense": "5+",
+            "equipment": [
+                {
+                    "name": "Bio-Guns",
+                    "attacks": 1,
+                    "range": 12,
+                    "specialRules": [
+                        "12”"
+                    ]
+                },
+                {
+                    "name": "Razor Claws",
+                    "attacks": 2
+                }
+            ],
+            "specials": [
+                "Ambush",
+                "Flying"
+            ],
+            "upgrades": [
+                "L"
+            ],
+            "cost": 190
+        },
+        {
+            "category": "Infantry",
+            "name": "Soul-Snatchers",
+            "size": 5,
+            "quality": "3+",
+            "defense": "4+",
+            "equipment": [
+                {
+                    "name": "Piercing Claws",
+                    "attacks": 3,
+                    "specialRules": [
+                        "Rending"
+                    ]
+                }
+            ],
+            "specials": [
+                "Fast",
+                "Scout",
+                "Strider"
+            ],
+            "upgrades": [
+                "H"
+            ],
+            "cost": 215
+        },
+        {
+            "category": "Infantry",
+            "name": "Hive Swarm",
             "size": 3,
-            "quality": "4+",
-            "defense": "3+",
-            "cost": 190,
-            "specialRules": [
+            "quality": "6+",
+            "defense": "6+",
+            "equipment": [
+                {
+                    "name": "Swarm Attacks",
+                    "attacks": 3,
+                    "specialRules": [
+                        "Poison"
+                    ]
+                }
+            ],
+            "specials": [
                 "Fearless",
                 "Tough(3)"
             ],
+            "upgrades": [
+                "N"
+            ],
+            "cost": 60
+        },
+        {
+            "category": "Infantry",
+            "name": "Hive Warriors",
+            "size": 3,
+            "quality": "4+",
+            "defense": "3+",
             "equipment": [
+                {
+                    "name": "Bio-Carbines",
+                    "attacks": 3,
+                    "range": 18,
+                    "specialRules": [
+                        "18”"
+                    ]
+                },
                 {
                     "name": "Razor Claws",
                     "attacks": 4,
@@ -230,13 +317,159 @@
                     ]
                 }
             ],
-            "upgradeSets": [
-                "C",
+            "specials": [
+                "Fearless",
+                "Tough(3) C",
                 "F",
                 "I",
                 "J",
+                ""
+            ],
+            "upgrades": [
                 "K"
-            ]
+            ],
+            "cost": 190
+        },
+        {
+            "category": "Infantry",
+            "name": "Ravenous Beasts",
+            "size": 3,
+            "quality": "4+",
+            "defense": "3+",
+            "equipment": [
+                {
+                    "name": "Razor Claws",
+                    "count": 2,
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                }
+            ],
+            "specials": [
+                "Fast",
+                "Strider",
+                "Tough(3)"
+            ],
+            "upgrades": [
+                "I",
+                "O"
+            ],
+            "cost": 205
+        },
+        {
+            "category": "Infantry",
+            "name": "Venom Floaters",
+            "size": 3,
+            "quality": "4+",
+            "defense": "3+",
+            "equipment": [
+                {
+                    "name": "Whip Limbs",
+                    "attacks": 8,
+                    "specialRules": [
+                        "Poison"
+                    ]
+                }
+            ],
+            "specials": [
+                "Shrouding Mist",
+                "Stealth",
+                "Tough(3)"
+            ],
+            "upgrades": [
+                "-"
+            ],
+            "cost": 235
+        },
+        {
+            "category": "Infantry",
+            "name": "Synapse Floaters",
+            "size": 3,
+            "quality": "4+",
+            "defense": "3+",
+            "equipment": [
+                {
+                    "name": "Psychic Blast",
+                    "attacks": 1,
+                    "range": 18,
+                    "specialRules": [
+                        "18”",
+                        "AP(1)",
+                        "Blast(3"
+                    ]
+                },
+                {
+                    "name": "Psychic Shock",
+                    "attacks": 1
+                }
+            ],
+            "specials": [
+                "Regeneration",
+                "Psychic Synapse",
+                "Stealth",
+                "Tough(3)"
+            ],
+            "upgrades": [
+                "F"
+            ],
+            "cost": 285
+        },
+        {
+            "category": "Infantry",
+            "name": "Hive Guardians",
+            "size": 3,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Razor Claws",
+                    "count": 2,
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(2)"
+                    ]
+                }
+            ],
+            "specials": [
+                "Relentless",
+                "Tough(3)"
+            ],
+            "upgrades": [
+                "A",
+                "P"
+            ],
+            "cost": 275
+        },
+        {
+            "category": "Elite",
+            "name": "Shadow Hunter",
+            "size": 1,
+            "quality": "3+",
+            "defense": "3+",
+            "equipment": [
+                {
+                    "name": "Razor Claws",
+                    "count": 2,
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(2)"
+                    ]
+                }
+            ],
+            "specials": [
+                "Ambush",
+                "Fast",
+                "Fear",
+                "Stealth",
+                "Strider",
+                "Tough(6)"
+            ],
+            "upgrades": [
+                "A",
+                "C"
+            ],
+            "cost": 180
         }
     ],
     "equipment": [

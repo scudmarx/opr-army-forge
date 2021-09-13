@@ -36,7 +36,7 @@ export function ArmyList() {
                 // For each unit in category
                 unitGroups[key].map((u) => (
                   <li key={u.name}>
-                    <a onClick={() => dispatch(addUnit(u))}>{u.name}</a>
+                    <a onClick={() => dispatch(addUnit(u))}>{u.name} [{u.size}] {u.quality} {u.defense} {u.cost}pt</a>
                   </li>
                 ))
               }
