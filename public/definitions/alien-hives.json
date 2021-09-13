@@ -18,11 +18,22 @@
             ],
             "equipment": [
                 {
-                    "equipment_id": "razor_claws_a4_ap2",
+                    "name": "Razor Claws",
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(2)"
+                    ],
                     "count": 3
+                },
+                {
+                    "name": "Stomp",
+                    "attacks": 2,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
                 }
             ],
-            "upgrade_sets": [
+            "upgradeSets": [
                 "A",
                 "B",
                 "C",
@@ -40,7 +51,11 @@
             "defense": "2+",
             "equipment": [
                 {
-                    "equipment_id": "razor_claws_a4_ap2",
+                    "name": "Razor Claws",
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(2)"
+                    ],
                     "count": 2
                 }
             ],
@@ -49,7 +64,7 @@
                 "Hero",
                 "Tough(6)"
             ],
-            "upgrade_sets": [
+            "upgradeSets": [
                 "A",
                 "B",
                 "C",
@@ -69,13 +84,16 @@
             ],
             "equipment": [
                 {
-                    "equipment_id": "razor_claws_a2"
+                    "name": "Bio-Guns",
+                    "attacks": 1,
+                    "range": 12
                 },
                 {
-                    "equipment_id": "bio-guns"
+                    "name": "Razor Claws",
+                    "attacks": 2
                 }
             ],
-            "upgrade_sets": [
+            "upgradeSets": [
                 "L"
             ]
         },
@@ -92,10 +110,11 @@
             ],
             "equipment": [
                 {
-                    "equipment_id": "razor_claws_a3"
+                    "name": "Razor Claws",
+                    "attacks": 3
                 }
             ],
-            "upgrade_sets": [
+            "upgradeSets": [
                 "M"
             ]
         },
@@ -112,10 +131,14 @@
             ],
             "equipment": [
                 {
-                    "equipment_id": "razor_claws_a4_ap1"
+                    "name": "Razor Claws",
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
                 }
             ],
-            "upgrade_sets": [
+            "upgradeSets": [
                 "C",
                 "F",
                 "I",
@@ -298,7 +321,7 @@
             ]
         }
     ],
-    "upgrade_sets": [
+    "upgradeSets": [
         {
             "id": "A",
             "upgrades": [
@@ -308,24 +331,98 @@
                     "replacesWhat": "Razor Claws",
                     "options": [
                         {
-                            "equipment_id": "piercing_claws_a4_ap2",
+                            "name": "Piercing Claws",
+                            "attacks": 4,
+                            "specialRules": [
+                                "AP(2)",
+                                "Rending"
+                            ],
                             "cost": 5
                         },
                         {
-                            "equipment_id": "smashing_claws_a4_ap4",
+                            "name": "Smashing Claws",
+                            "attacks": 4,
+                            "specialRules": [
+                                "AP(4)"
+                            ],
                             "cost": 10
                         },
                         {
-                            "equipment_id": "serrated_claws_a8_ap2",
+                            "name": "Serrated Claws",
+                            "attacks": 8,
+                            "specialRules": [
+                                "AP(2)"
+                            ],
                             "cost": 15
                         },
                         {
-                            "equipment_id": "sword_claws_a4_ap2",
+                            "name": "Sword Claws",
+                            "attacks": 4,
+                            "specialRules": [
+                                "AP(2)",
+                                "Deadly(3)"
+                            ],
                             "cost": 15
                         },
                         {
-                            "equipment_id": "whip_limb_sword_claw_a3_ap1",
+                            "name": "Whip Limb and Sword Claw",
+                            "attacks": 3,
+                            "specialRules": [
+                                "AP(1)",
+                                "Deadly(6)"
+                            ],
                             "cost": 20
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "B",
+            "upgrades": [
+                {
+                    "type": "upgrade",
+                    "affects": "any",
+                    "select": "one",
+                    "options": []
+                },
+                {
+                    "type": "upgrade",
+                    "select": "one",
+                    "options": [
+                        {
+                            "name": "Tail Pincer",
+                            "attacks": 2,
+                            "specialRules": [
+                                "AP(2)",
+                                "Rending"
+                            ],
+                            "cost": 10
+                        },
+                        {
+                            "name": "Tail Mace",
+                            "attacks": 2,
+                            "specialRules": [
+                                "AP(4)"
+                            ],
+                            "cost": 10
+                        },
+                        {
+                            "name": "Tail Whip",
+                            "attacks": 4,
+                            "specialRules": [
+                                "AP(2)"
+                            ],
+                            "cost": 15
+                        },
+                        {
+                            "name": "Tail Scythe",
+                            "attacks": 2,
+                            "specialRules": [
+                                "AP(2)",
+                                "Deadly(3)"
+                            ],
+                            "cost": 15
                         }
                     ]
                 }
@@ -338,7 +435,44 @@
                     "type": "upgrade",
                     "affects": "any",
                     "select": "one",
-                    "options": []
+                    "options": [
+                        {
+                            "name": "Poison Hooks",
+                            "range": 6,
+                            "attacks": 3,
+                            "specialRules": [
+                                "Poison"
+                            ],
+                            "cost": 5
+                        },
+                        {
+                            "name": "Shredding Hooks",
+                            "range": 6,
+                            "attacks": 3,
+                            "specialRules": [
+                                "Rending"
+                            ],
+                            "cost": 5
+                        },
+                        {
+                            "name": "Shock Hooks",
+                            "range": 6,
+                            "attacks": 3,
+                            "specialRules": [
+                                "AP(2)"
+                            ],
+                            "cost": 5
+                        },
+                        {
+                            "name": "Acid Hooks",
+                            "range": 6,
+                            "attacks": 3,
+                            "specialRules": [
+                                "Deadly(3)"
+                            ],
+                            "cost": 5
+                        }
+                    ]
                 }
             ]
         },
@@ -360,7 +494,11 @@
                     "options": [
                         {
                             "name": "Wings",
-                            "specialRules": ["Ambush", "Flying"]
+                            "specialRules": [
+                                "Ambush",
+                                "Flying"
+                            ],
+                            "cost": 15
                         }
                     ]
                 }
@@ -413,8 +551,12 @@
                     "affects": "all",
                     "options": [
                         {
-                            "cost": 35,
-                            "equipment_id": "wings"
+                            "name": "Wings",
+                            "specialRules": [
+                                "Ambush",
+                                "Flying"
+                            ],
+                            "cost": 35
                         }
                     ]
                 }
