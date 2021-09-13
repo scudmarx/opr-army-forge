@@ -78,7 +78,7 @@ export default function Data() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div>
-                <textarea className="textarea">{json}</textarea>
+                <textarea className="textarea" value={json}></textarea>
                 <textarea className="textarea" onChange={handleChange}>
                     {input}
                 </textarea>

@@ -1,0 +1,735 @@
+{
+    "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+    "name": "Battle Brothers",
+    "version": "2.13",
+    "units": [
+        {
+            "name": "Captain",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Assault Rifle",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCW",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Hero",
+                "Relentless",
+                "Tough(3)"
+            ],
+            "upgradeSets": [
+                "A",
+                "B",
+                "C"
+            ],
+            "cost": 90
+        },
+        {
+            "name": "Champion",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Assault Rifle",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCW",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Hero",
+                "Tough(3)"
+            ],
+            "upgradeSets": [
+                "A",
+                "B",
+                "C"
+            ],
+            "cost": 80
+        },
+        {
+            "name": "Engineer",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Assault Rifle",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCW",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Hero",
+                "Repair",
+                "Tough(3)"
+            ],
+            "upgradeSets": [
+                "A",
+                "B"
+            ],
+            "cost": 90
+        },
+        {
+            "name": "Psychic",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Assault Rifle",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCW",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Hero",
+                "Psychic(1)",
+                "Tough(3)"
+            ],
+            "upgradeSets": [
+                "A",
+                "B",
+                "D"
+            ],
+            "cost": 100
+        },
+        {
+            "name": "Pathfinders",
+            "size": 5,
+            "quality": "3+",
+            "defense": "4+",
+            "equipment": [
+                {
+                    "name": "Assault Rifles",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCWs",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Strider"
+            ],
+            "upgradeSets": [
+                "A",
+                "H"
+            ],
+            "cost": 140
+        },
+        {
+            "name": "Battle Brothers",
+            "size": 5,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Assault Rifles",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCWs",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fearless"
+            ],
+            "upgradeSets": [
+                "A",
+                "E"
+            ],
+            "cost": 150
+        },
+        {
+            "name": "Assault Brothers",
+            "size": 5,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Pistols",
+                    "attacks": 1,
+                    "range": 12
+                },
+                {
+                    "name": "CCWs",
+                    "attacks": 2
+                }
+            ],
+            "specialRules": [
+                "Fearless"
+            ],
+            "upgradeSets": [
+                "A",
+                "F"
+            ],
+            "cost": 150
+        },
+        {
+            "name": "Support Brothers",
+            "size": 5,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Assault Rifles",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCWs",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Relentless"
+            ],
+            "upgradeSets": [
+                "A",
+                "G"
+            ],
+            "cost": 160
+        },
+        {
+            "name": "Brother Bikers",
+            "size": 3,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Assault Rifles",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCWs",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fearless",
+                "Impact(1)"
+            ],
+            "upgradeSets": [
+                "A",
+                "I"
+            ],
+            "cost": 125
+        },
+        {
+            "name": "Pathfinder Bikers",
+            "size": 3,
+            "quality": "3+",
+            "defense": "4+",
+            "equipment": [
+                {
+                    "name": "Assault Rifles",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCWs",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fearless",
+                "Impact(1)",
+                "Scout"
+            ],
+            "upgradeSets": [
+                "A",
+                "J"
+            ],
+            "cost": 130
+        },
+        {
+            "name": "Support Bike",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Heavy Flamethrower",
+                    "attacks": 6,
+                    "range": 12,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                },
+                {
+                    "name": "Assault Rifle",
+                    "attacks": 1,
+                    "range": 24
+                },
+                {
+                    "name": "CCW",
+                    "attacks": 1
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fearless",
+                "Impact(3)",
+                "Tough(3)"
+            ],
+            "upgradeSets": [
+                "A",
+                "K"
+            ],
+            "cost": 115
+        },
+        {
+            "name": "Destroyers",
+            "size": 5,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Storm Rifles",
+                    "attacks": 2,
+                    "range": 24
+                },
+                {
+                    "name": "Energy Fists",
+                    "attacks": 2,
+                    "specialRules": [
+                        "AP(3)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Ambush",
+                "Fearless",
+                "Tough(3)"
+            ],
+            "upgradeSets": [
+                "A"
+            ],
+            "cost": 490
+        },
+        {
+            "name": "Heavy Exo-Suits",
+            "size": 3,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Twin Flamethrowers",
+                    "attacks": 12,
+                    "range": 12
+                },
+                {
+                    "name": "CCWs",
+                    "attacks": 1,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Slow",
+                "Tough(6)"
+            ],
+            "upgradeSets": [
+                "B"
+            ],
+            "cost": 490
+        },
+        {
+            "name": "APC",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Storm Rifle",
+                    "attacks": 2,
+                    "range": 24
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fearless",
+                "Impact(6)",
+                "Tough(6)",
+                "Transport(11)"
+            ],
+            "upgradeSets": [
+                "C"
+            ],
+            "cost": 200
+        },
+        {
+            "name": "Attack APC",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Twin Heavy Flamethrower",
+                    "attacks": 12,
+                    "range": 12,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fearless",
+                "Impact(6)",
+                "Tough(6)",
+                "Transport(6)"
+            ],
+            "upgradeSets": [
+                "C",
+                "D"
+            ],
+            "cost": 220
+        },
+        {
+            "name": "Drop Pod",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Storm Rifle",
+                    "attacks": 2,
+                    "range": 24
+                }
+            ],
+            "specialRules": [
+                "Ambush",
+                "Fearless",
+                "Immobile",
+                "Large Cargo",
+                "Tough(6)",
+                "Transport(11)"
+            ],
+            "upgradeSets": [
+                "E"
+            ],
+            "cost": 160
+        },
+        {
+            "name": "Attack Speeder",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Heavy Flamethrower",
+                    "count": 2,
+                    "attacks": 6,
+                    "range": 12,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Ambush",
+                "Fast",
+                "Fearless",
+                "Impact(6)",
+                "Strider",
+                "Tough(6)"
+            ],
+            "upgradeSets": [
+                "F"
+            ],
+            "cost": 220
+        },
+        {
+            "name": "Artillery Cannon",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Cannon",
+                    "attacks": 2,
+                    "range": 48,
+                    "specialRules": [
+                        "AP(1)",
+                        "Blast(3)",
+                        "Indirect"
+                    ]
+                },
+                {
+                    "name": "Engineer",
+                    "attacks": 2,
+                    "specialRules": [
+                        "AP(2)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Fearless",
+                "Repair",
+                "Slow",
+                "Tough(6)"
+            ],
+            "upgradeSets": [],
+            "cost": 245
+        },
+        {
+            "name": "Battle Tank",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Autocannon",
+                    "attacks": 2,
+                    "range": 48,
+                    "specialRules": [
+                        "AP(2)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fearless",
+                "Impact(6)",
+                "Tough(12)"
+            ],
+            "upgradeSets": [
+                "A",
+                "B",
+                "C"
+            ],
+            "cost": 345
+        },
+        {
+            "name": "Heavy Battle Tank",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Twin Heavy Machinegun",
+                    "attacks": 6,
+                    "range": 36,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                },
+                {
+                    "name": "Assault Rifle Arrays",
+                    "count": 2,
+                    "attacks": 6,
+                    "range": 24
+                }
+            ],
+            "specialRules": [
+                "Fast",
+                "Fearless",
+                "Impact(6)",
+                "Tough(18)",
+                "Transport(11)"
+            ],
+            "upgradeSets": [
+                "A",
+                "B",
+                "D"
+            ],
+            "cost": 580
+        },
+        {
+            "name": "Attack Walker",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Storm Rifle",
+                    "attacks": 2,
+                    "range": 24
+                },
+                {
+                    "name": "Walker Fist",
+                    "attacks": 4,
+                    "specialRules": [
+                        "AP(4)"
+                    ]
+                },
+                {
+                    "name": "Assault Rifle Array",
+                    "attacks": 6,
+                    "range": 24
+                },
+                {
+                    "name": "Stomp",
+                    "attacks": 2,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Fear",
+                "Fearless",
+                "Tough(12)"
+            ],
+            "upgradeSets": [
+                "B",
+                "H"
+            ],
+            "cost": 370
+        },
+        {
+            "name": "Talon Gunship",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Twin Minigun",
+                    "attacks": 8,
+                    "range": 24,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                },
+                {
+                    "name": "Twin Heavy Machinegun",
+                    "attacks": 6,
+                    "range": 36,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Aircraft",
+                "Fearless",
+                "Tough(6)"
+            ],
+            "upgradeSets": [
+                "E"
+            ],
+            "cost": 260
+        },
+        {
+            "name": "Hawk Interceptor",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Twin Minigun",
+                    "attacks": 8,
+                    "range": 24,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                },
+                {
+                    "name": "Twin Heavy Machinegun",
+                    "attacks": 6,
+                    "range": 36,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                },
+                {
+                    "name": "Laser Talon",
+                    "attacks": 2,
+                    "range": 24,
+                    "specialRules": [
+                        "AP(4)",
+                        "Deadly(3)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Aircraft",
+                "Fearless",
+                "Tough(6)"
+            ],
+            "upgradeSets": [
+                "F"
+            ],
+            "cost": 310
+        },
+        {
+            "name": "Raven Heavy Gunship",
+            "size": 1,
+            "quality": "3+",
+            "defense": "2+",
+            "equipment": [
+                {
+                    "name": "Twin Minigun",
+                    "attacks": 8,
+                    "range": 24,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                },
+                {
+                    "name": "Twin Heavy Machinegun",
+                    "attacks": 6,
+                    "range": 36,
+                    "specialRules": [
+                        "AP(1)"
+                    ]
+                },
+                {
+                    "name": "Storm Missiles",
+                    "attacks": 1,
+                    "range": 48,
+                    "specialRules": [
+                        "AP(3)",
+                        "Deadly(3)"
+                    ]
+                }
+            ],
+            "specialRules": [
+                "Aircraft",
+                "Fearless",
+                "Tough(12)",
+                "Transport(11)"
+            ],
+            "upgradeSets": [
+                "G"
+            ],
+            "cost": 465
+        }
+    ],
+    "upgradeSets": []
+}
