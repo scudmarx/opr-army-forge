@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://github.com/adamlay/opr-army-forge/definitions/army.schema.json",
+    "$id": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
     "title": "Army definition schema",
     "description": "Army definition schema",
     "type": "object",
@@ -175,7 +175,7 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "$ref": "https://github.com/adamlay/opr-army-forge/definitions/equipment.schema.json",
+                                            "$ref": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/equipment.schema.json",
                                             "cost": {
                                                 "type": "integer"
                                             }
