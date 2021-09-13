@@ -96,15 +96,21 @@ export function MainList() {
                                       </span>
                                     )}
                                   </p>
-                                  {u.options.map((opt, i) => (
-                                    <button
-                                      key={i}
-                                      className={"button " + (UpgradeService.isApplied(s, u, opt) ? "is-primary" : "")}
-                                      onClick={() => handleUpgrade(s, u, opt)}
-                                    >
-                                      {EquipmentService.formatString(opt)} {opt.cost}pts
-                                    </button>
-                                  ))}
+                                  {
+                                    // For each upgrade option
+                                    u.options.map((opt, i) => (
+                                      <div key={i} className="is-flex">
+                                        <div className="is-flex-grow-1">{EquipmentService.formatString(opt)}</div>
+                                        <div>{opt.cost}pt&nbsp;</div>
+                                        <button
+                                          className={"button mb-1 is-small " + (UpgradeService.isApplied(s, u, opt) ? "is-primary" : "")}
+                                          onClick={() => handleUpgrade(s, u, opt)}
+                                        >
+                                          +
+                                        </button>
+                                      </div>
+                                    ))
+                                  }
                                 </div>
                               ))}
                             </div>
