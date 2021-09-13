@@ -72,15 +72,7 @@
                     "equipment": {
                         "type": "array",
                         "items": {
-                            "type": "object",
-                            "properties": {
-                                "equipment_id": {
-                                    "type": "string"
-                                },
-                                "count": {
-                                    "type": "integer"
-                                }
-                            }
+                            "$ref": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/equipment.schema.json"
                         },
                         "uniqueItems": true
                     },
