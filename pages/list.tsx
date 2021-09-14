@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Upgrades } from "../views/Upgrades";
 import { useRouter } from "next/router";
 import { BottomSheet } from "react-spring-bottom-sheet";
+import 'react-spring-bottom-sheet/dist/style.css';
 
 export default function List() {
 

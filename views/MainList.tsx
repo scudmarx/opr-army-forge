@@ -6,7 +6,6 @@ import EquipmentService from "../services/EquipmentService";
 import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
 import { applyUpgrade, selectUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
-import { BottomSheet } from "react-spring-bottom-sheet";
 
 export function MainList({ onSelected }) {
 
