@@ -5,18 +5,24 @@ import { addUnit } from '../data/listSlice';
 import { groupBy } from "../services/Helpers";
 import { Fragment } from "react";
 
-export function ArmyList() {
+export function ArmyList({ onSelected }) {
 
   // Access the main army definition state
-  const army = useSelector((state: RootState) => state.army);
+  const armyData = useSelector((state: RootState) => state.army);
+  const army = armyData.data;
   const dispatch = useDispatch();
 
   // If army has not been selected yet, show nothing
-  if (!army.loaded)
+  if (!armyData.loaded)
     return null;
 
   // Group army units by category
   var unitGroups = groupBy(army.units, "category");
+
+  var handleSelection = (unit) => {
+    dispatch(addUnit(unit));
+    onSelected(unit);
+  };
 
   return (
     <aside
@@ -36,7 +42,7 @@ export function ArmyList() {
                 // For each unit in category
                 unitGroups[key].map((u) => (
                   <li key={u.name}>
-                    <a onClick={() => dispatch(addUnit(u))}>{u.name} [{u.size}] {u.quality} {u.defense} {u.cost}pt</a>
+                    <a onClick={() => handleSelection(u)}>{u.name} [{u.size}] {u.quality} {u.defense} {u.cost}pt</a>
                   </li>
                 ))
               }
