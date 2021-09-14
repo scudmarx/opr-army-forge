@@ -4,23 +4,36 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { load } from '../data/armySlice'
-import { ArmyList } from "../views/ArmyList";
+import { UnitSelection } from "../views/UnitSelection";
 import { MainList } from "../views/MainList";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Upgrades } from "../views/Upgrades";
+import { useRouter } from "next/router";
+import { BottomSheet } from "react-spring-bottom-sheet";
 
 export default function List() {
 
     const list = useSelector((state: RootState) => state.list);
     const army = useSelector((state: RootState) => state.army);
 
-    const [slider, setSlider] = useState(null);
-
+    const router = useRouter();
     const dispatch = useDispatch();
 
+    const [slider, setSlider] = useState(null);
+
+    const [open, setOpen] = useState(false);
+    function onDismiss() {
+        setOpen(false)
+    }
+
     useEffect(() => {
+        if (!army.armyFile) {
+            router.push("/", null, { shallow: true });
+            return;
+        }
+
         // TODO: Test only, add army selection
         fetch(army.armyFile)
             .then((res) => res.json())
@@ -35,7 +48,7 @@ export default function List() {
         slidesToShow: 3,
         infinite: false,
         arrows: false,
-        initialSlide: 1,
+        initialSlide: 0,
         responsive: [
             {
                 breakpoint: 1024,
@@ -52,6 +65,10 @@ export default function List() {
         ]
     };
 
+    const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
+        ? null
+        : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
+
     return (
         <>
             <Head>
@@ -60,15 +77,33 @@ export default function List() {
             </Head>
             <Slider {...settings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
                 <div>
-                    <ArmyList onSelected={() => slider.slickGoTo(1)} />
+                    <UnitSelection onSelected={() => slider.slickGoTo(1)} />
                 </div>
                 <div>
-                    <MainList />
+                    <MainList onSelected={() => setOpen(true)} />
                 </div>
                 <div>
                     <Upgrades />
                 </div>
             </Slider>
+            <BottomSheet
+                open={open}
+                onDismiss={onDismiss}
+                defaultSnap={({ snapPoints, lastSnap }) =>
+                    lastSnap ?? Math.min(...snapPoints)
+                }
+                snapPoints={({ minHeight, maxHeight }) => [
+                    minHeight,
+                    maxHeight * 0.9
+                ]}
+                header={
+                    <h3 className="is-size-4">{selectedUnit ? selectedUnit.name : null} Upgrades</h3>
+                }>
+                <div className="m-2">
+                    <Upgrades />
+                    <button onClick={onDismiss}>Dismiss</button>
+                </div>
+            </BottomSheet>
             {/* <div className="columns" style={{ minHeight: "100vh" }}>
         {army && (
           <div className="column is-one-quarter">

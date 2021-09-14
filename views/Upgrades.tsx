@@ -30,7 +30,7 @@ export function Upgrades() {
 
     return (
         <div className="p-4">
-            <h3 className="is-size-3">{selectedUnit.name} Upgrades</h3>
+            <h3 className="is-size-4">{selectedUnit.name} Upgrades</h3>
             <div className="columns is-multiline">
                 {(selectedUnit.upgradeSets || [])
                     .map((setId) => getUpgradeSet(setId))

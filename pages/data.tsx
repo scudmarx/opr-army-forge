@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { load } from '../data/armySlice'
-import { ArmyList } from "../views/ArmyList";
+import { UnitSelection } from "../views/UnitSelection";
 import { MainList } from "../views/MainList";
 
 export default function Data() {

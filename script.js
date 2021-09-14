@@ -25,7 +25,29 @@ Hawk Interceptor [1] 3+ 2+ Twin Minigun (24”, A8, AP(1)), Twin Heavy Machinegu
 Raven Heavy Gunship [1] 3+ 2+ Twin Minigun (24”, A8, AP(1)), Twin Heavy Machinegun (36”, A6, AP(1)), Storm Missiles (48”, A1, AP(3), Deadly(3)) Aircraft, Fearless, Tough(12), Transport(11) G 465pts
 `;
 
-var results = [];
+var upgrades = `
+A Replace Bio-Carbine:
+Razor Claws (A4, AP(1)) +5pts
+Twin Bio-Pistols (12”, A6) +5pts
+Heavy Bio-Carbine (18”, A3, AP(1)) +5pts
+Bio-Spitter (24”, A1, Blast(3), AP(1)) +10pts
+Shredder Cannon (24” A4, Rending) +10pts
+Barb Cannon (36”, A1, AP(1), Blast(3)) +15pts
+Acid Cannon (36”, A1, AP(3), Deadly(3)) +15pts
+Upgrade with one:
+Poison Hooks (6”, A3, Poison) +5pts
+Shredding Hooks (6”, A3, Rending) +5pts
+Shock Hooks (6”, A3, AP(2)) +5pts
+Acid Hooks (6”, A3, Deadly(3)) +5pts
+Upgrade with:
+Wings (Ambush, Flying) +15pts
+B Replace any Razor Claws:
+Piercing Claws (A4, AP(1), Rending) +5pts
+Smashing Claws (A4, AP(3)) +5pts
+Serrated Claws (A8, AP(1)) +10pts
+Sword Claws (A4, AP(1), Deadly(3)) +10pts
+Whip Limb and Sword Claw (A3, Deadly(6)) +10pts
+`;
 
 function parseEquipment(str) {
   var parts = str
@@ -35,12 +57,12 @@ function parseEquipment(str) {
     .map((part) => {
       if (part === "-)") return null;
 
-      const match = /((\d+)x\s)?(.+?)\((.+)\)/.exec(part);
+      const match = /((\d+)x\s)?(.+?)\((.+)\)\s?([+-]\d+)?/.exec(part);
       const attacksMatch = /A(\d+)[,\)]/.exec(part);
       const rangeMatch = /(\d+)["”][,\)]/.exec(part);
       const rules = match[4].split(",").map((r) => r.trim());
       const specialRules = rules.filter(
-        (r) => !/A\d+/.test(r) && !/\d+["”]/.test(r)
+        (r) => !/^A\d+/.test(r) && !/^\d+["”]/.test(r)
       );
 
       return {
@@ -49,35 +71,100 @@ function parseEquipment(str) {
         attacks: attacksMatch ? parseInt(attacksMatch[1]) : undefined,
         range: rangeMatch ? parseInt(rangeMatch[1]) : undefined,
         specialRules: specialRules.length ? specialRules : undefined,
+        cost: match[5] ? parseInt(match[4].trim()) : undefined,
       };
     })
     .filter((p) => !!p);
   return parts;
 }
 
-for (var line of units.split("\n").filter((l) => !!l)) {
-  var match =
-    /^(.+)\[(\d+)\]\s(\d+\+)\s(\d+\+)\s(.*?\)\s|-)(.+?)((?:[A-Z],?\s?|-\s?)+)(\d+)pt/gm.exec(
+function parseUnits() {
+  const results = [];
+
+  for (let line of units.split("\n").filter((l) => !!l)) {
+    const parsedUnit =
+      /^(.+)\[(\d+)\]\s(\d+\+)\s(\d+\+)\s(.*?\)\s|-)(.+?)((?:[A-Z],?\s?|-\s?)+)(\d+)pt/gm.exec(
+        line
+      );
+
+    const parsed = {
+      name: parsedUnit[1].trim(),
+      size: parseInt(parsedUnit[2]),
+      quality: parsedUnit[3],
+      defense: parsedUnit[4],
+      equipment: parseEquipment(parsedUnit[5]),
+      specialRules: parsedUnit[6].split(",").map((s) => s.trim()),
+      upgradeSets:
+        parsedUnit[7] && parsedUnit[7].trim() === "-"
+          ? []
+          : parsedUnit[7].split(",").map((s) => s.trim()),
+      cost: parseInt(parsedUnit[8]),
+    };
+    console.log(parsed);
+    results.push(parsed);
+  }
+
+  const unitsJson = JSON.stringify(results, null, 2);
+
+  console.log(unitsJson);
+  console.log(results);
+}
+
+function parseUpgrades() {
+  const results = {};
+  const groupNames = {
+    setLetter: 1,
+    upgradeText: 2,
+  };
+  let groupIndex = 1;
+  let lastGroupId = null;
+  let lastUpgradeText = null;
+  for (let line of upgrades.split("\n").filter((l) => !!l)) {
+    const parsedUpgrade = /^(\D\s)?(.+?):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(
       line
     );
 
-  var parsed = {
-    name: match[1].trim(),
-    size: parseInt(match[2]),
-    quality: match[3],
-    defense: match[4],
-    equipment: parseEquipment(match[5]),
-    specialRules: match[6].split(",").map((s) => s.trim()),
-    upgradeSets:
-      match[7] && match[7].trim() === "-"
-        ? []
-        : match[7].split(",").map((s) => s.trim()),
-    cost: parseInt(match[8]),
-  };
-  console.log(parsed);
-  results.push(parsed);
+    const setLetter = parsedUpgrade[groupNames.setLetter]?.trim();
+    const upgradeText = parsedUpgrade[groupNames.upgradeText];
+    const isNewGroup = !!setLetter;
+    const isUpgrade = !!upgradeText;
+
+    if (isNewGroup) {
+      const groupExists = !!results[setLetter+groupIndex];
+      const groupId = results[setLetter+groupIndex] ? setLetter + (++groupIndex) : setLetter;
+      results[groupId] = {
+        id: groupId,
+        upgrades: [
+          {
+            text: upgradeText,
+            options: [],
+          },
+        ],
+      };
+      lastGroupId = groupId;
+      lastUpgradeText = upgradeText;
+    } else if (isUpgrade) {
+      results[lastGroupId].upgrades.push({
+        text: upgradeText,
+        options: [],
+      });
+      lastUpgradeText = upgradeText;
+    } else {
+      // Is Equipment...
+      const option = parseEquipment(line);
+      // Add to options!
+      results[lastGroupId].upgrades
+        .filter((u) => u.text === lastUpgradeText)[0]
+        .options.push(option);
+    }
+
+    console.log(results);
+  }
+
+  const upgradesJson = JSON.stringify(results, null, 2);
+
+  console.log(upgradesJson);
+  console.log(results);
 }
 
-
-console.log(JSON.stringify(results, null, 2));
-console.log(results);
+parseUpgrades();
