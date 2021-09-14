@@ -15,7 +15,7 @@ export default function List() {
     const list = useSelector((state: RootState) => state.list);
     const army = useSelector((state: RootState) => state.army);
 
-    const [slider, setSlider] = useState();
+    const [slider, setSlider] = useState(null);
 
     const dispatch = useDispatch();
 
