@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 export default function ArmyFileSelection() {
     const army = useSelector((state: RootState) => state.army);
-    const [armyFiles, setArmyFiles] = useState();
+    const [armyFiles, setArmyFiles] = useState(null);
     const dispatch = useDispatch();
     const router = useRouter();
 
