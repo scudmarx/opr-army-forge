@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
 import EquipmentService from "../services/EquipmentService";
 import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
-import { applyUpgrade } from "../data/listSlice";
+import { applyUpgrade, selectUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
 
 export function MainList() {
@@ -14,21 +14,16 @@ export function MainList() {
 
   const dispatch = useDispatch();
 
-  var getUpgradeSet = (id) => army.upgradeSets.filter((s) => s.id === id)[0];
-
-  var handleUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
-
-    if (UpgradeService.isValid(unit, upgrade, option)) {
-      dispatch(applyUpgrade({ unitId: unit.selectionId, upgrade, option }));
-    }
-  };
-
   const totalPointCost = list
     .units
     .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
 
+  const handleSelectUnit = (unit: ISelectedUnit) => {
+    dispatch(selectUnit(unit.selectionId));
+  };
+
   return (
-    <main className={styles.main}>
+    <main className={styles.main + " p-4"}>
       <h1 className="is-size-3">{list.name} - {totalPointCost}pts</h1>
       <hr />
       <table className="table is-fullwidth">
@@ -48,7 +43,7 @@ export function MainList() {
             // For each selected unit
             list.units.map((s: ISelectedUnit, index: number) => (
               <Fragment key={index}>
-                <tr>
+                <tr onClick={() => handleSelectUnit(s)} style={{backgroundColor:(list.selectedUnitId === s.selectionId ? "#D7E3EB" : null)}}>
                   <td>
                     {s.name} {s.size > 1 ? `[${s.size}]` : null}
                   </td>
@@ -64,62 +59,6 @@ export function MainList() {
                   <td>{(s.specialRules || []).join(", ")}</td>
                   <td>{UpgradeService.calculateUnitTotal(s)}pts</td>
                   <td></td>
-                </tr>
-                <tr>
-                  <td colSpan={42}>
-                    <div className="columns is-multiline">
-                      {(s.upgradeSets || [])
-                        .map((setId) => getUpgradeSet(setId))
-                        .filter((s) => !!s) // remove empty sets?
-                        .map((set) => {
-                          console.log(set);
-                          return (
-                            <div className="column is-half" key={set.id}>
-                              <p>{set.id}</p>
-                              {set.upgrades.map((u, i) => (
-                                <div key={i}>
-                                  <p
-                                    style={{
-                                      fontWeight: "bold",
-                                      fontStyle: "italic",
-                                    }}
-                                  >
-                                    {u.type === "replace" ? (
-                                      <span>
-                                        Replace {u.affects} {u.replacesWhat}
-                                      </span>
-                                    ) : (
-                                      <span>
-                                        Upgrade{" "}
-                                        {u.affects
-                                          ? `${u.affects} model(s) `
-                                          : null}
-                                        with {u.select}
-                                      </span>
-                                    )}
-                                  </p>
-                                  {
-                                    // For each upgrade option
-                                    u.options.map((opt, i) => (
-                                      <div key={i} className="is-flex">
-                                        <div className="is-flex-grow-1">{EquipmentService.formatString(opt)}</div>
-                                        <div>{opt.cost}pt&nbsp;</div>
-                                        <button
-                                          className={"button mb-1 is-small " + (UpgradeService.isApplied(s, u, opt) ? "is-primary" : "")}
-                                          onClick={() => handleUpgrade(s, u, opt)}
-                                        >
-                                          +
-                                        </button>
-                                      </div>
-                                    ))
-                                  }
-                                </div>
-                              ))}
-                            </div>
-                          );
-                        })}
-                    </div>
-                  </td>
                 </tr>
               </Fragment>
             ))

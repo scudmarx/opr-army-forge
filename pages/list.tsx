@@ -9,6 +9,7 @@ import { MainList } from "../views/MainList";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Upgrades } from "../views/Upgrades";
 
 export default function List() {
 
@@ -37,7 +38,7 @@ export default function List() {
         initialSlide: 1,
         responsive: [
             {
-                breakpoint: 1280,
+                breakpoint: 1024,
                 settings: {
                     slidesToShow: 2
                 }
@@ -65,7 +66,7 @@ export default function List() {
                     <MainList />
                 </div>
                 <div>
-                    <h1 className="is-size-1">Upgrades</h1>
+                    <Upgrades />
                 </div>
             </Slider>
             {/* <div className="columns" style={{ minHeight: "100vh" }}>

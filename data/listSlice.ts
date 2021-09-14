@@ -3,12 +3,14 @@ import { IEquipment, ISelectedUnit, IUpgrade } from './interfaces';
 
 export interface ListState {
     name: string,
-    units: ISelectedUnit[]
+    units: ISelectedUnit[],
+    selectedUnitId: number
 }
 
 const initialState: ListState = {
     name: "New Army",
-    units: []
+    units: [],
+    selectedUnitId: null
 }
 
 export const listSlice = createSlice({
@@ -24,6 +26,9 @@ export const listSlice = createSlice({
                     count: eqp.count || action.payload.size
                 }))
             });
+        },
+        selectUnit: (state, action: PayloadAction<number>) => {
+            state.selectedUnitId = action.payload;
         },
         applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
             const { unitId, upgrade, option } = action.payload;
@@ -63,6 +68,6 @@ export const listSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addUnit, applyUpgrade } = listSlice.actions
+export const { addUnit, applyUpgrade, selectUnit } = listSlice.actions
 
 export default listSlice.reducer

@@ -41,8 +41,19 @@ export function ArmyList({ onSelected }) {
               {
                 // For each unit in category
                 unitGroups[key].map((u) => (
-                  <li key={u.name}>
-                    <a onClick={() => handleSelection(u)}>{u.name} [{u.size}] {u.quality} {u.defense} {u.cost}pt</a>
+                  <li key={u.name} className="mb-2"onClick={() => handleSelection(u)}>
+                    <div className="is-flex">
+                      <p className="is-flex-grow-1" style={{fontWeight:"600"}}>
+                        {u.name}
+                      </p>
+                      <p>{u.cost}pts</p>
+                      <p>+</p>
+                    </div>
+                    <div className="is-flex" style={{fontSize:"14px", color:"#666"}}>
+                      <p>Qua {u.quality}</p>
+                      <p className="ml-2">Def {u.defense}</p>
+                    </div>
+                    {/* <a >{u.name} [{u.size}] {u.quality} {u.defense} {u.cost}pt</a> */}
                   </li>
                 ))
               }
