@@ -20,7 +20,6 @@ export default function List() {
 
     const router = useRouter();
     const dispatch = useDispatch();
-
     const [slider, setSlider] = useState(null);
 
     const [open, setOpen] = useState(false);
