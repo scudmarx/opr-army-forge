@@ -11,6 +11,12 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="OPR Army Forge List Builder" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@0;1&family=Source+Sans+Pro:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <Component {...pageProps} />
     </Provider>
