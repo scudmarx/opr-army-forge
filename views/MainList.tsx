@@ -6,6 +6,8 @@ import EquipmentService from "../services/EquipmentService";
 import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
 import { applyUpgrade, selectUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 export function MainList({ onSelected }) {
 
@@ -27,13 +29,15 @@ export function MainList({ onSelected }) {
 
   return (
     <main className={styles.main + " pt-4"}>
-      <h1 className="is-size-4">{list.name} - {totalPointCost}pts</h1>
-      <hr />
+      <h1 className="is-size-4 mb-2">{list.name} - {totalPointCost}pts</h1>
       <ul>
         {
           // For each selected unit
           list.units.map((s: ISelectedUnit, index: number) => (
-            <li key={index} onClick={() => handleSelectUnit(s)} style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "#D7E3EB" : null) }} >
+            <li key={index}
+              onClick={() => handleSelectUnit(s)}
+              className="p-2"
+              style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "#D7E3EB" : null) }} >
               <div className="is-flex">
                 <p className="is-flex-grow-1" style={{ fontWeight: 600 }}>
                   {s.name} {s.size > 1 ? `[${s.size}]` : null}
@@ -44,7 +48,8 @@ export function MainList({ onSelected }) {
                 <p>Qua {s.quality}</p>
                 <p className="ml-2">Def {s.defense}</p>
               </div>
-              <div></div>
+              
+              {/* <div></div>
               <div>
                 {s.selectedEquipment.filter(eqp => eqp.count > 0).map((eqp, i) => (
                   <span key={i}>
@@ -52,7 +57,7 @@ export function MainList({ onSelected }) {
                   </span>
                 ))}
               </div>
-              <div>{(s.specialRules || []).join(", ")}</div>
+              <div>{(s.specialRules || []).join(", ")}</div> */}
             </li>
           ))
         }

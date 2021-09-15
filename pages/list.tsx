@@ -16,6 +16,7 @@ import 'react-spring-bottom-sheet/dist/style.css';
 import { AppBar, Box, Tab, Tabs, Typography } from "@material-ui/core";
 import SwipeableViews from 'react-swipeable-views';
 import { useMediaQuery } from 'react-responsive';
+import UpgradeService from "../services/UpgradeService";
 
 export default function List() {
 
@@ -75,12 +76,13 @@ export default function List() {
         setValue(newValue);
         slider.slickGoTo(newValue);
     };
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
 
-    const settings = {
-        dots: true,
+    const totalPointCost = list
+        .units
+        .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
+
+    const sliderSettings = {
+        dots: false,
         slidesToShow: 1,
         infinite: false,
         arrows: false,
@@ -91,29 +93,20 @@ export default function List() {
     const mobileLayout = (
         <>
             <AppBar position="static">
-                <Tabs value={value} onChange={handleChange}>
+                <Tabs value={value} onChange={handleChange} centered variant="fullWidth">
                     <Tab label="Army List" />
-                    <Tab label="My List" />
+                    <Tab label={`My List ${totalPointCost}pts`} />
                 </Tabs>
             </AppBar>
 
-            <Slider {...settings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
+            <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
                 <div>
-                    <UnitSelection onSelected={() => slider.slickGoTo(1)} />
+                    <UnitSelection onSelected={() => { }} />
                 </div>
-                <div>
+                <div className="px-4">
                     <MainList onSelected={onUnitSelected} />
                 </div>
             </Slider>
-
-            {/* <SwipeableViews index={value} onChangeIndex={handleChangeIndex} axis="x">
-                <TabPanel value={value} index={0}>
-                    <UnitSelection onSelected={() => { }} />
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    <MainList onSelected={onUnitSelected} />
-                </TabPanel>
-            </SwipeableViews> */}
 
             <BottomSheet
                 open={open}

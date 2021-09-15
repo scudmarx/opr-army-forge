@@ -4,6 +4,8 @@ import { RootState } from '../data/store';
 import { addUnit } from '../data/listSlice';
 import { groupBy } from "../services/Helpers";
 import { Fragment } from "react";
+import { Button, Fab, IconButton } from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
 
 export function UnitSelection({ onSelected }) {
 
@@ -42,17 +44,22 @@ export function UnitSelection({ onSelected }) {
               {
                 // For each unit in category
                 unitGroups[key].map((u) => (
-                  <li key={u.name} className="mb-2" onClick={() => handleSelection(u)} style={{cursor:"pointer"}}>
-                    <div className="is-flex">
-                      <p className="is-flex-grow-1" style={{fontWeight:600}}>
-                        {u.name}
-                      </p>
-                      <p>{u.cost}pts</p>
-                      <p>+</p>
-                    </div>
-                    <div className="is-flex" style={{fontSize:"14px", color:"#666"}}>
-                      <p>Qua {u.quality}</p>
-                      <p className="ml-2">Def {u.defense}</p>
+                  <li key={u.name} className="mb-2" style={{ cursor: "pointer" }}>
+                    <div className="is-flex is-align-items-center">
+                      <div className="is-flex-grow-1">
+                        <p className="mb-1" style={{ fontWeight: 600 }}>{u.name} {u.size > 1 ? `[${u.size}]` : ''}</p>
+                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                          <p>Qua {u.quality}</p>
+                          <p className="ml-2">Def {u.defense}</p>
+                        </div>
+                      </div>
+                      <p className="mr-2">{u.cost}pts</p>
+                      <IconButton color="primary" onClick={() => handleSelection(u)}>
+                        <AddIcon />
+                      </IconButton>
+                      {/* <Fab color="default" size="small" onClick={() => handleSelection(u)} >
+                        
+                      </Fab> */}
                     </div>
                     <hr className="my-1" />
                     {/* <a >{u.name} [{u.size}] {u.quality} {u.defense} {u.cost}pt</a> */}

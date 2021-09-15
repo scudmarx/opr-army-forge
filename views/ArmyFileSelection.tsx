@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { setGameSystem, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
+import { Button } from "@material-ui/core";
 
 
 export default function ArmyFileSelection() {
@@ -33,10 +34,10 @@ export default function ArmyFileSelection() {
                 <ul>
                     {
                         !armyFiles ? null : armyFiles[army.gameSystem].map((file, index) => (
-                            <li key={index}>
-                                <button className="button" onClick={() => selectArmy(file.path)}>
+                            <li key={index} className="mb-4">
+                                <Button variant="contained" color="primary" onClick={() => selectArmy(file.path)}>
                                     {file.name}
-                                </button>
+                                </Button>
                             </li>
                         ))
                     }
