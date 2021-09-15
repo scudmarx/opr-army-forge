@@ -13,6 +13,9 @@ import { Upgrades } from "../views/Upgrades";
 import { useRouter } from "next/router";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import 'react-spring-bottom-sheet/dist/style.css';
+import { AppBar, Box, Tab, Tabs, Typography } from "@material-ui/core";
+import SwipeableViews from 'react-swipeable-views';
+import { useMediaQuery } from 'react-responsive';
 
 export default function List() {
 
@@ -43,43 +46,57 @@ export default function List() {
             });
     }, []);
 
-    const settings = {
-        dots: true,
-        slidesToShow: 3,
-        infinite: false,
-        arrows: false,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 960,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-    };
+    const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
 
     const onUnitSelected = () => {
         setOpen(true);
-        slider.slickGoTo(2);
     }
 
     const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
         ? null
         : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
-    return (
+    const desktopLayout = (
+        <div className="columns">
+            <div className="column">
+                <UnitSelection onSelected={() => { }} />
+            </div>
+            <div className="column">
+                <MainList onSelected={onUnitSelected} />
+            </div>
+            <div className="column">
+                <Upgrades />
+            </div>
+        </div>
+    );
+
+    const [value, setValue] = useState(0);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        slider.slickGoTo(newValue);
+    };
+    const handleChangeIndex = (index) => {
+        setValue(index);
+    };
+
+    const settings = {
+        dots: true,
+        slidesToShow: 1,
+        infinite: false,
+        arrows: false,
+        beforeChange: (current, next) => handleChange(null, next)
+        //afterChange: index => handleChange(null, index)
+    };
+
+    const mobileLayout = (
         <>
-            <Head>
-                <title>OPR Army Forge</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <AppBar position="static">
+                <Tabs value={value} onChange={handleChange}>
+                    <Tab label="Army List" />
+                    <Tab label="My List" />
+                </Tabs>
+            </AppBar>
+
             <Slider {...settings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
                 <div>
                     <UnitSelection onSelected={() => slider.slickGoTo(1)} />
@@ -87,11 +104,18 @@ export default function List() {
                 <div>
                     <MainList onSelected={onUnitSelected} />
                 </div>
-                <div>
-                    <Upgrades />
-                </div>
             </Slider>
-            {/* <BottomSheet
+
+            {/* <SwipeableViews index={value} onChangeIndex={handleChangeIndex} axis="x">
+                <TabPanel value={value} index={0}>
+                    <UnitSelection onSelected={() => { }} />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <MainList onSelected={onUnitSelected} />
+                </TabPanel>
+            </SwipeableViews> */}
+
+            <BottomSheet
                 open={open}
                 onDismiss={onDismiss}
                 defaultSnap={({ snapPoints, lastSnap }) =>
@@ -108,7 +132,18 @@ export default function List() {
                     <Upgrades />
                     <button onClick={onDismiss}>Dismiss</button>
                 </div>
-            </BottomSheet> */}
+            </BottomSheet>
+        </>
+    );
+
+    return (
+        <>
+            <Head>
+                <title>OPR Army Forge</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            {isBigScreen ? desktopLayout : mobileLayout}
+            {/*  */}
             {/* <div className="columns" style={{ minHeight: "100vh" }}>
         {army && (
           <div className="column is-one-quarter">
@@ -120,5 +155,25 @@ export default function List() {
         </div>
       </div> */}
         </>
+    );
+}
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
     );
 }

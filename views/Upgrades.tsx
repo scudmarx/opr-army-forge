@@ -29,7 +29,7 @@ export function Upgrades() {
         return null;
 
     return (
-        <div className="p-4">
+        <div className="pt-4">
             <h3 className="is-size-4">{selectedUnit.name} Upgrades</h3>
             <div className="columns is-multiline">
                 {(selectedUnit.upgradeSets || [])

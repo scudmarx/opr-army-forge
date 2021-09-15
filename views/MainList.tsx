@@ -26,7 +26,7 @@ export function MainList({ onSelected }) {
   };
 
   return (
-    <main className={styles.main + " p-4"}>
+    <main className={styles.main + " pt-4"}>
       <h1 className="is-size-4">{list.name} - {totalPointCost}pts</h1>
       <hr />
       <ul>
