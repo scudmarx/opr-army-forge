@@ -65,6 +65,11 @@ export default function List() {
         ]
     };
 
+    const onUnitSelected = () => {
+        setOpen(true);
+        slider.slickGoTo(2);
+    }
+
     const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
         ? null
         : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
@@ -80,13 +85,13 @@ export default function List() {
                     <UnitSelection onSelected={() => slider.slickGoTo(1)} />
                 </div>
                 <div>
-                    <MainList onSelected={() => setOpen(true)} />
+                    <MainList onSelected={onUnitSelected} />
                 </div>
                 <div>
                     <Upgrades />
                 </div>
             </Slider>
-            <BottomSheet
+            {/* <BottomSheet
                 open={open}
                 onDismiss={onDismiss}
                 defaultSnap={({ snapPoints, lastSnap }) =>
@@ -103,7 +108,7 @@ export default function List() {
                     <Upgrades />
                     <button onClick={onDismiss}>Dismiss</button>
                 </div>
-            </BottomSheet>
+            </BottomSheet> */}
             {/* <div className="columns" style={{ minHeight: "100vh" }}>
         {army && (
           <div className="column is-one-quarter">
