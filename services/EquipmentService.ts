@@ -1,6 +1,15 @@
 import { IEquipment } from "../data/interfaces";
 
 export default class EquipmentService {
+    static getAP(e: IEquipment): number {
+        if (!e || !e.specialRules) return null;
+        for (let rule of e.specialRules) {
+            var match = /AP\((\d+)\)/.exec(rule);
+            if (match)
+                return parseInt(match[1]);
+        }
+        return null;
+    }
     static formatString(eqp: IEquipment) {
         var range = eqp.range ? `${eqp.range}"` : null;
         var attacks = eqp.attacks ? "A" + eqp.attacks : null;

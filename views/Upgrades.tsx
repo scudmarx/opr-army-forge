@@ -1,9 +1,12 @@
+import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { IEquipment, ISelectedUnit, IUpgrade } from '../data/interfaces';
 import { applyUpgrade } from '../data/listSlice';
 import { RootState } from '../data/store';
 import EquipmentService from '../services/EquipmentService';
 import UpgradeService from '../services/UpgradeService';
+import styles from "../styles/Upgrades.module.css";
+import AddIcon from '@material-ui/icons/Add';
 
 export function Upgrades() {
 
@@ -29,8 +32,34 @@ export function Upgrades() {
         return null;
 
     return (
-        <div className="pt-4">
-            <h3 className="is-size-4">{selectedUnit.name} Upgrades</h3>
+        <div className={styles["upgrade-panel"] + " p-4"}>
+            <h3 className="is-size-4 is-hidden-mobile mb-4">{selectedUnit.name} Upgrades</h3>
+            <TableContainer component={Paper} className="mb-4">
+                <Table size="small">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Equipment</TableCell>
+                            <TableCell>RNG</TableCell>
+                            <TableCell>ATK</TableCell>
+                            <TableCell>AP</TableCell>
+                            <TableCell>SPE</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            selectedUnit.selectedEquipment.map(e => (
+                                <TableRow>
+                                    <TableCell>{e.name}</TableCell>
+                                    <TableCell>{e.range}</TableCell>
+                                    <TableCell>{e.attacks}</TableCell>
+                                    <TableCell>{EquipmentService.getAP(e)}</TableCell>
+                                    <TableCell>{e.specialRules?.filter(r => !/^AP/.test(r)).join(", ")}</TableCell>
+                                </TableRow>
+                            ))
+                        }
+                    </TableBody>
+                </Table>
+            </TableContainer>
             <div className="columns is-multiline">
                 {(selectedUnit.upgradeSets || [])
                     .map((setId) => getUpgradeSet(setId))
@@ -65,15 +94,16 @@ export function Upgrades() {
                                         {
                                             // For each upgrade option
                                             u.options.map((opt, i) => (
-                                                <div key={i} className="is-flex">
+                                                <div key={i} className="is-flex is-align-items-center">
                                                     <div className="is-flex-grow-1">{EquipmentService.formatString(opt)}</div>
                                                     <div>{opt.cost}pt&nbsp;</div>
-                                                    <button
-                                                        className={"button mb-1 is-small " + (UpgradeService.isApplied(selectedUnit, u, opt) ? "is-primary" : "")}
+                                                    <IconButton
+                                                        size="small"
+                                                        color={UpgradeService.isApplied(selectedUnit, u, opt) ? "primary" : "default"}
                                                         onClick={() => handleUpgrade(selectedUnit, u, opt)}
                                                     >
-                                                        +
-                                                    </button>
+                                                        <AddIcon />
+                                                    </IconButton>
                                                 </div>
                                             ))
                                         }

@@ -30,13 +30,25 @@ export const listSlice = createSlice({
         selectUnit: (state, action: PayloadAction<number>) => {
             state.selectedUnitId = action.payload;
         },
+        removeUnit: (state, action: PayloadAction<number>) => {
+            const removeIndex = state
+                .units
+                .findIndex(u => u.selectionId === action.payload);
+
+            state.units.splice(removeIndex, 1);
+
+            // Update remaining IDs
+            for (let i = 0; i < state.units.length; i++) {
+                state.units[i].selectionId = i;
+            }
+        },
         applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
             const { unitId, upgrade, option } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
             const existingSelection = unit.selectedEquipment.filter(eqp => eqp.name === option.name)[0];
-            
+
             if (upgrade.type === "upgrade") {
-                
+
 
                 if (existingSelection) {
                     if (!existingSelection.count)
@@ -68,6 +80,6 @@ export const listSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addUnit, applyUpgrade, selectUnit } = listSlice.actions
+export const { addUnit, applyUpgrade, selectUnit, removeUnit } = listSlice.actions
 
 export default listSlice.reducer

@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
-import { setGameSystem, setArmyFile } from '../data/armySlice'
-import 'react-spring-bottom-sheet/dist/style.css'
+import { setGameSystem } from '../data/armySlice'
 import { useRouter } from 'next/router';
 
 export default function Home() {

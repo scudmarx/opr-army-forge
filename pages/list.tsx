@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
@@ -14,9 +13,9 @@ import { useRouter } from "next/router";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import 'react-spring-bottom-sheet/dist/style.css';
 import { AppBar, Box, Tab, Tabs, Typography } from "@material-ui/core";
-import SwipeableViews from 'react-swipeable-views';
 import { useMediaQuery } from 'react-responsive';
 import UpgradeService from "../services/UpgradeService";
+import { selectUnit } from "../data/listSlice";
 
 export default function List() {
 
@@ -28,8 +27,9 @@ export default function List() {
     const [slider, setSlider] = useState(null);
 
     const [open, setOpen] = useState(false);
-    function onDismiss() {
-        setOpen(false)
+    function onDismissSheet() {
+        setOpen(false);
+        dispatch(selectUnit(null));
     }
 
     useEffect(() => {
@@ -110,7 +110,7 @@ export default function List() {
 
             <BottomSheet
                 open={open}
-                onDismiss={onDismiss}
+                onDismiss={onDismissSheet}
                 defaultSnap={({ snapPoints, lastSnap }) =>
                     lastSnap ?? Math.min(...snapPoints)
                 }
@@ -119,12 +119,12 @@ export default function List() {
                     maxHeight * 0.9
                 ]}
                 header={
-                    <h3 className="is-size-4">{selectedUnit ? selectedUnit.name : null} Upgrades</h3>
+                    selectedUnit && <div className="is-flex is-align-items-center">
+                        <h3 className="is-size-4 is-flex-grow-1 has-text-left">{selectedUnit.name} {selectedUnit.size > 1 ? `[${selectedUnit.size}]` : ''}</h3>
+                        <span>{UpgradeService.calculateUnitTotal(selectedUnit)}pts</span>
+                    </div>
                 }>
-                <div className="m-2">
-                    <Upgrades />
-                    <button onClick={onDismiss}>Dismiss</button>
-                </div>
+                <Upgrades />
             </BottomSheet>
         </>
     );
@@ -136,17 +136,6 @@ export default function List() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             {isBigScreen ? desktopLayout : mobileLayout}
-            {/*  */}
-            {/* <div className="columns" style={{ minHeight: "100vh" }}>
-        {army && (
-          <div className="column is-one-quarter">
-            <ArmyList />
-          </div>
-        )}
-        <div className="column">
-          <MainList />
-        </div>
-      </div> */}
         </>
     );
 }

@@ -1,13 +1,12 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import styles from "../styles/Home.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
-import EquipmentService from "../services/EquipmentService";
 import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
-import { applyUpgrade, selectUnit } from "../data/listSlice";
+import RemoveIcon from '@material-ui/icons/Clear';
+import { selectUnit, removeUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import { IconButton, Paper } from "@material-ui/core";
 
 export function MainList({ onSelected }) {
 
@@ -27,37 +26,34 @@ export function MainList({ onSelected }) {
     onSelected(unit);
   };
 
+  const handleRemove = (unit: ISelectedUnit) => {
+    dispatch(removeUnit(unit.selectionId));
+  };
+
   return (
     <main className={styles.main + " pt-4"}>
-      <h1 className="is-size-4 mb-2">{list.name} - {totalPointCost}pts</h1>
+      {/* <h1 className="is-size-4 mb-2">{list.name} - {totalPointCost}pts</h1> */}
       <ul>
         {
           // For each selected unit
           list.units.map((s: ISelectedUnit, index: number) => (
             <li key={index}
-              onClick={() => handleSelectUnit(s)}
-              className="p-2"
-              style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "#D7E3EB" : null) }} >
-              <div className="is-flex">
-                <p className="is-flex-grow-1" style={{ fontWeight: 600 }}>
-                  {s.name} {s.size > 1 ? `[${s.size}]` : null}
-                </p>
-                <p>{UpgradeService.calculateUnitTotal(s)}pts</p>
-              </div>
-              <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                <p>Qua {s.quality}</p>
-                <p className="ml-2">Def {s.defense}</p>
-              </div>
-              
-              {/* <div></div>
-              <div>
-                {s.selectedEquipment.filter(eqp => eqp.count > 0).map((eqp, i) => (
-                  <span key={i}>
-                    {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}
-                  </span>
-                ))}
-              </div>
-              <div>{(s.specialRules || []).join(", ")}</div> */}
+              onClick={() => handleSelectUnit(s)} >
+              <Paper square style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "#D7E3EB" : null) }}>
+                <div className="p-2 is-flex is-flex-grow-1 is-align-items-center">
+                  <div className="is-flex-grow-1">
+                    <p className="mb-1" style={{ fontWeight: 600 }}>{s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
+                    <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                      <p>Qua {s.quality}</p>
+                      <p className="ml-2">Def {s.defense}</p>
+                    </div>
+                  </div>
+                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>
+                  <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(s); }}>
+                    <RemoveIcon />
+                  </IconButton>
+                </div>
+              </Paper>
             </li>
           ))
         }
