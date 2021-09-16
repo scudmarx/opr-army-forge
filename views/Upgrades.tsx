@@ -7,6 +7,7 @@ import EquipmentService from '../services/EquipmentService';
 import UpgradeService from '../services/UpgradeService';
 import styles from "../styles/Upgrades.module.css";
 import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 export function Upgrades() {
 
@@ -50,8 +51,8 @@ export function Upgrades() {
                             selectedUnit.selectedEquipment.map(e => (
                                 <TableRow>
                                     <TableCell>{e.name}</TableCell>
-                                    <TableCell>{e.range}</TableCell>
-                                    <TableCell>{e.attacks}</TableCell>
+                                    <TableCell>{e.range ? e.range + '"' : ''}</TableCell>
+                                    <TableCell>{e.attacks ? "A" + e.attacks : ''}</TableCell>
                                     <TableCell>{EquipmentService.getAP(e)}</TableCell>
                                     <TableCell>{e.specialRules?.filter(r => !/^AP/.test(r)).join(", ")}</TableCell>
                                 </TableRow>
@@ -97,8 +98,10 @@ export function Upgrades() {
                                                 <div key={i} className="is-flex is-align-items-center">
                                                     <div className="is-flex-grow-1">{EquipmentService.formatString(opt)}</div>
                                                     <div>{opt.cost}pt&nbsp;</div>
+                                                    <IconButton color={UpgradeService.isApplied(selectedUnit, u, opt) ? "primary" : "default"}>
+                                                        <RemoveIcon />
+                                                    </IconButton>
                                                     <IconButton
-                                                        size="small"
                                                         color={UpgradeService.isApplied(selectedUnit, u, opt) ? "primary" : "default"}
                                                         onClick={() => handleUpgrade(selectedUnit, u, opt)}
                                                     >

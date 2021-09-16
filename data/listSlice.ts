@@ -61,25 +61,43 @@ export const listSlice = createSlice({
             }
             else if (upgrade.type === "replace") {
 
-                const toReplace = unit.selectedEquipment.filter(eqp => eqp.name === upgrade.replacesWhat)[0];
+                // "Replace Pistol:"
+                if (upgrade.replacesWhat && !upgrade.affects && !upgrade.select) {
+                    const replaceIndex = unit
+                        .selectedEquipment
+                        .findIndex(e => e.name === upgrade.replacesWhat);
 
-                // Decrement the count of whatever we're replacing
-                toReplace.count--;
-
-                if (existingSelection) {
-                    if (!existingSelection.count)
-                        existingSelection.count = 1;
-
-                    existingSelection.count += 1;
+                    unit.selectedEquipment.splice(replaceIndex, 1);
+                    unit.selectedEquipment.push(option);
                 } else {
-                    unit.selectedEquipment.push({ ...option, count: 1 });
+
+                    if (upgrade.affects === "any") {
+
+                    }
+
+                    const toReplace = unit.selectedEquipment.filter(eqp => eqp.name === upgrade.replacesWhat)[0];
+
+                    // Decrement the count of whatever we're replacing
+                    toReplace.count--;
+
+                    if (existingSelection) {
+                        if (!existingSelection.count)
+                            existingSelection.count = 1;
+
+                        existingSelection.count += 1;
+                    } else {
+                        unit.selectedEquipment.push({ ...option, count: 1 });
+                    }
                 }
             }
+        },
+        removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
+            
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { addUnit, applyUpgrade, selectUnit, removeUnit } = listSlice.actions
+export const { addUnit, applyUpgrade, removeUpgrade, selectUnit, removeUnit } = listSlice.actions
 
 export default listSlice.reducer

@@ -94,6 +94,26 @@ function parseUnits(units: string) {
     return results;
 }
 
+function parseUpgradeText(text) {
+    var groups = {
+        type: 1,
+        affects: 2,
+        select: 3,
+        replaceWhat: 4
+    }
+    var match = /(Upgrade|Replace)\s?(any|one|all)?\s?(?:models?)?\s?(?:with)?\s?(one|any)?([\w\s-]+?)?:/.exec(text);
+    if (!match) {
+        console.error("Cannot match: " + text)
+        return null;
+    }
+    return {
+        type: match[groups.type]?.toLowerCase(),
+        affects: match[groups.affects],
+        select: match[groups.select],
+        replacesWhat: match[groups.replaceWhat],
+    }
+}
+
 function parseUpgrades(upgrades: string) {
     const results = {};
     const groupNames = {
@@ -126,6 +146,7 @@ function parseUpgrades(upgrades: string) {
                     upgrades: [
                         {
                             text: upgradeText,
+                            ...parseUpgradeText(upgradeText + ":"),
                             options: [],
                         },
                     ],
@@ -135,6 +156,7 @@ function parseUpgrades(upgrades: string) {
             } else if (isUpgrade) {
                 results[lastGroupId].upgrades.push({
                     text: upgradeText,
+                    ...parseUpgradeText(upgradeText + ":"),
                     options: [],
                 });
                 lastUpgradeText = upgradeText;
