@@ -1,4 +1,4 @@
-import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { IEquipment, ISelectedUnit, IUpgrade } from '../data/interfaces';
 import { applyUpgrade } from '../data/listSlice';
@@ -6,8 +6,8 @@ import { RootState } from '../data/store';
 import EquipmentService from '../services/EquipmentService';
 import UpgradeService from '../services/UpgradeService';
 import styles from "../styles/Upgrades.module.css";
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export function Upgrades() {
 

@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@material-ui/icons": "^4.11.2",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.0",
+    "@mui/material": "^5.0.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@types/react-redux": "^7.1.18",
     "next": "11.1.2",
@@ -20,7 +22,6 @@
     "react-responsive": "^9.0.0-beta.4",
     "react-slick": "^0.28.1",
     "react-spring-bottom-sheet": "^3.4.0",
-    "react-swipeable-views": "^0.14.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 
 export default function Files() {
 

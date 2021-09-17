@@ -12,10 +12,10 @@ import { Upgrades } from "../views/Upgrades";
 import { useRouter } from "next/router";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import 'react-spring-bottom-sheet/dist/style.css';
-import { AppBar, Box, Tab, Tabs, Typography } from "@material-ui/core";
+import { AppBar, Box, Input, Tab, Tabs, Typography } from "@mui/material";
 import { useMediaQuery } from 'react-responsive';
 import UpgradeService from "../services/UpgradeService";
-import { selectUnit } from "../data/listSlice";
+import { renameUnit, selectUnit } from "../data/listSlice";
 
 export default function List() {
 
@@ -92,18 +92,18 @@ export default function List() {
 
     const mobileLayout = (
         <>
-            <AppBar position="static">
+            <Box position="static">
                 <Tabs value={value} onChange={handleChange} centered variant="fullWidth">
                     <Tab label="Army List" />
-                    <Tab label={`My List ${totalPointCost}pts`} />
+                    <Tab label={`My List - ${totalPointCost}pts`} />
                 </Tabs>
-            </AppBar>
+            </Box>
 
             <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
                 <div>
                     <UnitSelection onSelected={() => { }} />
                 </div>
-                <div className="px-4">
+                <div>
                     <MainList onSelected={onUnitSelected} />
                 </div>
             </Slider>
@@ -120,7 +120,11 @@ export default function List() {
                 ]}
                 header={
                     selectedUnit && <div className="is-flex is-align-items-center">
-                        <h3 className="is-size-4 is-flex-grow-1 has-text-left">{selectedUnit.name} {selectedUnit.size > 1 ? `[${selectedUnit.size}]` : ''}</h3>
+                        {/* <h3 className="is-size-4 is-flex-grow-1 has-text-left">{selectedUnit.name} {selectedUnit.size > 1 ? `[${selectedUnit.size}]` : ''}</h3> */}
+                        <Input
+                            value={selectedUnit.customName || selectedUnit.name}
+                            onChange={e => dispatch(renameUnit({ unitId: selectedUnit.selectionId, name: e.target.value }))}
+                        />
                         <span>{UpgradeService.calculateUnitTotal(selectedUnit)}pts</span>
                     </div>
                 }>

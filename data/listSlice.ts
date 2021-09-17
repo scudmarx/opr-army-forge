@@ -42,6 +42,11 @@ export const listSlice = createSlice({
                 state.units[i].selectionId = i;
             }
         },
+        renameUnit: (state, action: PayloadAction<{ unitId: number, name: string}>) => {
+            const { unitId, name } = action.payload;
+            const unit = state.units.filter(u => u.selectionId === unitId)[0];
+            unit.customName = name;
+        },
         applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
             const { unitId, upgrade, option } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
@@ -98,6 +103,6 @@ export const listSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addUnit, applyUpgrade, removeUpgrade, selectUnit, removeUnit } = listSlice.actions
+export const { addUnit, applyUpgrade, removeUpgrade, selectUnit, removeUnit, renameUnit } = listSlice.actions
 
 export default listSlice.reducer

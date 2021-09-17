@@ -4,8 +4,8 @@ import { RootState } from '../data/store';
 import { addUnit } from '../data/listSlice';
 import { groupBy } from "../services/Helpers";
 import { Fragment, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Button, Fab, IconButton } from "@material-ui/core";
-import AddIcon from '@material-ui/icons/Add';
+import { Accordion, AccordionDetails, AccordionSummary, Button, Fab, IconButton } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 import EquipmentService from "../services/EquipmentService";
 
 export function UnitSelection({ onSelected }) {
@@ -31,10 +31,10 @@ export function UnitSelection({ onSelected }) {
 
   return (
     <aside
-      className={styles.menu + " menu p-4"}
+      className={styles.menu + " menu"}
       style={{ minHeight: "100%" }}
     >
-      <h3 className="is-size-4">
+      <h3 className="is-size-4 pt-4 px-4">
         {army.name} - v{army.version}
       </h3>
 
@@ -42,12 +42,12 @@ export function UnitSelection({ onSelected }) {
         // For each category
         Object.keys(unitGroups).map(key => (
           <Fragment key={key}>
-            <p className="menu-label">{key}</p>
+            <p className="menu-label px-4">{key}</p>
             <ul className="menu-list">
               {
                 // For each unit in category
                 unitGroups[key].map((u, index) => (
-                  <Accordion key={u.name} square expanded={expandedId === u.name} onChange={() => setExpandedId(u.name)}>
+                  <Accordion key={u.name} disableGutters square elevation={0} variant="outlined" expanded={expandedId === u.name} onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
                     <AccordionSummary>
                       <div className="is-flex is-flex-grow-1 is-align-items-center">
                         <div className="is-flex-grow-1" onClick={() => setExpandedId(u.name)}>
