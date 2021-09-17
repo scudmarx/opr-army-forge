@@ -10,12 +10,25 @@ export default class EquipmentService {
         }
         return null;
     }
-    static formatString(eqp: IEquipment) {
+
+    static formatString(eqp: IEquipment): string {
         var range = eqp.range ? `${eqp.range}"` : null;
         var attacks = eqp.attacks ? "A" + eqp.attacks : null;
         return `${eqp.name} (${[range, attacks] // Range, then attacks
             .concat(eqp.specialRules || []) // then special rules
             .filter((m) => !!m) // Remove empty/null entries
             .join(", ")})`; // comma separated list
+    }
+
+    static getStringParts(eqp: IEquipment): { name: string, rules: string } {
+        var range = eqp.range ? `${eqp.range}"` : null;
+        var attacks = eqp.attacks ? "A" + eqp.attacks : null;
+        return {
+            name: eqp.name,
+            rules: [range, attacks] // Range, then attacks
+                .concat(eqp.specialRules || []) // then special rules
+                .filter((m) => !!m) // Remove empty/null entries
+                .join(", ") // csv
+        }
     }
 }

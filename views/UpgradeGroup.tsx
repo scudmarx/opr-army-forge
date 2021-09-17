@@ -101,6 +101,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
             checked={isApplied(option)}
             onClick={() => handleRadio(option)}
             name={hash(upgrade)}
+            color="primary"
             value={option.name} />
     );
     const updownControl = (option: IEquipment) => (
@@ -120,25 +121,31 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
     )
 
     return (
-        <>
-            <RadioGroup>
-                {
-                    upgrade.options.map((opt, i) => (
-                        <div key={i} className="is-flex is-align-items-center">
-                            <div className="is-flex-grow-1 pr-2">{EquipmentService.formatString(opt)}</div>
-                            <div>{opt.cost}pt&nbsp;</div>
-                            {(() => {
-                                switch (controlType) {
-                                    case "check": return checkControl(opt);
-                                    case "radio": return radioControl(opt);
-                                    case "updown": return updownControl(opt);
-                                }
-                            })()}
-                        </div>
-                    ))
-                }
-            </RadioGroup>
-        </>
+        <Paper className="px-4 py-2" square elevation={0}>
+            {
+                upgrade.options.map((opt, i) => (
+                    <div key={i} className="is-flex is-align-items-center">
+                        <div className="is-flex-grow-1 pr-2">{(() => {
+                            const parts = EquipmentService.getStringParts(opt);
+                            return (
+                                <>
+                                    <span style={{ color: "#000000" }}>{parts.name} </span>
+                                    <span style={{ color: "#656565" }}>({parts.rules})</span>
+                                </>
+                            );
+                        })()}</div>
+                        <div>{opt.cost}pt&nbsp;</div>
+                        {(() => {
+                            switch (controlType) {
+                                case "check": return checkControl(opt);
+                                case "radio": return radioControl(opt);
+                                case "updown": return updownControl(opt);
+                            }
+                        })()}
+                    </div>
+                ))
+            }
+        </Paper>
     );
 
     //return ({ upgrade.options.map((opt, i) => (<p></p>)});
