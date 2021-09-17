@@ -68,7 +68,7 @@ export function UnitSelection({ onSelected }) {
                       <div>
                         {u.equipment.map((eqp, i) => (
                           <span key={i}>
-                            {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}
+                            {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
                           </span>
                         ))}
                       </div>
