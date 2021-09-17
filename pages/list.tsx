@@ -92,7 +92,7 @@ export default function List() {
 
     const mobileLayout = (
         <>
-            <Paper elevation={2} style={{position:"sticky",top:0,zIndex:1}}>
+            <Paper elevation={2} square style={{position:"sticky",top:0,zIndex:1}}>
                 <Tabs value={value} onChange={handleChange} centered variant="fullWidth">
                     <Tab label="Army List" />
                     <Tab label={`My List - ${totalPointCost}pts`} />
