@@ -18,15 +18,19 @@ export default class UpgradeService {
             .length > 0;
     }
 
+    static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): number {
+        const selection = unit
+            .selectedEquipment
+            .filter(e => e.name === option.name)[0];
+
+        return selection ? selection.count : 0;
+    }
+
     static foo() {
 
     }
 
     static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
-        console.log(unit);
-        console.log(upgrade);
-        console.log(option);
-
 
         if (upgrade.type === "replace") {
 

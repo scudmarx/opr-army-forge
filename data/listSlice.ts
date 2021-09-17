@@ -75,7 +75,8 @@ export const listSlice = createSlice({
                     if (replaceIndex >= 0) {
                         unit.selectedEquipment.splice(replaceIndex, 1);
                     }
-                    unit.selectedEquipment.push(option);
+
+                    unit.selectedEquipment.push({ ...option, count: 1 });
                 } else {
 
                     if (upgrade.affects === "any") {
@@ -102,8 +103,9 @@ export const listSlice = createSlice({
             const { unitId, upgrade, option } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
 
+            // TODO Behaviour conditional on "count" (decrement / remove)
+            // Remove the upgrade from the list
             const removeIndex = unit.selectedEquipment.findIndex(eqp => eqp.name === option.name);
-
             unit.selectedEquipment.splice(removeIndex, 1);
 
             if (upgrade.type === "replace") {
@@ -111,7 +113,7 @@ export const listSlice = createSlice({
                 //TODO: Count
                 // put the original item back
                 const original = unit.equipment.filter(e => e.name === upgrade.replacesWhat)[0];
-                unit.selectedEquipment.push(original);
+                unit.selectedEquipment.push({ ...original, count: 1 });
             }
         }
     },

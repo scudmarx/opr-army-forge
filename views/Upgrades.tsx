@@ -39,29 +39,19 @@ export function Upgrades() {
                 {(selectedUnit.upgradeSets || [])
                     .map((setId) => getUpgradeSet(setId))
                     .filter((s) => !!s) // remove empty sets?
-                    .map((set) => {
-                        return (
-                            <div className="column is-half" key={set.id}>
-                                <p>{set.id}</p>
-                                {set.upgrades.map((u, i) => (
-                                    <div key={i}>
-                                        <p style={{ fontWeight: "bold", fontStyle: "italic", }}>
-                                            {u.type === "replace" ? (
-                                                <span>
-                                                    Replace {u.affects} {u.replacesWhat}
-                                                </span>
-                                            ) : (
-                                                <span>
-                                                    Upgrade {u.affects ? `${u.affects} model(s) ` : null} with {u.select}
-                                                </span>
-                                            )}
-                                        </p>
-                                        <UpgradeGroup upgrade={u} />
-                                    </div>
-                                ))}
-                            </div>
-                        );
-                    })}
+                    .map((set) => (
+                        <div className="column is-half" key={set.id}>
+                            <p>{set.id}</p>
+                            {set.upgrades.map((u, i) => (
+                                <div key={i}>
+                                    <p style={{ fontWeight: "bold", fontStyle: "italic", }}>
+                                        {u.text}:
+                                    </p>
+                                    <UpgradeGroup upgrade={u} />
+                                </div>
+                            ))}
+                        </div>
+                    ))}
             </div>
         </div>
     );

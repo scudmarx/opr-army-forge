@@ -8,6 +8,8 @@ import UpgradeService from '../services/UpgradeService';
 import styles from "../styles/Upgrades.module.css";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import DownIcon from '@mui/icons-material/KeyboardArrowDown';
+import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import hash from "object-hash";
 
 export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
@@ -104,13 +106,15 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
     const updownControl = (option: IEquipment) => (
         <>
             <IconButton color={UpgradeService.isApplied(selectedUnit, upgrade, option) ? "primary" : "default"}>
-                <RemoveIcon />
+                <DownIcon />
             </IconButton>
+            <div>{UpgradeService.countApplied(selectedUnit, upgrade, option)}</div>
             <IconButton
+                disabled={!UpgradeService.isValid(selectedUnit, upgrade, option)}
                 color={UpgradeService.isApplied(selectedUnit, upgrade, option) ? "primary" : "default"}
                 onClick={() => handleUpgrade(selectedUnit, upgrade, option)}
             >
-                <AddIcon />
+                <UpIcon />
             </IconButton>
         </>
     )
@@ -121,7 +125,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
                 {
                     upgrade.options.map((opt, i) => (
                         <div key={i} className="is-flex is-align-items-center">
-                            <div className="is-flex-grow-1">{EquipmentService.formatString(opt)}</div>
+                            <div className="is-flex-grow-1 pr-2">{EquipmentService.formatString(opt)}</div>
                             <div>{opt.cost}pt&nbsp;</div>
                             {(() => {
                                 switch (controlType) {
