@@ -24,10 +24,11 @@ export interface IUnit {
 
 export interface IUpgrade {
     type: "replace" | "upgrade" | "upgradeRule";
-    affects: "any" | "one" | "all";
+    affects: "any" | "one" | "all" | number;
     select: "any" | "one";
+    limit?: number;
     replacesWhat: string;
-    options: IEquipment[];
+    options?: IEquipment[];
 }
 
 export interface ISelectedUnit extends IUnit {

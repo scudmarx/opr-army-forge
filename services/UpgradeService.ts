@@ -18,6 +18,10 @@ export default class UpgradeService {
             .length > 0;
     }
 
+    static foo() {
+
+    }
+
     static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
         console.log(unit);
         console.log(upgrade);
@@ -39,8 +43,6 @@ export default class UpgradeService {
         }
 
         if (upgrade.type === "upgrade") {
-
-
 
             if (upgrade.select !== "any") {
                 const optionNames = upgrade.options.map(opt => opt.name);

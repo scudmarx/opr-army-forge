@@ -4,7 +4,7 @@ import { RootState } from '../data/store';
 import { addUnit } from '../data/listSlice';
 import { groupBy } from "../services/Helpers";
 import { Fragment, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Button, Fab, IconButton } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import EquipmentService from "../services/EquipmentService";
 

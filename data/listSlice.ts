@@ -42,7 +42,7 @@ export const listSlice = createSlice({
                 state.units[i].selectionId = i;
             }
         },
-        renameUnit: (state, action: PayloadAction<{ unitId: number, name: string}>) => {
+        renameUnit: (state, action: PayloadAction<{ unitId: number, name: string }>) => {
             const { unitId, name } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
             unit.customName = name;
@@ -72,7 +72,9 @@ export const listSlice = createSlice({
                         .selectedEquipment
                         .findIndex(e => e.name === upgrade.replacesWhat);
 
-                    unit.selectedEquipment.splice(replaceIndex, 1);
+                    if (replaceIndex >= 0) {
+                        unit.selectedEquipment.splice(replaceIndex, 1);
+                    }
                     unit.selectedEquipment.push(option);
                 } else {
 
@@ -97,7 +99,20 @@ export const listSlice = createSlice({
             }
         },
         removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
-            
+            const { unitId, upgrade, option } = action.payload;
+            const unit = state.units.filter(u => u.selectionId === unitId)[0];
+
+            const removeIndex = unit.selectedEquipment.findIndex(eqp => eqp.name === option.name);
+
+            unit.selectedEquipment.splice(removeIndex, 1);
+
+            if (upgrade.type === "replace") {
+
+                //TODO: Count
+                // put the original item back
+                const original = unit.equipment.filter(e => e.name === upgrade.replacesWhat)[0];
+                unit.selectedEquipment.push(original);
+            }
         }
     },
 })
