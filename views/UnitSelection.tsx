@@ -66,7 +66,7 @@ export function UnitSelection({ onSelected }) {
                     <AccordionDetails style={{ flexDirection: "column" }}>
                       <div className="mb-2">{(u.specialRules || []).join(", ")}</div>
                       <div>
-                        {u.equipment.filter(eqp => eqp.count > 0).map((eqp, i) => (
+                        {u.equipment.map((eqp, i) => (
                           <span key={i}>
                             {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}
                           </span>

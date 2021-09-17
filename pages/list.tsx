@@ -12,7 +12,7 @@ import { Upgrades } from "../views/Upgrades";
 import { useRouter } from "next/router";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import 'react-spring-bottom-sheet/dist/style.css';
-import { AppBar, Box, Input, Tab, Tabs, Typography } from "@mui/material";
+import { AppBar, Box, Input, Paper, Tab, Tabs, Typography } from "@mui/material";
 import { useMediaQuery } from 'react-responsive';
 import UpgradeService from "../services/UpgradeService";
 import { renameUnit, selectUnit } from "../data/listSlice";
@@ -92,12 +92,12 @@ export default function List() {
 
     const mobileLayout = (
         <>
-            <Box position="static">
+            <Paper elevation={2} style={{position:"sticky",top:0,zIndex:1}}>
                 <Tabs value={value} onChange={handleChange} centered variant="fullWidth">
                     <Tab label="Army List" />
                     <Tab label={`My List - ${totalPointCost}pts`} />
                 </Tabs>
-            </Box>
+            </Paper>
 
             <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
                 <div>
@@ -111,6 +111,7 @@ export default function List() {
             <BottomSheet
                 open={open}
                 onDismiss={onDismissSheet}
+                initialFocusRef={null}
                 defaultSnap={({ snapPoints, lastSnap }) =>
                     lastSnap ?? Math.min(...snapPoints)
                 }
