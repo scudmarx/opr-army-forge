@@ -67,10 +67,10 @@ export const listSlice = createSlice({
             else if (upgrade.type === "replace") {
 
                 // "Replace Pistol:"
-                if (upgrade.replacesWhat && !upgrade.affects && !upgrade.select) {
+                if (upgrade.replaceWhat && !upgrade.affects && !upgrade.select) {
                     const replaceIndex = unit
                         .selectedEquipment
-                        .findIndex(e => e.name === upgrade.replacesWhat);
+                        .findIndex(e => e.name === upgrade.replaceWhat);
 
                     if (replaceIndex >= 0) {
                         unit.selectedEquipment.splice(replaceIndex, 1);
@@ -83,7 +83,7 @@ export const listSlice = createSlice({
 
                     }
 
-                    const toReplace = unit.selectedEquipment.filter(eqp => eqp.name === upgrade.replacesWhat)[0];
+                    const toReplace = unit.selectedEquipment.filter(eqp => eqp.name === upgrade.replaceWhat)[0];
 
                     // Decrement the count of whatever we're replacing
                     toReplace.count--;
@@ -112,7 +112,7 @@ export const listSlice = createSlice({
 
                 //TODO: Count
                 // put the original item back
-                const original = unit.equipment.filter(e => e.name === upgrade.replacesWhat)[0];
+                const original = unit.equipment.filter(e => e.name === upgrade.replaceWhat)[0];
                 unit.selectedEquipment.push({ ...original, count: 1 });
             }
         }

@@ -20,7 +20,7 @@ export default class DataParsingService {
             type: match[groups.type]?.toLowerCase() as any,
             affects: match[groups.affects] as any,
             select: match[groups.select] as any,
-            replacesWhat: match[groups.replaceWhat]
+            replaceWhat: match[groups.replaceWhat]
         }
     }
 

@@ -35,6 +35,21 @@ export default function Data() {
         }
     };
 
+    const processUnits = (text: string) => {
+        const fixedText = text
+            .replace(/\n+/gm, ' ')
+            .replace(/pts?/gm, 'pts\n');
+        setUnits(fixedText);
+    };
+
+    const processUpgrades = (text: string) => {
+        const fixedText = text
+            .replace(/\n+/gm, ' ')
+            .replace(/pts?/gm, 'pts\n')
+            .replace(/\:/gm, ':\n');
+        setUpgrades(fixedText);
+    };
+
     return (
         <>
             <Head>
@@ -44,11 +59,11 @@ export default function Data() {
             <div className="columns">
                 <div className="column">
                     <label>Units</label>
-                    <textarea className="textarea" value={units} onChange={(e) => setUnits(e.target.value)} rows={50}></textarea>
+                    <textarea className="textarea" value={units} onChange={(e) => processUnits(e.target.value)} rows={50}></textarea>
                 </div>
                 <div className="column">
                     <label>Upgrades</label>
-                    <textarea className="textarea" value={upgrades} onChange={(e) => setUpgrades(e.target.value)} rows={50}></textarea>
+                    <textarea className="textarea" value={upgrades} onChange={(e) => processUpgrades(e.target.value)} rows={50}></textarea>
                 </div>
                 <div className="column">
                     <label>Army Details</label>

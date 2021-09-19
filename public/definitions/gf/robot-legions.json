@@ -1,0 +1,1827 @@
+{
+    "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+    "name": "Robot Legions",
+    "version": "2.19",
+    "units": [
+      {
+        "name": "Tri-Scorpion Overseer",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Annihilation Gun",
+            "attacks": 2,
+            "range": 18,
+            "specialRules": [
+              "Blast(3)",
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Metal Claw",
+            "attacks": 3,
+            "specialRules": [
+              "AP(1)",
+              "Rending"
+            ]
+          },
+          {
+            "name": "Harvest Blade",
+            "attacks": 2,
+            "specialRules": [
+              "AP(4)",
+              "Deadly(3)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Hero",
+          "Regeneration",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [],
+        "cost": 235
+      },
+      {
+        "name": "Annihilator Overseer",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Staff-Shot",
+            "attacks": 3,
+            "range": 12,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Staff",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fearless",
+          "Hero",
+          "Regeneration",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A",
+          "B"
+        ],
+        "cost": 205
+      },
+      {
+        "name": "Overseer",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Staff-Shot",
+            "attacks": 3,
+            "range": 12,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Staff",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Hero",
+          "Fearless",
+          "Regeneration",
+          "Slow",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "A"
+        ],
+        "cost": 95
+      },
+      {
+        "name": "Technomancer",
+        "size": 1,
+        "quality": "3+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Staff-Shot",
+            "attacks": 3,
+            "range": 12,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Staff",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Hero",
+          "Fearless",
+          "Regeneration",
+          "Slow",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "C"
+        ],
+        "cost": 85
+      },
+      {
+        "name": "Warden",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Reaper Rifle",
+            "attacks": 2,
+            "range": 24,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Heavy CCW",
+            "attacks": 3,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Hero",
+          "Fearless",
+          "Regeneration",
+          "Royal March",
+          "Slow",
+          "Tough(3)"
+        ],
+        "upgradeSets": [],
+        "cost": 165
+      },
+      {
+        "name": "Nanobot Wraith-Shard",
+        "size": 1,
+        "quality": "2+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Spirit Attack",
+            "attacks": 8,
+            "specialRules": [
+              "AP(2)",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fear",
+          "Flying",
+          "Hero",
+          "Psychic(1)",
+          "Regeneration",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "D"
+        ],
+        "cost": 460
+      },
+      {
+        "name": "Warriors",
+        "size": 5,
+        "quality": "3+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Gauss Rifles",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "Rending"
+            ]
+          },
+          {
+            "name": "CCWs",
+            "attacks": 1
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Slow"
+        ],
+        "upgradeSets": [
+          "E"
+        ],
+        "cost": 130
+      },
+      {
+        "name": "Eternals",
+        "size": 5,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Gauss Rifles",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "Rending"
+            ]
+          },
+          {
+            "name": "CCWs",
+            "attacks": 1
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Slow"
+        ],
+        "upgradeSets": [
+          "F"
+        ],
+        "cost": 150
+      },
+      {
+        "name": "Guardians",
+        "size": 5,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Rod-Shots",
+            "attacks": 2,
+            "range": 12,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Rods",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Slow"
+        ],
+        "upgradeSets": [
+          "G"
+        ],
+        "cost": 160
+      },
+      {
+        "name": "Flesh-Eaters",
+        "size": 5,
+        "quality": "3+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Metal Claws",
+            "attacks": 3,
+            "specialRules": [
+              "AP(1)",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Slow"
+        ],
+        "upgradeSets": [
+          "H"
+        ],
+        "cost": 160
+      },
+      {
+        "name": "Snipers",
+        "size": 5,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Sniper Carbines",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(1)",
+              "Sniper"
+            ]
+          },
+          {
+            "name": "CCWs",
+            "attacks": 1
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fearless",
+          "Regeneration",
+          "Slow"
+        ],
+        "upgradeSets": [
+          "I"
+        ],
+        "cost": 215
+      },
+      {
+        "name": "Bot Swarms",
+        "size": 3,
+        "quality": "6+",
+        "defense": "6+",
+        "equipment": [
+          {
+            "name": "Swarm Attacks",
+            "attacks": 3,
+            "specialRules": [
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [],
+        "cost": 120
+      },
+      {
+        "name": "Hover Bikes",
+        "size": 3,
+        "quality": "3+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Twin Gauss Rifles",
+            "attacks": 2,
+            "range": 24,
+            "specialRules": [
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Strider"
+        ],
+        "upgradeSets": [
+          "J"
+        ],
+        "cost": 125
+      },
+      {
+        "name": "Robot Snakes",
+        "size": 3,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Metal Fangs",
+            "attacks": 3,
+            "specialRules": [
+              "AP(1)",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "K"
+        ],
+        "cost": 325
+      },
+      {
+        "name": "Destroyer Robot Snakes",
+        "size": 3,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Armblades",
+            "count": 2,
+            "attacks": 2,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Metal Fangs",
+            "attacks": 3,
+            "specialRules": [
+              "AP(1)",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fearless",
+          "Regeneration",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "L"
+        ],
+        "cost": 395
+      },
+      {
+        "name": "Tri-Scorpions",
+        "size": 3,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Armblades",
+            "count": 2,
+            "attacks": 2,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Regeneration",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "L"
+        ],
+        "cost": 330
+      },
+      {
+        "name": "Tri-Scorpion Pistoleer",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Disintegration Pistols",
+            "count": 6,
+            "attacks": 1,
+            "range": 18,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "CCW",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fearless",
+          "Hunter",
+          "Regeneration",
+          "Relentless",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [],
+        "cost": 155
+      },
+      {
+        "name": "Annihilators",
+        "size": 3,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Gauss Cannons",
+            "attacks": 2,
+            "range": 24,
+            "specialRules": [
+              "AP(1)",
+              "Rending"
+            ]
+          },
+          {
+            "name": "CCWs",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fearless",
+          "Regeneration",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "M"
+        ],
+        "cost": 380
+      },
+      {
+        "name": "Heavy Annihilator",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Gauss Cannon",
+            "attacks": 1,
+            "range": 36,
+            "specialRules": [
+              "AP(4)",
+              "Deadly(6)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fearless",
+          "Regeneration",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "N"
+        ],
+        "cost": 265
+      },
+      {
+        "name": "Transport Tank",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Defensive Array",
+            "attacks": 5,
+            "range": 24,
+            "specialRules": [
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Fearless",
+          "Impact(6)",
+          "Strider",
+          "Tough(6)",
+          "Transport(11)"
+        ],
+        "upgradeSets": [
+          "A"
+        ],
+        "cost": 225
+      },
+      {
+        "name": "Doom Tank",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Defensive Array",
+            "attacks": 5,
+            "range": 24,
+            "specialRules": [
+              "Rending"
+            ]
+          },
+          {
+            "name": "Doom Cannon",
+            "attacks": 1,
+            "range": 36,
+            "specialRules": [
+              "AP(4)",
+              "Blast(3)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Fearless",
+          "Impact(6)",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A"
+        ],
+        "cost": 255
+      },
+      {
+        "name": "Support Platform",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Gauss Cannon",
+            "attacks": 2,
+            "range": 24,
+            "specialRules": [
+              "AP(1)",
+              "Rending"
+            ]
+          },
+          {
+            "name": "Twin Flux Cannon",
+            "attacks": 8,
+            "range": 24,
+            "specialRules": [
+              "AP(2)",
+              "Flux"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Slow",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A",
+          "B"
+        ],
+        "cost": 250
+      },
+      {
+        "name": "Tripod Robot",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Atom Beam",
+            "count": 2,
+            "attacks": 3,
+            "range": 12,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 1,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A",
+          "C"
+        ],
+        "cost": 190
+      },
+      {
+        "name": "Spider Robot",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Spider Fangs",
+            "attacks": 4,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 1,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Fear",
+          "Fearless",
+          "Repair",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A",
+          "D"
+        ],
+        "cost": 200
+      },
+      {
+        "name": "Spider Walker",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Antimatter Cannon",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(2)",
+              "Blast(6)"
+            ]
+          },
+          {
+            "name": "Crushing Legs",
+            "attacks": 3,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 2,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Fear",
+          "Fearless",
+          "Strider",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "E"
+        ],
+        "cost": 380
+      },
+      {
+        "name": "Night Transport",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Twin Flux Cannon",
+            "attacks": 8,
+            "range": 24,
+            "specialRules": [
+              "AP(2)",
+              "Flux"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Aircraft",
+          "Fearless",
+          "Tough(6)",
+          "Transport(11)"
+        ],
+        "upgradeSets": [
+          "A"
+        ],
+        "cost": 275
+      },
+      {
+        "name": "Doom Fighter",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Death Beam",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(4)",
+              "Blast(3)"
+            ]
+          },
+          {
+            "name": "Twin Flux Cannon",
+            "attacks": 8,
+            "range": 24,
+            "specialRules": [
+              "AP(2)",
+              "Flux"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Aircraft",
+          "Fearless",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A"
+        ],
+        "cost": 285
+      },
+      {
+        "name": "Death Fortress",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Gauss Machinegun",
+            "count": 4,
+            "attacks": 3,
+            "range": 24,
+            "specialRules": [
+              "AP(1)",
+              "Rending"
+            ]
+          },
+          {
+            "name": "Heavy Antimatter Cannon",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(3)",
+              "Blast(6)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fear",
+          "Fearless",
+          "Slow",
+          "Strider",
+          "Tough(18)",
+          "Transport(21)"
+        ],
+        "upgradeSets": [
+          "F"
+        ],
+        "cost": 660
+      },
+      {
+        "name": "Fortress of Destruction",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Flux Cannon",
+            "count": 4,
+            "attacks": 5,
+            "range": 24,
+            "specialRules": [
+              "AP(2)",
+              "Flux"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Destruction Pulse (30”",
+          "A1",
+          "AP(4)",
+          "Deadly(6)) Ambush",
+          "Fear",
+          "Fearless",
+          "Slow",
+          "Strider",
+          "Tough(24)"
+        ],
+        "upgradeSets": [
+          "G"
+        ],
+        "cost": 900
+      },
+      {
+        "name": "Chained Tyrant Monolith",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Psychic Blast",
+            "attacks": 2,
+            "range": 24,
+            "specialRules": [
+              "AP(2)",
+              "Blast(6)"
+            ]
+          },
+          {
+            "name": "Crushing Legs",
+            "attacks": 6,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 3,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Strider",
+          "Psychic Master",
+          "Tough(18)"
+        ],
+        "upgradeSets": [
+          "F"
+        ],
+        "cost": 725
+      },
+      {
+        "name": "Technoward Monolith",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Monolith Beam",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(4)",
+              "Deadly(6)"
+            ]
+          },
+          {
+            "name": "Crushing Legs",
+            "attacks": 3,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 2,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Strider",
+          "Psychic Warden",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "A"
+        ],
+        "cost": 395
+      }
+    ],
+    "upgradeSets": [
+      {
+        "id": "A",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": "one",
+            "options": [
+              {
+                "name": "Wrist-Mounted Flamer",
+                "attacks": 6,
+                "range": 12,
+                "cost": 10
+              },
+              {
+                "name": "Wrist-Mounted Laser Cannon",
+                "attacks": 1,
+                "range": 48,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 95
+              },
+              {
+                "name": "Nightmare-Protocol",
+                "specialRules": [
+                  "Fear"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": "Replace Staff-Shot and Staff",
+            "type": "replace",
+            "replaceWhat": "Staff-Shot and Staff",
+            "options": [
+              {
+                "name": "Hyper Sword",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)",
+                  "Rending) Free Void Sword (A6",
+                  "AP(1)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Phase Glaive",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "War Scythe",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(2)",
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "B Replace Staff-Shot and Staff",
+            "type": "replace",
+            "replaceWhat": "Staff-Shot and Staff",
+            "options": [
+              {
+                "type": "combined",
+                "equipment": [
+                  {
+                    "name": "CCW",
+                    "attacks": 3
+                  },
+                  {
+                    "name": "Heavy Gauss Cannon",
+                    "attacks": 1,
+                    "range": 36,
+                    "specialRules": [
+                      "AP(4)",
+                      "Deadly(6)"
+                    ],
+                    "cost": 65
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "C Upgrade with one",
+            "type": "upgrade",
+            "select": "one",
+            "options": [
+              {
+                "name": "Flame-Protocol",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Dread-Protocol",
+                "attacks": 3,
+                "range": 18,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Solar-Protocol",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": "one",
+            "options": []
+          },
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Jetpack",
+                "specialRules": [
+                  "Ambush",
+                  "Flying"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Bot Master",
+                "specialRules": [
+                  "Psychic(1)"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with up to two",
+            "type": "upgrade",
+            "replaceWhat": "up to two",
+            "options": [
+              {
+                "name": "Technoslave",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "D Upgrade Psychic(1)",
+            "options": [
+              {
+                "name": "Psychic(2)",
+                "specialRules": [
+                  "Psychic(2)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Psychic(3)",
+                "specialRules": [
+                  "Psychic(3)"
+                ],
+                "cost": 30
+              }
+            ]
+          },
+          {
+            "text": "E Replace any Gauss Rifle",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Gauss Rifle",
+            "options": []
+          },
+          {
+            "text": "Reaper Rifle (12”, A1, AP(2)) Free Replace one Gauss Rifle",
+            "type": "replace",
+            "affects": "one",
+            "replaceWhat": "Gauss Rifle",
+            "options": [
+              {
+                "name": "Flame Caster",
+                "attacks": 6,
+                "range": 12,
+                "cost": 5
+              },
+              {
+                "name": "Plasma Caster",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Fusion Caster",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": "F Replace all Gauss Rifles",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "Gauss Rifles",
+            "options": [
+              {
+                "name": "Flux Rifles",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)",
+                  "Flux"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Heavy Gauss Rifles",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)",
+                  "Rending"
+                ],
+                "cost": 15
+              }
+            ]
+          },
+          {
+            "text": "G Replace all Rod-Shots and Rods",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "Rod-Shots and Rods",
+            "options": [
+              {
+                "name": "War Scythes",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 5
+              },
+              {
+                "type": "combined",
+                "equipment": [
+                  {
+                    "name": "Antimatter Pistols",
+                    "attacks": 1,
+                    "range": 12,
+                    "specialRules": [
+                      "AP(1)"
+                    ]
+                  },
+                  {
+                    "name": "Void Swords",
+                    "attacks": 4,
+                    "specialRules": [
+                      "AP(1)"
+                    ],
+                    "cost": 5
+                  }
+                ]
+              },
+              {
+                "type": "combined",
+                "equipment": [
+                  {
+                    "name": "Hyper Swords",
+                    "attacks": 2,
+                    "specialRules": [
+                      "AP(1)",
+                      "Rending"
+                    ]
+                  },
+                  {
+                    "name": "Combat Shields",
+                    "specialRules": [
+                      "Shield Wall"
+                    ],
+                    "cost": 20
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Upgrade all models with",
+            "type": "upgrade",
+            "affects": "all",
+            "options": [
+              {
+                "name": "Jetpacks",
+                "specialRules": [
+                  "Ambush",
+                  "Flying"
+                ],
+                "cost": 80
+              },
+              {
+                "name": "Plasmabot",
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 25
+              }
+            ]
+          },
+          {
+            "text": "H Upgrade all models with",
+            "type": "upgrade",
+            "affects": "all",
+            "options": [
+              {
+                "name": "Ambush",
+                "specialRules": [
+                  "Ambush"
+                ],
+                "cost": 40
+              }
+            ]
+          },
+          {
+            "text": "Replace one Metal Claws",
+            "type": "replace",
+            "affects": "one",
+            "replaceWhat": "Metal Claws",
+            "options": [
+              {
+                "name": "Chainsaw Claws",
+                "attacks": 6,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Plasma Claws",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(3)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Electric Claws",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)",
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              }
+            ]
+          },
+          {
+            "text": "I Upgrade all models with",
+            "type": "upgrade",
+            "affects": "all",
+            "options": [
+              {
+                "name": "Hunter",
+                "specialRules": [
+                  "Hunter"
+                ],
+                "cost": 15
+              }
+            ]
+          },
+          {
+            "text": "J Replace any Twin Gauss Rifle",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Twin Gauss Rifle",
+            "options": [
+              {
+                "name": "Twin Flux Rifle",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)",
+                  "Flux"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Antimatter Rifle",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)"
+                ],
+                "cost": 5
+              }
+            ]
+          },
+          {
+            "text": "K Upgrade any model with one",
+            "type": "upgrade",
+            "affects": "any",
+            "select": "one",
+            "options": [
+              {
+                "name": "Antimatter Pistol",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Death Gaze",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Whip Coil",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)",
+                  "Rending"
+                ],
+                "cost": 15
+              }
+            ]
+          },
+          {
+            "text": "L Replace one 2x Arm Blades",
+            "type": "replace",
+            "affects": "one",
+            "replaceWhat": "2x Arm Blades",
+            "options": [
+              {
+                "name": "Heavy Armblade",
+                "attacks": 4,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Upgrade all models with",
+            "type": "upgrade",
+            "affects": "all",
+            "options": []
+          },
+          {
+            "text": "M Replace one Gauss Cannon",
+            "type": "replace",
+            "affects": "one",
+            "replaceWhat": "Gauss Cannon",
+            "options": [
+              {
+                "name": "Heavy Gauss Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 55
+              }
+            ]
+          },
+          {
+            "text": "Replace all Gauss Cannons",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "Gauss Cannons",
+            "options": [
+              {
+                "name": "Hyper Swords",
+                "count": 2,
+                "attacks": 3,
+                "specialRules": [
+                  "AP((1)",
+                  "Rending"
+                ],
+                "cost": 25
+              }
+            ]
+          },
+          {
+            "text": "N Replace Heavy Gauss Cannon",
+            "type": "replace",
+            "replaceWhat": "Heavy Gauss Cannon",
+            "options": [
+              {
+                "name": "Exterminator Cannon",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(3)"
+                ],
+                "cost": 35
+              }
+            ]
+          },
+          {
+            "text": " A Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Repair Bots",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 35
+              }
+            ]
+          },
+          {
+            "text": " B Replace Gauss Cannon",
+            "type": "replace",
+            "replaceWhat": "Gauss Cannon",
+            "options": [
+              {
+                "name": "Flux Cannon",
+                "attacks": 4,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)",
+                  "Flux"
+                ],
+                "cost": 30
+              }
+            ]
+          },
+          {
+            "text": " Replace Twin Flux Cannon",
+            "type": "replace",
+            "replaceWhat": "Twin Flux Cannon",
+            "options": [
+              {
+                "name": "Overseer Pilot - Staff-Shot",
+                "attacks": 3,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ]
+              },
+              {
+                "name": "Staff",
+                "attacks": 3,
+                "cost": -80
+              }
+            ]
+          },
+          {
+            "text": " Upgrade Overseer Pilot with one",
+            "type": "upgrade",
+            "replaceWhat": "Overseer Pilot with one",
+            "options": [
+              {
+                "name": "Wrist-Mounted Flamer",
+                "attacks": 6,
+                "range": 12,
+                "cost": 10
+              },
+              {
+                "name": "Wrist-Mounted Laser Cannon",
+                "attacks": 1,
+                "range": 48,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 95
+              }
+            ]
+          },
+          {
+            "text": " Replace Staff-Shot and Staff",
+            "type": "replace",
+            "replaceWhat": "Staff-Shot and Staff",
+            "options": [
+              {
+                "name": "Hyper Sword",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)",
+                  "Rending) Free Void Sword (A6",
+                  "AP(1)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Phase Glaive",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "War Scythe",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(2)",
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": " Upgrade Overseer Pilot",
+            "type": "upgrade",
+            "replaceWhat": "Overseer Pilot",
+            "options": [
+              {
+                "name": "Royal March Order",
+                "specialRules": [
+                  "Royal March Order"
+                ],
+                "cost": 60
+              }
+            ]
+          },
+          {
+            "text": " C Replace 2x Atom Beam",
+            "type": "replace",
+            "replaceWhat": "2x Atom Beam",
+            "options": [
+              {
+                "name": "Doom Blaster",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(4)",
+                  "Blast(3)"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": " Upgrade with one",
+            "type": "upgrade",
+            "select": "one",
+            "options": [
+              {
+                "name": "Twin Gauss Rifles",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Tripod Queen",
+                "specialRules": [
+                  "Royal March Order"
+                ],
+                "cost": 60
+              },
+              {
+                "name": "Reanimator",
+                "specialRules": [
+                  "Reanimator"
+                ],
+                "cost": 90
+              }
+            ]
+          },
+          {
+            "text": " D Upgrade with up to two",
+            "type": "upgrade",
+            "replaceWhat": "up to two",
+            "options": [
+              {
+                "name": "Antimatter Rifle",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": " Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Bot Fabricator",
+                "specialRules": [
+                  "Bot Fabricator"
+                ],
+                "cost": 100
+              }
+            ]
+          },
+          {
+            "text": " E Replace Antimatter Cannon",
+            "type": "replace",
+            "replaceWhat": "Antimatter Cannon",
+            "options": [
+              {
+                "name": "Fusion Ray",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 25
+              },
+              {
+                "name": "Heavy Gauss Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 50
+              }
+            ]
+          },
+          {
+            "text": " Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Repair Bots",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 70
+              }
+            ]
+          },
+          {
+            "text": " F Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Repair Bots",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 110
+              }
+            ]
+          },
+          {
+            "text": " G Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Repair Bots",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 145
+              }
+            ]
+          },
+          {
+            "text": " Replace Destruction Pulse",
+            "type": "replace",
+            "replaceWhat": "Destruction Pulse",
+            "options": [
+              {
+                "name": "Nanobot Wraith-Shard",
+                "specialRules": [
+                  "Psychic(3)"
+                ],
+                "cost": -10
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

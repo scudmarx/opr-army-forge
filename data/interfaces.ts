@@ -27,7 +27,7 @@ export interface IUpgrade {
     affects: "any" | "one" | "all" | number;
     select: "any" | "one";
     limit?: number;
-    replacesWhat: string;
+    replaceWhat: string;
     options?: IEquipment[];
 }
 

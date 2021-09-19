@@ -39,7 +39,7 @@ export default class UpgradeService {
 
                 const toReplace = unit
                     .selectedEquipment
-                    .filter(eqp => eqp.name === upgrade.replacesWhat)[0];
+                    .filter(eqp => eqp.name === upgrade.replaceWhat)[0];
 
                 if (!toReplace || toReplace.count <= 0)
                     return false;

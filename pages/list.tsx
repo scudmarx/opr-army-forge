@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { load } from '../data/armySlice'
@@ -12,7 +12,9 @@ import { Upgrades } from "../views/Upgrades";
 import { useRouter } from "next/router";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import 'react-spring-bottom-sheet/dist/style.css';
-import { AppBar, Box, Input, Paper, Tab, Tabs, Typography } from "@mui/material";
+import { AppBar, Box, Input, Paper, Tab, Tabs, Toolbar, Typography, IconButton, Button } from "@mui/material";
+import BackIcon from '@mui/icons-material/ArrowBackIosNew';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useMediaQuery } from 'react-responsive';
 import UpgradeService from "../services/UpgradeService";
 import { renameUnit, selectUnit } from "../data/listSlice";
@@ -92,18 +94,45 @@ export default function List() {
 
     const mobileLayout = (
         <>
-            <Paper elevation={2} square style={{position:"sticky",top:0,zIndex:1}}>
-                <Tabs value={value} onChange={handleChange} centered variant="fullWidth">
-                    <Tab label="Army List" />
-                    <Tab label={`My List - ${totalPointCost}pts`} />
-                </Tabs>
+            <Paper elevation={2} color="primary" square>
+                <AppBar position="static" elevation={0}>
+                    <Toolbar>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                        >
+                            <BackIcon />
+                        </IconButton>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            My List • 100pts
+                        </Typography>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                        >
+                            <MoreVertIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <AppBar elevation={0} position="static" style={{ position: "sticky", top: 0, zIndex: 1 }}>
+                    <Tabs value={value} onChange={handleChange} centered variant="fullWidth" textColor="inherit" indicatorColor="secondary">
+                        <Tab label={`${army?.data?.name} v${army?.data?.version}`} />
+                        <Tab label={`My List - ${totalPointCost}pts`} />
+                    </Tabs>
+                </AppBar>
             </Paper>
 
             <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
                 <div>
                     <UnitSelection onSelected={() => { }} />
                 </div>
-                <div>
+                <div className="mt-4">
                     <MainList onSelected={onUnitSelected} />
                 </div>
             </Slider>
