@@ -39,15 +39,16 @@ export default function Data() {
         const fixedText = text
             .replace(/\n+/gm, ' ')
             .replace(/pts?/gm, 'pts\n');
-        setUnits(fixedText);
+        setUnits(fixedText.replace(/^\s+/gm, ''));
     };
 
     const processUpgrades = (text: string) => {
         const fixedText = text
             .replace(/\n+/gm, ' ')
+            .replace(/Free/gm, '+0pts')
             .replace(/pts?/gm, 'pts\n')
             .replace(/\:/gm, ':\n');
-        setUpgrades(fixedText);
+        setUpgrades(fixedText.replace(/^\s+/gm, ''));
     };
 
     return (

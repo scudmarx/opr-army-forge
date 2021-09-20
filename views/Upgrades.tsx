@@ -48,8 +48,8 @@ export function Upgrades() {
                     <div key={set.id}>
                         {/* <p className="px-2">{set.id}</p> */}
                         {set.upgrades.map((u, i) => (
-                            <div className={i > 0 ? "mt-4" : null} key={i}>
-                                <p className="px-4" style={{ fontWeight: "bold", fontStyle: "italic", }}>{u.text}:</p>
+                            <div className={"mt-4"} key={i}>
+                                <p className="px-4 pt-0" style={{ fontWeight: "bold", fontStyle: "italic", }}>{u.text}:</p>
                                 <UpgradeGroup upgrade={u} />
                             </div>
                         ))}

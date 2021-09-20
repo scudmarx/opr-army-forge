@@ -115,20 +115,30 @@
                                     "description": "e.g. Upgrade ANY model with, Upgrade ONE model with, Upgrade ALL models with",
                                     "enum": [
                                         "any",
-                                        "one",
-                                        "all"
+                                        "all",
+                                        1
                                     ]
                                 },
                                 "select": {
                                     "description": "e.g. Upgrade with ONE, Upgrade with ANY",
                                     "enum": [
                                         "any",
-                                        "one"
+                                        1
                                     ]
                                 },
                                 "replaceWhat": {
                                     "description": "Replace any WEAPON with, Upgrade PSYCHIC(2)",
-                                    "type": "string"
+                                    "oneOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
                                 },
                                 "options": {
                                     "type": "array",

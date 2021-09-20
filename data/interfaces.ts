@@ -1,10 +1,7 @@
-
-
-
 export interface IEquipment {
     name: string;
-    range: number;
-    attacks: number;
+    range?: number;
+    attacks?: number;
     cost?: number;
     count?: number;
     specialRules?: string[];
@@ -24,10 +21,10 @@ export interface IUnit {
 
 export interface IUpgrade {
     type: "replace" | "upgrade" | "upgradeRule";
-    affects: "any" | "one" | "all" | number;
-    select: "any" | "one";
+    affects?: "any" | "all" | number;
+    select?: "any" | number;
     limit?: number;
-    replaceWhat: string;
+    replaceWhat?: string|string[];
     options?: IEquipment[];
 }
 

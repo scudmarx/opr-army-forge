@@ -37,7 +37,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
                 return "check";
             }
             // "Upgrade with one:"
-            if (upgrade.select === "one") {
+            if (upgrade.select === 1) {
                 return "radio";
             }
             // TODO "Upgrade with up to n:"
@@ -60,7 +60,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
                 return "radio";
             }
             // "Replace one [weapon]:"
-            if (upgrade.affects === "one") {
+            if (upgrade.affects === 1) {
                 return "radio";
             }
             // "Replace any [weapon]:"
