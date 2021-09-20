@@ -33,7 +33,7 @@ export function Upgrades() {
 
     return (
         <div className={styles["upgrade-panel"] + " py-4"}>
-            <h3 className="is-size-4 is-hidden-mobile mb-4">{selectedUnit.name} Upgrades</h3>
+            <h3 className="px-4 is-size-4 is-hidden-mobile mb-4">{selectedUnit.name} Upgrades</h3>
             <UnitEquipmentTable unit={selectedUnit} />
             {selectedUnit.specialRules?.length > 0 && <Paper square elevation={0}>
                 <div className="p-4 mb-4">

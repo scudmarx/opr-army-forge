@@ -3,1262 +3,1663 @@
     "name": "Alien Hives",
     "version": "2.13",
     "units": [
-        {
-            "category": "Heroes",
-            "name": "Hive Lord",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Razor Claws",
-                    "count": 3,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 2,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+      {
+        "name": "Hive Lord",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Razor Claws",
+            "count": 3,
+            "attacks": 4,
             "specialRules": [
-                "Fear",
-                "Fearless",
-                "Hero",
-                "Tough(12)"
-            ],
-            "upgradeSets": [
-                "A",
-                "B",
-                "C",
-                "D",
-                "E",
-                "F"
-            ],
-            "cost": 345
-        },
-        {
-            "category": "Heroes",
-            "name": "Prime Warrior",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 2,
             "specialRules": [
-                "Fear",
-                "Hero",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "A",
-                "B",
-                "C",
-                "E",
-                "F"
-            ],
-            "cost": 170
-        },
-        {
-            "category": "Heroes",
-            "name": "Veteran Warrior",
-            "size": 1,
-            "quality": "4+",
-            "defense": "3+",
-            "equipment": [
-                {
-                    "name": "Bio-Carbine",
-                    "attacks": 3,
-                    "range": 18
-                },
-                {
-                    "name": "Razor Claws",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Hero",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "cost": 345
+      },
+      {
+        "name": "Prime Warrior",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Hero",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "C",
-                "E",
-                "F",
-                "I",
-                "J"
-            ],
-            "cost": 100
-        },
-        {
-            "category": "Heroes",
-            "name": "Snatcher Lord",
-            "size": 1,
-            "quality": "3+",
-            "defense": "3+",
-            "equipment": [
-                {
-                    "name": "Piercing Claws",
-                    "count": 2,
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(2)",
-                        "Rending"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Hero",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A",
+          "B",
+          "C",
+          "E",
+          "F"
+        ],
+        "cost": 170
+      },
+      {
+        "name": "Veteran Warrior",
+        "size": 1,
+        "quality": "4+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Bio-Carbine",
+            "attacks": 3,
+            "range": 18
+          },
+          {
+            "name": "Razor Claws",
+            "attacks": 4,
             "specialRules": [
-                "Fast",
-                "Fear",
-                "Hero",
-                "Psychic(1)",
-                "Scout",
-                "Strider",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "G"
-            ],
-            "cost": 190
-        },
-        {
-            "category": "Heroes",
-            "name": "Snatcher Veteran",
-            "size": 1,
-            "quality": "3+",
-            "defense": "4+",
-            "equipment": [
-                {
-                    "name": "Piercing Claws",
-                    "count": 2,
-                    "attacks": 3,
-                    "specialRules": [
-                        "Rending"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Hero",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "C",
+          "E",
+          "F",
+          "I",
+          "J"
+        ],
+        "cost": 100
+      },
+      {
+        "name": "Snatcher Lord",
+        "size": 1,
+        "quality": "3+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Piercing Claws",
+            "count": 2,
+            "attacks": 3,
             "specialRules": [
-                "Fast",
-                "Hero",
-                "Scout",
-                "Strider",
-                "Tough(3)"
-            ],
-            "upgradeSets": [
-                "H"
-            ],
-            "cost": 80
-        },
-        {
-            "category": "Infantry",
-            "name": "Grunts",
-            "size": 10,
-            "quality": "5+",
-            "defense": "5+",
-            "equipment": [
-                {
-                    "name": "Bio-Guns",
-                    "attacks": 1,
-                    "range": 12
-                },
-                {
-                    "name": "Razor Claws",
-                    "attacks": 2
-                }
-            ],
+              "AP(2)",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Fear",
+          "Hero",
+          "Psychic(1)",
+          "Scout",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "G"
+        ],
+        "cost": 190
+      },
+      {
+        "name": "Snatcher Veteran",
+        "size": 1,
+        "quality": "3+",
+        "defense": "4+",
+        "equipment": [
+          {
+            "name": "Piercing Claws",
+            "count": 2,
+            "attacks": 3,
             "specialRules": [
-                "Strider"
-            ],
-            "upgradeSets": [
-                "L"
-            ],
-            "cost": 130
-        },
-        {
-            "category": "Infantry",
-            "name": "Assault Grunts",
-            "size": 10,
-            "quality": "5+",
-            "defense": "5+",
-            "equipment": [
-                {
-                    "name": "Razor Claws",
-                    "attacks": 3
-                }
-            ],
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Hero",
+          "Scout",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "H"
+        ],
+        "cost": 80
+      },
+      {
+        "name": "Grunts",
+        "size": 10,
+        "quality": "5+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Bio-Guns",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "Razor Claws",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Strider"
+        ],
+        "upgradeSets": [
+          "L"
+        ],
+        "cost": 130
+      },
+      {
+        "name": "Assault Grunts",
+        "size": 10,
+        "quality": "5+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Razor Claws",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Strider"
+        ],
+        "upgradeSets": [
+          "M"
+        ],
+        "cost": 170
+      },
+      {
+        "name": "Winged Grunts",
+        "size": 10,
+        "quality": "5+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Bio-Guns",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "Razor Claws",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Flying"
+        ],
+        "upgradeSets": [
+          "L"
+        ],
+        "cost": 190
+      },
+      {
+        "name": "Soul-Snatchers",
+        "size": 5,
+        "quality": "3+",
+        "defense": "4+",
+        "equipment": [
+          {
+            "name": "Piercing Claws",
+            "attacks": 3,
             "specialRules": [
-                "Fast",
-                "Strider"
-            ],
-            "upgradeSets": [
-                "M"
-            ],
-            "cost": 170
-        },
-        {
-            "category": "Infantry",
-            "name": "Winged Grunts",
-            "size": 10,
-            "quality": "5+",
-            "defense": "5+",
-            "equipment": [
-                {
-                    "name": "Bio-Guns",
-                    "attacks": 1,
-                    "range": 12
-                },
-                {
-                    "name": "Razor Claws",
-                    "attacks": 2
-                }
-            ],
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Scout",
+          "Strider"
+        ],
+        "upgradeSets": [
+          "H"
+        ],
+        "cost": 215
+      },
+      {
+        "name": "Hive Swarm",
+        "size": 3,
+        "quality": "6+",
+        "defense": "6+",
+        "equipment": [
+          {
+            "name": "Swarm Attacks",
+            "attacks": 3,
             "specialRules": [
-                "Ambush",
-                "Flying"
-            ],
-            "upgradeSets": [
-                "L"
-            ],
-            "cost": 190
-        },
-        {
-            "category": "Infantry",
-            "name": "Soul-Snatchers",
-            "size": 5,
-            "quality": "3+",
-            "defense": "4+",
-            "equipment": [
-                {
-                    "name": "Piercing Claws",
-                    "attacks": 3,
-                    "specialRules": [
-                        "Rending"
-                    ]
-                }
-            ],
+              "Poison"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "N"
+        ],
+        "cost": 60
+      },
+      {
+        "name": "Hive Warriors",
+        "size": 3,
+        "quality": "4+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Bio-Carbines",
+            "attacks": 3,
+            "range": 18
+          },
+          {
+            "name": "Razor Claws",
+            "attacks": 4,
             "specialRules": [
-                "Fast",
-                "Scout",
-                "Strider"
-            ],
-            "upgradeSets": [
-                "H"
-            ],
-            "cost": 215
-        },
-        {
-            "category": "Infantry",
-            "name": "Hive Swarm",
-            "size": 3,
-            "quality": "6+",
-            "defense": "6+",
-            "equipment": [
-                {
-                    "name": "Swarm Attacks",
-                    "attacks": 3,
-                    "specialRules": [
-                        "Poison"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fearless",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "C",
+          "F",
+          "I",
+          "J",
+          "K"
+        ],
+        "cost": 190
+      },
+      {
+        "name": "Ravenous Beasts",
+        "size": 3,
+        "quality": "4+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Fearless",
-                "Tough(3)"
-            ],
-            "upgradeSets": [
-                "N"
-            ],
-            "cost": 60
-        },
-        {
-            "category": "Infantry",
-            "name": "Hive Warriors",
-            "size": 3,
-            "quality": "4+",
-            "defense": "3+",
-            "equipment": [
-                {
-                    "name": "Bio-Carbines",
-                    "attacks": 3,
-                    "range": 18
-                },
-                {
-                    "name": "Razor Claws",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Strider",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "I",
+          "O"
+        ],
+        "cost": 205
+      },
+      {
+        "name": "Venom Floaters",
+        "size": 3,
+        "quality": "4+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Whip Limbs",
+            "attacks": 8,
             "specialRules": [
-                "Fearless",
-                "Tough(3)"
-            ],
-            "upgradeSets": [
-                "C",
-                "F",
-                "I",
-                "J",
-                "K"
-            ],
-            "cost": 190
-        },
-        {
-            "category": "Infantry",
-            "name": "Ravenous Beasts",
-            "size": 3,
-            "quality": "4+",
-            "defense": "3+",
-            "equipment": [
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+              "Poison"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Shrouding Mist",
+          "Stealth",
+          "Tough(3)"
+        ],
+        "upgradeSets": [],
+        "cost": 235
+      },
+      {
+        "name": "Synapse Floaters",
+        "size": 3,
+        "quality": "4+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Psychic Blast",
+            "attacks": 1,
+            "range": 18,
             "specialRules": [
-                "Fast",
-                "Strider",
-                "Tough(3)"
-            ],
-            "upgradeSets": [
-                "I",
-                "O"
-            ],
-            "cost": 205
-        },
-        {
-            "category": "Infantry",
-            "name": "Venom Floaters",
-            "size": 3,
-            "quality": "4+",
-            "defense": "3+",
-            "equipment": [
-                {
-                    "name": "Whip Limbs",
-                    "attacks": 8,
-                    "specialRules": [
-                        "Poison"
-                    ]
-                }
-            ],
+              "AP(1)",
+              "Blast(3)"
+            ]
+          },
+          {
+            "name": "Psychic Shock",
+            "attacks": 1
+          }
+        ],
+        "specialRules": [
+          "Regeneration",
+          "Psychic Synapse",
+          "Stealth",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "F"
+        ],
+        "cost": 285
+      },
+      {
+        "name": "Hive Guardians",
+        "size": 3,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Shrouding Mist",
-                "Stealth",
-                "Tough(3)"
-            ],
-            "upgradeSets": [],
-            "cost": 235
-        },
-        {
-            "category": "Infantry",
-            "name": "Synapse Floaters",
-            "size": 3,
-            "quality": "4+",
-            "defense": "3+",
-            "equipment": [
-                {
-                    "name": "Psychic Blast",
-                    "attacks": 1,
-                    "range": 18,
-                    "specialRules": [
-                        "AP(1)",
-                        "Blast(3)"
-                    ]
-                },
-                {
-                    "name": "Psychic Shock",
-                    "attacks": 1
-                }
-            ],
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Relentless",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "A",
+          "P"
+        ],
+        "cost": 275
+      },
+      {
+        "name": "Shadow Hunter",
+        "size": 1,
+        "quality": "3+",
+        "defense": "3+",
+        "equipment": [
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Regeneration",
-                "Psychic Synapse",
-                "Stealth",
-                "Tough(3)"
-            ],
-            "upgradeSets": [
-                "F"
-            ],
-            "cost": 285
-        },
-        {
-            "category": "Infantry",
-            "name": "Hive Guardians",
-            "size": 3,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fast",
+          "Fear",
+          "Stealth",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A",
+          "C"
+        ],
+        "cost": 180
+      },
+      {
+        "name": "Carnivo-Rex",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Vicious Jaws",
+            "attacks": 4,
             "specialRules": [
-                "Relentless",
-                "Tough(3)"
-            ],
-            "upgradeSets": [
-                "A",
-                "P"
-            ],
-            "cost": 275
-        },
-        {
-            "category": "Infantry",
-            "name": "Shadow Hunter",
-            "size": 1,
-            "quality": "3+",
-            "defense": "3+",
-            "equipment": [
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(3)"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Ambush",
-                "Fast",
-                "Fear",
-                "Stealth",
-                "Strider",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "A",
-                "C"
-            ],
-            "cost": 180
-        },
-        {
-            "category": "Monsters",
-            "name": "Carnivo-Rex",
-            "size": 1,
-            "quality": "4+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Vicious Jaws",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(3)"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 2,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 2,
             "specialRules": [
-                "Fear",
-                "Fearless",
-                "Tough(12)"
-            ],
-            "upgradeSets": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
-            "cost": 305
-        },
-        {
-            "category": "Monsters",
-            "name": "Toxico-Rex",
-            "size": 1,
-            "quality": "4+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Acid Spurt",
-                    "attacks": 1,
-                    "range": 12,
-                    "specialRules": [
-                        "Blast(6)",
-                        "Poison"
-                    ]
-                },
-                {
-                    "name": "Whip Limbs",
-                    "attacks": 16,
-                    "specialRules": [
-                        "Poison"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 2,
-                    "specialRules": [
-                        "AP(1))Fear",
-                        "Fearless",
-                        "Shrouding Mist",
-                        "Stealth",
-                        "Tough(12"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "cost": 305
+      },
+      {
+        "name": "Toxico-Rex",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Acid Spurt",
+            "attacks": 1,
+            "range": 12,
             "specialRules": [
-                "A",
-                ""
-            ],
-            "upgradeSets": [
-                "D"
-            ],
-            "cost": 375
-        },
-        {
-            "category": "Monsters",
-            "name": "Psycho-Rex",
-            "size": 1,
-            "quality": "4+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Psychic Blast",
-                    "attacks": 2,
-                    "range": 18,
-                    "specialRules": [
-                        "AP(1)",
-                        "Blast(3)"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 2,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+              "Blast(6)",
+              "Poison"
+            ]
+          },
+          {
+            "name": "Whip Limbs",
+            "attacks": 16,
             "specialRules": [
-                "Fear",
-                "Fearless",
-                "Psychic(2)",
-                "Regeneration",
-                "Stealth",
-                "Tough(12)"
-            ],
-            "upgradeSets": [
-                "A",
-                "B",
-                "D",
-                "E"
-            ],
-            "cost": 405
-        },
-        {
-            "category": "Monsters",
-            "name": "Burrower",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Razor Claws",
-                    "count": 3,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "Poison"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 2,
             "specialRules": [
-                "Fear",
-                "Surprise Attack",
-                "Tough(18)"
-            ],
-            "upgradeSets": [
-                "B",
-                "D",
-                "F"
-            ],
-            "cost": 480
-        },
-        {
-            "category": "Monsters",
-            "name": "Devourer Beast",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Tongue",
-                    "attacks": 3,
-                    "range": 12,
-                    "specialRules": [
-                        "AP(4)",
-                        "Deadly(3)",
-                        "Sniper"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Shrouding Mist",
+          "Stealth",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "A",
+          "D"
+        ],
+        "cost": 375
+      },
+      {
+        "name": "Psycho-Rex",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Psychic Blast",
+            "attacks": 2,
+            "range": 18,
             "specialRules": [
-                "Fear",
-                "Tough(18)"
-            ],
-            "upgradeSets": [
-                "B",
-                "F"
-            ],
-            "cost": 490
-        },
-        {
-            "category": "Monsters",
-            "name": "Tyrant Beast",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Toxic Spray",
-                    "attacks": 18,
-                    "range": 18,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(1)",
+              "Blast(3)"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Fear",
-                "Tough(18)"
-            ],
-            "upgradeSets": [
-                "B",
-                "F",
-                "G"
-            ],
-            "cost": 505
-        },
-        {
-            "category": "Monsters",
-            "name": "Artillery Beast",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Bio-Artillery",
-                    "attacks": 3,
-                    "range": 36,
-                    "specialRules": [
-                        "Blast(6)",
-                        "Indirect"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 2,
             "specialRules": [
-                "Fear",
-                "Tough(18)"
-            ],
-            "upgradeSets": [
-                "B",
-                "F",
-                "H"
-            ],
-            "cost": 560
-        },
-        {
-            "category": "Monsters",
-            "name": "Spawning Beast",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Stinger Cannon",
-                    "attacks": 12,
-                    "range": 18,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "count": 2,
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "name": "Stomp",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Psychic(2)",
+          "Regeneration",
+          "Stealth",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "A",
+          "B",
+          "D",
+          "E"
+        ],
+        "cost": 405
+      },
+      {
+        "name": "Burrower",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Razor Claws",
+            "count": 3,
+            "attacks": 4,
             "specialRules": [
-                "Fear",
-                "Spawn Brood",
-                "Tough(18)"
-            ],
-            "upgradeSets": [
-                "B",
-                "F"
-            ],
-            "cost": 630
-        },
-        {
-            "category": "Monsters",
-            "name": "Flamer Beast",
-            "size": 1,
-            "quality": "4+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Spit Flames",
-                    "attacks": 12,
-                    "range": 18,
-                    "specialRules": [
-                        "AP(1)",
-                        "Indirect"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 3,
             "specialRules": [
-                "Fear",
-                "Fearless",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "B"
-            ],
-            "cost": 205
-        },
-        {
-            "category": "Monsters",
-            "name": "Mortar Beast",
-            "size": 1,
-            "quality": "4+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Spore Gun",
-                    "attacks": 1,
-                    "range": 24,
-                    "specialRules": [
-                        "Blast(9)",
-                        "Indirect",
-                        "Spores"
-                    ]
-                },
-                {
-                    "name": "Razor Claws",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Surprise Attack",
+          "Tough(18)"
+        ],
+        "upgradeSets": [
+          "B",
+          "D",
+          "F"
+        ],
+        "cost": 480
+      },
+      {
+        "name": "Devourer Beast",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Tongue",
+            "attacks": 3,
+            "range": 12,
             "specialRules": [
-                "Fear",
-                "Fearless",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "B"
-            ],
-            "cost": 265
-        },
-        {
-            "category": "Monsters",
-            "name": "Invasion Carrier",
-            "size": 1,
-            "quality": "5+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Razor Tendrils",
-                    "attacks": 5,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+              "AP(4)",
+              "Deadly(3)",
+              "Sniper"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Ambush",
-                "Fear",
-                "Fearless",
-                "Tough(6)",
-                "Transport Spore"
-            ],
-            "upgradeSets": [
-                "I",
-                "J"
-            ],
-            "cost": 160
-        },
-        {
-            "category": "Monsters",
-            "name": "Invasion Artillery",
-            "size": 1,
-            "quality": "5+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Spit Spores",
-                    "attacks": 1,
-                    "range": 12,
-                    "specialRules": [
-                        "Blast(9)",
-                        "Indirect",
-                        "Spores"
-                    ]
-                },
-                {
-                    "name": "Razor Tendrils",
-                    "attacks": 5,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 3,
             "specialRules": [
-                "Ambush",
-                "Fear",
-                "Fearless",
-                "Slow",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "I",
-                "J"
-            ],
-            "cost": 210
-        },
-        {
-            "category": "Monsters",
-            "name": "Rapacious Beast",
-            "size": 1,
-            "quality": "4+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Caustic Cannon",
-                    "attacks": 6,
-                    "range": 12,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Tough(18)"
+        ],
+        "upgradeSets": [
+          "B",
+          "F"
+        ],
+        "cost": 490
+      },
+      {
+        "name": "Tyrant Beast",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Toxic Spray",
+            "attacks": 18,
+            "range": 18,
             "specialRules": [
-                "Aircraft",
-                "Fearless",
-                "Tough(6)"
-            ],
-            "upgradeSets": [
-                "I",
-                "K"
-            ],
-            "cost": 155
-        },
-        {
-            "category": "Monsters",
-            "name": "Hive Titan",
-            "size": 1,
-            "quality": "3+",
-            "defense": "2+",
-            "equipment": [
-                {
-                    "name": "Vicious Jaws",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(4)",
-                        "Deadly(6)"
-                    ]
-                },
-                {
-                    "name": "Titanic Stomp",
-                    "attacks": 12,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
             "specialRules": [
-                "Regeneration",
-                "Terrifying",
-                "Tough(24)"
-            ],
-            "upgradeSets": [
-                "L"
-            ],
-            "cost": 840
-        },
-        {
-            "category": "Monsters",
-            "name": "Spores",
-            "size": 3,
-            "quality": "6+",
-            "defense": "6+",
-            "equipment": [],
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 3,
             "specialRules": [
-                "Explosive Head"
-            ],
-            "upgradeSets": [],
-            "cost": 40
-        },
-        {
-            "category": "Monsters",
-            "name": "Massive Spore",
-            "size": 1,
-            "quality": "6+",
-            "defense": "6+",
-            "equipment": [],
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Tough(18)"
+        ],
+        "upgradeSets": [
+          "B",
+          "F",
+          "G"
+        ],
+        "cost": 505
+      },
+      {
+        "name": "Artillery Beast",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Bio-Artillery",
+            "attacks": 3,
+            "range": 36,
             "specialRules": [
-                "Explosive Head",
-                "Tough(3)"
-            ],
-            "upgradeSets": [],
-            "cost": 40
-        }
+              "Blast(6)",
+              "Indirect"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 3,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Tough(18)"
+        ],
+        "upgradeSets": [
+          "B",
+          "F",
+          "H"
+        ],
+        "cost": 560
+      },
+      {
+        "name": "Spawning Beast",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Stinger Cannon",
+            "attacks": 12,
+            "range": 18,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "count": 2,
+            "attacks": 4,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 3,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Spawn Brood",
+          "Tough(18)"
+        ],
+        "upgradeSets": [
+          "B",
+          "F"
+        ],
+        "cost": 630
+      },
+      {
+        "name": "Flamer Beast",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Spit Flames",
+            "attacks": 12,
+            "range": 18,
+            "specialRules": [
+              "AP(1)",
+              "Indirect"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "attacks": 4,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "B"
+        ],
+        "cost": 205
+      },
+      {
+        "name": "Mortar Beast",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Spore Gun",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "Blast(9)",
+              "Indirect",
+              "Spores"
+            ]
+          },
+          {
+            "name": "Razor Claws",
+            "attacks": 4,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fear",
+          "Fearless",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "B"
+        ],
+        "cost": 265
+      },
+      {
+        "name": "Invasion Carrier",
+        "size": 1,
+        "quality": "5+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Razor Tendrils",
+            "attacks": 5,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fear",
+          "Fearless",
+          "Tough(6)",
+          "Transport Spore"
+        ],
+        "upgradeSets": [
+          "I",
+          "J"
+        ],
+        "cost": 160
+      },
+      {
+        "name": "Invasion Artillery",
+        "size": 1,
+        "quality": "5+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Spit Spores",
+            "attacks": 1,
+            "range": 12,
+            "specialRules": [
+              "Blast(9)",
+              "Indirect",
+              "Spores"
+            ]
+          },
+          {
+            "name": "Razor Tendrils",
+            "attacks": 5,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Fear",
+          "Fearless",
+          "Slow",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "I",
+          "J"
+        ],
+        "cost": 210
+      },
+      {
+        "name": "Rapacious Beast",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Caustic Cannon",
+            "attacks": 6,
+            "range": 12,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Aircraft",
+          "Fearless",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "I",
+          "K"
+        ],
+        "cost": 155
+      },
+      {
+        "name": "Hive Titan",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Vicious Jaws",
+            "attacks": 3,
+            "specialRules": [
+              "AP(4)",
+              "Deadly(6)"
+            ]
+          },
+          {
+            "name": "Titanic Stomp",
+            "attacks": 12,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Regeneration",
+          "Terrifying",
+          "Tough(24)"
+        ],
+        "upgradeSets": [
+          "L"
+        ],
+        "cost": 840
+      },
+      {
+        "name": "Spores",
+        "size": 3,
+        "quality": "6+",
+        "defense": "6+",
+        "equipment": [],
+        "specialRules": [
+          "Explosive Head"
+        ],
+        "upgradeSets": [],
+        "cost": 40
+      },
+      {
+        "name": "Massive Spore",
+        "size": 1,
+        "quality": "6+",
+        "defense": "6+",
+        "equipment": [],
+        "specialRules": [
+          "Explosive Head",
+          "Tough(3)"
+        ],
+        "upgradeSets": [],
+        "cost": 40
+      }
     ],
     "upgradeSets": [
-        {
-            "id": "A",
-            "upgrades": [
-                {
-                    "type": "replace",
-                    "affects": "any",
-                    "replaceWhat": "Razor Claws",
-                    "options": [
-                        {
-                            "name": "Piercing Claws",
-                            "attacks": 4,
-                            "specialRules": [
-                                "AP(2)",
-                                "Rending"
-                            ],
-                            "cost": 5
-                        },
-                        {
-                            "name": "Smashing Claws",
-                            "attacks": 4,
-                            "specialRules": [
-                                "AP(4)"
-                            ],
-                            "cost": 10
-                        },
-                        {
-                            "name": "Serrated Claws",
-                            "attacks": 8,
-                            "specialRules": [
-                                "AP(2)"
-                            ],
-                            "cost": 15
-                        },
-                        {
-                            "name": "Sword Claws",
-                            "attacks": 4,
-                            "specialRules": [
-                                "AP(2)",
-                                "Deadly(3)"
-                            ],
-                            "cost": 15
-                        },
-                        {
-                            "name": "Whip Limb and Sword Claw",
-                            "attacks": 3,
-                            "specialRules": [
-                                "AP(1)",
-                                "Deadly(6)"
-                            ],
-                            "cost": 20
-                        }
-                    ]
-                }
+      {
+        "id": "A",
+        "upgrades": [
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Battering Tusks",
+                "specialRules": [
+                  "Impact(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Bio-Recovery",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 70
+              }
             ]
-        },
-        {
-            "id": "B",
-            "upgrades": [
-                {
-                    "type": "upgrade",
-                    "affects": "any",
-                    "select": "one",
-                    "options": []
-                },
-                {
-                    "type": "upgrade",
-                    "select": "one",
-                    "options": [
-                        {
-                            "name": "Tail Pincer",
-                            "attacks": 2,
-                            "specialRules": [
-                                "AP(2)",
-                                "Rending"
-                            ],
-                            "cost": 10
-                        },
-                        {
-                            "name": "Tail Mace",
-                            "attacks": 2,
-                            "specialRules": [
-                                "AP(4)"
-                            ],
-                            "cost": 10
-                        },
-                        {
-                            "name": "Tail Whip",
-                            "attacks": 4,
-                            "specialRules": [
-                                "AP(2)"
-                            ],
-                            "cost": 15
-                        },
-                        {
-                            "name": "Tail Scythe",
-                            "attacks": 2,
-                            "specialRules": [
-                                "AP(2)",
-                                "Deadly(3)"
-                            ],
-                            "cost": 15
-                        }
-                    ]
-                }
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "upgrades": [
+          {
+            "text": "Replace any Razor Claws",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Razor Claws",
+            "options": [
+              {
+                "name": "Piercing Claws",
+                "attacks": 4,
+                "specialRules": [
+                  "AP(2)",
+                  "Rending"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Smashing Claws",
+                "attacks": 4,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Serrated Claws",
+                "attacks": 8,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Sword Claws",
+                "attacks": 4,
+                "specialRules": [
+                  "AP(2)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              }
             ]
-        },
-        {
-            "id": "C",
-            "upgrades": [
-                {
-                    "type": "upgrade",
-                    "affects": "any",
-                    "select": "one",
-                    "options": [
-                        {
-                            "name": "Poison Hooks",
-                            "range": 6,
-                            "attacks": 3,
-                            "specialRules": [
-                                "Poison"
-                            ],
-                            "cost": 5
-                        },
-                        {
-                            "name": "Shredding Hooks",
-                            "range": 6,
-                            "attacks": 3,
-                            "specialRules": [
-                                "Rending"
-                            ],
-                            "cost": 5
-                        },
-                        {
-                            "name": "Shock Hooks",
-                            "range": 6,
-                            "attacks": 3,
-                            "specialRules": [
-                                "AP(2)"
-                            ],
-                            "cost": 5
-                        },
-                        {
-                            "name": "Acid Hooks",
-                            "range": 6,
-                            "attacks": 3,
-                            "specialRules": [
-                                "Deadly(3)"
-                            ],
-                            "cost": 5
-                        }
-                    ]
-                }
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "upgrades": [
+          {
+            "text": "Replace any Razor Claws",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Razor Claws",
+            "options": [
+              {
+                "name": "Heavy Bio-Carbine",
+                "attacks": 6,
+                "range": 18,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Heavy Bio-Spitter",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Heavy Barb Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(6)"
+                ],
+                "cost": 40
+              },
+              {
+                "name": "Heavy Acid Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(6)"
+                ],
+                "cost": 45
+              }
             ]
-        },
-        {
-            "id": "D",
-            "upgrades": [
-                {
-                    "type": "upgrade",
-                    "select": "any",
-                    "options": []
-                }
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Tail Pincer",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(2)",
+                  "Rending"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Tail Mace",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Tail Whip",
+                "attacks": 4,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Tail Scythe",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(2)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              }
             ]
-        },
-        {
-            "id": "E",
-            "upgrades": [
-                {
-                    "type": "upgrade",
-                    "options": [
-                        {
-                            "name": "Wings",
-                            "specialRules": [
-                                "Ambush",
-                                "Flying"
-                            ],
-                            "cost": 15
-                        }
-                    ]
-                }
+          }
+        ]
+      },
+      {
+        "id": "E",
+        "upgrades": [
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Psychic Barrier",
+                "specialRules": [
+                  "Psychic Barrier"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Pheromones",
+                "specialRules": [
+                  "Pheromones"
+                ],
+                "cost": 15
+              }
             ]
-        },
-        {
-            "id": "F",
-            "upgrades": [
-                {
-                    "type": "upgrade",
-                    "affects": "one",
-                    "select": "any",
-                    "options": []
-                }
+          }
+        ]
+      },
+      {
+        "id": "F",
+        "upgrades": [
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Battering Tusks",
+                "specialRules": [
+                  "Impact(6)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Bio-Recovery",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 110
+              }
             ]
-        },
-        {
-            "id": "I",
-            "upgrades": [
-                {
-                    "type": "replace",
-                    "affects": "any",
-                    "replaceWhat": "Razor Claws",
-                    "options": []
-                }
+          }
+        ]
+      },
+      {
+        "id": "G",
+        "upgrades": [
+          {
+            "text": "Replace Toxic Spray",
+            "type": "replace",
+            "replaceWhat": "Toxic Spray",
+            "options": [
+              {
+                "name": "Bio-Minigun",
+                "attacks": 30,
+                "range": 18,
+                "cost": 10
+              },
+              {
+                "name": "Fracture Cannon",
+                "attacks": 3,
+                "range": 48,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(3)"
+                ],
+                "cost": 65
+              },
+              {
+                "name": "Heavy Fracture Cannon",
+                "attacks": 6,
+                "range": 48,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(3)"
+                ],
+                "cost": 205
+              }
             ]
-        },
-        {
-            "id": "J",
-            "upgrades": [
-                {
-                    "type": "replace",
-                    "affects": "any",
-                    "replaceWhat": "Bio-Carbine",
-                    "options": []
-                },
-                {
-                    "type": "replace",
-                    "affects": "one",
-                    "replaceWhat": "Bio-Carbine",
-                    "options": []
-                }
+          },
+          {
+            "text": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Stinger Cannon",
+                "attacks": 12,
+                "range": 18,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 55
+              }
             ]
-        },
-        {
-            "id": "K",
-            "upgrades": [
-                {
-                    "type": "upgrade",
-                    "affects": "all",
-                    "options": [
-                        {
-                            "name": "Wings",
-                            "specialRules": [
-                                "Ambush",
-                                "Flying"
-                            ],
-                            "cost": 35
-                        }
-                    ]
-                }
+          }
+        ]
+      },
+      {
+        "id": "H",
+        "upgrades": [
+          {
+            "text": "Replace Bio-Artillery",
+            "type": "replace",
+            "replaceWhat": "Bio-Artillery",
+            "options": [
+              {
+                "name": "Shredder Bio-Artillery",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "Blast(3)",
+                  "Indirect",
+                  "Rending"
+                ],
+                "cost": -35
+              },
+              {
+                "name": "Acid Bio-Artillery",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(3)",
+                  "Indirect"
+                ],
+                "cost": 0
+              },
+              {
+                "name": "Shock Bio-Artillery",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(3)",
+                  "Indirect"
+                ],
+                "cost": 0
+              }
             ]
-        }
+          }
+        ]
+      },
+      {
+        "id": "I",
+        "upgrades": [
+          {
+            "text": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Bio-Recovery",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 35
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "J",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Bio-Guns Array",
+                "attacks": 5,
+                "range": 12,
+                "cost": 5
+              },
+              {
+                "name": "Bio-Carbines Array",
+                "attacks": 15,
+                "range": 18,
+                "cost": 25
+              },
+              {
+                "name": "Bio-Spitters Array",
+                "attacks": 5,
+                "range": 24,
+                "specialRules": [
+                  "Blast(3)"
+                ],
+                "cost": 30
+              },
+              {
+                "name": "Shredder Cannons Array",
+                "attacks": 20,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 60
+              },
+              {
+                "name": "Barb Cannons Array",
+                "attacks": 5,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)"
+                ],
+                "cost": 70
+              },
+              {
+                "name": "Acid Cannons Array",
+                "attacks": 5,
+                "range": 36,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 75
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "K",
+        "upgrades": [
+          {
+            "text": "Replace Caustic Cannon",
+            "type": "replace",
+            "replaceWhat": "Caustic Cannon",
+            "options": [
+              {
+                "name": "Twin Heavy Barb Cannon",
+                "attacks": 2,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(6)"
+                ],
+                "cost": 65
+              },
+              {
+                "name": "Twin Heavy Acid Cannon",
+                "attacks": 2,
+                "range": 36,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(6)"
+                ],
+                "cost": 70
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Missile Bugs",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Anti-Air"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Spore Bombs",
+                "attacks": 1,
+                "range": 6,
+                "specialRules": [
+                  "Blast(9)",
+                  "Spores"
+                ],
+                "cost": 85
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Stinger Cannon",
+                "attacks": 8,
+                "range": 18,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 25
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "L",
+        "upgrades": [
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Toxic Breath",
+                "attacks": 12,
+                "range": 12,
+                "specialRules": [
+                  "Poison"
+                ],
+                "cost": 30
+              },
+              {
+                "name": "Explosive Spit",
+                "attacks": 2,
+                "range": 48,
+                "specialRules": [
+                  "AP(4)",
+                  "Blast(6)"
+                ],
+                "cost": 290
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Hive Carrier",
+                "specialRules": [
+                  "Transport(21)"
+                ],
+                "cost": 40
+              },
+              {
+                "name": "Acid Blood",
+                "specialRules": [
+                  "Acid Blood"
+                ],
+                "cost": 50
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "M",
+        "upgrades": [
+          {
+            "text": "Replace any Razor Claws",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Razor Claws",
+            "options": [
+              {
+                "name": "Serrated Claws",
+                "attacks": 6,
+                "cost": 5
+              },
+              {
+                "name": "Piercing Claws",
+                "attacks": 3,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Smashing Claws",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Sword Claws",
+                "attacks": 3,
+                "specialRules": [
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              }
+            ]
+          },
+          {
+            "text": "Upgrade all models with any",
+            "type": "upgrade",
+            "affects": "all",
+            "select": "any",
+            "options": [
+              {
+                "name": "Adrenaline",
+                "specialRules": [
+                  "Furious"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Toxic Bite",
+                "specialRules": [
+                  "Poison in melee"
+                ],
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "N",
+        "upgrades": [
+          {
+            "text": "Upgrade all models with any",
+            "type": "upgrade",
+            "affects": "all",
+            "select": "any",
+            "options": [
+              {
+                "name": "Burrow Attack",
+                "specialRules": [
+                  "Ambush"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Twin Bio-Pistols",
+                "attacks": 6,
+                "range": 12,
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "O",
+        "upgrades": [
+          {
+            "text": "Upgrade all models with one",
+            "type": "upgrade",
+            "affects": "all",
+            "select": 1,
+            "options": [
+              {
+                "name": "Tunnel Attack",
+                "specialRules": [
+                  "Ambush"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Adrenaline Rush",
+                "specialRules": [
+                  "Scout"
+                ],
+                "cost": 20
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "P",
+        "upgrades": [
+          {
+            "text": "Any model may replace one Razor Claws",
+            "options": [
+              {
+                "name": "Heavy Shock-Gun",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Bio-Harpoon",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(3)"
+                ],
+                "cost": 30
+              }
+            ]
+          }
+        ]
+      }
     ]
-}
+  }

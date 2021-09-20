@@ -24,7 +24,6 @@ export function UnitSelection({ onSelected }) {
   var unitGroups = groupBy(army.units, "category");
 
   var handleSelection = (unit) => {
-    console.log("foo");
     dispatch(addUnit(unit));
     onSelected(unit);
   };
@@ -34,7 +33,7 @@ export function UnitSelection({ onSelected }) {
       className={styles.menu + " menu"}
       style={{ minHeight: "100%" }}
     >
-      <h3 className="is-size-4 pt-4 px-4">
+      <h3 className="is-size-4 p-4">
         {army.name} - v{army.version}
       </h3>
 
@@ -42,7 +41,7 @@ export function UnitSelection({ onSelected }) {
         // For each category
         Object.keys(unitGroups).map(key => (
           <Fragment key={key}>
-            <p className="menu-label px-4">{key}</p>
+            {key !== "undefined" && <p className="menu-label px-4">{key}</p>}
             <ul className="menu-list">
               {
                 // For each unit in category

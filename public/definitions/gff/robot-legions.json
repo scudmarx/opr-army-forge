@@ -381,7 +381,7 @@
         {
           "text": "Upgrade with one",
           "type": "upgrade",
-          "select": "one",
+          "select": 1,
           "options": [
             {
               "name": "Wrist-Mounted Flamer",
@@ -453,7 +453,7 @@
         {
           "text": "Upgrade with one",
           "type": "upgrade",
-          "select": "one",
+          "select": 1,
           "options": [
             {
               "name": "Flame-Protocol",
@@ -495,7 +495,7 @@
         {
           "text": "Upgrade with one",
           "type": "upgrade",
-          "select": "one",
+          "select": 1,
           "options": []
         },
         {
@@ -523,7 +523,7 @@
         {
           "text": "Upgrade with up to two",
           "type": "upgrade",
-          "replaceWhat": "up to two",
+          "select": 2,
           "options": [
             {
               "name": "Technoslave",
@@ -551,7 +551,8 @@
               "range": 12,
               "specialRules": [
                 "AP(2)"
-              ]
+              ],
+              "cost": 0
             },
             {
               "name": "Flame Caster",
@@ -635,6 +636,7 @@
             },
             {
               "type": "combined",
+              "cost": 5,
               "equipment": [
                 {
                   "name": "Antimatter Pistol",
@@ -649,13 +651,13 @@
                   "attacks": 4,
                   "specialRules": [
                     "AP(1)"
-                  ],
-                  "cost": 5
+                  ]
                 }
               ]
             },
             {
               "type": "combined",
+              "cost": 5,
               "equipment": [
                 {
                   "name": "Hyper Sword",
@@ -669,8 +671,7 @@
                   "name": "Combat Shield",
                   "specialRules": [
                     "Shield Wall"
-                  ],
-                  "cost": 5
+                  ]
                 }
               ]
             }
@@ -798,7 +799,7 @@
         {
           "text": "Upgrade with one",
           "type": "upgrade",
-          "select": "one",
+          "select": 1,
           "options": [
             {
               "name": "Antimatter Pistol",

@@ -55,6 +55,10 @@ export default function List() {
         setOpen(true);
     }
 
+    const totalPointCost = list
+        .units
+        .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
+
     const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
         ? null
         : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
@@ -65,6 +69,7 @@ export default function List() {
                 <UnitSelection onSelected={() => { }} />
             </div>
             <div className="column">
+                <h3 className="mt-4 is-size-4 is-hidden-mobile mb-4">{`My List - ${totalPointCost}pts`}</h3>
                 <MainList onSelected={onUnitSelected} />
             </div>
             <div className="column">
@@ -78,10 +83,6 @@ export default function List() {
         setValue(newValue);
         slider.slickGoTo(newValue);
     };
-
-    const totalPointCost = list
-        .units
-        .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
 
     const sliderSettings = {
         dots: false,
