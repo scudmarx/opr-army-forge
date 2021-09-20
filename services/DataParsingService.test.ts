@@ -53,6 +53,23 @@ test("Parse 'Upgrade with any:'", () => {
     });
 });
 
+test("Parse 'Upgrade all models with:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with:");
+    expect(upgrade).toStrictEqual({
+        type: "upgrade",
+        affects: "all"
+    });
+});
+
+test("Parse 'Upgrade any model with one:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Upgrade any model with one:");
+    expect(upgrade).toStrictEqual({
+        type: "upgrade",
+        affects: "any",
+        select: 1
+    });
+});
+
 test("Parse 'Upgrade all models with one:'", () => {
     const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with one:");
     expect(upgrade).toStrictEqual({
@@ -62,11 +79,36 @@ test("Parse 'Upgrade all models with one:'", () => {
     });
 });
 
+test("Parse 'Upgrade all models with any:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with any:");
+    expect(upgrade).toStrictEqual({
+        type: "upgrade",
+        affects: "all",
+        select: "any"
+    });
+});
+
+test("Parse 'Upgrade one model with:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Upgrade one model with:");
+    expect(upgrade).toStrictEqual({
+        type: "upgrade",
+        affects: 1
+    });
+});
+
 test("Parse 'Upgrade one model with one:'", () => {
     const upgrade = DataParsingService.parseUpgradeText("Upgrade one model with one:");
     expect(upgrade).toStrictEqual({
         type: "upgrade",
         affects: 1,
+        select: 1
+    });
+});
+
+test("Parse 'Upgrade with one:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Upgrade with one:");
+    expect(upgrade).toStrictEqual({
+        type: "upgrade",
         select: 1
     });
 });
@@ -92,12 +134,39 @@ test("Parse 'Replace one [weapon]:'", () => {
     });
 });
 
+test("Parse 'Replace 2x [weapon]:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Replace 2x Arm Blades:");
+    expect(upgrade).toStrictEqual({
+        type: "replace",
+        affects: 2,
+        replaceWhat: "Arm Blades"
+    });
+});
+
 test("Parse 'Replace any [weapon]:'", () => {
     const upgrade = DataParsingService.parseUpgradeText("Replace any Assault Rifle:");
     expect(upgrade).toStrictEqual({
         type: "replace",
         affects: "any",
         replaceWhat: "Assault Rifle"
+    });
+});
+
+test("Parse 'Replace all [weapon]:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Replace all Assault Rifles:");
+    expect(upgrade).toStrictEqual({
+        type: "replace",
+        affects: "all",
+        replaceWhat: "Assault Rifles"
+    });
+});
+
+test("Parse 'Replace up to 2 [weapon]:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Replace up to two Assault Rifles:");
+    expect(upgrade).toStrictEqual({
+        type: "replace",
+        select: 2,
+        replaceWhat: "Assault Rifles"
     });
 });
 
@@ -109,11 +178,37 @@ test("Parse 'Replace any [weapon]:'", () => {
 //     });
 // });
 
+test("Parse 'Replace all [weapon] and [weapon]:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Replace all Pistols and CCWs:");
+    expect(upgrade).toStrictEqual({
+        type: "replace",
+        affects: "all",
+        replaceWhat: ["Pistols", "CCWs"]
+    });
+});
+
 test("Parse 'Replace [weapon] and [weapon]:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Replace Pistol and CCW:");
+    expect(upgrade).toStrictEqual({
+        type: "replace",
+        replaceWhat: ["Pistol", "CCW"]
+    });
+});
+
+test("Parse 'Replace one [weapon] and [weapon]:'", () => {
     const upgrade = DataParsingService.parseUpgradeText("Replace one Pistol and CCW:");
     expect(upgrade).toStrictEqual({
         type: "replace",
         affects: 1,
+        replaceWhat: ["Pistol", "CCW"]
+    });
+});
+
+test("Parse 'Replace any [weapon] and [weapon]:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Replace any Pistol and CCW:");
+    expect(upgrade).toStrictEqual({
+        type: "replace",
+        affects: "any",
         replaceWhat: ["Pistol", "CCW"]
     });
 });
@@ -302,6 +397,22 @@ test("Parse weapon pairing", () => {
                 attacks: 2
             }
         ]
+    });
+});
+
+//#endregion
+
+//#region Special equipment cases
+
+//
+test("Parse melee weapon with rules and cost", () => {
+    const e = DataParsingService.parseEquipment("Whip Limb and Sword Claw (A3, Deadly(6)) +10pts");
+
+    expect(e).toStrictEqual({
+        name: "Whip Limb and Sword Claw",
+        cost: 10,
+        attacks: 3,
+        specialRules: ["Deadly(6)"]
     });
 });
 

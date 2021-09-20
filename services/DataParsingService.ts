@@ -27,7 +27,10 @@ export default class DataParsingService {
                 select: parseInt(takeMatch[1]) || this.numberFromName(takeMatch[1]) || takeMatch[1] as any
             };
 
-        const match = /(Upgrade|Replace)\s?(any|one|all)?\s?(?:models?)?\s?(?:with)?\s?(one|any)?(?:up to (.+))?(.+?)?:/.exec(text);
+        text = text.endsWith(":") ? text.substring(0, text.length - 1) : text;
+
+        const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
+        //const match = /(Upgrade|Replace)\s?(any|one|all)?\s?(?:models?)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)\s)?(.+?)?:/.exec(text);
 
         if (!match) {
             console.error("Cannot match: " + text)
@@ -73,8 +76,7 @@ export default class DataParsingService {
         let lastUpgradeText = null;
         for (let line of upgrades.split("\n").filter((l) => !!l)) {
             try {
-                const parsedUpgrade = /^(\D\s)?(.+?):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(
-                    line
+                const parsedUpgrade = /^(\D\s)?(.+?):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(line
                 );
 
                 const setLetter =
@@ -86,9 +88,11 @@ export default class DataParsingService {
 
                 if (isNewGroup) {
                     const groupExists = !!results[setLetter + groupIndex];
-                    const groupId = results[setLetter + groupIndex]
-                        ? setLetter + ++groupIndex
-                        : setLetter;
+                    if (groupExists)
+                        groupIndex++;
+
+                    const groupId = setLetter + groupIndex;
+                    console.log(groupId);
 
                     results[groupId] = {
                         id: groupId,
@@ -194,7 +198,8 @@ export default class DataParsingService {
             cost: 5
         }
 
-        if (part.indexOf(" and ") > 0) {
+        // "A (...) and B(...) +10pts"
+        if (part.indexOf(") and ") > 0) {
             const combinedMatch = /(.+?)(Free$|([-+]\d+)pts)$/.exec(part);
             const multiParts = combinedMatch[1]
                 .split(" and ");

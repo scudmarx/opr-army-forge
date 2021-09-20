@@ -48,13 +48,15 @@ export default class UpgradeService {
 
         if (upgrade.type === "upgrade") {
 
-            if (upgrade.select !== "any") {
-                const optionNames = upgrade.options.map(opt => opt.name);
-                const selectedEquipmentNames = unit.selectedEquipment.map(eqp => eqp.name);
-                const alreadySelected = selectedEquipmentNames
-                    .filter(name => optionNames.indexOf(name) > -1)
-                    .length > 0;
-                if (alreadySelected) {
+            if (typeof(upgrade.select) === "number") {
+
+                const selections = unit
+                    .selectedEquipment
+                    .filter(selected => upgrade.options.findIndex(opt => opt.name === selected.name) > -1);
+
+                const countSelected = selections.reduce((prev, next) => prev + next.count || 1, 0);
+
+                if (countSelected >= upgrade.select) {
                     return false;
                 }
             }

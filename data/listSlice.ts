@@ -1,3 +1,4 @@
+import { ConstructionOutlined } from '@mui/icons-material';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IEquipment, ISelectedUnit, IUpgrade } from './interfaces';
 
@@ -66,54 +67,84 @@ export const listSlice = createSlice({
             }
             else if (upgrade.type === "replace") {
 
-                // "Replace Pistol:"
-                if (upgrade.replaceWhat && !upgrade.affects && !upgrade.select) {
+                const replaceCount = typeof (upgrade.affects) === "number"
+                    ? upgrade.affects
+                    : upgrade.affects === "all"
+                        ? unit.size || 1 // All in unit
+                        : 1;
+
+                console.log("Replace " + replaceCount);
+
+                const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
+                    ? [upgrade.replaceWhat]
+                    : upgrade.replaceWhat;
+
+                for (let what of replaceWhat) {
+
+                    // Try and find item to replace...
                     const replaceIndex = unit
                         .selectedEquipment
-                        .findIndex(e => e.name === upgrade.replaceWhat);
+                        .findIndex(e => e.name === what || e.name === what + "s");
 
-                    if (replaceIndex >= 0) {
+                    const toReplace = unit.selectedEquipment[replaceIndex];
+
+                    // Couldn't find the item to replace
+                    if (!toReplace) {
+                        console.error(`Cannot find ${upgrade.replaceWhat} to replace!`);
+                        return;
+                    }
+
+                    console.log("Replacing... ", toReplace);
+
+                    // Decrement the count of the item being replaced
+                    toReplace.count -= replaceCount;
+
+                    if (toReplace.count <= 0)
                         unit.selectedEquipment.splice(replaceIndex, 1);
-                    }
-
-                    unit.selectedEquipment.push({ ...option, count: 1 });
-                } else {
-
-                    if (upgrade.affects === "any") {
-
-                    }
-
-                    const toReplace = unit.selectedEquipment.filter(eqp => eqp.name === upgrade.replaceWhat)[0];
-
-                    // Decrement the count of whatever we're replacing
-                    toReplace.count--;
-
-                    if (existingSelection) {
-                        if (!existingSelection.count)
-                            existingSelection.count = 1;
-
-                        existingSelection.count += 1;
-                    } else {
-                        unit.selectedEquipment.push({ ...option, count: 1 });
-                    }
                 }
+
+                unit.selectedEquipment.push({ ...option, count: replaceCount });
             }
         },
         removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
             const { unitId, upgrade, option } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
+            const selection = unit.selectedEquipment.filter(eqp => eqp.name === option.name)[0];
 
-            // TODO Behaviour conditional on "count" (decrement / remove)
-            // Remove the upgrade from the list
-            const removeIndex = unit.selectedEquipment.findIndex(eqp => eqp.name === option.name);
-            unit.selectedEquipment.splice(removeIndex, 1);
-
+            if (selection.count > 1) {
+                // Remove only 1
+                selection.count--;
+            }
+            else {
+                // Remove the upgrade from the list
+                const removeIndex = unit.selectedEquipment.findIndex(eqp => eqp.name === option.name);
+                unit.selectedEquipment.splice(removeIndex, 1);
+            }
             if (upgrade.type === "replace") {
 
-                //TODO: Count
-                // put the original item back
-                const original = unit.equipment.filter(e => e.name === upgrade.replaceWhat)[0];
-                unit.selectedEquipment.push({ ...original, count: 1 });
+                // TODO: Count
+                const replaceCount = typeof (upgrade.affects) === "number"
+                    ? upgrade.affects
+                    : upgrade.affects === "all"
+                        ? unit.size || 1 // All in unit
+                        : 1;
+
+                const current = unit
+                    .selectedEquipment
+                    .filter(e => e.name === upgrade.replaceWhat || e.name === upgrade.replaceWhat + "s")[0];
+
+                if (current) {
+
+                    current.count += replaceCount;
+
+                } else {
+
+                    const original = unit
+                        .equipment
+                        .filter(e => e.name === upgrade.replaceWhat || e.name === upgrade.replaceWhat + "s")[0];
+                    // put the original item back
+                    unit.selectedEquipment.push({ ...original, count: 1 });
+                }
             }
         }
     },

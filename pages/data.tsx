@@ -8,17 +8,30 @@ export default function Data() {
     const [name, setName] = useState("");
     const [version, setVersion] = useState("2.1");
     const [units, setUnits] = useState("");
+    const [units2, setUnits2] = useState("");
+    const [units3, setUnits3] = useState("");
     const [upgrades, setUpgrades] = useState("");
 
 
     useEffect(() => {
         generateJson();
-    }, [units, upgrades, name, version])
+    }, [units, units2, units3, upgrades, name, version])
 
     const generateJson = () => {
 
+        const replaceUpgradeSets = (units: any[], index: number) => {
+            if (!units)
+                return [];
+            return units.map(u => ({
+                ...u,
+                upgradeSets: u.upgradeSets.map(letter => letter + index)
+            }));
+        }
+
         try {
-            const parsedUnits = DataParsingService.parseUnits(units);
+            const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units), 1);
+            const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2), 2);
+            const parsedUnits3: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units3), 3);
             const parsedUpgrades = DataParsingService.parseUpgrades(upgrades);
 
             //parseUnits(units);
@@ -26,7 +39,7 @@ export default function Data() {
                 "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
                 name,
                 version,
-                units: parsedUnits,
+                units: parsedUnits.concat(parsedUnits2).concat(parsedUnits3),
                 upgradeSets: parsedUpgrades
             }, null, 2));
         }
@@ -35,18 +48,24 @@ export default function Data() {
         }
     };
 
-    const processUnits = (text: string) => {
+    const processUnits = (text: string, upgradeGroupIndex) => {
         const fixedText = text
             .replace(/\n+/gm, ' ')
-            .replace(/pts?/gm, 'pts\n');
-        setUnits(fixedText.replace(/^\s+/gm, ''));
+            .replace(/(\d+)pts?/gm, '$1pts\n');
+        const finalText = fixedText.replace(/^\s+/gm, '');
+        if (upgradeGroupIndex === 1)
+            setUnits(finalText);
+        if (upgradeGroupIndex === 2)
+            setUnits2(finalText);
+        if (upgradeGroupIndex === 3)
+            setUnits3(finalText);
     };
 
     const processUpgrades = (text: string) => {
         const fixedText = text
             .replace(/\n+/gm, ' ')
             .replace(/Free/gm, '+0pts')
-            .replace(/pts?/gm, 'pts\n')
+            .replace(/(\d+)pts?/gm, '$1pts\n')
             .replace(/\:/gm, ':\n');
         setUpgrades(fixedText.replace(/^\s+/gm, ''));
     };
@@ -60,7 +79,9 @@ export default function Data() {
             <div className="columns">
                 <div className="column">
                     <label>Units</label>
-                    <textarea className="textarea" value={units} onChange={(e) => processUnits(e.target.value)} rows={50}></textarea>
+                    <textarea className="textarea" value={units} onChange={(e) => processUnits(e.target.value, 1)} rows={20}></textarea>
+                    <textarea className="textarea" value={units2} onChange={(e) => processUnits(e.target.value, 2)} rows={20}></textarea>
+                    <textarea className="textarea" value={units3} onChange={(e) => processUnits(e.target.value, 3)} rows={20}></textarea>
                 </div>
                 <div className="column">
                     <label>Upgrades</label>

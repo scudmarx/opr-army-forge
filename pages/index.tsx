@@ -2,12 +2,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { setGameSystem } from '../data/armySlice'
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function Home() {
 
   const army = useSelector((state: RootState) => state.army);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  // Web Companion test
+  useEffect(() => {
+    // fetch("https://opr-list-builder.herokuapp.com/api/army-books/lkq2s1575t962k3t")
+    //   .then(res => res.json())
+    //   .then(r => console.log(r));
+    // fetch("https://opr-list-builder.herokuapp.com/api/army-books")
+    //   .then(res => res.json())
+    //   .then(r => console.log(r));
+  }, []);
 
   const selectGameSystem = (gameSystem: string) => {
     dispatch(setGameSystem(gameSystem));

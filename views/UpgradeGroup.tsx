@@ -21,11 +21,11 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
         ? null
         : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
-    var handleUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
-
-        if (UpgradeService.isValid(unit, upgrade, option)) {
-            dispatch(applyUpgrade({ unitId: unit.selectionId, upgrade, option }));
-        }
+    const incrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
+        dispatch(applyUpgrade({ unitId: unit.selectionId, upgrade, option }));
+    };
+    const  decrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
+        dispatch(removeUpgrade({ unitId: unit.selectionId, upgrade, option }));
     };
 
     const controlType = (() => {
@@ -143,21 +143,31 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
 
     // #endregion
 
-    const updownControl = (option: IEquipment) => (
-        <>
-            <IconButton color={UpgradeService.isApplied(selectedUnit, upgrade, option) ? "primary" : "default"}>
-                <DownIcon />
-            </IconButton>
-            <div>{UpgradeService.countApplied(selectedUnit, upgrade, option)}</div>
-            <IconButton
-                disabled={!UpgradeService.isValid(selectedUnit, upgrade, option)}
-                color={UpgradeService.isApplied(selectedUnit, upgrade, option) ? "primary" : "default"}
-                onClick={() => handleUpgrade(selectedUnit, upgrade, option)}
-            >
-                <UpIcon />
-            </IconButton>
-        </>
-    )
+    const updownControl = (option: IEquipment) => {
+        const isApplied = UpgradeService.isApplied(selectedUnit, upgrade, option);
+        const countApplied = UpgradeService.countApplied(selectedUnit, upgrade, option);
+        const isValid = UpgradeService.isValid(selectedUnit, upgrade, option);
+
+        return (
+            <>
+                <IconButton
+                    disabled={countApplied === 0}
+                    color={countApplied > 0 ? "primary" : "default"}
+                    onClick={() => decrementUpgrade(selectedUnit, upgrade, option)}>
+
+                    <DownIcon />
+                </IconButton>
+                <div>{countApplied}</div>
+                <IconButton
+                    disabled={!isValid}
+                    color={"primary"}
+                    onClick={() => incrementUpgrade(selectedUnit, upgrade, option)}
+                >
+                    <UpIcon />
+                </IconButton>
+            </>
+        );
+    };
 
     return (
         <Paper className="px-4 py-2" square elevation={0}>

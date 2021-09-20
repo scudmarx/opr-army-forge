@@ -17,8 +17,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                 </TableHead>
                 <TableBody>
                     {
-                        unit.selectedEquipment.filter(e => e.count).map(e => (
-                            <TableRow>
+                        unit.selectedEquipment.filter(e => e.count).map((e, i) => (
+                            <TableRow key={i}>
                                 <TableCell>{e.count}x {e.name}</TableCell>
                                 <TableCell>{e.range ? e.range + '"' : '-'}</TableCell>
                                 <TableCell>{e.attacks ? "A" + e.attacks : '-'}</TableCell>

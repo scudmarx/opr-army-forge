@@ -8,7 +8,7 @@ export interface IEquipment {
 }
 
 export interface IUnit {
-    category: string;
+    category?: string;
     name: string;
     size: number;
     cost: number;
@@ -22,7 +22,7 @@ export interface IUnit {
 export interface IUpgrade {
     type: "replace" | "upgrade" | "upgradeRule";
     affects?: "any" | "all" | number;
-    select?: "any" | number;
+    select?: string | number;
     limit?: number;
     replaceWhat?: string|string[];
     options?: IEquipment[];
