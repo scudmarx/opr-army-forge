@@ -86,7 +86,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
             value={option.name} />
     );
 
-    
+
 
     const handleCheck = (option) => {
 
@@ -117,12 +117,12 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
             onClick={() => handleRadio(option)}
             name={hash(upgrade)}
             color="primary"
-            value={option.name} />
+            value={option.name || "None"} />
     );
 
-    const handleRadio = (option) => {
+    const handleRadio = (option: IEquipment | null) => {
 
-        const applied = isApplied(option);
+        const applied = option ? isApplied(option) : false;
 
         if (!applied) {
             // Remove any other selections from group
@@ -130,12 +130,14 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
                 if (isApplied(opt))
                     dispatch(removeUpgrade({ unitId: selectedUnit.selectionId, upgrade, option: opt }));
 
-            // Apply the selected upgrade
-            dispatch(applyUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
+            if (option)
+                // Apply the selected upgrade
+                dispatch(applyUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
 
         } else {
+            // BAD apparently we are not allowed to deselect radio buttons...
             // Deselecting the already selected option in the group
-            dispatch(removeUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
+            //dispatch(removeUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
         }
     };
 
@@ -160,6 +162,35 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
     return (
         <Paper className="px-4 py-2" square elevation={0}>
             {
+                // "None" / Default option for radio group
+                controlType === "radio" && <div className="is-flex is-align-items-center">
+                    <div className="is-flex-grow-1 pr-2">{(() => {
+                        const defaultOpt = upgrade.type === "replace"
+                            ? selectedUnit.equipment.filter(e => e.name === upgrade.replaceWhat)[0]
+                            : null;
+
+                        if (!defaultOpt)
+                            return <span style={{ color: "#000000" }}>None</span>;
+
+                        const parts = EquipmentService.getStringParts(defaultOpt);
+
+                        return (
+                            <>
+                                <span style={{ color: "#000000" }}>{parts.name} </span>
+                                <span style={{ color: "#656565" }}>({parts.rules})</span>
+                            </>
+                        );
+                    })()}</div>
+                    <div>Free&nbsp;</div>
+                    <Radio
+                        checked={!upgrade.options.reduce((prev, current) => prev || isApplied(current), false)}
+                        onClick={() => handleRadio(null)}
+                        name={hash(upgrade)}
+                        color="primary"
+                        value={"None"} />
+                </div>
+            }
+            {
                 upgrade.options.map((opt, i) => (
                     <div key={i} className="is-flex is-align-items-center">
                         <div className="is-flex-grow-1 pr-2">{(() => {
@@ -171,7 +202,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
                                 </>
                             );
                         })()}</div>
-                        <div>{opt.cost}pt&nbsp;</div>
+                        <div>{opt.cost ? `${opt.cost}pts` : "Free"}&nbsp;</div>
                         {(() => {
                             switch (controlType) {
                                 case "check": return checkControl(opt);
