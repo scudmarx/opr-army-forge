@@ -5,8 +5,8 @@ import pluralise from "pluralize";
 
 export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
-    const hasEquipment = unit.equipment.filter(e => !e.attacks).length > 0;
-    const hasWeapons = unit.equipment.filter(e => e.attacks).length > 0;
+    const hasEquipment = unit.selectedEquipment.filter(e => !e.attacks).length > 0;
+    const hasWeapons = unit.selectedEquipment.filter(e => e.attacks).length > 0;
 
     return (
         <>
