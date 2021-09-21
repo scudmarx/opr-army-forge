@@ -294,8 +294,8 @@ test("Parse multiple melee weapon with rules", () => {
     const e = DataParsingService.parseEquipment("2x Sword (A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
-        name: "Sword",
-        count: 2,
+        name: "2x Sword",
+        //count: 2,
         attacks: 3,
         specialRules: ["Rending", "AP(1)"]
     });
