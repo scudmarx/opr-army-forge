@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ArmyState {
     loaded: boolean;
@@ -48,6 +48,6 @@ export const armySlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { load, setGameSystem, setArmyFile } = armySlice.actions
+export const { load, setGameSystem, setArmyFile } = armySlice.actions;
 
-export default armySlice.reducer
+export default armySlice.reducer;

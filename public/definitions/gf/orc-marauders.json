@@ -1,0 +1,2723 @@
+{
+    "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+    "name": "Orc Marauders",
+    "version": "2.14",
+    "units": [
+      {
+        "name": "Warlord",
+        "size": 1,
+        "quality": "3+",
+        "defense": "4+",
+        "equipment": [
+          {
+            "name": "Pistol",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCW",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Hero",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "A1",
+          "B1",
+          "D1",
+          "E1"
+        ],
+        "cost": 50
+      },
+      {
+        "name": "Mechanic",
+        "size": 1,
+        "quality": "4+",
+        "defense": "4+",
+        "equipment": [
+          {
+            "name": "Pistol",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCW",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Hero",
+          "Repair",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "A1",
+          "B1",
+          "D1",
+          "F1"
+        ],
+        "cost": 55
+      },
+      {
+        "name": "Shaman",
+        "size": 1,
+        "quality": "4+",
+        "defense": "4+",
+        "equipment": [
+          {
+            "name": "Pistol",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCW",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Hero",
+          "Psychic(1)",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "A1",
+          "B1",
+          "D1",
+          "G1"
+        ],
+        "cost": 65
+      },
+      {
+        "name": "Goblin Herd",
+        "size": 10,
+        "quality": "6+",
+        "defense": "6+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 1
+          }
+        ],
+        "specialRules": [
+          "Good Shot"
+        ],
+        "upgradeSets": [
+          "H1",
+          "I1"
+        ],
+        "cost": 60
+      },
+      {
+        "name": "Orc Mob",
+        "size": 10,
+        "quality": "4+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious"
+        ],
+        "upgradeSets": [
+          "A1",
+          "C1",
+          "J1",
+          "K1"
+        ],
+        "cost": 155
+      },
+      {
+        "name": "Jetpack Orcs",
+        "size": 5,
+        "quality": "4+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Ambush",
+          "Bad Shot",
+          "Flying",
+          "Furious"
+        ],
+        "upgradeSets": [
+          "A1",
+          "C1",
+          "I1",
+          "L1"
+        ],
+        "cost": 135
+      },
+      {
+        "name": "Commandos",
+        "size": 5,
+        "quality": "4+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Scout",
+          "Stealth",
+          "Strider"
+        ],
+        "upgradeSets": [
+          "A1",
+          "C1",
+          "K1",
+          "M1"
+        ],
+        "cost": 130
+      },
+      {
+        "name": "Specialist Orcs",
+        "size": 5,
+        "quality": "4+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Carbines",
+            "attacks": 2,
+            "range": 18
+          },
+          {
+            "name": "CCWs",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Relentless"
+        ],
+        "upgradeSets": [
+          "N1"
+        ],
+        "cost": 95
+      },
+      {
+        "name": "Orc Pirates",
+        "size": 5,
+        "quality": "3+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Relentless",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "O1"
+        ],
+        "cost": 230
+      },
+      {
+        "name": "Boss Mob",
+        "size": 5,
+        "quality": "3+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "B1",
+          "P1"
+        ],
+        "cost": 225
+      },
+      {
+        "name": "Ultra Bosses",
+        "size": 3,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Carbines",
+            "attacks": 2,
+            "range": 18
+          },
+          {
+            "name": "EnergyClaws",
+            "attacks": 3,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Furious",
+          "Slow",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "Q1"
+        ],
+        "cost": 215
+      },
+      {
+        "name": "Orc Bikers",
+        "size": 3,
+        "quality": "4+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Furious",
+          "Impact(1)"
+        ],
+        "upgradeSets": [
+          "A1",
+          "C1",
+          "R1"
+        ],
+        "cost": 70
+      },
+      {
+        "name": "Boss Bikers",
+        "size": 3,
+        "quality": "3+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistols",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCWs",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Furious",
+          "Impact(1)",
+          "Tough(3)"
+        ],
+        "upgradeSets": [
+          "A1",
+          "B1",
+          "R1"
+        ],
+        "cost": 170
+      },
+      {
+        "name": "Boss Trike",
+        "size": 1,
+        "quality": "3+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Double Shotgun",
+            "attacks": 4,
+            "range": 12
+          },
+          {
+            "name": "Ultra Claw",
+            "attacks": 3,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Furious",
+          "Impact(3)",
+          "Relentless",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "S1"
+        ],
+        "cost": 120
+      },
+      {
+        "name": "Mini Helicopter",
+        "size": 1,
+        "quality": "4+",
+        "defense": "5+",
+        "equipment": [
+          {
+            "name": "Pistol",
+            "attacks": 1,
+            "range": 12
+          },
+          {
+            "name": "CCW",
+            "attacks": 2
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Furious",
+          "Strider",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "T1"
+        ],
+        "cost": 75
+      },
+      {
+        "name": "Truck",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Machinegun",
+            "attacks": 3,
+            "range": 36,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Impact(6)",
+          "Tough(6)",
+          "Transport(11)"
+        ],
+        "upgradeSets": [
+          "A2",
+          "B2"
+        ],
+        "cost": 170
+      },
+      {
+        "name": "Looted Tank",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Machinegun",
+            "attacks": 3,
+            "range": 36,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Impact(6)",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "A2",
+          "B2",
+          "C2",
+          "D2"
+        ],
+        "cost": 255
+      },
+      {
+        "name": "Battle Rig",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Machinegun",
+            "attacks": 3,
+            "range": 36,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Impact(6)",
+          "Tough(18)",
+          "Transport(11)"
+        ],
+        "upgradeSets": [
+          "A2",
+          "B2",
+          "C2",
+          "E2"
+        ],
+        "cost": 380
+      },
+      {
+        "name": "Goblin Tank",
+        "size": 1,
+        "quality": "5+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Plasma Rifle",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Fast",
+          "Good Shot",
+          "Impact(3)",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "F2"
+        ],
+        "cost": 115
+      },
+      {
+        "name": "Goblin Walker",
+        "size": 1,
+        "quality": "5+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Plasma Rifle",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Mini-Claw",
+            "attacks": 2,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 1,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Good Shot",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "F2"
+        ],
+        "cost": 105
+      },
+      {
+        "name": "Orc Walker",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Plasma Rifles",
+            "count": 2,
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Walker Claws",
+            "count": 2,
+            "attacks": 2,
+            "specialRules": [
+              "AP(4)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 2,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fear",
+          "Furious",
+          "Tough(12)"
+        ],
+        "upgradeSets": [
+          "G2"
+        ],
+        "cost": 300
+      },
+      {
+        "name": "Attack Buggy",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Flamethrower",
+            "attacks": 6,
+            "range": 12,
+            "specialRules": [
+              "AP(1)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Impact(3)",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A2",
+          "H2"
+        ],
+        "cost": 130
+      },
+      {
+        "name": "Combat Kart",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Shock Rifle",
+            "attacks": 2,
+            "range": 24,
+            "specialRules": [
+              "Rending"
+            ]
+          },
+          {
+            "name": "Rocket Launcher",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(3)",
+              "Deadly(3)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fast",
+          "Impact(3)",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "A2",
+          "I2"
+        ],
+        "cost": 140
+      },
+      {
+        "name": "Goblin Artillery",
+        "size": 1,
+        "quality": "6+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Lightning Cannon",
+            "attacks": 1,
+            "range": 36,
+            "specialRules": [
+              "AP(2)"
+            ]
+          },
+          {
+            "name": "Crew",
+            "attacks": 3
+          }
+        ],
+        "specialRules": [
+          "Good Shot",
+          "Slow",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "J2"
+        ],
+        "cost": 90
+      },
+      {
+        "name": "Blaster Plane",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Smasher Cannon",
+            "attacks": 1,
+            "range": 36,
+            "specialRules": [
+              "AP(4)"
+            ]
+          },
+          {
+            "name": "Twin Teleport Rifle",
+            "attacks": 2,
+            "range": 18,
+            "specialRules": [
+              "AP(2)",
+              "Blast(3)",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Aircraft",
+          "Bad Shot",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "K2",
+          "L2"
+        ],
+        "cost": 160
+      },
+      {
+        "name": "Flame Bomber",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Machinegun",
+            "attacks": 3,
+            "range": 36,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Flame Bombs",
+            "attacks": 1,
+            "range": 6,
+            "specialRules": [
+              "AP(1)",
+              "Blast(6)"
+            ]
+          },
+          {
+            "name": "Twin Super Machineguns",
+            "attacks": 6,
+            "range": 36,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Aircraft",
+          "Bad Shot",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "K2",
+          "M2",
+          "N2"
+        ],
+        "cost": 175
+      },
+      {
+        "name": "Blitz Bomber",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Heavy Machinegun",
+            "attacks": 3,
+            "range": 36,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Heavy Bombs",
+            "attacks": 1,
+            "range": 6,
+            "specialRules": [
+              "AP(4)",
+              "Blast(6)"
+            ]
+          },
+          {
+            "name": "Twin Super Machineguns",
+            "attacks": 6,
+            "range": 36,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Aircraft",
+          "Bad Shot",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "K2"
+        ],
+        "cost": 180
+      },
+      {
+        "name": "Attack Plane",
+        "size": 1,
+        "quality": "4+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Twin Super Machineguns",
+            "count": 2,
+            "attacks": 6,
+            "range": 36,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Aircraft",
+          "Bad Shot",
+          "Tough(6)"
+        ],
+        "upgradeSets": [
+          "K2",
+          "N2"
+        ],
+        "cost": 195
+      },
+      {
+        "name": "Brutal & Cunning Orc Titan",
+        "size": 1,
+        "quality": "3+",
+        "defense": "2+",
+        "equipment": [
+          {
+            "name": "Twin Heavy Machineguns",
+            "count": 2,
+            "attacks": 6,
+            "range": 36,
+            "specialRules": [
+              "AP(1)"
+            ]
+          },
+          {
+            "name": "Rocket Launcher",
+            "count": 2,
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(3)",
+              "Deadly(3)"
+            ]
+          },
+          {
+            "name": "Mega Claw",
+            "attacks": 6,
+            "specialRules": [
+              "AP(4)"
+            ]
+          },
+          {
+            "name": "Stomp",
+            "attacks": 4,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          "Bad Shot",
+          "Fear",
+          "Furious",
+          "Tough(24)",
+          "Transport(6)"
+        ],
+        "upgradeSets": [
+          "O2"
+        ],
+        "cost": 635
+      }
+    ],
+    "upgradeSets": [
+      {
+        "id": "A1",
+        "upgrades": [
+          {
+            "text": "Replace one Pistol",
+            "type": "replace",
+            "affects": 1,
+            "replaceWhat": "Pistol",
+            "options": [
+              {
+                "name": "Carbine",
+                "attacks": 2,
+                "range": 18,
+                "cost": 5
+              },
+              {
+                "name": "Twin Carbine",
+                "attacks": 4,
+                "range": 18,
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Take one Carbine attachment",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Heavy Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B1",
+        "upgrades": [
+          {
+            "text": "Replace any CCW",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "CCW",
+            "options": [
+              {
+                "name": "Ultra Drill",
+                "attacks": 6,
+                "cost": 5
+              },
+              {
+                "name": "Ultra Axe",
+                "attacks": 3,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Ultra Claw",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Ultra Sawblade",
+                "attacks": 3,
+                "specialRules": [
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "C1",
+        "upgrades": [
+          {
+            "text": "Replace one CCW",
+            "type": "replace",
+            "affects": 1,
+            "replaceWhat": "CCW",
+            "options": [
+              {
+                "name": "Ultra Drill",
+                "attacks": 4,
+                "cost": 5
+              },
+              {
+                "name": "Ultra Axe",
+                "attacks": 2,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Ultra Claw",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Ultra Sawblade",
+                "attacks": 2,
+                "specialRules": [
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "D1",
+        "upgrades": [
+          {
+            "text": "Upgrade with up to two",
+            "type": "upgrade",
+            "select": 2,
+            "options": [
+              {
+                "name": "Attack Beast",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Heavy Armor",
+                "specialRules": [
+                  "Defense +1"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Ultra Armor",
+                "specialRules": [
+                  "Defense +2",
+                  "Slow"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Jetpack",
+                "specialRules": [
+                  "Ambush",
+                  "Flying"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Cyborg Body",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Beast Mount",
+                "attacks": 3,
+                "specialRules": [
+                  "Fast",
+                  "Impact(1)",
+                  "Beast Jaws (A3",
+                  "AP(1)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Combat Bike",
+                "attacks": 6,
+                "range": 18,
+                "specialRules": [
+                  "Fast",
+                  "Impact(1)",
+                  "Twin Mini-MGs (18”",
+                  "AP(1))"
+                ],
+                "cost": 25
+              },
+              {
+                "name": "Giant Beast",
+                "attacks": 6,
+                "specialRules": [
+                  "Fast",
+                  "Impact(3)",
+                  "Tough(+3)",
+                  "Beast Jaws (A6",
+                  "AP(2)"
+                ],
+                "cost": 85
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "E1",
+        "upgrades": [
+          {
+            "text": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "SHOOT!",
+                "specialRules": [
+                  "SHOOT!"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "WAR!",
+                "specialRules": [
+                  "WAR!"
+                ],
+                "cost": 60
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "F1",
+        "upgrades": [
+          {
+            "text": "Replace Pistol",
+            "type": "replace",
+            "replaceWhat": "Pistol",
+            "options": [
+              {
+                "name": "Plasma Pistol",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Teleport Pistol",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(3)",
+                  "Rending"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Plasma Rifle",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Energy Field",
+                "specialRules": [
+                  "Energy Field"
+                ],
+                "cost": 30
+              },
+              {
+                "name": "Shock Gun",
+                "attacks": 1,
+                "range": 48,
+                "specialRules": [
+                  "AP(3)",
+                  "Blast(6)"
+                ],
+                "cost": 60
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Precision Monocle",
+                "specialRules": [
+                  "Good Shot"
+                ],
+                "cost": 60
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "G1",
+        "upgrades": [
+          {
+            "text": "Upgrade Psychic(1)",
+            "type": "upgradeRule",
+            "replaceWhat": "Psychic(1)",
+            "options": [
+              {
+                "name": "Psychic(2)",
+                "specialRules": [
+                  "Psychic(2)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "H1",
+        "upgrades": [
+          {
+            "text": "Upgrade all models with",
+            "type": "upgrade",
+            "affects": "all",
+            "options": [
+              {
+                "name": "Goblin Herder",
+                "specialRules": [
+                  "Fearless",
+                  "Furious",
+                  "Relentless"
+                ],
+                "cost": 35
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "I1",
+        "upgrades": [
+          {
+            "text": "Replace one Pistol",
+            "type": "replace",
+            "affects": 1,
+            "replaceWhat": "Pistol",
+            "options": [
+              {
+                "name": "Flamethrower Pistol",
+                "attacks": 6,
+                "range": 6,
+                "cost": 5
+              },
+              {
+                "name": "Rocket Pistol",
+                "attacks": 1,
+                "range": 6,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Shred Pistol",
+                "attacks": 2,
+                "range": 6,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Plasma Pistol",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "J1",
+        "upgrades": [
+          {
+            "text": "Upgrade one model with",
+            "type": "upgrade",
+            "affects": 1,
+            "options": [
+              {
+                "name": "Mad Doctor",
+                "specialRules": [
+                  "Mad Doctor"
+                ],
+                "cost": 60
+              }
+            ]
+          },
+          {
+            "text": "Replace all Pistols",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "Pistols",
+            "options": [
+              {
+                "name": "Carbines",
+                "attacks": 2,
+                "range": 18,
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": "Upgrade all models with",
+            "type": "upgrade",
+            "affects": "all",
+            "options": [
+              {
+                "name": "Heavy Armor",
+                "specialRules": [
+                  "Defense +1"
+                ],
+                "cost": 20
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "K1",
+        "upgrades": [
+          {
+            "text": "Replace one Pistol",
+            "type": "replace",
+            "affects": 1,
+            "replaceWhat": "Pistol",
+            "options": [
+              {
+                "name": "Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "cost": 5
+              },
+              {
+                "name": "Plasma Rifle",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Shred Rifle",
+                "attacks": 2,
+                "range": 18,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Grenade Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "Blast(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Heavy Machinegun",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "L1",
+        "upgrades": [
+          {
+            "text": "Replace up to two CCWs",
+            "type": "replace",
+            "select": 2,
+            "replaceWhat": "CCWs",
+            "options": [
+              {
+                "name": "Ultra Drill",
+                "attacks": 4,
+                "cost": 5
+              },
+              {
+                "name": "Ultra Axe",
+                "attacks": 2,
+                "specialRules": [
+                  "Rending"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Ultra Claw",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Ultra Sawblade",
+                "attacks": 2,
+                "specialRules": [
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "M1",
+        "upgrades": [
+          {
+            "text": "Replace all Pistols",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "Pistols",
+            "options": [
+              {
+                "name": "Shotguns",
+                "attacks": 2,
+                "range": 12,
+                "cost": 5
+              },
+              {
+                "name": "Carbines",
+                "attacks": 2,
+                "range": 18,
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Replace one Pistol",
+            "type": "replace",
+            "affects": 1,
+            "replaceWhat": "Pistol",
+            "options": [
+              {
+                "name": "Breach Ram",
+                "attacks": 1,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Sniper Carbine",
+                "attacks": 2,
+                "range": 18,
+                "specialRules": [
+                  "Sniper"
+                ],
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "N1",
+        "upgrades": [
+          {
+            "text": "Replace all Carbines",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "Carbines",
+            "options": [
+              {
+                "name": "Flamethrowers",
+                "attacks": 6,
+                "range": 12,
+                "cost": 25
+              },
+              {
+                "name": "Rocket Launchers",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 45
+              },
+              {
+                "name": "Railguns",
+                "attacks": 2,
+                "range": 48,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 75
+              }
+            ]
+          },
+          {
+            "text": "Replace all CCWs",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "CCWs",
+            "options": [
+              {
+                "name": "Blowtorches",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 15
+              }
+            ]
+          },
+          {
+            "text": "Replace up to two Rocket Launchers and CCWs",
+            "type": "replace",
+            "select": 2,
+            "replaceWhat": [
+              "Rocket Launchers",
+              "CCWs"
+            ],
+            "options": [
+              {
+                "name": "Bomb Hammer",
+                "attacks": 1,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Upgrade one model with",
+            "type": "upgrade",
+            "affects": 1,
+            "options": [
+              {
+                "name": "Bomb Beast",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(4)",
+                  "Blast(3)"
+                ],
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "O1",
+        "upgrades": [
+          {
+            "text": "Replace all Pistols",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "Pistols",
+            "options": [
+              {
+                "name": "Boarding Guns",
+                "attacks": 3,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 40
+              }
+            ]
+          },
+          {
+            "text": "Replace all CCWs",
+            "type": "replace",
+            "affects": "all",
+            "replaceWhat": "CCWs",
+            "options": [
+              {
+                "name": "Cutlasses",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "P1",
+        "upgrades": [
+          {
+            "text": "Upgrade one model with",
+            "type": "upgrade",
+            "affects": 1,
+            "options": [
+              {
+                "name": "Mad Doctor",
+                "specialRules": [
+                  "Mad Doctor"
+                ],
+                "cost": 135
+              }
+            ]
+          },
+          {
+            "text": "Replace any Pistol",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Pistol",
+            "options": [
+              {
+                "name": "Carbine",
+                "attacks": 2,
+                "range": 18,
+                "cost": 5
+              },
+              {
+                "name": "Twin Carbine",
+                "attacks": 4,
+                "range": 18,
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Any model may take one Carbine attachment",
+            "options": [
+              {
+                "name": "Heavy Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              }
+            ]
+          },
+          {
+            "text": "Upgrade all models with",
+            "type": "upgrade",
+            "affects": "all",
+            "options": [
+              {
+                "name": "Heavy Armor",
+                "specialRules": [
+                  "Defense +1"
+                ],
+                "cost": 30
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Q1",
+        "upgrades": [
+          {
+            "text": "Replace any Carbine and Energy Claw",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": [
+              "Carbine",
+              "Energy Claw"
+            ],
+            "options": [
+              {
+                "name": "Ultra Sawblades",
+                "count": 2,
+                "attacks": 3,
+                "specialRules": [
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Replace any Carbine",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Carbine",
+            "options": [
+              {
+                "name": "Twin Carbine",
+                "attacks": 4,
+                "range": 18,
+                "cost": 5
+              }
+            ]
+          },
+          {
+            "text": "Any model may take one Carbine attachment",
+            "options": [
+              {
+                "name": "Heavy Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "R1",
+        "upgrades": [
+          {
+            "text": "Upgrade all models with one",
+            "type": "upgrade",
+            "affects": "all",
+            "select": 1,
+            "options": [
+              {
+                "name": "Beast Mounts",
+                "attacks": 3,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Twin Carbines",
+                "attacks": 4,
+                "range": 18,
+                "cost": 20
+              },
+              {
+                "name": "Twin Mini-MGs",
+                "attacks": 6,
+                "range": 18,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 40
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "S1",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Twin Carbine",
+                "attacks": 4,
+                "range": 18,
+                "cost": 5
+              },
+              {
+                "name": "Twin Double Shotgun",
+                "attacks": 8,
+                "range": 12,
+                "cost": 10
+              },
+              {
+                "name": "Twin Mini-MG",
+                "attacks": 6,
+                "range": 18,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T1",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Twin Plasma Rifle",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Twin Rocket Launcher",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Twin Heavy Machinegun",
+                "attacks": 6,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Ultra Sawblade",
+                "attacks": 3,
+                "specialRules": [
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Assault Bomb",
+                "attacks": 1,
+                "specialRules": [
+                  "Blast(6)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Rotor Blade Attack",
+                "specialRules": [
+                  "Impact(3)"
+                ],
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "A2",
+        "upgrades": [
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Battle Ram",
+                "specialRules": [
+                  "Strider"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Wrecking Ball",
+                "specialRules": [
+                  "Impact(+3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Red Paint Job",
+                "specialRules": [
+                  "Red Paint Job"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Boarding Plank",
+                "specialRules": [
+                  "Impact(+6) if transporting units"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Shoot Shoot Shoot!",
+                "specialRules": [
+                  "Relentless"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "B2",
+        "upgrades": [
+          {
+            "text": "Replace Heavy Machinegun",
+            "type": "replace",
+            "replaceWhat": "Heavy Machinegun",
+            "options": [
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": -5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "C2",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Harpoon Cannon",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Extra Space",
+                "specialRules": [
+                  "Transport(+10)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Heavy Cannon",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(6)"
+                ],
+                "cost": 25
+              },
+              {
+                "name": "Heavy Mortar",
+                "attacks": 1,
+                "range": 48,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)",
+                  "Indirect"
+                ],
+                "cost": 25
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with up to three",
+            "type": "upgrade",
+            "select": 3,
+            "options": [
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Heavy Machinegun",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "D2",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Heavy Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Heavy Machinegun",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "E2",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Lightning Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Harpoon Cannon",
+                "attacks": 1,
+                "range": 12,
+                "specialRules": [
+                  "AP(4)",
+                  "Deadly(6)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Cannon – pick one to fire",
+            "options": [
+              {
+                "name": "HE",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "Blast(3)) AT (36”",
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Heavy Mortar",
+                "attacks": 1,
+                "range": 48,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)",
+                  "Indirect"
+                ],
+                "cost": 25
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Draught Beast",
+                "attacks": 6,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Shaman",
+                "specialRules": [
+                  "Psychic(1)"
+                ],
+                "cost": 20
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "F2",
+        "upgrades": [
+          {
+            "text": "Replace Plasma Rifle",
+            "type": "replace",
+            "replaceWhat": "Plasma Rifle",
+            "options": [
+              {
+                "name": "Heavy Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Heavy Machinegun",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Bazooka",
+                "attacks": 2,
+                "range": 18,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "G2",
+        "upgrades": [
+          {
+            "text": "Replace any Plasma Rifle",
+            "type": "replace",
+            "affects": "any",
+            "replaceWhat": "Plasma Rifle",
+            "options": [
+              {
+                "name": "Walker Claw",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Rocket Launcher",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Heavy Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Heavy Machinegun",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Replace any Walker Claw Walker Sawblade",
+                "attacks": 2,
+                "specialRules": [
+                  "AP(2)",
+                  "Deadly(3)"
+                ],
+                "cost": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "H2",
+        "upgrades": [
+          {
+            "text": "Replace Heavy Flamethrower",
+            "type": "replace",
+            "replaceWhat": "Heavy Flamethrower",
+            "options": [
+              {
+                "name": "Twin Rocket Launcher",
+                "attacks": 2,
+                "range": 24,
+                "specialRules": [
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Twin Heavy Machinegun",
+                "attacks": 6,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 20
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Tracked",
+                "specialRules": [
+                  "Strider"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Red Paint Job",
+                "specialRules": [
+                  "Red Paint Job"
+                ],
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "I2",
+        "upgrades": [
+          {
+            "text": "Replace Shock Rifle and Rocket Launcher",
+            "type": "replace",
+            "replaceWhat": [
+              "Shock Rifle",
+              "Rocket Launcher"
+            ],
+            "options": [
+              {
+                "name": "Beast-Gun",
+                "attacks": 2,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3))",
+                  "Beast GL (18”",
+                  "AP(1)",
+                  "Blast(3)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Boost-Gun",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(6))",
+                  "Blast Grenades (6”",
+                  "Blast(3)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Snazz-Gun",
+                "attacks": 9,
+                "range": 24,
+                "specialRules": [
+                  "AP(1))",
+                  "Heavy Machinegun (36”",
+                  "AP(1)"
+                ],
+                "cost": 25
+              },
+              {
+                "name": "Mega Scrap-MG",
+                "attacks": 6,
+                "range": 36,
+                "specialRules": [
+                  "AP(1))",
+                  "Rockets (24”",
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 30
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Jump Engine",
+                "specialRules": [
+                  "Teleport"
+                ],
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "J2",
+        "upgrades": [
+          {
+            "text": "Replace Lightning Cannon",
+            "type": "replace",
+            "replaceWhat": "Lightning Cannon",
+            "options": [
+              {
+                "name": "Smasher Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(4)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Tractor Beam",
+                "attacks": 2,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Anti-Air"
+                ],
+                "cost": 5
+              }
+            ]
+          },
+          {
+            "text": "Cannon – pick one to fire",
+            "options": [
+              {
+                "name": "HE",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "Blast(3)) AT (36”",
+                  "AP(3)",
+                  "Deadly(3)"
+                ],
+                "cost": 15
+              },
+              {
+                "name": "Plasma Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(3)"
+                ],
+                "cost": 20
+              },
+              {
+                "name": "Heavy Mortar",
+                "attacks": 1,
+                "range": 48,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)",
+                  "Indirect"
+                ],
+                "cost": 25
+              },
+              {
+                "name": "Bubble Cannon",
+                "attacks": 1,
+                "range": 36,
+                "specialRules": [
+                  "Blast(6)",
+                  "Rending"
+                ],
+                "cost": 30
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "K2",
+        "upgrades": [
+          {
+            "text": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Shoot Shoot Shoot!",
+                "specialRules": [
+                  "Relentless"
+                ],
+                "cost": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "L2",
+        "upgrades": [
+          {
+            "text": "Replace Twin Teleport Rifle",
+            "type": "replace",
+            "replaceWhat": "Twin Teleport Rifle",
+            "options": [
+              {
+                "name": "Twin Plasma Cannon",
+                "attacks": 2,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(3)"
+                ],
+                "cost": 10
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "name": "Force Field",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 35
+              },
+              {
+                "name": "Twin Super Machinegun",
+                "attacks": 6,
+                "range": 36,
+                "specialRules": [
+                  "AP(2))"
+                ],
+                "cost": 35
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "M2",
+        "upgrades": [
+          {
+            "text": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "name": "Flame Missiles",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(1)",
+                  "Blast(3)"
+                ],
+                "cost": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "N2",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Twin Super Machinegun",
+                "attacks": 6,
+                "range": 36,
+                "specialRules": [
+                  "AP(2))"
+                ],
+                "cost": 25
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "O2",
+        "upgrades": [
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "name": "Plasma Rifle",
+                "attacks": 1,
+                "range": 24,
+                "specialRules": [
+                  "AP(2)"
+                ],
+                "cost": 5
+              },
+              {
+                "name": "Heavy Flamethrower",
+                "attacks": 6,
+                "range": 12,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 10
+              },
+              {
+                "name": "Deathstorm Plasma Cannon",
+                "attacks": 3,
+                "range": 36,
+                "specialRules": [
+                  "AP(2)",
+                  "Blast(3)"
+                ],
+                "cost": 55
+              },
+              {
+                "name": "Deathstorm Minigun",
+                "attacks": 18,
+                "range": 36,
+                "specialRules": [
+                  "AP(1)"
+                ],
+                "cost": 80
+              },
+              {
+                "name": "Shoot Shoot Shoot!",
+                "specialRules": [
+                  "Relentless"
+                ],
+                "cost": 30
+              },
+              {
+                "name": "Force Field",
+                "specialRules": [
+                  "Regeneration"
+                ],
+                "cost": 145
+              }
+            ]
+          },
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": []
+          },
+          {
+            "text": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": []
+          }
+        ]
+      }
+    ]
+  }

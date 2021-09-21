@@ -1,11 +1,8 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '../data/store'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useRouter } from "next/router";
-import 'react-spring-bottom-sheet/dist/style.css';
 import { useMediaQuery } from 'react-responsive';
 import MobileView from "../views/listBuilder/MobileView";
 import DesktopView from "../views/listBuilder/DesktopView";
@@ -14,17 +11,14 @@ export default function List() {
 
     const army = useSelector((state: RootState) => state.army);
     const router = useRouter();
-    const dispatch = useDispatch();
     
     // Load army list file 
     useEffect(() => {
+        // Redirect to game selection screen if no army selected
         if (!army.armyFile) {
             router.push("/", null, { shallow: true });
             return;
         }
-
-        // TODO: Test only, add army selection
-        
     }, []);
 
     // Break from mobile to desktop layout at 1024px wide

@@ -3,10 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import { UnitSelection } from "../UnitSelection";
 import { MainList } from "../MainList";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Upgrades } from "../upgrades/Upgrades";
-import 'react-spring-bottom-sheet/dist/style.css';
 import UpgradeService from "../../services/UpgradeService";
 
 export default function DesktopView() {

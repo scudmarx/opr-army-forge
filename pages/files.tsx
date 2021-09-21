@@ -16,9 +16,14 @@ export default function Files() {
     const router = useRouter();
 
     useEffect(() => {
-        if (!army?.gameSystem)
-            router.replace("/");
-        // TODO: Test only, add army selection
+
+        // Redirect to game selection screen if no army selected
+        if (!army.gameSystem) {
+            router.push("/", null, { shallow: true });
+            return;
+        }
+
+        // List of "official" armies from AF
         fetch("definitions/army-files.json")
             .then((res) => res.json())
             .then((data) => {
@@ -26,6 +31,7 @@ export default function Files() {
                 setArmyFiles(data);
             });
 
+        // AF to Web Companion game type mapping
         const slug = (() => {
             switch (army.gameSystem) {
                 case "gf": return "grimdark-future";
@@ -35,12 +41,11 @@ export default function Files() {
             }
         })();
 
+        // Load custom data books from Web Companion
         fetch("https://opr-list-builder.herokuapp.com/api/army-books?gameSystemSlug=" + slug)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 const valid = data.filter(a => a.unitCount > 2);
-                console.log(valid);
                 setCustomArmies(valid);
             });
     }, []);
@@ -63,7 +68,11 @@ export default function Files() {
                 // Redirect to list builder once data is loaded
                 router.push('/list');
             });
-    }
+    };
+
+    const selectCustomList = (customArmy: any) => {
+        // TODO: Web companion integration
+    };
 
     return (
         <div className="container">
@@ -102,7 +111,7 @@ export default function Files() {
                                     </div>
                                 </div>
                                 {/* <p className="mr-2">{u.cost}pts</p> */}
-                                <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleSelection(u); }}>
+                                <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
                                     <RightIcon />
                                 </IconButton>
                             </div>

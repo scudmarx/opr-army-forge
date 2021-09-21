@@ -15,10 +15,6 @@ export default function UpgradeCheckbox({ selectedUnit, upgrade, option }: { sel
         const applied = isApplied(option);
 
         if (!applied) {
-            // Remove any other selections from group
-            for (let opt of upgrade.options)
-                if (isApplied(opt))
-                    dispatch(removeUpgrade({ unitId: selectedUnit.selectionId, upgrade, option: opt }));
 
             // Apply the selected upgrade
             dispatch(applyUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));

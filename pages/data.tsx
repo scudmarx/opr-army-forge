@@ -76,24 +76,30 @@ export default function Data() {
                 <title>OPR Army Forge - Data Tool</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className="columns">
+            <div className="columns m-2">
                 <div className="column">
-                    <label>Units</label>
-                    <textarea className="textarea" value={units} onChange={(e) => processUnits(e.target.value, 1)} rows={20}></textarea>
-                    <textarea className="textarea" value={units2} onChange={(e) => processUnits(e.target.value, 2)} rows={20}></textarea>
-                    <textarea className="textarea" value={units3} onChange={(e) => processUnits(e.target.value, 3)} rows={20}></textarea>
+                    <p className="mb-2">Copy &amp; paste units table from pdf (without table headers) page by page.</p>
+                    <label>Units Page 3</label>
+                    <textarea className="textarea" value={units} onChange={(e) => processUnits(e.target.value, 1)} rows={15} placeholder='Warlord [1] 3+ 4+ Pistol (12”, A1), CCW (A3) Bad Shot, Furious, Hero, Tough(3) A, B, D, E 50pts'></textarea>
+                    <label>Units - Page 2</label>
+                    <textarea className="textarea" value={units2} onChange={(e) => processUnits(e.target.value, 2)} rows={15}></textarea>
+                    <label>Units - Page 3</label>
+                    <textarea className="textarea" value={units3} onChange={(e) => processUnits(e.target.value, 3)} rows={15}></textarea>
                 </div>
                 <div className="column">
+                    <p className="mb-2">Copy &amp; paste upgrade tables (only, no rules/spells) from pdf page by page.</p>
                     <label>Upgrades</label>
-                    <textarea className="textarea" value={upgrades} onChange={(e) => processUpgrades(e.target.value)} rows={50}></textarea>
+                    <textarea className="textarea" value={upgrades} onChange={(e) => processUpgrades(e.target.value)} rows={40} placeholder='A Replace one Pistol:&#10;Carbine (18”, A2) +5pts&#10;Twin Carbine (18”, A4) +10pts'></textarea>
                 </div>
                 <div className="column">
-                    <label>Army Details</label>
+
                     <div className="columns">
                         <div className="column">
+                            <label>Army Details</label>
                             <input className="input" placeholder="Army Name" value={name} onChange={(e) => setName(e.target.value)} />
                         </div>
                         <div className="column">
+                            <label>PDF Version</label>
                             <input className="input" placeholder="PDF Version" value={version} onChange={(e) => setVersion(e.target.value)} />
                         </div>
                     </div>

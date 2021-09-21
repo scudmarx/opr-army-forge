@@ -197,11 +197,6 @@ export default class DataParsingService {
 
     public static parseEquipment(part) {
 
-        /*
-        Regex test cases...
-        Field Radio
-        Psychic(2)
-         */
         const groups = {
             count: 2,
             name: 3,
@@ -209,7 +204,7 @@ export default class DataParsingService {
             cost: 5
         }
 
-        // "A (...) and B(...) +10pts"
+        // "A (...) and B (...) +10pts"
         if (part.indexOf(") and ") > 0) {
             const combinedMatch = /(.+?)(Free$|([-+]\d+)pts)$/.exec(part);
             const multiParts = combinedMatch[1]

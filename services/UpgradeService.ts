@@ -66,18 +66,26 @@ export default class UpgradeService {
                     ? unit.size || 1 // All in unit
                     : 1;
 
+            const toReplace = unit
+                .selectedEquipment
+                .filter(eqp => pluralise.singular(eqp.name) === pluralise.singular(upgrade.replaceWhat))[0];
+
+            const alreadySelected = upgrade
+                .options
+                .reduce((prev, curr) => prev + (unit.selectedEquipment.filter(eqp => pluralise.singular(eqp.name) === pluralise.singular(curr.name))[0]?.count || 0), 0);
+
+            if (!toReplace)
+                return false;
+
             // "Replace any [weapon]"
             if (upgrade.affects === "any") {
 
-                const toReplace = unit
-                    .selectedEquipment
-                    .filter(eqp => pluralise.singular(eqp.name) === pluralise.singular(upgrade.replaceWhat))[0];
-
-                if (!toReplace || toReplace.count <= 0)
+                if (toReplace.count <= 0)
                     return false;
             }
-            else if (upgrade.affects) {
-
+            if (typeof (upgrade.select) === "number") {
+                if (alreadySelected >= upgrade.select)
+                    return false;
             }
         }
 
@@ -128,11 +136,14 @@ export default class UpgradeService {
         if (upgrade.type === "replace") {
 
             // "Replace [weapon]:"
-            if (!upgrade.affects && !upgrade.limit) {
+            if (!upgrade.affects) {
+                if (typeof (upgrade.select) === "number")
+                    return "updown";
                 return "radio";
             }
             // "Replace one [weapon]:"
-            if (upgrade.affects === 1) {
+            // "Replace all [weapons]:"
+            if (upgrade.affects === 1 || upgrade.affects === "all") {
                 return "radio";
             }
             // "Replace any [weapon]:"
@@ -140,6 +151,7 @@ export default class UpgradeService {
             if (upgrade.affects === "any" || typeof (upgrade.affects) === "number") {
                 return "updown";
             }
+
         }
 
         console.error("No control type for: ", upgrade);

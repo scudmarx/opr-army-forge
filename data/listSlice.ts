@@ -50,6 +50,9 @@ export const listSlice = createSlice({
             unit.customName = name;
         },
         applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
+
+            // TODO: Refactor, break down, unit test...
+
             const { unitId, upgrade, option } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
             const existingSelection = unit.selectedEquipment.filter(eqp => eqp.name === option.name)[0];
@@ -66,27 +69,27 @@ export const listSlice = createSlice({
                 return;
             }
 
+            const count = typeof (upgrade.affects) === "number"
+                ? upgrade.affects
+                : upgrade.affects === "all"
+                    ? unit.size || 1 // All in unit
+                    : 1;
+
             if (upgrade.type === "upgrade") {
 
 
                 if (existingSelection) {
                     if (!existingSelection.count)
-                        existingSelection.count = 1;
+                        existingSelection.count = count;
 
-                    existingSelection.count += 1;
+                    existingSelection.count += count;
                 } else {
-                    unit.selectedEquipment.push({ ...option, count: 1 });
+                    unit.selectedEquipment.push({ ...option, count: count });
                 }
             }
             else if (upgrade.type === "replace") {
 
-                const replaceCount = typeof (upgrade.affects) === "number"
-                    ? upgrade.affects
-                    : upgrade.affects === "all"
-                        ? unit.size || 1 // All in unit
-                        : 1;
-
-                console.log("Replace " + replaceCount);
+                console.log("Replace " + count);
 
                 const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
                     ? [upgrade.replaceWhat]
@@ -110,7 +113,7 @@ export const listSlice = createSlice({
                     console.log("Replacing... ", toReplace);
 
                     // Decrement the count of the item being replaced
-                    toReplace.count -= replaceCount;
+                    toReplace.count -= count;
 
                     if (toReplace.count <= 0)
                         unit.selectedEquipment.splice(replaceIndex, 1);
@@ -119,20 +122,23 @@ export const listSlice = createSlice({
                 if (option.type === "combined") {
                     // Add each piece from the combination
                     for (let e of option.equipment) {
-                        unit.selectedEquipment.push({ ...e, count: 1 });
+                        unit.selectedEquipment.push({ ...e, count: count });
                     }
 
                 } else {
 
                     if (existingSelection) {
-                        existingSelection.count++;
+                        existingSelection.count += count;
                     } else {
-                        unit.selectedEquipment.push({ ...option, count: 1 });
+                        unit.selectedEquipment.push({ ...option, count: count });
                     }
                 }
             }
         },
         removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
+
+            // TODO: Refactor, break down, unit test...
+
             const { unitId, upgrade, option } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
 
@@ -149,16 +155,23 @@ export const listSlice = createSlice({
                 return;
             }
 
+            const count = typeof (upgrade.affects) === "number"
+                ? upgrade.affects
+                : upgrade.affects === "all"
+                    ? unit.size || 1 // All in unit
+                    : 1;
+
             const equipment = option.type === "combined" ? option.equipment : [option];
 
             for (let e of equipment) {
                 const selection = unit.selectedEquipment.filter(eqp => eqp.name === e.name)[0];
 
-                if (selection.count > 1) {
-                    // Remove only 1
-                    selection.count--;
+                // If multiple selections
+                if (selection.count) {
+                    selection.count -= count;
                 }
-                else {
+
+                if (!selection.count) {
                     // Remove the upgrade from the list
                     const removeIndex = unit.selectedEquipment.findIndex(eqp => eqp.name === e.name);
                     unit.selectedEquipment.splice(removeIndex, 1);
@@ -166,13 +179,6 @@ export const listSlice = createSlice({
             }
 
             if (upgrade.type === "replace") {
-
-                // TODO: Count
-                const replaceCount = typeof (upgrade.affects) === "number"
-                    ? upgrade.affects
-                    : upgrade.affects === "all"
-                        ? unit.size || 1 // All in unit
-                        : 1;
 
                 const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
                     ? [upgrade.replaceWhat]
@@ -186,7 +192,7 @@ export const listSlice = createSlice({
 
                     if (current) {
 
-                        current.count += replaceCount;
+                        current.count += count;
 
                     } else {
 
@@ -195,7 +201,7 @@ export const listSlice = createSlice({
                             .filter(e => pluralise.singular(e.name) === pluralise.singular(what))[0];
 
                         // put the original item back
-                        unit.selectedEquipment.push({ ...original, count: replaceCount });
+                        unit.selectedEquipment.push({ ...original, count: count });
                     }
                 }
             }
