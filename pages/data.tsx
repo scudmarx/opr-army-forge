@@ -65,10 +65,10 @@ export default function Data() {
     const processUpgrades = (text: string) => {
         const fixedText = text
             .replace("–", "-") // Replace dash with hyphen!
-            .replace(/\n+/gm, ' ')
-            .replace(/Free/gm, '+0pts')
+            .replace(/Free$/gm, '+0pts')
+            .replace(/(?<!:|\swith)\n+/gm, ' ')
             .replace(/(\d+)pts?/gm, '$1pts\n')
-            .replace(/\:\s?/gm, ':\n');
+            // .replace(/(\swith:?|:)\s?/gm, '$1\n');
         setUpgrades(fixedText.replace(/^\s+/gm, ''));
     };
 
