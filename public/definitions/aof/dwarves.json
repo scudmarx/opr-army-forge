@@ -1,0 +1,1257 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "name": "Dwarves",
+  "version": "2.11",
+  "units": [
+    {
+      "name": "Dwarf Lord",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Hero",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1",
+        "B1",
+        "C1"
+      ],
+      "cost": 60
+    },
+    {
+      "name": "Berserker Lord",
+      "size": 1,
+      "quality": "3+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Berserker Axes",
+          "count": 2,
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Furious",
+        "Hero",
+        "Slayer",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 70
+    },
+    {
+      "name": "Engineer",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1",
+        "B1",
+        "D1"
+      ],
+      "cost": 45
+    },
+    {
+      "name": "Rune Master",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Slow",
+        "Tough(3)",
+        "Wizard(1)"
+      ],
+      "upgradeSets": [
+        "A1",
+        "E1"
+      ],
+      "cost": 65
+    },
+    {
+      "name": "Warriors",
+      "size": 10,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "G1"
+      ],
+      "cost": 75
+    },
+    {
+      "name": "Berserkers",
+      "size": 10,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Berserker Axes",
+          "count": 2,
+          "attacks": 1,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Furious",
+        "Slayer",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 135
+    },
+    {
+      "name": "Miners",
+      "size": 10,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Great Weapons",
+          "attacks": 1,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Ambush",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "H1"
+      ],
+      "cost": 150
+    },
+    {
+      "name": "Veterans",
+      "size": 10,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "I1"
+      ],
+      "cost": 140
+    },
+    {
+      "name": "Elites",
+      "size": 10,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Great Weapons",
+          "attacks": 2,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 200
+    },
+    {
+      "name": "Iron Warriors",
+      "size": 10,
+      "quality": "3+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "I1",
+        "J1"
+      ],
+      "cost": 180
+    },
+    {
+      "name": "Golems",
+      "size": 3,
+      "quality": "4+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Claws",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 130
+    },
+    {
+      "name": "Steam-Power Suits",
+      "size": 3,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Great Weapons",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "K1"
+      ],
+      "cost": 190
+    },
+    {
+      "name": "Marksmen",
+      "size": 5,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Rifles",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "L1"
+      ],
+      "cost": 50
+    },
+    {
+      "name": "Rangers",
+      "size": 5,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Crossbows",
+          "attacks": 1,
+          "range": 30,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Scout",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "M1"
+      ],
+      "cost": 85
+    },
+    {
+      "name": "Drake Marksmen",
+      "size": 5,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Fire Rifles",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "J1",
+        "N1"
+      ],
+      "cost": 100
+    },
+    {
+      "name": "Beast Riders",
+      "size": 5,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        },
+        {
+          "name": "Claws",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Impact(1)"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 90
+    },
+    {
+      "name": "War-Bear Riders",
+      "size": 3,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        },
+        {
+          "name": "Claws",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Impact(3)",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "F1",
+        "O1"
+      ],
+      "cost": 240
+    },
+    {
+      "name": "Attack Helicopter",
+      "size": 1,
+      "quality": "3+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Flamethrower",
+          "attacks": 6,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Fearless",
+        "Flying",
+        "Tough(6)"
+      ],
+      "upgradeSets": [
+        "P1"
+      ],
+      "cost": 180
+    },
+    {
+      "name": "Bomber Helicopter",
+      "size": 1,
+      "quality": "3+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Machinegun",
+          "attacks": 4,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Bombing Run",
+        "Fast",
+        "Fearless",
+        "Flying",
+        "Tough(6)"
+      ],
+      "upgradeSets": [],
+      "cost": 220
+    },
+    {
+      "name": "Giant Construct",
+      "size": 1,
+      "quality": "3+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 6,
+          "specialRules": [
+            "AP(2))"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fear",
+        "Fearless",
+        "Slow",
+        "Tough(12)"
+      ],
+      "upgradeSets": [
+        "Q1"
+      ],
+      "cost": 320
+    },
+    {
+      "name": "Flame Cannon",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Flame Cannon",
+          "attacks": 6,
+          "range": 18,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "name": "Crew",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Artillery",
+        "Immobile",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 65
+    },
+    {
+      "name": "Bolt Thrower",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Bolt Thrower",
+          "attacks": 1,
+          "range": 48,
+          "specialRules": [
+            "AP(2)",
+            "Deadly(3)"
+          ]
+        },
+        {
+          "name": "Crew",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Artillery",
+        "Immobile",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 60
+    },
+    {
+      "name": "Organ Gun",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Organ Gun",
+          "attacks": 12,
+          "range": 24
+        },
+        {
+          "name": "Crew",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Artillery",
+        "Immobile",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 75
+    },
+    {
+      "name": "Cannon",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Cannon",
+          "attacks": 1,
+          "range": 48,
+          "specialRules": [
+            "AP(4)",
+            "Blast(3)"
+          ]
+        },
+        {
+          "name": "Crew",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Artillery",
+        "Immobile",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 95
+    },
+    {
+      "name": "Stone Thrower",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Stone Thrower",
+          "attacks": 1,
+          "range": 48,
+          "specialRules": [
+            "AP(2)",
+            "Blast(6)",
+            "Indirect"
+          ]
+        },
+        {
+          "name": "Crew",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Artillery",
+        "Immobile",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 130
+    }
+  ],
+  "upgradeSets": [
+    {
+      "id": "A1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "Hand Weapons",
+              "count": 2,
+              "attacks": 3,
+              "cost": 5
+            },
+            {
+              "name": "Halberd",
+              "attacks": 3,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Great Weapon",
+              "attacks": 3,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Spear",
+              "attacks": 3,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "upgrades": [
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Pistol",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Pistols",
+              "count": 2,
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Crossbow",
+              "attacks": 1,
+              "range": 30,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Grudge",
+              "specialRules": [
+                "Grudge"
+              ],
+              "cost": 30
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Beast - Claws",
+              "attacks": 1,
+              "specialRules": [
+                "Impact(1"
+              ]
+            },
+            {
+              "name": "Ancestral Stone – Tough",
+              "specialRules": [
+                "+3"
+              ],
+              "cost": 70
+            },
+            {
+              "name": "Shield Carriers – Hand Weapons",
+              "attacks": 4,
+              "specialRules": [
+                "Tough(+3"
+              ],
+              "cost": 80
+            },
+            {
+              "name": "Great War-Bear – Claws",
+              "attacks": 3,
+              "specialRules": [
+                "AP(1))",
+                "Fear",
+                "Impact(3)",
+                "Swift",
+                "Tough(+3"
+              ],
+              "cost": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Ballistic Master",
+              "specialRules": [
+                "Ballistic Master"
+              ],
+              "cost": 45
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Flame-Rifle",
+              "attacks": 6,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 20
+            },
+            {
+              "name": "Organ-Rifle",
+              "attacks": 12,
+              "range": 12,
+              "cost": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "upgrades": [
+        {
+          "text": "Upgrade Wizard(1)",
+          "type": "upgradeRule",
+          "replaceWhat": "Wizard(1)",
+          "options": [
+            {
+              "name": "Wizard(2)",
+              "specialRules": [
+                "Wizard(2)"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Sergeant",
+              "specialRules": [
+                "Sergeant"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Musician",
+              "specialRules": [
+                "Musician"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Battle Standard",
+              "specialRules": [
+                "Battle Standard"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": [
+            {
+              "name": "Halberds",
+              "attacks": 1,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Hand Weapons",
+              "count": 2,
+              "attacks": 1,
+              "cost": 15
+            },
+            {
+              "name": "Great Weapons",
+              "attacks": 1,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 15
+            },
+            {
+              "name": "Spears",
+              "attacks": 1,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 30
+            },
+            {
+              "name": "H Upgrade any model with Shrapnel Bombs",
+              "attacks": 1,
+              "range": 6,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace one Great Weapon",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": "Great Weapon",
+          "options": [
+            {
+              "name": "Mining Drill",
+              "attacks": 1,
+              "specialRules": [
+                "AP(3)",
+                "Drill"
+              ],
+              "cost": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": [
+            {
+              "name": "Halberds",
+              "attacks": 1,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Hand Weapons",
+              "count": 2,
+              "attacks": 1,
+              "cost": 20
+            },
+            {
+              "name": "Great Weapons",
+              "attacks": 1,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 20
+            },
+            {
+              "name": "Spears",
+              "attacks": 1,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "J1",
+      "upgrades": [
+        {
+          "text": "Upgrade one model with any",
+          "type": "upgrade",
+          "affects": 1,
+          "select": "any",
+          "options": [
+            {
+              "name": "Shrapnel Bombs",
+              "attacks": 1,
+              "range": 6,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Fire Pistols",
+              "count": 2,
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K1",
+      "upgrades": [
+        {
+          "text": "Upgrade any model with",
+          "type": "upgrade",
+          "affects": "any",
+          "options": [
+            {
+              "name": "Steam-Gun",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "L1",
+      "upgrades": [
+        {
+          "text": "Replace all Rifles",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Rifles",
+          "options": [
+            {
+              "name": "Crossbows",
+              "attacks": 1,
+              "range": 30,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace one Rifle",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": "Rifle",
+          "options": [
+            {
+              "name": "Pistols",
+              "count": 2,
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M1",
+      "upgrades": [
+        {
+          "text": "Upgrade all models with",
+          "type": "upgrade",
+          "affects": "all",
+          "options": [
+            {
+              "name": "Throwing Axes",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "N1",
+      "upgrades": [
+        {
+          "text": "Upgrade one model with",
+          "type": "upgrade",
+          "affects": 1,
+          "options": [
+            {
+              "name": "Shrapnel Bombs",
+              "attacks": 1,
+              "range": 6,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace one Fire Rifle",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": "Fire Rifle",
+          "options": [
+            {
+              "name": "Fire Pistols",
+              "count": 2,
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Torpedo Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "O1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": [
+            {
+              "name": "Axe-Halberds",
+              "attacks": 1,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P1",
+      "upgrades": [
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Scout",
+              "specialRules": [
+                "Scout"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Attack Bomb",
+              "specialRules": [
+                "Attack Bomb"
+              ],
+              "cost": 15
+            }
+          ]
+        },
+        {
+          "text": "Replace Flamethrower",
+          "type": "replace",
+          "replaceWhat": "Flamethrower",
+          "options": [
+            {
+              "name": "Fire Machinegun",
+              "attacks": 3,
+              "range": 18,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Q1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "Great Weapon",
+              "attacks": 4,
+              "specialRules": [
+                "AP(4)"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with up to two",
+          "type": "upgrade",
+          "select": 2,
+          "options": [
+            {
+              "name": "Heavy Steam-Gun",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)",
+                "Blast(3)"
+              ],
+              "cost": 25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
