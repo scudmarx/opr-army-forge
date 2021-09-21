@@ -1,12 +1,12 @@
 import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { IEquipment, ISelectedUnit, IUpgrade } from '../data/interfaces';
-import { applyUpgrade } from '../data/listSlice';
-import { RootState } from '../data/store';
-import UpgradeService from '../services/UpgradeService';
-import styles from "../styles/Upgrades.module.css";
+import { IEquipment, ISelectedUnit, IUpgrade } from '../../data/interfaces';
+import { applyUpgrade } from '../../data/listSlice';
+import { RootState } from '../../data/store';
+import UpgradeService from '../../services/UpgradeService';
+import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
-import UnitEquipmentTable from './UnitEquipmentTable';
+import UnitEquipmentTable from '../UnitEquipmentTable';
 
 export function Upgrades() {
 

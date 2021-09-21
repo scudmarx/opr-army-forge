@@ -30,7 +30,7 @@
         "Tough(3)"
       ],
       "upgradeSets": [
-        "A"
+        "A1"
       ],
       "cost": 95
     },
@@ -61,7 +61,7 @@
         "Tough(3)"
       ],
       "upgradeSets": [
-        "B"
+        "B1"
       ],
       "cost": 85
     },
@@ -123,7 +123,7 @@
         "Slow"
       ],
       "upgradeSets": [
-        "C"
+        "C1"
       ],
       "cost": 25
     },
@@ -152,7 +152,7 @@
         "Slow"
       ],
       "upgradeSets": [
-        "D"
+        "D1"
       ],
       "cost": 30
     },
@@ -181,7 +181,7 @@
         "Slow"
       ],
       "upgradeSets": [
-        "E"
+        "E1"
       ],
       "cost": 30
     },
@@ -206,7 +206,7 @@
         "Slow"
       ],
       "upgradeSets": [
-        "F"
+        "F1"
       ],
       "cost": 30
     },
@@ -237,7 +237,7 @@
         "Slow"
       ],
       "upgradeSets": [
-        "G"
+        "G1"
       ],
       "cost": 45
     },
@@ -285,7 +285,7 @@
         "Strider"
       ],
       "upgradeSets": [
-        "H"
+        "H1"
       ],
       "cost": 40
     },
@@ -311,7 +311,7 @@
         "Tough(3)"
       ],
       "upgradeSets": [
-        "I"
+        "I1"
       ],
       "cost": 110
     },
@@ -337,7 +337,7 @@
         "Tough(3)"
       ],
       "upgradeSets": [
-        "J"
+        "J1"
       ],
       "cost": 110
     },
@@ -369,14 +369,14 @@
         "Tough(3)"
       ],
       "upgradeSets": [
-        "K"
+        "K1"
       ],
       "cost": 125
     }
   ],
   "upgradeSets": [
     {
-      "id": "A",
+      "id": "A1",
       "upgrades": [
         {
           "text": "Upgrade with one",
@@ -448,7 +448,7 @@
       ]
     },
     {
-      "id": "B",
+      "id": "B1",
       "upgrades": [
         {
           "text": "Upgrade with one",
@@ -538,7 +538,7 @@
       ]
     },
     {
-      "id": "C",
+      "id": "C1",
       "upgrades": [
         {
           "text": "Replace Gauss Rifle",
@@ -584,7 +584,7 @@
       ]
     },
     {
-      "id": "D",
+      "id": "D1",
       "upgrades": [
         {
           "text": "Replace Gauss Rifle",
@@ -616,7 +616,7 @@
       ]
     },
     {
-      "id": "E",
+      "id": "E1",
       "upgrades": [
         {
           "text": "Replace Rod-Shot and Rod",
@@ -694,7 +694,7 @@
       ]
     },
     {
-      "id": "F",
+      "id": "F1",
       "upgrades": [
         {
           "text": "Upgrade with",
@@ -744,7 +744,7 @@
       ]
     },
     {
-      "id": "G",
+      "id": "G1",
       "upgrades": [
         {
           "text": "Upgrade with",
@@ -762,7 +762,7 @@
       ]
     },
     {
-      "id": "H",
+      "id": "H1",
       "upgrades": [
         {
           "text": "Replace Twin Gauss Rifle",
@@ -794,7 +794,7 @@
       ]
     },
     {
-      "id": "I",
+      "id": "I1",
       "upgrades": [
         {
           "text": "Upgrade with one",
@@ -833,12 +833,13 @@
       ]
     },
     {
-      "id": "J",
+      "id": "J1",
       "upgrades": [
         {
-          "text": "Replace 2x Arm Blades",
+          "text": "Replace 2x Armblades",
           "type": "replace",
-          "replaceWhat": "2x Arm Blades",
+          "affects": 2,
+          "replaceWhat": "Armblades",
           "options": [
             {
               "name": "Heavy Armblade",
@@ -866,7 +867,7 @@
       ]
     },
     {
-      "id": "K",
+      "id": "K1",
       "upgrades": [
         {
           "text": "Replace Gauss Cannon",

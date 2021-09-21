@@ -66,7 +66,7 @@ export default function Data() {
             .replace(/\n+/gm, ' ')
             .replace(/Free/gm, '+0pts')
             .replace(/(\d+)pts?/gm, '$1pts\n')
-            .replace(/\:/gm, ':\n');
+            .replace(/\:\s?/gm, ':\n');
         setUpgrades(fixedText.replace(/^\s+/gm, ''));
     };
 

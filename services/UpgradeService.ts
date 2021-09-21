@@ -1,6 +1,11 @@
 import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
 
 export default class UpgradeService {
+    static calculateListTotal(list: ISelectedUnit[]) {
+        return list
+            .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
+    }
+
     static calculateUnitTotal(unit: ISelectedUnit) {
         let cost = unit.cost;
         for (const equipment of unit.selectedEquipment) {
@@ -39,7 +44,7 @@ export default class UpgradeService {
 
                 const toReplace = unit
                     .selectedEquipment
-                    .filter(eqp => eqp.name === upgrade.replaceWhat)[0];
+                    .filter(eqp => eqp.name.indexOf(upgrade.replaceWhat as any) === 0)[0];
 
                 if (!toReplace || toReplace.count <= 0)
                     return false;
@@ -48,7 +53,7 @@ export default class UpgradeService {
 
         if (upgrade.type === "upgrade") {
 
-            if (typeof(upgrade.select) === "number") {
+            if (typeof (upgrade.select) === "number") {
 
                 const selections = unit
                     .selectedEquipment
@@ -64,4 +69,51 @@ export default class UpgradeService {
 
         return true;
     };
+
+    public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
+        if (upgrade.type === "upgrade") {
+
+            // "Upgrade with:"
+            // "Upgrade with any:"
+            if (!upgrade.select || upgrade.select == "any") {
+                return "check";
+            }
+            // "Upgrade with one:"
+            if (upgrade.select === 1) {
+                return "radio";
+            }
+            // TODO "Upgrade with up to n:"
+
+            // "Upgrade with any:"
+            if (upgrade.select === "any") {
+                return "check";
+            }
+        }
+
+        // "Upgrade Psychic(1):"
+        if (upgrade.type === "upgradeRule") {
+            return "check";
+        }
+
+        if (upgrade.type === "replace") {
+
+            // "Replace [weapon]:"
+            if (!upgrade.affects && !upgrade.limit) {
+                return "radio";
+            }
+            // "Replace one [weapon]:"
+            if (upgrade.affects === 1) {
+                return "radio";
+            }
+            // "Replace any [weapon]:"
+            // "Replace 2 [weapons]:"
+            if (upgrade.affects === "any" || typeof (upgrade.affects) === "number") {
+                return "updown";
+            }
+        }
+
+        console.error("No control type for: ", upgrade);
+
+        return "updown";
+    }
 }

@@ -103,7 +103,11 @@ export const listSlice = createSlice({
                         unit.selectedEquipment.splice(replaceIndex, 1);
                 }
 
-                unit.selectedEquipment.push({ ...option, count: replaceCount });
+                if (existingSelection) {
+                    existingSelection.count++;
+                } else {
+                    unit.selectedEquipment.push({ ...option, count: 1 });
+                }
             }
         },
         removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
@@ -143,7 +147,7 @@ export const listSlice = createSlice({
                         .equipment
                         .filter(e => e.name === upgrade.replaceWhat || e.name === upgrade.replaceWhat + "s")[0];
                     // put the original item back
-                    unit.selectedEquipment.push({ ...original, count: 1 });
+                    unit.selectedEquipment.push({ ...original, count: replaceCount });
                 }
             }
         }

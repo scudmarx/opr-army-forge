@@ -15,9 +15,10 @@ export default class DataParsingService {
         const groups = {
             type: 1,
             affects: 2,
-            select: 3,
-            upTo: 4,
-            replaceWhat: 5
+            upgradeWhat: 3,
+            select: 4,
+            upTo: 5,
+            replaceWhat: 6
         }
 
         const takeMatch = /^Take ([\w\d]+)\s(.+?):/.exec(text);
@@ -29,7 +30,7 @@ export default class DataParsingService {
 
         text = text.endsWith(":") ? text.substring(0, text.length - 1) : text;
 
-        const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
+        const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?(?:(.+)\swith)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
         //const match = /(Upgrade|Replace)\s?(any|one|all)?\s?(?:models?)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)\s)?(.+?)?:/.exec(text);
 
         if (!match) {
@@ -52,6 +53,9 @@ export default class DataParsingService {
         if (match[groups.upTo])
             result.select = parseInt(match[groups.upTo]) || this.numberFromName(match[groups.upTo]) || match[groups.upTo] as any;
 
+        if (match[groups.upgradeWhat])
+            result.replaceWhat = match[groups.upgradeWhat];
+
         if (replaceWhat) {
             result.replaceWhat = replaceWhat.indexOf(" and ") > -1
                 ? replaceWhat.split(" and ")
@@ -59,7 +63,7 @@ export default class DataParsingService {
         }
 
         // TODO: Better way of doing this?
-        if (result.type === "upgrade" && result.replaceWhat)
+        if (result.type === "upgrade" && result.replaceWhat && !result.affects && !result.select)
             result.type = "upgradeRule";
 
         return result;

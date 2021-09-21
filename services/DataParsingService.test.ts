@@ -105,11 +105,14 @@ test("Parse 'Upgrade one model with one:'", () => {
     });
 });
 
-test("Parse 'Upgrade with one:'", () => {
-    const upgrade = DataParsingService.parseUpgradeText("Upgrade with one:");
+
+test("Parse 'Upgrade all [weapons] with one:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Upgrade all Crossbows with one:");
     expect(upgrade).toStrictEqual({
         type: "upgrade",
-        select: 1
+        select: 1,
+        affects: "all",
+        replaceWhat: "Crossbows"
     });
 });
 
@@ -135,11 +138,11 @@ test("Parse 'Replace one [weapon]:'", () => {
 });
 
 test("Parse 'Replace 2x [weapon]:'", () => {
-    const upgrade = DataParsingService.parseUpgradeText("Replace 2x Arm Blades:");
+    const upgrade = DataParsingService.parseUpgradeText("Replace 2x Armblades:");
     expect(upgrade).toStrictEqual({
         type: "replace",
         affects: 2,
-        replaceWhat: "Arm Blades"
+        replaceWhat: "Armblades"
     });
 });
 

@@ -1,16 +1,14 @@
-import { Checkbox, IconButton, Paper, Radio, RadioGroup, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Checkbox, IconButton, Paper, Radio } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { IEquipment, ISelectedUnit, IUpgrade } from '../data/interfaces';
-import { applyUpgrade, removeUpgrade } from '../data/listSlice';
-import { RootState } from '../data/store';
-import EquipmentService from '../services/EquipmentService';
-import UpgradeService from '../services/UpgradeService';
-import styles from "../styles/Upgrades.module.css";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import { IEquipment, ISelectedUnit, IUpgrade } from '../../data/interfaces';
+import { applyUpgrade, removeUpgrade, selectUnit } from '../../data/listSlice';
+import { RootState } from '../../data/store';
+import EquipmentService from '../../services/EquipmentService';
+import UpgradeService from '../../services/UpgradeService';
 import DownIcon from '@mui/icons-material/KeyboardArrowDown';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import hash from "object-hash";
+import UpgradeItem from './UpgradeItem';
 
 export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
 
@@ -24,56 +22,11 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
     const incrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
         dispatch(applyUpgrade({ unitId: unit.selectionId, upgrade, option }));
     };
-    const  decrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
+    const decrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
         dispatch(removeUpgrade({ unitId: unit.selectionId, upgrade, option }));
     };
 
-    const controlType = (() => {
-        if (upgrade.type === "upgrade") {
-
-            // "Upgrade with:"
-            // "Upgrade with any:"
-            if (!upgrade.select || upgrade.select == "any") {
-                return "check";
-            }
-            // "Upgrade with one:"
-            if (upgrade.select === 1) {
-                return "radio";
-            }
-            // TODO "Upgrade with up to n:"
-
-            // "Upgrade with any:"
-            if (upgrade.select === "any") {
-                return "check";
-            }
-        }
-
-        // "Upgrade Psychic(1):"
-        if (upgrade.type === "upgradeRule") {
-            return "check";
-        }
-
-        if (upgrade.type === "replace") {
-
-            // "Replace [weapon]:"
-            if (!upgrade.affects && !upgrade.limit) {
-                return "radio";
-            }
-            // "Replace one [weapon]:"
-            if (upgrade.affects === 1) {
-                return "radio";
-            }
-            // "Replace any [weapon]:"
-            // "Replace 2 [weapons]:"
-            if (upgrade.affects === "any" || typeof (upgrade.affects) === "number") {
-                return "updown";
-            }
-        }
-
-        console.error("No control type for: ", upgrade);
-
-        return "updown";
-    })();
+    const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
 
     const isApplied = (option) => UpgradeService.isApplied(selectedUnit, upgrade, option);
 
@@ -85,8 +38,6 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
             onClick={() => handleCheck(option)}
             value={option.name} />
     );
-
-
 
     const handleCheck = (option) => {
 
@@ -200,29 +151,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
                         value={"None"} />
                 </div>
             }
-            {
-                upgrade.options.map((opt, i) => (
-                    <div key={i} className="is-flex is-align-items-center">
-                        <div className="is-flex-grow-1 pr-2">{(() => {
-                            const parts = EquipmentService.getStringParts(opt);
-                            return (
-                                <>
-                                    <span style={{ color: "#000000" }}>{parts.name} </span>
-                                    <span style={{ color: "#656565" }}>({parts.rules})</span>
-                                </>
-                            );
-                        })()}</div>
-                        <div>{opt.cost ? `${opt.cost}pts` : "Free"}&nbsp;</div>
-                        {(() => {
-                            switch (controlType) {
-                                case "check": return checkControl(opt);
-                                case "radio": return radioControl(opt);
-                                case "updown": return updownControl(opt);
-                            }
-                        })()}
-                    </div>
-                ))
-            }
+            {upgrade.options.map((opt, i) => <UpgradeItem key={i} selectedUnit={selectedUnit} upgrade={upgrade} option={opt} />)}
         </Paper>
     );
 
