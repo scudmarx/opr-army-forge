@@ -50,6 +50,7 @@ export default function Data() {
 
     const processUnits = (text: string, upgradeGroupIndex) => {
         const fixedText = text
+            .replace("–", "-") // Replace dash with hyphen!
             .replace(/\n+/gm, ' ')
             .replace(/(\d+)pts?/gm, '$1pts\n');
         const finalText = fixedText.replace(/^\s+/gm, '');
@@ -63,6 +64,7 @@ export default function Data() {
 
     const processUpgrades = (text: string) => {
         const fixedText = text
+            .replace("–", "-") // Replace dash with hyphen!
             .replace(/\n+/gm, ' ')
             .replace(/Free/gm, '+0pts')
             .replace(/(\d+)pts?/gm, '$1pts\n')
