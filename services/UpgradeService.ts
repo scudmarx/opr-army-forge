@@ -12,7 +12,7 @@ export default class UpgradeService {
         let cost = unit.cost;
         for (const equipment of unit.selectedEquipment) {
             if (equipment.cost)
-                cost += equipment.cost;
+                cost += equipment.cost * equipment.count;
         }
         return cost;
     }
