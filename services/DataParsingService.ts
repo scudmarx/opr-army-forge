@@ -198,11 +198,10 @@ export default class DataParsingService {
     public static parseEquipment(part) {
 
         const groups = {
-            count: 2,
-            name: 3,
-            rules: 4,
-            cost: 5
-        }
+            name: 1,
+            rules: 2,
+            cost: 3
+        };
 
         // "A (...) and B (...) +10pts"
         if (part.indexOf(") and ") > 0) {
@@ -235,7 +234,7 @@ export default class DataParsingService {
             };
         }
 
-        const match = /((\d+)x\s)?(.+?)\((.+)\)\s?([+-]\d+|Free)?/.exec(part);
+        const match = /(.+?)\((.+)\)\s?([+-]\d+|Free)?/.exec(part);
 
         const attacksMatch = /A(\d+)[,\)]/.exec(part);
         const rangeMatch = /(\d+)["”][,\)]/.exec(part);
@@ -248,8 +247,8 @@ export default class DataParsingService {
             name: match[groups.name].trim()
         };
 
-        if (match[groups.count])
-            result.count = parseInt(match[groups.count]);
+        // if (match[groups.count])
+        //     result.count = parseInt(match[groups.count]);
 
         if (attacksMatch)
             result.attacks = parseInt(attacksMatch[1]);

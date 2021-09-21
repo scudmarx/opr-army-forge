@@ -24,11 +24,12 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                     <TableBody>
                         {
                             unit.selectedEquipment.filter(e => e.attacks && e.count).map((e, i) => {
-                                const isEquippedToAll = e.count === unit.size;
+                                //const isEquippedToAll = e.count === unit.size;
+                                const name = e.count > 1 ? pluralise.plural(e.name) : e.name;
 
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.name) : e.name}</TableCell>
+                                        <TableCell>{e.count > 1 || unit.size > 1 ? `[${e.count}] `: ' '}{name}</TableCell>
                                         <TableCell>{e.range ? e.range + '"' : '-'}</TableCell>
                                         <TableCell>{e.attacks ? "A" + e.attacks : '-'}</TableCell>
                                         <TableCell>{EquipmentService.getAP(e) || '-'}</TableCell>

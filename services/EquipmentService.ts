@@ -17,6 +17,7 @@ export default class EquipmentService {
         const name = eqp.count > 1 ? pluralise.plural(eqp.name) : eqp.name;
         var range = eqp.range ? `${eqp.range}"` : null;
         var attacks = eqp.attacks ? "A" + eqp.attacks : null;
+
         return `${name} (${[range, attacks] // Range, then attacks
             .concat(eqp.specialRules || []) // then special rules
             .filter((m) => !!m) // Remove empty/null entries
@@ -25,8 +26,9 @@ export default class EquipmentService {
 
     static getStringParts(eqp: IEquipment): { name: string, rules: string } {
         const name = eqp.count > 1 ? pluralise.plural(eqp.name) : eqp.name;
-        var range = eqp.range ? `${eqp.range}"` : null;
-        var attacks = eqp.attacks ? "A" + eqp.attacks : null;
+        const range = eqp.range ? `${eqp.range}"` : null;
+        const attacks = eqp.attacks ? "A" + eqp.attacks : null;
+
         return {
             name: name,
             rules: [range, attacks] // Range, then attacks
