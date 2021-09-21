@@ -79,7 +79,7 @@ export default function Data() {
             <div className="columns m-2">
                 <div className="column">
                     <p className="mb-2">Copy &amp; paste units table from pdf (without table headers) page by page.</p>
-                    <label>Units Page 3</label>
+                    <label>Units - Page 1</label>
                     <textarea className="textarea" value={units} onChange={(e) => processUnits(e.target.value, 1)} rows={15} placeholder='Warlord [1] 3+ 4+ Pistol (12”, A1), CCW (A3) Bad Shot, Furious, Hero, Tough(3) A, B, D, E 50pts'></textarea>
                     <label>Units - Page 2</label>
                     <textarea className="textarea" value={units2} onChange={(e) => processUnits(e.target.value, 2)} rows={15}></textarea>
