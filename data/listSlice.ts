@@ -1,6 +1,7 @@
 import { ConstructionOutlined } from '@mui/icons-material';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IEquipment, ISelectedUnit, IUpgrade } from './interfaces';
+import pluralise from "pluralize";
 
 export interface ListState {
     name: string,
@@ -53,6 +54,18 @@ export const listSlice = createSlice({
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
             const existingSelection = unit.selectedEquipment.filter(eqp => eqp.name === option.name)[0];
 
+
+            if (upgrade.type === "upgradeRule") {
+
+                // Remove existing rule
+                unit.specialRules.splice(unit.specialRules.findIndex(r => r === upgrade.replaceWhat), 1);
+
+                // Add new rule(s)!
+                unit.specialRules = unit.specialRules.concat(option.specialRules);
+
+                return;
+            }
+
             if (upgrade.type === "upgrade") {
 
 
@@ -84,7 +97,7 @@ export const listSlice = createSlice({
                     // Try and find item to replace...
                     const replaceIndex = unit
                         .selectedEquipment
-                        .findIndex(e => e.name === what || e.name === what + "s");
+                        .findIndex(e => pluralise.singular(e.name) === pluralise.singular(what));
 
                     const toReplace = unit.selectedEquipment[replaceIndex];
 
@@ -103,27 +116,55 @@ export const listSlice = createSlice({
                         unit.selectedEquipment.splice(replaceIndex, 1);
                 }
 
-                if (existingSelection) {
-                    existingSelection.count++;
+                if (option.type === "combined") {
+                    // Add each piece from the combination
+                    for (let e of option.equipment) {
+                        unit.selectedEquipment.push({ ...e, count: 1 });
+                    }
+
                 } else {
-                    unit.selectedEquipment.push({ ...option, count: 1 });
+
+                    if (existingSelection) {
+                        existingSelection.count++;
+                    } else {
+                        unit.selectedEquipment.push({ ...option, count: 1 });
+                    }
                 }
             }
         },
         removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
             const { unitId, upgrade, option } = action.payload;
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
-            const selection = unit.selectedEquipment.filter(eqp => eqp.name === option.name)[0];
 
-            if (selection.count > 1) {
-                // Remove only 1
-                selection.count--;
+            if (upgrade.type === "upgradeRule") {
+
+                // Remove upgrades rule(s)
+                for (let i = unit.specialRules.length - 1; i >= 0; i--)
+                    if (option.specialRules.indexOf(unit.specialRules[i]) >= 0)
+                        unit.specialRules.splice(i, 1);
+
+                // Re-add original rule
+                unit.specialRules.push(upgrade.replaceWhat as string);
+
+                return;
             }
-            else {
-                // Remove the upgrade from the list
-                const removeIndex = unit.selectedEquipment.findIndex(eqp => eqp.name === option.name);
-                unit.selectedEquipment.splice(removeIndex, 1);
+
+            const equipment = option.type === "combined" ? option.equipment : [option];
+
+            for (let e of equipment) {
+                const selection = unit.selectedEquipment.filter(eqp => eqp.name === e.name)[0];
+
+                if (selection.count > 1) {
+                    // Remove only 1
+                    selection.count--;
+                }
+                else {
+                    // Remove the upgrade from the list
+                    const removeIndex = unit.selectedEquipment.findIndex(eqp => eqp.name === e.name);
+                    unit.selectedEquipment.splice(removeIndex, 1);
+                }
             }
+
             if (upgrade.type === "replace") {
 
                 // TODO: Count
@@ -133,24 +174,33 @@ export const listSlice = createSlice({
                         ? unit.size || 1 // All in unit
                         : 1;
 
-                const current = unit
-                    .selectedEquipment
-                    .filter(e => e.name === upgrade.replaceWhat || e.name === upgrade.replaceWhat + "s")[0];
+                const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
+                    ? [upgrade.replaceWhat]
+                    : upgrade.replaceWhat;
 
-                if (current) {
+                for (let what of replaceWhat) {
 
-                    current.count += replaceCount;
+                    const current = unit
+                        .selectedEquipment
+                        .filter(e => pluralise.singular(e.name) === pluralise.singular(what))[0];
 
-                } else {
+                    if (current) {
 
-                    const original = unit
-                        .equipment
-                        .filter(e => e.name === upgrade.replaceWhat || e.name === upgrade.replaceWhat + "s")[0];
-                    // put the original item back
-                    unit.selectedEquipment.push({ ...original, count: replaceCount });
+                        current.count += replaceCount;
+
+                    } else {
+
+                        const original = unit
+                            .equipment
+                            .filter(e => pluralise.singular(e.name) === pluralise.singular(what))[0];
+
+                        // put the original item back
+                        unit.selectedEquipment.push({ ...original, count: replaceCount });
+                    }
                 }
             }
         }
+
     },
 })
 

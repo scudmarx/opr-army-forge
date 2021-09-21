@@ -4,6 +4,7 @@ import UpgradeService from '../../services/UpgradeService';
 import UpgradeRadio from './controls/UpgradeRadio';
 import UpgradeCheckbox from './controls/UpgradeCheckbox';
 import UpgradeUpDown from './controls/UpgradeUpDown';
+import { Fragment } from 'react';
 
 export default function UpgradeItem({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment }) {
 
@@ -12,12 +13,18 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
     return (
         <div className="is-flex is-align-items-center">
             <div className="is-flex-grow-1 pr-2">{(() => {
-                const parts = EquipmentService.getStringParts(option);
+                const equipments = option.type === "combined" ? option.equipment : [option]
+
                 return (
-                    <>
-                        <span style={{ color: "#000000" }}>{parts.name} </span>
-                        <span style={{ color: "#656565" }}>({parts.rules})</span>
-                    </>
+                    equipments.map((e, i) => {
+                        const parts = EquipmentService.getStringParts(e);
+                        return (
+                            <Fragment key={i}>
+                                <span style={{ color: "#000000" }}>{parts.name} </span>
+                                <span className="mr-2" style={{ color: "#656565" }}>({parts.rules})</span>
+                            </Fragment>
+                        )
+                    })
                 );
             })()}</div>
             <div>{option.cost ? `${option.cost}pts` : "Free"}&nbsp;</div>

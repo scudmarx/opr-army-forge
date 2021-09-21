@@ -1,6 +1,7 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { ISelectedUnit } from '../data/interfaces';
 import EquipmentService from '../services/EquipmentService';
+import pluralise from "pluralize";
 
 export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
     return (
@@ -19,7 +20,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                     {
                         unit.selectedEquipment.filter(e => e.count).map((e, i) => (
                             <TableRow key={i}>
-                                <TableCell>{e.count}x {e.name}</TableCell>
+                                <TableCell>{e.count}x {e.count > 1 ? pluralise.plural(e.name) : e.name}</TableCell>
                                 <TableCell>{e.range ? e.range + '"' : '-'}</TableCell>
                                 <TableCell>{e.attacks ? "A" + e.attacks : '-'}</TableCell>
                                 <TableCell>{EquipmentService.getAP(e) || '-'}</TableCell>

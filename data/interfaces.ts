@@ -1,10 +1,12 @@
 export interface IEquipment {
+    type?: "combined";
     name: string;
     range?: number;
     attacks?: number;
     cost?: number;
     count?: number;
     specialRules?: string[];
+    equipment?: IEquipment[]; // For { "type": "combined" }
 }
 
 export interface IUnit {

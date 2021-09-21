@@ -258,6 +258,15 @@ test("Parse 'Take any [equipment]:'", () => {
     });
 });
 
+// No examples of this?
+test("Parse 'Mount on:'", () => {
+    const upgrade = DataParsingService.parseUpgradeText("Mount on:");
+    expect(upgrade).toStrictEqual({
+        type: "upgrade",
+        select: 1
+    });
+});
+
 //#endregion
 
 //#region Equipment

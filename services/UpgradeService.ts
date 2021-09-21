@@ -1,4 +1,6 @@
 import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
+import pluralise from "pluralize";
+import { current } from "immer";
 
 export default class UpgradeService {
     static calculateListTotal(list: ISelectedUnit[]) {
@@ -16,11 +18,30 @@ export default class UpgradeService {
     }
 
     static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
-        return unit
+
+        if (upgrade.type === "upgradeRule") {
+            console.log(unit.specialRules);
+            console.log(option.specialRules);
+
+            // Check that the special rules from this upgrade are contained within the unit's rules
+            return option.specialRules.reduce((prev, curr) => prev && unit.specialRules.indexOf(curr) >= 0, true);
+        }
+
+        const isApplied = name => unit
             .selectedEquipment
-            .map(eqp => eqp.name)
-            .filter(name => name === option.name)
+            .filter(e => pluralise.singular(e.name) === pluralise.singular(name))
             .length > 0;
+
+        if (option.type === "combined") {
+
+            return option
+                .equipment
+                .reduce((prev, current) => prev && isApplied(current.name), true)
+
+        } else {
+
+            return isApplied(option.name);
+        }
     }
 
     static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): number {
@@ -39,15 +60,24 @@ export default class UpgradeService {
 
         if (upgrade.type === "replace") {
 
+            const replaceCount = typeof (upgrade.affects) === "number"
+                ? upgrade.affects
+                : upgrade.affects === "all"
+                    ? unit.size || 1 // All in unit
+                    : 1;
+
             // "Replace any [weapon]"
             if (upgrade.affects === "any") {
 
                 const toReplace = unit
                     .selectedEquipment
-                    .filter(eqp => eqp.name.indexOf(upgrade.replaceWhat as any) === 0)[0];
+                    .filter(eqp => pluralise.singular(eqp.name) === pluralise.singular(upgrade.replaceWhat))[0];
 
                 if (!toReplace || toReplace.count <= 0)
                     return false;
+            }
+            else if (upgrade.affects) {
+
             }
         }
 

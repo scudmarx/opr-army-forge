@@ -1,4 +1,6 @@
 import { IEquipment } from "../data/interfaces";
+import pluralise from "pluralize";
+import { EscalatorWarning } from "@mui/icons-material";
 
 export default class EquipmentService {
     static getAP(e: IEquipment): number {
@@ -12,19 +14,21 @@ export default class EquipmentService {
     }
 
     static formatString(eqp: IEquipment): string {
+        const name = eqp.count > 1 ? pluralise.plural(eqp.name) : eqp.name;
         var range = eqp.range ? `${eqp.range}"` : null;
         var attacks = eqp.attacks ? "A" + eqp.attacks : null;
-        return `${eqp.name} (${[range, attacks] // Range, then attacks
+        return `${name} (${[range, attacks] // Range, then attacks
             .concat(eqp.specialRules || []) // then special rules
             .filter((m) => !!m) // Remove empty/null entries
             .join(", ")})`; // comma separated list
     }
 
     static getStringParts(eqp: IEquipment): { name: string, rules: string } {
+        const name = eqp.count > 1 ? pluralise.plural(eqp.name) : eqp.name;
         var range = eqp.range ? `${eqp.range}"` : null;
         var attacks = eqp.attacks ? "A" + eqp.attacks : null;
         return {
-            name: eqp.name,
+            name: name,
             rules: [range, attacks] // Range, then attacks
                 .concat(eqp.specialRules || []) // then special rules
                 .filter((m) => !!m) // Remove empty/null entries

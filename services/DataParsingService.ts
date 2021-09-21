@@ -21,6 +21,13 @@ export default class DataParsingService {
             replaceWhat: 6
         }
 
+        const mountMatch = /mount on/i.test(text);
+        if (mountMatch)
+            return {
+                type: "upgrade",
+                select: 1
+            };
+
         const takeMatch = /^Take ([\w\d]+)\s(.+?):/.exec(text);
         if (takeMatch)
             return {
