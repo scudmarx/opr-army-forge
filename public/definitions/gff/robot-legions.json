@@ -322,8 +322,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Armblades",
-          "count": 2,
+          "name": "2x Armblades",
           "attacks": 2,
           "specialRules": [
             "AP(2)"
@@ -384,12 +383,6 @@
           "select": 1,
           "options": [
             {
-              "name": "Wrist-Mounted Flamer",
-              "attacks": 6,
-              "range": 12,
-              "cost": 10
-            },
-            {
               "name": "Wrist-Mounted Laser Cannon",
               "attacks": 1,
               "range": 48,
@@ -414,14 +407,7 @@
               "attacks": 3,
               "specialRules": [
                 "AP(1)",
-                "Rending"
-              ],
-              "cost": 0
-            },
-            {
-              "name": "Void Sword",
-              "attacks": 6,
-              "specialRules": [
+                "Rending) Free Void Sword (A6",
                 "AP(1)"
               ],
               "cost": 5
@@ -455,15 +441,6 @@
           "type": "upgrade",
           "select": 1,
           "options": [
-            {
-              "name": "Flame-Protocol",
-              "attacks": 6,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 20
-            },
             {
               "name": "Dread-Protocol",
               "attacks": 3,
@@ -504,14 +481,6 @@
           "select": "any",
           "options": [
             {
-              "name": "Jetpack",
-              "specialRules": [
-                "Ambush",
-                "Flying"
-              ],
-              "cost": 15
-            },
-            {
               "name": "Bot Master",
               "specialRules": [
                 "Psychic(1)"
@@ -524,16 +493,7 @@
           "text": "Upgrade with up to two",
           "type": "upgrade",
           "select": 2,
-          "options": [
-            {
-              "name": "Technoslave",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 10
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -545,15 +505,6 @@
           "type": "replace",
           "replaceWhat": "Gauss Rifle",
           "options": [
-            {
-              "name": "Reaper Rifle",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 0
-            },
             {
               "name": "Flame Caster",
               "attacks": 6,
@@ -592,16 +543,6 @@
           "replaceWhat": "Gauss Rifle",
           "options": [
             {
-              "name": "Flux Rifle",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(1)",
-                "Flux"
-              ],
-              "cost": 5
-            },
-            {
               "name": "Heavy Gauss Rifles",
               "attacks": 1,
               "range": 24,
@@ -626,14 +567,6 @@
             "Rod"
           ],
           "options": [
-            {
-              "name": "War Scythe",
-              "attacks": 2,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 5
-            },
             {
               "type": "combined",
               "cost": 5,
@@ -680,16 +613,7 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": [
-            {
-              "name": "Jetpack",
-              "specialRules": [
-                "Ambush",
-                "Flying"
-              ],
-              "cost": 15
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -699,29 +623,13 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": [
-            {
-              "name": "Ambush",
-              "specialRules": [
-                "Ambush"
-              ],
-              "cost": 10
-            }
-          ]
+          "options": []
         },
         {
           "text": "Replace Metal Claws",
           "type": "replace",
           "replaceWhat": "Metal Claws",
           "options": [
-            {
-              "name": "Chainsaw Claws",
-              "attacks": 6,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
             {
               "name": "Plasma Claws",
               "attacks": 3,
@@ -749,15 +657,7 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": [
-            {
-              "name": "Hunter",
-              "specialRules": [
-                "Hunter"
-              ],
-              "cost": 5
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -769,16 +669,6 @@
           "type": "replace",
           "replaceWhat": "Twin Gauss Rifle",
           "options": [
-            {
-              "name": "Twin Flux Rifle",
-              "attacks": 2,
-              "range": 24,
-              "specialRules": [
-                "AP(1)",
-                "Flux"
-              ],
-              "cost": 5
-            },
             {
               "name": "Antimatter Rifle",
               "attacks": 1,
@@ -801,15 +691,6 @@
           "type": "upgrade",
           "select": 1,
           "options": [
-            {
-              "name": "Antimatter Pistol",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
             {
               "name": "Death Gaze",
               "attacks": 1,
@@ -836,33 +717,16 @@
       "id": "J1",
       "upgrades": [
         {
-          "text": "Replace 2x Armblades",
+          "text": "Replace 2x Arm Blades",
           "type": "replace",
           "affects": 2,
-          "replaceWhat": "Armblades",
-          "options": [
-            {
-              "name": "Heavy Armblade",
-              "attacks": 4,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 10
-            }
-          ]
+          "replaceWhat": "Arm Blades",
+          "options": []
         },
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": [
-            {
-              "name": "Plasmabot",
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 10
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -874,16 +738,6 @@
           "type": "replace",
           "replaceWhat": "Gauss Cannon",
           "options": [
-            {
-              "name": "Hyper Swords",
-              "count": 2,
-              "attacks": 3,
-              "specialRules": [
-                "AP((1)",
-                "Rending"
-              ],
-              "cost": 10
-            },
             {
               "name": "Heavy Gauss Cannon",
               "attacks": 1,
