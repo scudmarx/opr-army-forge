@@ -1,0 +1,1037 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "name": "Saurians",
+  "version": "2.8",
+  "units": [
+    {
+      "name": "Frog-Mage",
+      "size": 1,
+      "quality": "2+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Energy Pulse",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Tough(3)",
+        "Wizard(2)"
+      ],
+      "upgradeSets": [
+        "A1"
+      ],
+      "cost": 110
+    },
+    {
+      "name": "Saurian Veteran",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 4,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Hero",
+        "Predator",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "B1"
+      ],
+      "cost": 75
+    },
+    {
+      "name": "Gecko Chief",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Hero",
+        "Tough(3)",
+        "Strider"
+      ],
+      "upgradeSets": [
+        "C1"
+      ],
+      "cost": 45
+    },
+    {
+      "name": "Gecko Priest",
+      "size": 1,
+      "quality": "5+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Hero",
+        "Tough(3)",
+        "Strider",
+        "Wizard(1)"
+      ],
+      "upgradeSets": [],
+      "cost": 45
+    },
+    {
+      "name": "Geckos",
+      "size": 5,
+      "quality": "5+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Strider"
+      ],
+      "upgradeSets": [
+        "D1",
+        "E1"
+      ],
+      "cost": 55
+    },
+    {
+      "name": "Chameleons",
+      "size": 5,
+      "quality": "4+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Blowpipes",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": [
+            "Poison"
+          ]
+        },
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Chameleon",
+        "Fearless",
+        "Scout",
+        "Strider"
+      ],
+      "upgradeSets": [],
+      "cost": 135
+    },
+    {
+      "name": "Pterodactyl Riders",
+      "size": 3,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        },
+        {
+          "name": "Claws",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Fearless",
+        "Flying",
+        "Impact(1)",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 135
+    },
+    {
+      "name": "Saurian Warriors",
+      "size": 10,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 2
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Predator"
+      ],
+      "upgradeSets": [
+        "D1",
+        "G1"
+      ],
+      "cost": 175
+    },
+    {
+      "name": "Guardians",
+      "size": 10,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Halberds",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)",
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Predator"
+      ],
+      "upgradeSets": [
+        "D1",
+        "H1"
+      ],
+      "cost": 300
+    },
+    {
+      "name": "Raptor Riders",
+      "size": 5,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 2
+        },
+        {
+          "name": "Claws",
+          "attacks": 2
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Fearless",
+        "Impact(1)",
+        "Predator"
+      ],
+      "upgradeSets": [
+        "D1",
+        "I1"
+      ],
+      "cost": 200
+    },
+    {
+      "name": "Gators",
+      "size": 3,
+      "quality": "4+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Great Weapons",
+          "attacks": 3,
+          "specialRules": [
+            "AP(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Predator",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 185
+    },
+    {
+      "name": "Snake Swarms",
+      "size": 3,
+      "quality": "6+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Swarm Attack",
+          "attacks": 3,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Strider",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 65
+    },
+    {
+      "name": "Dragon Lizard",
+      "size": 1,
+      "quality": "4+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Spit Flames",
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "Claws",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fear",
+        "Fearless",
+        "Strider",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "J1"
+      ],
+      "cost": 105
+    },
+    {
+      "name": "Spiked Lizard",
+      "size": 1,
+      "quality": "4+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Shoot Spikes",
+          "range": 18
+        },
+        {
+          "name": "Claws",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fear",
+        "Fearless",
+        "Strider",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "J1"
+      ],
+      "cost": 105
+    },
+    {
+      "name": "Triceratops",
+      "size": 1,
+      "quality": "4+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "4x Javelins",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)",
+            "Poison"
+          ]
+        },
+        {
+          "name": "Horns",
+          "attacks": 6,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fear",
+        "Fearless",
+        "Tough(6)"
+      ],
+      "upgradeSets": [
+        "A2"
+      ],
+      "cost": 165
+    },
+    {
+      "name": "Spinosaurus",
+      "size": 1,
+      "quality": "4+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Spit Venom",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": [
+            "Blast(3)",
+            "Poison"
+          ]
+        },
+        {
+          "name": "Claws",
+          "attacks": 6,
+          "specialRules": [
+            "AP(1)",
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fear",
+        "Fearless",
+        "Predator",
+        "Tough(6)"
+      ],
+      "upgradeSets": [
+        "B2"
+      ],
+      "cost": 165
+    },
+    {
+      "name": "Ankylosaurus",
+      "size": 1,
+      "quality": "4+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "2x Javelins",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)",
+            "Poison"
+          ]
+        },
+        {
+          "name": "Crew Attacks",
+          "attacks": 2
+        },
+        {
+          "name": "Claws",
+          "attacks": 4,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "Mace Tail",
+          "attacks": 1,
+          "specialRules": [
+            "AP(4)",
+            "Deadly(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fear",
+        "Fearless",
+        "Tough(9)"
+      ],
+      "upgradeSets": [
+        "C2"
+      ],
+      "cost": 230
+    },
+    {
+      "name": "Dread Behemoth",
+      "size": 1,
+      "quality": "3+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Titanic Stomp",
+          "attacks": 12,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "name": "Vicious Jaws",
+          "attacks": 3,
+          "specialRules": [
+            "AP(4)",
+            "Deadly(6)"
+          ]
+        },
+        {
+          "name": "Gigantic Tail",
+          "attacks": 2,
+          "specialRules": [
+            "AP(2)",
+            "Blast(6)",
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Terrifying",
+        "Tough(24)"
+      ],
+      "upgradeSets": [
+        "D2"
+      ],
+      "cost": 830
+    }
+  ],
+  "upgradeSets": [
+    {
+      "id": "A1",
+      "upgrades": [
+        {
+          "text": "Replace Energy Pulse",
+          "type": "replace",
+          "replaceWhat": "Energy Pulse",
+          "options": [
+            {
+              "name": "Energy Blast",
+              "attacks": 1,
+              "specialRules": [
+                "Blast(3)",
+                "AP(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Upgrade Wizard(2)",
+          "type": "upgradeRule",
+          "replaceWhat": "Wizard(2)",
+          "options": [
+            {
+              "name": "Wizard(3)",
+              "specialRules": [
+                "Wizard(3)"
+              ],
+              "cost": 15
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Ancient Palanquin - Fear, Strider, Tough",
+              "specialRules": [
+                "+3"
+              ],
+              "cost": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "Spear",
+              "attacks": 4,
+              "specialRules": [
+                "AP(1)",
+                "Phalanx"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Halberd",
+              "attacks": 4,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 4,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 15
+            },
+            {
+              "name": "Great Weapon",
+              "attacks": 4,
+              "specialRules": [
+                "AP(3)"
+              ],
+              "cost": 15
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Tyrannosaur – Defense +1, Crushing Jaws",
+              "attacks": 4,
+              "specialRules": [
+                "AP(3))",
+                "Fear",
+                "Primal Roar",
+                "Tough(+6"
+              ],
+              "cost": 220
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "Lance",
+              "attacks": 3,
+              "specialRules": [
+                "Impact(1)"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Javelin",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)",
+                "Poison"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Fire Bolas",
+              "attacks": 2,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Blowpipe",
+              "attacks": 1,
+              "range": 18,
+              "specialRules": [
+                "Poison"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Pterodactyl – Claws",
+              "attacks": 3,
+              "specialRules": [
+                "Fast",
+                "Flying",
+                "Impact(1)",
+                "Tough(+3"
+              ],
+              "cost": 55
+            }
+          ]
+        },
+        {
+          "text": "Upgrade Pterodactyl with one",
+          "type": "upgrade",
+          "select": 1,
+          "replaceWhat": "Pterodactyl",
+          "options": [
+            {
+              "name": "Ripper Breed",
+              "specialRules": [
+                "Furious",
+                "Impact(+2)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Rock Bombs",
+              "specialRules": [
+                "Rock Bombs"
+              ],
+              "cost": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Musician",
+              "specialRules": [
+                "Musician"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Battle Standard",
+              "specialRules": [
+                "Battle Standard"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "upgrades": [
+        {
+          "text": "Upgrade all models with one",
+          "type": "upgrade",
+          "affects": "all",
+          "select": 1,
+          "options": [
+            {
+              "name": "Blowpipes",
+              "attacks": 1,
+              "range": 18,
+              "specialRules": [
+                "Poison"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Upgrade all models with any",
+          "type": "upgrade",
+          "affects": "all",
+          "select": "any",
+          "options": [
+            {
+              "name": "Jungle Toxins",
+              "specialRules": [
+                "Poison in melee"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Camouflage Paint",
+              "specialRules": [
+                "Stealth"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": []
+        },
+        {
+          "text": "Upgrade all models with",
+          "type": "upgrade",
+          "affects": "all",
+          "options": [
+            {
+              "name": "Fire Bolas",
+              "attacks": 2,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Upgrade all models with one",
+          "type": "upgrade",
+          "affects": "all",
+          "select": 1,
+          "options": [
+            {
+              "name": "Ripper Breed",
+              "specialRules": [
+                "Furious",
+                "Impact(+2)"
+              ],
+              "cost": 25
+            },
+            {
+              "name": "Rock Bombs",
+              "specialRules": [
+                "Rock Bombs"
+              ],
+              "cost": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": [
+            {
+              "name": "Spears",
+              "attacks": 2,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 30
+            },
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 2,
+              "cost": 35
+            },
+            {
+              "name": "Great Weapons",
+              "attacks": 2,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1",
+      "upgrades": [
+        {
+          "text": "Replace all Halberds",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Halberds",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "I1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "J1",
+      "upgrades": [
+        {
+          "text": "Upgrade with up to three",
+          "type": "upgrade",
+          "select": 3,
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "upgrades": [
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Bladed Horns",
+              "specialRules": [
+                "AP(+2) in melee)"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "2x Giant Blowpipes",
+              "attacks": 3,
+              "range": 18,
+              "specialRules": [
+                "Poison"
+              ],
+              "cost": 15
+            },
+            {
+              "name": "Giant Crossbow",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(2)",
+                "Deadly(3)"
+              ],
+              "cost": 20
+            },
+            {
+              "name": "Altar of the Gods",
+              "specialRules": [
+                "Altar of the Gods"
+              ],
+              "cost": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "upgrades": [
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Priest Rider",
+              "specialRules": [
+                "Wizard(1)"
+              ],
+              "cost": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "upgrades": [
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Solar Beam",
+              "attacks": 6,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "upgrades": [
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Bull Charge",
+              "specialRules": [
+                "Impact(12)"
+              ],
+              "cost": 35
+            },
+            {
+              "name": "Transport(21)",
+              "specialRules": [
+                "Transport(21)"
+              ],
+              "cost": 40
+            },
+            {
+              "name": "4x Stomp",
+              "attacks": 6,
+              "range": 6,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 50
+            },
+            {
+              "name": "Saurian Ancient",
+              "specialRules": [
+                "Saurian Ancient"
+              ],
+              "cost": 120
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
