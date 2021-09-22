@@ -1,0 +1,751 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "name": "Duchies of Vinci",
+  "version": "2.3",
+  "units": [
+    {
+      "name": "Guard Captain",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1"
+      ],
+      "cost": 40
+    },
+    {
+      "name": "Master Assassin",
+      "size": 1,
+      "quality": "3+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "2x Armblades",
+          "attacks": 2
+        }
+      ],
+      "specialRules": [
+        "Ambush",
+        "Hero",
+        "Stealth",
+        "Strider",
+        "Takedown",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "B1"
+      ],
+      "cost": 75
+    },
+    {
+      "name": "Inventor",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Good Shot",
+        "Hero",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "C1"
+      ],
+      "cost": 25
+    },
+    {
+      "name": "Alchemist",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Tough(3)",
+        "Wizard(1)"
+      ],
+      "upgradeSets": [
+        "D1"
+      ],
+      "cost": 45
+    },
+    {
+      "name": "Militia",
+      "size": 3,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "E1",
+        "F1"
+      ],
+      "cost": 25
+    },
+    {
+      "name": "Harlequin",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Good Shot",
+        "Trickster"
+      ],
+      "upgradeSets": [
+        "G1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Assassin",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "2x Armblades",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Ambush",
+        "Stealth"
+      ],
+      "upgradeSets": [
+        "H1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "City Guard",
+      "size": 1,
+      "quality": "5+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Crossbow",
+          "attacks": 1,
+          "range": 30,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Good Shot"
+      ],
+      "upgradeSets": [
+        "I1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Automa Guard",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Handbow",
+          "attacks": 2,
+          "range": 12,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Automa"
+      ],
+      "upgradeSets": [
+        "J1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Scout",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Handbow",
+          "attacks": 2,
+          "range": 12,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Good Shot",
+        "Scout",
+        "Signal Flare"
+      ],
+      "upgradeSets": [
+        "K1"
+      ],
+      "cost": 30
+    },
+    {
+      "name": "Automa Drone",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Twin Sawblades",
+          "attacks": 4,
+          "specialRules": [
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Automa",
+        "Good Shot",
+        "Flying"
+      ],
+      "upgradeSets": [
+        "L1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Aerea Guard",
+      "size": 1,
+      "quality": "5+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Crossbow",
+          "attacks": 1,
+          "range": 30,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Flying",
+        "Good Shot",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "I1",
+        "M1"
+      ],
+      "cost": 40
+    },
+    {
+      "name": "Sniper",
+      "size": 1,
+      "quality": "5+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Snipebow",
+          "attacks": 1,
+          "range": 36,
+          "specialRules": [
+            "Rending",
+            "Sniper"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "N1"
+      ],
+      "cost": 25
+    },
+    {
+      "name": "Automa Brute",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Heavy Handbow",
+          "attacks": 4,
+          "range": 18,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "name": "Brute Lances",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Automa",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "O1"
+      ],
+      "cost": 75
+    },
+    {
+      "name": "Automa Cavalry",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Lance",
+          "attacks": 2,
+          "specialRules": [
+            "Impact(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Impact(1)"
+      ],
+      "upgradeSets": [
+        "J1",
+        "P1"
+      ],
+      "cost": 25
+    }
+  ],
+  "upgradeSets": [
+    {
+      "id": "A1",
+      "upgrades": [
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Crossbow",
+              "attacks": 1,
+              "range": 30,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Captain",
+              "specialRules": [
+                "Captain"
+              ],
+              "cost": 15
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Automa Pigeon",
+              "attacks": 2,
+              "range": 24,
+              "specialRules": [
+                "AP(1)",
+                "Rending",
+                "Indirect"
+              ],
+              "cost": 15
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": []
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Automa Horse - Fast, Impact",
+              "specialRules": [
+                "1"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "upgrades": [
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Tofana Venom",
+              "specialRules": [
+                "Poison in Melee"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Arsenico Oils",
+              "specialRules": [
+                "Deadly(3) in Melee"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "upgrades": [
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Sleeve Gun",
+              "attacks": 3,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Automa Helper",
+              "specialRules": [
+                "Repair"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Automa Horse - Fast, Impact",
+              "specialRules": [
+                "1"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "upgrades": [
+        {
+          "text": "Upgrade Wizard(1)",
+          "type": "upgradeRule",
+          "replaceWhat": "Wizard(1)",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Musician",
+              "specialRules": [
+                "Musician"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Battle Standard",
+              "specialRules": [
+                "Battle Standard"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": [
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 1,
+              "cost": 5
+            },
+            {
+              "name": "Great Weapons",
+              "attacks": 1,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Spears",
+              "attacks": 1,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "H1",
+      "upgrades": [
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Throwing Knives",
+              "attacks": 1,
+              "range": 12,
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I1",
+      "upgrades": [
+        {
+          "text": "Replace Crossbow",
+          "type": "replace",
+          "replaceWhat": "Crossbow",
+          "options": []
+        },
+        {
+          "text": "Upgrade Crossbows with one",
+          "type": "upgrade",
+          "select": 1,
+          "replaceWhat": "Crossbows",
+          "options": [
+            {
+              "name": "Toxin Bolts",
+              "specialRules": [
+                "Poison"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Dual Bolts",
+              "specialRules": [
+                "+1A"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Flame Bolts",
+              "specialRules": [
+                "AP(+2)"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "J1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "K1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        },
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Shock Attacks",
+              "specialRules": [
+                "Impact(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "L1",
+      "upgrades": [
+        {
+          "text": "Replace Twin Sawblades",
+          "type": "replace",
+          "replaceWhat": "Twin Sawblades",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "M1",
+      "upgrades": [
+        {
+          "text": "Replace Crossbow and Hand Weapon",
+          "type": "replace",
+          "replaceWhat": [
+            "Crossbow",
+            "Hand Weapon"
+          ],
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "N1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "O1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        }
+      ]
+    },
+    {
+      "id": "P1",
+      "upgrades": [
+        {
+          "text": "Replace Lance",
+          "type": "replace",
+          "replaceWhat": "Lance",
+          "options": []
+        }
+      ]
+    }
+  ]
+}
