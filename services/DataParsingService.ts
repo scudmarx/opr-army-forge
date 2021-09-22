@@ -146,7 +146,7 @@ export default class DataParsingService {
 
         for (let line of units.split("\n").filter((l) => !!l)) {
             const parsedUnit =
-                /^(.+)\[(\d+)\]\s(\d+\+)\s(\d+\+)\s(.*?\)\s|-)(.+?)((?:[A-Z],?\s?|-\s?)+)(\d+)pt/gm.exec(
+                /^(.+)\[(\d+)\]\s(\d+\+|-)\s(\d+\+|-)\s(.*?\)\s|-)(.+?)((?:[A-Z],?\s?|-\s?)+)(\d+)pt/gm.exec(
                     line
                 );
 
