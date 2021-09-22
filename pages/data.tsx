@@ -10,6 +10,8 @@ export default function Data() {
     const [units, setUnits] = useState("");
     const [units2, setUnits2] = useState("");
     const [units3, setUnits3] = useState("");
+    const [units4, setUnits4] = useState("");
+    const [units5, setUnits5] = useState("");
     const [upgrades, setUpgrades] = useState("");
 
 
@@ -32,6 +34,8 @@ export default function Data() {
             const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units), 1);
             const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2), 2);
             const parsedUnits3: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units3), 3);
+            const parsedUnits4: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units4), 4);
+            const parsedUnits5: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units5), 5);
             const parsedUpgrades = DataParsingService.parseUpgrades(upgrades);
 
             //parseUnits(units);
@@ -39,7 +43,11 @@ export default function Data() {
                 "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
                 name,
                 version,
-                units: parsedUnits.concat(parsedUnits2).concat(parsedUnits3),
+                units: parsedUnits
+                    .concat(parsedUnits2)
+                    .concat(parsedUnits3)
+                    .concat(parsedUnits4)
+                    .concat(parsedUnits5),
                 upgradeSets: parsedUpgrades
             }, null, 2));
         }
@@ -60,6 +68,10 @@ export default function Data() {
             setUnits2(finalText);
         if (upgradeGroupIndex === 3)
             setUnits3(finalText);
+        if (upgradeGroupIndex === 4)
+            setUnits4(finalText);
+        if (upgradeGroupIndex === 5)
+            setUnits5(finalText);
     };
 
     const processUpgrades = (text: string) => {
@@ -68,7 +80,7 @@ export default function Data() {
             .replace(/Free$/gm, '+0pts')
             .replace(/(?<!:|\swith)\n+/gm, ' ')
             .replace(/(\d+)pts?/gm, '$1pts\n')
-            // .replace(/(\swith:?|:)\s?/gm, '$1\n');
+        // .replace(/(\swith:?|:)\s?/gm, '$1\n');
         setUpgrades(fixedText.replace(/^\s+/gm, ''));
     };
 
@@ -87,6 +99,10 @@ export default function Data() {
                     <textarea className="textarea" value={units2} onChange={(e) => processUnits(e.target.value, 2)} rows={15}></textarea>
                     <label>Units - Page 3</label>
                     <textarea className="textarea" value={units3} onChange={(e) => processUnits(e.target.value, 3)} rows={15}></textarea>
+                    <label>Units - Page 4</label>
+                    <textarea className="textarea" value={units3} onChange={(e) => processUnits(e.target.value, 4)} rows={15}></textarea>
+                    <label>Units - Page 5</label>
+                    <textarea className="textarea" value={units3} onChange={(e) => processUnits(e.target.value, 5)} rows={15}></textarea>
                 </div>
                 <div className="column">
                     <p className="mb-2">Copy &amp; paste upgrade tables (only, no rules/spells) from pdf page by page.</p>
