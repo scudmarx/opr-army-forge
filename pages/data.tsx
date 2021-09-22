@@ -77,9 +77,12 @@ export default function Data() {
     const processUpgrades = (text: string) => {
         const fixedText = text
             .replace("–", "-") // Replace dash with hyphen!
-            .replace(/Free$/gm, '+0pts')
-            .replace(/(?<!:|\swith)\n+/gm, ' ')
-            .replace(/(\d+)pts?/gm, '$1pts\n')
+            .replace(/\n+/gm, ' ') // Remove _all_ line breaks (flatten to one line) and replace with single space
+            .replace(/Free /gm, '+0pts ') // Replace "Free" with "0pts" so that it hits the next condition...
+            .replace(/(\d+)pts?/gm, '$1pts\n') // ...Add a line break after every "pts" 
+            .replace(/((Upgrade|Replace)(.+?)with (one|all|any|up to \d+|\d+)?:?)/gm, '$1\n') // Add line break to upgrade lines that might not have a colon
+            .replace(/: /gm, ':\n') // Add line break after every colon that wasn't replaced in the previous case (upgrade text lines)
+            
         // .replace(/(\swith:?|:)\s?/gm, '$1\n');
         setUpgrades(fixedText.replace(/^\s+/gm, ''));
     };
