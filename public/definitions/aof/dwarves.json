@@ -640,11 +640,6 @@
           "replaceWhat": "Hand Weapon",
           "options": [
             {
-              "name": "2x Hand Weapons",
-              "attacks": 3,
-              "cost": 5
-            },
-            {
               "name": "Halberd",
               "attacks": 3,
               "specialRules": [
@@ -680,15 +675,6 @@
           "type": "upgrade",
           "select": 1,
           "options": [
-            {
-              "name": "Pistol",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
             {
               "name": "2x Pistols",
               "attacks": 1,
@@ -726,28 +712,13 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": [
-            {
-              "name": "Grudge",
-              "specialRules": [
-                "Grudge"
-              ],
-              "cost": 30
-            }
-          ]
+          "options": []
         },
         {
           "text": "Mount on",
           "type": "upgrade",
           "select": 1,
           "options": [
-            {
-              "name": "Beast - Claws",
-              "attacks": 1,
-              "specialRules": [
-                "Impact(1"
-              ]
-            },
             {
               "name": "Ancestral Stone - Tough",
               "specialRules": [
@@ -756,7 +727,7 @@
               "cost": 70
             },
             {
-              "name": "Shield Carriers â€“ Hand Weapons",
+              "name": "Shield Carriers – Hand Weapons",
               "attacks": 4,
               "specialRules": [
                 "Tough(+3"
@@ -764,7 +735,7 @@
               "cost": 80
             },
             {
-              "name": "Great War-Bear â€“ Claws",
+              "name": "Great War-Bear – Claws",
               "attacks": 3,
               "specialRules": [
                 "AP(1))",
@@ -785,30 +756,13 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": [
-            {
-              "name": "Ballistic Master",
-              "specialRules": [
-                "Ballistic Master"
-              ],
-              "cost": 45
-            }
-          ]
+          "options": []
         },
         {
           "text": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
-            {
-              "name": "Flame-Rifle",
-              "attacks": 6,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 20
-            },
             {
               "name": "Organ-Rifle",
               "attacks": 12,
@@ -826,15 +780,7 @@
           "text": "Upgrade Wizard(1)",
           "type": "upgradeRule",
           "replaceWhat": "Wizard(1)",
-          "options": [
-            {
-              "name": "Wizard(2)",
-              "specialRules": [
-                "Wizard(2)"
-              ],
-              "cost": 15
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -845,13 +791,6 @@
           "text": "Upgrade with",
           "type": "upgrade",
           "options": [
-            {
-              "name": "Sergeant",
-              "specialRules": [
-                "Sergeant"
-              ],
-              "cost": 5
-            },
             {
               "name": "Musician",
               "specialRules": [
@@ -880,14 +819,6 @@
           "replaceWhat": "Hand Weapons",
           "options": [
             {
-              "name": "Halberds",
-              "attacks": 1,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 10
-            },
-            {
               "name": "2x Hand Weapons",
               "attacks": 1,
               "cost": 15
@@ -909,7 +840,7 @@
               "cost": 30
             },
             {
-              "name": "Shrapnel Bombs",
+              "name": "H Upgrade any model with Shrapnel Bombs",
               "attacks": 1,
               "range": 6,
               "specialRules": [
@@ -925,17 +856,7 @@
           "type": "replace",
           "affects": 1,
           "replaceWhat": "Great Weapon",
-          "options": [
-            {
-              "name": "Mining Drill",
-              "attacks": 1,
-              "specialRules": [
-                "AP(3)",
-                "Drill"
-              ],
-              "cost": 30
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -948,14 +869,6 @@
           "affects": "all",
           "replaceWhat": "Hand Weapons",
           "options": [
-            {
-              "name": "Halberds",
-              "attacks": 1,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 10
-            },
             {
               "name": "2x Hand Weapons",
               "attacks": 1,
@@ -991,16 +904,6 @@
           "select": "any",
           "options": [
             {
-              "name": "Shrapnel Bombs",
-              "attacks": 1,
-              "range": 6,
-              "specialRules": [
-                "AP(1)",
-                "Blast(3)"
-              ],
-              "cost": 5
-            },
-            {
               "name": "2x Fire Pistols",
               "attacks": 1,
               "range": 12,
@@ -1020,17 +923,7 @@
           "text": "Upgrade any model with",
           "type": "upgrade",
           "affects": "any",
-          "options": [
-            {
-              "name": "Steam-Gun",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -1042,34 +935,14 @@
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Rifles",
-          "options": [
-            {
-              "name": "Crossbows",
-              "attacks": 1,
-              "range": 30,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 5
-            }
-          ]
+          "options": []
         },
         {
           "text": "Replace one Rifle",
           "type": "replace",
           "affects": 1,
           "replaceWhat": "Rifle",
-          "options": [
-            {
-              "name": "2x Pistols",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 0
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -1080,17 +953,7 @@
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": [
-            {
-              "name": "Throwing Axes",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 10
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -1101,18 +964,7 @@
           "text": "Upgrade one model with",
           "type": "upgrade",
           "affects": 1,
-          "options": [
-            {
-              "name": "Shrapnel Bombs",
-              "attacks": 1,
-              "range": 6,
-              "specialRules": [
-                "AP(1)",
-                "Blast(3)"
-              ],
-              "cost": 5
-            }
-          ]
+          "options": []
         },
         {
           "text": "Replace one Fire Rifle",
@@ -1120,15 +972,6 @@
           "affects": 1,
           "replaceWhat": "Fire Rifle",
           "options": [
-            {
-              "name": "2x Fire Pistols",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 5
-            },
             {
               "name": "Torpedo Rifle",
               "attacks": 1,
@@ -1151,17 +994,7 @@
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Hand Weapons",
-          "options": [
-            {
-              "name": "Axe-Halberds",
-              "attacks": 1,
-              "specialRules": [
-                "AP(1)",
-                "Rending"
-              ],
-              "cost": 10
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -1173,13 +1006,6 @@
           "type": "upgrade",
           "select": "any",
           "options": [
-            {
-              "name": "Scout",
-              "specialRules": [
-                "Scout"
-              ],
-              "cost": 10
-            },
             {
               "name": "Attack Bomb",
               "specialRules": [
@@ -1214,33 +1040,13 @@
           "text": "Replace Hand Weapon",
           "type": "replace",
           "replaceWhat": "Hand Weapon",
-          "options": [
-            {
-              "name": "Great Weapon",
-              "attacks": 4,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 10
-            }
-          ]
+          "options": []
         },
         {
           "text": "Upgrade with up to two",
           "type": "upgrade",
           "select": 2,
-          "options": [
-            {
-              "name": "Heavy Steam-Gun",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(2)",
-                "Blast(3)"
-              ],
-              "cost": 25
-            }
-          ]
+          "options": []
         }
       ]
     }
