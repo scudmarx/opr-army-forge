@@ -1,0 +1,1169 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "name": "Human Defense Force",
+  "version": "2.13",
+  "units": [
+    {
+      "name": "Commander",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifle",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCW",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Commander",
+        "Hero",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1"
+      ],
+      "cost": 50
+    },
+    {
+      "name": "Storm Troopers Commander",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Heavy Rifle",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "CCW",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Ambush",
+        "Commander",
+        "Hero",
+        "Tough(3)",
+        "Strider"
+      ],
+      "upgradeSets": [
+        "B1"
+      ],
+      "cost": 65
+    },
+    {
+      "name": "Executioner",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifle",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCW",
+          "attacks": 2
+        }
+      ],
+      "specialRules": [
+        "Executioner",
+        "Hero",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1"
+      ],
+      "cost": 35
+    },
+    {
+      "name": "Drill Sergeant",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifle",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCW",
+          "attacks": 2
+        }
+      ],
+      "specialRules": [
+        "Battle Drills",
+        "Hero",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1"
+      ],
+      "cost": 35
+    },
+    {
+      "name": "Psychic",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifle",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCW",
+          "attacks": 2
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Psychic(1)",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1",
+        "C1"
+      ],
+      "cost": 45
+    },
+    {
+      "name": "Conscripts",
+      "size": 5,
+      "quality": "6+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifles",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCWs",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [],
+      "cost": 40
+    },
+    {
+      "name": "Infantry Squad",
+      "size": 3,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifles",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCWs",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "A1",
+        "D1",
+        "E1"
+      ],
+      "cost": 35
+    },
+    {
+      "name": "Weapons Team",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Heavy Machinegun",
+          "attacks": 3,
+          "range": 36,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "CCW",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 40
+    },
+    {
+      "name": "Special Weapons",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifle",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCW",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Relentless"
+      ],
+      "upgradeSets": [
+        "A1",
+        "G1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Veteran",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Assault Rifle",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "CCW",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "A1",
+        "D1",
+        "H1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Storm Trooper",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Heavy Rifle",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "CCW",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Ambush",
+        "Strider"
+      ],
+      "upgradeSets": [
+        "B1",
+        "D1",
+        "I1"
+      ],
+      "cost": 25
+    },
+    {
+      "name": "Cavalry",
+      "size": 1,
+      "quality": "5+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Pistol",
+          "attacks": 1,
+          "range": 12
+        },
+        {
+          "name": "CCW",
+          "attacks": 2
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Impact(1)"
+      ],
+      "upgradeSets": [
+        "J1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Sniper",
+      "size": 1,
+      "quality": "6+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Sniper Rifle",
+          "attacks": 1,
+          "range": 36,
+          "specialRules": [
+            "AP(1)",
+            "Sniper"
+          ]
+        },
+        {
+          "name": "CCW",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Scout",
+        "Stealth"
+      ],
+      "upgradeSets": [],
+      "cost": 25
+    },
+    {
+      "name": "Ogre",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Heavy SMG",
+          "attacks": 2,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "CCW",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Furious",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "K1"
+      ],
+      "cost": 55
+    }
+  ],
+  "upgradeSets": [
+    {
+      "id": "A1",
+      "upgrades": [
+        {
+          "text": "Replace one Assault Rifle and CCW",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Assault Rifle",
+            "CCW"
+          ],
+          "options": [
+            {
+              "type": "combined",
+              "cost": 0,
+              "equipment": [
+                {
+                  "name": "Pistol",
+                  "attacks": 1,
+                  "range": 12
+                },
+                {
+                  "name": "CCW",
+                  "attacks": 2
+                }
+              ]
+            },
+            {
+              "type": "combined",
+              "cost": 5,
+              "equipment": [
+                {
+                  "name": "Plasma Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "specialRules": [
+                    "AP(2)"
+                  ]
+                },
+                {
+                  "name": "CCW",
+                  "attacks": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Replace one CCW",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": "CCW",
+          "options": [
+            {
+              "name": "Energy Sword",
+              "attacks": 2,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Energy Fist",
+              "attacks": 2,
+              "specialRules": [
+                "AP(3)"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "upgrades": [
+        {
+          "text": "Replace Heavy Rifle and CCW",
+          "type": "replace",
+          "replaceWhat": [
+            "Heavy Rifle",
+            "CCW"
+          ],
+          "options": [
+            {
+              "type": "combined",
+              "cost": 0,
+              "equipment": [
+                {
+                  "name": "Heavy Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "specialRules": [
+                    "AP()1"
+                  ]
+                },
+                {
+                  "name": "CCW",
+                  "attacks": 2
+                }
+              ]
+            },
+            {
+              "type": "combined",
+              "cost": 5,
+              "equipment": [
+                {
+                  "name": "Plasma Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "specialRules": [
+                    "AP(2)"
+                  ]
+                },
+                {
+                  "name": "CCW",
+                  "attacks": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Replace CCW",
+          "type": "replace",
+          "replaceWhat": "CCW",
+          "options": [
+            {
+              "name": "Energy Sword",
+              "attacks": 2,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Energy Fist",
+              "attacks": 2,
+              "specialRules": [
+                "AP(3)"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "upgrades": [
+        {
+          "text": "Upgrade Psychic(1)",
+          "type": "upgradeRule",
+          "replaceWhat": "Psychic(1)",
+          "options": [
+            {
+              "name": "Psychic(2)",
+              "specialRules": [
+                "Psychic(2)"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "upgrades": [
+        {
+          "text": "Upgrade one model with one",
+          "type": "upgrade",
+          "affects": 1,
+          "select": 1,
+          "options": [
+            {
+              "name": "Field Radio",
+              "specialRules": [
+                "Field Radio"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Company Standard",
+              "specialRules": [
+                "Company Standard"
+              ],
+              "cost": 35
+            },
+            {
+              "name": "Medical Training",
+              "specialRules": [
+                "Medical Training"
+              ],
+              "cost": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "upgrades": [
+        {
+          "text": "Replace one Assault Rifle",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": "Assault Rifle",
+          "options": [
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 5
+            },
+            {
+              "name": "Shred Rifle",
+              "attacks": 2,
+              "range": 18,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Plasma Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Grenade Launcher-pick one to fire",
+          "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "Blast(3)) AT (24”",
+                "AP(1)",
+                "Deadly(3)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Fusion Rifle",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Sniper Rifle",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(1)",
+                "Sniper"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "upgrades": [
+        {
+          "text": "Replace Heavy Machinegun",
+          "type": "replace",
+          "replaceWhat": "Heavy Machinegun",
+          "options": []
+        },
+        {
+          "text": "Missile Launcher – pick one to fire",
+          "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 48,
+              "specialRules": [
+                "Blast(3)) AT (48”",
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Mortar",
+              "attacks": 1,
+              "range": 48,
+              "specialRules": [
+                "Blast(3)",
+                "Indirect"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Autocannon",
+              "attacks": 2,
+              "range": 48,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Laser Cannon",
+              "attacks": 1,
+              "range": 48,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(3)"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "upgrades": [
+        {
+          "text": "Replace Assault Rifle",
+          "type": "replace",
+          "replaceWhat": "Assault Rifle",
+          "options": [
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 10
+            },
+            {
+              "name": "Shred Rifle",
+              "attacks": 2,
+              "range": 18,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Plasma Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Grenade Launcher–pick one to fire",
+          "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "Blast(3)) AT (24”",
+                "AP(1)",
+                "Deadly(3)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Fusion Rifle",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1",
+      "upgrades": [
+        {
+          "text": "Replace Assault Rifle",
+          "type": "replace",
+          "replaceWhat": "Assault Rifle",
+          "options": [
+            {
+              "name": "Shotgun",
+              "attacks": 2,
+              "range": 12,
+              "cost": 0
+            },
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 5
+            },
+            {
+              "name": "Shred Rifle",
+              "attacks": 2,
+              "range": 18,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Plasma Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Grenade Launcher–pick one to fire",
+          "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "Blast(3)) AT (24”",
+                "AP(1)",
+                "Deadly(3)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Heavy Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Fusion Rifle",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 15
+            },
+            {
+              "name": "Sniper Rifle",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(1)",
+                "Sniper"
+              ],
+              "cost": 15
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Demo Expert",
+              "specialRules": [
+                "Rending in melee"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Grenadier",
+              "specialRules": [
+                "Defense +1"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Camo Cloak",
+              "specialRules": [
+                "Stealth"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Forward Sentry",
+              "specialRules": [
+                "Scout"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I1",
+      "upgrades": [
+        {
+          "text": "Replace Heavy Rifle",
+          "type": "replace",
+          "replaceWhat": "Heavy Rifle",
+          "options": [
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 5
+            },
+            {
+              "name": "Shred Rifle",
+              "attacks": 2,
+              "range": 18,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Plasma Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Grenade Launcher–pick one to fire",
+          "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "Blast(3)) AT (24”",
+                "AP(1)",
+                "Deadly(3)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Heavy Volley Gun",
+              "attacks": 3,
+              "range": 24,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Fusion Rifle",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 15
+            },
+            {
+              "name": "Sniper Rifle",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(1)",
+                "Sniper"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "J1",
+      "upgrades": [
+        {
+          "text": "Replace CCW",
+          "type": "replace",
+          "replaceWhat": "CCW",
+          "options": [
+            {
+              "name": "Energy Lance",
+              "attacks": 2,
+              "specialRules": [
+                "AP(1)",
+                "Impact(1)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Energy Sword",
+              "attacks": 2,
+              "specialRules": [
+                "AP((1)",
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Energy Fist",
+              "attacks": 2,
+              "specialRules": [
+                "AP(3)"
+              ],
+              "cost": 10
+            }
+          ]
+        },
+        {
+          "text": "Replace Pistol",
+          "type": "replace",
+          "replaceWhat": "Pistol",
+          "options": [
+            {
+              "name": "Plasma Pistol",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace Pistol and CCW",
+          "type": "replace",
+          "replaceWhat": [
+            "Pistol",
+            "CCW"
+          ],
+          "options": [
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 5
+            },
+            {
+              "name": "Shred Rifle",
+              "attacks": 2,
+              "range": 18,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Plasma Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Grenade Launcher–pick one to fire",
+          "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "Blast(3)) AT (24”",
+                "AP(1)",
+                "Deadly(3)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Fusion Rifle",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K1",
+      "upgrades": [
+        {
+          "text": "Replace Heavy SMG",
+          "type": "replace",
+          "replaceWhat": "Heavy SMG",
+          "options": []
+        },
+        {
+          "text": "Mini GL – pick one to fire",
+          "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "Blast(3)) AT (12”",
+                "AP(1)",
+                "Deadly(3)"
+              ],
+              "cost": 0
+            },
+            {
+              "name": "Heavy Baton",
+              "attacks": 3,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace CCW",
+          "type": "replace",
+          "replaceWhat": "CCW",
+          "options": [
+            {
+              "type": "combined",
+              "cost": 0,
+              "equipment": [
+                {
+                  "name": "Light Shield",
+                  "specialRules": [
+                    "Defense +1 in melee"
+                  ]
+                },
+                {
+                  "name": "Shield Bash",
+                  "attacks": 2
+                }
+              ]
+            },
+            {
+              "type": "combined",
+              "cost": 5,
+              "equipment": [
+                {
+                  "name": "Heavy Shield",
+                  "specialRules": [
+                    "Defense +1"
+                  ]
+                },
+                {
+                  "name": "Shield Bash",
+                  "attacks": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
