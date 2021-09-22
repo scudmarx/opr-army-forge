@@ -6,7 +6,8 @@ import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
 import RemoveIcon from '@mui/icons-material/Clear';
 import { selectUnit, removeUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
-import { IconButton, Paper } from "@mui/material";
+import { Button, IconButton, Paper } from "@mui/material";
+import { useRouter } from "next/router";
 
 export function MainList({ onSelected }) {
 
@@ -14,6 +15,7 @@ export function MainList({ onSelected }) {
   const army = useSelector((state: RootState) => state.army.data);
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const totalPointCost = list
     .units
@@ -31,6 +33,8 @@ export function MainList({ onSelected }) {
   };
 
   return (
+    <>
+    <Button onClick={() => router.push("/cards")}>View Cards</Button>
     <ul>
       {
         // For each selected unit
@@ -56,5 +60,6 @@ export function MainList({ onSelected }) {
         ))
       }
     </ul>
+    </>
   );
 }

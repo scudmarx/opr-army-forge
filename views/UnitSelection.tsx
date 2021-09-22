@@ -4,7 +4,7 @@ import { RootState } from '../data/store';
 import { addUnit } from '../data/listSlice';
 import { groupBy } from "../services/Helpers";
 import { Fragment, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, IconButton, Chip, Modal, Paper, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import EquipmentService from "../services/EquipmentService";
 
@@ -15,6 +15,7 @@ export function UnitSelection({ onSelected }) {
   const army = armyData.data;
   const dispatch = useDispatch();
   const [expandedId, setExpandedId] = useState(null);
+  const [ruleModalOpen, setRuleModalOpen] = useState(false);
 
   // If army has not been selected yet, show nothing
   if (!armyData.loaded)
@@ -63,12 +64,16 @@ export function UnitSelection({ onSelected }) {
                       </div>
                     </AccordionSummary>
                     <AccordionDetails style={{ flexDirection: "column" }}>
-                      <div className="mb-2">{(u.specialRules || []).join(", ")}</div>
-                      <div>
+                      <div className="mb-2">
+
                         {u.equipment.map((eqp, i) => (
                           <span key={i}>
                             {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
                           </span>
+                        ))}</div>
+                      <div>
+                        {(u.specialRules || []).map((rule, i) => (
+                          <Chip key={i} label={rule} className="mr-1 mt-1" onClick={() => setRuleModalOpen(true)} />
                         ))}
                       </div>
                     </AccordionDetails>
@@ -79,6 +84,21 @@ export function UnitSelection({ onSelected }) {
           </Fragment>
         ))
       }
+      <Modal
+        open={ruleModalOpen}
+        onClose={() => setRuleModalOpen(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Paper className="p-4 m-4">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Tough(3)
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Paper>
+      </Modal>
     </aside >
   );
 }

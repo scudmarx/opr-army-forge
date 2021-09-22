@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material';
+import { Chip, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
@@ -32,7 +32,9 @@ export function Upgrades() {
             {specialRules?.length && <Paper square elevation={0}>
                 <div className="p-4 mb-4">
                     <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
-                    {specialRules.join(", ")}
+                    {specialRules.map((rule, i) => (
+                        <Chip key={i} label={rule} className="mr-1 mt-1" />
+                    ))}
                 </div>
             </Paper>}
             {(selectedUnit.upgradeSets || [])
