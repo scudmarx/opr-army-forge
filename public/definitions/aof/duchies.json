@@ -30,8 +30,7 @@
       "defense": "4+",
       "equipment": [
         {
-          "name": "Armblades",
-          "count": 2,
+          "name": "2x Armblades",
           "attacks": 2
         }
       ],
@@ -140,8 +139,7 @@
       "defense": "5+",
       "equipment": [
         {
-          "name": "Armblades",
-          "count": 2,
+          "name": "2x Armblades",
           "attacks": 1
         }
       ],
@@ -414,8 +412,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Crossbows",
-          "count": 3,
+          "name": "3x Crossbows",
           "attacks": 1,
           "range": 30,
           "specialRules": [
@@ -608,8 +605,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Light Cannons",
-          "count": 8,
+          "name": "8x Light Cannons",
           "attacks": 1,
           "range": 18,
           "specialRules": [
@@ -926,8 +922,7 @@
               "cost": 5
             },
             {
-              "name": "Hand Weapons",
-              "count": 2,
+              "name": "2x Hand Weapons",
               "attacks": 1,
               "cost": 5
             },
@@ -1153,8 +1148,7 @@
           ],
           "options": [
             {
-              "name": "Claw Gauntlets",
-              "count": 2,
+              "name": "2x Claw Gauntlets",
               "attacks": 3,
               "specialRules": [
                 "AP(1)"
@@ -1258,13 +1252,6 @@
           "select": "any",
           "options": [
             {
-              "name": "Scout",
-              "specialRules": [
-                "Scout"
-              ],
-              "cost": 10
-            },
-            {
               "name": "Drop Bombs",
               "specialRules": [
                 "Drop Bombs"
@@ -1282,32 +1269,12 @@
           "text": "Replace Repeater Crossbow",
           "type": "replace",
           "replaceWhat": "Repeater Crossbow",
-          "options": [
-            {
-              "name": "Light Mortar",
-              "attacks": 1,
-              "range": 30,
-              "specialRules": [
-                "AP(2)",
-                "Blast(3)",
-                "Indirect"
-              ],
-              "cost": 10
-            }
-          ]
+          "options": []
         },
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": [
-            {
-              "name": "Armored Carrier",
-              "specialRules": [
-                "Transport(11)"
-              ],
-              "cost": 20
-            }
-          ]
+          "options": []
         }
       ]
     },
@@ -1319,13 +1286,6 @@
           "type": "upgrade",
           "select": "any",
           "options": [
-            {
-              "name": "Heavy Plow",
-              "specialRules": [
-                "Impact(+3"
-              ],
-              "cost": 10
-            },
             {
               "name": "Heavy Repeater Crossbow",
               "attacks": 6,
@@ -1365,17 +1325,7 @@
           "select": "any",
           "options": [
             {
-              "name": "Mouth Cannon",
-              "attacks": 2,
-              "range": 12,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 10
-            },
-            {
-              "name": "Belly Cannons",
-              "count": 4,
+              "name": "4x Belly Cannons",
               "attacks": 1,
               "range": 12,
               "specialRules": [
@@ -1385,8 +1335,7 @@
               "cost": 50
             },
             {
-              "name": "Shoulder Cannons",
-              "count": 2,
+              "name": "2x Shoulder Cannons",
               "attacks": 1,
               "range": 48,
               "specialRules": [
