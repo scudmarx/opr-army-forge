@@ -1,9 +1,6 @@
-import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
-import { IEquipment, ISelectedUnit, IUpgrade } from '../../data/interfaces';
-import { applyUpgrade } from '../../data/listSlice';
+import { Paper } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
-import UpgradeService from '../../services/UpgradeService';
 import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
 import UnitEquipmentTable from '../UnitEquipmentTable';
@@ -13,32 +10,29 @@ export function Upgrades() {
     const list = useSelector((state: RootState) => state.list);
     const army = useSelector((state: RootState) => state.army.data);
 
-    const dispatch = useDispatch();
-
     const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
         ? null
         : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
-    var getUpgradeSet = (id) => army.upgradeSets.filter((s) => s.id === id)[0];
-
-    var handleUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
-
-        if (UpgradeService.isValid(unit, upgrade, option)) {
-            dispatch(applyUpgrade({ unitId: unit.selectionId, upgrade, option }));
-        }
-    };
-
+    const getUpgradeSet = (id) => army.upgradeSets.filter((s) => s.id === id)[0];
     if (!selectedUnit)
         return null;
+
+    const equipmentSpecialRules = selectedUnit
+        .selectedEquipment
+        .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
+        .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
+
+    const specialRules = (selectedUnit.specialRules || []).concat(equipmentSpecialRules);
 
     return (
         <div className={styles["upgrade-panel"] + " py-4"}>
             <h3 className="px-4 is-size-4 is-hidden-mobile mb-4">{selectedUnit.name} Upgrades</h3>
             <UnitEquipmentTable unit={selectedUnit} />
-            {selectedUnit.specialRules?.length > 0 && <Paper square elevation={0}>
+            {specialRules?.length && <Paper square elevation={0}>
                 <div className="p-4 mb-4">
                     <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
-                    {selectedUnit.specialRules.join(", ")}
+                    {specialRules.join(", ")}
                 </div>
             </Paper>}
             {(selectedUnit.upgradeSets || [])
