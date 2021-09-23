@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Human Defense Force",
   "version": "2.13",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Commander",
@@ -619,7 +620,7 @@
           ]
         },
         {
-          "text": "Grenade Launcher-pick one to fire",
+          "text": "Grenade Launcher–pick one to fire",
           "options": [
             {
               "name": "HE",
@@ -1164,6 +1165,60 @@
           ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Battle Drills",
+      "description": "The hero and all friendly units within 12” get the Furious special rule."
+    },
+    {
+      "name": "Commander",
+      "description": "When the hero is activated pick one of the following orders, and the hero and all friendly models within 12” get one of these special rules until the end of the round"
+    },
+    {
+      "name": "Executioner",
+      "description": "Whenever a friendly unit within 12” fails a morale test you must kill one friendly model within 12” that the hero has line of sight to and then all friendly units within 12” of the killed model automatically pass morale tests until the end of the round."
+    },
+    {
+      "name": "Field Radio",
+      "description": "If a Commander is within 6”, then it may give orders from the position of a unit with a Field Radio up to 24” away instead of from his own position."
+    },
+    {
+      "name": "Medical Training",
+      "description": "This model and all friendly units within 12” get the Regeneration rule."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Foresight",
+      "test": "4+",
+      "description": "Target friendly unit within 12” gets +1 to hit next time it shoots."
+    },
+    {
+      "name": "Flame Breath",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "name": "Protective Dome",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
+    },
+    {
+      "name": "Expel",
+      "test": "5+",
+      "description": "Target enemy unit within 12” takes 1 automatic hit with AP(4) and Deadly(3)."
+    },
+    {
+      "name": "Psychic Speed",
+      "test": "6+",
+      "description": "Target friendly unit within 12” may immediately move by up to 6”."
+    },
+    {
+      "name": "Tempest",
+      "test": "6+",
+      "description": "Target enemy unit within 6” takes 1 automatic hit per model."
     }
   ]
 }

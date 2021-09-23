@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Dwarf Guilds",
   "version": "2.7",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Guild Lord",
@@ -447,7 +448,23 @@
             "Assault Rifle",
             "CCW"
           ],
-          "options": []
+          "options": [
+            {
+              "type": "combined",
+              "cost": 0,
+              "equipment": [
+                {
+                  "name": "Pistol",
+                  "attacks": 1,
+                  "range": 12
+                },
+                {
+                  "name": "CCW",
+                  "attacks": 2
+                }
+              ]
+            }
+          ]
         },
         {
           "text": "Replace one Pistol",
@@ -455,6 +472,12 @@
           "affects": 1,
           "replaceWhat": "Pistol",
           "options": [
+            {
+              "name": "Shotgun",
+              "attacks": 2,
+              "range": 12,
+              "cost": 5
+            },
             {
               "name": "Heavy Pistol",
               "attacks": 1,
@@ -542,6 +565,15 @@
           "select": 1,
           "options": [
             {
+              "name": "Jetpack",
+              "specialRules": [
+                "Ambush",
+                "Flying",
+                "Swift"
+              ],
+              "cost": 25
+            },
+            {
               "name": "Combat Bike",
               "attacks": 2,
               "range": 24,
@@ -574,16 +606,35 @@
           "select": 1,
           "options": [
             {
+              "name": "Battle Lore",
+              "specialRules": [
+                "Battle Lore"
+              ],
+              "cost": 15
+            },
+            {
               "name": "Guild Defender",
               "specialRules": [
                 "Guild Defender"
               ],
               "cost": 15
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "upgrades": [
+        {
+          "text": "Upgrade Psychic(1)",
+          "type": "upgradeRule",
+          "replaceWhat": "Psychic(1)",
+          "options": [
             {
-              "name": "D Upgrade Psychic",
+              "name": "Psychic(2)",
               "specialRules": [
-                "1) Psychic(2"
+                "Psychic(2)"
               ],
               "cost": 15
             }
@@ -599,7 +650,14 @@
           "type": "replace",
           "affects": "any",
           "replaceWhat": "Assault Rifle",
-          "options": []
+          "options": [
+            {
+              "name": "Shotgun",
+              "attacks": 2,
+              "range": 12,
+              "cost": 0
+            }
+          ]
         },
         {
           "text": "Replace one Assault Rifle",
@@ -607,6 +665,12 @@
           "affects": 1,
           "replaceWhat": "Assault Rifle",
           "options": [
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 5
+            },
             {
               "name": "Shred Rifle",
               "attacks": 2,
@@ -647,7 +711,7 @@
           ]
         },
         {
-          "text": "Missile Launcher - pick one to fire",
+          "text": "Missile Launcher – pick one to fire",
           "options": [
             {
               "name": "HE",
@@ -672,6 +736,12 @@
           "type": "replace",
           "replaceWhat": "Assault Rifle",
           "options": [
+            {
+              "name": "Shotgun",
+              "attacks": 2,
+              "range": 12,
+              "cost": 0
+            },
             {
               "name": "Heavy Flamethrower",
               "attacks": 6,
@@ -706,6 +776,17 @@
           "text": "Missile Launcher – pick one to fire",
           "options": [
             {
+              "name": "HE",
+              "attacks": 1,
+              "range": 48,
+              "specialRules": [
+                "Blast(3)) AT (48”",
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 30
+            },
+            {
               "name": "Heavy Fusion Rifle",
               "attacks": 1,
               "range": 24,
@@ -736,7 +817,14 @@
           "text": "Replace Pistol",
           "type": "replace",
           "replaceWhat": "Pistol",
-          "options": []
+          "options": [
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 10
+            }
+          ]
         }
       ]
     },
@@ -748,6 +836,12 @@
           "type": "replace",
           "replaceWhat": "Pistol",
           "options": [
+            {
+              "name": "Burst Pistol",
+              "attacks": 3,
+              "range": 12,
+              "cost": 5
+            },
             {
               "name": "Flamethrower",
               "attacks": 6,
@@ -769,7 +863,18 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Drill Platform",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 55
+            }
+          ]
         }
       ]
     },
@@ -781,6 +886,12 @@
           "type": "replace",
           "replaceWhat": "Assault Rifle",
           "options": [
+            {
+              "name": "Shotgun",
+              "attacks": 2,
+              "range": 12,
+              "cost": 0
+            },
             {
               "name": "Heavy Flamethrower",
               "attacks": 6,
@@ -815,6 +926,17 @@
           "text": "Missile Launcher – pick one to fire",
           "options": [
             {
+              "name": "HE",
+              "attacks": 1,
+              "range": 48,
+              "specialRules": [
+                "Blast(3)) AT (48”",
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 35
+            },
+            {
               "name": "Heavy Fusion Rifle",
               "attacks": 1,
               "range": 24,
@@ -836,6 +958,14 @@
           "type": "replace",
           "replaceWhat": "Heavy Hammer",
           "options": [
+            {
+              "name": "Shock Hammer",
+              "attacks": 4,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
             {
               "name": "Heat Hammer",
               "attacks": 2,
@@ -875,6 +1005,15 @@
           "replaceWhat": "Pistol",
           "options": [
             {
+              "name": "Plasma Pistol",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Storm Rifle",
               "attacks": 2,
               "range": 24,
@@ -894,6 +1033,15 @@
           "type": "replace",
           "replaceWhat": "Storm Rifle",
           "options": [
+            {
+              "name": "Heavy Machinegun",
+              "attacks": 3,
+              "range": 36,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 20
+            },
             {
               "name": "Heavy Fusion Rifle",
               "attacks": 1,
@@ -938,6 +1086,16 @@
           "replaceWhat": "Heavy Machinegun",
           "options": [
             {
+              "name": "Mortar",
+              "attacks": 1,
+              "range": 48,
+              "specialRules": [
+                "Blast(3)",
+                "Indirect"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Autocannon",
               "attacks": 2,
               "range": 48,
@@ -951,6 +1109,17 @@
         {
           "text": "Missile Launcher – pick one to fire",
           "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 48,
+              "specialRules": [
+                "Blast(3)) AT (48”",
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 10
+            },
             {
               "name": "Laser Cannon",
               "attacks": 1,
@@ -972,7 +1141,14 @@
           "text": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
-          "options": []
+          "options": [
+            {
+              "name": "Twin Assault Rifles",
+              "attacks": 2,
+              "range": 24,
+              "cost": 5
+            }
+          ]
         },
         {
           "text": "Grenade Launcher–pick one to fire",
@@ -1025,6 +1201,15 @@
           "type": "replace",
           "replaceWhat": "Heavy Flamethrower",
           "options": [
+            {
+              "name": "Heavy Machinegun",
+              "attacks": 3,
+              "range": 36,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
             {
               "name": "Autocannon",
               "attacks": 2,
@@ -1096,6 +1281,64 @@
           ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Battle Lore",
+      "description": "The hero and all friendly units within 12” get +1 to hit when fighting in melee."
+    },
+    {
+      "name": "Guild Defender",
+      "description": "The hero and all friendly units within 12” get +1 to hit when shooting."
+    },
+    {
+      "name": "Repair",
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+    },
+    {
+      "name": "Shield Wall",
+      "description": "Enemies get -1 to hit when they attack units where all models have this rule."
+    },
+    {
+      "name": "Slayer",
+      "description": "This model gets AP(+2) when fighting units with Tough(3) or higher."
+    },
+    {
+      "name": "Swift",
+      "description": "The hero may ignore the Slow rule."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Spite Rune",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -1 to hit in melee next time it fights."
+    },
+    {
+      "name": "Smiting Rune",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 4 automatic hits."
+    },
+    {
+      "name": "Battle Rune",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets +6” next time it moves."
+    },
+    {
+      "name": "Breaking Rune",
+      "test": "5+",
+      "description": "Target enemy model within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "name": "Drill Rune",
+      "test": "6+",
+      "description": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
+    },
+    {
+      "name": "Cleaving Rune",
+      "test": "6+",
+      "description": "Target 2 enemy units within 12” take 6 automatic hits each."
     }
   ]
 }
