@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Orc Marauders",
   "version": "2.14",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Warlord",
@@ -931,6 +932,12 @@
           "replaceWhat": "Pistol",
           "options": [
             {
+              "name": "Carbine",
+              "attacks": 2,
+              "range": 18,
+              "cost": 5
+            },
+            {
               "name": "Twin Carbine",
               "attacks": 4,
               "range": 18,
@@ -976,6 +983,11 @@
           "replaceWhat": "CCW",
           "options": [
             {
+              "name": "Ultra Drill",
+              "attacks": 6,
+              "cost": 5
+            },
+            {
               "name": "Ultra Axe",
               "attacks": 3,
               "specialRules": [
@@ -1013,6 +1025,11 @@
           "replaceWhat": "CCW",
           "options": [
             {
+              "name": "Ultra Drill",
+              "attacks": 4,
+              "cost": 5
+            },
+            {
               "name": "Ultra Axe",
               "attacks": 2,
               "specialRules": [
@@ -1047,13 +1064,29 @@
           "text": "Upgrade with up to two",
           "type": "upgrade",
           "select": 2,
-          "options": []
+          "options": [
+            {
+              "name": "Attack Beast",
+              "attacks": 3,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            }
+          ]
         },
         {
           "text": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
+            {
+              "name": "Heavy Armor",
+              "specialRules": [
+                "Defense +1"
+              ],
+              "cost": 5
+            },
             {
               "name": "Ultra Armor",
               "specialRules": [
@@ -1124,6 +1157,13 @@
           "type": "upgrade",
           "options": [
             {
+              "name": "SHOOT!",
+              "specialRules": [
+                "SHOOT!"
+              ],
+              "cost": 15
+            },
+            {
               "name": "WAR!",
               "specialRules": [
                 "WAR!"
@@ -1142,6 +1182,15 @@
           "type": "replace",
           "replaceWhat": "Pistol",
           "options": [
+            {
+              "name": "Plasma Pistol",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
             {
               "name": "Teleport Pistol",
               "attacks": 1,
@@ -1213,7 +1262,15 @@
           "text": "Upgrade Psychic(1)",
           "type": "upgradeRule",
           "replaceWhat": "Psychic(1)",
-          "options": []
+          "options": [
+            {
+              "name": "Psychic(2)",
+              "specialRules": [
+                "Psychic(2)"
+              ],
+              "cost": 15
+            }
+          ]
         }
       ]
     },
@@ -1224,7 +1281,17 @@
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Goblin Herder",
+              "specialRules": [
+                "Fearless",
+                "Furious",
+                "Relentless"
+              ],
+              "cost": 35
+            }
+          ]
         }
       ]
     },
@@ -1237,6 +1304,12 @@
           "affects": 1,
           "replaceWhat": "Pistol",
           "options": [
+            {
+              "name": "Flamethrower Pistol",
+              "attacks": 6,
+              "range": 6,
+              "cost": 5
+            },
             {
               "name": "Rocket Pistol",
               "attacks": 1,
@@ -1276,20 +1349,43 @@
           "text": "Upgrade one model with",
           "type": "upgrade",
           "affects": 1,
-          "options": []
+          "options": [
+            {
+              "name": "Mad Doctor",
+              "specialRules": [
+                "Mad Doctor"
+              ],
+              "cost": 60
+            }
+          ]
         },
         {
           "text": "Replace all Pistols",
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Pistols",
-          "options": []
+          "options": [
+            {
+              "name": "Carbines",
+              "attacks": 2,
+              "range": 18,
+              "cost": 20
+            }
+          ]
         },
         {
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Heavy Armor",
+              "specialRules": [
+                "Defense +1"
+              ],
+              "cost": 20
+            }
+          ]
         }
       ]
     },
@@ -1302,6 +1398,12 @@
           "affects": 1,
           "replaceWhat": "Pistol",
           "options": [
+            {
+              "name": "Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "cost": 5
+            },
             {
               "name": "Plasma Rifle",
               "attacks": 1,
@@ -1362,6 +1464,11 @@
           "replaceWhat": "CCWs",
           "options": [
             {
+              "name": "Ultra Drill",
+              "attacks": 4,
+              "cost": 5
+            },
+            {
               "name": "Ultra Axe",
               "attacks": 2,
               "specialRules": [
@@ -1398,6 +1505,12 @@
           "affects": "all",
           "replaceWhat": "Pistols",
           "options": [
+            {
+              "name": "Shotguns",
+              "attacks": 2,
+              "range": 12,
+              "cost": 5
+            },
             {
               "name": "Carbines",
               "attacks": 2,
@@ -1444,6 +1557,12 @@
           "replaceWhat": "Carbines",
           "options": [
             {
+              "name": "Flamethrowers",
+              "attacks": 6,
+              "range": 12,
+              "cost": 25
+            },
+            {
               "name": "Rocket Launchers",
               "attacks": 1,
               "range": 24,
@@ -1469,7 +1588,16 @@
           "type": "replace",
           "affects": "all",
           "replaceWhat": "CCWs",
-          "options": []
+          "options": [
+            {
+              "name": "Blowtorches",
+              "attacks": 2,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 15
+            }
+          ]
         },
         {
           "text": "Replace up to two Rocket Launchers and CCWs",
@@ -1479,13 +1607,34 @@
             "Rocket Launchers",
             "CCWs"
           ],
-          "options": []
+          "options": [
+            {
+              "name": "Bomb Hammer",
+              "attacks": 1,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 10
+            }
+          ]
         },
         {
           "text": "Upgrade one model with",
           "type": "upgrade",
           "affects": 1,
-          "options": []
+          "options": [
+            {
+              "name": "Bomb Beast",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(4)",
+                "Blast(3)"
+              ],
+              "cost": 10
+            }
+          ]
         }
       ]
     },
@@ -1497,14 +1646,33 @@
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Pistols",
-          "options": []
+          "options": [
+            {
+              "name": "Boarding Guns",
+              "attacks": 3,
+              "range": 24,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 40
+            }
+          ]
         },
         {
           "text": "Replace all CCWs",
           "type": "replace",
           "affects": "all",
           "replaceWhat": "CCWs",
-          "options": []
+          "options": [
+            {
+              "name": "Cutlasses",
+              "attacks": 3,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 15
+            }
+          ]
         }
       ]
     },
@@ -1515,7 +1683,15 @@
           "text": "Upgrade one model with",
           "type": "upgrade",
           "affects": 1,
-          "options": []
+          "options": [
+            {
+              "name": "Mad Doctor",
+              "specialRules": [
+                "Mad Doctor"
+              ],
+              "cost": 135
+            }
+          ]
         },
         {
           "text": "Replace any Pistol",
@@ -1523,6 +1699,12 @@
           "affects": "any",
           "replaceWhat": "Pistol",
           "options": [
+            {
+              "name": "Carbine",
+              "attacks": 2,
+              "range": 18,
+              "cost": 5
+            },
             {
               "name": "Twin Carbine",
               "attacks": 4,
@@ -1559,7 +1741,15 @@
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Heavy Armor",
+              "specialRules": [
+                "Defense +1"
+              ],
+              "cost": 30
+            }
+          ]
         }
       ]
     },
@@ -1574,18 +1764,43 @@
             "Carbine",
             "Energy Claw"
           ],
-          "options": []
+          "options": [
+            {
+              "name": "2x Ultra Sawblades",
+              "attacks": 3,
+              "specialRules": [
+                "Deadly(3)"
+              ],
+              "cost": 10
+            }
+          ]
         },
         {
           "text": "Replace any Carbine",
           "type": "replace",
           "affects": "any",
           "replaceWhat": "Carbine",
-          "options": []
+          "options": [
+            {
+              "name": "Twin Carbine",
+              "attacks": 4,
+              "range": 18,
+              "cost": 5
+            }
+          ]
         },
         {
           "text": "Any model may take one Carbine attachment",
           "options": [
+            {
+              "name": "Heavy Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 15
+            },
             {
               "name": "Rocket Launcher",
               "attacks": 1,
@@ -1609,6 +1824,14 @@
           "affects": "all",
           "select": 1,
           "options": [
+            {
+              "name": "Beast Mounts",
+              "attacks": 3,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 20
+            },
             {
               "name": "Twin Carbines",
               "attacks": 4,
@@ -1637,6 +1860,12 @@
           "select": 1,
           "options": [
             {
+              "name": "Twin Carbine",
+              "attacks": 4,
+              "range": 18,
+              "cost": 5
+            },
+            {
               "name": "Twin Double Shotgun",
               "attacks": 8,
               "range": 12,
@@ -1664,6 +1893,15 @@
           "select": 1,
           "options": [
             {
+              "name": "Twin Plasma Rifle",
+              "attacks": 2,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 10
+            },
+            {
               "name": "Twin Rocket Launcher",
               "attacks": 2,
               "range": 24,
@@ -1689,6 +1927,14 @@
           "type": "upgrade",
           "select": "any",
           "options": [
+            {
+              "name": "Ultra Sawblade",
+              "attacks": 3,
+              "specialRules": [
+                "Deadly(3)"
+              ],
+              "cost": 5
+            },
             {
               "name": "Assault Bomb",
               "attacks": 1,
@@ -1716,6 +1962,13 @@
           "type": "upgrade",
           "select": "any",
           "options": [
+            {
+              "name": "Battle Ram",
+              "specialRules": [
+                "Strider"
+              ],
+              "cost": 5
+            },
             {
               "name": "Wrecking Ball",
               "specialRules": [
@@ -1755,7 +2008,18 @@
           "text": "Replace Heavy Machinegun",
           "type": "replace",
           "replaceWhat": "Heavy Machinegun",
-          "options": []
+          "options": [
+            {
+              "name": "Rocket Launcher",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": -5
+            }
+          ]
         }
       ]
     },
@@ -1767,6 +2031,16 @@
           "type": "upgrade",
           "select": 1,
           "options": [
+            {
+              "name": "Harpoon Cannon",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 10
+            },
             {
               "name": "Extra Space",
               "specialRules": [
@@ -1834,6 +2108,15 @@
           "select": 1,
           "options": [
             {
+              "name": "Heavy Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            },
+            {
               "name": "Rocket Launcher",
               "attacks": 1,
               "range": 24,
@@ -1865,6 +2148,15 @@
           "select": 1,
           "options": [
             {
+              "name": "Lightning Cannon",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Harpoon Cannon",
               "attacks": 1,
               "range": 12,
@@ -1877,8 +2169,19 @@
           ]
         },
         {
-          "text": "Cannon - pick one to fire",
+          "text": "Cannon – pick one to fire",
           "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "Blast(3)) AT (36”",
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 15
+            },
             {
               "name": "Heavy Mortar",
               "attacks": 1,
@@ -1925,6 +2228,15 @@
           "replaceWhat": "Plasma Rifle",
           "options": [
             {
+              "name": "Heavy Flamethrower",
+              "attacks": 6,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Rocket Launcher",
               "attacks": 1,
               "range": 24,
@@ -1967,6 +2279,14 @@
           "replaceWhat": "Plasma Rifle",
           "options": [
             {
+              "name": "Walker Claw",
+              "attacks": 2,
+              "specialRules": [
+                "AP(4)"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Rocket Launcher",
               "attacks": 1,
               "range": 24,
@@ -1993,9 +2313,17 @@
                 "AP(1)"
               ],
               "cost": 10
-            },
+            }
+          ]
+        },
+        {
+          "text": "Replace any Walker Claw",
+          "type": "replace",
+          "affects": "any",
+          "replaceWhat": "Walker Claw",
+          "options": [
             {
-              "name": "Replace any Walker Claw Walker Sawblade",
+              "name": "Walker Sawblade",
               "attacks": 2,
               "specialRules": [
                 "AP(2)",
@@ -2015,6 +2343,16 @@
           "type": "replace",
           "replaceWhat": "Heavy Flamethrower",
           "options": [
+            {
+              "name": "Twin Rocket Launcher",
+              "attacks": 2,
+              "range": 24,
+              "specialRules": [
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 10
+            },
             {
               "name": "Twin Heavy Machinegun",
               "attacks": 6,
@@ -2060,6 +2398,19 @@
             "Rocket Launcher"
           ],
           "options": [
+            {
+              "name": "Beast-Gun",
+              "attacks": 2,
+              "range": 36,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3))",
+                "Beast GL (18”",
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 20
+            },
             {
               "name": "Boost-Gun",
               "attacks": 1,
@@ -2122,6 +2473,15 @@
           "replaceWhat": "Lightning Cannon",
           "options": [
             {
+              "name": "Smasher Cannon",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(4)"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Tractor Beam",
               "attacks": 2,
               "range": 36,
@@ -2136,6 +2496,17 @@
         {
           "text": "Cannon – pick one to fire",
           "options": [
+            {
+              "name": "HE",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "Blast(3)) AT (36”",
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 15
+            },
             {
               "name": "Plasma Cannon",
               "attacks": 1,
@@ -2177,7 +2548,15 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Shoot Shoot Shoot!",
+              "specialRules": [
+                "Relentless"
+              ],
+              "cost": 15
+            }
+          ]
         }
       ]
     },
@@ -2188,13 +2567,31 @@
           "text": "Replace Twin Teleport Rifle",
           "type": "replace",
           "replaceWhat": "Twin Teleport Rifle",
-          "options": []
+          "options": [
+            {
+              "name": "Twin Plasma Cannon",
+              "attacks": 2,
+              "range": 36,
+              "specialRules": [
+                "AP(2)",
+                "Blast(3)"
+              ],
+              "cost": 10
+            }
+          ]
         },
         {
           "text": "Upgrade with any",
           "type": "upgrade",
           "select": "any",
           "options": [
+            {
+              "name": "Force Field",
+              "specialRules": [
+                "Regeneration"
+              ],
+              "cost": 35
+            },
             {
               "name": "Twin Super Machinegun",
               "attacks": 6,
@@ -2214,7 +2611,18 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Flame Missiles",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 10
+            }
+          ]
         }
       ]
     },
@@ -2225,7 +2633,17 @@
           "text": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
-          "options": []
+          "options": [
+            {
+              "name": "Twin Super Machinegun",
+              "attacks": 6,
+              "range": 36,
+              "specialRules": [
+                "AP(2))"
+              ],
+              "cost": 25
+            }
+          ]
         }
       ]
     },
@@ -2237,6 +2655,15 @@
           "type": "upgrade",
           "select": 1,
           "options": [
+            {
+              "name": "Plasma Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
             {
               "name": "Heavy Flamethrower",
               "attacks": 6,
@@ -2266,6 +2693,13 @@
               "cost": 80
             },
             {
+              "name": "Shoot Shoot Shoot!",
+              "specialRules": [
+                "Relentless"
+              ],
+              "cost": 30
+            },
+            {
               "name": "Force Field",
               "specialRules": [
                 "Regeneration"
@@ -2287,6 +2721,84 @@
           "options": []
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Bad Shot",
+      "description": "This model shoots at Quality 5+."
+    },
+    {
+      "name": "Mad Doctor",
+      "description": "This model and his unit get the Regeneration special rule."
+    },
+    {
+      "name": "Energy Field",
+      "description": "The hero and his unit get the Stealth special rule."
+    },
+    {
+      "name": "Good Shot",
+      "description": "This model shoots at Quality 4+."
+    },
+    {
+      "name": "Repair",
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+    },
+    {
+      "name": "SHOOT!",
+      "description": "The hero and his unit get the Relentless special rule."
+    },
+    {
+      "name": "WAR!",
+      "description": "The hero and his unit move +3” on advance and +6” on rush/charge actions."
+    },
+    {
+      "name": "Bad Shot",
+      "description": "This model shoots at Quality 5+."
+    },
+    {
+      "name": "Good Shot",
+      "description": "This model shoots at Quality 4+."
+    },
+    {
+      "name": "Red Paint Job",
+      "description": "This model moves +3” on Advance and +6” on Rush/Charge actions."
+    },
+    {
+      "name": "Teleport",
+      "description": "When this model is activated it may teleport by up to 6” in any direction, ignoring all units and terrain."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Warpath",
+      "test": "4+",
+      "description": "Target friendly unit within 12” gets Stealth next time it’s shot at."
+    },
+    {
+      "name": "Crackling Bolt",
+      "test": "4+",
+      "description": "Target enemy unit within 6” must take a dangerous terrain test."
+    },
+    {
+      "name": "Headbang",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets Rending in melee next time it fights."
+    },
+    {
+      "name": "Death Bolt",
+      "test": "5+",
+      "description": "Target enemy unit within 12” takes 1 hit with AP(4) and Deadly(3)."
+    },
+    {
+      "name": "Teleport",
+      "test": "6+",
+      "description": "Target friendly unit within 12” may immediately move by up to 6”."
+    },
+    {
+      "name": "Psychic Vomit",
+      "test": "6+",
+      "description": "Target enemy unit within 12” takes 4 automatic hits with AP(2)."
     }
   ]
 }

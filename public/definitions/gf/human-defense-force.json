@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Human Defense Force",
   "version": "2.13",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Commander",
@@ -880,7 +881,7 @@
           ]
         },
         {
-          "text": "Grenade Launcher-pick one to fire",
+          "text": "Grenade Launcher–pick one to fire",
           "options": [
             {
               "name": "HE",
@@ -942,7 +943,7 @@
           "options": []
         },
         {
-          "text": "Missile Launcher - pick one to fire",
+          "text": "Missile Launcher – pick one to fire",
           "options": [
             {
               "name": "HE",
@@ -1453,651 +1454,162 @@
                   "attacks": 2
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "A2",
-      "upgrades": [
-        {
-          "text": "Upgrade with any",
-          "type": "upgrade",
-          "select": "any",
-          "options": [
-            {
-              "name": "Dozer Blade",
-              "specialRules": [
-                "Strider"
-              ],
-              "cost": 5
             },
             {
-              "name": "Camouflage Netting",
-              "specialRules": [
-                "Stealth"
-              ],
-              "cost": 25
-            },
-            {
-              "name": "Hunter Missiles",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 30
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with one",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "Storm Rifle",
-              "attacks": 2,
-              "range": 24,
-              "cost": 5
-            },
-            {
-              "name": "Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "cost": 15
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "B2",
-      "upgrades": [
-        {
-          "text": "Replace one Heavy Flamethrower",
-          "type": "replace",
-          "affects": 1,
-          "replaceWhat": "Heavy Flamethrower",
-          "options": [
-            {
-              "name": "Heavy Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Laser Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 15
-            },
-            {
-              "name": "Heavy Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            }
-          ]
-        },
-        {
-          "text": "Replace one Heavy Flamethrower",
-          "type": "replace",
-          "affects": 1,
-          "replaceWhat": "Heavy Flamethrower",
-          "options": []
-        }
-      ]
-    },
-    {
-      "id": "C2",
-      "upgrades": [
-        {
-          "text": "Replace Twin Heavy Volley Gun",
-          "type": "replace",
-          "replaceWhat": "Twin Heavy Volley Gun",
-          "options": [
-            {
-              "name": "Twin Autocannon",
-              "attacks": 4,
-              "range": 48,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 20
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with one",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "Light Battle Cannon",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(2)",
-                "Blast(3)"
-              ],
-              "cost": 35
-            },
-            {
-              "name": "Twin Gatling Gun",
-              "attacks": 20,
-              "range": 24,
-              "cost": 60
-            }
-          ]
-        },
-        {
-          "text": "Missile Volley – pick one to fire",
-          "options": [
-            {
-              "name": "HE",
-              "attacks": 2,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 60
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with",
-          "type": "upgrade",
-          "options": [
-            {
-              "name": "Cargo Space",
-              "specialRules": [
-                "Transport(11)"
-              ],
-              "cost": 20
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "D2",
-      "upgrades": [
-        {
-          "text": "Replace Acid Cannon",
-          "type": "replace",
-          "replaceWhat": "Acid Cannon",
-          "options": [
-            {
-              "name": "Flamethrower Cannon",
-              "attacks": 6,
-              "range": 18,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Fusion Cannon",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(4)",
-                "Blast(3)"
-              ],
-              "cost": 10
-            }
-          ]
-        },
-        {
-          "text": "Replace Heavy Flamethrower",
-          "type": "replace",
-          "replaceWhat": "Heavy Flamethrower",
-          "options": [
-            {
-              "name": "Heavy Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Heavy Fusion Rifle",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 25
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "E2",
-      "upgrades": [
-        {
-          "text": "Replace 2x Twin AA-Cannons",
-          "type": "replace",
-          "affects": 2,
-          "replaceWhat": "Twin AA-Cannons",
-          "options": [
-            {
-              "name": "Artillery Cannon",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(4)",
-                "Blast(6)",
-                "Indirect"
-              ],
-              "cost": 15
-            },
-            {
-              "name": "Eagle Rockets",
-              "attacks": 2,
-              "range": 48,
-              "specialRules": [
-                "AP(2)",
-                "Blast(6)",
-                "Indirect"
-              ],
-              "cost": 60
-            },
-            {
-              "name": "2x Twin Shard Mortars",
-              "attacks": 4,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)",
-                "Indirect"
-              ],
-              "cost": 60
-            },
-            {
-              "name": "Ballistic Missiles",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(4)",
-                "Blast(12)",
-                "Indirect"
-              ],
-              "cost": 150
-            }
-          ]
-        },
-        {
-          "text": "Replace Heavy Flamethrower",
-          "type": "replace",
-          "replaceWhat": "Heavy Flamethrower",
-          "options": [
-            {
-              "name": "Heavy Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "F2",
-      "upgrades": [
-        {
-          "text": "Replace Nova Cannon",
-          "type": "replace",
-          "replaceWhat": "Nova Cannon",
-          "options": [
-            {
-              "name": "Siege Cannon",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(4)",
-                "Blast(6)"
-              ],
-              "cost": 10
-            },
-            {
-              "name": "Heavy Autocannon",
-              "attacks": 4,
-              "range": 48,
-              "specialRules": [
-                "AP(3)"
-              ],
-              "cost": 20
-            },
-            {
-              "name": "Anti-Tank Cannon",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 30
-            },
-            {
-              "name": "Heavy Plasma Cannon",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(2)",
-                "Blast(3)"
-              ],
-              "cost": 40
-            },
-            {
-              "name": "Gatling Cannon",
-              "attacks": 20,
-              "range": 24,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 50
-            },
-            {
-              "name": "Battle Cannon",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(3)",
-                "Blast(6)"
-              ],
-              "cost": 50
-            }
-          ]
-        },
-        {
-          "text": "Replace Heavy Flamethrower",
-          "type": "replace",
-          "replaceWhat": "Heavy Flamethrower",
-          "options": [
-            {
-              "name": "Heavy Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Laser Cannon",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(3)"
-              ],
-              "cost": 25
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with one",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "2x Heavy Flamethrowers",
+              "name": "Light APC [1] 4+ 2+ 2x Heavy Flamethrower",
               "attacks": 6,
               "range": 12,
               "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 25
+                "AP(1)) Fast",
+                "Impact(6)",
+                "Tough(6)",
+                "Transport(11"
+              ]
             },
             {
-              "name": "2x Heavy Machineguns",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 40
-            },
-            {
-              "name": "2x Plasma Cannons",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "AP(2)",
-                "Blast(3)"
-              ],
-              "cost": 55
-            },
-            {
-              "name": "2x Heavy Fusion Rifles",
-              "attacks": 1,
+              "name": "Armored Truck [1] 4+ 2+ Twin Heavy Volley Gun",
+              "attacks": 6,
               "range": 24,
               "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 70
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "G2",
-      "upgrades": [
-        {
-          "text": "Replace Heavy Flamethrower",
-          "type": "replace",
-          "replaceWhat": "Heavy Flamethrower",
-          "options": [
-            {
-              "name": "Heavy Machinegun",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
+                "AP(1)) Fast",
+                "Impact(6)",
+                "Strider",
+                "Tough(6"
+              ]
             },
             {
-              "name": "Autocannon",
-              "attacks": 2,
-              "range": 48,
+              "name": "Attack Vehicle [1] 4+ 2+ Acid Cannon",
+              "attacks": 6,
+              "range": 12,
               "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 10
-            }
-          ]
-        },
-        {
-          "text": "Missile Launcher – pick one to fire",
-          "options": [
-            {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 15
+                "AP(1)",
+                "Poison)",
+                "Heavy Flamethrower (12”",
+                "AP(1)) Fast",
+                "Impact(6)",
+                "Tough(6"
+              ]
             },
             {
-              "name": "Laser Machinegun",
-              "attacks": 3,
-              "range": 36,
+              "name": "Support Vehicle [1] 4+ 2+ Heavy Flamethrower",
+              "attacks": 6,
+              "range": 12,
               "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 15
-            },
-            {
-              "name": "Plasma Cannon",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
+                "AP(1))",
+                "2x Twin AA-Cannons (48”",
                 "AP(2)",
-                "Blast(3)"
-              ],
-              "cost": 15
+                "Anti-Air) Fast",
+                "Impact(6)",
+                "Tough(6"
+              ]
             },
             {
-              "name": "Laser Cannon",
-              "attacks": 1,
-              "range": 48,
+              "name": "Battle Tank [1] 4+ 2+ Heavy Flamethrower",
+              "attacks": 6,
+              "range": 12,
               "specialRules": [
-                "AP(4)",
-                "Deadly(3)"
-              ],
-              "cost": 25
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with any",
-          "type": "upgrade",
-          "select": "any",
-          "options": [
-            {
-              "name": "Forward Observer",
-              "specialRules": [
-                "Scout"
-              ],
-              "cost": 5
+                "AP(1))",
+                "Nova Cannon (36”",
+                "AP(1)",
+                "Blast(6)) Fast",
+                "Impact(6)",
+                "Tough(12"
+              ]
             },
             {
-              "name": "Camouflage Netting",
+              "name": "Light Walker [1] 4+ 2+ Heavy Flamethrower",
+              "attacks": 6,
+              "range": 12,
               "specialRules": [
-                "Stealth"
-              ],
-              "cost": 10
+                "AP(1))",
+                "Stomp (A1",
+                "AP(1)) Fear",
+                "Tough(6"
+              ]
             },
             {
-              "name": "Hunter Missiles",
-              "attacks": 1,
-              "range": 48,
+              "name": "Light Gunship [1] 4+ 2+ Laser Machinegun",
+              "attacks": 3,
+              "range": 36,
               "specialRules": [
+                "AP(2))",
+                "Strike Missiles (48”",
                 "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 40
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "H2",
-      "upgrades": [
-        {
-          "text": "Replace Laser Machinegun",
-          "type": "replace",
-          "replaceWhat": "Laser Machinegun",
-          "options": [
+                "Deadly(3)) Aircraft",
+                "Tough(6)",
+                "Transport(11"
+              ]
+            },
             {
-              "name": "Laser Cannon",
+              "name": "Heavy Gunship [1] 4+ 2+ Fury Missiles",
               "attacks": 1,
               "range": 48,
               "specialRules": [
+                "Blast(6))",
+                "Twin Laser Cannon (48”",
                 "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 10
-            }
-          ]
-        },
-        {
-          "text": "Replace Strike Missiles",
-          "type": "replace",
-          "replaceWhat": "Strike Missiles",
-          "options": [
-            {
-              "name": "2x Rocket Pods",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "Blast(6)"
-              ],
-              "cost": 5
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with",
-          "type": "upgrade",
-          "options": [
-            {
-              "name": "2x Heavy Machineguns",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 40
+                "Deadly(3)) Aircraft",
+                "Tough(12)",
+                "Transport(6"
+              ]
             }
           ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Battle Drills",
+      "description": "The hero and his unit get the Furious special rule."
     },
     {
-      "id": "I2",
-      "upgrades": [
-        {
-          "text": "Replace Fury Missiles",
-          "type": "replace",
-          "replaceWhat": "Fury Missiles",
-          "options": [
-            {
-              "name": "2x Twin Laser Cannons",
-              "attacks": 2,
-              "range": 48,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(3)"
-              ],
-              "cost": 110
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with",
-          "type": "upgrade",
-          "options": [
-            {
-              "name": "2x Heavy Machineguns",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 40
-            }
-          ]
-        }
-      ]
+      "name": "Commander",
+      "description": "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round"
+    },
+    {
+      "name": "Executioner",
+      "description": "Whenever the hero’s unit fails a morale test you must kill one of its models and the morale test counts as passed instead."
+    },
+    {
+      "name": "Field Radio",
+      "description": "If this unit has a Commander, then it may give orders to other units that have a Field Radio up to 24” away instead of to his own unit."
+    },
+    {
+      "name": "Medical Training",
+      "description": "This model and his unit get the Regeneration rule."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Foresight",
+      "test": "4+",
+      "description": "Target friendly unit within 12” gets +1 to hit next time it shoots."
+    },
+    {
+      "name": "Flame Breath",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "name": "Protective Dome",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
+    },
+    {
+      "name": "Expel",
+      "test": "5+",
+      "description": "Target enemy unit within 12” takes 1 automatic hit with AP(4) and Deadly(3)."
+    },
+    {
+      "name": "Psychic Speed",
+      "test": "6+",
+      "description": "Target friendly unit within 12” may immediately move by up to 6”."
+    },
+    {
+      "name": "Tempest",
+      "test": "6+",
+      "description": "Target enemy unit within 6” takes 1 automatic hit per model."
     }
   ]
 }

@@ -2,9 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Robot Legions",
   "version": "2.19",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
-      "name": "Tri-Scorpion Overseer",
+      "name": "2 Name [size] Qua Def Equipment Special Rules Upgrades Cost Tri-Scorpion Overseer",
       "size": 1,
       "quality": "3+",
       "defense": "2+",
@@ -1009,6 +1010,12 @@
           "select": 1,
           "options": [
             {
+              "name": "Wrist-Mounted Flamer",
+              "attacks": 6,
+              "range": 12,
+              "cost": 10
+            },
+            {
               "name": "Wrist-Mounted Laser Cannon",
               "attacks": 1,
               "range": 48,
@@ -1033,7 +1040,14 @@
               "attacks": 3,
               "specialRules": [
                 "AP(1)",
-                "Rending) Free Void Sword (A6",
+                "Rending"
+              ],
+              "cost": 0
+            },
+            {
+              "name": "Void Sword",
+              "attacks": 6,
+              "specialRules": [
                 "AP(1)"
               ],
               "cost": 5
@@ -1069,7 +1083,27 @@
             "Staff-Shot",
             "Staff"
           ],
-          "options": []
+          "options": [
+            {
+              "type": "combined",
+              "cost": 65,
+              "equipment": [
+                {
+                  "name": "CCW",
+                  "attacks": 3
+                },
+                {
+                  "name": "Heavy Gauss Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "specialRules": [
+                    "AP(4)",
+                    "Deadly(6)"
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1081,6 +1115,15 @@
           "type": "upgrade",
           "select": 1,
           "options": [
+            {
+              "name": "Flame-Protocol",
+              "attacks": 6,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 20
+            },
             {
               "name": "Dread-Protocol",
               "attacks": 3,
@@ -1121,6 +1164,14 @@
           "select": "any",
           "options": [
             {
+              "name": "Jetpack",
+              "specialRules": [
+                "Ambush",
+                "Flying"
+              ],
+              "cost": 15
+            },
+            {
               "name": "Bot Master",
               "specialRules": [
                 "Psychic(1)"
@@ -1133,7 +1184,16 @@
           "text": "Upgrade with up to two",
           "type": "upgrade",
           "select": 2,
-          "options": []
+          "options": [
+            {
+              "name": "Technoslave",
+              "attacks": 3,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            }
+          ]
         }
       ]
     },
@@ -1145,6 +1205,13 @@
           "type": "upgradeRule",
           "replaceWhat": "Psychic(1)",
           "options": [
+            {
+              "name": "Psychic(2)",
+              "specialRules": [
+                "Psychic(2)"
+              ],
+              "cost": 15
+            },
             {
               "name": "Psychic(3)",
               "specialRules": [
@@ -1164,7 +1231,17 @@
           "type": "replace",
           "affects": "any",
           "replaceWhat": "Gauss Rifle",
-          "options": []
+          "options": [
+            {
+              "name": "Reaper Rifle",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 0
+            }
+          ]
         },
         {
           "text": "Replace one Gauss Rifle",
@@ -1172,6 +1249,12 @@
           "affects": 1,
           "replaceWhat": "Gauss Rifle",
           "options": [
+            {
+              "name": "Flame Caster",
+              "attacks": 6,
+              "range": 12,
+              "cost": 5
+            },
             {
               "name": "Plasma Caster",
               "attacks": 1,
@@ -1205,6 +1288,16 @@
           "replaceWhat": "Gauss Rifles",
           "options": [
             {
+              "name": "Flux Rifles",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)",
+                "Flux"
+              ],
+              "cost": 15
+            },
+            {
               "name": "Heavy Gauss Rifles",
               "attacks": 1,
               "range": 24,
@@ -1230,6 +1323,14 @@
             "Rods"
           ],
           "options": [
+            {
+              "name": "War Scythes",
+              "attacks": 2,
+              "specialRules": [
+                "AP(4)"
+              ],
+              "cost": 5
+            },
             {
               "type": "combined",
               "cost": 5,
@@ -1277,7 +1378,16 @@
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Jetpacks",
+              "specialRules": [
+                "Ambush",
+                "Flying"
+              ],
+              "cost": 80
+            }
+          ]
         }
       ]
     },
@@ -1288,7 +1398,15 @@
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Ambush",
+              "specialRules": [
+                "Ambush"
+              ],
+              "cost": 40
+            }
+          ]
         },
         {
           "text": "Replace one Metal Claws",
@@ -1296,6 +1414,14 @@
           "affects": 1,
           "replaceWhat": "Metal Claws",
           "options": [
+            {
+              "name": "Chainsaw Claws",
+              "attacks": 6,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
             {
               "name": "Plasma Claws",
               "attacks": 3,
@@ -1324,7 +1450,15 @@
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Hunter",
+              "specialRules": [
+                "Hunter"
+              ],
+              "cost": 15
+            }
+          ]
         }
       ]
     },
@@ -1337,6 +1471,16 @@
           "affects": "any",
           "replaceWhat": "Twin Gauss Rifle",
           "options": [
+            {
+              "name": "Twin Flux Rifle",
+              "attacks": 2,
+              "range": 24,
+              "specialRules": [
+                "AP(1)",
+                "Flux"
+              ],
+              "cost": 5
+            },
             {
               "name": "Antimatter Rifle",
               "attacks": 1,
@@ -1360,6 +1504,15 @@
           "affects": "any",
           "select": 1,
           "options": [
+            {
+              "name": "Antimatter Pistol",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
             {
               "name": "Death Gaze",
               "attacks": 1,
@@ -1390,13 +1543,30 @@
           "type": "replace",
           "affects": 1,
           "replaceWhat": "2x Arm Blades",
-          "options": []
+          "options": [
+            {
+              "name": "Heavy Armblade",
+              "attacks": 4,
+              "specialRules": [
+                "AP(4)"
+              ],
+              "cost": 10
+            }
+          ]
         },
         {
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Plasmabot",
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 25
+            }
+          ]
         }
       ]
     },
@@ -1408,14 +1578,35 @@
           "type": "replace",
           "affects": 1,
           "replaceWhat": "Gauss Cannon",
-          "options": []
+          "options": [
+            {
+              "name": "Heavy Gauss Cannon",
+              "attacks": 1,
+              "range": 36,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 55
+            }
+          ]
         },
         {
           "text": "Replace all Gauss Cannons",
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Gauss Cannons",
-          "options": []
+          "options": [
+            {
+              "name": "2x Hyper Swords",
+              "attacks": 3,
+              "specialRules": [
+                "AP((1)",
+                "Rending"
+              ],
+              "cost": 25
+            }
+          ]
         }
       ]
     },
@@ -1426,7 +1617,18 @@
           "text": "Replace Heavy Gauss Cannon",
           "type": "replace",
           "replaceWhat": "Heavy Gauss Cannon",
-          "options": []
+          "options": [
+            {
+              "name": "Exterminator Cannon",
+              "attacks": 3,
+              "range": 36,
+              "specialRules": [
+                "AP(2)",
+                "Blast(3)"
+              ],
+              "cost": 35
+            }
+          ]
         }
       ]
     },
@@ -1436,7 +1638,15 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Repair Bots",
+              "specialRules": [
+                "Regeneration"
+              ],
+              "cost": 35
+            }
+          ]
         }
       ]
     },
@@ -1447,13 +1657,45 @@
           "text": "Replace Gauss Cannon",
           "type": "replace",
           "replaceWhat": "Gauss Cannon",
-          "options": []
+          "options": [
+            {
+              "name": "Flux Cannon",
+              "attacks": 4,
+              "range": 24,
+              "specialRules": [
+                "AP(2)",
+                "Flux"
+              ],
+              "cost": 30
+            }
+          ]
         },
         {
           "text": "Replace Twin Flux Cannon",
           "type": "replace",
           "replaceWhat": "Twin Flux Cannon",
-          "options": []
+          "options": [
+            {
+              "type": "mount",
+              "cost": -80,
+              "equipment": [
+                {
+                  "name": "Overseer Pilot",
+                  "specialRules": [
+                    "Staff (A3)"
+                  ]
+                },
+                {
+                  "name": "Overseer Pilot - Staff-Shot",
+                  "attacks": 3,
+                  "range": 12,
+                  "specialRules": [
+                    "AP(1)"
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "text": "Upgrade Overseer Pilot with one",
@@ -1461,6 +1703,12 @@
           "select": 1,
           "replaceWhat": "Overseer Pilot",
           "options": [
+            {
+              "name": "Wrist-Mounted Flamer",
+              "attacks": 6,
+              "range": 12,
+              "cost": 10
+            },
             {
               "name": "Wrist-Mounted Laser Cannon",
               "attacks": 1,
@@ -1486,7 +1734,14 @@
               "attacks": 3,
               "specialRules": [
                 "AP(1)",
-                "Rending) Free Void Sword (A6",
+                "Rending"
+              ],
+              "cost": 0
+            },
+            {
+              "name": "Void Sword",
+              "attacks": 6,
+              "specialRules": [
                 "AP(1)"
               ],
               "cost": 5
@@ -1514,7 +1769,15 @@
           "text": "Upgrade Overseer Pilot",
           "type": "upgradeRule",
           "replaceWhat": "Overseer Pilot",
-          "options": []
+          "options": [
+            {
+              "name": "Royal March Order",
+              "specialRules": [
+                "Royal March Order"
+              ],
+              "cost": 60
+            }
+          ]
         }
       ]
     },
@@ -1526,13 +1789,33 @@
           "type": "replace",
           "affects": 2,
           "replaceWhat": "Atom Beam",
-          "options": []
+          "options": [
+            {
+              "name": "Doom Blaster",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(4)",
+                "Blast(3)"
+              ],
+              "cost": 20
+            }
+          ]
         },
         {
           "text": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
+            {
+              "name": "Twin Gauss Rifles",
+              "attacks": 2,
+              "range": 24,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 10
+            },
             {
               "name": "Tripod Queen",
               "specialRules": [
@@ -1558,7 +1841,18 @@
           "text": "Upgrade with up to two",
           "type": "upgrade",
           "select": 2,
-          "options": []
+          "options": [
+            {
+              "name": "Antimatter Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 20
+            }
+          ]
         },
         {
           "text": "Upgrade with any",
@@ -1584,6 +1878,16 @@
           "type": "replace",
           "replaceWhat": "Antimatter Cannon",
           "options": [
+            {
+              "name": "Fusion Ray",
+              "attacks": 2,
+              "range": 24,
+              "specialRules": [
+                "AP(4)",
+                "Deadly(6)"
+              ],
+              "cost": 25
+            },
             {
               "name": "Heavy Gauss Cannon",
               "attacks": 1,
@@ -1617,7 +1921,15 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Repair Bots",
+              "specialRules": [
+                "Regeneration"
+              ],
+              "cost": 110
+            }
+          ]
         }
       ]
     },
@@ -1627,15 +1939,125 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Repair Bots",
+              "specialRules": [
+                "Regeneration"
+              ],
+              "cost": 145
+            }
+          ]
         },
         {
           "text": "Replace Destruction Pulse",
           "type": "replace",
           "replaceWhat": "Destruction Pulse",
-          "options": []
+          "options": [
+            {
+              "name": "Nanobot Wraith-Shard",
+              "specialRules": [
+                "Psychic(3)"
+              ],
+              "cost": -10
+            }
+          ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Darkness-Protocol",
+      "description": "The hero and his unit get the Ambush special rule."
+    },
+    {
+      "name": "Flux",
+      "description": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4."
+    },
+    {
+      "name": "Gloom-Protocol",
+      "description": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls."
+    },
+    {
+      "name": "Hunter",
+      "description": "On a round in which this unit arrives from Ambush it gets AP(+3)."
+    },
+    {
+      "name": "Regen-Protocol",
+      "description": "The hero and his unit may ignore wounds from Regeneration on 4+."
+    },
+    {
+      "name": "Royal March",
+      "description": "The hero and his unit may ignore the Slow special rule."
+    },
+    {
+      "name": "Shield Wall",
+      "description": "Enemies get -1 to hit when they attack units where all models have this rule."
+    },
+    {
+      "name": "Bot Fabricator",
+      "description": "When this unit is activated place 1 Bot Swarm fully within 6” of this unit."
+    },
+    {
+      "name": "Flux",
+      "description": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4."
+    },
+    {
+      "name": "Gloom-Protocol",
+      "description": "This model may block spells as if it had the Psychic(2) special rule."
+    },
+    {
+      "name": "Psychic Master",
+      "description": "This model counts as having the Psychic(3) rule, and may cast or block up to three spells each round, however for every unmodified result of 1 it takes 3 wounds."
+    },
+    {
+      "name": "Psychic Warden",
+      "description": "Whenever a model within 6” would take wounds from Psychic Master, you may put those wounds on this model instead."
+    },
+    {
+      "name": "Reanimator",
+      "description": "When this unit is activated pick one friendly unit within 12”, which may ignore wounds from Regeneration on 4+ next time it takes wounds."
+    },
+    {
+      "name": "Repair",
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+    },
+    {
+      "name": "Royal March Order",
+      "description": "When this model is activated pick one friendly unit within 12”, which may ignore the Slow special rule next time it moves."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Star Bots",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -1 to melee next time it fights."
+    },
+    {
+      "name": "Meteor Bots",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "name": "Assault Bots",
+      "test": "5+",
+      "description": "Target friendly unit within 12” may immediately move by up to 3”."
+    },
+    {
+      "name": "Thunderbolt Bots",
+      "test": "5+",
+      "description": "Target enemy model within 12” takes 4 automatic hits."
+    },
+    {
+      "name": "Arrow Bots",
+      "test": "6+",
+      "description": "Target enemy unit within 18” gets -2 to hit next time it shoots."
+    },
+    {
+      "name": "Fire Bots",
+      "test": "6+",
+      "description": "Target 2 enemy units within 6” take 6 automatic hits with AP(1) each."
     }
   ]
 }
