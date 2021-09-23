@@ -412,6 +412,10 @@ test("Parse weapon pairing", () => {
     });
 });
 
+test("Parse AoF format mount 1", () => {
+
+});
+
 //#endregion
 
 //#region Special equipment cases
@@ -444,11 +448,60 @@ test("Parse seven", () => {
 
 //#endregion
 
+//#region Parse Rules
+
+test("Parse rules from pdf", () => {
+    const input = `
+Attack Bomb: Whenever this unit moves over enemies pick one of them and roll 1 die, on a 2+ it takes 3 hits with AP(1).
+Ballistic Master: When the hero is activated pick one friendly Artillery unit within 6”, which may either get +2 to its shooting rolls or move up to 6” during its next activation.
+Bombing Run: Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 3 hits with AP(1).
+Drill: The unit may be deployed from Ambush at up to 3” from enemy units.
+Grudge: The hero and his unit get +1 to their rolls when fighting in melee.
+Slayer: This model gets AP(+2) when fighting units with Tough(3) or higher.
+Swift: The hero may ignore the Slow rule.
+`;
+
+    const rules = DataParsingService.parseRules(input);
+
+    expect(rules.length).toBe(7);
+    expect(rules[2]).toStrictEqual({
+        name: "Bombing Run",
+        description: "Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 3 hits with AP(1)."
+    });
+
+});
+
+//#endregion
+
+//#region Parse Spells
+
+test("Parse Spells from pdf", () => {
+    const input = `
+Spite Rune (4+): Target enemy unit within 12” gets -1 to hit in melee next time it fights.
+Smiting Rune (4+): Target enemy unit within 12” takes 4 automatic hits.
+Battle Rune (5+): Target friendly unit within 12” gets +6” next time it moves.
+Breaking Rune (5+): Target enemy model within 12” takes 2 automatic hits with AP(2).
+Drill Rune (6+): Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play.
+Cleaving Rune (6+): Target 2 enemy units within 12” take 6 automatic hits each.
+`;
+
+    const spells = DataParsingService.parseSpells(input);
+
+    expect(spells.length).toBe(6);
+    expect(spells[2]).toStrictEqual({
+        name: "Battle Rune",
+        test: "5+",
+        description: "Target friendly unit within 12” gets +6” next time it moves."
+    });
+});
+
+//#endregion
+
 //#region PDF Input Parsing
 
 test("Alien Hives Upgrades", () => {
 
-const input = `
+    const input = `
 A Replace any Razor Claws:
 Piercing Claws (A4, AP(2), Rending) +5pts
 Smashing Claws (A4, AP(4)) +10pts

@@ -264,4 +264,37 @@ export default class DataParsingService {
 
         return result;
     }
+
+    public static parseRules(rules: string) {
+
+        const results = [];
+
+        for (let line of rules.split("\n").filter(line => !!line)) {
+            const lineParts = line.split(":");
+            const rule = lineParts[0].trim();
+            const description = lineParts[1].trim();
+            results.push({ name: rule, description });
+        }
+
+        return results;
+    }
+
+    public static parseSpells(spells: string) {
+
+        const results = [];
+
+        for (let line of spells.split("\n").filter(line => !!line)) {
+            const lineParts = line.split(":");
+            const spell = lineParts[0].trim();
+            const description = lineParts[1].trim();
+            const spellMatch = /(.+)\s\((.+)\)/.exec(spell);
+            results.push({
+                name: spellMatch[1],
+                test: spellMatch[2],
+                description
+            });
+        }
+
+        return results;
+    }
 }
