@@ -4,22 +4,26 @@ import { EscalatorWarning } from "@mui/icons-material";
 
 export default class EquipmentService {
 
+    private static compareEquipmentNames(a: string, b: string): boolean {
+        //return pluralise.singular(a).indexOf(pluralise.singular(b)) > -1;
+        return pluralise.singular(a) === pluralise.singular(b);
+    }
 
     public static find(list: IEquipment[], match: string): IEquipment[] {
         return list
-            .filter(e => pluralise.singular(e.name).indexOf(pluralise.singular(match)) > -1);
+            .filter(e => this.compareEquipmentNames(e.name, match));
     }
 
     public static findLast(list: IEquipment[], match: string): IEquipment {
         const matches = list
-            .filter(e => pluralise.singular(e.name).indexOf(pluralise.singular(match)) > -1);
+            .filter(e => this.compareEquipmentNames(e.name, match));
         return matches[matches.length - 1];
     }
 
     public static findLastIndex(array: IEquipment[], match: string) {
         let l = array.length;
         while (l--) {
-            if (pluralise.singular(array[l].name).indexOf(pluralise.singular(match)) > -1)
+            if (this.compareEquipmentNames(array[l].name, match))
                 return l;
         }
         return -1;

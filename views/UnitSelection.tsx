@@ -6,7 +6,9 @@ import { groupBy } from "../services/Helpers";
 import { Fragment, useState } from "react";
 import { Accordion, AccordionDetails, AccordionSummary, IconButton, Chip, Modal, Paper, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import WarningIcon from "@mui/icons-material/Warning";
 import EquipmentService from "../services/EquipmentService";
+import { dataToolVersion } from "../pages/data";
 
 export function UnitSelection({ onSelected }) {
 
@@ -34,9 +36,13 @@ export function UnitSelection({ onSelected }) {
       className={styles.menu + " menu"}
       style={{ minHeight: "100%" }}
     >
-      <h3 className="is-size-4 p-4">
-        {army.name} - v{army.version}
-      </h3>
+      <div className="is-flex is-align-items-center">
+        <h3 className="is-size-4 p-4 is-flex-grow-1">
+          {army.name} - v{army.version}
+
+        </h3>
+        {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+      </div>
 
       {
         // For each category

@@ -26,17 +26,19 @@ export default class UpgradeService {
             return option.specialRules.reduce((prev, curr) => prev && unit.specialRules.indexOf(curr) >= 0, true);
         }
 
-        const isApplied = name => unit
-            .selectedEquipment
-            .filter(e => pluralise.singular(e.name) === pluralise.singular(name))
-            .length > 0;
+        // has actually got the thing
+        const isApplied = name => {
+            const matches = EquipmentService.find(unit.selectedEquipment, name);
+            return matches.length > 0;
+        }
 
         if (option.type === "combined" || option.type === "mount") {
 
             try {
                 return option
                     .equipment
-                    .reduce((prev, current) => prev && isApplied(current.name), true)
+                    // Check that each part of the option is contained within the unit's selected equipment
+                    .reduce((prev, current) => prev && EquipmentService.find(unit.selectedEquipment, current.name).length > 0, true)
             } catch (e) {
                 console.error(e, option);
                 debugger;
@@ -44,16 +46,20 @@ export default class UpgradeService {
             }
         } else {
 
-            return isApplied(option.name);
+            const match = EquipmentService.findLast(unit.selectedEquipment, option.name);
+            if (!match)
+                return false;
+
+            // TODO: Comment why this is working... sorry, tired again!
+            return match.count === (option.count || 1) || match.count === unit.size * (option.count || 1);
         }
     }
 
     static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): number {
-        const selection = unit
-            .selectedEquipment
-            .filter(e => e.name === option.name)[0];
-
-        return selection ? selection.count : 0;
+        const matches = EquipmentService.find(unit.selectedEquipment, option.name);
+        return matches?.length > 0
+            ? matches.reduce((value, next) => value + (next.count || 1), 0)
+            : 0;
     }
 
     public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
@@ -177,11 +183,13 @@ export default class UpgradeService {
             return;
         }
 
-        const count = typeof (upgrade.affects) === "number"
+        debugger;
+
+        const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
             : upgrade.affects === "all"
                 ? unit.size || 1 // All in unit
-                : 1;
+                : 1) * (option.count || 1);
 
         const apply = () => {
             if (option.type === "combined" || option.type === "mount") {
@@ -196,12 +204,9 @@ export default class UpgradeService {
 
             } else {
                 if (existingSelection) {
-                    if (!existingSelection.count)
-                        existingSelection.count = count;
-
                     existingSelection.count += count;
                 } else {
-                    unit.selectedEquipment.push({ ...option, count: count });
+                    unit.selectedEquipment.push({ ...option, count: count, originalCount: (option.count || 1) });
                 }
             }
         };
@@ -259,12 +264,13 @@ export default class UpgradeService {
 
             return;
         }
+        debugger;
 
-        const count = typeof (upgrade.affects) === "number"
+        const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
             : upgrade.affects === "all"
                 ? unit.size || 1 // All in unit
-                : 1;
+                : 1) * (option.count || 1);
 
         const equipment = option.type === "combined" || option.type === "mount" ? option.equipment : [option];
 
@@ -302,7 +308,7 @@ export default class UpgradeService {
                     const original = EquipmentService.findLast(unit.equipment, what);
 
                     // put the original item back
-                    unit.selectedEquipment.push({ ...original, count: count });
+                    unit.selectedEquipment.push({ ...original, count: original.count || unit.size });
                 }
             }
         }

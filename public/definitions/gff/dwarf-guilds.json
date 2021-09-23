@@ -574,16 +574,23 @@
               "cost": 25
             },
             {
-              "name": "Combat Bike",
-              "attacks": 2,
-              "range": 24,
-              "specialRules": [
-                "Fast",
-                "Impact(1)",
-                "Swift",
-                "Twin Assault Rifle (24î"
-              ],
-              "cost": 30
+              "type": "mount",
+              "cost": 30,
+              "equipment": [
+                {
+                  "name": "Combat Bike",
+                  "specialRules": [
+                    "Fast",
+                    "Impact(1)",
+                    "Swift"
+                  ]
+                },
+                {
+                  "name": "Twin Assault Rifle",
+                  "attacks": 2,
+                  "range": 24
+                }
+              ]
             },
             {
               "name": "Power Suit",
@@ -618,23 +625,11 @@
                 "Guild Defender"
               ],
               "cost": 15
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "D1",
-      "upgrades": [
-        {
-          "text": "Upgrade Psychic(1)",
-          "type": "upgradeRule",
-          "replaceWhat": "Psychic(1)",
-          "options": [
+            },
             {
-              "name": "Psychic(2)",
+              "name": "D Upgrade Psychic",
               "specialRules": [
-                "Psychic(2)"
+                "1) Psychic(2"
               ],
               "cost": 15
             }
@@ -711,18 +706,22 @@
           ]
         },
         {
-          "text": "Missile Launcher ñ pick one to fire",
+          "text": "Missile Launcher - pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48î",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 25
+              "type": "mount",
+              "cost": 25,
+              "equipment": [
+                {
+                  "name": "HE",
+                  "specialRules": [
+                    "48‚Äù, A1",
+                    "Blast(3)) AT (48‚Äù, A1",
+                    "AP(3)",
+                    "Deadly(3)"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -773,18 +772,22 @@
           ]
         },
         {
-          "text": "Missile Launcher ñ pick one to fire",
+          "text": "Missile Launcher - pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48î",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 30
+              "type": "mount",
+              "cost": 30,
+              "equipment": [
+                {
+                  "name": "HE",
+                  "specialRules": [
+                    "48‚Äù, A1",
+                    "Blast(3)) AT (48‚Äù, A1",
+                    "AP(3)",
+                    "Deadly(3)"
+                  ]
+                }
+              ]
             },
             {
               "name": "Heavy Fusion Rifle",
@@ -923,18 +926,22 @@
           ]
         },
         {
-          "text": "Missile Launcher ñ pick one to fire",
+          "text": "Missile Launcher - pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48î",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 35
+              "type": "mount",
+              "cost": 35,
+              "equipment": [
+                {
+                  "name": "HE",
+                  "specialRules": [
+                    "48‚Äù, A1",
+                    "Blast(3)) AT (48‚Äù, A1",
+                    "AP(3)",
+                    "Deadly(3)"
+                  ]
+                }
+              ]
             },
             {
               "name": "Heavy Fusion Rifle",
@@ -1060,18 +1067,22 @@
           "options": []
         },
         {
-          "text": "Heavy Missiles ñ pick one to fire",
+          "text": "Heavy Missiles - pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48î",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 40
+              "type": "mount",
+              "cost": 40,
+              "equipment": [
+                {
+                  "name": "HE",
+                  "specialRules": [
+                    "48‚Äù, A1",
+                    "Blast(3)) AT (48‚Äù, A1",
+                    "AP(3)",
+                    "Deadly(3)"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -1107,18 +1118,22 @@
           ]
         },
         {
-          "text": "Missile Launcher ñ pick one to fire",
+          "text": "Missile Launcher - pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48î",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 10
+              "type": "mount",
+              "cost": 10,
+              "equipment": [
+                {
+                  "name": "HE",
+                  "specialRules": [
+                    "48‚Äù, A1",
+                    "Blast(3)) AT (48‚Äù, A1",
+                    "AP(3)",
+                    "Deadly(3)"
+                  ]
+                }
+              ]
             },
             {
               "name": "Laser Cannon",
@@ -1151,18 +1166,22 @@
           ]
         },
         {
-          "text": "Grenade Launcherñpick one to fire",
+          "text": "Grenade Launcher-pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "Blast(3)) AT (24î",
-                "AP(1)",
-                "Deadly(3)"
-              ],
-              "cost": 10
+              "type": "mount",
+              "cost": 10,
+              "equipment": [
+                {
+                  "name": "HE",
+                  "specialRules": [
+                    "24‚Äù, A1",
+                    "Blast(3)) AT (24‚Äù, A1",
+                    "AP(1)",
+                    "Deadly(3)"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -1232,18 +1251,22 @@
           ]
         },
         {
-          "text": "Missile Launcher ñ pick one to fire",
+          "text": "Missile Launcher - pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48î",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 15
+              "type": "mount",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "HE",
+                  "specialRules": [
+                    "48‚Äù, A1",
+                    "Blast(3)) AT (48‚Äù, A1",
+                    "AP(3)",
+                    "Deadly(3)"
+                  ]
+                }
+              ]
             },
             {
               "name": "Heavy Fusion Rifle",
@@ -1286,15 +1309,15 @@
   "specialRules": [
     {
       "name": "Battle Lore",
-      "description": "The hero and all friendly units within 12î get +1 to hit when fighting in melee."
+      "description": "The hero and all friendly units within 12‚Äù get +1 to hit when fighting in melee."
     },
     {
       "name": "Guild Defender",
-      "description": "The hero and all friendly units within 12î get +1 to hit when shooting."
+      "description": "The hero and all friendly units within 12‚Äù get +1 to hit when shooting."
     },
     {
       "name": "Repair",
-      "description": "Once per turn, if within 2î of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+      "description": "Once per turn, if within 2‚Äù of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
     },
     {
       "name": "Shield Wall",
@@ -1313,32 +1336,32 @@
     {
       "name": "Spite Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12î gets -1 to hit in melee next time it fights."
+      "description": "Target enemy unit within 12‚Äù gets -1 to hit in melee next time it fights."
     },
     {
       "name": "Smiting Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12î takes 4 automatic hits."
+      "description": "Target enemy unit within 12‚Äù takes 4 automatic hits."
     },
     {
       "name": "Battle Rune",
       "test": "5+",
-      "description": "Target friendly unit within 12î gets +6î next time it moves."
+      "description": "Target friendly unit within 12‚Äù gets +6‚Äù next time it moves."
     },
     {
       "name": "Breaking Rune",
       "test": "5+",
-      "description": "Target enemy model within 12î takes 2 automatic hits with AP(2)."
+      "description": "Target enemy model within 12‚Äù takes 2 automatic hits with AP(2)."
     },
     {
       "name": "Drill Rune",
       "test": "6+",
-      "description": "Target piece of terrain within 6î may be moved by up to 6î in any direction or may be removed from play."
+      "description": "Target piece of terrain within 6‚Äù may be moved by up to 6‚Äù in any direction or may be removed from play."
     },
     {
       "name": "Cleaving Rune",
       "test": "6+",
-      "description": "Target 2 enemy units within 12î take 6 automatic hits each."
+      "description": "Target 2 enemy units within 12‚Äù take 6 automatic hits each."
     }
   ]
 }

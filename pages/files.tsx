@@ -96,7 +96,6 @@ export default function Files() {
                                             by OnePageRules
                                         </div>
                                     </div>
-                                    {/* <p className="mr-2">{u.cost}pts</p> */}
                                     <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectArmy(file.path); }}>
                                         <RightIcon />
                                     </IconButton>

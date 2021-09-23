@@ -10,6 +10,7 @@ export interface ArmyState {
 export interface IArmyData {
     name: string;
     version: string;
+    dataToolVersion: string;
     units: any[];
     upgradeSets: any[];
 }

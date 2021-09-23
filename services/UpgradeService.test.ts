@@ -262,7 +262,8 @@ test("Apply 'Replace one Assault Rifle and CCW'", () => {
         {
             name: 'Shotgun',
             count: 1,
-            cost: 5
+            cost: 5,
+            originalCount: 1
         }
     ])
 
@@ -271,5 +272,41 @@ test("Apply 'Replace one Assault Rifle and CCW'", () => {
 test("Remove Upgrade", () => {
 
 })
+
+test("Apply option with count", () => {
+    const unit: ISelectedUnit = {
+        ...defaultUnit,
+        selectedEquipment: [
+            {
+                name: 'Hand Weapons',
+                count: 1,
+                cost: 0
+            }
+        ]
+    };
+
+    const option: IEquipment = {
+        name: 'Hand Weapons',
+        count: 2
+    };
+
+    const upgrade: IUpgrade = {
+        type: 'replace',
+        affects: 1,
+        replaceWhat: 'Hand Weapons',
+        options: [option]
+    };
+
+    UpgradeService.apply(unit, upgrade, option);
+
+    expect(unit.selectedEquipment).toStrictEqual([
+        {
+            name: 'Hand Weapons',
+            count: 2,
+            cost: 0
+        }
+    ])
+
+});
 
 //#endregion

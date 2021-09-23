@@ -5,6 +5,7 @@ export interface IEquipment {
     attacks?: number;
     cost?: number;
     count?: number;
+    originalCount?: number;
     specialRules?: string[];
     equipment?: IEquipment[]; // For { "type": "combined" }
 }

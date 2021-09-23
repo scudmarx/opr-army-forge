@@ -198,14 +198,11 @@ export default class DataParsingService {
     public static parseEquipment(part) {
 
         const groups = {
-            name: 1,
-            rules: 2,
-            cost: 3
+            count: 1,
+            name: 2,
+            rules: 3,
+            cost: 4
         };
-
-
-        if (/ - /.test(part))
-            return this.parseMount(part);
 
         // "A (...) and B (...) +10pts"
         if (part.indexOf(") and ") > 0) {
@@ -220,6 +217,40 @@ export default class DataParsingService {
             };
         }
 
+        if (/^(.+)\(.+\(.+A\d+/.test(part)) {
+            const mountMatch = /^(.+?)\((.+)\) ([+-]\d+)pt/.exec(part);
+            const mountName = mountMatch[1].trim();
+            const mountRules = [];
+            let mountWeapon = null;
+            // For each rule/weapon in the (Fast, Impact(1), Weapon (16", A2))
+            // Split on any comma that is preceeded by a letter or )
+            for (let rule of mountMatch[2].split(/(?<=\)|\w),/).map(r => r.trim())) {
+                // If it's words only, it's a rule
+                // or Parameter rules like Impact(1) Tough(2)
+                if (/^[^\(\)]+$/.test(rule) || /\w+\(\d+\)/.test(rule)) {
+                    mountRules.push(rule);
+                } else { // It's a weapon
+                    mountWeapon = this.parseEquipment(mountName + " " + rule);
+                }
+            }
+
+            return {
+                type: "mount",
+                cost: parseInt(mountMatch[3]),
+                equipment: [
+                    {
+                        name: mountName,
+                        specialRules: mountRules
+                    },
+                    mountWeapon
+                ].filter(e => !!e)
+            };
+        }
+
+        if (/ - /.test(part))
+            return this.parseMount(part);
+
+        // "Field Medic"
         const singleRuleMatch = /^([\w\s!]+)\s([-+]\d+)pt/.exec(part);
         if (singleRuleMatch) {
             return {
@@ -229,6 +260,7 @@ export default class DataParsingService {
             };
         }
 
+        // Wizard(1)
         const paramRuleMatch = /^(\w+\(\d+\))\s([-+]\d+)pt/.exec(part);
         if (paramRuleMatch) {
             return {
@@ -238,7 +270,7 @@ export default class DataParsingService {
             };
         }
 
-        const match = /(.+?)\((.+)\)\s?([+-]\d+|Free)?/.exec(part);
+        const match = /(?:(\d+)x\s?)?(.+?)\((.+)\)\s?([+-]\d+|Free)?/.exec(part);
 
         const attacksMatch = /A(\d+)[,\)]/.exec(part);
         const rangeMatch = /(\d+)["”][,\)]/.exec(part);
@@ -251,8 +283,8 @@ export default class DataParsingService {
             name: match[groups.name].trim()
         };
 
-        // if (match[groups.count])
-        //     result.count = parseInt(match[groups.count]);
+        if (match[groups.count])
+             result.count = parseInt(match[groups.count]);
 
         if (attacksMatch)
             result.attacks = parseInt(attacksMatch[1]);

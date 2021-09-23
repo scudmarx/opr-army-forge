@@ -295,8 +295,8 @@ test("Parse multiple melee weapon with rules", () => {
     const e = DataParsingService.parseEquipment("2x Sword (A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
-        name: "2x Sword",
-        //count: 2,
+        name: "Sword",
+        count: 2,
         attacks: 3,
         specialRules: ["Rending", "AP(1)"]
     });
@@ -497,6 +497,30 @@ test("Parse AoF format mount 4", () => {
     };
 
     expect(mount).toStrictEqual(expected);
+});
+
+test("Parse GFF format mount", () => {
+    const e = DataParsingService.parseEquipment('Combat Bike (Fast, Impact(1), Swift, Twin Assault Rifle (24”,A2)) +30pts');
+
+    expect(e).toStrictEqual({
+        type: "mount",
+        cost: 30,
+        equipment: [
+            {
+                name: "Combat Bike",
+                specialRules: [
+                    "Fast",
+                    "Impact(1)",
+                    "Swift",
+                ]
+            },
+            {
+                name: "Combat Bike Twin Assault Rifle",
+                attacks: 2,
+                range: 24,
+            },
+        ]
+    });
 });
 
 //#endregion
