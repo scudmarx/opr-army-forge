@@ -1,6 +1,6 @@
 export interface IEquipment {
-    type?: "combined";
-    name: string;
+    type?: "combined"|"mount";
+    name?: string;
     range?: number;
     attacks?: number;
     cost?: number;

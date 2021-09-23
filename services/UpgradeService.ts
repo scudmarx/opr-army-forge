@@ -20,8 +20,6 @@ export default class UpgradeService {
     static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
 
         if (upgrade.type === "upgradeRule") {
-            console.log(unit.specialRules);
-            console.log(option.specialRules);
 
             // Check that the special rules from this upgrade are contained within the unit's rules
             return option.specialRules.reduce((prev, curr) => prev && unit.specialRules.indexOf(curr) >= 0, true);
@@ -32,12 +30,17 @@ export default class UpgradeService {
             .filter(e => pluralise.singular(e.name) === pluralise.singular(name))
             .length > 0;
 
-        if (option.type === "combined") {
+        if (option.type === "combined" || option.type === "mount") {
 
-            return option
-                .equipment
-                .reduce((prev, current) => prev && isApplied(current.name), true)
-
+            try {
+                return option
+                    .equipment
+                    .reduce((prev, current) => prev && isApplied(current.name), true)
+            } catch (e) {
+                console.error(e, option);
+                debugger;
+                return true;
+            }
         } else {
 
             return isApplied(option.name);
@@ -91,17 +94,21 @@ export default class UpgradeService {
 
         if (upgrade.type === "upgrade") {
 
+            const selections = unit
+                .selectedEquipment
+                .filter(selected => upgrade.options.findIndex(opt => opt.name === selected.name) > -1);
+
+            const countSelected = selections.reduce((prev, next) => prev + next.count || 1, 0);
+
             if (typeof (upgrade.select) === "number") {
-
-                const selections = unit
-                    .selectedEquipment
-                    .filter(selected => upgrade.options.findIndex(opt => opt.name === selected.name) > -1);
-
-                const countSelected = selections.reduce((prev, next) => prev + next.count || 1, 0);
 
                 if (countSelected >= upgrade.select) {
                     return false;
                 }
+            }
+
+            if (countSelected >= unit.size) {
+                return false;
             }
         }
 
@@ -111,21 +118,19 @@ export default class UpgradeService {
     public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
         if (upgrade.type === "upgrade") {
 
-            // "Upgrade with:"
-            // "Upgrade with any:"
-            if (!upgrade.select || upgrade.select == "any") {
-                return "check";
-            }
-            // "Upgrade with one:"
-            if (upgrade.select === 1) {
-                return "radio";
-            }
-            // TODO "Upgrade with up to n:"
+            // "Upgrade any model with:"
+            if (upgrade.affects === "any" && unit?.size > 1)
+                return "updown";
 
-            // "Upgrade with any:"
-            if (upgrade.select === "any") {
-                return "check";
-            }
+            // "Upgrade with one:"
+            if (upgrade.select === 1)
+                return "radio";
+
+            // Select > 1
+            if (typeof (upgrade.select) === "number")
+                return "updown";
+
+            return "check";
         }
 
         // "Upgrade Psychic(1):"

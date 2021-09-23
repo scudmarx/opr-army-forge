@@ -1,3 +1,4 @@
+import { IEquipment } from '../data/interfaces';
 import DataParsingService from './DataParsingService';
 
 /*
@@ -412,6 +413,92 @@ test("Parse weapon pairing", () => {
     });
 });
 
+''
+'Ancestral Stone - Tough(+3) +70pts'
+'Shield Carriers - Hand Weapons (A4), Tough(+3) +80pts'
+'Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts'
+
+test("Parse AoF format mount 1", () => {
+    const mount = DataParsingService.parseMount('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 120,
+        equipment: [
+            {
+                name: "Great War-Bear",
+                specialRules: ["Fear", "Impact(3)", "Swift", "Tough(+3)"],
+            },
+            {
+                name: "Great War-Bear - Claws",
+                attacks: 3,
+                specialRules: ["AP(1)"]
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
+});
+
+test("Parse AoF format mount 2", () => {
+    const mount = DataParsingService.parseMount('Ancestral Stone - Tough(+3) +70pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 70,
+        equipment: [
+            {
+                name: "Ancestral Stone",
+                specialRules: ["Tough(+3)"]
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
+});
+
+test("Parse AoF format mount 3", () => {
+    const mount = DataParsingService.parseMount('Shield Carriers - Hand Weapons (A4), Tough(+3) +80pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 80,
+        equipment: [
+            {
+                name: "Shield Carriers",
+                specialRules: ["Tough(+3)"],
+            },
+            {
+                name: "Shield Carriers - Hand Weapons",
+                attacks: 4,
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
+});
+
+test("Parse AoF format mount 4", () => {
+    const mount = DataParsingService.parseMount('Beast - Claws(A1), Impact(1), Swift +15pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 15,
+        equipment: [
+            {
+                name: "Beast",
+                specialRules: ["Impact(1)", "Swift"],
+            },
+            {
+                name: "Beast - Claws",
+                attacks: 1
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
+});
+
 //#endregion
 
 //#region Special equipment cases
@@ -440,6 +527,199 @@ test("Parse one", () => {
 test("Parse seven", () => {
     const num: number = DataParsingService.numberFromName("seven");
     expect(num).toBe(7);
+});
+
+//#endregion
+
+//#region Parse Rules
+
+test("Parse rules from pdf", () => {
+    const input = `
+Attack Bomb: Whenever this unit moves over enemies pick one of them and roll 1 die, on a 2+ it takes 3 hits with AP(1).
+Ballistic Master: When the hero is activated pick one friendly Artillery unit within 6”, which may either get +2 to its shooting rolls or move up to 6” during its next activation.
+Bombing Run: Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 3 hits with AP(1).
+Drill: The unit may be deployed from Ambush at up to 3” from enemy units.
+Grudge: The hero and his unit get +1 to their rolls when fighting in melee.
+Slayer: This model gets AP(+2) when fighting units with Tough(3) or higher.
+Swift: The hero may ignore the Slow rule.
+`;
+
+    const rules = DataParsingService.parseRules(input);
+
+    expect(rules.length).toBe(7);
+    expect(rules[2]).toStrictEqual({
+        name: "Bombing Run",
+        description: "Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 3 hits with AP(1)."
+    });
+
+});
+
+//#endregion
+
+//#region Parse Spells
+
+test("Parse Spells from pdf", () => {
+    const input = `
+Spite Rune (4+): Target enemy unit within 12” gets -1 to hit in melee next time it fights.
+Smiting Rune (4+): Target enemy unit within 12” takes 4 automatic hits.
+Battle Rune (5+): Target friendly unit within 12” gets +6” next time it moves.
+Breaking Rune (5+): Target enemy model within 12” takes 2 automatic hits with AP(2).
+Drill Rune (6+): Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play.
+Cleaving Rune (6+): Target 2 enemy units within 12” take 6 automatic hits each.
+`;
+
+    const spells = DataParsingService.parseSpells(input);
+
+    expect(spells.length).toBe(6);
+    expect(spells[2]).toStrictEqual({
+        name: "Battle Rune",
+        test: "5+",
+        description: "Target friendly unit within 12” gets +6” next time it moves."
+    });
+});
+
+//#endregion
+
+//#region PDF Input Parsing
+
+test("Alien Hives Upgrades", () => {
+
+    const input = `
+A Replace any Razor Claws:
+Piercing Claws (A4, AP(2), Rending) +5pts
+Smashing Claws (A4, AP(4)) +10pts
+Serrated Claws (A8, AP(2)) +15pts
+Sword Claws (A4, AP(2), Deadly(3)) +15pts
+Whip Limb and Sword Claw
+(A3, AP(1), Deadly(6))
+
++20pts
+B Replace any Razor Claws:
+Twin Bio-Pistols (12”, A6) -5pts
+Bio-Carbine (18”, A3) -5pts
+Bio-Spitter (24”, A1, Blast(3)) -5pts
+Heavy Bio-Carbine (18”, A6, AP(1)) +10pts
+Barb Cannon
+(36”, A1, AP(1), Blast(3))
+
++10pts
+
+Acid Cannon
+(36”, A1, AP(3), Deadly(3))
+
++15pts
+
+Heavy Bio-Spitter
+(24”, A2, AP(1), Blast(3))
+
++20pts
+
+Heavy Barb Cannon
+(36”, A1, AP(1), Blast(6))
+
++40pts
+
+Heavy Acid Cannon
+(36”, A1, AP(3), Deadly(6))
+
++45pts
+Upgrade with one:
+Tail Pincer (A2, AP(2), Rending) +10pts
+Tail Mace (A2, AP(4)) +10pts
+Tail Whip (A4, AP(2)) +15pts
+Tail Scythe (A2, AP(2), Deadly(3)) +15pts
+C Upgrade any model with one:
+Poison Hooks (6”, A3, Poison) +5pts
+Shredding Hooks (6”, A3, Rending) +5pts
+Shock Hooks (6”, A3, AP(2)) +5pts
+Acid Hooks (6”, A3, Deadly(3)) +5pts
+D Upgrade with any:
+Bio-Recovery (Regeneration) +70pts
+E Upgrade with:
+Wings (Ambush, Flying) +15pts
+F Upgrade one model with any:
+Psychic Barrier +10pts
+Pheromones +15pts
+G Upgrade Psychic(1):
+Psychic(2) +15pts
+H Upgrade any model with:
+Razor Claws (A3) +5pts
+Upgrade one model with:
+Psychic(1) +20pts
+
+I Replace any Razor Claws:
+Piercing Claws (A4, AP(1), Rending) +5pts
+Smashing Claws (A4, AP(3)) +5pts
+Serrated Claws (A8, AP(1)) +10pts
+Sword Claws (A4, AP(1), Deadly(3)) +10pts
+Whip Limb and Sword Claw
+(A3, Deadly(6))
+
++10pts
+J Replace any Bio-Carbine:
+Razor Claws (A4, AP(1)) +5pts
+Twin Bio-Pistols (12”, A6) +5pts
+Heavy Bio-Carbine (18”, A3, AP(1)) +5pts
+Bio-Spitter (24”, A1, Blast(3), AP(1)) +10pts
+Replace one Bio-Carbine:
+Shredder Cannon
+(24” A4, Rending)
+
++10pts
+
+Barb Cannon
+(36”, A1, AP(1), Blast(3))
+
++15pts
+
+Acid Cannon
+(36”, A1, AP(3), Deadly(3))
+
++15pts
+K Upgrade all models with:
+Wings (Ambush, Flying) +35pts
+L Replace any Bio-Gun:
+Twin Bio-Pistols (12”, A2) +5pts
+Bio-Spike (18”, A1, AP(1)) +5pts
+Bio-Carbine (18”, A3) +10pts
+Replace one Bio-Gun:
+Bio-Shredder (6”, A2, Rending) +5pts
+Shock-Gun (12”, A1, AP(2)) +5pts
+Bio-Flamer (12”, A6) +10pts
+Acid-Gun (6”, A1, AP(3), Deadly(3)) +10pts
+Bio-Rifle (18”, A1, AP(1), Sniper) +10pts
+Upgrade all models with any:
+Adrenaline (Furious) +10pts
+Toxic Bite (Poison in melee) +10pts
+M Replace any Razor Claws:
+Serrated Claws (A6) +5pts
+Piercing Claws (A3, Rending) +5pts
+Smashing Claws (A3, AP(2)) +5pts
+Sword Claws (A3, Deadly(3)) +5pts
+Upgrade all models with any:
+Adrenaline (Furious) +10pts
+Toxic Bite (Poison in melee) +10pts
+N Upgrade all models with any:
+Burrow Attack (Ambush) +5pts
+Twin Bio-Pistols (12”, A6) +10pts
+
+O Upgrade all models with one:
+Tunnel Attack (Ambush) +20pts
+Adrenaline Rush (Scout) +20pts
+P Any model may replace
+one Razor Claws:
+
+Heavy Shock-Gun
+(24”, A1, AP(2), Blast(3))
+
++10pts
+
+Bio-Harpoon
+(24”, A2, AP(4), Deadly(3))
+
++30pts
+`;
+
 });
 
 //#endregion

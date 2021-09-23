@@ -760,31 +760,54 @@
               ]
             },
             {
-              "name": "Ancestral Stone ñ Tough",
-              "specialRules": [
-                "+3"
-              ],
-              "cost": 70
+              "type": "mount",
+              "cost": 70,
+              "equipment": [
+                {
+                  "name": "Ancestral Stone",
+                  "specialRules": [
+                    "Tough(+3)"
+                  ]
+                }
+              ]
             },
             {
-              "name": "Shield Carriers ñ Hand Weapons",
-              "attacks": 4,
-              "specialRules": [
-                "Tough(+3"
-              ],
-              "cost": 80
+              "type": "mount",
+              "cost": 80,
+              "equipment": [
+                {
+                  "name": "Shield Carriers",
+                  "specialRules": [
+                    "Tough(+3)"
+                  ]
+                },
+                {
+                  "name": "Shield Carriers - Hand Weapons",
+                  "attacks": 4
+                }
+              ]
             },
             {
-              "name": "Great War-Bear ñ Claws",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1))",
-                "Fear",
-                "Impact(3)",
-                "Swift",
-                "Tough(+3"
-              ],
-              "cost": 120
+              "type": "mount",
+              "cost": 120,
+              "equipment": [
+                {
+                  "name": "Great War-Bear",
+                  "specialRules": [
+                    "Fear",
+                    "Impact(3)",
+                    "Swift",
+                    "Tough(+3)"
+                  ]
+                },
+                {
+                  "name": "Great War-Bear - Claws",
+                  "attacks": 3,
+                  "specialRules": [
+                    "AP(1)"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -1263,7 +1286,7 @@
     },
     {
       "name": "Ballistic Master",
-      "description": "When the hero is activated pick one friendly Artillery unit within 6î, which may either get +2 to its shooting rolls or move up to 6î during its next activation."
+      "description": "When the hero is activated pick one friendly Artillery unit within 6‚Äù, which may either get +2 to its shooting rolls or move up to 6‚Äù during its next activation."
     },
     {
       "name": "Bombing Run",
@@ -1271,7 +1294,7 @@
     },
     {
       "name": "Drill",
-      "description": "The unit may be deployed from Ambush at up to 3î from enemy units."
+      "description": "The unit may be deployed from Ambush at up to 3‚Äù from enemy units."
     },
     {
       "name": "Grudge",
@@ -1288,34 +1311,34 @@
   ],
   "spells": [
     {
-      "name": "Spite Rune",
+      "rule": "Spite Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12î gets -1 to hit in melee next time it fights."
+      "description": "Target enemy unit within 12‚Äù gets -1 to hit in melee next time it fights."
     },
     {
-      "name": "Smiting Rune",
+      "rule": "Smiting Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12î takes 4 automatic hits."
+      "description": "Target enemy unit within 12‚Äù takes 4 automatic hits."
     },
     {
-      "name": "Battle Rune",
+      "rule": "Battle Rune",
       "test": "5+",
-      "description": "Target friendly unit within 12î gets +6î next time it moves."
+      "description": "Target friendly unit within 12‚Äù gets +6‚Äù next time it moves."
     },
     {
-      "name": "Breaking Rune",
+      "rule": "Breaking Rune",
       "test": "5+",
-      "description": "Target enemy model within 12î takes 2 automatic hits with AP(2)."
+      "description": "Target enemy model within 12‚Äù takes 2 automatic hits with AP(2)."
     },
     {
-      "name": "Drill Rune",
+      "rule": "Drill Rune",
       "test": "6+",
-      "description": "Target piece of terrain within 6î may be moved by up to 6î in any direction or may be removed from play."
+      "description": "Target piece of terrain within 6‚Äù may be moved by up to 6‚Äù in any direction or may be removed from play."
     },
     {
-      "name": "Cleaving Rune",
+      "rule": "Cleaving Rune",
       "test": "6+",
-      "description": "Target 2 enemy units within 12î take 6 automatic hits each."
+      "description": "Target 2 enemy units within 12‚Äù take 6 automatic hits each."
     }
   ]
 }

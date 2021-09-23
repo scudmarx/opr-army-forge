@@ -146,7 +146,7 @@ export default class DataParsingService {
 
         for (let line of units.split("\n").filter((l) => !!l)) {
             const parsedUnit =
-                /^(.+)\[(\d+)\]\s(\d+\+)\s(\d+\+)\s(.*?\)\s|-)(.+?)((?:[A-Z],?\s?|-\s?)+)(\d+)pt/gm.exec(
+                /^(.+)\[(\d+)\]\s(\d+\+|-)\s(\d+\+|-)\s(.*?\)\s|-)(.+?)((?:[A-Z],?\s?|-\s?)+)(\d+)pt/gm.exec(
                     line
                 );
 
@@ -202,6 +202,10 @@ export default class DataParsingService {
             rules: 2,
             cost: 3
         };
+
+
+        if (/ - /.test(part))
+            return this.parseMount(part);
 
         // "A (...) and B (...) +10pts"
         if (part.indexOf(") and ") > 0) {
@@ -263,5 +267,63 @@ export default class DataParsingService {
             result.cost = match[groups.cost] === "Free" ? 0 : parseInt(match[groups.cost].trim());
 
         return result;
+    }
+
+    public static parseMount(text: string) {
+
+        const textParts = text.split(" - ");
+        const name = textParts[0].trim();
+        const match = /(.+)([+-]\d+)pts$/.exec(textParts[1]);
+        const weaponRegex = /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
+        const weaponMatch = weaponRegex.exec(match[1]);
+        const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/);
+
+        return {
+            type: "mount",
+            cost: parseInt(match[2]),
+            equipment: [
+                {
+                    name,
+                    specialRules: rules
+                },
+                weaponMatch && {
+                    ...this.parseEquipment(weaponMatch[1]),
+                    name: name + " - " + weaponMatch[2].trim()
+                }
+            ].filter(e => !!e)
+        };
+    }
+
+    public static parseRules(rules: string) {
+
+        const results = [];
+
+        for (let line of rules.split("\n").filter(line => !!line)) {
+            const lineParts = line.split(":");
+            const rule = lineParts[0].trim();
+            const description = lineParts[1].trim();
+            results.push({ name: rule, description });
+        }
+
+        return results;
+    }
+
+    public static parseSpells(spells: string) {
+
+        const results = [];
+
+        for (let line of spells.split("\n").filter(line => !!line)) {
+            const lineParts = line.split(":");
+            const spell = lineParts[0].trim();
+            const description = lineParts[1].trim();
+            const spellMatch = /(.+)\s\((.+)\)/.exec(spell);
+            results.push({
+                name: spellMatch[1],
+                test: spellMatch[2],
+                description
+            });
+        }
+
+        return results;
     }
 }

@@ -75,17 +75,32 @@ export const listSlice = createSlice({
                     ? unit.size || 1 // All in unit
                     : 1;
 
+            const apply = () => {
+                if (option.type === "combined" || option.type === "mount") {
+                    // Add each piece from the combination
+                    for (let e of option.equipment) {
+                        unit.selectedEquipment.push({
+                            ...e,
+                            count: count,
+                            cost: option.cost / option.equipment.length // TODO: Fix this!
+                        });
+                    }
+
+                } else {
+                    if (existingSelection) {
+                        if (!existingSelection.count)
+                            existingSelection.count = count;
+
+                        existingSelection.count += count;
+                    } else {
+                        unit.selectedEquipment.push({ ...option, count: count });
+                    }
+                }
+            };
+
             if (upgrade.type === "upgrade") {
 
-
-                if (existingSelection) {
-                    if (!existingSelection.count)
-                        existingSelection.count = count;
-
-                    existingSelection.count += count;
-                } else {
-                    unit.selectedEquipment.push({ ...option, count: count });
-                }
+                apply();
             }
             else if (upgrade.type === "replace") {
 
@@ -119,20 +134,7 @@ export const listSlice = createSlice({
                         unit.selectedEquipment.splice(replaceIndex, 1);
                 }
 
-                if (option.type === "combined") {
-                    // Add each piece from the combination
-                    for (let e of option.equipment) {
-                        unit.selectedEquipment.push({ ...e, count: count });
-                    }
-
-                } else {
-
-                    if (existingSelection) {
-                        existingSelection.count += count;
-                    } else {
-                        unit.selectedEquipment.push({ ...option, count: count });
-                    }
-                }
+                apply();
             }
         },
         removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
@@ -161,7 +163,7 @@ export const listSlice = createSlice({
                     ? unit.size || 1 // All in unit
                     : 1;
 
-            const equipment = option.type === "combined" ? option.equipment : [option];
+            const equipment = option.type === "combined" || option.type === "mount" ? option.equipment : [option];
 
             for (let e of equipment) {
                 const selection = unit.selectedEquipment.filter(eqp => eqp.name === e.name)[0];
