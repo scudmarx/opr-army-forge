@@ -1,0 +1,970 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "name": "Dwarves",
+  "version": "2.11",
+  "dataToolVersion": "0.1.0",
+  "units": [
+    {
+      "name": "Dwarf Lord",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Hero",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1",
+        "B1",
+        "C1"
+      ],
+      "cost": 60
+    },
+    {
+      "name": "Berserker Lord",
+      "size": 1,
+      "quality": "3+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "2x Berserker Axes",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Furious",
+        "Hero",
+        "Slayer",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 70
+    },
+    {
+      "name": "Engineer",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1",
+        "B1",
+        "D1"
+      ],
+      "cost": 45
+    },
+    {
+      "name": "Rune Master",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Slow",
+        "Tough(3)",
+        "Wizard(1)"
+      ],
+      "upgradeSets": [
+        "A1",
+        "E1"
+      ],
+      "cost": 65
+    },
+    {
+      "name": "Warriors",
+      "size": 3,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "G1"
+      ],
+      "cost": 25
+    },
+    {
+      "name": "Berserker",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "2x Berserker Axes",
+          "attacks": 1,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Furious",
+        "Slayer",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Miner",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Great Weapon",
+          "attacks": 1,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Ambush",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "H1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Veteran",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "I1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Elite",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Great Weapon",
+          "attacks": 2,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Iron Warrior",
+      "size": 1,
+      "quality": "3+",
+      "defense": "2+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "I1",
+        "J1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Golem",
+      "size": 1,
+      "quality": "4+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Claws",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 45
+    },
+    {
+      "name": "Steam-Power Suit",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Great Weapon",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "K1"
+      ],
+      "cost": 65
+    },
+    {
+      "name": "Marksmen",
+      "size": 3,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Rifles",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "L1"
+      ],
+      "cost": 30
+    },
+    {
+      "name": "Ranger",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Crossbow",
+          "attacks": 1,
+          "range": 30,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Scout",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "M1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Drake Marksman",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Fire Rifle",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Slow"
+      ],
+      "upgradeSets": [
+        "F1",
+        "J1",
+        "N1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Beast Rider",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        },
+        {
+          "name": "Claws",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Impact(1)"
+      ],
+      "upgradeSets": [
+        "F1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "War-Bear Rider",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        },
+        {
+          "name": "Claws",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fearless",
+        "Impact(3)",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "F1",
+        "O1"
+      ],
+      "cost": 80
+    }
+  ],
+  "upgradeSets": [
+    {
+      "id": "A1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 3,
+              "cost": 5
+            },
+            {
+              "name": "Halberd",
+              "attacks": 3,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Great Weapon",
+              "attacks": 3,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Spear",
+              "attacks": 3,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "upgrades": [
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Pistol",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "2x Pistols",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Crossbow",
+              "attacks": 1,
+              "range": 30,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Grudge",
+              "specialRules": [
+                "Grudge"
+              ],
+              "cost": 30
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "type": "mount",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "Beast",
+                  "specialRules": [
+                    "Impact(1)",
+                    "Swift"
+                  ]
+                },
+                {
+                  "name": "Beast - Claws",
+                  "attacks": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "upgrades": [
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Flame-Rifle",
+              "attacks": 6,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 20
+            },
+            {
+              "name": "Organ-Rifle",
+              "attacks": 12,
+              "range": 12,
+              "cost": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "upgrades": [
+        {
+          "text": "Upgrade Wizard(1)",
+          "type": "upgradeRule",
+          "replaceWhat": "Wizard(1)",
+          "options": [
+            {
+              "name": "Wizard(2)",
+              "specialRules": [
+                "Wizard(2)"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Sergeant",
+              "specialRules": [
+                "Sergeant"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Musician",
+              "specialRules": [
+                "Musician"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Battle Standard",
+              "specialRules": [
+                "Battle Standard"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": [
+            {
+              "name": "Halberds",
+              "attacks": 1,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 1,
+              "cost": 5
+            },
+            {
+              "name": "Great Weapons",
+              "attacks": 1,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Spears",
+              "attacks": 1,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Shrapnel Bombs",
+              "attacks": 1,
+              "range": 6,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace Great Weapon",
+          "type": "replace",
+          "replaceWhat": "Great Weapon",
+          "options": [
+            {
+              "name": "Mining Drill",
+              "attacks": 1,
+              "specialRules": [
+                "AP(3)",
+                "Drill"
+              ],
+              "cost": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "Halberd",
+              "attacks": 1,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 1,
+              "cost": 5
+            },
+            {
+              "name": "Great Weapon",
+              "attacks": 1,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Spear",
+              "attacks": 1,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "J1",
+      "upgrades": [
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Shrapnel Bombs",
+              "attacks": 1,
+              "range": 6,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "2x Fire Pistols",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Steam-Gun",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "L1",
+      "upgrades": [
+        {
+          "text": "Replace all Rifles",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Rifles",
+          "options": [
+            {
+              "name": "Crossbows",
+              "attacks": 1,
+              "range": 30,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace one Rifle",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": "Rifle",
+          "options": [
+            {
+              "name": "2x Pistols",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Throwing Axes",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "N1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Shrapnel Bombs",
+              "attacks": 1,
+              "range": 6,
+              "specialRules": [
+                "AP(1)",
+                "Blast(3)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Replace Fire Rifle",
+          "type": "replace",
+          "replaceWhat": "Fire Rifle",
+          "options": [
+            {
+              "name": "2x Fire Pistols",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Torpedo Rifle",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(3)",
+                "Deadly(3)"
+              ],
+              "cost": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "O1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "Axe-Halberd",
+              "attacks": 1,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Drill",
+      "description": "This model and up to half of the units in your army may be deployed from Ambush at up to 3” from enemy units (must deploy within 3” of the hero)."
+    },
+    {
+      "name": "Grudge",
+      "description": "The hero and all friendly units within 12” get +1 to their melee rolls."
+    },
+    {
+      "name": "Slayer",
+      "description": "This model gets AP(+2) when fighting units with Tough(3) or higher."
+    },
+    {
+      "name": "Swift",
+      "description": "The hero may ignore the Slow rule."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Spite Rune",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -1 to hit in melee next time it fights."
+    },
+    {
+      "name": "Smiting Rune",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 4 automatic hits."
+    },
+    {
+      "name": "Battle Rune",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets +6” next time it moves."
+    },
+    {
+      "name": "Breaking Rune",
+      "test": "5+",
+      "description": "Target enemy model within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "name": "Drill Rune",
+      "test": "6+",
+      "description": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
+    },
+    {
+      "name": "Cleaving Rune",
+      "test": "6+",
+      "description": "Target 2 enemy units within 12” take 6 automatic hits each."
+    }
+  ]
+}

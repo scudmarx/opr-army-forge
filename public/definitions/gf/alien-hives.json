@@ -1,7 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
-  "name": "",
-  "version": "2.1",
+  "name": "Alien Hives",
+  "version": "2.13",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Hive Lord",
@@ -10,8 +11,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Razor Claws",
-          "count": 3,
+          "name": "3x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -48,8 +48,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -109,8 +108,7 @@
       "defense": "3+",
       "equipment": [
         {
-          "name": "Piercing Claws",
-          "count": 2,
+          "name": "2x Piercing Claws",
           "attacks": 3,
           "specialRules": [
             "AP(2)",
@@ -139,8 +137,7 @@
       "defense": "4+",
       "equipment": [
         {
-          "name": "Piercing Claws",
-          "count": 2,
+          "name": "2x Piercing Claws",
           "attacks": 3,
           "specialRules": [
             "Rending"
@@ -314,8 +311,7 @@
       "defense": "3+",
       "equipment": [
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(1)"
@@ -393,8 +389,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -418,8 +413,7 @@
       "defense": "3+",
       "equipment": [
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -454,8 +448,7 @@
           ]
         },
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -541,8 +534,7 @@
           ]
         },
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -579,8 +571,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Razor Claws",
-          "count": 3,
+          "name": "3x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -623,8 +614,7 @@
           ]
         },
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -663,8 +653,7 @@
           ]
         },
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -705,8 +694,7 @@
           ]
         },
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -746,8 +734,7 @@
           ]
         },
         {
-          "name": "Razor Claws",
-          "count": 2,
+          "name": "2x Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -2288,6 +2275,96 @@
           ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Pheromones",
+      "description": "When this unit is activated, pick 2 friendly units within 12”, which take one wound next time they fail a morale test, and the test counts as passed instead."
+    },
+    {
+      "name": "Psychic Barrier",
+      "description": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls."
+    },
+    {
+      "name": "Shrouding Mist",
+      "description": "When this unit is activated, pick 2 friendly units within 6”, which get the Stealth rule next time they are shot at."
+    },
+    {
+      "name": "Psychic Synapse",
+      "description": "This unit counts as having Psychic(X), where X is the number of models in it. Only one model in the unit may cast or block spells each round."
+    },
+    {
+      "name": "Acid Blood",
+      "description": "Whenever this model takes a wound in melee, the attacker takes 1 hit."
+    },
+    {
+      "name": "Explosive Head",
+      "description": "If this model is ever engaged in melee it is immediately killed and the enemy takes 3 hits for Spores and 9 hits for a Massive Spore. Additionally this model automatically passes all morale tests."
+    },
+    {
+      "name": "Pheromones",
+      "description": "When this unit is activated, pick 2 friendly units within 12”, which take one wound next time they fail a morale test, and the test counts as passed instead."
+    },
+    {
+      "name": "Psychic Barrier",
+      "description": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +1 to spell block rolls."
+    },
+    {
+      "name": "Shrouding Mist",
+      "description": "When this unit is activated pick 2 friendly units within 6”, which get Stealth next time they are shot at."
+    },
+    {
+      "name": "Spawn Brood",
+      "description": "When this unit is activated you may place a unit of 5 Grunts or 3 Hive Swarms fully within 6” of it."
+    },
+    {
+      "name": "Spores",
+      "description": "If this weapon misses you may place a unit of 3 Spores or 1 Massive Spore 12” away from the target, but the position is decided by your opponent. Note that this new unit can’t be activated on the round in which it is placed."
+    },
+    {
+      "name": "Surprise Attack",
+      "description": "This unit counts as having the Ambush rule and may be deployed up to 1” away from enemy units. Once the unit is deployed roll 4 dice, for each 4+ it deals 3 hits with AP(2) to one enemy unit within 3” (this may target multiple units)."
+    },
+    {
+      "name": "Terrifying",
+      "description": "This model counts as having the Fear rule, and gets +4 to its Fear rolls."
+    },
+    {
+      "name": "Transport Spore",
+      "description": "This unit may transport up to 11 models, or use all of its capacity to carry one Carnivo-Rex, Psycho-Rex or Toxico-Rex."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Terror",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -2 its next morale test roll."
+    },
+    {
+      "name": "Psychic Blast",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 1 hit with AP(2) and Deadly(3)."
+    },
+    {
+      "name": "Infuse Life",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
+    },
+    {
+      "name": "Shriek",
+      "test": "5+",
+      "description": "Target 2 enemy units within 6” take 3 automatic hits with AP(2) each."
+    },
+    {
+      "name": "Animate Flora",
+      "test": "6+",
+      "description": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
+    },
+    {
+      "name": "Overwhelm",
+      "test": "6+",
+      "description": "Target enemy model within 12” takes 3 automatic hits with AP(2)."
     }
   ]
 }

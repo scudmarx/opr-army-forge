@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Duchies of Vinci",
   "version": "2.3",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Guard Captain",
@@ -30,8 +31,7 @@
       "defense": "4+",
       "equipment": [
         {
-          "name": "Armblades",
-          "count": 2,
+          "name": "2x Armblades",
           "attacks": 2
         }
       ],
@@ -140,8 +140,7 @@
       "defense": "5+",
       "equipment": [
         {
-          "name": "Armblades",
-          "count": 2,
+          "name": "2x Armblades",
           "attacks": 1
         }
       ],
@@ -414,8 +413,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Crossbows",
-          "count": 3,
+          "name": "3x Crossbows",
           "attacks": 1,
           "range": 30,
           "specialRules": [
@@ -608,8 +606,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Light Cannons",
-          "count": 8,
+          "name": "8x Light Cannons",
           "attacks": 1,
           "range": 18,
           "specialRules": [
@@ -714,34 +711,60 @@
           "select": 1,
           "options": [
             {
-              "name": "Automa Horse - Fast, Impact",
-              "specialRules": [
-                "1"
-              ],
-              "cost": 5
+              "type": "mount",
+              "cost": 5,
+              "equipment": [
+                {
+                  "name": "Automa Horse",
+                  "specialRules": [
+                    "Fast",
+                    "Impact(1)"
+                  ]
+                }
+              ]
             },
             {
-              "name": "Automa Boar - Defense +1, Hooves",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1))",
-                "Fast",
-                "Impact(3)",
-                "Tough(+3"
-              ],
-              "cost": 65
+              "type": "mount",
+              "cost": 65,
+              "equipment": [
+                {
+                  "name": "Automa Boar",
+                  "specialRules": [
+                    "Fast",
+                    "Impact(3)",
+                    "Tough(+3)"
+                  ]
+                },
+                {
+                  "name": "Automa Boar - Defense +1, Hooves",
+                  "attacks": 3,
+                  "specialRules": [
+                    "AP(1)"
+                  ]
+                }
+              ]
             },
             {
-              "name": "Automa Bird - Defense +2, Sharp Beak",
-              "attacks": 2,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(3))",
-                "Fear",
-                "Flying",
-                "Tough(+6"
-              ],
-              "cost": 170
+              "type": "mount",
+              "cost": 170,
+              "equipment": [
+                {
+                  "name": "Automa Bird",
+                  "specialRules": [
+                    "Deadly(3))",
+                    "Fear",
+                    "Flying",
+                    "Tough(+6)"
+                  ]
+                },
+                {
+                  "name": "Automa Bird - Defense +2, Sharp Beak",
+                  "attacks": 2,
+                  "specialRules": [
+                    "AP(4"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -847,11 +870,17 @@
           "select": 1,
           "options": [
             {
-              "name": "Automa Horse - Fast, Impact",
-              "specialRules": [
-                "1"
-              ],
-              "cost": 5
+              "type": "mount",
+              "cost": 5,
+              "equipment": [
+                {
+                  "name": "Automa Horse",
+                  "specialRules": [
+                    "Fast",
+                    "Impact(1)"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -926,8 +955,7 @@
               "cost": 5
             },
             {
-              "name": "Hand Weapons",
-              "count": 2,
+              "name": "2x Hand Weapons",
               "attacks": 1,
               "cost": 5
             },
@@ -1153,8 +1181,7 @@
           ],
           "options": [
             {
-              "name": "Claw Gauntlets",
-              "count": 2,
+              "name": "2x Claw Gauntlets",
               "attacks": 3,
               "specialRules": [
                 "AP(1)"
@@ -1338,9 +1365,7 @@
           ]
         },
         {
-          "text": "Upgrade with up to seven",
-          "type": "upgrade",
-          "select": 7,
+          "text": "up to seven",
           "options": [
             {
               "name": "Light Tank Cannon",
@@ -1374,8 +1399,7 @@
               "cost": 10
             },
             {
-              "name": "Belly Cannons",
-              "count": 4,
+              "name": "4x Belly Cannons",
               "attacks": 1,
               "range": 12,
               "specialRules": [
@@ -1385,8 +1409,7 @@
               "cost": 50
             },
             {
-              "name": "Shoulder Cannons",
-              "count": 2,
+              "name": "2x Shoulder Cannons",
               "attacks": 1,
               "range": 48,
               "specialRules": [
@@ -1409,6 +1432,76 @@
           ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Automa",
+      "description": "Whenever this unit takes a morale test it is passed automatically. Then roll as many dice as remaining models/tough in the unit, and for each result of 1-2 the unit takes one wound, which can’t be regenerated."
+    },
+    {
+      "name": "Ballistic Master",
+      "description": "When the hero is activated pick one friendly Artillery unit within 6”, which may either get +2 to its shooting rolls or move up to 6” during its next activation."
+    },
+    {
+      "name": "Captain",
+      "description": "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round"
+    },
+    {
+      "name": "Repair",
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+    },
+    {
+      "name": "Signal Flare",
+      "description": "When this unit is activated pick one enemy unit within 12”. The next friendly unit that shoots at it gets +1 to hit rolls."
+    },
+    {
+      "name": "Takedown",
+      "description": "When in melee, may pick one model from the enemy unit and roll one die. On a 2+ it takes 1 hit with Deadly(3)."
+    },
+    {
+      "name": "Trickster",
+      "description": "When this model fights in melee roll one die and apply one bonus"
+    },
+    {
+      "name": "Terrifying",
+      "description": "This model counts as having the Fear special rule, and gets +4 to its Fear rolls."
+    },
+    {
+      "name": "Transport(X)",
+      "description": "This model may transport up to X models. Units embark by moving into contact and may use any action to disembark but only move by 6”. Units may also be deployed within a transport. If a unit is inside a transport when it’s destroyed then it must take a Dangerous Terrain test, is immediately Wavering, and surviving models must be placed within 6” of the transport before it’s removed from play."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Fury Herbs",
+      "test": "4+",
+      "description": "Target friendly unit within 12” gets Furious next time it charges."
+    },
+    {
+      "name": "Choking Fog",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 3 automatic hits with AP(1)."
+    },
+    {
+      "name": "Clearview Leaves",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets +6” range next time it shoots."
+    },
+    {
+      "name": "Deep Rot",
+      "test": "5+",
+      "description": "Target enemy unit within 12” takes 1 hit with AP(4) and Deadly(3)."
+    },
+    {
+      "name": "Mesmer Oils",
+      "test": "6+",
+      "description": "Target enemy unit within 12” must take a morale test. If failed you may force it to charge another enemy unit."
+    },
+    {
+      "name": "Neurotoxin Gas",
+      "test": "6+",
+      "description": "Target enemy unit within 6” takes 1 automatic hit per model."
     }
   ]
 }

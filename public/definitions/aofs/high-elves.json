@@ -1,0 +1,738 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "name": "High Elves",
+  "version": "2.9",
+  "dataToolVersion": "0.1.0",
+  "units": [
+    {
+      "name": "Elf Prince",
+      "size": 1,
+      "quality": "3+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "A1"
+      ],
+      "cost": 50
+    },
+    {
+      "name": "Phoenix Prince",
+      "size": 1,
+      "quality": "3+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Halberd",
+          "attacks": 3,
+          "specialRules": [
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Regeneration",
+        "Tough(3)"
+      ],
+      "upgradeSets": [],
+      "cost": 70
+    },
+    {
+      "name": "Mage",
+      "size": 1,
+      "quality": "4+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Hero",
+        "Tough(3)",
+        "Wizard(1)"
+      ],
+      "upgradeSets": [
+        "B1"
+      ],
+      "cost": 45
+    },
+    {
+      "name": "Warriors",
+      "size": 3,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapons",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "C1",
+        "D1"
+      ],
+      "cost": 35
+    },
+    {
+      "name": "Elite",
+      "size": 1,
+      "quality": "3+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Great Sword",
+          "attacks": 1,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "C1",
+        "E1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Phoenix Warrior",
+      "size": 1,
+      "quality": "3+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Halberd",
+          "attacks": 1,
+          "specialRules": [
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Regeneration"
+      ],
+      "upgradeSets": [
+        "C1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Archer",
+      "size": 1,
+      "quality": "4+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Longbow",
+          "attacks": 1,
+          "range": 30
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "C1"
+      ],
+      "cost": 15
+    },
+    {
+      "name": "Guardian",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Bow",
+          "attacks": 1,
+          "range": 24
+        },
+        {
+          "name": "Spear",
+          "attacks": 1,
+          "specialRules": [
+            "Phalanx"
+          ]
+        }
+      ],
+      "specialRules": [
+        "-"
+      ],
+      "upgradeSets": [
+        "C1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Shadow Sister",
+      "size": 1,
+      "quality": "3+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Magic Bow",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Quick Shot"
+      ],
+      "upgradeSets": [],
+      "cost": 20
+    },
+    {
+      "name": "Shadow Brother",
+      "size": 1,
+      "quality": "3+",
+      "defense": "6+",
+      "equipment": [
+        {
+          "name": "Longbow",
+          "attacks": 1,
+          "range": 30
+        },
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Scout",
+        "Stealth"
+      ],
+      "upgradeSets": [],
+      "cost": 25
+    },
+    {
+      "name": "Light Cavalry",
+      "size": 1,
+      "quality": "4+",
+      "defense": "5+",
+      "equipment": [
+        {
+          "name": "Hand Weapon",
+          "attacks": 1
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Impact(1)"
+      ],
+      "upgradeSets": [
+        "C1",
+        "F1"
+      ],
+      "cost": 20
+    },
+    {
+      "name": "Heavy Cavalry",
+      "size": 1,
+      "quality": "4+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Lance",
+          "attacks": 1,
+          "specialRules": [
+            "Impact(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Impact(1)"
+      ],
+      "upgradeSets": [
+        "C1"
+      ],
+      "cost": 25
+    },
+    {
+      "name": "Dragon Cavalry",
+      "size": 1,
+      "quality": "3+",
+      "defense": "3+",
+      "equipment": [
+        {
+          "name": "Lance",
+          "attacks": 1,
+          "specialRules": [
+            "Impact(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Impact(1)"
+      ],
+      "upgradeSets": [
+        "C1"
+      ],
+      "cost": 30
+    },
+    {
+      "name": "Giant Eagle",
+      "size": 1,
+      "quality": "3+",
+      "defense": "4+",
+      "equipment": [
+        {
+          "name": "Claws",
+          "attacks": 3
+        }
+      ],
+      "specialRules": [
+        "Fast",
+        "Flying",
+        "Tough(3)"
+      ],
+      "upgradeSets": [
+        "G1"
+      ],
+      "cost": 65
+    }
+  ],
+  "upgradeSets": [
+    {
+      "id": "A1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 3,
+              "cost": 5
+            },
+            {
+              "name": "Halberd",
+              "attacks": 3,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Great Weapon",
+              "attacks": 3,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Spear",
+              "attacks": 3,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Lance",
+              "attacks": 3,
+              "specialRules": [
+                "Impact(1)"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Lion Cloak",
+              "specialRules": [
+                "Stealth"
+              ]
+            },
+            {
+              "name": "Longbow",
+              "attacks": 1,
+              "range": 30,
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        },
+        {
+          "text": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Great Banner",
+              "specialRules": [
+                "Fear"
+              ],
+              "cost": 20
+            },
+            {
+              "name": "Wizard(1)",
+              "specialRules": [
+                "Wizard(1)"
+              ],
+              "cost": 20
+            },
+            {
+              "name": "High Prowess",
+              "specialRules": [
+                "High Prowess"
+              ],
+              "cost": 30
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Horse – Fast, Impact",
+              "specialRules": [
+                "1"
+              ],
+              "cost": 10
+            },
+            {
+              "type": "mount",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "Beast",
+                  "specialRules": [
+                    "Fast",
+                    "Strider",
+                    "Impact(1)"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "upgrades": [
+        {
+          "text": "Upgrade Wizard(1)",
+          "type": "upgradeRule",
+          "replaceWhat": "Wizard(1)",
+          "options": [
+            {
+              "name": "Wizard(2)",
+              "specialRules": [
+                "Wizard(2)"
+              ],
+              "cost": 15
+            }
+          ]
+        },
+        {
+          "text": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "name": "Horse – Fast, Impact",
+              "specialRules": [
+                "1"
+              ],
+              "cost": 10
+            },
+            {
+              "type": "mount",
+              "cost": 10,
+              "equipment": [
+                {
+                  "name": "Magic Cloud",
+                  "specialRules": [
+                    "Fast",
+                    "Flying"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Sergeant",
+              "specialRules": [
+                "Sergeant"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Musician",
+              "specialRules": [
+                "Musician"
+              ],
+              "cost": 10
+            },
+            {
+              "name": "Battle Standard",
+              "specialRules": [
+                "Battle Standard"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "upgrades": [
+        {
+          "text": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": "Hand Weapons",
+          "options": [
+            {
+              "name": "Halberds",
+              "attacks": 1,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 1,
+              "cost": 5
+            },
+            {
+              "name": "Great Weapons",
+              "attacks": 1,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Spears",
+              "attacks": 1,
+              "specialRules": [
+                "Phalanx"
+              ],
+              "cost": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "upgrades": [
+        {
+          "text": "Replace Great Sword",
+          "type": "replace",
+          "replaceWhat": "Great Sword",
+          "options": [
+            {
+              "name": "Twin Swords",
+              "attacks": 2,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 0
+            },
+            {
+              "name": "Twin Hammers",
+              "attacks": 2,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 0
+            },
+            {
+              "name": "Great Axe",
+              "attacks": 1,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Great Hammer",
+              "attacks": 1,
+              "specialRules": [
+                "AP(3)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "name": "Lion Cloak",
+              "specialRules": [
+                "Stealth"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "upgrades": [
+        {
+          "text": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": "Hand Weapon",
+          "options": [
+            {
+              "name": "Lance",
+              "attacks": 1,
+              "specialRules": [
+                "Impact(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        },
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Bow",
+              "attacks": 1,
+              "range": 24,
+              "cost": 5
+            },
+            {
+              "name": "Beast Mount",
+              "specialRules": [
+                "Strider"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "upgrades": [
+        {
+          "text": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "name": "Metal Spurs",
+              "specialRules": [
+                "AP(1) in melee"
+              ],
+              "cost": 5
+            },
+            {
+              "name": "Swoop Attack",
+              "specialRules": [
+                "Impact(1)"
+              ],
+              "cost": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "High Prowess",
+      "description": "The hero and all friendly units within 12” get +1 to their melee attack rolls."
+    },
+    {
+      "name": "Quick Shot",
+      "description": "This unit may shoot even after using Rush actions."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Modesty",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -1 to hit next time it shoots."
+    },
+    {
+      "name": "Drain",
+      "test": "4+",
+      "description": "Target enemy model within 12” takes 1 automatic hit with AP(2)."
+    },
+    {
+      "name": "Protection",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets +1 to defense next time it takes hits."
+    },
+    {
+      "name": "Quench",
+      "test": "5+",
+      "description": "Target enemy unit within 12” takes 6 automatic hits."
+    },
+    {
+      "name": "Magical Surge",
+      "test": "6+",
+      "description": "Target friendly unit within 12” may immediately charge by up to 6” and gets +1 to hit for that melee."
+    },
+    {
+      "name": "Tempest",
+      "test": "6+",
+      "description": "Target 2 enemy units within 6” take 4 hits with AP(2) each."
+    }
+  ]
+}
