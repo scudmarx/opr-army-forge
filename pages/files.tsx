@@ -77,21 +77,43 @@ export default function Files() {
     return (
         <div className="container">
             <div className="card mx-auto mt-6" style={{ maxWidth: "480px" }}>
-                <div className="card-content">
-                    <h3 className="is-size-4 has-text-centered mb-4">Select Army List</h3>
-                    <ul>
-                        {
-                            !armyFiles ? null : armyFiles[army.gameSystem].map((file, index) => (
-                                <li key={index} className="mb-4">
-                                    <Button variant="contained" color="primary" onClick={() => selectArmy(file.path)}>
-                                        {file.name}
-                                    </Button>
-                                </li>
-                            ))
-                        }
-                    </ul>
+                <h3 className="is-size-4 has-text-centered mb-4">Select Army List</h3>
 
-                </div>
+                {
+                    !armyFiles ? null : armyFiles[army.gameSystem].map((file, index) => (
+                        <Accordion key={index}
+                            disableGutters
+                            square
+                            elevation={0}
+                            variant="outlined"
+                            expanded={expandedId === file.name}
+                            onChange={() => setExpandedId(expandedId === file.name ? null : file.name)}>
+                            <AccordionSummary>
+                                <div className="is-flex is-flex-grow-1 is-align-items-center">
+                                    <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
+                                        <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
+                                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                                            by OnePageRules
+                                        </div>
+                                    </div>
+                                    {/* <p className="mr-2">{u.cost}pts</p> */}
+                                    <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectArmy(file.path); }}>
+                                        <RightIcon />
+                                    </IconButton>
+                                </div>
+                            </AccordionSummary>
+                            <AccordionDetails style={{ flexDirection: "column" }}>
+                                <p>Additional info...?</p>
+                            </AccordionDetails>
+                        </Accordion>
+                        // <li key={index} className="mb-4">
+                        //     <Button variant="contained" color="primary" onClick={() => selectArmy(file.path)}>
+                        //         {file.name}
+                        //     </Button>
+                        // </li>
+                    ))
+                }
+                <h3>Custom Armies</h3>
                 {customArmies && customArmies.map((customArmy, i) => (
                     <Accordion key={customArmy.name}
                         disableGutters

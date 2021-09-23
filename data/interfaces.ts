@@ -22,6 +22,7 @@ export interface IUnit {
 }
 
 export interface IUpgrade {
+    text?: string;
     type: "replace" | "upgrade" | "upgradeRule";
     affects?: "any" | "all" | number;
     select?: string | number;
@@ -32,6 +33,6 @@ export interface IUpgrade {
 
 export interface ISelectedUnit extends IUnit {
     selectionId: number;
-    customName: string;
     selectedEquipment: IEquipment[];
+    customName?: string;
 }

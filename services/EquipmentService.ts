@@ -3,6 +3,28 @@ import pluralise from "pluralize";
 import { EscalatorWarning } from "@mui/icons-material";
 
 export default class EquipmentService {
+
+
+    public static find(list: IEquipment[], match: string): IEquipment[] {
+        return list
+            .filter(e => pluralise.singular(e.name).indexOf(pluralise.singular(match)) > -1);
+    }
+
+    public static findLast(list: IEquipment[], match: string): IEquipment {
+        const matches = list
+            .filter(e => pluralise.singular(e.name).indexOf(pluralise.singular(match)) > -1);
+        return matches[matches.length - 1];
+    }
+
+    public static findLastIndex(array: IEquipment[], match: string) {
+        let l = array.length;
+        while (l--) {
+            if (pluralise.singular(array[l].name).indexOf(pluralise.singular(match)) > -1)
+                return l;
+        }
+        return -1;
+    }
+
     static getAP(e: IEquipment): number {
         if (!e || !e.specialRules) return null;
         for (let rule of e.specialRules) {
