@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Alien Hives",
   "version": "2.11",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Veteran Warrior",
@@ -317,6 +318,14 @@
           "replaceWhat": "Bio-Carbine",
           "options": [
             {
+              "name": "Razor Claws",
+              "attacks": 4,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Twin Bio-Pistols",
               "attacks": 6,
               "range": 12,
@@ -377,6 +386,15 @@
           "select": 1,
           "options": [
             {
+              "name": "Poison Hooks",
+              "attacks": 3,
+              "range": 6,
+              "specialRules": [
+                "Poison"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Shredding Hooks",
               "attacks": 3,
               "range": 6,
@@ -431,6 +449,15 @@
           "replaceWhat": "Razor Claws",
           "options": [
             {
+              "name": "Piercing Claws",
+              "attacks": 4,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Smashing Claws",
               "attacks": 4,
               "specialRules": [
@@ -476,6 +503,13 @@
           "select": "any",
           "options": [
             {
+              "name": "Psychic Barrier",
+              "specialRules": [
+                "Psychic Barrier"
+              ],
+              "cost": 10
+            },
+            {
               "name": "Pheromones",
               "specialRules": [
                 "Pheromones"
@@ -494,6 +528,11 @@
           "type": "upgrade",
           "select": "any",
           "options": [
+            {
+              "name": "Razor Claws",
+              "attacks": 3,
+              "cost": 5
+            },
             {
               "name": "Psychic(1)",
               "specialRules": [
@@ -514,6 +553,12 @@
           "affects": "any",
           "replaceWhat": "Bio-Gun",
           "options": [
+            {
+              "name": "Twin Bio-Pistols",
+              "attacks": 2,
+              "range": 12,
+              "cost": 5
+            },
             {
               "name": "Bio-Spike",
               "attacks": 1,
@@ -537,6 +582,15 @@
           "affects": 1,
           "replaceWhat": "Bio-Gun",
           "options": [
+            {
+              "name": "Bio-Shredder",
+              "attacks": 2,
+              "range": 6,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
             {
               "name": "Shock-Gun",
               "attacks": 1,
@@ -581,6 +635,13 @@
           "select": "any",
           "options": [
             {
+              "name": "Adrenaline",
+              "specialRules": [
+                "Furious"
+              ],
+              "cost": 10
+            },
+            {
               "name": "Toxic Bite",
               "specialRules": [
                 "Poison in melee"
@@ -600,6 +661,11 @@
           "affects": "any",
           "replaceWhat": "Razor Claws",
           "options": [
+            {
+              "name": "Serrated Claws",
+              "attacks": 6,
+              "cost": 5
+            },
             {
               "name": "Piercing Claws",
               "attacks": 3,
@@ -659,6 +725,13 @@
           "affects": "any",
           "options": [
             {
+              "name": "Burrow Attack",
+              "specialRules": [
+                "Ambush"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Twin Bio-Pistols",
               "attacks": 6,
               "range": 12,
@@ -676,6 +749,13 @@
           "type": "upgrade",
           "select": 1,
           "options": [
+            {
+              "name": "Tunnel Attack",
+              "specialRules": [
+                "Ambush"
+              ],
+              "cost": 5
+            },
             {
               "name": "Adrenaline Rush",
               "specialRules": [
@@ -696,6 +776,15 @@
           "affects": "any",
           "replaceWhat": "Razor Claws",
           "options": [
+            {
+              "name": "Piercing Claws",
+              "attacks": 4,
+              "specialRules": [
+                "AP(2)",
+                "Rending"
+              ],
+              "cost": 5
+            },
             {
               "name": "Smashing Claws",
               "attacks": 4,
@@ -739,6 +828,16 @@
           "replaceWhat": "Razor Claws",
           "options": [
             {
+              "name": "Heavy Shock-Gun",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(2)",
+                "Blast(3)"
+              ],
+              "cost": 10
+            },
+            {
               "name": "Bio-Harpoon",
               "attacks": 2,
               "range": 24,
@@ -751,6 +850,52 @@
           ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Pheromones",
+      "description": "When this unit is activated, pick 2 friendly units within 12”. Next time that they fail a morale test, they take one wound and then all friendly units within 12” automatically pass morale tests until the end of the round."
+    },
+    {
+      "name": "Psychic Barrier",
+      "description": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls."
+    },
+    {
+      "name": "Shrouding Mist",
+      "description": "When this unit is activated, pick 2 friendly units within 6”. Those units and all friendly units within 12” get Stealth next time they are shot at."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Terror",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -2 its next morale test roll."
+    },
+    {
+      "name": "Psychic Blast",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 1 hit with AP(2) and Deadly(3)."
+    },
+    {
+      "name": "Infuse Life",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
+    },
+    {
+      "name": "Shriek",
+      "test": "5+",
+      "description": "Target 2 enemy units within 6” take 3 automatic hits with AP(2) each."
+    },
+    {
+      "name": "Animate Flora",
+      "test": "6+",
+      "description": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
+    },
+    {
+      "name": "Overwhelm",
+      "test": "6+",
+      "description": "Target enemy model within 12” takes 3 automatic hits with AP(2)."
     }
   ]
 }
