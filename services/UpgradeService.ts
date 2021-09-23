@@ -55,11 +55,7 @@ export default class UpgradeService {
         return selection ? selection.count : 0;
     }
 
-    static foo() {
-
-    }
-
-    static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
+    public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
 
         if (upgrade.type === "replace") {
 
@@ -106,8 +102,7 @@ export default class UpgradeService {
                     return false;
                 }
             }
-
-            if (countSelected >= unit.size) {
+            else if (countSelected >= unit.size) {
                 return false;
             }
         }

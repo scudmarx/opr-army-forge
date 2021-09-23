@@ -187,4 +187,89 @@ test('Control Type "Upgrade all [weapons] with one:"', () => {
     expect(type).toBe("radio");
 });
 
+test('Control Type "Upgrade with up to two:"', () => {
+
+    const upgrade = DataParsingService.parseUpgradeText("Upgrade with up to two:");
+    const type = UpgradeService.getControlType(null, upgrade);
+
+    expect(type).toBe("updown");
+});
+
+//#endregion
+
+//#region Apply Upgrade
+
+test("Apply upgradeRule", () => {
+    const unit = { ...defaultUnit, specialRules: ["Tough(3)"] };
+    const option: IEquipment = {
+        name: "Psychic(2)",
+        specialRules: ["Psychic(2)"]
+    };
+    const upgrade: IUpgrade = {
+        type: "upgradeRule",
+        options: [option]
+    };
+    UpgradeService.apply(unit, upgrade, option);
+
+    expect(unit.specialRules).toStrictEqual([
+        "Tough(3)", "Psychic(2)"
+    ])
+});
+
+test("Apply 'Replace one Assault Rifle and CCW'", () => {
+    const unit: ISelectedUnit = {
+        ...defaultUnit,
+        selectedEquipment: [
+            {
+                name: 'Pistol',
+                count: 1,
+                cost: 0
+            },
+            {
+                name: 'CCW',
+                count: 1,
+                cost: 0
+            }
+        ]
+    };
+
+    const option: IEquipment = {
+        name: 'Shotgun',
+        cost: 5
+    };
+
+    const upgrade: IUpgrade = {
+        text: 'Replace one Pistol',
+        type: 'replace',
+        affects: 1,
+        replaceWhat: 'Pistol',
+        options: [option]
+    };
+
+    UpgradeService.apply(unit, upgrade, option);
+
+    expect(unit.selectedEquipment).toStrictEqual([
+        {
+            name: "Pistol",
+            count: 0,
+            cost: 0
+        },
+        {
+            name: 'CCW',
+            count: 1,
+            cost: 0
+        },
+        {
+            name: 'Shotgun',
+            count: 1,
+            cost: 5
+        }
+    ])
+
+});
+
+test("Remove Upgrade", () => {
+
+})
+
 //#endregion
