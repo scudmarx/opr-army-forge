@@ -20,8 +20,6 @@ export default class UpgradeService {
     static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
 
         if (upgrade.type === "upgradeRule") {
-            console.log(unit.specialRules);
-            console.log(option.specialRules);
 
             // Check that the special rules from this upgrade are contained within the unit's rules
             return option.specialRules.reduce((prev, curr) => prev && unit.specialRules.indexOf(curr) >= 0, true);
@@ -32,12 +30,17 @@ export default class UpgradeService {
             .filter(e => pluralise.singular(e.name) === pluralise.singular(name))
             .length > 0;
 
-        if (option.type === "combined") {
+        if (option.type === "combined" || option.type === "mount") {
 
-            return option
-                .equipment
-                .reduce((prev, current) => prev && isApplied(current.name), true)
-
+            try {
+                return option
+                    .equipment
+                    .reduce((prev, current) => prev && isApplied(current.name), true)
+            } catch (e) {
+                console.error(e, option);
+                debugger;
+                return true;
+            }
         } else {
 
             return isApplied(option.name);

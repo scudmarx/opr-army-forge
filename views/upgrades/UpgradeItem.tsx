@@ -13,7 +13,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
     return (
         <div className="is-flex is-align-items-center">
             <div className="is-flex-grow-1 pr-2">{(() => {
-                const equipments = option.type === "combined" ? option.equipment : [option]
+                const equipments = option.type === "combined" || option.type === "mount" ? option.equipment : [option]
 
                 return (
                     equipments.map((e, i) => {
