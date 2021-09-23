@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "High Elves",
   "version": "2.9",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Elf Prince",
@@ -528,6 +529,11 @@
           "replaceWhat": "Hand Weapon",
           "options": [
             {
+              "name": "2x Hand Weapons",
+              "attacks": 3,
+              "cost": 5
+            },
+            {
               "name": "Halberd",
               "attacks": 3,
               "specialRules": [
@@ -563,7 +569,20 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Lion Cloak",
+              "specialRules": [
+                "Stealth"
+              ]
+            },
+            {
+              "name": "Longbow",
+              "attacks": 1,
+              "range": 30,
+              "cost": 5
+            }
+          ]
         },
         {
           "text": "Upgrade with",
@@ -575,6 +594,13 @@
           "type": "upgrade",
           "select": 1,
           "options": [
+            {
+              "name": "Great Banner",
+              "specialRules": [
+                "Fear"
+              ],
+              "cost": 20
+            },
             {
               "name": "Wizard(1)",
               "specialRules": [
@@ -597,11 +623,25 @@
           "select": 1,
           "options": [
             {
-              "name": "Beast - Fast, Strider, Impact",
+              "name": "Horse – Fast, Impact",
               "specialRules": [
                 "1"
               ],
-              "cost": 15
+              "cost": 10
+            },
+            {
+              "type": "mount",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "Beast",
+                  "specialRules": [
+                    "Fast",
+                    "Strider",
+                    "Impact(1)"
+                  ]
+                }
+              ]
             },
             {
               "name": "Giant Eagle – Claws",
@@ -649,6 +689,18 @@
           "select": 1,
           "options": [
             {
+              "name": "Ice Phoenix – Defense +2, Claws",
+              "attacks": 6,
+              "specialRules": [
+                "AP(2))",
+                "Fear",
+                "Flying",
+                "Icy Aura",
+                "Tough(+6"
+              ],
+              "cost": 260
+            },
+            {
               "name": "Fire Phoenix – Defense +2, Claws",
               "attacks": 6,
               "specialRules": [
@@ -671,13 +723,42 @@
           "text": "Upgrade Wizard(1)",
           "type": "upgradeRule",
           "replaceWhat": "Wizard(1)",
-          "options": []
+          "options": [
+            {
+              "name": "Wizard(2)",
+              "specialRules": [
+                "Wizard(2)"
+              ],
+              "cost": 15
+            }
+          ]
         },
         {
           "text": "Mount on",
           "type": "upgrade",
           "select": 1,
-          "options": []
+          "options": [
+            {
+              "name": "Horse – Fast, Impact",
+              "specialRules": [
+                "1"
+              ],
+              "cost": 10
+            },
+            {
+              "type": "mount",
+              "cost": 10,
+              "equipment": [
+                {
+                  "name": "Magic Cloud",
+                  "specialRules": [
+                    "Fast",
+                    "Flying"
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -688,6 +769,13 @@
           "text": "Upgrade with",
           "type": "upgrade",
           "options": [
+            {
+              "name": "Sergeant",
+              "specialRules": [
+                "Sergeant"
+              ],
+              "cost": 5
+            },
             {
               "name": "Musician",
               "specialRules": [
@@ -715,6 +803,14 @@
           "affects": "all",
           "replaceWhat": "Hand Weapons",
           "options": [
+            {
+              "name": "Halberds",
+              "attacks": 1,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 10
+            },
             {
               "name": "2x Hand Weapons",
               "attacks": 1,
@@ -750,6 +846,15 @@
           "replaceWhat": "Great Swords",
           "options": [
             {
+              "name": "Great Axes",
+              "attacks": 1,
+              "specialRules": [
+                "AP(1)",
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Great Hammers",
               "attacks": 1,
               "specialRules": [
@@ -769,7 +874,14 @@
               "name": "Twin Swords",
               "attacks": 2,
               "specialRules": [
-                "Rending) Free Twin Hammers (A2",
+                "Rending"
+              ],
+              "cost": 0
+            },
+            {
+              "name": "Twin Hammers",
+              "attacks": 2,
+              "specialRules": [
                 "AP(1)"
               ],
               "cost": 0
@@ -780,7 +892,15 @@
           "text": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
-          "options": []
+          "options": [
+            {
+              "name": "Lion Cloaks",
+              "specialRules": [
+                "Stealth"
+              ],
+              "cost": 20
+            }
+          ]
         }
       ]
     },
@@ -792,7 +912,16 @@
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Hand Weapons",
-          "options": []
+          "options": [
+            {
+              "name": "Lances",
+              "attacks": 1,
+              "specialRules": [
+                "Impact(1)"
+              ],
+              "cost": 15
+            }
+          ]
         },
         {
           "text": "Upgrade all models with any",
@@ -800,6 +929,12 @@
           "affects": "all",
           "select": "any",
           "options": [
+            {
+              "name": "Bows",
+              "attacks": 1,
+              "range": 24,
+              "cost": 15
+            },
             {
               "name": "Beast Mounts",
               "specialRules": [
@@ -821,6 +956,13 @@
           "select": "any",
           "options": [
             {
+              "name": "Metal Spurs",
+              "specialRules": [
+                "AP(1) in melee"
+              ],
+              "cost": 10
+            },
+            {
               "name": "Swoop Attacks",
               "specialRules": [
                 "Impact(1)"
@@ -838,13 +980,31 @@
           "text": "Replace Giant Greathammer",
           "type": "replace",
           "replaceWhat": "Giant Greathammer",
-          "options": []
+          "options": [
+            {
+              "name": "2x Giant Hammers",
+              "attacks": 3,
+              "specialRules": [
+                "AP(2)"
+              ],
+              "cost": 0
+            }
+          ]
         },
         {
           "text": "Upgrade with any",
           "type": "upgrade",
           "select": "any",
           "options": [
+            {
+              "name": "Mountain Shock",
+              "attacks": 4,
+              "range": 12,
+              "specialRules": [
+                "Blast(3)"
+              ],
+              "cost": 25
+            },
             {
               "name": "Mountain Blast",
               "attacks": 1,
@@ -865,7 +1025,18 @@
         {
           "text": "Upgrade with",
           "type": "upgrade",
-          "options": []
+          "options": [
+            {
+              "name": "Mini Bolt Thrower",
+              "attacks": 1,
+              "range": 24,
+              "specialRules": [
+                "AP(1)",
+                "Deadly(3)"
+              ],
+              "cost": 10
+            }
+          ]
         }
       ]
     },
@@ -876,9 +1047,69 @@
           "text": "Replace Bolt Thrower",
           "type": "replace",
           "replaceWhat": "Bolt Thrower",
-          "options": []
+          "options": [
+            {
+              "name": "Repeater Bolts",
+              "attacks": 6,
+              "range": 48,
+              "specialRules": [
+                "AP(1)"
+              ],
+              "cost": 30
+            }
+          ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Flame Attack",
+      "description": "Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 2 hits with AP(1)."
+    },
+    {
+      "name": "Icy Aura",
+      "description": "Whenever this unit moves over enemies pick one of them, and that unit gets -1 to its hit rolls next time it fights in melee."
+    },
+    {
+      "name": "High Prowess",
+      "description": "The hero and his unit get +1 to their melee attack rolls."
+    },
+    {
+      "name": "Quick Shot",
+      "description": "This unit may shoot even after using Rush actions."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Modesty",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -1 to hit next time it shoots."
+    },
+    {
+      "name": "Drain",
+      "test": "4+",
+      "description": "Target enemy model within 12” takes 1 automatic hit with AP(2)."
+    },
+    {
+      "name": "Protection",
+      "test": "5+",
+      "description": "Target friendly unit within 12” gets +1 to defense next time it takes hits."
+    },
+    {
+      "name": "Quench",
+      "test": "5+",
+      "description": "Target enemy unit within 12” takes 6 automatic hits."
+    },
+    {
+      "name": "Magical Surge",
+      "test": "6+",
+      "description": "Target friendly unit within 12” may immediately charge by up to 6” and gets +1 to hit for that melee."
+    },
+    {
+      "name": "Tempest",
+      "test": "6+",
+      "description": "Target 2 enemy units within 6” take 4 hits with AP(2) each."
     }
   ]
 }
