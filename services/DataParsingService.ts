@@ -203,6 +203,10 @@ export default class DataParsingService {
             cost: 3
         };
 
+
+        if (/ - /.test(part))
+            return this.parseMount(part);
+
         // "A (...) and B (...) +10pts"
         if (part.indexOf(") and ") > 0) {
             const combinedMatch = /(.+?)(Free$|([-+]\d+)pts)$/.exec(part);
@@ -263,6 +267,31 @@ export default class DataParsingService {
             result.cost = match[groups.cost] === "Free" ? 0 : parseInt(match[groups.cost].trim());
 
         return result;
+    }
+
+    public static parseMount(text: string) {
+
+        const textParts = text.split(" - ");
+        const name = textParts[0].trim();
+        const match = /(.+)([+-]\d+)pts$/.exec(textParts[1]);
+        const weaponRegex = /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
+        const weaponMatch = weaponRegex.exec(match[1]);
+        const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/);
+
+        return {
+            type: "mount",
+            cost: parseInt(match[2]),
+            equipment: [
+                {
+                    name,
+                    specialRules: rules
+                },
+                weaponMatch && {
+                    ...this.parseEquipment(weaponMatch[1]),
+                    name: name + " - " + weaponMatch[2].trim()
+                }
+            ].filter(e => !!e)
+        };
     }
 
     public static parseRules(rules: string) {

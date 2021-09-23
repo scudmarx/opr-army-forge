@@ -1,3 +1,4 @@
+import { IEquipment } from '../data/interfaces';
 import DataParsingService from './DataParsingService';
 
 /*
@@ -412,8 +413,90 @@ test("Parse weapon pairing", () => {
     });
 });
 
-test("Parse AoF format mount 1", () => {
+''
+'Ancestral Stone - Tough(+3) +70pts'
+'Shield Carriers - Hand Weapons (A4), Tough(+3) +80pts'
+'Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts'
 
+test("Parse AoF format mount 1", () => {
+    const mount = DataParsingService.parseMount('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 120,
+        equipment: [
+            {
+                name: "Great War-Bear",
+                specialRules: ["Fear", "Impact(3)", "Swift", "Tough(+3)"],
+            },
+            {
+                name: "Great War-Bear - Claws",
+                attacks: 3,
+                specialRules: ["AP(1)"]
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
+});
+
+test("Parse AoF format mount 2", () => {
+    const mount = DataParsingService.parseMount('Ancestral Stone - Tough(+3) +70pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 70,
+        equipment: [
+            {
+                name: "Ancestral Stone",
+                specialRules: ["Tough(+3)"]
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
+});
+
+test("Parse AoF format mount 3", () => {
+    const mount = DataParsingService.parseMount('Shield Carriers - Hand Weapons (A4), Tough(+3) +80pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 80,
+        equipment: [
+            {
+                name: "Shield Carriers",
+                specialRules: ["Tough(+3)"],
+            },
+            {
+                name: "Shield Carriers - Hand Weapons",
+                attacks: 4,
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
+});
+
+test("Parse AoF format mount 4", () => {
+    const mount = DataParsingService.parseMount('Beast - Claws(A1), Impact(1), Swift +15pts');
+
+    const expected: IEquipment = {
+        type: "mount",
+        cost: 15,
+        equipment: [
+            {
+                name: "Beast",
+                specialRules: ["Impact(1)", "Swift"],
+            },
+            {
+                name: "Beast - Claws",
+                attacks: 1
+            }
+        ]
+    };
+
+    expect(mount).toStrictEqual(expected);
 });
 
 //#endregion

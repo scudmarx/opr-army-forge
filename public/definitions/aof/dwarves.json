@@ -743,38 +743,71 @@
           "select": 1,
           "options": [
             {
-              "name": "Beast - Claws",
-              "attacks": 1,
-              "specialRules": [
-                "Impact(1"
+              "type": "mount",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "Beast",
+                  "specialRules": [
+                    "Impact(1)",
+                    "Swift"
+                  ]
+                },
+                {
+                  "name": "Beast - Claws",
+                  "attacks": 1
+                }
               ]
             },
             {
-              "name": "Ancestral Stone - Tough",
-              "specialRules": [
-                "+3"
-              ],
-              "cost": 70
+              "type": "mount",
+              "cost": 70,
+              "equipment": [
+                {
+                  "name": "Ancestral Stone",
+                  "specialRules": [
+                    "Tough(+3)"
+                  ]
+                }
+              ]
             },
             {
-              "name": "Shield Carriers - Hand Weapons",
-              "attacks": 4,
-              "specialRules": [
-                "Tough(+3"
-              ],
-              "cost": 80
+              "type": "mount",
+              "cost": 80,
+              "equipment": [
+                {
+                  "name": "Shield Carriers",
+                  "specialRules": [
+                    "Tough(+3)"
+                  ]
+                },
+                {
+                  "name": "Shield Carriers - Hand Weapons",
+                  "attacks": 4
+                }
+              ]
             },
             {
-              "name": "Great War-Bear - Claws",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1))",
-                "Fear",
-                "Impact(3)",
-                "Swift",
-                "Tough(+3"
-              ],
-              "cost": 120
+              "type": "mount",
+              "cost": 120,
+              "equipment": [
+                {
+                  "name": "Great War-Bear",
+                  "specialRules": [
+                    "Fear",
+                    "Impact(3)",
+                    "Swift",
+                    "Tough(+3)"
+                  ]
+                },
+                {
+                  "name": "Great War-Bear - Claws",
+                  "attacks": 3,
+                  "specialRules": [
+                    "AP(1)"
+                  ]
+                }
+              ]
             }
           ]
         }
