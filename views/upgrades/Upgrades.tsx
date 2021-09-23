@@ -1,4 +1,4 @@
-import { Chip, Paper } from '@mui/material';
+import { Chip, Paper, Tooltip, Button } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
@@ -33,7 +33,9 @@ export function Upgrades() {
                 <div className="p-4 mb-4">
                     <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
                     {specialRules.map((rule, i) => (
-                        <Chip key={i} label={rule} className="mr-1 mt-1" />
+                        <Tooltip key={i} title={army.specialRules.filter(r => r.name === rule)[0]?.description || ""} arrow>
+                            <Chip label={rule} className="mr-1 mt-1" />
+                        </Tooltip>
                     ))}
                 </div>
             </Paper>}

@@ -13,6 +13,8 @@ export interface IArmyData {
     dataToolVersion: string;
     units: any[];
     upgradeSets: any[];
+    specialRules: { name: string; description: string; }[];
+    spells: { name: string; test: string; description: string; }[];
 }
 
 const initialState: ArmyState = {

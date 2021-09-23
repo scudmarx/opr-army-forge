@@ -11,7 +11,7 @@ export default function List() {
 
     const army = useSelector((state: RootState) => state.army);
     const router = useRouter();
-    
+
     // Load army list file 
     useEffect(() => {
         // Redirect to game selection screen if no army selected
@@ -19,6 +19,26 @@ export default function List() {
             router.push("/", null, { shallow: true });
             return;
         }
+
+        // AF to Web Companion game type mapping
+        const slug = (() => {
+            switch (army.gameSystem) {
+                case "gf": return "grimdark-future";
+                case "gff": return "grimdark-future-firefight";
+                case "aof": return "age-of-fantasy";
+                case "aofs": return "age-of-fantasy-skirmish";
+            }
+        })();
+
+        // Load army rules
+        // fetch(`https://opr-list-builder.herokuapp.com/api/content/game-systems/${slug}/special-rules`)
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         console.log(res.map(rule => ({
+        //             name: rule.name,
+        //             description: rule.description
+        //         })));
+        //     });
     }, []);
 
     // Break from mobile to desktop layout at 1024px wide
