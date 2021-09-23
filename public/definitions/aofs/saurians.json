@@ -1,7 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Saurians",
-  "version": "2.8",
+  "version": "2.7",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Saurian Veteran",
@@ -253,6 +254,14 @@
           "replaceWhat": "Hand Weapon",
           "options": [
             {
+              "name": "Lance",
+              "attacks": 4,
+              "specialRules": [
+                "AP(1)",
+                "Impact(1)"
+              ]
+            },
+            {
               "name": "Spear",
               "attacks": 4,
               "specialRules": [
@@ -292,7 +301,17 @@
           "text": "Mount on",
           "type": "upgrade",
           "select": 1,
-          "options": []
+          "options": [
+            {
+              "name": "Raptor – Claws",
+              "attacks": 2,
+              "specialRules": [
+                "Fast",
+                "Impact(1"
+              ],
+              "cost": 15
+            }
+          ]
         }
       ]
     },
@@ -304,6 +323,11 @@
           "type": "replace",
           "replaceWhat": "Hand Weapon",
           "options": [
+            {
+              "name": "2x Hand Weapons",
+              "attacks": 3,
+              "cost": 5
+            },
             {
               "name": "Lance",
               "attacks": 3,
@@ -399,6 +423,13 @@
           "type": "upgrade",
           "options": [
             {
+              "name": "Sergeant",
+              "specialRules": [
+                "Sergeant"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Musician",
               "specialRules": [
                 "Musician"
@@ -425,6 +456,16 @@
           "affects": "all",
           "select": 1,
           "options": [
+            {
+              "name": "Javelins",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)",
+                "Poison"
+              ],
+              "cost": 5
+            },
             {
               "name": "Blowpipes",
               "attacks": 1,
@@ -467,12 +508,31 @@
           "text": "Replace Hand Weapon",
           "type": "replace",
           "replaceWhat": "Hand Weapon",
-          "options": []
+          "options": [
+            {
+              "name": "Lance",
+              "attacks": 1,
+              "specialRules": [
+                "Impact(1)"
+              ],
+              "cost": 5
+            }
+          ]
         },
         {
           "text": "Upgrade with",
           "type": "upgrade",
           "options": [
+            {
+              "name": "Javelin",
+              "attacks": 1,
+              "range": 12,
+              "specialRules": [
+                "AP(1)",
+                "Poison"
+              ],
+              "cost": 5
+            },
             {
               "name": "Fire Bola",
               "attacks": 2,
@@ -517,6 +577,14 @@
           "replaceWhat": "Hand Weapon",
           "options": [
             {
+              "name": "Halberd",
+              "attacks": 2,
+              "specialRules": [
+                "Rending"
+              ],
+              "cost": 5
+            },
+            {
               "name": "Spear",
               "attacks": 2,
               "specialRules": [
@@ -548,7 +616,16 @@
           "text": "Replace Halberd",
           "type": "replace",
           "replaceWhat": "Halberd",
-          "options": []
+          "options": [
+            {
+              "name": "Great Weapon",
+              "attacks": 2,
+              "specialRules": [
+                "AP(3)"
+              ],
+              "cost": 5
+            }
+          ]
         }
       ]
     },
@@ -559,9 +636,64 @@
           "text": "Replace Hand Weapon",
           "type": "replace",
           "replaceWhat": "Hand Weapon",
-          "options": []
+          "options": [
+            {
+              "name": "Lance",
+              "attacks": 2,
+              "specialRules": [
+                "Impact(1)"
+              ],
+              "cost": 5
+            }
+          ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Chameleon",
+      "description": "Enemies get -2 to their shooting rolls against this unit."
+    },
+    {
+      "name": "Predator",
+      "description": "For each unmodified roll of 6 to hit when attacking in melee this model may roll 1 extra attack. This rule doesn’t apply to newly generated attacks."
+    },
+    {
+      "name": "Rock Bombs",
+      "description": "Whenever this model moves over enemies pick one of them and roll 1 die, on a 2+ it takes 3 hits with AP(1)."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Scrutiny",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -1 to melee rolls next time it fights."
+    },
+    {
+      "name": "Serpent Egg",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 4 automatic hits."
+    },
+    {
+      "name": "Transcend",
+      "test": "5+",
+      "description": "Target friendly unit within 12” may heal 1 wound or restore 1 model (with only 1 health left if it had Tough)."
+    },
+    {
+      "name": "Jaguar Pounce",
+      "test": "5+",
+      "description": "Target enemy model within 12” takes 1 automatic hit with AP(3)."
+    },
+    {
+      "name": "Energy Reservoir",
+      "test": "6+",
+      "description": "Target friendly unit within 12” gets +9” next time it moves."
+    },
+    {
+      "name": "Piranha Swarm",
+      "test": "6+",
+      "description": "Target 2 enemy units within 6” take 6 hits with AP(1) each."
     }
   ]
 }
