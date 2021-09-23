@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Robot Legions",
   "version": "2.17",
+  "dataToolVersion": "0.1.0",
   "units": [
     {
       "name": "Overseer",
@@ -322,8 +323,7 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "Armblades",
-          "count": 2,
+          "name": "2x Armblades",
           "attacks": 2,
           "specialRules": [
             "AP(2)"
@@ -836,10 +836,10 @@
       "id": "J1",
       "upgrades": [
         {
-          "text": "Replace 2x Armblades",
+          "text": "Replace 2x Arm Blades",
           "type": "replace",
           "affects": 2,
-          "replaceWhat": "Armblades",
+          "replaceWhat": "Arm Blades",
           "options": [
             {
               "name": "Heavy Armblade",
@@ -875,8 +875,7 @@
           "replaceWhat": "Gauss Cannon",
           "options": [
             {
-              "name": "Hyper Swords",
-              "count": 2,
+              "name": "2x Hyper Swords",
               "attacks": 3,
               "specialRules": [
                 "AP((1)",
@@ -897,6 +896,68 @@
           ]
         }
       ]
+    }
+  ],
+  "specialRules": [
+    {
+      "name": "Darkness-Protocol",
+      "description": "The hero and up to half of your army get the Ambush special rule (must deploy within 3” of the hero)."
+    },
+    {
+      "name": "Flux",
+      "description": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4."
+    },
+    {
+      "name": "Gloom-Protocol",
+      "description": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls."
+    },
+    {
+      "name": "Hunter",
+      "description": "On a round in which this unit arrives from Ambush it gets AP(+3)."
+    },
+    {
+      "name": "Regen-Protocol",
+      "description": "The hero and all friendly units within 12” may ignore wounds from Regeneration on 4+."
+    },
+    {
+      "name": "Royal March",
+      "description": "The hero and all friendly units within 12” may ignore the Slow special rule."
+    },
+    {
+      "name": "Shield Wall",
+      "description": "Enemies get -1 to hit when they attack units where all models have this rule."
+    }
+  ],
+  "spells": [
+    {
+      "name": "Star Bots",
+      "test": "4+",
+      "description": "Target enemy unit within 12” gets -1 to melee next time it fights."
+    },
+    {
+      "name": "Meteor Bots",
+      "test": "4+",
+      "description": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "name": "Assault Bots",
+      "test": "5+",
+      "description": "Target friendly unit within 12” may immediately move by up to 3”."
+    },
+    {
+      "name": "Thunderbolt Bots",
+      "test": "5+",
+      "description": "Target enemy model within 12” takes 4 automatic hits."
+    },
+    {
+      "name": "Arrow Bots",
+      "test": "6+",
+      "description": "Target enemy unit within 18” gets -2 to hit next time it shoots."
+    },
+    {
+      "name": "Fire Bots",
+      "test": "6+",
+      "description": "Target 2 enemy units within 6” take 6 automatic hits with AP(1) each."
     }
   ]
 }
