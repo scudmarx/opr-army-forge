@@ -79,7 +79,11 @@ export const listSlice = createSlice({
                 if (option.type === "combined" || option.type === "mount") {
                     // Add each piece from the combination
                     for (let e of option.equipment) {
-                        unit.selectedEquipment.push({ ...e, count: count });
+                        unit.selectedEquipment.push({
+                            ...e,
+                            count: count,
+                            cost: option.cost / option.equipment.length // TODO: Fix this!
+                        });
                     }
 
                 } else {
