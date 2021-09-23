@@ -23,13 +23,13 @@ export function Upgrades() {
         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
-    const specialRules = (selectedUnit.specialRules || []).concat(equipmentSpecialRules);
+    const specialRules = (selectedUnit.specialRules || []).concat(equipmentSpecialRules).filter(r => r != "-");
 
     return (
         <div className={styles["upgrade-panel"] + " py-4"}>
             <h3 className="px-4 is-size-4 is-hidden-mobile mb-4">{selectedUnit.name} Upgrades</h3>
             <UnitEquipmentTable unit={selectedUnit} />
-            {specialRules?.length && <Paper square elevation={0}>
+            {specialRules?.length > 0 && <Paper square elevation={0}>
                 <div className="p-4 mb-4">
                     <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
                     {specialRules.map((rule, i) => (

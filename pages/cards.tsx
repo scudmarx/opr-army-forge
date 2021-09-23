@@ -23,11 +23,6 @@ export default function Cards() {
         }
     }, []);
 
-    // Break from mobile to desktop layout at 1024px wide
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
-
-
-
     return (
         <>
             <Head>
@@ -42,7 +37,8 @@ export default function Cards() {
                         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
                         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
-                    const specialRules = (u.specialRules || []).concat(equipmentSpecialRules);
+                    const specialRules = (u.specialRules || []).concat(equipmentSpecialRules).filter(r => r != "-");
+
                     return (
                         <div key={i} className="column is-one-third">
                             <div className="card mb-4">
