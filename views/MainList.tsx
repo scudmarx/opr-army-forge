@@ -60,7 +60,7 @@ export function MainList({ onSelected }) {
                     ))}</div>
                   <div>
                     {(s.specialRules || []).filter(r => r != "-").map((rule, i) => (
-                      <Chip key={i} label={rule} className="mr-1 mt-1" onClick={() => setRuleModalOpen(true)} />
+                      <Chip key={i} label={rule} className="mr-1 mt-1" />
                     ))}
                   </div>
                 </div>
