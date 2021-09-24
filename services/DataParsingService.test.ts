@@ -1,3 +1,4 @@
+import { RestartAlt } from '@mui/icons-material';
 import { IEquipment } from '../data/interfaces';
 import DataParsingService from './DataParsingService';
 
@@ -577,6 +578,64 @@ Swift: The hero may ignore the Slow rule.
     });
 
 });
+
+test("Parse special rules with bullets:", () => {
+    const input = `
+Battle Drills: The hero and his unit get the Furious special rule.
+Commander: When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:  Double Time: +3” when moving  Take Aim: +1 to shooting rolls  Focus Fire: AP(+1) when shooting  Fix Bayonets: +1 to melee rolls
+    `;
+
+    const rules = DataParsingService.parseRules(input);
+    expect(rules).toStrictEqual([
+        {
+            name: "Battle Drills",
+            description: "The hero and his unit get the Furious special rule."
+        },
+        {
+            name: "Commander",
+            description: "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:",
+            options: [
+                "Double Time: +3” when moving",
+                "Take Aim: +1 to shooting rolls",
+                "Focus Fire: AP(+1) when shooting",
+                "Fix Bayonets: +1 to melee rolls"
+            ]
+        }
+    ]);
+});
+
+test('Parse special rules with bullets 2', () => {
+    const input = `
+    Captain: When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round: • At the Double: +3” when moving • Precision Fire: +1 to shooting rolls • Crank Up: AP(+1) when shooting • Assault Stance: +1 to melee rolls
+    Good Shot: This model shoots at Quality 4+.
+    Trickster: When this model fights in melee roll one die and apply one bonus: • 1-3: Unit gets AP(+1) • 4-6: Enemies get -1 to hit
+`;
+    const rules = DataParsingService.parseRules(input);
+    expect(rules).toStrictEqual([
+        {
+            name: "Captain",
+            description: "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:",
+            options: [
+                "At the Double: +3” when moving",
+                "Precision Fire: +1 to shooting rolls",
+                "Crank Up: AP(+1) when shooting",
+                "Assault Stance: +1 to melee rolls"
+            ]
+        },
+        {
+            name: "Good Shot",
+            description: "This model shoots at Quality 4+."
+        },
+        {
+            name: "Trickster",
+            description: "When this model fights in melee roll one die and apply one bonus:",
+            options: [
+                "1-3: Unit gets AP(+1)",
+                "4-6: Enemies get -1 to hit"
+            ]
+        }
+    ]);
+})
 
 //#endregion
 

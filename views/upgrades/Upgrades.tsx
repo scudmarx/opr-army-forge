@@ -8,6 +8,7 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 export function Upgrades() {
 
     const list = useSelector((state: RootState) => state.list);
+    const gameRules =useSelector((state: RootState) => state.army.rules);
     const army = useSelector((state: RootState) => state.army.data);
 
     const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
@@ -24,6 +25,7 @@ export function Upgrades() {
         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
     const specialRules = (selectedUnit.specialRules || []).concat(equipmentSpecialRules).filter(r => r != "-");
+    const allRules = gameRules.concat(army.specialRules);
 
     return (
         <div className={styles["upgrade-panel"] + " py-4"}>
@@ -33,7 +35,7 @@ export function Upgrades() {
                 <div className="p-4 mb-4">
                     <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
                     {specialRules.map((rule, i) => (
-                        <Tooltip key={i} title={army.specialRules.filter(r => r.name === rule)[0]?.description || ""} arrow>
+                        <Tooltip key={i} title={allRules.filter(r => r.name === rule)[0]?.description || ""} arrow>
                             <Chip label={rule} className="mr-1 mt-1" />
                         </Tooltip>
                     ))}

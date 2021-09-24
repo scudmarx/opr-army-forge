@@ -1,10 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export interface IGameRule {
+    name: string;
+    description: string;
+    options: string[];
+}
+
 export interface ArmyState {
     loaded: boolean;
     gameSystem: string;
     armyFile: string;
     data: IArmyData;
+    rules: IGameRule[];
 }
 
 export interface IArmyData {
@@ -13,7 +20,7 @@ export interface IArmyData {
     dataToolVersion: string;
     units: any[];
     upgradeSets: any[];
-    specialRules: { name: string; description: string; }[];
+    specialRules: IGameRule[];
     spells: { name: string; test: string; description: string; }[];
 }
 
@@ -21,7 +28,8 @@ const initialState: ArmyState = {
     loaded: false,
     armyFile: null,
     gameSystem: null,
-    data: null
+    data: null,
+    rules: []
 }
 
 export const armySlice = createSlice({
@@ -46,11 +54,17 @@ export const armySlice = createSlice({
                 ...state,
                 armyFile: action.payload
             };
+        },
+        setGameRules: (state, action: PayloadAction<IGameRule[]>) => {
+            return {
+                ...state,
+                rules: action.payload
+            };
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { load, setGameSystem, setArmyFile } = armySlice.actions;
+export const { load, setGameSystem, setArmyFile, setGameRules } = armySlice.actions;
 
 export default armySlice.reducer;

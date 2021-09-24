@@ -284,7 +284,7 @@ export default class DataParsingService {
         };
 
         if (match[groups.count])
-             result.count = parseInt(match[groups.count]);
+            result.count = parseInt(match[groups.count]);
 
         if (attacksMatch)
             result.attacks = parseInt(attacksMatch[1]);
@@ -329,12 +329,25 @@ export default class DataParsingService {
     public static parseRules(rules: string) {
 
         const results = [];
+        const bullet = /•|/;
 
-        for (let line of rules.split("\n").filter(line => !!line)) {
-            const lineParts = line.split(":");
-            const rule = lineParts[0].trim();
-            const description = lineParts[1].trim();
-            results.push({ name: rule, description });
+        for (let line of rules.split("\n").map(line => line.trim()).filter(line => !!line)) {
+
+            const rule = line.substring(0, line.indexOf(":"));;
+            const description = line.substring(line.indexOf(":") + 1).trim();
+            const lineParts = description.split(bullet).map(part => part.trim()).filter(p => !!p);
+            if (lineParts.length === 1) {
+                results.push({
+                    name: rule,
+                    description
+                });
+                continue;
+            }
+            results.push({
+                name: rule,
+                description: lineParts[0],
+                options: lineParts.slice(1)
+            });
         }
 
         return results;
@@ -345,6 +358,7 @@ export default class DataParsingService {
         const results = [];
 
         for (let line of spells.split("\n").filter(line => !!line)) {
+
             const lineParts = line.split(":");
             const spell = lineParts[0].trim();
             const description = lineParts[1].trim();

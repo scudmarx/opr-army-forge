@@ -1,16 +1,18 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from "next/router";
 import { useMediaQuery } from 'react-responsive';
 import MobileView from "../views/listBuilder/MobileView";
 import DesktopView from "../views/listBuilder/DesktopView";
+import { setGameRules } from "../data/armySlice";
 
 export default function List() {
 
     const army = useSelector((state: RootState) => state.army);
     const router = useRouter();
+    const dispatch = useDispatch();
 
     // Load army list file 
     useEffect(() => {
@@ -31,14 +33,15 @@ export default function List() {
         })();
 
         // Load army rules
-        // fetch(`https://opr-list-builder.herokuapp.com/api/content/game-systems/${slug}/special-rules`)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         console.log(res.map(rule => ({
-        //             name: rule.name,
-        //             description: rule.description
-        //         })));
-        //     });
+        fetch(`https://opr-list-builder.herokuapp.com/api/content/game-systems/${slug}/special-rules`)
+            .then(res => res.json())
+            .then(res => {
+                const rules = res.map(rule => ({
+                    name: rule.name,
+                    description: rule.description
+                }));
+                dispatch(setGameRules(rules));
+            });
     }, []);
 
     // Break from mobile to desktop layout at 1024px wide

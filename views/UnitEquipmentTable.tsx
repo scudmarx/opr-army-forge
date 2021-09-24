@@ -26,10 +26,13 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                             unit.selectedEquipment.filter(e => e.attacks && e.count).map((e, i) => {
                                 //const isEquippedToAll = e.count === unit.size;
                                 const name = e.count > 1 ? pluralise.plural(e.name) : e.name;
-
+                                
+                                const multiplier = e.count / unit.size; // 20 / 10 = "2x Weapons...""
+                                const displayCount = e.originalCount ? (e.count / e.originalCount) : unit.size;
+                                
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell>{e.count > 1 || unit.size > 1 ? `[${e.count}] `: ' '}{name}</TableCell>
+                                        <TableCell>{displayCount > 1 ? `[${displayCount}] ` : " "}{multiplier > 1 ? `${multiplier}x `: ""}{name}</TableCell>
                                         <TableCell>{e.range ? e.range + '"' : '-'}</TableCell>
                                         <TableCell>{e.attacks ? "A" + e.attacks : '-'}</TableCell>
                                         <TableCell>{EquipmentService.getAP(e) || '-'}</TableCell>
