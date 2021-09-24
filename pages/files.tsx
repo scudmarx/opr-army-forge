@@ -88,7 +88,7 @@ export default function Files() {
                             variant="outlined"
                             expanded={expandedId === file.name}
                             onChange={() => setExpandedId(expandedId === file.name ? null : file.name)}>
-                            <AccordionSummary>
+                            <AccordionSummary onClick={() => selectArmy(file.path)}>
                                 <div className="is-flex is-flex-grow-1 is-align-items-center">
                                     <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
                                         <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
