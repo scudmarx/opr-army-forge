@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Orc Marauders",
   "version": "2.14",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Warlord",
@@ -564,29 +564,6 @@
                 "Regeneration"
               ],
               "cost": 20
-            },
-            {
-              "name": "Beast Mount",
-              "attacks": 3,
-              "specialRules": [
-                "Fast",
-                "Impact(1)",
-                "Beast Jaws (A3",
-                "AP(1)"
-              ],
-              "cost": 20
-            },
-            {
-              "name": "Combat Bike",
-              "attacks": 6,
-              "range": 18,
-              "specialRules": [
-                "Fast",
-                "Impact(1)",
-                "Twin Mini-MGs (18”",
-                "AP(1))"
-              ],
-              "cost": 25
             }
           ]
         }
@@ -1080,7 +1057,8 @@
           ],
           "options": [
             {
-              "name": "2x Ultra Sawblades",
+              "name": "Ultra Sawblades",
+              "count": 2,
               "attacks": 3,
               "specialRules": [
                 "Deadly(3)"

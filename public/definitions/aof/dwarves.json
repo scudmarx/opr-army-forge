@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Dwarves",
   "version": "2.11",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Dwarf Lord",
@@ -35,7 +35,8 @@
       "defense": "4+",
       "equipment": [
         {
-          "name": "2x Berserker Axes",
+          "name": "Berserker Axes",
+          "count": 2,
           "attacks": 3,
           "specialRules": [
             "AP(1)"
@@ -126,7 +127,8 @@
       "defense": "5+",
       "equipment": [
         {
-          "name": "2x Berserker Axes",
+          "name": "Berserker Axes",
+          "count": 2,
           "attacks": 1,
           "specialRules": [
             "AP(1)"
@@ -641,7 +643,8 @@
           "replaceWhat": "Hand Weapon",
           "options": [
             {
-              "name": "2x Hand Weapons",
+              "name": "Hand Weapons",
+              "count": 2,
               "attacks": 3,
               "cost": 5
             },
@@ -691,7 +694,8 @@
               "cost": 5
             },
             {
-              "name": "2x Pistols",
+              "name": "Pistols",
+              "count": 2,
               "attacks": 1,
               "range": 12,
               "specialRules": [
@@ -760,54 +764,31 @@
               ]
             },
             {
-              "type": "mount",
-              "cost": 70,
-              "equipment": [
-                {
-                  "name": "Ancestral Stone",
-                  "specialRules": [
-                    "Tough(+3)"
-                  ]
-                }
-              ]
+              "name": "Ancestral Stone ñ Tough",
+              "specialRules": [
+                "+3"
+              ],
+              "cost": 70
             },
             {
-              "type": "mount",
-              "cost": 80,
-              "equipment": [
-                {
-                  "name": "Shield Carriers",
-                  "specialRules": [
-                    "Tough(+3)"
-                  ]
-                },
-                {
-                  "name": "Shield Carriers - Hand Weapons",
-                  "attacks": 4
-                }
-              ]
+              "name": "Shield Carriers ñ Hand Weapons",
+              "attacks": 4,
+              "specialRules": [
+                "Tough(+3"
+              ],
+              "cost": 80
             },
             {
-              "type": "mount",
-              "cost": 120,
-              "equipment": [
-                {
-                  "name": "Great War-Bear",
-                  "specialRules": [
-                    "Fear",
-                    "Impact(3)",
-                    "Swift",
-                    "Tough(+3)"
-                  ]
-                },
-                {
-                  "name": "Great War-Bear - Claws",
-                  "attacks": 3,
-                  "specialRules": [
-                    "AP(1)"
-                  ]
-                }
-              ]
+              "name": "Great War-Bear ñ Claws",
+              "attacks": 3,
+              "specialRules": [
+                "AP(1))",
+                "Fear",
+                "Impact(3)",
+                "Swift",
+                "Tough(+3"
+              ],
+              "cost": 120
             }
           ]
         }
@@ -922,7 +903,8 @@
               "cost": 10
             },
             {
-              "name": "2x Hand Weapons",
+              "name": "Hand Weapons",
+              "count": 2,
               "attacks": 1,
               "cost": 15
             },
@@ -991,7 +973,8 @@
               "cost": 10
             },
             {
-              "name": "2x Hand Weapons",
+              "name": "Hand Weapons",
+              "count": 2,
               "attacks": 1,
               "cost": 20
             },
@@ -1035,7 +1018,8 @@
               "cost": 5
             },
             {
-              "name": "2x Fire Pistols",
+              "name": "Fire Pistols",
+              "count": 2,
               "attacks": 1,
               "range": 12,
               "specialRules": [
@@ -1095,7 +1079,8 @@
           "replaceWhat": "Rifle",
           "options": [
             {
-              "name": "2x Pistols",
+              "name": "Pistols",
+              "count": 2,
               "attacks": 1,
               "range": 12,
               "specialRules": [
@@ -1155,7 +1140,8 @@
           "replaceWhat": "Fire Rifle",
           "options": [
             {
-              "name": "2x Fire Pistols",
+              "name": "Fire Pistols",
+              "count": 2,
               "attacks": 1,
               "range": 12,
               "specialRules": [
@@ -1286,7 +1272,7 @@
     },
     {
       "name": "Ballistic Master",
-      "description": "When the hero is activated pick one friendly Artillery unit within 6‚Äù, which may either get +2 to its shooting rolls or move up to 6‚Äù during its next activation."
+      "description": "When the hero is activated pick one friendly Artillery unit within 6î, which may either get +2 to its shooting rolls or move up to 6î during its next activation."
     },
     {
       "name": "Bombing Run",
@@ -1294,7 +1280,7 @@
     },
     {
       "name": "Drill",
-      "description": "The unit may be deployed from Ambush at up to 3‚Äù from enemy units."
+      "description": "The unit may be deployed from Ambush at up to 3î from enemy units."
     },
     {
       "name": "Grudge",
@@ -1311,34 +1297,34 @@
   ],
   "spells": [
     {
-      "rule": "Spite Rune",
+      "name": "Spite Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12‚Äù gets -1 to hit in melee next time it fights."
+      "description": "Target enemy unit within 12î gets -1 to hit in melee next time it fights."
     },
     {
-      "rule": "Smiting Rune",
+      "name": "Smiting Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12‚Äù takes 4 automatic hits."
+      "description": "Target enemy unit within 12î takes 4 automatic hits."
     },
     {
-      "rule": "Battle Rune",
+      "name": "Battle Rune",
       "test": "5+",
-      "description": "Target friendly unit within 12‚Äù gets +6‚Äù next time it moves."
+      "description": "Target friendly unit within 12î gets +6î next time it moves."
     },
     {
-      "rule": "Breaking Rune",
+      "name": "Breaking Rune",
       "test": "5+",
-      "description": "Target enemy model within 12‚Äù takes 2 automatic hits with AP(2)."
+      "description": "Target enemy model within 12î takes 2 automatic hits with AP(2)."
     },
     {
-      "rule": "Drill Rune",
+      "name": "Drill Rune",
       "test": "6+",
-      "description": "Target piece of terrain within 6‚Äù may be moved by up to 6‚Äù in any direction or may be removed from play."
+      "description": "Target piece of terrain within 6î may be moved by up to 6î in any direction or may be removed from play."
     },
     {
-      "rule": "Cleaving Rune",
+      "name": "Cleaving Rune",
       "test": "6+",
-      "description": "Target 2 enemy units within 12‚Äù take 6 automatic hits each."
+      "description": "Target 2 enemy units within 12î take 6 automatic hits each."
     }
   ]
 }
