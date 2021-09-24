@@ -83,7 +83,7 @@ export default function Files() {
                 <h3 className="is-size-4 has-text-centered mb-4">Select Army List</h3>
 
                 {
-                    !armyFiles ? null : armyFiles[army.gameSystem].map((file, index) => (
+                    !armyFiles ? null : armyFiles.filter(grp => grp.key === army.gameSystem)[0].items.map((file, index) => (
                         <Accordion key={index}
                             disableGutters
                             square
