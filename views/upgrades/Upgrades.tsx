@@ -4,6 +4,8 @@ import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
 import UnitEquipmentTable from '../UnitEquipmentTable';
+import RuleItem from '../components/RuleItem';
+import RuleList from '../components/RuleList';
 
 export function Upgrades() {
 
@@ -34,11 +36,7 @@ export function Upgrades() {
             {specialRules?.length > 0 && <Paper square elevation={0}>
                 <div className="p-4 mb-4">
                     <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
-                    {specialRules.map((rule, i) => (
-                        <Tooltip key={i} title={allRules.filter(r => r.name === rule)[0]?.description || ""} arrow>
-                            <Chip label={rule} className="mr-1 mt-1" />
-                        </Tooltip>
-                    ))}
+                    <RuleList specialRules={specialRules} />
                 </div>
             </Paper>}
             {(selectedUnit.upgradeSets || [])

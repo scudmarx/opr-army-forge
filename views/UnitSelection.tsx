@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import WarningIcon from "@mui/icons-material/Warning";
 import EquipmentService from "../services/EquipmentService";
 import { dataToolVersion } from "../pages/data";
+import RuleList from "./components/RuleList";
 
 export function UnitSelection({ onSelected }) {
 
@@ -107,17 +108,13 @@ export function UnitSelection({ onSelected }) {
                       </AccordionSummary>
                       <AccordionDetails style={{ flexDirection: "column" }}>
                         <div className="mb-2">
-
                           {u.equipment.map((eqp, i) => (
                             <span key={i}>
                               {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
                             </span>
-                          ))}</div>
-                        <div>
-                          {(u.specialRules || []).filter(r => r != "-").map((rule, i) => (
-                            <Chip key={i} label={rule} className="mr-1 mt-1" onClick={() => setRuleModalOpen(true)} />
                           ))}
                         </div>
+                        <RuleList specialRules={u.specialRules} />
                       </AccordionDetails>
                     </Accordion>
                   );

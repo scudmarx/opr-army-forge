@@ -8,6 +8,7 @@ import UpgradeService from "../services/UpgradeService";
 import { Button, Chip, IconButton, Paper } from "@mui/material";
 import { useRouter } from "next/router";
 import EquipmentService from "../services/EquipmentService";
+import RuleList from "./components/RuleList";
 
 export function MainList({ onSelected }) {
 
@@ -50,19 +51,15 @@ export function MainList({ onSelected }) {
                     <RemoveIcon />
                   </IconButton>
                 </div>
-                <div className="py-2 px-4">
-                  <div className="mb-2">
-
+                <div className="pb-2 px-4" style={{ fontSize: "14px", color: "#666666" }}>
+                  <div>
                     {s.selectedEquipment.filter(e => e.count > 0).map((eqp, i) => (
                       <span key={i}>
-                        {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
+                        {i > 0 ? ", " : ""}{eqp.name}
                       </span>
-                    ))}</div>
-                  <div>
-                    {(s.specialRules || []).filter(r => r != "-").map((rule, i) => (
-                      <Chip key={i} label={rule} className="mr-1 mt-1" />
                     ))}
                   </div>
+                  <RuleList specialRules={s.specialRules} />
                 </div>
               </Paper>
             </li>
