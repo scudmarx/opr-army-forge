@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Robot Legions",
   "version": "2.19",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Tri-Scorpion Overseer",
@@ -427,7 +427,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Armblades",
+          "name": "Armblades",
+          "count": 2,
           "attacks": 2,
           "specialRules": [
             "AP(2)"
@@ -461,7 +462,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Armblades",
+          "name": "Armblades",
+          "count": 2,
           "attacks": 2,
           "specialRules": [
             "AP(2)"
@@ -486,7 +488,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "6x Disintegration Pistols",
+          "name": "Disintegration Pistols",
+          "count": 6,
           "attacks": 1,
           "range": 18,
           "specialRules": [
@@ -678,7 +681,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Atom Beam",
+          "name": "Atom Beam",
+          "count": 2,
           "attacks": 3,
           "range": 12,
           "specialRules": [
@@ -851,7 +855,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "4x Gauss Machinegun",
+          "name": "Gauss Machinegun",
+          "count": 4,
           "attacks": 3,
           "range": 24,
           "specialRules": [
@@ -890,7 +895,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "4x Heavy Flux Cannon",
+          "name": "Heavy Flux Cannon",
+          "count": 4,
           "attacks": 5,
           "range": 24,
           "specialRules": [
@@ -900,7 +906,7 @@
         }
       ],
       "specialRules": [
-        "Destruction Pulse (30ï¿½",
+        "Destruction Pulse (30”",
         "A1",
         "AP(4)",
         "Deadly(6)) Ambush",
@@ -1598,7 +1604,8 @@
           "replaceWhat": "Gauss Cannons",
           "options": [
             {
-              "name": "2x Hyper Swords",
+              "name": "Hyper Swords",
+              "count": 2,
               "attacks": 3,
               "specialRules": [
                 "AP((1)",
@@ -1674,28 +1681,7 @@
           "text": "Replace Twin Flux Cannon",
           "type": "replace",
           "replaceWhat": "Twin Flux Cannon",
-          "options": [
-            {
-              "type": "mount",
-              "cost": -80,
-              "equipment": [
-                {
-                  "name": "Overseer Pilot",
-                  "specialRules": [
-                    "Staff (A3)"
-                  ]
-                },
-                {
-                  "name": "Overseer Pilot - Staff-Shot",
-                  "attacks": 3,
-                  "range": 12,
-                  "specialRules": [
-                    "AP(1)"
-                  ]
-                }
-              ]
-            }
-          ]
+          "options": []
         },
         {
           "text": "Upgrade Overseer Pilot with one",
@@ -1997,7 +1983,7 @@
     },
     {
       "name": "Bot Fabricator",
-      "description": "When this unit is activated place 1 Bot Swarm fully within 6ï¿½ of this unit."
+      "description": "When this unit is activated place 1 Bot Swarm fully within 6” of this unit."
     },
     {
       "name": "Flux",
@@ -2013,51 +1999,51 @@
     },
     {
       "name": "Psychic Warden",
-      "description": "Whenever a model within 6ï¿½ would take wounds from Psychic Master, you may put those wounds on this model instead."
+      "description": "Whenever a model within 6” would take wounds from Psychic Master, you may put those wounds on this model instead."
     },
     {
       "name": "Reanimator",
-      "description": "When this unit is activated pick one friendly unit within 12ï¿½, which may ignore wounds from Regeneration on 4+ next time it takes wounds."
+      "description": "When this unit is activated pick one friendly unit within 12”, which may ignore wounds from Regeneration on 4+ next time it takes wounds."
     },
     {
       "name": "Repair",
-      "description": "Once per turn, if within 2ï¿½ of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
     },
     {
       "name": "Royal March Order",
-      "description": "When this model is activated pick one friendly unit within 12ï¿½, which may ignore the Slow special rule next time it moves."
+      "description": "When this model is activated pick one friendly unit within 12”, which may ignore the Slow special rule next time it moves."
     }
   ],
   "spells": [
     {
       "name": "Star Bots",
       "test": "4+",
-      "description": "Target enemy unit within 12ï¿½ gets -1 to melee next time it fights."
+      "description": "Target enemy unit within 12” gets -1 to melee next time it fights."
     },
     {
       "name": "Meteor Bots",
       "test": "4+",
-      "description": "Target enemy unit within 12ï¿½ takes 2 automatic hits with AP(2)."
+      "description": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
     },
     {
       "name": "Assault Bots",
       "test": "5+",
-      "description": "Target friendly unit within 12ï¿½ may immediately move by up to 3ï¿½."
+      "description": "Target friendly unit within 12” may immediately move by up to 3”."
     },
     {
       "name": "Thunderbolt Bots",
       "test": "5+",
-      "description": "Target enemy model within 12ï¿½ takes 4 automatic hits."
+      "description": "Target enemy model within 12” takes 4 automatic hits."
     },
     {
       "name": "Arrow Bots",
       "test": "6+",
-      "description": "Target enemy unit within 18ï¿½ gets -2 to hit next time it shoots."
+      "description": "Target enemy unit within 18” gets -2 to hit next time it shoots."
     },
     {
       "name": "Fire Bots",
       "test": "6+",
-      "description": "Target 2 enemy units within 6ï¿½ take 6 automatic hits with AP(1) each."
+      "description": "Target 2 enemy units within 6” take 6 automatic hits with AP(1) each."
     }
   ]
 }

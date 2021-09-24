@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Dwarves",
-  "version": "2.9",
-  "dataToolVersion": "0.1.0",
+  "version": "2.11",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Dwarf Lord",
@@ -671,7 +671,18 @@
                 "Phalanx"
               ],
               "cost": 10
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1",
+      "upgrades": [
+        {
+          "text": "Upgrade with",
+          "type": "upgrade",
+          "options": [
             {
               "name": "Shrapnel Bombs",
               "attacks": 1,
@@ -929,11 +940,11 @@
   "specialRules": [
     {
       "name": "Drill",
-      "description": "This model and up to half of the units in your army may be deployed from Ambush at up to 3‚Äù from enemy units (must deploy within 3‚Äù of the hero)."
+      "description": "This model and up to half of the units in your army may be deployed from Ambush at up to 3î from enemy units (must deploy within 3î of the hero)."
     },
     {
       "name": "Grudge",
-      "description": "The hero and all friendly units within 12‚Äù get +1 to their melee rolls."
+      "description": "The hero and all friendly units within 12î get +1 to their melee rolls."
     },
     {
       "name": "Slayer",
@@ -948,32 +959,32 @@
     {
       "name": "Spite Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12‚Äù gets -1 to hit in melee next time it fights."
+      "description": "Target enemy unit within 12î gets -1 to hit in melee next time it fights."
     },
     {
       "name": "Smiting Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12‚Äù takes 4 automatic hits."
+      "description": "Target enemy unit within 12î takes 4 automatic hits."
     },
     {
       "name": "Battle Rune",
       "test": "5+",
-      "description": "Target friendly unit within 12‚Äù gets +6‚Äù next time it moves."
+      "description": "Target friendly unit within 12î gets +6î next time it moves."
     },
     {
       "name": "Breaking Rune",
       "test": "5+",
-      "description": "Target enemy model within 12‚Äù takes 2 automatic hits with AP(2)."
+      "description": "Target enemy model within 12î takes 2 automatic hits with AP(2)."
     },
     {
       "name": "Drill Rune",
       "test": "6+",
-      "description": "Target piece of terrain within 6‚Äù may be moved by up to 6‚Äù in any direction or may be removed from play."
+      "description": "Target piece of terrain within 6î may be moved by up to 6î in any direction or may be removed from play."
     },
     {
       "name": "Cleaving Rune",
       "test": "6+",
-      "description": "Target 2 enemy units within 12‚Äù take 6 automatic hits each."
+      "description": "Target 2 enemy units within 12î take 6 automatic hits each."
     }
   ]
 }

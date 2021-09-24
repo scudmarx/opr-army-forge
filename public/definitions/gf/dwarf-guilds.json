@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Dwarf Guilds",
   "version": "2.7",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Guild Lord",
@@ -40,7 +40,8 @@
       "defense": "4+",
       "equipment": [
         {
-          "name": "2x Berserker Axes",
+          "name": "Berserker Axes",
+          "count": 2,
           "attacks": 3,
           "specialRules": [
             "AP(1)"
@@ -199,7 +200,8 @@
       "defense": "5+",
       "equipment": [
         {
-          "name": "2x Berserker Axes",
+          "name": "Berserker Axes",
+          "count": 2,
           "attacks": 1,
           "specialRules": [
             "AP(1)"
@@ -574,7 +576,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Heavy Hammer",
+          "name": "Heavy Hammer",
+          "count": 2,
           "attacks": 4,
           "specialRules": [
             "AP(2)"
@@ -786,16 +789,23 @@
               "cost": 25
             },
             {
-              "name": "Combat Bike",
-              "attacks": 2,
-              "range": 24,
-              "specialRules": [
-                "Fast",
-                "Impact(1)",
-                "Swift",
-                "Twin Assault Rifle (24”"
-              ],
-              "cost": 30
+              "type": "mount",
+              "cost": 30,
+              "equipment": [
+                {
+                  "name": "Combat Bike",
+                  "specialRules": [
+                    "Fast",
+                    "Impact(1)",
+                    "Swift"
+                  ]
+                },
+                {
+                  "name": "Combat Bike Twin Assault Rifle",
+                  "attacks": 2,
+                  "range": 24
+                }
+              ]
             },
             {
               "name": "Power Suit",
@@ -919,22 +929,35 @@
                 "AP(1)"
               ],
               "cost": 15
-            }
-          ]
-        },
-        {
-          "text": "Missile Launcher – pick one to fire",
-          "options": [
+            },
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 25
+              "type": "combined",
+              "cost": 25,
+              "equipment": [
+                {
+                  "name": "Missile Launcher – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             }
           ]
         }
@@ -982,22 +1005,35 @@
                 "AP(2)"
               ],
               "cost": 30
-            }
-          ]
-        },
-        {
-          "text": "Missile Launcher – pick one to fire",
-          "options": [
+            },
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 30
+              "type": "combined",
+              "cost": 30,
+              "equipment": [
+                {
+                  "name": "Missile Launcher – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             },
             {
               "name": "Heavy Fusion Rifle",
@@ -1187,22 +1223,35 @@
                 "AP(2)"
               ],
               "cost": 30
-            }
-          ]
-        },
-        {
-          "text": "Missile Launcher – pick one to fire",
-          "options": [
+            },
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 35
+              "type": "combined",
+              "cost": 35,
+              "equipment": [
+                {
+                  "name": "Missile Launcher – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             },
             {
               "name": "Heavy Fusion Rifle",
@@ -1329,21 +1378,35 @@
           "text": "Upgrade one model with",
           "type": "upgrade",
           "affects": 1,
-          "options": []
-        },
-        {
-          "text": "Heavy Missiles – pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 40
+              "type": "combined",
+              "cost": 40,
+              "equipment": [
+                {
+                  "name": "Heavy Missiles – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             }
           ]
         }
@@ -1376,22 +1439,35 @@
                 "AP(2)"
               ],
               "cost": 5
-            }
-          ]
-        },
-        {
-          "text": "Missile Launcher – pick one to fire",
-          "options": [
+            },
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 10
+              "type": "combined",
+              "cost": 10,
+              "equipment": [
+                {
+                  "name": "Missile Launcher – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             },
             {
               "name": "Laser Cannon",
@@ -1428,21 +1504,35 @@
           "type": "replace",
           "affects": 1,
           "replaceWhat": "Twin Assault Rifle",
-          "options": []
-        },
-        {
-          "text": "Grenade Launcher–pick one to fire",
           "options": [
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "Blast(3)) AT (24”",
-                "AP(1)",
-                "Deadly(3)"
-              ],
-              "cost": 5
+              "type": "combined",
+              "cost": 5,
+              "equipment": [
+                {
+                  "name": "Grenade Launcher–pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 24,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 24,
+                  "specialRules": [
+                    "AP(1)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             }
           ]
         },
@@ -1509,22 +1599,35 @@
                 "AP(2)"
               ],
               "cost": 15
-            }
-          ]
-        },
-        {
-          "text": "Missile Launcher – pick one to fire",
-          "options": [
+            },
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "Blast(3)) AT (48”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 15
+              "type": "combined",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "Missile Launcher – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 48,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             },
             {
               "name": "Heavy Fusion Rifle",
@@ -1629,7 +1732,8 @@
           "select": 1,
           "options": [
             {
-              "name": "2x Heavy Flamethrowers",
+              "name": "Heavy Flamethrowers",
+              "count": 2,
               "attacks": 6,
               "range": 12,
               "specialRules": [
@@ -1638,7 +1742,8 @@
               "cost": 25
             },
             {
-              "name": "2x Plasma Cannons",
+              "name": "Plasma Cannons",
+              "count": 2,
               "attacks": 1,
               "range": 36,
               "specialRules": [
@@ -1648,7 +1753,8 @@
               "cost": 55
             },
             {
-              "name": "2x Twin Heavy Machineguns",
+              "name": "Twin Heavy Machineguns",
+              "count": 2,
               "attacks": 6,
               "range": 36,
               "specialRules": [
@@ -1766,7 +1872,8 @@
               "cost": 90
             },
             {
-              "name": "2x Heavy Flamethrowers",
+              "name": "Heavy Flamethrowers",
+              "count": 2,
               "attacks": 6,
               "range": 12,
               "specialRules": [
@@ -1775,7 +1882,8 @@
               "cost": 25
             },
             {
-              "name": "2x Plasma Cannons",
+              "name": "Plasma Cannons",
+              "count": 2,
               "attacks": 1,
               "range": 36,
               "specialRules": [
@@ -1785,7 +1893,8 @@
               "cost": 55
             },
             {
-              "name": "2x Twin Heavy Machineguns",
+              "name": "Twin Heavy Machineguns",
+              "count": 2,
               "attacks": 6,
               "range": 36,
               "specialRules": [
@@ -1828,7 +1937,8 @@
               "cost": 20
             },
             {
-              "name": "2x Flamethrower Cannons",
+              "name": "Flamethrower Cannons",
+              "count": 2,
               "attacks": 6,
               "range": 18,
               "specialRules": [
@@ -1837,7 +1947,8 @@
               "cost": 40
             },
             {
-              "name": "2x Twin AA-Cannons",
+              "name": "Twin AA-Cannons",
+              "count": 2,
               "attacks": 4,
               "range": 48,
               "specialRules": [
@@ -1858,7 +1969,8 @@
               "cost": 270
             },
             {
-              "name": "2x Twin Shard Mortars",
+              "name": "Twin Shard Mortars",
+              "count": 2,
               "attacks": 4,
               "range": 48,
               "specialRules": [
@@ -2014,7 +2126,8 @@
               "cost": 10
             },
             {
-              "name": "2x Twin AA-Cannons",
+              "name": "Twin AA-Cannons",
+              "count": 2,
               "attacks": 4,
               "range": 48,
               "specialRules": [
@@ -2068,7 +2181,8 @@
               "cost": 200
             },
             {
-              "name": "2x Twin Shard Mortars",
+              "name": "Twin Shard Mortars",
+              "count": 2,
               "attacks": 4,
               "range": 48,
               "specialRules": [

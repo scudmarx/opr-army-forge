@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "High Elves",
   "version": "2.9",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Elf Prince",
@@ -330,7 +330,8 @@
           "replaceWhat": "Hand Weapon",
           "options": [
             {
-              "name": "2x Hand Weapons",
+              "name": "Hand Weapons",
+              "count": 2,
               "attacks": 3,
               "cost": 5
             },
@@ -544,7 +545,8 @@
               "cost": 5
             },
             {
-              "name": "2x Hand Weapons",
+              "name": "Hand Weapons",
+              "count": 2,
               "attacks": 1,
               "cost": 5
             },

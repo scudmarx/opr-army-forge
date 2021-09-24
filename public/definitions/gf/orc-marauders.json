@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Orc Marauders",
   "version": "2.14",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Warlord",
@@ -597,7 +597,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Plasma Rifles",
+          "name": "Plasma Rifles",
+          "count": 2,
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -605,7 +606,8 @@
           ]
         },
         {
-          "name": "2x Walker Claws",
+          "name": "Walker Claws",
+          "count": 2,
           "attacks": 2,
           "specialRules": [
             "AP(4)"
@@ -851,7 +853,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Twin Super Machineguns",
+          "name": "Twin Super Machineguns",
+          "count": 2,
           "attacks": 6,
           "range": 36,
           "specialRules": [
@@ -877,7 +880,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Twin Heavy Machineguns",
+          "name": "Twin Heavy Machineguns",
+          "count": 2,
           "attacks": 6,
           "range": 36,
           "specialRules": [
@@ -885,7 +889,8 @@
           ]
         },
         {
-          "name": "2x Rocket Launcher",
+          "name": "Rocket Launcher",
+          "count": 2,
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -1109,41 +1114,6 @@
                 "Regeneration"
               ],
               "cost": 20
-            },
-            {
-              "name": "Beast Mount",
-              "attacks": 3,
-              "specialRules": [
-                "Fast",
-                "Impact(1)",
-                "Beast Jaws (A3",
-                "AP(1)"
-              ],
-              "cost": 20
-            },
-            {
-              "name": "Combat Bike",
-              "attacks": 6,
-              "range": 18,
-              "specialRules": [
-                "Fast",
-                "Impact(1)",
-                "Twin Mini-MGs (18”",
-                "AP(1))"
-              ],
-              "cost": 25
-            },
-            {
-              "name": "Giant Beast",
-              "attacks": 6,
-              "specialRules": [
-                "Fast",
-                "Impact(3)",
-                "Tough(+3)",
-                "Beast Jaws (A6",
-                "AP(2)"
-              ],
-              "cost": 85
             }
           ]
         }
@@ -1766,7 +1736,8 @@
           ],
           "options": [
             {
-              "name": "2x Ultra Sawblades",
+              "name": "Ultra Sawblades",
+              "count": 2,
               "attacks": 3,
               "specialRules": [
                 "Deadly(3)"
@@ -2165,22 +2136,35 @@
                 "Deadly(6)"
               ],
               "cost": 10
-            }
-          ]
-        },
-        {
-          "text": "Cannon – pick one to fire",
-          "options": [
+            },
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "Blast(3)) AT (36”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 15
+              "type": "combined",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "Cannon – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 36,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 36,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             },
             {
               "name": "Heavy Mortar",
@@ -2397,56 +2381,7 @@
             "Shock Rifle",
             "Rocket Launcher"
           ],
-          "options": [
-            {
-              "name": "Beast-Gun",
-              "attacks": 2,
-              "range": 36,
-              "specialRules": [
-                "AP(1)",
-                "Blast(3))",
-                "Beast GL (18”",
-                "AP(1)",
-                "Blast(3)"
-              ],
-              "cost": 20
-            },
-            {
-              "name": "Boost-Gun",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "AP(2)",
-                "Blast(6))",
-                "Blast Grenades (6”",
-                "Blast(3)"
-              ],
-              "cost": 20
-            },
-            {
-              "name": "Snazz-Gun",
-              "attacks": 9,
-              "range": 24,
-              "specialRules": [
-                "AP(1))",
-                "Heavy Machinegun (36”",
-                "AP(1)"
-              ],
-              "cost": 25
-            },
-            {
-              "name": "Mega Scrap-MG",
-              "attacks": 6,
-              "range": 36,
-              "specialRules": [
-                "AP(1))",
-                "Rockets (24”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 30
-            }
-          ]
+          "options": []
         },
         {
           "text": "Upgrade with one",
@@ -2490,22 +2425,35 @@
                 "Anti-Air"
               ],
               "cost": 5
-            }
-          ]
-        },
-        {
-          "text": "Cannon – pick one to fire",
-          "options": [
+            },
             {
-              "name": "HE",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "Blast(3)) AT (36”",
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 15
+              "type": "combined",
+              "cost": 15,
+              "equipment": [
+                {
+                  "name": "Cannon – pick one to fire",
+                  "type": "weaponHeader"
+                },
+                {
+                  "name": "HE",
+                  "attacks": 1,
+                  "range": 36,
+                  "specialRules": [
+                    "Blast(3)"
+                  ],
+                  "type": "weaponPart"
+                },
+                {
+                  "name": "AT",
+                  "attacks": 1,
+                  "range": 36,
+                  "specialRules": [
+                    "AP(3)",
+                    "Deadly(3)"
+                  ],
+                  "type": "weaponPart"
+                }
+              ]
             },
             {
               "name": "Plasma Cannon",
