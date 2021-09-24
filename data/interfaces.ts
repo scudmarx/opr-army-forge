@@ -1,5 +1,5 @@
 export interface IEquipment {
-    type?: "combined"|"mount";
+    type?: "combined"|"mount"|"weaponPart"|"weaponHeader";
     name?: string;
     range?: number;
     attacks?: number;

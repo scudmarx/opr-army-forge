@@ -6,7 +6,7 @@ export default class EquipmentService {
 
     private static compareEquipmentNames(a: string, b: string): boolean {
         //return pluralise.singular(a).indexOf(pluralise.singular(b)) > -1;
-        return pluralise.singular(a) === pluralise.singular(b);
+        return pluralise.singular(a || "") === pluralise.singular(b || "");
     }
 
     public static find(list: IEquipment[], match: string): IEquipment[] {

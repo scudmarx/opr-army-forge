@@ -87,8 +87,7 @@ export default class DataParsingService {
         let lastUpgradeText = null;
         for (let line of upgrades.split("\n").filter((l) => !!l)) {
             try {
-                const parsedUpgrade = /^(\D\s)?(.+?):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(line
-                );
+                const parsedUpgrade = /^(\D\s)?(.+?)(?<!to fire):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(line);
 
                 const setLetter =
                     parsedUpgrade && parsedUpgrade[groupNames.setLetter]?.trim();
@@ -203,6 +202,31 @@ export default class DataParsingService {
             rules: 3,
             cost: 4
         };
+
+        // Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3)) +5pts
+        if (part.indexOf("pick one to fire") > -1) {
+            const multiWeaponSplit = part.split(":")
+            const multiWeaponName = multiWeaponSplit[0].trim();
+            const multiWeaponWeapons = multiWeaponSplit[1]
+                .trim()
+                .split(/(.+?\(.+?\)\s)/g)
+                .filter(l => !!l && !l.endsWith("pts"));
+            //.split(/((.+?)\((.+?)\)\s)/g);
+            return {
+                type: "combined",
+                cost: parseInt(/([+-]\d+)pts?$/.exec(part)[1]),
+                equipment: [
+                    {
+                        name: multiWeaponName,
+                        type: "weaponHeader"
+                    },
+                    ...multiWeaponWeapons.map(w => ({
+                        ...this.parseEquipment(w),
+                        type: "weaponPart"
+                    }))
+                ]
+            };
+        }
 
         // "A (...) and B (...) +10pts"
         if (part.indexOf(") and ") > 0) {

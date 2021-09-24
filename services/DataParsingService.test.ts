@@ -414,10 +414,30 @@ test("Parse weapon pairing", () => {
     });
 });
 
-''
-'Ancestral Stone - Tough(+3) +70pts'
-'Shield Carriers - Hand Weapons (A4), Tough(+3) +80pts'
-'Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts'
+test("multiple profile weapon 1", () => {
+    const e = DataParsingService.parseEquipment('Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3)) +5pts');
+    expect(e).toStrictEqual({
+        type: "combined",
+        cost: 5,
+        equipment: [
+            {
+                name: "Grenade Launcher-pick one to fire"
+            },
+            {
+                name: "HE",
+                range: 24,
+                attacks: 1,
+                specialRules: ["Blast(3)"]
+            },
+            {
+                name: "AT",
+                range: 24,
+                attacks: 1,
+                specialRules: ["AP(1)", "Deadly(3)"]
+            }
+        ]
+    });
+})
 
 test("Parse AoF format mount 1", () => {
     const mount = DataParsingService.parseMount('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts');
