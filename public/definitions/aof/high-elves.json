@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "High Elves",
   "version": "2.9",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Elf Prince",
@@ -400,7 +400,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Longbows",
+          "name": "Longbows",
+          "count": 2,
           "attacks": 1,
           "range": 30
         },
@@ -431,7 +432,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "3x Bows",
+          "name": "Bows",
+          "count": 3,
           "attacks": 1,
           "range": 24
         },
@@ -529,7 +531,8 @@
           "replaceWhat": "Hand Weapon",
           "options": [
             {
-              "name": "2x Hand Weapons",
+              "name": "Hand Weapons",
+              "count": 2,
               "attacks": 3,
               "cost": 5
             },
@@ -812,7 +815,8 @@
               "cost": 10
             },
             {
-              "name": "2x Hand Weapons",
+              "name": "Hand Weapons",
+              "count": 2,
               "attacks": 1,
               "cost": 15
             },
@@ -982,7 +986,8 @@
           "replaceWhat": "Giant Greathammer",
           "options": [
             {
-              "name": "2x Giant Hammers",
+              "name": "Giant Hammers",
+              "count": 2,
               "attacks": 3,
               "specialRules": [
                 "AP(2)"
