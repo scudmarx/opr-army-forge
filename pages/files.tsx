@@ -41,13 +41,16 @@ export default function Files() {
             }
         })();
 
-        // Load custom data books from Web Companion
-        fetch("https://opr-list-builder.herokuapp.com/api/army-books?gameSystemSlug=" + slug)
-            .then((res) => res.json())
-            .then((data) => {
-                const valid = data.filter(a => a.unitCount > 2);
-                setCustomArmies(valid);
-            });
+        const loadCustomArmies = false;
+        if (loadCustomArmies) {
+            // Load custom data books from Web Companion
+            fetch("https://opr-list-builder.herokuapp.com/api/army-books?gameSystemSlug=" + slug)
+                .then((res) => res.json())
+                .then((data) => {
+                    const valid = data.filter(a => a.unitCount > 2);
+                    setCustomArmies(valid);
+                });
+        }
     }, []);
 
     const selectArmy = (filePath: string) => {
@@ -112,36 +115,40 @@ export default function Files() {
                         // </li>
                     ))
                 }
-                <h3>Custom Armies</h3>
-                {customArmies && customArmies.map((customArmy, i) => (
-                    <Accordion key={customArmy.name}
-                        disableGutters
-                        square
-                        elevation={0}
-                        variant="outlined"
-                        expanded={expandedId === customArmy.name}
-                        onChange={() => setExpandedId(expandedId === customArmy.name ? null : customArmy.name)}>
-                        <AccordionSummary>
-                            <div className="is-flex is-flex-grow-1 is-align-items-center">
-                                <div className="is-flex-grow-1" onClick={() => setExpandedId(customArmy.name)}>
-                                    <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
-                                    <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                                        by {customArmy.username}
-                                        {/* <p>Qua {u.quality}</p>
+
+                {customArmies && <>
+                    <h3>Custom Armies</h3>
+                    {customArmies.map((customArmy, i) => (
+                        <Accordion key={customArmy.name}
+                            disableGutters
+                            square
+                            elevation={0}
+                            variant="outlined"
+                            expanded={expandedId === customArmy.name}
+                            onChange={() => setExpandedId(expandedId === customArmy.name ? null : customArmy.name)}>
+                            <AccordionSummary>
+                                <div className="is-flex is-flex-grow-1 is-align-items-center">
+                                    <div className="is-flex-grow-1" onClick={() => setExpandedId(customArmy.name)}>
+                                        <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
+                                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                                            by {customArmy.username}
+                                            {/* <p>Qua {u.quality}</p>
                                             <p className="ml-2">Def {u.defense}</p> */}
+                                        </div>
                                     </div>
+                                    {/* <p className="mr-2">{u.cost}pts</p> */}
+                                    <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                                        <RightIcon />
+                                    </IconButton>
                                 </div>
-                                {/* <p className="mr-2">{u.cost}pts</p> */}
-                                <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
-                                    <RightIcon />
-                                </IconButton>
-                            </div>
-                        </AccordionSummary>
-                        <AccordionDetails style={{ flexDirection: "column" }}>
-                            <p>{customArmy.hint}</p>
-                        </AccordionDetails>
-                    </Accordion>
-                ))}
+                            </AccordionSummary>
+                            <AccordionDetails style={{ flexDirection: "column" }}>
+                                <p>{customArmy.hint}</p>
+                            </AccordionDetails>
+                        </Accordion>
+                    ))}
+                </>
+                }
             </div>
         </div>
     );
