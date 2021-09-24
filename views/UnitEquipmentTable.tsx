@@ -29,7 +29,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                 if (e.type === "weaponHeader")
                                     return (
                                         <TableRow key={i}>
-                                            <TableCell style={{ border: "none", borderTop: "1px solid rgb(224, 224, 224)" }} colspan={5}>{e.name}</TableCell>
+                                            <TableCell style={{ border: "none", borderTop: "1px solid rgb(224, 224, 224)" }} colSpan={5}>{e.name}</TableCell>
                                         </TableRow>
                                     );
 

@@ -35,7 +35,6 @@ export default function Data() {
         }
 
         try {
-            debugger;
             const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units), 1);
             const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2), 2);
             const parsedUnits3: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units3), 3);

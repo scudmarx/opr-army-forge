@@ -47,7 +47,6 @@ export default function UpgradeUpDown({ selectedUnit, upgrade, option }: { selec
         console.log(selectedUnit);
         console.log(upgrade);
         console.log(option);
-        debugger;
     }
 
     //return ({ upgrade.options.map((opt, i) => (<p></p>)});

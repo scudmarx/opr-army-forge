@@ -25,7 +25,24 @@ export function UnitSelection({ onSelected }) {
     return null;
 
   // Group army units by category
-  var unitGroups = groupBy(army.units, "category");
+  //var unitGroups = groupBy(army.units, "category");
+  const isTough = (u, threshold) => u.specialRules.filter(r => {
+    const match = /Tough\((\d+)\)/.exec(r);
+    if (!match) return false;
+    const toughness = parseInt(match[1]);
+    return toughness >= threshold;
+  }).length > 0
+  const isHero = (u) => u.specialRules.indexOf("Hero") > -1;
+  const isLarge = (u) => isTough(u, 6);
+  const isElite = (u) => isTough(u, 3);
+
+  const unitGroups = {
+    "Heroes": army.units.filter(isHero),
+    "Core": army.units.filter(u => !isElite(u) && !isHero(u)),
+    "Elite": army.units.filter(u => !isLarge(u) && !isHero(u) && isElite(u)),
+    "Large": army.units.filter(u => isLarge(u) && !isHero(u))
+  };
+  console.log(unitGroups);
 
   var handleSelection = (unit) => {
     dispatch(addUnit(unit));
@@ -40,7 +57,6 @@ export function UnitSelection({ onSelected }) {
       <div className="is-flex is-align-items-center">
         <h3 className="is-size-4 p-4 is-flex-grow-1">
           {army.name} - v{army.version}
-
         </h3>
         {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
       </div>
@@ -98,7 +114,7 @@ export function UnitSelection({ onSelected }) {
                             </span>
                           ))}</div>
                         <div>
-                          {(u.specialRules || []).map((rule, i) => (
+                          {(u.specialRules || []).filter(r => r != "-").map((rule, i) => (
                             <Chip key={i} label={rule} className="mr-1 mt-1" onClick={() => setRuleModalOpen(true)} />
                           ))}
                         </div>

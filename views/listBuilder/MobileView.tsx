@@ -9,11 +9,12 @@ import "slick-carousel/slick/slick-theme.css";
 import 'react-spring-bottom-sheet/dist/style.css';
 import { Upgrades } from "../upgrades/Upgrades";
 import { BottomSheet } from "react-spring-bottom-sheet";
-import { AppBar, Paper, Tab, Tabs, Toolbar, Typography, IconButton, TextField } from "@mui/material";
+import { AppBar, Paper, Tab, Tabs, Toolbar, Typography, IconButton, TextField, Menu, MenuItem } from "@mui/material";
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import UpgradeService from "../../services/UpgradeService";
 import { renameUnit, selectUnit } from "../../data/listSlice";
+import { useRouter } from "next/router";
 
 export default function MobileView() {
 
@@ -21,10 +22,12 @@ export default function MobileView() {
     const army = useSelector((state: RootState) => state.army);
 
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const [slider, setSlider] = useState(null);
     const [sheetOpen, setSheetOpen] = useState(false);
     const [slideIndex, setSlideIndex] = useState(0);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     // Open bottom sheet when unit is selected
     const onUnitSelected = () => {
@@ -56,6 +59,14 @@ export default function MobileView() {
         beforeChange: (current, next) => handleSlideChange(null, next)
     };
 
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <>
             <Paper elevation={2} color="primary" square>
@@ -78,10 +89,27 @@ export default function MobileView() {
                             edge="start"
                             color="inherit"
                             aria-label="menu"
-                            sx={{ mr: 2 }}
+                            onClick={handleMenu}
                         >
                             <MoreVertIcon />
                         </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={() => router.push("/cards")}>View Cards</MenuItem>
+                        </Menu>
                     </Toolbar>
                 </AppBar>
                 <AppBar elevation={0} position="static" style={{ position: "sticky", top: 0, zIndex: 1 }}>

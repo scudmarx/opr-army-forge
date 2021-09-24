@@ -41,7 +41,6 @@ export default class UpgradeService {
                     .reduce((prev, current) => prev && EquipmentService.find(unit.selectedEquipment, current.name).length > 0, true)
             } catch (e) {
                 console.error(e, option);
-                debugger;
                 return true;
             }
         } else {
@@ -183,8 +182,6 @@ export default class UpgradeService {
             return;
         }
 
-        debugger;
-
         const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
             : upgrade.affects === "all"
@@ -264,7 +261,6 @@ export default class UpgradeService {
 
             return;
         }
-        debugger;
 
         const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
