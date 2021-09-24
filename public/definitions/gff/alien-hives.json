@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Alien Hives",
   "version": "2.11",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Veteran Warrior",
@@ -41,7 +41,8 @@
       "defense": "4+",
       "equipment": [
         {
-          "name": "2x Piercing Claws",
+          "name": "Piercing Claws",
+          "count": 2,
           "attacks": 3,
           "specialRules": [
             "Rending"
@@ -213,7 +214,8 @@
       "defense": "3+",
       "equipment": [
         {
-          "name": "2x Razor Claws",
+          "name": "Razor Claws",
+          "count": 2,
           "attacks": 4,
           "specialRules": [
             "AP(1)"
@@ -291,7 +293,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Razor Claws",
+          "name": "Razor Claws",
+          "count": 2,
           "attacks": 4,
           "specialRules": [
             "AP(2)"

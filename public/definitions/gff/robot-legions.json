@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Robot Legions",
   "version": "2.17",
-  "dataToolVersion": "0.1.0",
+  "dataToolVersion": "0.3.0",
   "units": [
     {
       "name": "Overseer",
@@ -323,7 +323,8 @@
       "defense": "2+",
       "equipment": [
         {
-          "name": "2x Armblades",
+          "name": "Armblades",
+          "count": 2,
           "attacks": 2,
           "specialRules": [
             "AP(2)"
@@ -875,7 +876,8 @@
           "replaceWhat": "Gauss Cannon",
           "options": [
             {
-              "name": "2x Hyper Swords",
+              "name": "Hyper Swords",
+              "count": 2,
               "attacks": 3,
               "specialRules": [
                 "AP((1)",
