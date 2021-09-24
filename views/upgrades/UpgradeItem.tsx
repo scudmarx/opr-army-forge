@@ -1,4 +1,4 @@
-import { IEquipment, ISelectedUnit, IUpgrade } from '../../data/interfaces';
+import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from '../../data/interfaces';
 import EquipmentService from '../../services/EquipmentService';
 import UpgradeService from '../../services/UpgradeService';
 import UpgradeRadio from './controls/UpgradeRadio';
@@ -6,7 +6,7 @@ import UpgradeCheckbox from './controls/UpgradeCheckbox';
 import UpgradeUpDown from './controls/UpgradeUpDown';
 import { Fragment } from 'react';
 
-export default function UpgradeItem({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment }) {
+export default function UpgradeItem({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
 
     const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
 
@@ -16,10 +16,8 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
                 {option.count && <span>{option.count}x </span>}
                 <span>
                     {(() => {
-                        const equipments = option.type === "combined" || option.type === "mount" ? option.equipment : [option]
-
                         return (
-                            equipments.map((e, i) => {
+                            option.gains.map((e, i) => {
                                 const parts = EquipmentService.getStringParts(e);
                                 return (
                                     <Fragment key={i}>

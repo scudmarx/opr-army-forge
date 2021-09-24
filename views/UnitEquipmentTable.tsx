@@ -35,7 +35,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                     );
 
                                 //const isEquippedToAll = e.count === unit.size;
-                                const name = e.count > 1 ? pluralise.plural(e.name) : e.name;
+                                const name = e.count > 1 ? pluralise.plural(e.name || e.label) : e.name || e.label;
 
                                 const multiplier = e.count / unit.size; // 20 / 10 = "2x Weapons...""
                                 const displayCount = e.count > unit.size // 20 hand weapons, unit of 10
@@ -60,7 +60,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                         <TableCell style={borderStyle}>{EquipmentService.getAP(e) || '-'}</TableCell>
                                         <TableCell style={borderStyle}>
                                             {(() => {
-                                                const rules = e.specialRules?.filter(r => !/^AP/.test(r));
+                                                const rules = e.specialRules?.filter(r => !/^AP/.test(r.name));
                                                 return rules && rules.length > 0 ? <RuleList specialRules={rules} /> : <span>-</span>;
                                             })()}
                                         </TableCell>
@@ -87,7 +87,9 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                 return (
                                     <TableRow key={i}>
                                         <TableCell>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.name) : e.name}</TableCell>
-                                        <TableCell>{e.specialRules?.filter(r => !/^AP/.test(r)).join(", ") || '-'}</TableCell>
+                                        <TableCell>
+                                            <RuleList specialRules={e.specialRules} />
+                                        </TableCell>
                                     </TableRow>
                                 );
                             })

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import DataParsingService from "../services/DataParsingService";
 import { Button } from "@mui/material";
 
-export const dataToolVersion = "0.3.0";
+export const dataToolVersion = "0.4.0";
 
 export default function Data() {
 
@@ -30,7 +30,7 @@ export default function Data() {
                 return [];
             return units.map(u => ({
                 ...u,
-                upgradeSets: u.upgradeSets.map(letter => letter + index)
+                upgrades: u.upgrades.map(letter => letter + index)
             }));
         }
 

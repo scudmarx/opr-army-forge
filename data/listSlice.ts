@@ -1,6 +1,6 @@
 import { ConstructionOutlined } from '@mui/icons-material';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IEquipment, ISelectedUnit, IUpgrade } from './interfaces';
+import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from './interfaces';
 import pluralise from "pluralize";
 import UpgradeService from '../services/UpgradeService';
 
@@ -50,7 +50,7 @@ export const listSlice = createSlice({
             const unit = state.units.filter(u => u.selectionId === unitId)[0];
             unit.customName = name;
         },
-        applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
+        applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IUpgradeOption }>) => {
 
             // TODO: Refactor, break down, unit test...
 
@@ -59,7 +59,7 @@ export const listSlice = createSlice({
 
             UpgradeService.apply(unit, upgrade, option);
         },
-        removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IEquipment }>) => {
+        removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IUpgradeOption }>) => {
 
             // TODO: Refactor, break down, unit test...
 

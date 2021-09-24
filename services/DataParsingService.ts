@@ -1,4 +1,6 @@
-import { IEquipment, IUpgrade } from '../data/interfaces';
+import { IEquipment, ISpecialRule, IUpgrade } from '../data/interfaces';
+import { nanoid } from "nanoid";
+import { loadOptions } from '@babel/core';
 
 export default class DataParsingService {
 
@@ -106,9 +108,9 @@ export default class DataParsingService {
 
                     results[groupId] = {
                         id: groupId,
-                        upgrades: [
+                        sections: [
                             {
-                                text: upgradeText,
+                                label: upgradeText,
                                 ...DataParsingService.parseUpgradeText(upgradeText + ":"),
                                 options: [],
                             },
@@ -117,19 +119,24 @@ export default class DataParsingService {
                     lastGroupId = groupId;
                     lastUpgradeText = upgradeText;
                 } else if (isUpgrade) {
-                    results[lastGroupId].upgrades.push({
-                        text: upgradeText,
+                    results[lastGroupId].sections.push({
+                        label: upgradeText,
                         ...DataParsingService.parseUpgradeText(upgradeText + ":"),
                         options: [],
                     });
                     lastUpgradeText = upgradeText;
                 } else {
                     // Is Equipment...
-                    const option = this.parseEquipment(line);
+                    const option = this.parseEquipment(line, true);
                     // Add to options!
-                    results[lastGroupId].upgrades
-                        .filter((u) => u.text === lastUpgradeText)[0]
-                        .options.push(option);
+                    results[lastGroupId].sections
+                        .filter((u) => u.label === lastUpgradeText)[0]
+                        .options.push({
+                            type: "ArmyBookUpgradeOption",
+                            cost: option.cost,
+                            label: line.replace(/\s?[+-]\d+pts$/, ""),
+                            gains: option.equipment || [option]
+                        });
                 }
             } catch (e) {
                 console.log(e);
@@ -150,17 +157,19 @@ export default class DataParsingService {
                 );
 
             const parsed = {
+                id: nanoid(7),
                 name: parsedUnit[1].trim(),
                 size: parseInt(parsedUnit[2]),
-                quality: parsedUnit[3],
-                defense: parsedUnit[4],
+                quality: parseInt(parsedUnit[3]),
+                defense: parseInt(parsedUnit[4]),
                 equipment: DataParsingService.parseEquipmentList(parsedUnit[5]),
-                specialRules: parsedUnit[6].split(",").map((s) => s.trim()),
-                upgradeSets:
+                specialRules: parsedUnit[6].split(",").map((s) => s.trim()).map(this.parseRule),
+                upgrades:
                     parsedUnit[7] && parsedUnit[7].trim() === "-"
                         ? []
                         : parsedUnit[7].split(",").map((s) => s.trim()),
                 cost: parseInt(parsedUnit[8]),
+                costMode: "manually"
             };
 
             results.push(parsed);
@@ -169,16 +178,18 @@ export default class DataParsingService {
         return results;
     }
 
+    public static parseRule(r): ISpecialRule {
+        const rMatch = /^(.+?)(?:\((\d+)\))?$/.exec(r);
+        return {
+            key: rMatch[1].toLowerCase(),
+            name: rMatch[1],
+            rating: rMatch[2] || ""
+        };
+    }
+
     public static parseEquipmentList(str) {
 
-        const groups = {
-            count: 2,
-            name: 3,
-            rules: 4,
-            cost: 5
-        }
-
-        var parts = str
+        const parts = str
             .split(/(?<!\(\d)\),/)
             .map((part) => part.trim())
             .map((part) => (/(?<!\(\d)\)/.test(part) ? part : part + ")"))
@@ -188,17 +199,17 @@ export default class DataParsingService {
                 if (part === "-)")
                     return null;
 
-                return this.parseEquipment(part);
+                return this.parseEquipment(part, false);
             })
             .filter((p) => !!p);
         return parts;
     }
 
-    public static parseEquipment(part) {
+    public static parseEquipment(part, isUpgrade: boolean): IEquipment {
 
         const groups = {
             count: 1,
-            name: 2,
+            label: 2,
             rules: 3,
             cost: 4
         };
@@ -221,7 +232,7 @@ export default class DataParsingService {
                         type: "weaponHeader"
                     },
                     ...multiWeaponWeapons.map(w => ({
-                        ...this.parseEquipment(w),
+                        ...this.parseEquipment(w, isUpgrade),
                         type: "weaponPart"
                     }))
                 ]
@@ -237,7 +248,7 @@ export default class DataParsingService {
                 type: "combined",
                 cost: combinedMatch[2] === "Free" ? 0 : parseInt(combinedMatch[3]),
                 equipment: multiParts
-                    .map(mp => this.parseEquipment(mp))
+                    .map(mp => this.parseEquipment(mp, isUpgrade))
             };
         }
 
@@ -254,7 +265,7 @@ export default class DataParsingService {
                 if (/^[^\(\)]+$/.test(rule) || /\w+\(\d+\)/.test(rule)) {
                     mountRules.push(rule);
                 } else { // It's a weapon
-                    mountWeapon = this.parseEquipment(mountName + " " + rule);
+                    mountWeapon = this.parseEquipment(mountName + " " + rule, isUpgrade);
                 }
             }
 
@@ -263,7 +274,7 @@ export default class DataParsingService {
                 cost: parseInt(mountMatch[3]),
                 equipment: [
                     {
-                        name: mountName,
+                        label: mountName,
                         specialRules: mountRules
                     },
                     mountWeapon
@@ -272,14 +283,14 @@ export default class DataParsingService {
         }
 
         if (/ - /.test(part))
-            return this.parseMount(part);
+            return this.parseMount(part, isUpgrade);
 
         // "Field Medic"
         const singleRuleMatch = /^([\w\s!]+)\s([-+]\d+)pt/.exec(part);
         if (singleRuleMatch) {
             return {
-                name: singleRuleMatch[1].trim(),
-                specialRules: [singleRuleMatch[1].trim()],
+                label: singleRuleMatch[1].trim(),
+                specialRules: [this.parseRule(singleRuleMatch[1].trim())],
                 cost: parseInt(singleRuleMatch[2]),
             };
         }
@@ -288,8 +299,8 @@ export default class DataParsingService {
         const paramRuleMatch = /^(\w+\(\d+\))\s([-+]\d+)pt/.exec(part);
         if (paramRuleMatch) {
             return {
-                name: paramRuleMatch[1].trim(),
-                specialRules: [paramRuleMatch[1].trim()],
+                label: paramRuleMatch[1].trim(),
+                specialRules: [this.parseRule(paramRuleMatch[1].trim())],
                 cost: parseInt(paramRuleMatch[2]),
             };
         }
@@ -304,7 +315,8 @@ export default class DataParsingService {
         );
 
         const result: IEquipment = {
-            name: match[groups.name].trim()
+            label: isUpgrade ? part : match[groups.label].trim(),
+            name: isUpgrade ? match[groups.label].trim() : undefined
         };
 
         if (match[groups.count])
@@ -317,22 +329,24 @@ export default class DataParsingService {
             result.range = parseInt(rangeMatch[1]);
 
         if (specialRules?.length > 0)
-            result.specialRules = specialRules;
+            result.specialRules = specialRules.map(this.parseRule);
 
         if (match[groups.cost] !== undefined)
             result.cost = match[groups.cost] === "Free" ? 0 : parseInt(match[groups.cost].trim());
 
+        result.type = result.attacks ? "ArmyBookWeapon" : "ArmyBookItem";
+
         return result;
     }
 
-    public static parseMount(text: string) {
+    public static parseMount(text: string, isUpgrade: boolean): IEquipment {
 
         const textParts = text.split(" - ");
         const name = textParts[0].trim();
         const match = /(.+)([+-]\d+)pts$/.exec(textParts[1]);
         const weaponRegex = /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
         const weaponMatch = weaponRegex.exec(match[1]);
-        const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/);
+        const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/).map(this.parseRule);
 
         return {
             type: "mount",
@@ -343,7 +357,7 @@ export default class DataParsingService {
                     specialRules: rules
                 },
                 weaponMatch && {
-                    ...this.parseEquipment(weaponMatch[1]),
+                    ...this.parseEquipment(weaponMatch[1], isUpgrade),
                     name: name + " - " + weaponMatch[2].trim()
                 }
             ].filter(e => !!e)

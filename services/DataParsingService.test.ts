@@ -277,7 +277,7 @@ test("Parse simple melee weapon", () => {
     const e = DataParsingService.parseEquipment("Sword (A3)");
 
     expect(e).toStrictEqual({
-        name: "Sword",
+        label: "Sword",
         attacks: 3
     });
 });
@@ -286,7 +286,7 @@ test("Parse melee weapon with rules", () => {
     const e = DataParsingService.parseEquipment("Sword (A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
-        name: "Sword",
+        label: "Sword",
         attacks: 3,
         specialRules: ["Rending", "AP(1)"]
     });
@@ -296,7 +296,7 @@ test("Parse multiple melee weapon with rules", () => {
     const e = DataParsingService.parseEquipment("2x Sword (A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
-        name: "Sword",
+        label: "Sword",
         count: 2,
         attacks: 3,
         specialRules: ["Rending", "AP(1)"]
@@ -307,7 +307,7 @@ test("Parse melee weapon with rules and cost", () => {
     const e = DataParsingService.parseEquipment("Sword (A3, Rending, AP(1)) +5pts");
 
     expect(e).toStrictEqual({
-        name: "Sword",
+        label: "Sword",
         cost: 5,
         attacks: 3,
         specialRules: ["Rending", "AP(1)"]
@@ -318,7 +318,7 @@ test("Parse Free weapon", () => {
     const e = DataParsingService.parseEquipment("Sword (A3, AP(1)) Free");
 
     expect(e).toStrictEqual({
-        name: "Sword",
+        label: "Sword",
         cost: 0,
         attacks: 3,
         specialRules: ["AP(1)"]
@@ -329,7 +329,7 @@ test("Parse simple ranged weapon", () => {
     const e = DataParsingService.parseEquipment("Pistol (6\", A3)");
 
     expect(e).toStrictEqual({
-        name: "Pistol",
+        label: "Pistol",
         range: 6,
         attacks: 3
     });
@@ -339,7 +339,7 @@ test("Parse ranged weapon with rules", () => {
     const e = DataParsingService.parseEquipment("Pistol (6\", A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
-        name: "Pistol",
+        label: "Pistol",
         range: 6,
         attacks: 3,
         specialRules: ["Rending", "AP(1)"]
@@ -350,7 +350,7 @@ test("Parse standard rule", () => {
     const e = DataParsingService.parseEquipment("Field Radio +5pts");
 
     expect(e).toStrictEqual({
-        name: "Field Radio",
+        label: "Field Radio",
         cost: 5,
         specialRules: ["Field Radio"]
     });
@@ -360,7 +360,7 @@ test("Parse standard rule", () => {
     const e = DataParsingService.parseEquipment("SHOOT! +15pts");
 
     expect(e).toStrictEqual({
-        name: "SHOOT!",
+        label: "SHOOT!",
         cost: 15,
         specialRules: ["SHOOT!"]
     });
@@ -370,7 +370,7 @@ test("Parse parameterised rule", () => {
     const e = DataParsingService.parseEquipment("Psychic(2) +10pts");
 
     expect(e).toStrictEqual({
-        name: "Psychic(2)",
+        label: "Psychic(2)",
         cost: 10,
         specialRules: ["Psychic(2)"]
     });
@@ -383,11 +383,11 @@ test("Parse weapon pairing with non-standard rules", () => {
         cost: 0,
         equipment: [
             {
-                name: "Light Shields",
+                label: "Light Shields",
                 specialRules: ["Defense +1 in melee"]
             },
             {
-                name: "Shield Bash",
+                label: "Shield Bash",
                 attacks: 2
             }
         ]
@@ -401,13 +401,13 @@ test("Parse weapon pairing", () => {
         cost: 5,
         equipment: [
             {
-                name: "Plasma Pistol",
+                label: "Plasma Pistol",
                 range: 12,
                 attacks: 1,
                 specialRules: ["AP(2)"]
             },
             {
-                name: "CCW",
+                label: "CCW",
                 attacks: 2
             }
         ]
@@ -421,16 +421,16 @@ test("multiple profile weapon 1", () => {
         cost: 5,
         equipment: [
             {
-                name: "Grenade Launcher-pick one to fire"
+                label: "Grenade Launcher-pick one to fire"
             },
             {
-                name: "HE",
+                label: "HE",
                 range: 24,
                 attacks: 1,
                 specialRules: ["Blast(3)"]
             },
             {
-                name: "AT",
+                label: "AT",
                 range: 24,
                 attacks: 1,
                 specialRules: ["AP(1)", "Deadly(3)"]
@@ -447,11 +447,11 @@ test("Parse AoF format mount 1", () => {
         cost: 120,
         equipment: [
             {
-                name: "Great War-Bear",
+                label: "Great War-Bear",
                 specialRules: ["Fear", "Impact(3)", "Swift", "Tough(+3)"],
             },
             {
-                name: "Great War-Bear - Claws",
+                label: "Great War-Bear - Claws",
                 attacks: 3,
                 specialRules: ["AP(1)"]
             }
@@ -469,7 +469,7 @@ test("Parse AoF format mount 2", () => {
         cost: 70,
         equipment: [
             {
-                name: "Ancestral Stone",
+                label: "Ancestral Stone",
                 specialRules: ["Tough(+3)"]
             }
         ]
@@ -486,11 +486,11 @@ test("Parse AoF format mount 3", () => {
         cost: 80,
         equipment: [
             {
-                name: "Shield Carriers",
+                label: "Shield Carriers",
                 specialRules: ["Tough(+3)"],
             },
             {
-                name: "Shield Carriers - Hand Weapons",
+                label: "Shield Carriers - Hand Weapons",
                 attacks: 4,
             }
         ]
@@ -507,11 +507,11 @@ test("Parse AoF format mount 4", () => {
         cost: 15,
         equipment: [
             {
-                name: "Beast",
+                label: "Beast",
                 specialRules: ["Impact(1)", "Swift"],
             },
             {
-                name: "Beast - Claws",
+                label: "Beast - Claws",
                 attacks: 1
             }
         ]
@@ -528,7 +528,7 @@ test("Parse GFF format mount", () => {
         cost: 30,
         equipment: [
             {
-                name: "Combat Bike",
+                label: "Combat Bike",
                 specialRules: [
                     "Fast",
                     "Impact(1)",
@@ -536,7 +536,7 @@ test("Parse GFF format mount", () => {
                 ]
             },
             {
-                name: "Combat Bike Twin Assault Rifle",
+                label: "Combat Bike Twin Assault Rifle",
                 attacks: 2,
                 range: 24,
             },
@@ -553,7 +553,7 @@ test("Parse melee weapon with rules and cost", () => {
     const e = DataParsingService.parseEquipment("Whip Limb and Sword Claw (A3, Deadly(6)) +10pts");
 
     expect(e).toStrictEqual({
-        name: "Whip Limb and Sword Claw",
+        label: "Whip Limb and Sword Claw",
         cost: 10,
         attacks: 3,
         specialRules: ["Deadly(6)"]
@@ -593,7 +593,7 @@ Swift: The hero may ignore the Slow rule.
 
     expect(rules.length).toBe(7);
     expect(rules[2]).toStrictEqual({
-        name: "Bombing Run",
+        label: "Bombing Run",
         description: "Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 3 hits with AP(1)."
     });
 
@@ -608,11 +608,11 @@ Commander: When the hero and his unit are activated pick one of the following or
     const rules = DataParsingService.parseRules(input);
     expect(rules).toStrictEqual([
         {
-            name: "Battle Drills",
+            label: "Battle Drills",
             description: "The hero and his unit get the Furious special rule."
         },
         {
-            name: "Commander",
+            label: "Commander",
             description: "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:",
             options: [
                 "Double Time: +3” when moving",
@@ -633,7 +633,7 @@ test('Parse special rules with bullets 2', () => {
     const rules = DataParsingService.parseRules(input);
     expect(rules).toStrictEqual([
         {
-            name: "Captain",
+            label: "Captain",
             description: "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:",
             options: [
                 "At the Double: +3” when moving",
@@ -643,11 +643,11 @@ test('Parse special rules with bullets 2', () => {
             ]
         },
         {
-            name: "Good Shot",
+            label: "Good Shot",
             description: "This model shoots at Quality 4+."
         },
         {
-            name: "Trickster",
+            label: "Trickster",
             description: "When this model fights in melee roll one die and apply one bonus:",
             options: [
                 "1-3: Unit gets AP(+1)",
@@ -675,7 +675,7 @@ Cleaving Rune (6+): Target 2 enemy units within 12” take 6 automatic hits each
 
     expect(spells.length).toBe(6);
     expect(spells[2]).toStrictEqual({
-        name: "Battle Rune",
+        label: "Battle Rune",
         test: "5+",
         description: "Target friendly unit within 12” gets +6” next time it moves."
     });

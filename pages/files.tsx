@@ -7,6 +7,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Button, IconButton } fro
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
+import DataParsingService from "../services/DataParsingService";
 
 export default function Files() {
 
@@ -30,7 +31,6 @@ export default function Files() {
         fetch("definitions/army-files.json")
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setArmyFiles(data);
             });
 
@@ -65,17 +65,37 @@ export default function Files() {
             }
         })();
 
-        const loadCustomArmies = false;
+        const loadCustomArmies = true;
         if (loadCustomArmies) {
             // Load custom data books from Web Companion
             fetch("https://opr-list-builder.herokuapp.com/api/army-books?gameSystemSlug=" + slug)
                 .then((res) => res.json())
                 .then((data) => {
-                    const valid = data.filter(a => a.unitCount > 2);
+                    const valid = data
+                        //.filter(a => a.unitCount > 2)
+                        .filter(a => a.username === "Darguth" || a.username === "adam");
+
                     setCustomArmies(valid);
                 });
         }
     }, []);
+
+    const transform = (input) => {
+        return {
+            ...input,
+            upgradePackages: input.upgradePackages.map(pkg => ({
+                ...pkg,
+                sections: pkg.sections.map(section => ({
+                    ...section,
+                    ...DataParsingService.parseUpgradeText(section.label),
+                    options: section.options.map(opt => ({
+                        ...opt,
+                        //gains: opt.gains.map(g => typeof(g) === "string" ? DataParsingService.parseEquipment(g) : g)
+                    }))
+                }))
+            }))
+        };
+    };
 
     const selectArmy = (filePath: string) => {
         // TODO: Clear existing data
@@ -99,6 +119,29 @@ export default function Files() {
 
     const selectCustomList = (customArmy: any) => {
         // TODO: Web companion integration
+        // Load army data
+        fetch("https://opr-list-builder.herokuapp.com/api/army-books/" + customArmy.uid)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+
+                const afData = transform(data);
+                console.log(afData);
+
+                // var allSections = afData.upgradePackages.reduce((value, pkg) => value.concat(pkg.sections), []);
+                // var allOptions = allSections.reduce((value, section) => value.concat(section.options), []);
+                // console.log("Sections:", allSections);
+                // console.log("Options:", allOptions);
+                // console.log("Options with gains as string:", allOptions.filter(opt => typeof(opt.gains[0]) === "string"));
+
+                dispatch(load(afData));
+                //dispatch(load(data));
+
+                
+                // TODO: Loading wheel view...?
+                // Redirect to list builder once data is loaded
+                router.push('/list');
+            });
     };
 
     const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
@@ -147,10 +190,11 @@ export default function Files() {
                         );
                     })
                 }
-                <p className="p-4">To be released...</p>
+
                 {
-                    driveArmies && (
+                    false && driveArmies && (
                         <div>
+                            <p className="p-4">To be released...</p>
                             {driveArmies.filter(da => armies.findIndex(af => af.name.toUpperCase() === da.name.toUpperCase()) === -1).map((file, index) => (
                                 <Accordion key={index}
                                     disableGutters

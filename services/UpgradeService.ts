@@ -1,7 +1,8 @@
-import { IEquipment, ISelectedUnit, IUpgrade } from "../data/interfaces";
+import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from "../data/interfaces";
 import pluralise from "pluralize";
 import { current } from "immer";
 import EquipmentService from "./EquipmentService";
+import { loadOptions } from "@babel/core";
 
 export default class UpgradeService {
     static calculateListTotal(list: ISelectedUnit[]) {
@@ -18,7 +19,7 @@ export default class UpgradeService {
         return cost;
     }
 
-    static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
+    static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
         if (upgrade.type === "upgradeRule") {
 
@@ -36,7 +37,7 @@ export default class UpgradeService {
 
             try {
                 return option
-                    .equipment
+                    .gains
                     // Check that each part of the option is contained within the unit's selected equipment
                     .reduce((prev, current) => prev && EquipmentService.find(unit.selectedEquipment, current.name).length > 0, true)
             } catch (e) {
@@ -54,14 +55,14 @@ export default class UpgradeService {
         }
     }
 
-    static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): number {
+    static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): number {
         const matches = EquipmentService.find(unit.selectedEquipment, option.name);
         return matches?.length > 0
             ? matches.reduce((value, next) => value + (next.count || 1), 0)
             : 0;
     }
 
-    public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment): boolean {
+    public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
         if (upgrade.type === "replace") {
 
@@ -164,13 +165,11 @@ export default class UpgradeService {
         return "updown";
     }
 
-    public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) {
-
-        const existingSelection = unit.selectedEquipment.filter(eqp => eqp.name === option.name)[0];
+    public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
         if (upgrade.type === "upgradeRule") {
 
-            const existingRuleIndex = unit.specialRules.findIndex(r => r === upgrade.replaceWhat);
+            const existingRuleIndex = unit.specialRules.findIndex(r => r === (upgrade.replaceWhat as string));
 
             // Remove existing rule
             if (existingRuleIndex > -1)
@@ -189,21 +188,19 @@ export default class UpgradeService {
                 : 1) * (option.count || 1);
 
         const apply = () => {
-            if (option.type === "combined" || option.type === "mount") {
-                // Add each piece from the combination
-                for (let e of option.equipment) {
-                    unit.selectedEquipment.push({
-                        ...e,
-                        count: count,
-                        cost: option.cost / option.equipment.length // TODO: Fix this!
-                    });
-                }
+            // Add each piece from the combination
+            for (let e of option.gains) {
 
-            } else {
+                const existingSelection = EquipmentService.findLast(unit.selectedEquipment, e.label);
+
                 if (existingSelection) {
                     existingSelection.count += count;
                 } else {
-                    unit.selectedEquipment.push({ ...option, count: count, originalCount: (option.count || 1) });
+                    unit.selectedEquipment.push({
+                        ...e,
+                        count: count,
+                        cost: parseInt(option.cost) / option.gains.length // TODO: Fix this!
+                    });
                 }
             }
         };
@@ -247,7 +244,7 @@ export default class UpgradeService {
         }
     }
 
-    public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) {
+    public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
         if (upgrade.type === "upgradeRule") {
 
@@ -268,9 +265,7 @@ export default class UpgradeService {
                 ? unit.size || 1 // All in unit
                 : 1) * (option.count || 1);
 
-        const equipment = option.type === "combined" || option.type === "mount" ? option.equipment : [option];
-
-        for (let e of equipment) {
+        for (let e of option.gains) {
             const selection = EquipmentService.findLast(unit.selectedEquipment, e.name);
 
             // If multiple selections

@@ -1,23 +1,22 @@
-import { Chip, Paper, Tooltip, Button } from '@mui/material';
+import { Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
 import UnitEquipmentTable from '../UnitEquipmentTable';
-import RuleItem from '../components/RuleItem';
 import RuleList from '../components/RuleList';
+import { IUpgradePackage } from '../../data/interfaces';
 
 export function Upgrades() {
 
     const list = useSelector((state: RootState) => state.list);
-    const gameRules =useSelector((state: RootState) => state.army.rules);
     const army = useSelector((state: RootState) => state.army.data);
 
     const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
         ? null
         : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
-    const getUpgradeSet = (id) => army.upgradeSets.filter((s) => s.id === id)[0];
+    const getUpgradeSet = (id) => army.upgradePackages.filter((s) => s.uid === id)[0];
     if (!selectedUnit)
         return null;
 
@@ -26,8 +25,7 @@ export function Upgrades() {
         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
-    const specialRules = (selectedUnit.specialRules || []).concat(equipmentSpecialRules).filter(r => r != "-");
-    const allRules = gameRules.concat(army.specialRules);
+    const specialRules = (selectedUnit.specialRules || []).concat(equipmentSpecialRules).filter(r => r.name !== "-");
 
     return (
         <div className={styles["upgrade-panel"] + " py-4"}>
@@ -39,15 +37,15 @@ export function Upgrades() {
                     <RuleList specialRules={specialRules} />
                 </div>
             </Paper>}
-            {(selectedUnit.upgradeSets || [])
+            {(selectedUnit.upgrades || [])
                 .map((setId) => getUpgradeSet(setId))
                 .filter((s) => !!s) // remove empty sets?
-                .map((set) => (
-                    <div key={set.id}>
+                .map((pkg: IUpgradePackage) => (
+                    <div key={pkg.uid}>
                         {/* <p className="px-2">{set.id}</p> */}
-                        {set.upgrades.map((u, i) => (
+                        {pkg.sections.map((u, i) => (
                             <div className={"mt-4"} key={i}>
-                                <p className="px-4 pt-0" style={{ fontWeight: "bold", fontStyle: "italic", }}>{u.text}:</p>
+                                <p className="px-4 pt-0" style={{ fontWeight: "bold", fontStyle: "italic", }}>{u.label}:</p>
                                 <UpgradeGroup upgrade={u} />
                             </div>
                         ))}

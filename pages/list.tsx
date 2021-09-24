@@ -17,7 +17,7 @@ export default function List() {
     // Load army list file 
     useEffect(() => {
         // Redirect to game selection screen if no army selected
-        if (!army.armyFile) {
+        if (!army.loaded) {
             router.push("/", null, { shallow: true });
             return;
         }

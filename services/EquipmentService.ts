@@ -1,6 +1,6 @@
 import { IEquipment } from "../data/interfaces";
 import pluralise from "pluralize";
-import { EscalatorWarning } from "@mui/icons-material";
+import RulesService from "./RulesService";
 
 export default class EquipmentService {
 
@@ -11,19 +11,19 @@ export default class EquipmentService {
 
     public static find(list: IEquipment[], match: string): IEquipment[] {
         return list
-            .filter(e => this.compareEquipmentNames(e.name, match));
+            .filter(e => this.compareEquipmentNames(e.label, match));
     }
 
     public static findLast(list: IEquipment[], match: string): IEquipment {
         const matches = list
-            .filter(e => this.compareEquipmentNames(e.name, match));
+            .filter(e => this.compareEquipmentNames(e.label, match));
         return matches[matches.length - 1];
     }
 
     public static findLastIndex(array: IEquipment[], match: string) {
         let l = array.length;
         while (l--) {
-            if (this.compareEquipmentNames(array[l].name, match))
+            if (this.compareEquipmentNames(array[l].label, match))
                 return l;
         }
         return -1;
@@ -31,34 +31,30 @@ export default class EquipmentService {
 
     static getAP(e: IEquipment): number {
         if (!e || !e.specialRules) return null;
-        for (let rule of e.specialRules) {
-            var match = /AP\((\d+)\)/.exec(rule);
-            if (match)
-                return parseInt(match[1]);
-        }
-        return null;
+        const ap = e.specialRules.filter(r => r.name === "AP")[0]
+
+        return ap ? parseInt(ap.rating) : null;
     }
 
     static formatString(eqp: IEquipment): string {
-        const name = eqp.count > 1 ? pluralise.plural(eqp.name) : eqp.name;
+        const name = eqp.count > 1 ? pluralise.plural(eqp.label) : eqp.label;
         var range = eqp.range ? `${eqp.range}"` : null;
-        var attacks = eqp.attacks ? "A" + eqp.attacks : null;
 
-        return `${name} (${[range, attacks] // Range, then attacks
-            .concat(eqp.specialRules || []) // then special rules
+        return `${name} (${[range, eqp.attacks || null] // Range, then attacks
+            .concat(eqp.specialRules.map(RulesService.displayName) || []) // then special rules
             .filter((m) => !!m) // Remove empty/null entries
             .join(", ")})`; // comma separated list
     }
 
     static getStringParts(eqp: IEquipment): { name: string, rules: string } {
-        const name = eqp.count > 1 ? pluralise.plural(eqp.name) : eqp.name;
+        const name = eqp.count > 1 ? pluralise.plural(eqp.label) : eqp.label;
         const range = eqp.range ? `${eqp.range}"` : null;
         const attacks = eqp.attacks ? "A" + eqp.attacks : null;
 
         return {
             name: name,
             rules: [range, attacks] // Range, then attacks
-                .concat(eqp.specialRules || []) // then special rules
+                .concat(eqp.specialRules.map(RulesService.displayName) || []) // then special rules
                 .filter((m) => !!m) // Remove empty/null entries
                 .join(", ") // csv
         }

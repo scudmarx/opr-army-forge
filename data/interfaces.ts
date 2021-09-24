@@ -1,13 +1,22 @@
+import { IntegrationInstructions } from "@mui/icons-material";
+
 export interface IEquipment {
-    type?: "combined"|"mount"|"weaponPart"|"weaponHeader";
+    type?: "combined"|"mount"|"weaponPart"|"weaponHeader"|"ArmyBookWeapon"|"ArmyBookItem";
+    label?: string;
     name?: string;
     range?: number;
     attacks?: number;
     cost?: number;
     count?: number;
     originalCount?: number;
-    specialRules?: string[];
-    equipment?: IEquipment[]; // For { "type": "combined" }
+    specialRules?: ISpecialRule[];
+    //equipment?: IEquipment[]; // For { "type": "combined" }
+}
+
+export interface ISpecialRule {
+    key: string;
+    name: string;
+    rating: string;
 }
 
 export interface IUnit {
@@ -17,19 +26,31 @@ export interface IUnit {
     cost: number;
     quality: string;
     defense: string;
-    specialRules: string[];
-    upgradeSets: string[];
+    specialRules?: ISpecialRule[];
+    upgrades: string[];
     equipment: IEquipment[]
 }
 
 export interface IUpgrade {
-    text?: string;
+    label?: string;
     type: "replace" | "upgrade" | "upgradeRule";
     affects?: "any" | "all" | number;
     select?: string | number;
     limit?: number;
     replaceWhat?: string|string[];
-    options?: IEquipment[];
+    options?: IUpgradeOption[];
+}
+
+export interface IUpgradeOption {
+    cost: string;
+    label: string;
+    gains: IEquipment[];
+}
+
+export interface IUpgradePackage {
+    hint: string,
+    uid: string;
+    sections: IUpgrade[];
 }
 
 export interface ISelectedUnit extends IUnit {

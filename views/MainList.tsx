@@ -55,7 +55,7 @@ export function MainList({ onSelected }) {
                   <div>
                     {s.selectedEquipment.filter(e => e.count > 0).map((eqp, i) => (
                       <span key={i}>
-                        {i > 0 ? ", " : ""}{eqp.name}
+                        {i > 0 ? ", " : ""}{eqp.label}
                       </span>
                     ))}
                   </div>

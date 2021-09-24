@@ -1,17 +1,17 @@
 import { Radio } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { IEquipment, ISelectedUnit, IUpgrade } from '../../../data/interfaces';
+import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from '../../../data/interfaces';
 import { applyUpgrade, removeUpgrade } from '../../../data/listSlice';
 import UpgradeService from '../../../services/UpgradeService';
 import hash from "object-hash";
 
-export default function UpgradeRadio({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment }) {
+export default function UpgradeRadio({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
 
     const dispatch = useDispatch();
 
     const isApplied = (option) => UpgradeService.isApplied(selectedUnit, upgrade, option);
 
-    const handleRadio = (option: IEquipment | null) => {
+    const handleRadio = (option: IUpgradeOption | null) => {
 
         const applied = option ? isApplied(option) : false;
 
@@ -40,7 +40,7 @@ export default function UpgradeRadio({ selectedUnit, upgrade, option }: { select
             onClick={() => handleRadio(option)}
             name={hash(upgrade)}
             color="primary"
-            value={option.name || "None"} />
+            value={option.label || "None"} />
     );
 
     //return ({ upgrade.options.map((opt, i) => (<p></p>)});
