@@ -53,7 +53,7 @@ export function MainList({ onSelected }) {
                 <div className="py-2 px-4">
                   <div className="mb-2">
 
-                    {s.selectedEquipment.map((eqp, i) => (
+                    {s.selectedEquipment.filter(e => e.count > 0).map((eqp, i) => (
                       <span key={i}>
                         {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
                       </span>
