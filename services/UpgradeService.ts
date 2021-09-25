@@ -24,51 +24,8 @@ export default class UpgradeService {
         return unit.selectedUpgrades.contains(u => u.id === option.id);
     }
 
-    private static isApplied_old(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
-
-        if (upgrade.type === "upgradeRule") {
-
-            // Check that the special rules from this upgrade are contained within the unit's rules
-            return option.specialRules.reduce((prev, curr) => prev && unit.specialRules.indexOf(curr) >= 0, true);
-        }
-
-        // has actually got the thing
-        const isApplied = name => {
-            const matches = EquipmentService.find(unit.selectedEquipment, name);
-            return matches.length > 0;
-        }
-
-        if (option.type === "combined" || option.type === "mount") {
-
-            try {
-                return option
-                    .gains
-                    // Check that each part of the option is contained within the unit's selected equipment
-                    .reduce((prev, current) => prev && EquipmentService.find(unit.selectedEquipment, current.name).length > 0, true)
-            } catch (e) {
-                console.error(e, option);
-                return true;
-            }
-        } else {
-
-            const match = EquipmentService.findLast(unit.selectedEquipment, option.name);
-            if (!match)
-                return false;
-
-            // TODO: Comment why this is working... sorry, tired again!
-            return match.count === (option.count || 1) || match.count === unit.size * (option.count || 1);
-        }
-    }
-
     public static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): number {
-        return 1;
-    }
-
-    private static countApplied_old(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): number {
-        const matches = EquipmentService.find(unit.selectedEquipment, option.name);
-        return matches?.length > 0
-            ? matches.reduce((value, next) => value + (next.count || 1), 0)
-            : 0;
+        return unit.selectedUpgrades.filter(u => u.id === option.id).length;
     }
 
     public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {

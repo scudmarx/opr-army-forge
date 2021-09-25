@@ -22,13 +22,10 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
                 const ruleDefinition = ruleDefinitions
                     .filter(r => r.name.indexOf(rule.name) === 0)[0];
 
-                if (!ruleDefinition)
-                    return null;
-
                 return (
                     <Fragment key={index}>
                         {index > 0 ? <span className="mr-1">, </span> : null}
-                        <RuleItem label={RulesService.displayName(rule)} description={ruleDefinition.description} />
+                        <RuleItem label={RulesService.displayName(rule)} description={ruleDefinition?.description || ""} />
                     </Fragment>
                 );
             })}

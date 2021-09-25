@@ -1,4 +1,5 @@
-import { IEquipment, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsRule, IUpgradeGainsWeapon, IUpgradeOption } from "../data/interfaces";
+import { IEquipment, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon, IUpgradeOption } from "../data/interfaces";
+import { groupBy } from "./Helpers";
 
 export default class UnitService {
     public static getAllUpgrades(unit: ISelectedUnit): IUpgradeGains[] {
@@ -20,7 +21,26 @@ export default class UnitService {
         return allRules;
     }
 
-    public static getAllUpgradeWeapons(unit: ISelectedUnit): IUpgradeGainsWeapon[] {
-        return this.getAllUpgrades(unit).filter(u => u.type === "ArmyBookWeapon") as IUpgradeGainsWeapon[];
+    public static getAllUpgradeWeapons(unit: ISelectedUnit): (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[] {
+
+        const isWeapon = u => u.type === "ArmyBookWeapon" || u.type === "ArmyBookMultiWeapon";
+        const itemWeapons = this
+            .getAllUpgradeItems(unit)
+            .reduce((value, i) => value.concat(i.content.filter(isWeapon)), []);
+
+        const all = this
+            .getAllUpgrades(unit)
+            .filter(isWeapon)
+            .concat(itemWeapons) as (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[];
+        
+            console.log(groupBy(all, "name"));
+
+        return all;
+    }
+
+    public static getAllUpgradeItems(unit: ISelectedUnit): IUpgradeGainsItem[] {
+        return this
+            .getAllUpgrades(unit)
+            .filter(u => u.type === "ArmyBookItem") as IUpgradeGainsItem[];
     }
 }

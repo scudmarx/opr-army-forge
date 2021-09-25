@@ -46,13 +46,13 @@ export default class EquipmentService {
         var range = eqp.range ? `${eqp.range}"` : null;
 
         return `${name} (${[range, eqp.attacks || null] // Range, then attacks
-            .concat(eqp.specialRules.map(RulesService.displayName) || []) // then special rules
+            .concat(eqp.specialRules?.map(RulesService.displayName) || []) // then special rules
             .filter((m) => !!m) // Remove empty/null entries
             .join(", ")})`; // comma separated list
     }
 
     static getStringParts(eqp: IEquipment): { name: string, rules: string } {
-        const name = eqp.count > 1 ? pluralise.plural(eqp.label) : eqp.label;
+        const name = eqp.count > 1 ? pluralise.plural(eqp.name || eqp.label) : eqp.name || eqp.label;
         const range = eqp.range ? `${eqp.range}"` : null;
         const attacks = eqp.attacks ? "A" + eqp.attacks : null;
 

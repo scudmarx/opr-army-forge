@@ -53,7 +53,7 @@ export interface IUpgradeOption {
 export interface IUpgradeGains {
     name: string;
     label: string;
-    type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense"; // TODO: Add these
+    type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
 }
 
 export interface IUpgradeGainsItem extends IUpgradeGains {
@@ -61,12 +61,19 @@ export interface IUpgradeGainsItem extends IUpgradeGains {
 }
 
 export interface IUpgradeGainsWeapon extends IUpgradeGains {
+    type: "ArmyBookWeapon";
     attacks: number;
     range: number;
     specialRules: IUpgradeGainsRule[];
 }
 
+export interface IUpgradeGainsMultiWeapon extends IUpgradeGains {
+    type: "ArmyBookMultiWeapon";
+    profiles: IUpgradeGainsWeapon[];
+}
+
 export interface IUpgradeGainsRule extends IUpgradeGains {
+    type: "ArmyBookRule" | "ArmyBookDefense";
     key: string;
     condition: string;
     modify: boolean; // ?

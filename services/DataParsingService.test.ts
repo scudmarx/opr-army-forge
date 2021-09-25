@@ -367,17 +367,27 @@ test("Parse standard rule", () => {
 });
 
 test("Parse parameterised rule", () => {
-    const e = DataParsingService.parseEquipment("Psychic(2) +10pts");
+    const e = DataParsingService.parseEquipment("Psychic(2) +15pts", true);
 
     expect(e).toStrictEqual({
-        label: "Psychic(2)",
-        cost: 10,
-        specialRules: ["Psychic(2)"]
+        "cost": "+15",
+        "type": "ArmyBookUpgradeOption",
+        "gains": [
+            {
+                "key": "psychic",
+                "name": "Psychic",
+                "type": "ArmyBookRule",
+                "label": "Psychic(2)",
+                "rating": "2",
+                //"condition": ""
+            }
+        ],
+        "label": "Psychic(2)"
     });
 });
 
 test("Parse weapon pairing with non-standard rules", () => {
-    const e = DataParsingService.parseEquipment("Light Shields (Defense +1 in melee) and Shield Bash (A2) Free");
+    const e = DataParsingService.parseEquipment("Light Shields (Defense +1 in melee) and Shield Bash (A2) Free", true);
     expect(e).toStrictEqual({
         type: "combined",
         cost: 0,
@@ -576,6 +586,104 @@ test("Parse seven", () => {
 
 //#endregion
 
+//#region Parse Upgrades
+
+test("Upgrade section 1", () => {
+
+    const input = `
+C Upgrade Psychic(1):
+Psychic(2) +15pts
+    `.trim();
+
+    const upgradePackage = DataParsingService.parseUpgrades(input);
+
+    expect(upgradePackage).toStrictEqual([{
+        "uid": "C1",
+        //"hint": "C - Psychic Upgrades",
+        "sections": [
+            {
+                "label": "Upgrade Psychic(1)",
+                "type": "upgradeRule",
+                "replaceWhat": "Psychic(1)",
+                "options": [
+                    {
+                        "cost": "+15",
+                        "type": "ArmyBookUpgradeOption",
+                        "gains": [
+                            {
+                                "key": "psychic",
+                                "name": "Psychic",
+                                "type": "ArmyBookRule",
+                                "label": "Psychic(2)",
+                                //"modify": false,
+                                "rating": "2",
+                                //"condition": ""
+                            }
+                        ],
+                        "label": "Psychic(2)"
+                    }
+                ]
+            }
+        ]
+    }]);
+});
+
+test("Upgrade section 2", () => {
+    const input = `
+A Replace one CCW
+Energy Sword (A2, AP(1), Rending) +5pts
+    `;
+
+    const upgradePackage = DataParsingService.parseUpgrades(input);
+
+    // TODO: ...
+    expect(upgradePackage).toStrictEqual([{
+        uid: "A1",
+        sections: [{
+            "label": "Replace one CCW",
+            "options": [
+                {
+                    "cost": 5,
+                    "type": "ArmyBookUpgradeOption",
+                    "gains": [
+                        {
+                            "name": "Energy Sword",
+                            "type": "ArmyBookWeapon",
+                            "label": "Energy Sword (A2, AP(1), Rending)",
+                            "range": 0,
+                            "attacks": 2,
+                            "condition": "",
+                            "specialRules": [
+                                {
+                                    "key": "ap",
+                                    "name": "AP",
+                                    "type": "ArmyBookRule",
+                                    "label": "AP(1)",
+                                    "modify": false,
+                                    "rating": "1",
+                                    "condition": ""
+                                },
+                                {
+                                    "key": "rending",
+                                    "name": "Rending",
+                                    "type": "ArmyBookRule",
+                                    "label": "Rending",
+                                    "modify": false,
+                                    "rating": "",
+                                    "condition": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "label": "Energy Sword (A2, AP(1), Rending)"
+                }
+            ]
+        }]
+    }]);
+})
+
+//#endregion
+
 //#region Parse Rules
 
 test("Parse rules from pdf", () => {
@@ -683,146 +791,3 @@ Cleaving Rune (6+): Target 2 enemy units within 12” take 6 automatic hits each
 
 //#endregion
 
-//#region PDF Input Parsing
-
-test("Alien Hives Upgrades", () => {
-
-    const input = `
-A Replace any Razor Claws:
-Piercing Claws (A4, AP(2), Rending) +5pts
-Smashing Claws (A4, AP(4)) +10pts
-Serrated Claws (A8, AP(2)) +15pts
-Sword Claws (A4, AP(2), Deadly(3)) +15pts
-Whip Limb and Sword Claw
-(A3, AP(1), Deadly(6))
-
-+20pts
-B Replace any Razor Claws:
-Twin Bio-Pistols (12”, A6) -5pts
-Bio-Carbine (18”, A3) -5pts
-Bio-Spitter (24”, A1, Blast(3)) -5pts
-Heavy Bio-Carbine (18”, A6, AP(1)) +10pts
-Barb Cannon
-(36”, A1, AP(1), Blast(3))
-
-+10pts
-
-Acid Cannon
-(36”, A1, AP(3), Deadly(3))
-
-+15pts
-
-Heavy Bio-Spitter
-(24”, A2, AP(1), Blast(3))
-
-+20pts
-
-Heavy Barb Cannon
-(36”, A1, AP(1), Blast(6))
-
-+40pts
-
-Heavy Acid Cannon
-(36”, A1, AP(3), Deadly(6))
-
-+45pts
-Upgrade with one:
-Tail Pincer (A2, AP(2), Rending) +10pts
-Tail Mace (A2, AP(4)) +10pts
-Tail Whip (A4, AP(2)) +15pts
-Tail Scythe (A2, AP(2), Deadly(3)) +15pts
-C Upgrade any model with one:
-Poison Hooks (6”, A3, Poison) +5pts
-Shredding Hooks (6”, A3, Rending) +5pts
-Shock Hooks (6”, A3, AP(2)) +5pts
-Acid Hooks (6”, A3, Deadly(3)) +5pts
-D Upgrade with any:
-Bio-Recovery (Regeneration) +70pts
-E Upgrade with:
-Wings (Ambush, Flying) +15pts
-F Upgrade one model with any:
-Psychic Barrier +10pts
-Pheromones +15pts
-G Upgrade Psychic(1):
-Psychic(2) +15pts
-H Upgrade any model with:
-Razor Claws (A3) +5pts
-Upgrade one model with:
-Psychic(1) +20pts
-
-I Replace any Razor Claws:
-Piercing Claws (A4, AP(1), Rending) +5pts
-Smashing Claws (A4, AP(3)) +5pts
-Serrated Claws (A8, AP(1)) +10pts
-Sword Claws (A4, AP(1), Deadly(3)) +10pts
-Whip Limb and Sword Claw
-(A3, Deadly(6))
-
-+10pts
-J Replace any Bio-Carbine:
-Razor Claws (A4, AP(1)) +5pts
-Twin Bio-Pistols (12”, A6) +5pts
-Heavy Bio-Carbine (18”, A3, AP(1)) +5pts
-Bio-Spitter (24”, A1, Blast(3), AP(1)) +10pts
-Replace one Bio-Carbine:
-Shredder Cannon
-(24” A4, Rending)
-
-+10pts
-
-Barb Cannon
-(36”, A1, AP(1), Blast(3))
-
-+15pts
-
-Acid Cannon
-(36”, A1, AP(3), Deadly(3))
-
-+15pts
-K Upgrade all models with:
-Wings (Ambush, Flying) +35pts
-L Replace any Bio-Gun:
-Twin Bio-Pistols (12”, A2) +5pts
-Bio-Spike (18”, A1, AP(1)) +5pts
-Bio-Carbine (18”, A3) +10pts
-Replace one Bio-Gun:
-Bio-Shredder (6”, A2, Rending) +5pts
-Shock-Gun (12”, A1, AP(2)) +5pts
-Bio-Flamer (12”, A6) +10pts
-Acid-Gun (6”, A1, AP(3), Deadly(3)) +10pts
-Bio-Rifle (18”, A1, AP(1), Sniper) +10pts
-Upgrade all models with any:
-Adrenaline (Furious) +10pts
-Toxic Bite (Poison in melee) +10pts
-M Replace any Razor Claws:
-Serrated Claws (A6) +5pts
-Piercing Claws (A3, Rending) +5pts
-Smashing Claws (A3, AP(2)) +5pts
-Sword Claws (A3, Deadly(3)) +5pts
-Upgrade all models with any:
-Adrenaline (Furious) +10pts
-Toxic Bite (Poison in melee) +10pts
-N Upgrade all models with any:
-Burrow Attack (Ambush) +5pts
-Twin Bio-Pistols (12”, A6) +10pts
-
-O Upgrade all models with one:
-Tunnel Attack (Ambush) +20pts
-Adrenaline Rush (Scout) +20pts
-P Any model may replace
-one Razor Claws:
-
-Heavy Shock-Gun
-(24”, A1, AP(2), Blast(3))
-
-+10pts
-
-Bio-Harpoon
-(24”, A2, AP(4), Deadly(3))
-
-+30pts
-`;
-
-});
-
-//#endregion

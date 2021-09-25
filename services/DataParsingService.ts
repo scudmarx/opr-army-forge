@@ -1,4 +1,4 @@
-import { IEquipment, ISpecialRule, IUpgrade, IUpgradeOption } from '../data/interfaces';
+import { IEquipment, ISpecialRule, IUpgrade, IUpgradeGainsRule, IUpgradeOption } from '../data/interfaces';
 import { nanoid } from "nanoid";
 import { loadOptions } from '@babel/core';
 
@@ -107,7 +107,8 @@ export default class DataParsingService {
                     console.log(groupId);
 
                     results[groupId] = {
-                        id: groupId,
+                        uid: groupId,
+                        hint: groupId,
                         sections: [
                             {
                                 label: upgradeText,
@@ -132,10 +133,11 @@ export default class DataParsingService {
                     results[lastGroupId].sections
                         .filter((u) => u.label === lastUpgradeText)[0]
                         .options.push({
+                            id: option.id,
                             type: "ArmyBookUpgradeOption",
                             cost: option.cost,
                             label: line.replace(/\s?[+-]\d+pts$/, ""),
-                            gains: option.equipment || [option]
+                            gains: option.gains || [option]
                         });
                 }
             } catch (e) {
@@ -169,7 +171,8 @@ export default class DataParsingService {
                         ? []
                         : parsedUnit[7].split(",").map((s) => s.trim()),
                 cost: parseInt(parsedUnit[8]),
-                costMode: "manually"
+                costMode: "manually",
+                splitPageNumber: 1
             };
 
             results.push(parsed);
@@ -178,7 +181,16 @@ export default class DataParsingService {
         return results;
     }
 
-    public static parseRule(r): ISpecialRule {
+    public static parseRule(r): ISpecialRule | IUpgradeGainsRule {
+        const defenseMatch = /^(Defense) \+(\d+)\s?(in melee)/.exec(r);
+        if (defenseMatch) {
+            return {
+                key: defenseMatch[1].toLowerCase(),
+                name: defenseMatch[1],
+                rating: defenseMatch[2] || "",
+                condition: defenseMatch[3] || ""
+            }
+        }
         const rMatch = /^(.+?)(?:\((\d+)\))?$/.exec(r);
         return {
             key: rMatch[1].toLowerCase(),
@@ -226,16 +238,16 @@ export default class DataParsingService {
             return {
                 id: nanoid(7),
                 type: "combined",
-                cost: parseInt(/([+-]\d+)pts?$/.exec(part)[1]),
+                cost: /([+-]\d+)pts?$/.exec(part)[1],
                 gains: [
                     {
                         name: multiWeaponName,
-                        type: "weaponHeader"
-                    },
-                    ...multiWeaponWeapons.map(w => ({
-                        ...this.parseEquipment(w, isUpgrade),
-                        type: "weaponPart"
-                    }))
+                        type: "ArmyBookMultiWeapon",
+                        profiles: multiWeaponWeapons.map(w => ({
+                            ...this.parseEquipment(w, isUpgrade),
+                            type: "ArmyBookWeapon"
+                        }))
+                    }
                 ]
             };
         }
@@ -254,6 +266,7 @@ export default class DataParsingService {
             };
         }
 
+        // GF/GFF format mount
         if (/^(.+)\(.+\(.+A\d+/.test(part)) {
             const mountMatch = /^(.+?)\((.+)\) ([+-]\d+)pt/.exec(part);
             const mountName = mountMatch[1].trim();
@@ -297,10 +310,11 @@ export default class DataParsingService {
                 gains: [
                     {
                         ...this.parseRule(singleRuleMatch[1].trim()),
+                        label: singleRuleMatch[1].trim(),
                         type: "ArmyBookRule"
                     }
                 ],
-                cost: parseInt(singleRuleMatch[2]),
+                cost: singleRuleMatch[2],
             };
         }
 
@@ -313,10 +327,11 @@ export default class DataParsingService {
                 gains: [
                     {
                         ...this.parseRule(paramRuleMatch[1].trim()),
+                        label: paramRuleMatch[1].trim(),
                         type: "ArmyBookRule"
                     }
                 ],
-                cost: parseInt(paramRuleMatch[2]),
+                cost: paramRuleMatch[2],
             };
         }
 
@@ -344,14 +359,18 @@ export default class DataParsingService {
         if (rangeMatch)
             result.range = parseInt(rangeMatch[1]);
 
-        if (specialRules?.length > 0)
-            result.specialRules = specialRules.map(this.parseRule);
-
+        if (isUpgrade) {
+            result.specialRules = specialRules?.length > 0 ? specialRules.map(this.parseRule) : [];
+        }
+        else {
+            result.specialRules = specialRules?.length > 0 ? specialRules : [];
+        }
         if (match[groups.cost] !== undefined)
             result.cost = match[groups.cost] === "Free" ? 0 : parseInt(match[groups.cost].trim());
 
-        result.type = result.attacks ? "ArmyBookWeapon" : "ArmyBookItem";
-
+        if (isUpgrade) {
+            result.type = result.attacks ? "ArmyBookWeapon" : "ArmyBookItem";
+        }
         return result;
     }
 

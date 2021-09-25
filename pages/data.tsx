@@ -55,7 +55,7 @@ export default function Data() {
                     .concat(parsedUnits3)
                     .concat(parsedUnits4)
                     .concat(parsedUnits5),
-                upgradeSets: parsedUpgrades,
+                upgradePackages: parsedUpgrades,
                 specialRules: parsedRules,
                 spells: parsedSpells
             }, null, 2));
