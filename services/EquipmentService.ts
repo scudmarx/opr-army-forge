@@ -1,6 +1,7 @@
-import { IEquipment } from "../data/interfaces";
+import { IEquipment, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
 import pluralise from "pluralize";
 import RulesService from "./RulesService";
+import { FoodBank } from "@mui/icons-material";
 
 export default class EquipmentService {
 
@@ -29,9 +30,13 @@ export default class EquipmentService {
         return -1;
     }
 
-    static getAP(e: IEquipment): number {
+    static getAP(e: IEquipment | IUpgradeGainsWeapon): number {
         if (!e || !e.specialRules) return null;
-        const ap = e.specialRules.filter(r => r.name === "AP")[0]
+        const ap = e.specialRules
+            .filter((r: string | IUpgradeGainsRule) => typeof (r) === "string"
+                ? r.indexOf("AP") === 0 // Equipment
+                : r.name === "AP" // Upgrade
+            )[0];
 
         return ap ? parseInt(ap.rating) : null;
     }

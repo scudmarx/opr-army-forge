@@ -1,4 +1,4 @@
-import { IEquipment, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsRule, IUpgradeOption } from "../data/interfaces";
+import { IEquipment, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsRule, IUpgradeGainsWeapon, IUpgradeOption } from "../data/interfaces";
 
 export default class UnitService {
     public static getAllUpgrades(unit: ISelectedUnit): IUpgradeGains[] {
@@ -18,5 +18,9 @@ export default class UnitService {
         const allRules: IUpgradeGainsRule[] = rules.concat(rulesFromitems) as IUpgradeGainsRule[];
 
         return allRules;
+    }
+
+    public static getAllUpgradeWeapons(unit: ISelectedUnit): IUpgradeGainsWeapon[] {
+        return this.getAllUpgrades(unit).filter(u => u.type === "ArmyBookWeapon") as IUpgradeGainsWeapon[];
     }
 }
