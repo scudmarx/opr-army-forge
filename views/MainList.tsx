@@ -7,8 +7,8 @@ import { selectUnit, removeUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
 import { Button, Chip, IconButton, Paper } from "@mui/material";
 import { useRouter } from "next/router";
-import EquipmentService from "../services/EquipmentService";
 import RuleList from "./components/RuleList";
+import UnitService from "../services/UnitService";
 
 export function MainList({ onSelected }) {
 
@@ -53,13 +53,13 @@ export function MainList({ onSelected }) {
                 </div>
                 <div className="pb-2 px-4" style={{ fontSize: "14px", color: "#666666" }}>
                   <div>
-                    {s.selectedEquipment.filter(e => e.count > 0).map((eqp, i) => (
+                    {s.equipment.filter(e => e.count > 0).map((eqp, i) => (
                       <span key={i}>
-                        {i > 0 ? ", " : ""}{eqp.name}
+                        {i > 0 ? ", " : ""}{eqp.label}
                       </span>
                     ))}
                   </div>
-                  <RuleList specialRules={s.specialRules} />
+                  <RuleList specialRules={s.specialRules.concat(UnitService.getAllUpgradedRules(s))} />
                 </div>
               </Paper>
             </li>

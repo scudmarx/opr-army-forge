@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import DataParsingService from "../services/DataParsingService";
 import { Button } from "@mui/material";
 
-export const dataToolVersion = "0.3.0";
+export const dataToolVersion = "0.4.0";
 
 export default function Data() {
 
     const [json, setJson] = useState("");
     const [name, setName] = useState("");
+    const [gameSystem, setGameSystem] = useState("gf");
     const [version, setVersion] = useState("2.1");
     const [units, setUnits] = useState("");
     const [units2, setUnits2] = useState("");
@@ -21,7 +22,7 @@ export default function Data() {
 
     useEffect(() => {
         generateJson();
-    }, [units, units2, units3, upgrades, name, version, rules, spells])
+    }, [units, units2, units3, upgrades, name, version, rules, spells, gameSystem])
 
     const generateJson = () => {
 
@@ -30,7 +31,7 @@ export default function Data() {
                 return [];
             return units.map(u => ({
                 ...u,
-                upgradeSets: u.upgradeSets.map(letter => letter + index)
+                upgrades: u.upgrades.map(letter => letter + index)
             }));
         }
 
@@ -44,10 +45,58 @@ export default function Data() {
             const parsedRules = DataParsingService.parseRules(rules);
             const parsedSpells = DataParsingService.parseSpells(spells);
 
+            const gameDetails = {
+                gf: {
+                    id: 2,
+                    slug: "grimdark-future",
+                    name: "Grimdark Future",
+                    universe: "Grimdark Future",
+                    aberration: "GF",
+                    shortname: "Grimdark Future"
+                },
+                gff: {
+                    id: 3,
+                    slug: "grimdark-future-firefight",
+                    name: "Grimdark Future: Firefight",
+                    universe: "Grimdark Future",
+                    aberration: "GFF",
+                    shortname: "GF: Firefight"
+                },
+                aof: {
+                    id: 4,
+                    slug: "age-of-fantasy",
+                    name: "Age of Fantasy",
+                    universe: "Age of Fantasy",
+                    aberration: "AOF",
+                    shortname: "Age of Fantasy"
+                },
+                aofs: {
+                    id: 5,
+                    slug: "age-of-fantasy-skirmish",
+                    name: "Age of Fantasy: Skirmish",
+                    universe: "Age of Fantasy",
+                    aberration: "AOFS",
+                    shortname: "AoF: Skirmish"
+                },
+                aofr: {
+                    id: 6,
+                    slug: "age-of-fantasy-regiments",
+                    name: "Age of Fantasy: Regiments",
+                    universe: "Age of Fantasy",
+                    aberration: "AOFR",
+                    shortname: "AoF: Regiments"
+                }
+            }
+
+            const details = gameDetails[gameSystem];
+
             //parseUnits(units);
             setJson(JSON.stringify({
-                "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+                gameSystemId: details.id,
                 name,
+                hint: name,
+                background: "",
+                "armyWideRule": {},
                 version,
                 dataToolVersion,
                 units: parsedUnits
@@ -55,9 +104,22 @@ export default function Data() {
                     .concat(parsedUnits3)
                     .concat(parsedUnits4)
                     .concat(parsedUnits5),
-                upgradeSets: parsedUpgrades,
+                upgradePackages: parsedUpgrades,
                 specialRules: parsedRules,
-                spells: parsedSpells
+                spells: parsedSpells,
+                "modifiedAt": new Date().toISOString(),
+                "official": true,
+                "public": false,
+                "versionString": "draft",
+                "coverImagePath": null,
+                "coverImageCredit": null,
+                "isLive": false,
+                //"username": "Darguth",
+                "gameSystemSlug": details.slug,
+                "fullname": details.name,
+                "aberration": details.aberration,
+                "universe": details.universe,
+                "shortname": details.shortname
             }, null, 2));
         }
         catch (e) {
@@ -193,6 +255,14 @@ export default function Data() {
                             <input className="input" placeholder="PDF Version" value={version} onChange={(e) => setVersion(e.target.value)} />
                         </div>
                     </div>
+                    <label>PDF Version</label>
+                    <select className="input" onChange={(e) => setGameSystem(e.target.value)}>
+                        <option value="gf">Grimdark Future</option>
+                        <option value="gff">Grimdark Future Firefight</option>
+                        <option value="aof">Age of Fantasy</option>
+                        <option value="aofs">Age of Fantasy Skirmish</option>
+                        <option value="aofr">Age of Fantasy Regiments</option>
+                    </select>
                     <div>
                         <label>Output</label>
                         <textarea className="textarea" value={json} rows={46}></textarea>

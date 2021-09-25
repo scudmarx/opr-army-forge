@@ -2,18 +2,18 @@ import { Checkbox, IconButton } from '@mui/material';
 import DownIcon from '@mui/icons-material/KeyboardArrowDown';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useDispatch } from 'react-redux';
-import { IEquipment, ISelectedUnit, IUpgrade } from '../../../data/interfaces';
+import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from '../../../data/interfaces';
 import { applyUpgrade, removeUpgrade } from '../../../data/listSlice';
 import UpgradeService from '../../../services/UpgradeService';
 
-export default function UpgradeUpDown({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment }) {
+export default function UpgradeUpDown({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
 
     const dispatch = useDispatch();
 
-    const incrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
+    const incrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) => {
         dispatch(applyUpgrade({ unitId: unit.selectionId, upgrade, option }));
     };
-    const decrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment) => {
+    const decrementUpgrade = (unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) => {
         dispatch(removeUpgrade({ unitId: unit.selectionId, upgrade, option }));
     };
     try {

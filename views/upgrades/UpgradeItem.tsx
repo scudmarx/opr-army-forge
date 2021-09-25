@@ -1,4 +1,4 @@
-import { IEquipment, ISelectedUnit, IUpgrade } from '../../data/interfaces';
+import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from '../../data/interfaces';
 import EquipmentService from '../../services/EquipmentService';
 import UpgradeService from '../../services/UpgradeService';
 import UpgradeRadio from './controls/UpgradeRadio';
@@ -6,30 +6,28 @@ import UpgradeCheckbox from './controls/UpgradeCheckbox';
 import UpgradeUpDown from './controls/UpgradeUpDown';
 import { Fragment } from 'react';
 
-export default function UpgradeItem({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment }) {
+export default function UpgradeItem({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
 
     const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
+    // Somehow display the count?
 
     return (
         <div className="is-flex is-align-items-center">
             <div className="is-flex-grow-1 pr-2">
                 {option.count && <span>{option.count}x </span>}
                 <span>
-                    {(() => {
-                        const equipments = option.type === "combined" || option.type === "mount" ? option.equipment : [option]
-
-                        return (
-                            equipments.map((e, i) => {
-                                const parts = EquipmentService.getStringParts(e);
-                                return (
-                                    <Fragment key={i}>
-                                        <span style={{ color: "#000000" }}>{parts.name} </span>
-                                        <span className="mr-2" style={{ color: "#656565" }}>({parts.rules})</span>
-                                    </Fragment>
-                                )
-                            })
-                        );
-                    })()}
+                    {
+                        option.gains.map((e, i) => {
+                            //return <span>{e.name}</span>;
+                            const parts = EquipmentService.getStringParts(e);
+                            return (
+                                <Fragment key={i}>
+                                    <span style={{ color: "#000000" }}>{parts.name} </span>
+                                    {parts.rules && <span className="mr-2" style={{ color: "#656565" }}>({parts.rules})</span>}
+                                </Fragment>
+                            )
+                        })
+                    }
                 </span>
             </div>
             <div>{option.cost ? `${option.cost}pts` : "Free"}&nbsp;</div>

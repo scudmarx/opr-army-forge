@@ -2,14 +2,14 @@ import styles from "../styles/Home.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
 import { addUnit } from '../data/listSlice';
-import { groupBy } from "../services/Helpers";
 import { Fragment, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, IconButton, Chip, Modal, Paper, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, IconButton, Modal, Paper, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import WarningIcon from "@mui/icons-material/Warning";
 import EquipmentService from "../services/EquipmentService";
 import { dataToolVersion } from "../pages/data";
 import RuleList from "./components/RuleList";
+import { IUnit } from "../data/interfaces";
 
 export function UnitSelection({ onSelected }) {
 
@@ -27,13 +27,13 @@ export function UnitSelection({ onSelected }) {
 
   // Group army units by category
   //var unitGroups = groupBy(army.units, "category");
-  const isTough = (u, threshold) => u.specialRules.filter(r => {
-    const match = /Tough\((\d+)\)/.exec(r);
-    if (!match) return false;
-    const toughness = parseInt(match[1]);
+  const isTough = (u: IUnit, threshold) => u.specialRules.filter(r => {
+    if (r.name !== "Tough")
+      return false;
+    const toughness = parseInt(r.rating);
     return toughness >= threshold;
   }).length > 0
-  const isHero = (u) => u.specialRules.indexOf("Hero") > -1;
+  const isHero = (u: IUnit) => u.specialRules.filter(r => r.name === "Hero").length > 0;
   const isLarge = (u) => isTough(u, 6);
   const isElite = (u) => isTough(u, 3);
 
@@ -43,9 +43,8 @@ export function UnitSelection({ onSelected }) {
     "Elite": army.units.filter(u => !isLarge(u) && !isHero(u) && isElite(u)),
     "Large": army.units.filter(u => isLarge(u) && !isHero(u))
   };
-  console.log(unitGroups);
 
-  var handleSelection = (unit) => {
+  const handleSelection = (unit) => {
     dispatch(addUnit(unit));
     onSelected(unit);
   };

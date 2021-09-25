@@ -7,6 +7,10 @@ import { Accordion, AccordionDetails, AccordionSummary, Button, IconButton } fro
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
+import DataParsingService from "../services/DataParsingService";
+import { nanoid } from "nanoid";
+import { IUnit, IUpgradeOption } from "../data/interfaces";
+import UnitService from "../services/UnitService";
 
 export default function Files() {
 
@@ -30,7 +34,6 @@ export default function Files() {
         fetch("definitions/army-files.json")
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setArmyFiles(data);
             });
 
@@ -65,17 +68,74 @@ export default function Files() {
             }
         })();
 
-        const loadCustomArmies = false;
+        const loadCustomArmies = true;
         if (loadCustomArmies) {
             // Load custom data books from Web Companion
             fetch("https://opr-list-builder.herokuapp.com/api/army-books?gameSystemSlug=" + slug)
                 .then((res) => res.json())
                 .then((data) => {
-                    const valid = data.filter(a => a.unitCount > 2);
+                    const valid = data
+                        //.filter(a => a.unitCount > 2)
+                        .filter(a => a.username === "Darguth" || a.username === "adam");
+
                     setCustomArmies(valid);
                 });
         }
     }, []);
+
+    const transform = (input) => {
+        const countRegex = /^(\d+)x\s/;
+
+        return {
+            ...input,
+            units: input.units.map((u: IUnit) => ({
+                ...u,
+                equipment: u.equipment.map(e => {
+                    // Capture the count digit from the name
+                    const countMatch = countRegex.exec(e.label);
+                    return {
+                        ...e,
+                        label: e.label.replace(countRegex, ""),
+                        count: countMatch ? parseInt(countMatch[1]) * u.size : u.size
+                    }
+                })
+            })),
+            upgradePackages: input.upgradePackages.map(pkg => ({
+                ...pkg,
+                sections: pkg.sections.map(section => ({
+                    ...section,
+                    ...DataParsingService.parseUpgradeText(section.label),
+                    options: section.options.map((opt: IUpgradeOption) => {
+                        const gains = [];
+                        // Iterate backwards through gains array so we can push new 
+                        for (let original of opt.gains) {
+                            // Match "2x ", etc
+                            
+                            // Replace "2x " in label/name of original gain
+                            const gain = {
+                                ...original,
+                                label: original.label?.replace(countRegex, ""),
+                                name: original.name?.replace(countRegex, "")
+                            };
+                            // Capture the count digit from the name
+                            const countMatch = countRegex.exec(original.name);
+                            // Parse the count if present, otherwise default to 1
+                            const count = countMatch ? parseInt(countMatch[1]) : 1;
+                            // Push the gain into the array as many times as the count
+                            for (let y = 0; y < count; y++) {
+                                gains.push(gain);
+                            }
+                        }
+                        return ({
+                            ...opt,
+                            id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
+                            gains
+                        });
+                    })
+                }))
+            }))
+        };
+    };
 
     const selectArmy = (filePath: string) => {
         // TODO: Clear existing data
@@ -99,6 +159,29 @@ export default function Files() {
 
     const selectCustomList = (customArmy: any) => {
         // TODO: Web companion integration
+        // Load army data
+        fetch("https://opr-list-builder.herokuapp.com/api/army-books/" + customArmy.uid)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+
+                const afData = transform(data);
+                console.log(afData);
+
+                // var allSections = afData.upgradePackages.reduce((value, pkg) => value.concat(pkg.sections), []);
+                // var allOptions = allSections.reduce((value, section) => value.concat(section.options), []);
+                // console.log("Sections:", allSections);
+                // console.log("Options:", allOptions);
+                // console.log("Options with gains as string:", allOptions.filter(opt => typeof(opt.gains[0]) === "string"));
+
+                dispatch(load(afData));
+                //dispatch(load(data));
+
+
+                // TODO: Loading wheel view...?
+                // Redirect to list builder once data is loaded
+                router.push('/list');
+            });
     };
 
     const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
@@ -147,10 +230,11 @@ export default function Files() {
                         );
                     })
                 }
-                <p className="p-4">To be released...</p>
+
                 {
-                    driveArmies && (
+                    false && driveArmies && (
                         <div>
+                            <p className="p-4">To be released...</p>
                             {driveArmies.filter(da => armies.findIndex(af => af.name.toUpperCase() === da.name.toUpperCase()) === -1).map((file, index) => (
                                 <Accordion key={index}
                                     disableGutters

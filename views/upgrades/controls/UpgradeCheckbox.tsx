@@ -1,16 +1,16 @@
 import { Checkbox } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { IEquipment, ISelectedUnit, IUpgrade } from '../../../data/interfaces';
+import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from '../../../data/interfaces';
 import { applyUpgrade, removeUpgrade } from '../../../data/listSlice';
 import UpgradeService from '../../../services/UpgradeService';
 
-export default function UpgradeCheckbox({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IEquipment }) {
+export default function UpgradeCheckbox({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
 
     const dispatch = useDispatch();
 
     const isApplied = (option) => UpgradeService.isApplied(selectedUnit, upgrade, option);
 
-    const handleCheck = (option) => {
+    const handleCheck = (option: IUpgradeOption) => {
 
         const applied = isApplied(option);
 
@@ -31,7 +31,7 @@ export default function UpgradeCheckbox({ selectedUnit, upgrade, option }: { sel
         <Checkbox
             checked={isApplied(option)}
             onClick={() => handleCheck(option)}
-            value={option.name} />
+            value={option.label} />
     );
 
     //return ({ upgrade.options.map((opt, i) => (<p></p>)});

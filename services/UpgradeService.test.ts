@@ -14,7 +14,7 @@ const defaultUnit: ISelectedUnit = {
     size: 1,
     specialRules: [],
     equipment: [],
-    selectedEquipment: [],
+    equipment: [],
     upgradeSets: []
 }
 
@@ -22,7 +22,7 @@ test("Upgrade with up to two is valid", () => {
 
     const unit: ISelectedUnit = {
         ...defaultUnit,
-        selectedEquipment: [
+        equipment: [
             {
                 name: "Attack Beast", count: 1
             }
@@ -48,7 +48,7 @@ test("Upgrade with up to two is not valid", () => {
 
     const unit: ISelectedUnit = {
         ...defaultUnit,
-        selectedEquipment: [
+        equipment: [
             {
                 name: "Attack Beast",
                 count: 2
@@ -219,7 +219,7 @@ test("Apply upgradeRule", () => {
 test("Apply 'Replace one Assault Rifle and CCW'", () => {
     const unit: ISelectedUnit = {
         ...defaultUnit,
-        selectedEquipment: [
+        equipment: [
             {
                 name: 'Pistol',
                 count: 1,
@@ -248,7 +248,7 @@ test("Apply 'Replace one Assault Rifle and CCW'", () => {
 
     UpgradeService.apply(unit, upgrade, option);
 
-    expect(unit.selectedEquipment).toStrictEqual([
+    expect(unit.equipment).toStrictEqual([
         {
             name: "Pistol",
             count: 0,
@@ -276,7 +276,7 @@ test("Remove Upgrade", () => {
 test("Apply option with count", () => {
     const unit: ISelectedUnit = {
         ...defaultUnit,
-        selectedEquipment: [
+        equipment: [
             {
                 name: 'Hand Weapons',
                 count: 1,
@@ -299,7 +299,7 @@ test("Apply option with count", () => {
 
     UpgradeService.apply(unit, upgrade, option);
 
-    expect(unit.selectedEquipment).toStrictEqual([
+    expect(unit.equipment).toStrictEqual([
         {
             name: 'Hand Weapons',
             count: 2,

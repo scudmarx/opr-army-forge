@@ -33,7 +33,7 @@ export default function Cards() {
                 {list.units.map((u, i) => {
 
                     const equipmentSpecialRules = u
-                        .selectedEquipment
+                        .equipment
                         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
                         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 

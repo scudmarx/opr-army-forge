@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IUnit, IUpgradePackage } from './interfaces';
 
 export interface IGameRule {
     name: string;
@@ -18,8 +19,8 @@ export interface IArmyData {
     name: string;
     version: string;
     dataToolVersion: string;
-    units: any[];
-    upgradeSets: any[];
+    units: IUnit[];
+    upgradePackages: IUpgradePackage[];
     specialRules: IGameRule[];
     spells: { name: string; test: string; description: string; }[];
 }
