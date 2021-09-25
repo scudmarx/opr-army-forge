@@ -128,16 +128,34 @@ export default class DataParsingService {
                     lastUpgradeText = upgradeText;
                 } else {
                     // Is Equipment...
+                    if (line.startsWith("Grenade")) {
+                        debugger;
+                    }
+                    
+                    const countRegex = /^(\d+)x\s/;
+                    const costRegex = /\s?[+-]\d+pts$/;
                     const option = this.parseEquipment(line, true);
+                    const cost = option.cost;
+                    const gains = [];
+                    for (let e of (option.gains || [option])) {
+                        const count = e.count || 1;
+                        delete e.id;
+                        delete e.cost;
+                        delete e.count;
+                        for (let i = 0; i < count; i++) {
+                            gains.push({ ...e, label: (e.label || e.name)?.replace(countRegex, "").replace(costRegex, "") });
+                        }
+                    }
+
                     // Add to options!
                     results[lastGroupId].sections
                         .filter((u) => u.label === lastUpgradeText)[0]
                         .options.push({
                             id: option.id,
                             type: "ArmyBookUpgradeOption",
-                            cost: option.cost,
-                            label: line.replace(/\s?[+-]\d+pts$/, ""),
-                            gains: option.gains || [option]
+                            cost: parseInt(cost),
+                            label: line.replace(costRegex, ""),
+                            gains: gains
                         });
                 }
             } catch (e) {
@@ -376,6 +394,8 @@ export default class DataParsingService {
 
     public static parseMount(text: string, isUpgrade: boolean): IUpgradeOption {
 
+        console.log(text);
+        debugger;
         const textParts = text.split(" - ");
         const name = textParts[0].trim();
         const match = /(.+)([+-]\d+)pts$/.exec(textParts[1]);
@@ -389,14 +409,24 @@ export default class DataParsingService {
             cost: match[2],
             gains: [
                 {
+                    label: name,
                     name,
-                    specialRules: rules
+                    content: rules.map(r => ({
+                        ...r,
+                        label: r.name,
+                        rating: r.rating || "",
+                        condition: "",
+                        modify: false
+                    })).concat([
+                        weaponMatch && {
+                            ...this.parseEquipment(weaponMatch[1], isUpgrade),
+                            name: weaponMatch[2].trim()
+                        }
+                    ]).filter(e => !!e),
+                    type: "ArmyBookItem"
                 },
-                weaponMatch && {
-                    ...this.parseEquipment(weaponMatch[1], isUpgrade),
-                    name: name + " - " + weaponMatch[2].trim()
-                }
-            ].filter(e => !!e)
+
+            ]
         };
     }
 
