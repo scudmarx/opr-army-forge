@@ -205,7 +205,7 @@ export default class DataParsingService {
         return parts;
     }
 
-    public static parseEquipment(part, isUpgrade: boolean): IEquipment|IUpgradeOption {
+    public static parseEquipment(part, isUpgrade: boolean): IEquipment | IUpgradeOption {
 
         const groups = {
             count: 1,
@@ -294,7 +294,12 @@ export default class DataParsingService {
             return {
                 id: nanoid(7),
                 label: singleRuleMatch[1].trim(),
-                specialRules: [this.parseRule(singleRuleMatch[1].trim())],
+                gains: [
+                    {
+                        ...this.parseRule(singleRuleMatch[1].trim()),
+                        type: "ArmyBookRule"
+                    }
+                ],
                 cost: parseInt(singleRuleMatch[2]),
             };
         }
@@ -305,7 +310,12 @@ export default class DataParsingService {
             return {
                 id: nanoid(7),
                 label: paramRuleMatch[1].trim(),
-                specialRules: [this.parseRule(paramRuleMatch[1].trim())],
+                gains: [
+                    {
+                        ...this.parseRule(paramRuleMatch[1].trim()),
+                        type: "ArmyBookRule"
+                    }
+                ],
                 cost: parseInt(paramRuleMatch[2]),
             };
         }
@@ -353,7 +363,7 @@ export default class DataParsingService {
         const weaponRegex = /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
         const weaponMatch = weaponRegex.exec(match[1]);
         const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/).map(this.parseRule);
-        
+
         return {
             id: nanoid(7),
             type: "mount",

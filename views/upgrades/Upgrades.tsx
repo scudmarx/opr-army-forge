@@ -5,7 +5,8 @@ import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
 import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
-import { IUpgradePackage } from '../../data/interfaces';
+import { ISpecialRule, IUpgradeGainsRule, IUpgradePackage } from '../../data/interfaces';
+import UnitService from '../../services/UnitService';
 
 export function Upgrades() {
 
@@ -20,12 +21,18 @@ export function Upgrades() {
     if (!selectedUnit)
         return null;
 
-    const equipmentSpecialRules = selectedUnit
+    const equipmentSpecialRules: ISpecialRule[] = selectedUnit
         .selectedEquipment
         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
-    const specialRules = (selectedUnit.specialRules || []).concat(equipmentSpecialRules).filter(r => r.name !== "-");
+    const unitUpgradeRules: ISpecialRule[] = UnitService
+        .getAllUpgradedRules(selectedUnit);
+
+    const specialRules = (selectedUnit.specialRules || [])
+        .concat(equipmentSpecialRules)
+        .concat(unitUpgradeRules)
+        .filter(r => r.name !== "-");
 
     return (
         <div className={styles["upgrade-panel"] + " py-4"}>

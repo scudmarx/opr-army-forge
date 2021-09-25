@@ -202,7 +202,7 @@ export default class UpgradeService {
             apply();
 
             // Add new rule(s)!
-            unit.specialRules = unit.specialRules.concat(option.gains as ISpecialRule[]);
+            //unit.specialRules = unit.specialRules.concat(option.gains as ISpecialRule[]);
 
             return;
         }

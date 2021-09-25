@@ -46,7 +46,31 @@ export interface IUpgradeOption {
     id: string;
     cost: string;
     label: string;
-    gains: IEquipment[] | ISpecialRule[];
+    gains: IUpgradeGains[];// IEquipment[] | ISpecialRule[];
+    type: "ArmyBookUpgradeOption";
+}
+
+export interface IUpgradeGains {
+    name: string;
+    label: string;
+    type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense"; // TODO: Add these
+}
+
+export interface IUpgradeGainsItem extends IUpgradeGains {
+    content: IUpgradeGains[];
+}
+
+export interface IUpgradeGainsWeapon extends IUpgradeGains {
+    attacks: number;
+    range: number;
+    specialRules: IUpgradeGainsRule[];
+}
+
+export interface IUpgradeGainsRule extends IUpgradeGains {
+    key: string;
+    condition: string;
+    modify: boolean; // ?
+    rating: string;
 }
 
 export interface IUpgradePackage {
