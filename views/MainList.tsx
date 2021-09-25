@@ -53,7 +53,7 @@ export function MainList({ onSelected }) {
                 </div>
                 <div className="pb-2 px-4" style={{ fontSize: "14px", color: "#666666" }}>
                   <div>
-                    {s.selectedEquipment.filter(e => e.count > 0).map((eqp, i) => (
+                    {s.equipment.filter(e => e.count > 0).map((eqp, i) => (
                       <span key={i}>
                         {i > 0 ? ", " : ""}{eqp.label}
                       </span>

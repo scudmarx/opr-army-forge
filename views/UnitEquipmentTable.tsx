@@ -47,9 +47,9 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
     const isWeapon = e => e.attacks;
 
-    const equipment = unit.selectedEquipment.filter(e => !isWeapon(e));
+    const equipment = unit.equipment.filter(e => !isWeapon(e));
     const itemUpgrades = UnitService.getAllUpgradeItems(unit);
-    const weapons = unit.selectedEquipment.filter(e => isWeapon(e))
+    const weapons = unit.equipment.filter(e => isWeapon(e))
     const weaponUpgrades = UnitService.getAllUpgradeWeapons(unit);
 
     const hasEquipment = equipment.length > 0 || itemUpgrades.length > 0;
@@ -139,9 +139,9 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.name) : e.name}</TableCell>
+                                        <TableCell>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.label) : e.label}</TableCell>
                                         <TableCell>
-                                            <RuleList specialRules={e.specialRules} />
+                                            <RuleList specialRules={e.specialRules.map(DataParsingService.parseRule)} />
                                         </TableCell>
                                     </TableRow>
                                 );

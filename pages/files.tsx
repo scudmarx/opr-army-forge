@@ -10,6 +10,7 @@ import { dataToolVersion } from "./data";
 import DataParsingService from "../services/DataParsingService";
 import { nanoid } from "nanoid";
 import { IUnit, IUpgradeOption } from "../data/interfaces";
+import UnitService from "../services/UnitService";
 
 export default function Files() {
 
@@ -95,7 +96,7 @@ export default function Files() {
                     return {
                         ...e,
                         label: e.label.replace(countRegex, ""),
-                        count: countMatch ? parseInt(countMatch[1]) : 1
+                        count: countMatch ? parseInt(countMatch[1]) * u.size : u.size
                     }
                 })
             })),

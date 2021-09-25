@@ -412,16 +412,38 @@ export default class DataParsingService {
             const lineParts = description.split(bullet).map(part => part.trim()).filter(p => !!p);
             if (lineParts.length === 1) {
                 results.push({
-                    name: rule,
-                    description
+                    "id": nanoid(5),
+                    "key": rule.toLowerCase().replace(/\s+/g, "-"),
+                    "hint": description,
+                    "name": rule,
+                    "tags": [],
+                    "label": rule,
+                    "forUnit": true,
+                    "forWeapon": false,
+                    "hasRating": false,
+                    "description": description
                 });
                 continue;
             }
+
             results.push({
-                name: rule,
-                description: lineParts[0],
-                options: lineParts.slice(1)
+                "id": nanoid(5),
+                "key": rule.toLowerCase().replace(/\s+/g, "-"),
+                "hint": description,
+                "name": rule,
+                "tags": [],
+                "label": rule,
+                "forUnit": true,
+                "forWeapon": false,
+                "hasRating": false,
+                "description": description
             });
+
+            // results.push({
+            //     name: rule,
+            //     description: lineParts[0],
+            //     options: lineParts.slice(1)
+            // });
         }
 
         return results;
@@ -438,9 +460,10 @@ export default class DataParsingService {
             const description = lineParts[1].trim();
             const spellMatch = /(.+)\s\((.+)\)/.exec(spell);
             results.push({
+                id: nanoid(5),
                 name: spellMatch[1],
-                test: spellMatch[2],
-                description
+                threshold: parseInt(spellMatch[2]),
+                effect: description
             });
         }
 

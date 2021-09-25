@@ -12,9 +12,9 @@ export default class UpgradeService {
 
     static calculateUnitTotal(unit: ISelectedUnit) {
         let cost = unit.cost;
-        for (const equipment of unit.selectedEquipment) {
-            if (equipment.cost)
-                cost += equipment.cost * equipment.count;
+        for (const upgrade of unit.selectedUpgrades) {
+            if (upgrade.cost)
+                cost += parseInt(upgrade.cost);
         }
         return cost;
     }
@@ -30,51 +30,43 @@ export default class UpgradeService {
 
     public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
+        const alreadySelected = this.countApplied(unit, upgrade, option);
+
         if (upgrade.type === "replace") {
 
+            // TODO: Will we need this here? Replacing more than 1 at a time perhaps...
             const replaceCount = typeof (upgrade.affects) === "number"
                 ? upgrade.affects
                 : upgrade.affects === "all"
                     ? unit.size || 1 // All in unit
                     : 1;
 
-            const toReplace = EquipmentService.findLast(unit.selectedEquipment, upgrade.replaceWhat as string);
-
-            const alreadySelected = upgrade
-                .options
-                .reduce((prev, curr) => prev + (EquipmentService.findLast(unit.selectedEquipment, curr.name)?.count || 0), 0);
+            const toReplace = EquipmentService.findLast(unit.equipment, upgrade.replaceWhat as string);
 
             if (!toReplace)
                 return false;
 
-            // "Replace any [weapon]"
-            if (upgrade.affects === "any") {
+            // Nothing left to replace
+            if (toReplace.count <= 0)
+                return false;
 
-                if (toReplace.count <= 0)
-                    return false;
-            }
+            // May only select up to the limit
             if (typeof (upgrade.select) === "number") {
                 if (alreadySelected >= upgrade.select)
                     return false;
             }
         }
 
+        // TODO: ...what is this doing?
         if (upgrade.type === "upgrade") {
-
-            // TODO: Check this against multiple equipments with same name?
-            const selections = unit
-                .selectedEquipment
-                .filter(selected => upgrade.options.findIndex(opt => opt.name === selected.name) > -1);
-
-            const countSelected = selections.reduce((prev, next) => prev + next.count || 1, 0);
 
             if (typeof (upgrade.select) === "number") {
 
-                if (countSelected >= upgrade.select) {
+                if (alreadySelected >= upgrade.select) {
                     return false;
                 }
             }
-            else if (countSelected >= unit.size) {
+            else if (alreadySelected >= unit.size) {
                 return false;
             }
         }
@@ -178,8 +170,8 @@ export default class UpgradeService {
             for (let what of replaceWhat) {
 
                 // Try and find item to replace...
-                const replaceIndex = EquipmentService.findLastIndex(unit.selectedEquipment, what);
-                const toReplace = unit.selectedEquipment[replaceIndex];
+                const replaceIndex = EquipmentService.findLastIndex(unit.equipment, what);
+                const toReplace = unit.equipment[replaceIndex];
 
                 // Couldn't find the item to replace
                 if (!toReplace) {
@@ -195,7 +187,7 @@ export default class UpgradeService {
                 // TODO: Use Math.max... ?
                 if (toReplace.count <= 0)
                     toReplace.count = 0;
-                //     unit.selectedEquipment.splice(replaceIndex, 1);
+                //     unit.equipment.splice(replaceIndex, 1);
             }
 
             apply();
@@ -229,7 +221,7 @@ export default class UpgradeService {
 
 
         // for (let e of option.gains) {
-        //     const selection = EquipmentService.findLast(unit.selectedEquipment, e.name);
+        //     const selection = EquipmentService.findLast(unit.equipment, e.name);
 
         //     // If multiple selections
         //     if (selection.count) {
@@ -238,8 +230,8 @@ export default class UpgradeService {
 
         //     if (selection.count <= 0) {
         //         // Remove the upgrade from the list
-        //         const removeIndex = EquipmentService.findLastIndex(unit.selectedEquipment, e.name)
-        //         unit.selectedEquipment.splice(removeIndex, 1);
+        //         const removeIndex = EquipmentService.findLastIndex(unit.equipment, e.name)
+        //         unit.equipment.splice(removeIndex, 1);
         //     }
         // }
 
@@ -251,7 +243,7 @@ export default class UpgradeService {
 
             for (let what of replaceWhat) {
 
-                const current = EquipmentService.findLast(unit.selectedEquipment, what);
+                const current = EquipmentService.findLast(unit.equipment, what);
 
                 if (current) {
 
@@ -262,7 +254,7 @@ export default class UpgradeService {
                     const original = EquipmentService.findLast(unit.equipment, what);
 
                     // put the original item back
-                    unit.selectedEquipment.push({ ...original, count: original.count || unit.size });
+                    unit.equipment.push({ ...original, count: original.count || unit.size });
                 }
             }
         }

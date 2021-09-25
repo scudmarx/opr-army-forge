@@ -1,5 +1,3 @@
-import { IntegrationInstructions } from "@mui/icons-material";
-
 export interface IEquipment {
     //type?: "combined" | "mount" | "weaponPart" | "weaponHeader" | "ArmyBookWeapon" | "ArmyBookItem";
     label?: string;
@@ -30,6 +28,12 @@ export interface IUnit {
     specialRules?: ISpecialRule[];
     upgrades: string[];
     equipment: IEquipment[]
+}
+
+export interface ISelectedUnit extends IUnit {
+    selectionId: number;
+    customName?: string;
+    selectedUpgrades: IUpgradeOption[];
 }
 
 export interface IUpgrade {
@@ -84,11 +88,4 @@ export interface IUpgradePackage {
     hint: string,
     uid: string;
     sections: IUpgrade[];
-}
-
-export interface ISelectedUnit extends IUnit {
-    selectionId: number;
-    selectedEquipment: IEquipment[];
-    customName?: string;
-    selectedUpgrades: IUpgradeOption[];
 }

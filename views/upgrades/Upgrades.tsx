@@ -22,7 +22,7 @@ export function Upgrades() {
         return null;
 
     const equipmentSpecialRules: ISpecialRule[] = selectedUnit
-        .selectedEquipment
+        .equipment
         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 

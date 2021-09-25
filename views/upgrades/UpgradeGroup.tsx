@@ -53,7 +53,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
                 controlType === "radio" && <div className="is-flex is-align-items-center">
                     <div className="is-flex-grow-1 pr-2">{(() => {
                         const defaultOpt = upgrade.type === "replace" && typeof(upgrade.replaceWhat) === "string"
-                            ? EquipmentService.findLast(selectedUnit.selectedEquipment, upgrade.replaceWhat as string)
+                            ? EquipmentService.findLast(selectedUnit.equipment, upgrade.replaceWhat as string)
                             : null;
 
                         if (!defaultOpt)
