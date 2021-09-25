@@ -33,8 +33,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                     <TableBody>
                         {
                             // TODO: Multi count weapons
-                            //weapons.filter(e => e.count).map((e, i) => {
-                            weapons.map((e, i) => {
+                            weapons.filter(e => e.count).map((e, i) => {
 
                                 // TODO: Multi profile weapons...
                                 // if (e.type === "weaponHeader")
@@ -45,9 +44,9 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                 //     );
 
                                 //const isEquippedToAll = e.count === unit.size;
-                                const name = e.count > 1 ? pluralise.plural(e.name || e.label) : e.name || e.label;
+                                const name = e.count > 1 ? pluralise.plural(e.label) : e.label;
 
-                                const count = 1;//e.count;
+                                const count = e.count;
                                 const originalCount: number = null;
                                 const multiplier = count / unit.size; // 20 / 10 = "2x Weapons...""
                                 const displayCount = count > unit.size // 20 hand weapons, unit of 10
@@ -95,9 +94,11 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                 //     );
 
                                 //const isEquippedToAll = e.count === unit.size;
+
+                                // TODO: Upgrade count?
                                 const count = 1;//e.count;
                                 const name = count > 1 ? pluralise.plural(e.name || e.label) : e.name || e.label;
-                                
+
                                 const originalCount: number = null;
                                 const multiplier = count / unit.size; // 20 / 10 = "2x Weapons...""
                                 const displayCount = count > unit.size // 20 hand weapons, unit of 10

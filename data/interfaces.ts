@@ -7,7 +7,7 @@ export interface IEquipment {
     range?: number;
     attacks?: number;
     //cost?: number;
-    //count?: number;
+    count?: number;
     //originalCount?: number;
     //specialRules?: ISpecialRule[];
     specialRules?: string[]
