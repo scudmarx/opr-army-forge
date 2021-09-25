@@ -54,7 +54,7 @@ export default class EquipmentService {
         return {
             name: name,
             rules: [range, attacks] // Range, then attacks
-                .concat(eqp.specialRules.map(RulesService.displayName) || []) // then special rules
+                .concat((eqp.specialRules || []).map(RulesService.displayName) || []) // then special rules
                 .filter((m) => !!m) // Remove empty/null entries
                 .join(", ") // csv
         }

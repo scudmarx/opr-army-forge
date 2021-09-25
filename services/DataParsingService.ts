@@ -1,4 +1,4 @@
-import { IEquipment, ISpecialRule, IUpgrade } from '../data/interfaces';
+import { IEquipment, ISpecialRule, IUpgrade, IUpgradeOption } from '../data/interfaces';
 import { nanoid } from "nanoid";
 import { loadOptions } from '@babel/core';
 
@@ -205,7 +205,7 @@ export default class DataParsingService {
         return parts;
     }
 
-    public static parseEquipment(part, isUpgrade: boolean): IEquipment {
+    public static parseEquipment(part, isUpgrade: boolean): IEquipment|IUpgradeOption {
 
         const groups = {
             count: 1,
@@ -224,9 +224,10 @@ export default class DataParsingService {
                 .filter(l => !!l && !l.endsWith("pts"));
             //.split(/((.+?)\((.+?)\)\s)/g);
             return {
+                id: nanoid(7),
                 type: "combined",
                 cost: parseInt(/([+-]\d+)pts?$/.exec(part)[1]),
-                equipment: [
+                gains: [
                     {
                         name: multiWeaponName,
                         type: "weaponHeader"
@@ -245,10 +246,11 @@ export default class DataParsingService {
             const multiParts = combinedMatch[1]
                 .split(" and ");
             return {
+                id: nanoid(7),
                 type: "combined",
                 cost: combinedMatch[2] === "Free" ? 0 : parseInt(combinedMatch[3]),
-                equipment: multiParts
-                    .map(mp => this.parseEquipment(mp, isUpgrade))
+                gains: multiParts
+                    .map(mp => this.parseEquipment(mp, isUpgrade) as IEquipment)
             };
         }
 
@@ -270,9 +272,10 @@ export default class DataParsingService {
             }
 
             return {
+                id: nanoid(7),
                 type: "mount",
                 cost: parseInt(mountMatch[3]),
-                equipment: [
+                gains: [
                     {
                         label: mountName,
                         specialRules: mountRules
@@ -289,6 +292,7 @@ export default class DataParsingService {
         const singleRuleMatch = /^([\w\s!]+)\s([-+]\d+)pt/.exec(part);
         if (singleRuleMatch) {
             return {
+                id: nanoid(7),
                 label: singleRuleMatch[1].trim(),
                 specialRules: [this.parseRule(singleRuleMatch[1].trim())],
                 cost: parseInt(singleRuleMatch[2]),
@@ -299,6 +303,7 @@ export default class DataParsingService {
         const paramRuleMatch = /^(\w+\(\d+\))\s([-+]\d+)pt/.exec(part);
         if (paramRuleMatch) {
             return {
+                id: nanoid(7),
                 label: paramRuleMatch[1].trim(),
                 specialRules: [this.parseRule(paramRuleMatch[1].trim())],
                 cost: parseInt(paramRuleMatch[2]),
@@ -315,6 +320,7 @@ export default class DataParsingService {
         );
 
         const result: IEquipment = {
+            id: nanoid(7),
             label: isUpgrade ? part : match[groups.label].trim(),
             name: isUpgrade ? match[groups.label].trim() : undefined
         };
@@ -339,7 +345,7 @@ export default class DataParsingService {
         return result;
     }
 
-    public static parseMount(text: string, isUpgrade: boolean): IEquipment {
+    public static parseMount(text: string, isUpgrade: boolean): IUpgradeOption {
 
         const textParts = text.split(" - ");
         const name = textParts[0].trim();
@@ -347,11 +353,12 @@ export default class DataParsingService {
         const weaponRegex = /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
         const weaponMatch = weaponRegex.exec(match[1]);
         const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/).map(this.parseRule);
-
+        
         return {
+            id: nanoid(7),
             type: "mount",
-            cost: parseInt(match[2]),
-            equipment: [
+            cost: match[2],
+            gains: [
                 {
                     name,
                     specialRules: rules

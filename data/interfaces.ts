@@ -1,7 +1,8 @@
 import { IntegrationInstructions } from "@mui/icons-material";
 
 export interface IEquipment {
-    type?: "combined"|"mount"|"weaponPart"|"weaponHeader"|"ArmyBookWeapon"|"ArmyBookItem";
+    id?: string;
+    type?: "combined" | "mount" | "weaponPart" | "weaponHeader" | "ArmyBookWeapon" | "ArmyBookItem";
     label?: string;
     name?: string;
     range?: number;
@@ -37,14 +38,15 @@ export interface IUpgrade {
     affects?: "any" | "all" | number;
     select?: string | number;
     limit?: number;
-    replaceWhat?: string|string[];
+    replaceWhat?: string | string[];
     options?: IUpgradeOption[];
 }
 
 export interface IUpgradeOption {
+    id: string;
     cost: string;
     label: string;
-    gains: IEquipment[];
+    gains: IEquipment[] | ISpecialRule[];
 }
 
 export interface IUpgradePackage {
@@ -57,4 +59,5 @@ export interface ISelectedUnit extends IUnit {
     selectionId: number;
     selectedEquipment: IEquipment[];
     customName?: string;
+    selectedUpgrades: IUpgradeOption[];
 }

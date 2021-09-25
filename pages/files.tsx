@@ -8,6 +8,7 @@ import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
 import DataParsingService from "../services/DataParsingService";
+import { nanoid } from "nanoid";
 
 export default function Files() {
 
@@ -90,6 +91,7 @@ export default function Files() {
                     ...DataParsingService.parseUpgradeText(section.label),
                     options: section.options.map(opt => ({
                         ...opt,
+                        id: opt.id || nanoid(5)
                         //gains: opt.gains.map(g => typeof(g) === "string" ? DataParsingService.parseEquipment(g) : g)
                     }))
                 }))

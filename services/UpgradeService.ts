@@ -1,8 +1,8 @@
-import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from "../data/interfaces";
-import pluralise from "pluralize";
-import { current } from "immer";
+import { IEquipment, ISelectedUnit, ISpecialRule, IUpgrade, IUpgradeOption } from "../data/interfaces";
 import EquipmentService from "./EquipmentService";
-import { loadOptions } from "@babel/core";
+import "../extensions";
+import DataParsingService from "./DataParsingService";
+import RulesService from "./RulesService";
 
 export default class UpgradeService {
     static calculateListTotal(list: ISelectedUnit[]) {
@@ -19,7 +19,12 @@ export default class UpgradeService {
         return cost;
     }
 
-    static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
+    public static isApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
+
+        return unit.selectedUpgrades.contains(u => u.id === option.id);
+    }
+
+    private static isApplied_old(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
         if (upgrade.type === "upgradeRule") {
 
@@ -55,7 +60,11 @@ export default class UpgradeService {
         }
     }
 
-    static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): number {
+    public static countApplied(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): number {
+        return 1;
+    }
+
+    private static countApplied_old(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): number {
         const matches = EquipmentService.find(unit.selectedEquipment, option.name);
         return matches?.length > 0
             ? matches.reduce((value, next) => value + (next.count || 1), 0)
@@ -167,45 +176,37 @@ export default class UpgradeService {
 
     public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
-        if (upgrade.type === "upgradeRule") {
 
-            const existingRuleIndex = unit.specialRules.findIndex(r => r === (upgrade.replaceWhat as string));
-
-            // Remove existing rule
-            if (existingRuleIndex > -1)
-                unit.specialRules.splice(existingRuleIndex, 1);
-
-            // Add new rule(s)!
-            unit.specialRules = unit.specialRules.concat(option.specialRules);
-
-            return;
-        }
 
         const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
             : upgrade.affects === "all"
                 ? unit.size || 1 // All in unit
-                : 1) * (option.count || 1);
+                : 1); // TODO: Add back multiple count weapons? * (option.count || 1);
 
         const apply = () => {
-            // Add each piece from the combination
-            for (let e of option.gains) {
-
-                const existingSelection = EquipmentService.findLast(unit.selectedEquipment, e.label);
-
-                if (existingSelection) {
-                    existingSelection.count += count;
-                } else {
-                    unit.selectedEquipment.push({
-                        ...e,
-                        count: count,
-                        cost: parseInt(option.cost) / option.gains.length // TODO: Fix this!
-                    });
-                }
-            }
+            unit.selectedUpgrades.push(option);
         };
 
-        if (upgrade.type === "upgrade") {
+        if (upgrade.type === "upgradeRule") {
+
+            // TODO: Refactor this - shouldn't be using display name func to compare probably!
+            const existingRuleIndex = unit
+                .specialRules
+                .findIndex(r => RulesService.displayName(r) === (upgrade.replaceWhat as string));
+
+            // Remove existing rule
+            if (existingRuleIndex > -1)
+                unit.specialRules.splice(existingRuleIndex, 1);
+
+            apply();
+
+            // Add new rule(s)!
+            unit.specialRules = unit.specialRules.concat(option.gains as ISpecialRule[]);
+
+            return;
+        }
+        else if (upgrade.type === "upgrade") {
 
             apply();
         }
@@ -246,39 +247,44 @@ export default class UpgradeService {
 
     public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
-        if (upgrade.type === "upgradeRule") {
-
-            // Remove upgrades rule(s)
-            for (let i = unit.specialRules.length - 1; i >= 0; i--)
-                if (option.specialRules.indexOf(unit.specialRules[i]) >= 0)
-                    unit.specialRules.splice(i, 1);
-
-            // Re-add original rule
-            unit.specialRules.push(upgrade.replaceWhat as string);
-
-            return;
-        }
-
         const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
             : upgrade.affects === "all"
                 ? unit.size || 1 // All in unit
-                : 1) * (option.count || 1);
+                : 1);// TODO: Fix count for WC data * (option.count || 1);
 
-        for (let e of option.gains) {
-            const selection = EquipmentService.findLast(unit.selectedEquipment, e.name);
+        const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
+        unit.selectedUpgrades.splice(removeAt, 1);
 
-            // If multiple selections
-            if (selection.count) {
-                selection.count -= count;
-            }
+        if (upgrade.type === "upgradeRule") {
 
-            if (selection.count <= 0) {
-                // Remove the upgrade from the list
-                const removeIndex = EquipmentService.findLastIndex(unit.selectedEquipment, e.name)
-                unit.selectedEquipment.splice(removeIndex, 1);
-            }
+            // Remove upgrades rule(s)
+            // for (let i = unit.specialRules.length - 1; i >= 0; i--)
+            //     if (option.specialRules.indexOf(unit.specialRules[i]) >= 0)
+            //         unit.specialRules.splice(i, 1);
+
+            // Re-add original rule
+            unit.specialRules.push(DataParsingService.parseRule(upgrade.replaceWhat as string));
+
+            return;
         }
+
+
+
+        // for (let e of option.gains) {
+        //     const selection = EquipmentService.findLast(unit.selectedEquipment, e.name);
+
+        //     // If multiple selections
+        //     if (selection.count) {
+        //         selection.count -= count;
+        //     }
+
+        //     if (selection.count <= 0) {
+        //         // Remove the upgrade from the list
+        //         const removeIndex = EquipmentService.findLastIndex(unit.selectedEquipment, e.name)
+        //         unit.selectedEquipment.splice(removeIndex, 1);
+        //     }
+        // }
 
         if (upgrade.type === "replace") {
 

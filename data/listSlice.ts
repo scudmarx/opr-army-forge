@@ -27,7 +27,8 @@ export const listSlice = createSlice({
                 selectedEquipment: action.payload.equipment.map(eqp => ({
                     ...eqp,
                     count: eqp.count || action.payload.size
-                }))
+                })),
+                selectedUpgrades: []
             });
         },
         selectUnit: (state, action: PayloadAction<number>) => {
