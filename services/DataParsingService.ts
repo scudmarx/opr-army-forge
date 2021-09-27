@@ -131,7 +131,7 @@ export default class DataParsingService {
                     if (line.startsWith("Grenade")) {
                         debugger;
                     }
-                    
+
                     const countRegex = /^(\d+)x\s/;
                     const costRegex = /\s?[+-]\d+pts$/;
                     const option = this.parseEquipment(line, true);
@@ -203,7 +203,7 @@ export default class DataParsingService {
         const defenseMatch = /^(Defense) \+(\d+)\s?(in melee)/.exec(r);
         if (defenseMatch) {
             return {
-                key: defenseMatch[1].toLowerCase(),
+                key: defenseMatch[1].toLowerCase().replace(/\s+/g, "-"),
                 name: defenseMatch[1],
                 rating: defenseMatch[2] || "",
                 condition: defenseMatch[3] || ""
@@ -211,7 +211,7 @@ export default class DataParsingService {
         }
         const rMatch = /^(.+?)(?:\((\d+)\))?$/.exec(r);
         return {
-            key: rMatch[1].toLowerCase(),
+            key: rMatch[1].toLowerCase().replace(/\s+/g, "-"),
             name: rMatch[1],
             rating: rMatch[2] || ""
         };
@@ -235,7 +235,7 @@ export default class DataParsingService {
         return parts;
     }
 
-    public static parseEquipment(part, isUpgrade: boolean): IEquipment | IUpgradeOption {
+    public static parseEquipment(part, isUpgrade: boolean = false): any {
 
         const groups = {
             count: 1,
@@ -243,6 +243,8 @@ export default class DataParsingService {
             rules: 3,
             cost: 4
         };
+
+        const costRegex = /\s?([+-]?\d+pts|Free)$/;
 
         // Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3)) +5pts
         if (part.indexOf("pick one to fire") > -1) {
@@ -255,8 +257,8 @@ export default class DataParsingService {
             //.split(/((.+?)\((.+?)\)\s)/g);
             return {
                 id: nanoid(7),
-                type: "combined",
-                cost: /([+-]\d+)pts?$/.exec(part)[1],
+                cost: parseInt(/([+-]\d+)pts?$/.exec(part)[1]),
+                label: part.replace(costRegex, "").trim(),
                 gains: [
                     {
                         name: multiWeaponName,
@@ -277,8 +279,8 @@ export default class DataParsingService {
                 .split(" and ");
             return {
                 id: nanoid(7),
-                type: "combined",
                 cost: combinedMatch[2] === "Free" ? 0 : parseInt(combinedMatch[3]),
+                label: part.replace(costRegex, "").trim(),
                 gains: multiParts
                     .map(mp => this.parseEquipment(mp, isUpgrade) as IEquipment)
             };
@@ -332,7 +334,7 @@ export default class DataParsingService {
                         type: "ArmyBookRule"
                     }
                 ],
-                cost: singleRuleMatch[2],
+                cost: parseInt(singleRuleMatch[2]),
             };
         }
 
@@ -349,12 +351,28 @@ export default class DataParsingService {
                         type: "ArmyBookRule"
                     }
                 ],
-                cost: paramRuleMatch[2],
+                cost: parseInt(paramRuleMatch[2]),
+            };
+        }
+
+        // "Camo Cloaks (Stealth)"
+        const itemRuleMatch = /^(([\w\s]+)\(([\w\s]+)\))\s([-+]\d+)pt/.exec(part);
+        if (itemRuleMatch) {
+            return {
+                id: nanoid(7),
+                label: paramRuleMatch[1].trim(),
+                gains: [
+                    {
+                        ...this.parseRule(paramRuleMatch[3].trim()),
+                        label: paramRuleMatch[1].trim(),
+                        type: "ArmyBookRule"
+                    }
+                ],
+                cost: parseInt(paramRuleMatch[4]),
             };
         }
 
         const match = /(?:(\d+)x\s?)?(.+?)\((.+)\)\s?([+-]\d+|Free)?/.exec(part);
-
         const attacksMatch = /A(\d+)[,\)]/.exec(part);
         const rangeMatch = /(\d+)["”][,\)]/.exec(part);
         const rules = match[groups.rules].split(",").map((r) => r.trim());
@@ -362,11 +380,14 @@ export default class DataParsingService {
             (r) => !/^A\d+/.test(r) && !/^\d+["”]/.test(r)
         );
 
-        const result: IEquipment = {
+        const result: any = {
             id: nanoid(7),
-            label: isUpgrade ? part : match[groups.label].trim(),
+            label: (isUpgrade ? part : match[groups.label]).replace(costRegex, "").trim(),
             name: isUpgrade ? match[groups.label].trim() : undefined
         };
+
+        if (!isUpgrade)
+            delete result.name;
 
         if (match[groups.count])
             result.count = parseInt(match[groups.count]);
@@ -378,7 +399,10 @@ export default class DataParsingService {
             result.range = parseInt(rangeMatch[1]);
 
         if (isUpgrade) {
-            result.specialRules = specialRules?.length > 0 ? specialRules.map(this.parseRule) : [];
+            result.type = result.attacks ? "ArmyBookWeapon" : "ArmyBookItem";
+            result[result.type === "ArmyBookWeapon" ? "specialRules" : "content"] = specialRules?.length > 0
+                ? specialRules.map(this.parseRule)
+                : [];
         }
         else {
             result.specialRules = specialRules?.length > 0 ? specialRules : [];
@@ -386,13 +410,10 @@ export default class DataParsingService {
         if (match[groups.cost] !== undefined)
             result.cost = match[groups.cost] === "Free" ? 0 : parseInt(match[groups.cost].trim());
 
-        if (isUpgrade) {
-            result.type = result.attacks ? "ArmyBookWeapon" : "ArmyBookItem";
-        }
         return result;
     }
 
-    public static parseMount(text: string, isUpgrade: boolean): IUpgradeOption {
+    public static parseMount(text: string, isUpgrade: boolean): any {
 
         console.log(text);
         debugger;
@@ -405,7 +426,6 @@ export default class DataParsingService {
 
         return {
             id: nanoid(7),
-            type: "mount",
             cost: match[2],
             gains: [
                 {

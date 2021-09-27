@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import style from "../styles/Cards.module.css";
 import UnitEquipmentTable from "../views/UnitEquipmentTable";
 import { Paper } from "@mui/material";
+import RulesService from "../services/RulesService";
 
 export default function Cards() {
 
@@ -37,7 +38,7 @@ export default function Cards() {
                         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
                         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
-                    const specialRules = (u.specialRules || []).concat(equipmentSpecialRules).filter(r => r != "-");
+                    const specialRules = (u.specialRules || []).map(RulesService.displayName).concat(equipmentSpecialRules).filter(r => r != "-");
 
                     return (
                         <div key={i} className="column is-one-third">

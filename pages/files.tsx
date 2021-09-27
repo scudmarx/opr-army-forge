@@ -22,6 +22,9 @@ export default function Files() {
     const dispatch = useDispatch();
     const router = useRouter();
 
+    const useStaging: boolean = false;
+    const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
+
     useEffect(() => {
 
         // Redirect to game selection screen if no army selected
@@ -71,12 +74,12 @@ export default function Files() {
         const loadCustomArmies = true;
         if (loadCustomArmies) {
             // Load custom data books from Web Companion
-            fetch("https://opr-list-builder.herokuapp.com/api/army-books?gameSystemSlug=" + slug)
+            fetch(webCompanionUrl + "/army-books?gameSystemSlug=" + slug)
                 .then((res) => res.json())
                 .then((data) => {
                     const valid = data
                         //.filter(a => a.unitCount > 2)
-                        .filter(a => a.username === "Darguth" || a.username === "adam");
+                        .filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
 
                     setCustomArmies(valid);
                 });
@@ -158,9 +161,12 @@ export default function Files() {
     };
 
     const selectCustomList = (customArmy: any) => {
+
+        
+
         // TODO: Web companion integration
         // Load army data
-        fetch("https://opr-list-builder.herokuapp.com/api/army-books/" + customArmy.uid)
+        fetch(webCompanionUrl + `/army-books/${customArmy.uid}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -175,8 +181,6 @@ export default function Files() {
                 // console.log("Options with gains as string:", allOptions.filter(opt => typeof(opt.gains[0]) === "string"));
 
                 dispatch(load(afData));
-                //dispatch(load(data));
-
 
                 // TODO: Loading wheel view...?
                 // Redirect to list builder once data is loaded

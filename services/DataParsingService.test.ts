@@ -1,4 +1,4 @@
-import { RestartAlt } from '@mui/icons-material';
+import { EightK, RestartAlt } from '@mui/icons-material';
 import { IEquipment } from '../data/interfaces';
 import DataParsingService from './DataParsingService';
 
@@ -273,17 +273,27 @@ test("Parse 'Mount on:'", () => {
 
 //#region Equipment
 
+const parse = (str: string, isUpgrade: boolean = false) => {
+    const e = DataParsingService.parseEquipment(str, isUpgrade);
+    delete e.id;
+    if (e.gains)
+        for (let g of e.gains)
+            delete g.id;
+    return e;
+}
+
 test("Parse simple melee weapon", () => {
-    const e = DataParsingService.parseEquipment("Sword (A3)");
+    const e = parse("Sword (A3)");
 
     expect(e).toStrictEqual({
         label: "Sword",
-        attacks: 3
+        attacks: 3,
+        specialRules: []
     });
 });
 
 test("Parse melee weapon with rules", () => {
-    const e = DataParsingService.parseEquipment("Sword (A3, Rending, AP(1))");
+    const e = parse("Sword (A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
         label: "Sword",
@@ -293,7 +303,7 @@ test("Parse melee weapon with rules", () => {
 });
 
 test("Parse multiple melee weapon with rules", () => {
-    const e = DataParsingService.parseEquipment("2x Sword (A3, Rending, AP(1))");
+    const e = parse("2x Sword (A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
         label: "Sword",
@@ -304,39 +314,61 @@ test("Parse multiple melee weapon with rules", () => {
 });
 
 test("Parse melee weapon with rules and cost", () => {
-    const e = DataParsingService.parseEquipment("Sword (A3, Rending, AP(1)) +5pts");
+    const e = parse("Sword (A3, Rending, AP(1)) +5pts", true);
 
     expect(e).toStrictEqual({
-        label: "Sword",
+        label: "Sword (A3, Rending, AP(1))",
+        name: "Sword",
         cost: 5,
         attacks: 3,
-        specialRules: ["Rending", "AP(1)"]
+        specialRules: [
+            {
+                key: "rending",
+                name: "Rending",
+                rating: ""
+            },
+            {
+                key: "ap",
+                name: "AP",
+                rating: "1"
+            }
+        ],
+        type: "ArmyBookWeapon"
     });
 });
 
 test("Parse Free weapon", () => {
-    const e = DataParsingService.parseEquipment("Sword (A3, AP(1)) Free");
+    const e = parse("Sword (A3, AP(1)) Free", true);
 
     expect(e).toStrictEqual({
-        label: "Sword",
+        label: "Sword (A3, AP(1))",
+        name: "Sword",
         cost: 0,
         attacks: 3,
-        specialRules: ["AP(1)"]
+        specialRules: [
+            {
+                key: "ap",
+                name: "AP",
+                rating: "1"
+            }
+        ],
+        type: "ArmyBookWeapon"
     });
 });
 
 test("Parse simple ranged weapon", () => {
-    const e = DataParsingService.parseEquipment("Pistol (6\", A3)");
+    const e = parse("Pistol (6\", A3)");
 
     expect(e).toStrictEqual({
         label: "Pistol",
         range: 6,
-        attacks: 3
+        attacks: 3,
+        specialRules: []
     });
 });
 
 test("Parse ranged weapon with rules", () => {
-    const e = DataParsingService.parseEquipment("Pistol (6\", A3, Rending, AP(1))");
+    const e = parse("Pistol (6\", A3, Rending, AP(1))");
 
     expect(e).toStrictEqual({
         label: "Pistol",
@@ -347,31 +379,47 @@ test("Parse ranged weapon with rules", () => {
 });
 
 test("Parse standard rule", () => {
-    const e = DataParsingService.parseEquipment("Field Radio +5pts");
+    const e = parse("Field Radio +5pts", true);
 
     expect(e).toStrictEqual({
         label: "Field Radio",
         cost: 5,
-        specialRules: ["Field Radio"]
+        gains: [
+            {
+                key: "field-radio",
+                name: "Field Radio",
+                label: "Field Radio",
+                rating: "",
+                type: "ArmyBookRule"
+            }
+        ]
     });
 });
 
 test("Parse standard rule", () => {
-    const e = DataParsingService.parseEquipment("SHOOT! +15pts");
+    const e = parse("SHOOT! +15pts", true);
 
     expect(e).toStrictEqual({
         label: "SHOOT!",
         cost: 15,
-        specialRules: ["SHOOT!"]
+        gains: [
+            {
+                key: "shoot!",
+                name: "SHOOT!",
+                label: "SHOOT!",
+                rating: "",
+                type: "ArmyBookRule"
+            }
+        ]
     });
 });
 
 test("Parse parameterised rule", () => {
-    const e = DataParsingService.parseEquipment("Psychic(2) +15pts", true);
+    const e = parse("Psychic(2) +15pts", true);
 
     expect(e).toStrictEqual({
-        "cost": "+15",
-        "type": "ArmyBookUpgradeOption",
+        "label": "Psychic(2)",
+        "cost": 15,
         "gains": [
             {
                 "key": "psychic",
@@ -379,86 +427,140 @@ test("Parse parameterised rule", () => {
                 "type": "ArmyBookRule",
                 "label": "Psychic(2)",
                 "rating": "2",
-                //"condition": ""
             }
-        ],
-        "label": "Psychic(2)"
+        ]
     });
 });
 
 test("Parse weapon pairing with non-standard rules", () => {
-    const e = DataParsingService.parseEquipment("Light Shields (Defense +1 in melee) and Shield Bash (A2) Free", true);
+    const e = parse("Light Shields (Defense +1 in melee) and Shield Bash (A2) Free", true);
+
     expect(e).toStrictEqual({
-        type: "combined",
+        label: "Light Shields (Defense +1 in melee) and Shield Bash (A2)",
         cost: 0,
-        equipment: [
+        gains: [
             {
-                label: "Light Shields",
-                specialRules: ["Defense +1 in melee"]
+                label: "Light Shields (Defense +1 in melee)",
+                name: "Light Shields",
+                content: [
+                    {
+                        key: "defense",
+                        name: "Defense",
+                        rating: "1",
+                        condition: "in melee"
+                    }
+                ],
+                type: "ArmyBookItem"
             },
             {
-                label: "Shield Bash",
-                attacks: 2
+                label: "Shield Bash (A2)",
+                name: "Shield Bash",
+                attacks: 2,
+                specialRules: [],
+                type: "ArmyBookWeapon"
             }
         ]
     });
 });
 
 test("Parse weapon pairing", () => {
-    const e = DataParsingService.parseEquipment("Plasma Pistol (12”, A1, AP(2)) and CCW (A2) +5pts");
+    const e = parse("Plasma Pistol (12”, A1, AP(2)) and CCW (A2) +5pts", true);
+
     expect(e).toStrictEqual({
-        type: "combined",
+        label: "Plasma Pistol (12”, A1, AP(2)) and CCW (A2)",
         cost: 5,
-        equipment: [
+        gains: [
             {
-                label: "Plasma Pistol",
+                label: "Plasma Pistol (12”, A1, AP(2))",
+                name: "Plasma Pistol",
                 range: 12,
                 attacks: 1,
-                specialRules: ["AP(2)"]
+                specialRules: [
+                    {
+                        key: "ap",
+                        name: "AP",
+                        rating: "2"
+                    }
+                ],
+                type: "ArmyBookWeapon"
             },
             {
-                label: "CCW",
-                attacks: 2
+                label: "CCW (A2)",
+                name: "CCW",
+                attacks: 2,
+                specialRules: [],
+                type: "ArmyBookWeapon"
             }
         ]
     });
 });
 
 test("multiple profile weapon 1", () => {
-    const e = DataParsingService.parseEquipment('Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3)) +5pts');
+    const e = parse('Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3)) +5pts', true);
+    for (let g of e.gains)
+        for (let p of g.profiles)
+            delete p.id;
+
     expect(e).toStrictEqual({
-        type: "combined",
+        label: "Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3))",
         cost: 5,
-        equipment: [
+        gains: [
             {
-                label: "Grenade Launcher-pick one to fire"
-            },
-            {
-                label: "HE",
-                range: 24,
-                attacks: 1,
-                specialRules: ["Blast(3)"]
-            },
-            {
-                label: "AT",
-                range: 24,
-                attacks: 1,
-                specialRules: ["AP(1)", "Deadly(3)"]
+                name: "Grenade Launcher-pick one to fire",
+                type: "ArmyBookMultiWeapon",
+                profiles: [
+                    {
+                        label: "HE (24”,A1,Blast(3))",
+                        name: "HE",
+                        range: 24,
+                        attacks: 1,
+                        specialRules: [
+                            {
+                                key: "blast",
+                                name: "Blast",
+                                rating: "3"
+                            }
+                        ],
+                        type: "ArmyBookWeapon"
+                    },
+                    {
+                        label: "AT (24”, A1, AP(1), Deadly(3))",
+                        name: "AT",
+                        range: 24,
+                        attacks: 1,
+                        specialRules: [
+                            {
+                                key: "ap",
+                                name: "AP",
+                                rating: "1"
+                            },
+                            {
+                                key: "deadly",
+                                name: "Deadly",
+                                rating: "3"
+                            }
+                        ],
+                        type: "ArmyBookWeapon"
+                    }
+                ]
             }
         ]
     });
 })
 
 test("Parse AoF format mount 1", () => {
-    const mount = DataParsingService.parseMount('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts');
+    const mount = parse('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts');
 
-    const expected: IEquipment = {
-        type: "mount",
+    const expected = {
+        label: "Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3)",
         cost: 120,
-        equipment: [
+        gains: [
             {
                 label: "Great War-Bear",
-                specialRules: ["Fear", "Impact(3)", "Swift", "Tough(+3)"],
+                content: [
+                    "Fear", "Impact(3)", "Swift", "Tough(+3)"
+                ],
+                type: "ArmyBookItem"
             },
             {
                 label: "Great War-Bear - Claws",
@@ -551,6 +653,17 @@ test("Parse GFF format mount", () => {
                 range: 24,
             },
         ]
+    });
+});
+
+test("Parse melee weapon with rules and cost", () => {
+    const e = DataParsingService.parseEquipment("Camo Cloaks (Stealth) +10pts", true);
+
+    expect(e).toStrictEqual({
+        label: "Whip Limb and Sword Claw",
+        cost: 10,
+        attacks: 3,
+        specialRules: ["Deadly(6)"]
     });
 });
 
