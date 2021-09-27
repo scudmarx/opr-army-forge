@@ -151,7 +151,7 @@ export default class DataParsingService {
                     results[lastGroupId].sections
                         .filter((u) => u.label === lastUpgradeText)[0]
                         .options.push({
-                            id: option.id,
+                            id: option.id || nanoid(5),
                             type: "ArmyBookUpgradeOption",
                             cost: parseInt(cost),
                             label: line.replace(costRegex, ""),
