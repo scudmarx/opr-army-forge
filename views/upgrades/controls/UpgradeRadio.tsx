@@ -5,7 +5,9 @@ import { applyUpgrade, removeUpgrade } from '../../../data/listSlice';
 import UpgradeService from '../../../services/UpgradeService';
 import hash from "object-hash";
 
-export default function UpgradeRadio({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
+export default function UpgradeRadio(
+    { selectedUnit, upgrade, option, isValid }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption, isValid: boolean }
+) {
 
     const dispatch = useDispatch();
 

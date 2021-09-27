@@ -12,6 +12,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
     const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
     // Somehow display the count?
     const gainsGroups = option ? groupBy(option.gains, "name") : null;
+    const isValid = option ? UpgradeService.isValid(selectedUnit, upgrade, option) : true;
 
     return (
         <div className="is-flex is-align-items-center">
@@ -38,7 +39,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
                                 <span style={{ color: "#000000" }}>{parts.name} </span>
                                 {parts.rules && <span className="mr-2" style={{ color: "#656565" }}>({parts.rules})</span>}
                             </Fragment>
-                        )
+                        );
                     }) : <span style={{ color: "#000000" }}>None</span>
                 }
             </div>
@@ -46,7 +47,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
             {(() => {
                 switch (controlType) {
                     case "check": return <UpgradeCheckbox selectedUnit={selectedUnit} upgrade={upgrade} option={option} />;
-                    case "radio": return <UpgradeRadio selectedUnit={selectedUnit} upgrade={upgrade} option={option} />;
+                    case "radio": return <UpgradeRadio selectedUnit={selectedUnit} upgrade={upgrade} option={option} isValid={isValid} />;
                     case "updown": return <UpgradeUpDown selectedUnit={selectedUnit} upgrade={upgrade} option={option} />;
                 }
             })()}

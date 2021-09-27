@@ -57,6 +57,7 @@ export interface IUpgradeOption {
 export interface IUpgradeGains {
     name: string;
     label: string;
+    count?: number;
     type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
 }
 

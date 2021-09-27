@@ -3,6 +3,7 @@ import EquipmentService from "./EquipmentService";
 import "../extensions";
 import DataParsingService from "./DataParsingService";
 import RulesService from "./RulesService";
+import { loadOptions } from "@babel/core";
 
 export default class UpgradeService {
     static calculateListTotal(list: ISelectedUnit[]) {
@@ -41,19 +42,28 @@ export default class UpgradeService {
                     ? unit.size || 1 // All in unit
                     : 1;
 
-            const toReplace = EquipmentService.findLast(unit.equipment, upgrade.replaceWhat as string);
+            //debugger;
 
-            if (!toReplace)
-                return false;
+            const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
+                ? [upgrade.replaceWhat]
+                : upgrade.replaceWhat;
 
-            // Nothing left to replace
-            if (toReplace.count <= 0)
-                return false;
+            for (let what of replaceWhat) {
 
-            // May only select up to the limit
-            if (typeof (upgrade.select) === "number") {
-                if (alreadySelected >= upgrade.select)
+                const toReplace = EquipmentService.findLast(unit.equipment, what);
+
+                if (!toReplace)
                     return false;
+
+                // Nothing left to replace
+                if (toReplace.count <= 0)
+                    return false;
+
+                // May only select up to the limit
+                if (typeof (upgrade.select) === "number") {
+                    if (alreadySelected >= upgrade.select)
+                        return false;
+                }
             }
         }
 
@@ -125,16 +135,20 @@ export default class UpgradeService {
 
     public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
-
-
         const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
             : upgrade.affects === "all"
                 ? unit.size || 1 // All in unit
                 : 1); // TODO: Add back multiple count weapons? * (option.count || 1);
 
-        const apply = () => {
-            unit.selectedUpgrades.push(option);
+        const apply = (available: number) => {
+            unit.selectedUpgrades.push({
+                ...option,
+                gains: option.gains.map(g => ({
+                    ...g,
+                    count: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
+                }))
+            });
         };
 
         if (upgrade.type === "upgradeRule") {
@@ -148,7 +162,7 @@ export default class UpgradeService {
             if (existingRuleIndex > -1)
                 unit.specialRules.splice(existingRuleIndex, 1);
 
-            apply();
+            apply(count);
 
             // Add new rule(s)!
             //unit.specialRules = unit.specialRules.concat(option.gains as ISpecialRule[]);
@@ -157,7 +171,7 @@ export default class UpgradeService {
         }
         else if (upgrade.type === "upgrade") {
 
-            apply();
+            apply(count);
         }
         else if (upgrade.type === "replace") {
 
@@ -166,6 +180,8 @@ export default class UpgradeService {
             const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
                 ? [upgrade.replaceWhat]
                 : upgrade.replaceWhat;
+
+            let available = 999;
 
             for (let what of replaceWhat) {
 
@@ -181,6 +197,8 @@ export default class UpgradeService {
 
                 console.log("Replacing... ", toReplace);
 
+                available = Math.min(available, toReplace.count);
+
                 // Decrement the count of the item being replaced
                 toReplace.count -= count;
 
@@ -190,7 +208,7 @@ export default class UpgradeService {
                 //     unit.equipment.splice(replaceIndex, 1);
             }
 
-            apply();
+            apply(available);
         }
     }
 

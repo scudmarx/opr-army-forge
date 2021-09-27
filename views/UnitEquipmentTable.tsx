@@ -66,7 +66,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                 attacks: weapon.attacks,
                 range: weapon.range,
                 specialRules: weapon.specialRules.map(r => RulesService.displayName(r)),
-                count: count
+                count: upgrade.count || count
             };
             return equipment
         }
