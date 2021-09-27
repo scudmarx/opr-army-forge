@@ -22,6 +22,15 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
                         const group: IUpgradeGains[] = gainsGroups[key];
                         const e = group[0];
                         const count = group.length
+
+                        if (e.type === "ArmyBookRule") {
+                            return (
+                                <Fragment key={i}>
+                                    <span style={{ color: "#000000" }}>{e.label}</span>
+                                </Fragment>
+                            );
+                        }
+
                         const parts = EquipmentService.getStringParts(e, count);
                         return (
                             <Fragment key={i}>
