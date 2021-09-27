@@ -20,7 +20,7 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
             {specialRules.filter(r => !!r && r.name != "-").map((rule, index) => {
 
                 const ruleDefinition = ruleDefinitions
-                    .filter(r => r.name.indexOf(rule.name) === 0)[0];
+                    .filter(r => /(.+?)(?:\(|$)/.exec(r.name)[0] === rule.name)[0];
 
                 return (
                     <Fragment key={index}>
