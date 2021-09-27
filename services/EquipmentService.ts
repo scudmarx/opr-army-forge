@@ -45,9 +45,10 @@ export default class EquipmentService {
 
     static formatString(eqp: IEquipment): string {
         const name = eqp.count > 1 ? pluralise.plural(eqp.label) : eqp.label;
-        var range = eqp.range ? `${eqp.range}"` : null;
+        const range = eqp.range ? `${eqp.range}"` : null;
+        const attacks = eqp.attacks ? `A${eqp.attacks}` : null;
 
-        return `${name} (${[range, eqp.attacks || null] // Range, then attacks
+        return `${name} (${[range, attacks || null] // Range, then attacks
             .concat(eqp.specialRules || []) // then special rules
             .filter((m) => !!m) // Remove empty/null entries
             .join(", ")})`; // comma separated list
@@ -59,13 +60,14 @@ export default class EquipmentService {
         const item = eqp.type === "ArmyBookItem" ? eqp as IUpgradeGainsItem : null;
         const rule = eqp.type === "ArmyBookItem" ? eqp as IUpgradeGainsRule : null;
         const range = weapon && weapon.range ? `${weapon.range}"` : null;
+        const attacks = weapon && weapon.attacks ? `A${weapon.attacks}` : null;
         const specialRules = weapon?.specialRules
             || item?.content.filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense") as IUpgradeGainsRule[]
             || [];
 
         return {
             name: name,
-            rules: [range, weapon?.attacks] // Range, then attacks
+            rules: [range, attacks] // Range, then attacks
                 .concat(specialRules.map(RulesService.displayName)) // then special rules
                 .filter((m) => !!m) // Remove empty/null entries
                 .join(", ") // csv
