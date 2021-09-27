@@ -11,14 +11,14 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
 
     const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
     // Somehow display the count?
-    const gainsGroups = groupBy(option.gains, "name");
+    const gainsGroups = option ? groupBy(option.gains, "name") : null;
 
     return (
         <div className="is-flex is-align-items-center">
             <div className="is-flex-grow-1 pr-2">
-                
+
                 {
-                    Object.keys(gainsGroups).map((key, i) => {
+                    gainsGroups ? Object.keys(gainsGroups).map((key, i) => {
                         const group: IUpgradeGains[] = gainsGroups[key];
                         const e = group[0];
                         const count = group.length
@@ -30,10 +30,10 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
                                 {parts.rules && <span className="mr-2" style={{ color: "#656565" }}>({parts.rules})</span>}
                             </Fragment>
                         )
-                    })
+                    }) : <span style={{ color: "#000000" }}>None</span>
                 }
             </div>
-            <div>{option.cost ? `${option.cost}pts` : "Free"}&nbsp;</div>
+            <div>{option?.cost ? `${option.cost}pts` : "Free"}&nbsp;</div>
             {(() => {
                 switch (controlType) {
                     case "check": return <UpgradeCheckbox selectedUnit={selectedUnit} upgrade={upgrade} option={option} />;

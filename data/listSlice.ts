@@ -24,7 +24,11 @@ export const listSlice = createSlice({
             state.units.push({
                 ...action.payload,
                 selectionId: state.units.length,
-                selectedUpgrades: []
+                selectedUpgrades: [],
+                equipment: action.payload.equipment.map(eqp => ({
+                    ...eqp,
+                    count: eqp.count || action.payload.size // Add count to unit size if not already present
+                }))
             });
         },
         selectUnit: (state, action: PayloadAction<number>) => {
