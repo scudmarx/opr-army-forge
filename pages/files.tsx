@@ -10,7 +10,6 @@ import { dataToolVersion } from "./data";
 import DataParsingService from "../services/DataParsingService";
 import { nanoid } from "nanoid";
 import { IUnit, IUpgradeOption } from "../data/interfaces";
-import UnitService from "../services/UnitService";
 
 export default function Files() {
 
@@ -78,8 +77,8 @@ export default function Files() {
                 .then((res) => res.json())
                 .then((data) => {
                     const valid = data
-                        //.filter(a => a.unitCount > 2)
-                        .filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
+                        .filter(a => a.unitCount > 2)
+                        //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
 
                     setCustomArmies(valid);
                 });
