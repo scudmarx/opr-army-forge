@@ -546,7 +546,26 @@ test("multiple profile weapon 1", () => {
             }
         ]
     });
-})
+});
+
+test("Parse equipment with rule", () => {
+    const e = parse("Camo Cloaks (Stealth) +10pts", true);
+
+    expect(e).toStrictEqual({
+        label: "Camo Cloaks (Stealth)",
+        type: "ArmyBookItem",
+        cost: 10,
+        content: [
+            {
+                key: "stealth",
+                name: "Stealth",
+                label: "Stealth",
+                rating: "",
+                type: "ArmyBookRule"
+            }
+        ]
+    });
+});
 
 test("Parse AoF format mount 1", () => {
     const mount = parse('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts');
@@ -653,17 +672,6 @@ test("Parse GFF format mount", () => {
                 range: 24,
             },
         ]
-    });
-});
-
-test("Parse melee weapon with rules and cost", () => {
-    const e = DataParsingService.parseEquipment("Camo Cloaks (Stealth) +10pts", true);
-
-    expect(e).toStrictEqual({
-        label: "Whip Limb and Sword Claw",
-        cost: 10,
-        attacks: 3,
-        specialRules: ["Deadly(6)"]
     });
 });
 

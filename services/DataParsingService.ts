@@ -360,15 +360,16 @@ export default class DataParsingService {
         if (itemRuleMatch) {
             return {
                 id: nanoid(7),
-                label: paramRuleMatch[1].trim(),
-                gains: [
+                label: part.replace(costRegex, "").trim(),
+                content: [
                     {
-                        ...this.parseRule(paramRuleMatch[3].trim()),
-                        label: paramRuleMatch[1].trim(),
+                        ...this.parseRule(itemRuleMatch[3].trim()),
+                        label: itemRuleMatch[3].trim(),
                         type: "ArmyBookRule"
                     }
                 ],
-                cost: parseInt(paramRuleMatch[4]),
+                type: "ArmyBookItem",
+                cost: parseInt(itemRuleMatch[4]),
             };
         }
 
