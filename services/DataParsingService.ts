@@ -127,10 +127,6 @@ export default class DataParsingService {
                     });
                     lastUpgradeText = upgradeText;
                 } else {
-                    // Is Equipment...
-                    if (line.startsWith("Grenade")) {
-                        debugger;
-                    }
 
                     const countRegex = /^(\d+)x\s/;
                     const costRegex = /\s?[+-]\d+pts$/;
@@ -200,7 +196,7 @@ export default class DataParsingService {
     }
 
     public static parseRule(r): ISpecialRule | IUpgradeGainsRule {
-        const defenseMatch = /^(Defense) \+(\d+)\s?(in melee)/.exec(r);
+        const defenseMatch = /^(Defense) \+(\d+)\s?(in melee)?/.exec(r);
         if (defenseMatch) {
             return {
                 key: defenseMatch[1].toLowerCase().replace(/\s+/g, "-"),
@@ -209,12 +205,16 @@ export default class DataParsingService {
                 condition: defenseMatch[3] || ""
             }
         }
-        const rMatch = /^(.+?)(?:\((\d+)\))?$/.exec(r);
-        return {
+        const rMatch = /^(.+?)(?:\((\d+)\))?( in melee)?$/.exec(r);
+        const result = {
             key: rMatch[1].toLowerCase().replace(/\s+/g, "-"),
             name: rMatch[1],
-            rating: rMatch[2] || ""
+            rating: rMatch[2] || "",
+            condition: rMatch[3] ? rMatch[3].trim() : null
         };
+        if (!result.condition)
+            delete result.condition;
+        return result;
     }
 
     public static parseEquipmentList(str) {
@@ -306,7 +306,6 @@ export default class DataParsingService {
 
             return {
                 id: nanoid(7),
-                type: "mount",
                 cost: parseInt(mountMatch[3]),
                 gains: [
                     {
@@ -356,20 +355,21 @@ export default class DataParsingService {
         }
 
         // "Camo Cloaks (Stealth)"
-        const itemRuleMatch = /^(([\w\s]+)\(([\w\s]+)\))\s([-+]\d+)pt/.exec(part);
+        const itemRuleMatch = /^(([\w\s]+)\(([\w\s]+|Defense \+\d)( in melee)?\))\s([-+]\d+)pt/.exec(part);
         if (itemRuleMatch) {
             return {
                 id: nanoid(7),
                 label: part.replace(costRegex, "").trim(),
+                name: itemRuleMatch[2].trim(),
                 content: [
                     {
-                        ...this.parseRule(itemRuleMatch[3].trim()),
+                        ...this.parseRule((itemRuleMatch[3] + (itemRuleMatch[4] ? itemRuleMatch[4] : "")).trim()),
                         label: itemRuleMatch[3].trim(),
                         type: "ArmyBookRule"
                     }
                 ],
                 type: "ArmyBookItem",
-                cost: parseInt(itemRuleMatch[4]),
+                cost: parseInt(itemRuleMatch[5]),
             };
         }
 

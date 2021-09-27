@@ -553,6 +553,7 @@ test("Parse equipment with rule", () => {
 
     expect(e).toStrictEqual({
         label: "Camo Cloaks (Stealth)",
+        name: "Camo Cloaks",
         type: "ArmyBookItem",
         cost: 10,
         content: [
@@ -562,6 +563,48 @@ test("Parse equipment with rule", () => {
                 label: "Stealth",
                 rating: "",
                 type: "ArmyBookRule"
+            }
+        ]
+    });
+});
+
+test("Parse equipment with rule", () => {
+    const e = parse("Grenadiers (Defense +1) +10pts", true);
+
+    expect(e).toStrictEqual({
+        label: "Grenadiers (Defense +1)",
+        name: "Grenadiers",
+        type: "ArmyBookItem",
+        cost: 10,
+        content: [
+            {
+                key: "defense",
+                name: "Defense",
+                label: "Defense +1",
+                rating: "1",
+                condition: "",
+                type: "ArmyBookRule"
+            }
+        ]
+    });
+});
+
+test("Parse equipment with rule", () => {
+    const e = parse("Demo Experts (Rending in melee) +10pts", true);
+
+    expect(e).toStrictEqual({
+        label: "Demo Experts (Rending in melee)",
+        name: "Demo Experts",
+        type: "ArmyBookItem",
+        cost: 10,
+        content: [
+            {
+                key: "rending",
+                name: "Rending",
+                label: "Rending in melee",
+                rating: "",
+                type: "ArmyBookRule",
+                condition: "in melee"
             }
         ]
     });

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import DataParsingService from "../services/DataParsingService";
 import { Button } from "@mui/material";
 
-export const dataToolVersion = "0.5.1";
+export const dataToolVersion = "0.5.2";
 
 export default function Data() {
 
