@@ -66,7 +66,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                 attacks: weapon.attacks,
                 range: weapon.range,
                 specialRules: weapon.specialRules.map(r => RulesService.displayName(r)),
-                count: upgrade.count || count
+                count: upgrade.count * count
             };
             return equipment
         }
@@ -101,7 +101,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                 const group = weaponGroups[key]
                                 const upgrade = group[0];
                                 const e = upgradeToEquipment(upgrade, group.length);
-
+                                
                                 if (upgrade.type === "ArmyBookMultiWeapon") {
                                     console.log(upgrade.profiles);
                                     return (
