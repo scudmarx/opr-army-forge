@@ -95,8 +95,8 @@ export function UnitSelection({ onSelected }) {
                               <span style={{ color: "#656565" }}>{u.size > 1 ? `[${u.size}]` : ''}</span>
                             </p>
                             <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                              <p>Qua {u.quality}</p>
-                              <p className="ml-2">Def {u.defense}</p>
+                              <p>Qua {u.quality}+</p>
+                              <p className="ml-2">Def {u.defense}+</p>
                             </div>
                           </div>
                           <p className="mr-2">{u.cost}pts</p>

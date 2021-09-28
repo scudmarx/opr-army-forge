@@ -42,8 +42,8 @@ export function MainList({ onSelected }) {
                   <div className="is-flex-grow-1">
                     <p className="mb-1" style={{ fontWeight: 600 }}>{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
                     <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                      <p>Qua {s.quality}</p>
-                      <p className="ml-2">Def {s.defense}</p>
+                      <p>Qua {s.quality}+</p>
+                      <p className="ml-2">Def {s.defense}+</p>
                     </div>
                   </div>
                   <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>

@@ -403,6 +403,24 @@ test("Parse standard rule", () => {
 });
 
 test("Parse standard rule", () => {
+    const e = parse("Gloom-Protocol +5pts", true);
+
+    expect(e).toStrictEqual({
+        label: "Gloom-Protocol",
+        cost: 5,
+        gains: [
+            {
+                key: "gloom-protocol",
+                name: "Gloom-Protocol",
+                label: "Gloom-Protocol",
+                rating: "",
+                type: "ArmyBookRule"
+            }
+        ]
+    });
+});
+
+test("Parse standard rule", () => {
     const e = parse("SHOOT! +15pts", true);
 
     expect(e).toStrictEqual({

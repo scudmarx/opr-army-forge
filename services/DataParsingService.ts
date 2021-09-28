@@ -321,7 +321,7 @@ export default class DataParsingService {
             return this.parseMount(part, isUpgrade);
 
         // "Field Medic"
-        const singleRuleMatch = /^([\w\s!]+)\s([-+]\d+)pt/.exec(part);
+        const singleRuleMatch = /^([\w\s-!]+)\s([-+]\d+)pt/.exec(part);
         if (singleRuleMatch) {
             return {
                 id: nanoid(7),

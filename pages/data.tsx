@@ -35,6 +35,14 @@ export default function Data() {
             }));
         }
 
+        const distinct = (arr: any[], condition: (a, b) => boolean) => {
+            const results = [];
+            for (let item of arr)
+                if (!results.filter(r => condition(r, item)).length)
+                    results.push(item);
+            return results;
+        }
+
         try {
             const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units, 1), 1);
             const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2, 2), 2);
@@ -42,7 +50,7 @@ export default function Data() {
             const parsedUnits4: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units4, 4), 4);
             const parsedUnits5: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units5, 5), 5);
             const parsedUpgrades = DataParsingService.parseUpgrades(upgrades);
-            const parsedRules = DataParsingService.parseRules(rules);
+            const parsedRules = distinct(DataParsingService.parseRules(rules), (a,b) => a.name === b.name);
             const parsedSpells = DataParsingService.parseSpells(spells);
 
             const gameDetails = {
