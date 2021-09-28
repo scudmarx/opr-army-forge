@@ -16,6 +16,7 @@ export interface ISpecialRule {
     key: string;
     name: string;
     rating: string;
+    condition?: string;
 }
 
 export interface IUnit {

@@ -163,7 +163,7 @@ export default class DataParsingService {
         return Object.keys(results).reduce((curr, next) => curr.concat(results[next]), []);
     }
 
-    public static parseUnits(units: string) {
+    public static parseUnits(units: string, pageNumber: number) {
         const results = [];
 
         for (let line of units.split("\n").filter((l) => !!l)) {
@@ -186,7 +186,7 @@ export default class DataParsingService {
                         : parsedUnit[7].split(",").map((s) => s.trim()),
                 cost: parseInt(parsedUnit[8]),
                 costMode: "manually",
-                splitPageNumber: 1
+                splitPageNumber: pageNumber
             };
 
             results.push(parsed);
@@ -402,7 +402,11 @@ export default class DataParsingService {
         if (isUpgrade) {
             result.type = result.attacks ? "ArmyBookWeapon" : "ArmyBookItem";
             result[result.type === "ArmyBookWeapon" ? "specialRules" : "content"] = specialRules?.length > 0
-                ? specialRules.map(this.parseRule)
+                ? specialRules.map(r => ({
+                    ...this.parseRule(r),
+                    label: r,
+                    type: "ArmyBookRule"
+                }))
                 : [];
         }
         else {

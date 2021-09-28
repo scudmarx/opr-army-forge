@@ -1,17 +1,22 @@
 {
-  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "gameSystemId": 2,
   "name": "Robot Legions",
+  "hint": "Robot Legions",
+  "background": "",
+  "armyWideRule": {},
   "version": "2.19",
-  "dataToolVersion": "0.3.0",
+  "dataToolVersion": "0.5.3",
   "units": [
     {
+      "id": "9bwLKD5",
       "name": "Tri-Scorpion Overseer",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Annihilation Gun",
+          "id": "1iEKuxj",
+          "label": "Annihilation Gun",
           "attacks": 2,
           "range": 18,
           "specialRules": [
@@ -20,7 +25,8 @@
           ]
         },
         {
-          "name": "Metal Claw",
+          "id": "RbZ5Oyw",
+          "label": "Metal Claw",
           "attacks": 3,
           "specialRules": [
             "AP(1)",
@@ -28,7 +34,8 @@
           ]
         },
         {
-          "name": "Harvest Blade",
+          "id": "SGbIdNa",
+          "label": "Harvest Blade",
           "attacks": 2,
           "specialRules": [
             "AP(4)",
@@ -37,23 +44,47 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Hero",
-        "Regeneration",
-        "Strider",
-        "Tough(6)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 235
+      "upgrades": [],
+      "cost": 235,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "SPFnJA8",
       "name": "Annihilator Overseer",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Staff-Shot",
+          "id": "yx18FSW",
+          "label": "Staff-Shot",
           "attacks": 3,
           "range": 12,
           "specialRules": [
@@ -61,32 +92,62 @@
           ]
         },
         {
-          "name": "Staff",
-          "attacks": 3
+          "id": "mfcOH_P",
+          "label": "Staff",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fearless",
-        "Hero",
-        "Regeneration",
-        "Strider",
-        "Tough(6)"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A1",
         "B1"
       ],
-      "cost": 205
+      "cost": 205,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "62Lrp0T",
       "name": "Overseer",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Staff-Shot",
+          "id": "2yKJads",
+          "label": "Staff-Shot",
           "attacks": 3,
           "range": 12,
           "specialRules": [
@@ -94,30 +155,56 @@
           ]
         },
         {
-          "name": "Staff",
-          "attacks": 3
+          "id": "Hdk5aBD",
+          "label": "Staff",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Hero",
-        "Fearless",
-        "Regeneration",
-        "Slow",
-        "Tough(3)"
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A1"
       ],
-      "cost": 95
+      "cost": 95,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "pcYZxgA",
       "name": "Technomancer",
       "size": 1,
-      "quality": "3+",
-      "defense": "3+",
+      "quality": 3,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Staff-Shot",
+          "id": "KLCdBkw",
+          "label": "Staff-Shot",
           "attacks": 3,
           "range": 12,
           "specialRules": [
@@ -125,30 +212,56 @@
           ]
         },
         {
-          "name": "Staff",
-          "attacks": 3
+          "id": "hc67YMw",
+          "label": "Staff",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Hero",
-        "Fearless",
-        "Regeneration",
-        "Slow",
-        "Tough(3)"
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "C1"
       ],
-      "cost": 85
+      "cost": 85,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "kdDoG5-",
       "name": "Warden",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Heavy Reaper Rifle",
+          "id": "Qsq1uxT",
+          "label": "Heavy Reaper Rifle",
           "attacks": 2,
           "range": 24,
           "specialRules": [
@@ -156,7 +269,8 @@
           ]
         },
         {
-          "name": "Heavy CCW",
+          "id": "4y1WS8-",
+          "label": "Heavy CCW",
           "attacks": 3,
           "specialRules": [
             "AP(1)"
@@ -164,24 +278,52 @@
         }
       ],
       "specialRules": [
-        "Hero",
-        "Fearless",
-        "Regeneration",
-        "Royal March",
-        "Slow",
-        "Tough(3)"
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "royal-march",
+          "name": "Royal March",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 165
+      "upgrades": [],
+      "cost": 165,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "pDZK5Fs",
       "name": "Nanobot Wraith-Shard",
       "size": 1,
-      "quality": "2+",
-      "defense": "2+",
+      "quality": 2,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Spirit Attack",
+          "id": "krbH4G5",
+          "label": "Spirit Attack",
           "attacks": 8,
           "specialRules": [
             "AP(2)",
@@ -190,27 +332,59 @@
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fear",
-        "Flying",
-        "Hero",
-        "Psychic(1)",
-        "Regeneration",
-        "Tough(12)"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "psychic",
+          "name": "Psychic",
+          "rating": "1"
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "D1"
       ],
-      "cost": 460
+      "cost": 460,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "CCgiSOe",
       "name": "Warriors",
       "size": 5,
-      "quality": "3+",
-      "defense": "3+",
+      "quality": 3,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Gauss Rifles",
+          "id": "zHVa9eE",
+          "label": "Gauss Rifles",
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -218,28 +392,46 @@
           ]
         },
         {
-          "name": "CCWs",
-          "attacks": 1
+          "id": "W40wFms",
+          "label": "CCWs",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Slow"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "E1"
       ],
-      "cost": 130
+      "cost": 130,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "NFtCRTS",
       "name": "Eternals",
       "size": 5,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Gauss Rifles",
+          "id": "hNveMfh",
+          "label": "Gauss Rifles",
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -247,28 +439,46 @@
           ]
         },
         {
-          "name": "CCWs",
-          "attacks": 1
+          "id": "cMLsF3m",
+          "label": "CCWs",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Slow"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "F1"
       ],
-      "cost": 150
+      "cost": 150,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "V4j6u7U",
       "name": "Guardians",
       "size": 5,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Rod-Shots",
+          "id": "w39JBza",
+          "label": "Rod-Shots",
           "attacks": 2,
           "range": 12,
           "specialRules": [
@@ -276,28 +486,46 @@
           ]
         },
         {
-          "name": "Rods",
-          "attacks": 2
+          "id": "xXruGQv",
+          "label": "Rods",
+          "attacks": 2,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Slow"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "G1"
       ],
-      "cost": 160
+      "cost": 160,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "wtCdmUs",
       "name": "Flesh-Eaters",
       "size": 5,
-      "quality": "3+",
-      "defense": "3+",
+      "quality": 3,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Metal Claws",
+          "id": "MEZ5kQx",
+          "label": "Metal Claws",
           "attacks": 3,
           "specialRules": [
             "AP(1)",
@@ -306,23 +534,39 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Slow"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "H1"
       ],
-      "cost": 160
+      "cost": 160,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "9ZbLiRy",
       "name": "Snipers",
       "size": 5,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Sniper Carbines",
+          "id": "w0fxUyD",
+          "label": "Sniper Carbines",
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -331,29 +575,51 @@
           ]
         },
         {
-          "name": "CCWs",
-          "attacks": 1
+          "id": "JXLhKfh",
+          "label": "CCWs",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fearless",
-        "Regeneration",
-        "Slow"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "I1"
       ],
-      "cost": 215
+      "cost": 215,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "hOtdg8g",
       "name": "Bot Swarms",
       "size": 3,
-      "quality": "6+",
-      "defense": "6+",
+      "quality": 6,
+      "defense": 6,
       "equipment": [
         {
-          "name": "Swarm Attacks",
+          "id": "4hEdQBk",
+          "label": "Swarm Attacks",
           "attacks": 3,
           "specialRules": [
             "Rending"
@@ -361,22 +627,42 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 120
+      "upgrades": [],
+      "cost": 120,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "tFdVHHU",
       "name": "Hover Bikes",
       "size": 3,
-      "quality": "3+",
-      "defense": "3+",
+      "quality": 3,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Twin Gauss Rifles",
+          "id": "UpcK3eT",
+          "label": "Twin Gauss Rifles",
           "attacks": 2,
           "range": 24,
           "specialRules": [
@@ -385,23 +671,39 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Strider"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "J1"
       ],
-      "cost": 125
+      "cost": 125,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "Vn2-te1",
       "name": "Robot Snakes",
       "size": 3,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Metal Fangs",
+          "id": "3eL4PfU",
+          "label": "Metal Fangs",
           "attacks": 3,
           "specialRules": [
             "AP(1)",
@@ -410,24 +712,44 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "K1"
       ],
-      "cost": 325
+      "cost": 325,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "sWte6E6",
       "name": "Destroyer Robot Snakes",
       "size": 3,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Armblades",
+          "id": "LHhZKhS",
+          "label": "Armblades",
           "count": 2,
           "attacks": 2,
           "specialRules": [
@@ -435,7 +757,8 @@
           ]
         },
         {
-          "name": "Metal Fangs",
+          "id": "mxgm33g",
+          "label": "Metal Fangs",
           "attacks": 3,
           "specialRules": [
             "AP(1)",
@@ -444,25 +767,49 @@
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fearless",
-        "Regeneration",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "L1"
       ],
-      "cost": 395
+      "cost": 395,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "DtHc4cw",
       "name": "Tri-Scorpions",
       "size": 3,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Armblades",
+          "id": "7krLHYr",
+          "label": "Armblades",
           "count": 2,
           "attacks": 2,
           "specialRules": [
@@ -471,24 +818,44 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Regeneration",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "L1"
       ],
-      "cost": 330
+      "cost": 330,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "OAMChwJ",
       "name": "Tri-Scorpion Pistoleer",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Disintegration Pistols",
+          "id": "NFJP5bM",
+          "label": "Disintegration Pistols",
           "count": 6,
           "attacks": 1,
           "range": 18,
@@ -497,30 +864,64 @@
           ]
         },
         {
-          "name": "CCW",
-          "attacks": 3
+          "id": "nfQsKz-",
+          "label": "CCW",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fearless",
-        "Hunter",
-        "Regeneration",
-        "Relentless",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "hunter",
+          "name": "Hunter",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "relentless",
+          "name": "Relentless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 155
+      "upgrades": [],
+      "cost": 155,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "YOLLo4c",
       "name": "Annihilators",
       "size": 3,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Gauss Cannons",
+          "id": "Zb4gMuw",
+          "label": "Gauss Cannons",
           "attacks": 2,
           "range": 24,
           "specialRules": [
@@ -529,30 +930,56 @@
           ]
         },
         {
-          "name": "CCWs",
-          "attacks": 3
+          "id": "sI2ot0R",
+          "label": "CCWs",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fearless",
-        "Regeneration",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "M1"
       ],
-      "cost": 380
+      "cost": 380,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "GCpBu-u",
       "name": "Heavy Annihilator",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Heavy Gauss Cannon",
+          "id": "qht5IHn",
+          "label": "Heavy Gauss Cannon",
           "attacks": 1,
           "range": 36,
           "specialRules": [
@@ -562,25 +989,49 @@
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fearless",
-        "Regeneration",
-        "Strider",
-        "Tough(6)"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "N1"
       ],
-      "cost": 265
+      "cost": 265,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "jmsZ7uo",
       "name": "Transport Tank",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Defensive Array",
+          "id": "K4s_Kaq",
+          "label": "Defensive Array",
           "attacks": 5,
           "range": 24,
           "specialRules": [
@@ -589,26 +1040,54 @@
         }
       ],
       "specialRules": [
-        "Fast",
-        "Fearless",
-        "Impact(6)",
-        "Strider",
-        "Tough(6)",
-        "Transport(11)"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "6"
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        },
+        {
+          "key": "transport",
+          "name": "Transport",
+          "rating": "11"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2"
       ],
-      "cost": 225
+      "cost": 225,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "BAGZuNY",
       "name": "Doom Tank",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Defensive Array",
+          "id": "iOh8xDO",
+          "label": "Defensive Array",
           "attacks": 5,
           "range": 24,
           "specialRules": [
@@ -616,7 +1095,8 @@
           ]
         },
         {
-          "name": "Doom Cannon",
+          "id": "OOEpxXT",
+          "label": "Doom Cannon",
           "attacks": 1,
           "range": 36,
           "specialRules": [
@@ -626,25 +1106,49 @@
         }
       ],
       "specialRules": [
-        "Fast",
-        "Fearless",
-        "Impact(6)",
-        "Strider",
-        "Tough(6)"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "6"
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2"
       ],
-      "cost": 255
+      "cost": 255,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "ysNgIzJ",
       "name": "Support Platform",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Gauss Cannon",
+          "id": "-k0Fgwm",
+          "label": "Gauss Cannon",
           "attacks": 2,
           "range": 24,
           "specialRules": [
@@ -653,7 +1157,8 @@
           ]
         },
         {
-          "name": "Twin Flux Cannon",
+          "id": "3Vopuk3",
+          "label": "Twin Flux Cannon",
           "attacks": 8,
           "range": 24,
           "specialRules": [
@@ -663,25 +1168,45 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Slow",
-        "Strider",
-        "Tough(6)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2",
         "B2"
       ],
-      "cost": 250
+      "cost": 250,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "H4IpW5L",
       "name": "Tripod Robot",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Atom Beam",
+          "id": "ZTmJ6Y7",
+          "label": "Atom Beam",
           "count": 2,
           "attacks": 3,
           "range": 12,
@@ -690,7 +1215,8 @@
           ]
         },
         {
-          "name": "Stomp",
+          "id": "8qnM2Ma",
+          "label": "Stomp",
           "attacks": 1,
           "specialRules": [
             "AP(1)"
@@ -698,32 +1224,53 @@
         }
       ],
       "specialRules": [
-        "Fear",
-        "Fearless",
-        "Strider",
-        "Tough(6)"
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2",
         "C2"
       ],
-      "cost": 190
+      "cost": 190,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "iUylh7S",
       "name": "Spider Robot",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Spider Fangs",
+          "id": "DIsYele",
+          "label": "Spider Fangs",
           "attacks": 4,
           "specialRules": [
             "AP(1)"
           ]
         },
         {
-          "name": "Stomp",
+          "id": "g0Vdw1J",
+          "label": "Stomp",
           "attacks": 1,
           "specialRules": [
             "AP(1)"
@@ -731,27 +1278,55 @@
         }
       ],
       "specialRules": [
-        "Fast",
-        "Fear",
-        "Fearless",
-        "Repair",
-        "Strider",
-        "Tough(6)"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "repair",
+          "name": "Repair",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2",
         "D2"
       ],
-      "cost": 200
+      "cost": 200,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "zBfqO2S",
       "name": "Spider Walker",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Antimatter Cannon",
+          "id": "bX9ll__",
+          "label": "Antimatter Cannon",
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -760,14 +1335,16 @@
           ]
         },
         {
-          "name": "Crushing Legs",
+          "id": "i8eiRn1",
+          "label": "Crushing Legs",
           "attacks": 3,
           "specialRules": [
             "AP(1)"
           ]
         },
         {
-          "name": "Stomp",
+          "id": "51GOEsf",
+          "label": "Stomp",
           "attacks": 2,
           "specialRules": [
             "AP(1)"
@@ -775,25 +1352,49 @@
         }
       ],
       "specialRules": [
-        "Fast",
-        "Fear",
-        "Fearless",
-        "Strider",
-        "Tough(12)"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "E2"
       ],
-      "cost": 380
+      "cost": 380,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "IYYxlcQ",
       "name": "Night Transport",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Twin Flux Cannon",
+          "id": "pYvPjKG",
+          "label": "Twin Flux Cannon",
           "attacks": 8,
           "range": 24,
           "specialRules": [
@@ -803,24 +1404,44 @@
         }
       ],
       "specialRules": [
-        "Aircraft",
-        "Fearless",
-        "Tough(6)",
-        "Transport(11)"
+        {
+          "key": "aircraft",
+          "name": "Aircraft",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        },
+        {
+          "key": "transport",
+          "name": "Transport",
+          "rating": "11"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2"
       ],
-      "cost": 275
+      "cost": 275,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "Ha-QbMV",
       "name": "Doom Fighter",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Death Beam",
+          "id": "qVzPC3O",
+          "label": "Death Beam",
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -829,7 +1450,8 @@
           ]
         },
         {
-          "name": "Twin Flux Cannon",
+          "id": "Byt0Odf",
+          "label": "Twin Flux Cannon",
           "attacks": 8,
           "range": 24,
           "specialRules": [
@@ -839,23 +1461,39 @@
         }
       ],
       "specialRules": [
-        "Aircraft",
-        "Fearless",
-        "Tough(6)"
+        {
+          "key": "aircraft",
+          "name": "Aircraft",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2"
       ],
-      "cost": 285
+      "cost": 285,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "mQDPk-h",
       "name": "Death Fortress",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Gauss Machinegun",
+          "id": "3P5wP8P",
+          "label": "Gauss Machinegun",
           "count": 4,
           "attacks": 3,
           "range": 24,
@@ -865,7 +1503,8 @@
           ]
         },
         {
-          "name": "Heavy Antimatter Cannon",
+          "id": "ORTNfNX",
+          "label": "Heavy Antimatter Cannon",
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -875,27 +1514,59 @@
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Fear",
-        "Fearless",
-        "Slow",
-        "Strider",
-        "Tough(18)",
-        "Transport(21)"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18"
+        },
+        {
+          "key": "transport",
+          "name": "Transport",
+          "rating": "21"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "F2"
       ],
-      "cost": 660
+      "cost": 660,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "F-9-7US",
       "name": "Fortress of Destruction",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Heavy Flux Cannon",
+          "id": "Mwb5b9s",
+          "label": "Heavy Flux Cannon",
           "count": 4,
           "attacks": 5,
           "range": 24,
@@ -906,29 +1577,69 @@
         }
       ],
       "specialRules": [
-        "Destruction Pulse (30�",
-        "A1",
-        "AP(4)",
-        "Deadly(6)) Ambush",
-        "Fear",
-        "Fearless",
-        "Slow",
-        "Strider",
-        "Tough(24)"
+        {
+          "key": "destruction-pulse-(30”",
+          "name": "Destruction Pulse (30”",
+          "rating": ""
+        },
+        {
+          "key": "a1",
+          "name": "A1",
+          "rating": ""
+        },
+        {
+          "key": "ap",
+          "name": "AP",
+          "rating": "4"
+        },
+        {
+          "key": "deadly(6))-ambush",
+          "name": "Deadly(6)) Ambush",
+          "rating": ""
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "G2"
       ],
-      "cost": 900
+      "cost": 900,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "6uTxLZc",
       "name": "Chained Tyrant Monolith",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Psychic Blast",
+          "id": "j5r5gxT",
+          "label": "Psychic Blast",
           "attacks": 2,
           "range": 24,
           "specialRules": [
@@ -937,14 +1648,16 @@
           ]
         },
         {
-          "name": "Crushing Legs",
+          "id": "vrGqI5Z",
+          "label": "Crushing Legs",
           "attacks": 6,
           "specialRules": [
             "AP(1)"
           ]
         },
         {
-          "name": "Stomp",
+          "id": "yeQAg91",
+          "label": "Stomp",
           "attacks": 3,
           "specialRules": [
             "AP(2)"
@@ -952,25 +1665,49 @@
         }
       ],
       "specialRules": [
-        "Fear",
-        "Fearless",
-        "Strider",
-        "Psychic Master",
-        "Tough(18)"
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "psychic-master",
+          "name": "Psychic Master",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "F2"
       ],
-      "cost": 725
+      "cost": 725,
+      "costMode": "manually",
+      "splitPageNumber": 2
     },
     {
+      "id": "OYckWw6",
       "name": "Technoward Monolith",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Monolith Beam",
+          "id": "BdkJ12p",
+          "label": "Monolith Beam",
           "attacks": 1,
           "range": 24,
           "specialRules": [
@@ -979,14 +1716,16 @@
           ]
         },
         {
-          "name": "Crushing Legs",
+          "id": "aenoosm",
+          "label": "Crushing Legs",
           "attacks": 3,
           "specialRules": [
             "AP(1)"
           ]
         },
         {
-          "name": "Stomp",
+          "id": "2CgGfSr",
+          "label": "Stomp",
           "attacks": 2,
           "specialRules": [
             "AP(1)"
@@ -994,47 +1733,101 @@
         }
       ],
       "specialRules": [
-        "Fear",
-        "Fearless",
-        "Strider",
-        "Psychic Warden",
-        "Tough(12)"
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "psychic-warden",
+          "name": "Psychic Warden",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A2"
       ],
-      "cost": 395
+      "cost": 395,
+      "costMode": "manually",
+      "splitPageNumber": 2
     }
   ],
-  "upgradeSets": [
+  "upgradePackages": [
     {
-      "id": "A1",
-      "upgrades": [
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
         {
-          "text": "Upgrade with one",
+          "label": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
             {
-              "name": "Wrist-Mounted Flamer",
-              "attacks": 6,
-              "range": 12,
-              "cost": 10
+              "id": "uhfCT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Wrist-Mounted Flamer (12”, A6)",
+              "gains": [
+                {
+                  "label": "Wrist-Mounted Flamer (12”, A6)",
+                  "name": "Wrist-Mounted Flamer",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Wrist-Mounted Laser Cannon",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 95
+              "id": "xdyZe",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 95,
+              "label": "Wrist-Mounted Laser Cannon (48”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Wrist-Mounted Laser Cannon (48”, A1, AP(4), Deadly(6))",
+                  "name": "Wrist-Mounted Laser Cannon",
+                  "attacks": 1,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace Staff-Shot and Staff",
+          "label": "Replace Staff-Shot and Staff",
           "type": "replace",
           "replaceWhat": [
             "Staff-Shot",
@@ -1042,69 +1835,107 @@
           ],
           "options": [
             {
-              "name": "Hyper Sword",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1)",
-                "Rending"
-              ],
-              "cost": 0
-            },
-            {
-              "name": "Void Sword",
-              "attacks": 6,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Phase Glaive",
-              "attacks": 3,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "War Scythe",
-              "attacks": 3,
-              "specialRules": [
-                "AP(2)",
-                "Deadly(3)"
-              ],
-              "cost": 10
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "B1",
-      "upgrades": [
-        {
-          "text": "Replace Staff-Shot and Staff",
-          "type": "replace",
-          "replaceWhat": [
-            "Staff-Shot",
-            "Staff"
-          ],
-          "options": [
-            {
-              "type": "combined",
-              "cost": 65,
-              "equipment": [
+              "id": "fXNh-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Hyper Sword (A3, AP(1), Rending)",
+              "gains": [
                 {
-                  "name": "CCW",
-                  "attacks": 3
-                },
-                {
-                  "name": "Heavy Gauss Cannon",
-                  "attacks": 1,
-                  "range": 36,
+                  "label": "Hyper Sword (A3, AP(1), Rending)",
+                  "name": "Hyper Sword",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
                   "specialRules": [
-                    "AP(4)",
-                    "Deadly(6)"
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "j6NHd",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Void Sword (A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Void Sword (A6, AP(1))",
+                  "name": "Void Sword",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "phMtM",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Phase Glaive (A3, AP(4))",
+              "gains": [
+                {
+                  "label": "Phase Glaive (A3, AP(4))",
+                  "name": "Phase Glaive",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DMcTH",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "War Scythe (A3, AP(2), Deadly(3))",
+              "gains": [
+                {
+                  "label": "War Scythe (A3, AP(2), Deadly(3))",
+                  "name": "War Scythe",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
                   ]
                 }
               ]
@@ -1114,214 +1945,509 @@
       ]
     },
     {
-      "id": "C1",
-      "upgrades": [
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
         {
-          "text": "Upgrade with one",
+          "label": "Replace Staff-Shot and Staff",
+          "type": "replace",
+          "replaceWhat": [
+            "Staff-Shot",
+            "Staff"
+          ],
+          "options": [
+            {
+              "id": "4vZmuHy",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 65,
+              "label": "CCW (A3) and Heavy Gauss Cannon (36”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "CCW (A3)",
+                  "name": "CCW",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                },
+                {
+                  "label": "Heavy Gauss Cannon (36”, A1, AP(4), Deadly(6))",
+                  "name": "Heavy Gauss Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
             {
-              "name": "Flame-Protocol",
-              "attacks": 6,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 20
+              "id": "npXmK",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Flame-Protocol (12”, A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Flame-Protocol (12”, A6, AP(1))",
+                  "name": "Flame-Protocol",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Dread-Protocol",
-              "attacks": 3,
-              "range": 18,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 20
+              "id": "X0u2X",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Dread-Protocol (18”, A3, AP(2))",
+              "gains": [
+                {
+                  "label": "Dread-Protocol (18”, A3, AP(2))",
+                  "name": "Dread-Protocol",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Solar-Protocol",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 20
+              "id": "ziKAW",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Solar-Protocol (24”, A1, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Solar-Protocol (24”, A1, AP(3), Deadly(3))",
+                  "name": "Solar-Protocol",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Nightmare-Protocol",
-              "specialRules": [
-                "Fear"
-              ],
-              "cost": 20
+              "id": "zuGZY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Nightmare-Protocol (Fear)",
+              "gains": [
+                {
+                  "label": "Nightmare-Protocol (Fear)",
+                  "name": "Nightmare-Protocol",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "fear",
+                      "name": "Fear",
+                      "rating": "",
+                      "label": "Fear",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade with one",
+          "label": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": []
         },
         {
-          "text": "Upgrade with any",
+          "label": "Upgrade with any",
           "type": "upgrade",
           "select": "any",
           "options": [
             {
-              "name": "Jetpack",
-              "specialRules": [
-                "Ambush",
-                "Flying"
-              ],
-              "cost": 15
+              "id": "Dw9-T",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Jetpack (Ambush, Flying)",
+              "gains": [
+                {
+                  "label": "Jetpack (Ambush, Flying)",
+                  "name": "Jetpack",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "ambush",
+                      "name": "Ambush",
+                      "rating": "",
+                      "label": "Ambush",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Bot Master",
-              "specialRules": [
-                "Psychic(1)"
-              ],
-              "cost": 20
+              "id": "VyoRo",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Bot Master (Psychic(1))",
+              "gains": [
+                {
+                  "label": "Bot Master (Psychic(1))",
+                  "name": "Bot Master",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "psychic",
+                      "name": "Psychic",
+                      "rating": "1",
+                      "label": "Psychic(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade with up to two",
+          "label": "Upgrade with up to two",
           "type": "upgrade",
           "select": 2,
           "options": [
             {
-              "name": "Technoslave",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 10
+              "id": "qK-Ce",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Technoslave (A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Technoslave (A3, AP(1))",
+                  "name": "Technoslave",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "D1",
-      "upgrades": [
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
         {
-          "text": "Upgrade Psychic(1)",
+          "label": "Upgrade Psychic(1)",
           "type": "upgradeRule",
           "replaceWhat": "Psychic(1)",
           "options": [
             {
-              "name": "Psychic(2)",
-              "specialRules": [
-                "Psychic(2)"
-              ],
-              "cost": 15
+              "id": "395QHHO",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Psychic(2)",
+              "gains": [
+                {
+                  "key": "psychic",
+                  "name": "Psychic",
+                  "rating": "2",
+                  "label": "Psychic(2)",
+                  "type": "ArmyBookRule"
+                }
+              ]
             },
             {
-              "name": "Psychic(3)",
-              "specialRules": [
-                "Psychic(3)"
-              ],
-              "cost": 30
+              "id": "9ts8Fmz",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Psychic(3)",
+              "gains": [
+                {
+                  "key": "psychic",
+                  "name": "Psychic",
+                  "rating": "3",
+                  "label": "Psychic(3)",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "E1",
-      "upgrades": [
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
         {
-          "text": "Replace any Gauss Rifle",
+          "label": "Replace any Gauss Rifle",
           "type": "replace",
           "affects": "any",
           "replaceWhat": "Gauss Rifle",
           "options": [
             {
-              "name": "Reaper Rifle",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 0
+              "id": "zbmO-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Reaper Rifle (12”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Reaper Rifle (12”, A1, AP(2))",
+                  "name": "Reaper Rifle",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace one Gauss Rifle",
+          "label": "Replace one Gauss Rifle",
           "type": "replace",
           "affects": 1,
           "replaceWhat": "Gauss Rifle",
           "options": [
             {
-              "name": "Flame Caster",
-              "attacks": 6,
-              "range": 12,
-              "cost": 5
+              "id": "5dDl2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Flame Caster (12”, A6)",
+              "gains": [
+                {
+                  "label": "Flame Caster (12”, A6)",
+                  "name": "Flame Caster",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Plasma Caster",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 5
+              "id": "Ky9yT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Plasma Caster (24”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Plasma Caster (24”, A1, AP(2))",
+                  "name": "Plasma Caster",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Fusion Caster",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 20
+              "id": "XUhCx",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Fusion Caster (12”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Caster (12”, A1, AP(4), Deadly(6))",
+                  "name": "Fusion Caster",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "F1",
-      "upgrades": [
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
         {
-          "text": "Replace all Gauss Rifles",
+          "label": "Replace all Gauss Rifles",
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Gauss Rifles",
           "options": [
             {
-              "name": "Flux Rifles",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(1)",
-                "Flux"
-              ],
-              "cost": 15
+              "id": "I5XQs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Flux Rifles (24”, A1, AP(1), Flux)",
+              "gains": [
+                {
+                  "label": "Flux Rifles (24”, A1, AP(1), Flux)",
+                  "name": "Flux Rifles",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "flux",
+                      "name": "Flux",
+                      "rating": "",
+                      "label": "Flux",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Heavy Gauss Rifles",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(1)",
-                "Rending"
-              ],
-              "cost": 15
+              "id": "D1Ljl",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Heavy Gauss Rifles (24”, A1, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Heavy Gauss Rifles (24”, A1, AP(1), Rending)",
+                  "name": "Heavy Gauss Rifles",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "G1",
-      "upgrades": [
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
         {
-          "text": "Replace all Rod-Shots and Rods",
+          "label": "Replace all Rod-Shots and Rods",
           "type": "replace",
           "affects": "all",
           "replaceWhat": [
@@ -1330,50 +2456,107 @@
           ],
           "options": [
             {
-              "name": "War Scythes",
-              "attacks": 2,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 5
-            },
-            {
-              "type": "combined",
+              "id": "RYA7m",
+              "type": "ArmyBookUpgradeOption",
               "cost": 5,
-              "equipment": [
+              "label": "War Scythes (A2, AP(4))",
+              "gains": [
                 {
-                  "name": "Antimatter Pistols",
-                  "attacks": 1,
-                  "range": 12,
+                  "label": "War Scythes (A2, AP(4))",
+                  "name": "War Scythes",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
                   "specialRules": [
-                    "AP(1)"
-                  ]
-                },
-                {
-                  "name": "Void Swords",
-                  "attacks": 4,
-                  "specialRules": [
-                    "AP(1)"
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
                   ]
                 }
               ]
             },
             {
-              "type": "combined",
-              "cost": 20,
-              "equipment": [
+              "id": "KZfs4n_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Antimatter Pistols (12”, A1, AP(1)) and Void Swords (A4, AP(1))",
+              "gains": [
                 {
-                  "name": "Hyper Swords",
-                  "attacks": 2,
+                  "label": "Antimatter Pistols (12”, A1, AP(1))",
+                  "name": "Antimatter Pistols",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
                   "specialRules": [
-                    "AP(1)",
-                    "Rending"
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
                   ]
                 },
                 {
-                  "name": "Combat Shields",
+                  "label": "Void Swords (A4, AP(1))",
+                  "name": "Void Swords",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
                   "specialRules": [
-                    "Shield Wall"
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "7Kmbl51",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Hyper Swords (A2, AP(1), Rending) and Combat Shields (Shield Wall)",
+              "gains": [
+                {
+                  "label": "Hyper Swords (A2, AP(1), Rending)",
+                  "name": "Hyper Swords",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Combat Shields (Shield Wall)",
+                  "name": "Combat Shields",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "shield-wall",
+                      "name": "Shield Wall",
+                      "rating": "",
+                      "label": "Shield Wall",
+                      "type": "ArmyBookRule"
+                    }
                   ]
                 }
               ]
@@ -1381,334 +2564,705 @@
           ]
         },
         {
-          "text": "Upgrade all models with",
+          "label": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
           "options": [
             {
-              "name": "Jetpacks",
-              "specialRules": [
-                "Ambush",
-                "Flying"
-              ],
-              "cost": 80
+              "id": "DkUFc",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 80,
+              "label": "Jetpacks (Ambush, Flying)",
+              "gains": [
+                {
+                  "label": "Jetpacks (Ambush, Flying)",
+                  "name": "Jetpacks",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "ambush",
+                      "name": "Ambush",
+                      "rating": "",
+                      "label": "Ambush",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "H1",
-      "upgrades": [
+      "uid": "H1",
+      "hint": "H1",
+      "sections": [
         {
-          "text": "Upgrade all models with",
+          "label": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
           "options": [
             {
-              "name": "Ambush",
-              "specialRules": [
-                "Ambush"
-              ],
-              "cost": 40
+              "id": "Ynt_q2m",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 40,
+              "label": "Ambush",
+              "gains": [
+                {
+                  "key": "ambush",
+                  "name": "Ambush",
+                  "rating": "",
+                  "label": "Ambush",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace one Metal Claws",
+          "label": "Replace one Metal Claws",
           "type": "replace",
           "affects": 1,
           "replaceWhat": "Metal Claws",
           "options": [
             {
-              "name": "Chainsaw Claws",
-              "attacks": 6,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
+              "id": "oAPr-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Chainsaw Claws (A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Chainsaw Claws (A6, AP(1))",
+                  "name": "Chainsaw Claws",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Plasma Claws",
-              "attacks": 3,
-              "specialRules": [
-                "AP(3)"
-              ],
-              "cost": 5
+              "id": "tiYoL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Plasma Claws (A3, AP(3))",
+              "gains": [
+                {
+                  "label": "Plasma Claws (A3, AP(3))",
+                  "name": "Plasma Claws",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Electric Claws",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1)",
-                "Deadly(3)"
-              ],
-              "cost": 5
+              "id": "8w4Wf",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Electric Claws (A3, AP(1), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Electric Claws (A3, AP(1), Deadly(3))",
+                  "name": "Electric Claws",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "I1",
-      "upgrades": [
+      "uid": "I1",
+      "hint": "I1",
+      "sections": [
         {
-          "text": "Upgrade all models with",
+          "label": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
           "options": [
             {
-              "name": "Hunter",
-              "specialRules": [
-                "Hunter"
-              ],
-              "cost": 15
+              "id": "5LXH5fg",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Hunter",
+              "gains": [
+                {
+                  "key": "hunter",
+                  "name": "Hunter",
+                  "rating": "",
+                  "label": "Hunter",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "J1",
-      "upgrades": [
+      "uid": "J1",
+      "hint": "J1",
+      "sections": [
         {
-          "text": "Replace any Twin Gauss Rifle",
+          "label": "Replace any Twin Gauss Rifle",
           "type": "replace",
           "affects": "any",
           "replaceWhat": "Twin Gauss Rifle",
           "options": [
             {
-              "name": "Twin Flux Rifle",
-              "attacks": 2,
-              "range": 24,
-              "specialRules": [
-                "AP(1)",
-                "Flux"
-              ],
-              "cost": 5
+              "id": "YHKkF",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Twin Flux Rifle (24”, A2, AP(1), Flux)",
+              "gains": [
+                {
+                  "label": "Twin Flux Rifle (24”, A2, AP(1), Flux)",
+                  "name": "Twin Flux Rifle",
+                  "attacks": 2,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "flux",
+                      "name": "Flux",
+                      "rating": "",
+                      "label": "Flux",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Antimatter Rifle",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(1)",
-                "Blast(3)"
-              ],
-              "cost": 5
+              "id": "IHXEP",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Antimatter Rifle (24”, A1, AP(1), Blast(3))",
+              "gains": [
+                {
+                  "label": "Antimatter Rifle (24”, A1, AP(1), Blast(3))",
+                  "name": "Antimatter Rifle",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "K1",
-      "upgrades": [
+      "uid": "K1",
+      "hint": "K1",
+      "sections": [
         {
-          "text": "Upgrade any model with one",
+          "label": "Upgrade any model with one",
           "type": "upgrade",
           "affects": "any",
           "select": 1,
           "options": [
             {
-              "name": "Antimatter Pistol",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
+              "id": "T11vf",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Antimatter Pistol (12”, A1, AP(1))",
+              "gains": [
+                {
+                  "label": "Antimatter Pistol (12”, A1, AP(1))",
+                  "name": "Antimatter Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Death Gaze",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "Deadly(3)"
-              ],
-              "cost": 5
+              "id": "9szCC",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Death Gaze (12”, A1, Deadly(3))",
+              "gains": [
+                {
+                  "label": "Death Gaze (12”, A1, Deadly(3))",
+                  "name": "Death Gaze",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Whip Coil",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1)",
-                "Rending"
-              ],
-              "cost": 15
+              "id": "-ruNs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Whip Coil (A3, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Whip Coil (A3, AP(1), Rending)",
+                  "name": "Whip Coil",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "L1",
-      "upgrades": [
+      "uid": "L1",
+      "hint": "L1",
+      "sections": [
         {
-          "text": "Replace one 2x Arm Blades",
+          "label": "Replace one 2x Arm Blades",
           "type": "replace",
           "affects": 1,
           "replaceWhat": "2x Arm Blades",
           "options": [
             {
-              "name": "Heavy Armblade",
-              "attacks": 4,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 10
+              "id": "HSFHN",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Heavy Armblade (A4, AP(4))",
+              "gains": [
+                {
+                  "label": "Heavy Armblade (A4, AP(4))",
+                  "name": "Heavy Armblade",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade all models with",
+          "label": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
           "options": [
             {
-              "name": "Plasmabot",
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 25
+              "id": "7aqXA",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Plasmabot (Rending)",
+              "gains": [
+                {
+                  "label": "Plasmabot (Rending)",
+                  "name": "Plasmabot",
+                  "content": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "M1",
-      "upgrades": [
+      "uid": "M1",
+      "hint": "M1",
+      "sections": [
         {
-          "text": "Replace one Gauss Cannon",
+          "label": "Replace one Gauss Cannon",
           "type": "replace",
           "affects": 1,
           "replaceWhat": "Gauss Cannon",
           "options": [
             {
-              "name": "Heavy Gauss Cannon",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 55
+              "id": "Y5bc2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 55,
+              "label": "Heavy Gauss Cannon (36”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Heavy Gauss Cannon (36”, A1, AP(4), Deadly(6))",
+                  "name": "Heavy Gauss Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace all Gauss Cannons",
+          "label": "Replace all Gauss Cannons",
           "type": "replace",
           "affects": "all",
           "replaceWhat": "Gauss Cannons",
           "options": [
             {
-              "name": "Hyper Swords",
-              "count": 2,
-              "attacks": 3,
-              "specialRules": [
-                "AP((1)",
-                "Rending"
-              ],
-              "cost": 25
+              "id": "Ye3LG",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "2x Hyper Swords (A3, AP((1), Rending)",
+              "gains": [
+                {
+                  "label": "Hyper Swords (A3, AP((1), Rending)",
+                  "name": "Hyper Swords",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap(",
+                      "name": "AP(",
+                      "rating": "1",
+                      "label": "AP((1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Hyper Swords (A3, AP((1), Rending)",
+                  "name": "Hyper Swords",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap(",
+                      "name": "AP(",
+                      "rating": "1",
+                      "label": "AP((1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "N1",
-      "upgrades": [
+      "uid": "N1",
+      "hint": "N1",
+      "sections": [
         {
-          "text": "Replace Heavy Gauss Cannon",
+          "label": "Replace Heavy Gauss Cannon",
           "type": "replace",
           "replaceWhat": "Heavy Gauss Cannon",
           "options": [
             {
-              "name": "Exterminator Cannon",
-              "attacks": 3,
-              "range": 36,
-              "specialRules": [
-                "AP(2)",
-                "Blast(3)"
-              ],
-              "cost": 35
+              "id": "LKF3v",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Exterminator Cannon (36”, A3, AP(2), Blast(3))",
+              "gains": [
+                {
+                  "label": "Exterminator Cannon (36”, A3, AP(2), Blast(3))",
+                  "name": "Exterminator Cannon",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "A2",
-      "upgrades": [
+      "uid": "A2",
+      "hint": "A2",
+      "sections": [
         {
-          "text": "Upgrade with",
+          "label": "Upgrade with",
           "type": "upgrade",
           "options": [
             {
-              "name": "Repair Bots",
-              "specialRules": [
-                "Regeneration"
-              ],
-              "cost": 35
+              "id": "k7hL7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Repair Bots (Regeneration)",
+              "gains": [
+                {
+                  "label": "Repair Bots (Regeneration)",
+                  "name": "Repair Bots",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "B2",
-      "upgrades": [
+      "uid": "B2",
+      "hint": "B2",
+      "sections": [
         {
-          "text": "Replace Gauss Cannon",
+          "label": "Replace Gauss Cannon",
           "type": "replace",
           "replaceWhat": "Gauss Cannon",
           "options": [
             {
-              "name": "Flux Cannon",
-              "attacks": 4,
-              "range": 24,
-              "specialRules": [
-                "AP(2)",
-                "Flux"
-              ],
-              "cost": 30
+              "id": "qp4lF",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Flux Cannon (24”, A4, AP(2), Flux)",
+              "gains": [
+                {
+                  "label": "Flux Cannon (24”, A4, AP(2), Flux)",
+                  "name": "Flux Cannon",
+                  "attacks": 4,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "flux",
+                      "name": "Flux",
+                      "rating": "",
+                      "label": "Flux",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace Twin Flux Cannon",
+          "label": "Replace Twin Flux Cannon",
           "type": "replace",
           "replaceWhat": "Twin Flux Cannon",
           "options": []
         },
         {
-          "text": "Upgrade Overseer Pilot with one",
+          "label": "Upgrade Overseer Pilot with one",
           "type": "upgrade",
           "select": 1,
           "replaceWhat": "Overseer Pilot",
           "options": [
             {
-              "name": "Wrist-Mounted Flamer",
-              "attacks": 6,
-              "range": 12,
-              "cost": 10
+              "id": "rX48_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Wrist-Mounted Flamer (12”, A6)",
+              "gains": [
+                {
+                  "label": "Wrist-Mounted Flamer (12”, A6)",
+                  "name": "Wrist-Mounted Flamer",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Wrist-Mounted Laser Cannon",
-              "attacks": 1,
-              "range": 48,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 95
+              "id": "llhw4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 95,
+              "label": "Wrist-Mounted Laser Cannon (48”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Wrist-Mounted Laser Cannon (48”, A1, AP(4), Deadly(6))",
+                  "name": "Wrist-Mounted Laser Cannon",
+                  "attacks": 1,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace Staff-Shot and Staff",
+          "label": "Replace Staff-Shot and Staff",
           "type": "replace",
           "replaceWhat": [
             "Staff-Shot",
@@ -1716,236 +3270,511 @@
           ],
           "options": [
             {
-              "name": "Hyper Sword",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1)",
-                "Rending"
-              ],
-              "cost": 0
+              "id": "spe35",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Hyper Sword (A3, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Hyper Sword (A3, AP(1), Rending)",
+                  "name": "Hyper Sword",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Void Sword",
-              "attacks": 6,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
+              "id": "DAYr4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Void Sword (A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Void Sword (A6, AP(1))",
+                  "name": "Void Sword",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Phase Glaive",
-              "attacks": 3,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 5
+              "id": "uFMmM",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Phase Glaive (A3, AP(4))",
+              "gains": [
+                {
+                  "label": "Phase Glaive (A3, AP(4))",
+                  "name": "Phase Glaive",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "War Scythe",
-              "attacks": 3,
-              "specialRules": [
-                "AP(2)",
-                "Deadly(3)"
-              ],
-              "cost": 10
+              "id": "960EK",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "War Scythe (A3, AP(2), Deadly(3))",
+              "gains": [
+                {
+                  "label": "War Scythe (A3, AP(2), Deadly(3))",
+                  "name": "War Scythe",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade Overseer Pilot",
+          "label": "Upgrade Overseer Pilot",
           "type": "upgradeRule",
           "replaceWhat": "Overseer Pilot",
           "options": [
             {
-              "name": "Royal March Order",
-              "specialRules": [
-                "Royal March Order"
-              ],
-              "cost": 60
+              "id": "xXInsxd",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Royal March Order",
+              "gains": [
+                {
+                  "key": "royal-march-order",
+                  "name": "Royal March Order",
+                  "rating": "",
+                  "label": "Royal March Order",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "C2",
-      "upgrades": [
+      "uid": "C2",
+      "hint": "C2",
+      "sections": [
         {
-          "text": "Replace 2x Atom Beam",
+          "label": "Replace 2x Atom Beam",
           "type": "replace",
           "affects": 2,
           "replaceWhat": "Atom Beam",
           "options": [
             {
-              "name": "Doom Blaster",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(4)",
-                "Blast(3)"
-              ],
-              "cost": 20
+              "id": "iwzNk",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Doom Blaster (24”, A1, AP(4), Blast(3))",
+              "gains": [
+                {
+                  "label": "Doom Blaster (24”, A1, AP(4), Blast(3))",
+                  "name": "Doom Blaster",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade with one",
+          "label": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
             {
-              "name": "Twin Gauss Rifles",
-              "attacks": 2,
-              "range": 24,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 10
+              "id": "vXLuS",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Twin Gauss Rifles (24”,A2,Rending)",
+              "gains": [
+                {
+                  "label": "Twin Gauss Rifles (24”,A2,Rending)",
+                  "name": "Twin Gauss Rifles",
+                  "attacks": 2,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Tripod Queen",
-              "specialRules": [
-                "Royal March Order"
-              ],
-              "cost": 60
+              "id": "vpEJX",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Tripod Queen (Royal March Order)",
+              "gains": [
+                {
+                  "label": "Tripod Queen (Royal March Order)",
+                  "name": "Tripod Queen",
+                  "content": [
+                    {
+                      "key": "royal-march-order",
+                      "name": "Royal March Order",
+                      "rating": "",
+                      "label": "Royal March Order",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             },
             {
-              "name": "Reanimator",
-              "specialRules": [
-                "Reanimator"
-              ],
-              "cost": 90
+              "id": "Ieq91AT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 90,
+              "label": "Reanimator",
+              "gains": [
+                {
+                  "key": "reanimator",
+                  "name": "Reanimator",
+                  "rating": "",
+                  "label": "Reanimator",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "D2",
-      "upgrades": [
+      "uid": "D2",
+      "hint": "D2",
+      "sections": [
         {
-          "text": "Upgrade with up to two",
+          "label": "Upgrade with up to two",
           "type": "upgrade",
           "select": 2,
           "options": [
             {
-              "name": "Antimatter Rifle",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(1)",
-                "Blast(3)"
-              ],
-              "cost": 20
+              "id": "xJnD1",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Antimatter Rifle (24”, A1, AP(1), Blast(3))",
+              "gains": [
+                {
+                  "label": "Antimatter Rifle (24”, A1, AP(1), Blast(3))",
+                  "name": "Antimatter Rifle",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade with any",
+          "label": "Upgrade with any",
           "type": "upgrade",
           "select": "any",
           "options": [
             {
-              "name": "Bot Fabricator",
-              "specialRules": [
-                "Bot Fabricator"
-              ],
-              "cost": 100
+              "id": "tpf2hYu",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 100,
+              "label": "Bot Fabricator",
+              "gains": [
+                {
+                  "key": "bot-fabricator",
+                  "name": "Bot Fabricator",
+                  "rating": "",
+                  "label": "Bot Fabricator",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "E2",
-      "upgrades": [
+      "uid": "E2",
+      "hint": "E2",
+      "sections": [
         {
-          "text": "Replace Antimatter Cannon",
+          "label": "Replace Antimatter Cannon",
           "type": "replace",
           "replaceWhat": "Antimatter Cannon",
           "options": [
             {
-              "name": "Fusion Ray",
-              "attacks": 2,
-              "range": 24,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 25
+              "id": "XoFG_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Fusion Ray (24”,A2,AP(4),Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Ray (24”,A2,AP(4),Deadly(6))",
+                  "name": "Fusion Ray",
+                  "attacks": 2,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Heavy Gauss Cannon",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(6)"
-              ],
-              "cost": 50
+              "id": "j8X6O",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 50,
+              "label": "Heavy Gauss Cannon (36”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Heavy Gauss Cannon (36”, A1, AP(4), Deadly(6))",
+                  "name": "Heavy Gauss Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade with",
+          "label": "Upgrade with",
           "type": "upgrade",
           "options": [
             {
-              "name": "Repair Bots",
-              "specialRules": [
-                "Regeneration"
-              ],
-              "cost": 70
+              "id": "2lhFQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 70,
+              "label": "Repair Bots (Regeneration)",
+              "gains": [
+                {
+                  "label": "Repair Bots (Regeneration)",
+                  "name": "Repair Bots",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "F2",
-      "upgrades": [
+      "uid": "F2",
+      "hint": "F2",
+      "sections": [
         {
-          "text": "Upgrade with",
+          "label": "Upgrade with",
           "type": "upgrade",
           "options": [
             {
-              "name": "Repair Bots",
-              "specialRules": [
-                "Regeneration"
-              ],
-              "cost": 110
+              "id": "3RLAs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 110,
+              "label": "Repair Bots (Regeneration)",
+              "gains": [
+                {
+                  "label": "Repair Bots (Regeneration)",
+                  "name": "Repair Bots",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "G2",
-      "upgrades": [
+      "uid": "G2",
+      "hint": "G2",
+      "sections": [
         {
-          "text": "Upgrade with",
+          "label": "Upgrade with",
           "type": "upgrade",
           "options": [
             {
-              "name": "Repair Bots",
-              "specialRules": [
-                "Regeneration"
-              ],
-              "cost": 145
+              "id": "gvwok",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 145,
+              "label": "Repair Bots (Regeneration)",
+              "gains": [
+                {
+                  "label": "Repair Bots (Regeneration)",
+                  "name": "Repair Bots",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace Destruction Pulse",
+          "label": "Replace Destruction Pulse",
           "type": "replace",
           "replaceWhat": "Destruction Pulse",
           "options": [
             {
-              "name": "Nanobot Wraith-Shard",
-              "specialRules": [
-                "Psychic(3)"
-              ],
-              "cost": -10
+              "id": "yzsZV",
+              "type": "ArmyBookUpgradeOption",
+              "cost": -10,
+              "label": "Nanobot Wraith-Shard (Psychic(3))",
+              "gains": [
+                {
+                  "label": "Nanobot Wraith-Shard (Psychic(3))",
+                  "name": "Nanobot Wraith-Shard",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "psychic",
+                      "name": "Psychic",
+                      "rating": "3",
+                      "label": "Psychic(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -1954,96 +3783,234 @@
   ],
   "specialRules": [
     {
+      "id": "pSr8a",
+      "key": "darkness-protocol",
+      "hint": "The hero and his unit get the Ambush special rule.",
       "name": "Darkness-Protocol",
+      "tags": [],
+      "label": "Darkness-Protocol",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "The hero and his unit get the Ambush special rule."
     },
     {
+      "id": "goBsu",
+      "key": "flux",
+      "hint": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4.",
       "name": "Flux",
+      "tags": [],
+      "label": "Flux",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4."
     },
     {
+      "id": "UuJJI",
+      "key": "gloom-protocol",
+      "hint": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls.",
       "name": "Gloom-Protocol",
+      "tags": [],
+      "label": "Gloom-Protocol",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls."
     },
     {
+      "id": "IamYI",
+      "key": "hunter",
+      "hint": "On a round in which this unit arrives from Ambush it gets AP(+3).",
       "name": "Hunter",
+      "tags": [],
+      "label": "Hunter",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "On a round in which this unit arrives from Ambush it gets AP(+3)."
     },
     {
+      "id": "91Ox0",
+      "key": "regen-protocol",
+      "hint": "The hero and his unit may ignore wounds from Regeneration on 4+.",
       "name": "Regen-Protocol",
+      "tags": [],
+      "label": "Regen-Protocol",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "The hero and his unit may ignore wounds from Regeneration on 4+."
     },
     {
+      "id": "SQ3QM",
+      "key": "royal-march",
+      "hint": "The hero and his unit may ignore the Slow special rule.",
       "name": "Royal March",
+      "tags": [],
+      "label": "Royal March",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "The hero and his unit may ignore the Slow special rule."
     },
     {
+      "id": "lTBC4",
+      "key": "shield-wall",
+      "hint": "Enemies get -1 to hit when they attack units where all models have this rule.",
       "name": "Shield Wall",
+      "tags": [],
+      "label": "Shield Wall",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "Enemies get -1 to hit when they attack units where all models have this rule."
     },
     {
+      "id": "lC-vb",
+      "key": "bot-fabricator",
+      "hint": "When this unit is activated place 1 Bot Swarm fully within 6” of this unit.",
       "name": "Bot Fabricator",
-      "description": "When this unit is activated place 1 Bot Swarm fully within 6� of this unit."
+      "tags": [],
+      "label": "Bot Fabricator",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When this unit is activated place 1 Bot Swarm fully within 6” of this unit."
     },
     {
+      "id": "a9Tee",
+      "key": "flux",
+      "hint": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4.",
       "name": "Flux",
+      "tags": [],
+      "label": "Flux",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4."
     },
     {
+      "id": "Elj6X",
+      "key": "gloom-protocol",
+      "hint": "This model may block spells as if it had the Psychic(2) special rule.",
       "name": "Gloom-Protocol",
+      "tags": [],
+      "label": "Gloom-Protocol",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "This model may block spells as if it had the Psychic(2) special rule."
     },
     {
+      "id": "L9B5L",
+      "key": "psychic-master",
+      "hint": "This model counts as having the Psychic(3) rule, and may cast or block up to three spells each round, however for every unmodified result of 1 it takes 3 wounds.",
       "name": "Psychic Master",
+      "tags": [],
+      "label": "Psychic Master",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "This model counts as having the Psychic(3) rule, and may cast or block up to three spells each round, however for every unmodified result of 1 it takes 3 wounds."
     },
     {
+      "id": "KOlE4",
+      "key": "psychic-warden",
+      "hint": "Whenever a model within 6” would take wounds from Psychic Master, you may put those wounds on this model instead.",
       "name": "Psychic Warden",
-      "description": "Whenever a model within 6� would take wounds from Psychic Master, you may put those wounds on this model instead."
+      "tags": [],
+      "label": "Psychic Warden",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Whenever a model within 6” would take wounds from Psychic Master, you may put those wounds on this model instead."
     },
     {
+      "id": "aQlHW",
+      "key": "reanimator",
+      "hint": "When this unit is activated pick one friendly unit within 12”, which may ignore wounds from Regeneration on 4+ next time it takes wounds.",
       "name": "Reanimator",
-      "description": "When this unit is activated pick one friendly unit within 12�, which may ignore wounds from Regeneration on 4+ next time it takes wounds."
+      "tags": [],
+      "label": "Reanimator",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When this unit is activated pick one friendly unit within 12”, which may ignore wounds from Regeneration on 4+ next time it takes wounds."
     },
     {
+      "id": "P0b5Z",
+      "key": "repair",
+      "hint": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target.",
       "name": "Repair",
-      "description": "Once per turn, if within 2� of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+      "tags": [],
+      "label": "Repair",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
     },
     {
+      "id": "cesbb",
+      "key": "royal-march-order",
+      "hint": "When this model is activated pick one friendly unit within 12”, which may ignore the Slow special rule next time it moves.",
       "name": "Royal March Order",
-      "description": "When this model is activated pick one friendly unit within 12�, which may ignore the Slow special rule next time it moves."
+      "tags": [],
+      "label": "Royal March Order",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When this model is activated pick one friendly unit within 12”, which may ignore the Slow special rule next time it moves."
     }
   ],
   "spells": [
     {
+      "id": "NSeA2",
       "name": "Star Bots",
-      "test": "4+",
-      "description": "Target enemy unit within 12� gets -1 to melee next time it fights."
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” gets -1 to melee next time it fights."
     },
     {
+      "id": "QNaXu",
       "name": "Meteor Bots",
-      "test": "4+",
-      "description": "Target enemy unit within 12� takes 2 automatic hits with AP(2)."
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
     },
     {
+      "id": "5P21I",
       "name": "Assault Bots",
-      "test": "5+",
-      "description": "Target friendly unit within 12� may immediately move by up to 3�."
+      "threshold": 5,
+      "effect": "Target friendly unit within 12” may immediately move by up to 3”."
     },
     {
+      "id": "al3Ff",
       "name": "Thunderbolt Bots",
-      "test": "5+",
-      "description": "Target enemy model within 12� takes 4 automatic hits."
+      "threshold": 5,
+      "effect": "Target enemy model within 12” takes 4 automatic hits."
     },
     {
+      "id": "-dF1c",
       "name": "Arrow Bots",
-      "test": "6+",
-      "description": "Target enemy unit within 18� gets -2 to hit next time it shoots."
+      "threshold": 6,
+      "effect": "Target enemy unit within 18” gets -2 to hit next time it shoots."
     },
     {
+      "id": "nSS6g",
       "name": "Fire Bots",
-      "test": "6+",
-      "description": "Target 2 enemy units within 6� take 6 automatic hits with AP(1) each."
+      "threshold": 6,
+      "effect": "Target 2 enemy units within 6” take 6 automatic hits with AP(1) each."
     }
-  ]
+  ],
+  "modifiedAt": "2021-09-28T14:15:33.407Z",
+  "official": true,
+  "public": false,
+  "versionString": "draft",
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "grimdark-future",
+  "fullname": "Grimdark Future",
+  "aberration": "GF",
+  "universe": "Grimdark Future",
+  "shortname": "Grimdark Future"
 }

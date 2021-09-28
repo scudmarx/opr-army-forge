@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import DataParsingService from "../services/DataParsingService";
 import { Button } from "@mui/material";
 
-export const dataToolVersion = "0.5.2";
+export const dataToolVersion = "0.5.3";
 
 export default function Data() {
 
@@ -36,11 +36,11 @@ export default function Data() {
         }
 
         try {
-            const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units), 1);
-            const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2), 2);
-            const parsedUnits3: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units3), 3);
-            const parsedUnits4: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units4), 4);
-            const parsedUnits5: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units5), 5);
+            const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units, 1), 1);
+            const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2, 2), 2);
+            const parsedUnits3: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units3, 3), 3);
+            const parsedUnits4: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units4, 4), 4);
+            const parsedUnits5: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units5, 5), 5);
             const parsedUpgrades = DataParsingService.parseUpgrades(upgrades);
             const parsedRules = DataParsingService.parseRules(rules);
             const parsedSpells = DataParsingService.parseSpells(spells);

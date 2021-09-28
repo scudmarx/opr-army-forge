@@ -325,12 +325,16 @@ test("Parse melee weapon with rules and cost", () => {
             {
                 key: "rending",
                 name: "Rending",
-                rating: ""
+                label: "Rending",
+                rating: "",
+                type: "ArmyBookRule"
             },
             {
                 key: "ap",
                 name: "AP",
-                rating: "1"
+                label: "AP(1)",
+                rating: "1",
+                type: "ArmyBookRule"
             }
         ],
         type: "ArmyBookWeapon"
@@ -349,7 +353,9 @@ test("Parse Free weapon", () => {
             {
                 key: "ap",
                 name: "AP",
-                rating: "1"
+                rating: "1",
+                label: "AP(1)",
+                type: "ArmyBookRule"
             }
         ],
         type: "ArmyBookWeapon"
@@ -446,8 +452,10 @@ test("Parse weapon pairing with non-standard rules", () => {
                     {
                         key: "defense",
                         name: "Defense",
+                        label: "Defense +1 in melee",
                         rating: "1",
-                        condition: "in melee"
+                        condition: "in melee",
+                        type: "ArmyBookRule"
                     }
                 ],
                 type: "ArmyBookItem"
@@ -479,7 +487,9 @@ test("Parse weapon pairing", () => {
                     {
                         key: "ap",
                         name: "AP",
-                        rating: "2"
+                        rating: "2",
+                        label: "AP(2)",
+                        type: "ArmyBookRule"
                     }
                 ],
                 type: "ArmyBookWeapon"
