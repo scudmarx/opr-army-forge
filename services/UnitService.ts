@@ -32,8 +32,6 @@ export default class UnitService {
             .getAllUpgrades(unit)
             .filter(isWeapon)
             .concat(itemWeapons) as (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[];
-        
-            console.log(groupBy(all, "name"));
 
         return all;
     }

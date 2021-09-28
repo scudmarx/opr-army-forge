@@ -9,6 +9,7 @@ import { Button, Chip, IconButton, Paper } from "@mui/material";
 import { useRouter } from "next/router";
 import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
+import { distinct } from "../services/Helpers";
 
 export function MainList({ onSelected }) {
 
@@ -34,36 +35,42 @@ export function MainList({ onSelected }) {
       <ul>
         {
           // For each selected unit
-          list.units.map((s: ISelectedUnit, index: number) => (
-            <li key={index}
-              onClick={() => handleSelectUnit(s)} >
-              <Paper square elevation={1} style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "#D7E3EB" : null) }}>
-                <div className="py-2 px-4 is-flex is-flex-grow-1 is-align-items-center">
-                  <div className="is-flex-grow-1">
-                    <p className="mb-1" style={{ fontWeight: 600 }}>{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
-                    <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                      <p>Qua {s.quality}+</p>
-                      <p className="ml-2">Def {s.defense}+</p>
+          list.units.map((s: ISelectedUnit, index: number) => {
+
+            const equipmentWeaponNames = s.equipment.filter(e => e.count > 0).map((eqp, i) => eqp.label);
+            const upgradeWeaponNames = UnitService.getAllUpgradeWeapons(s).map(u => u.name);
+
+            return (
+              <li key={index}
+                onClick={() => handleSelectUnit(s)} >
+                <Paper square elevation={1} style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "#D7E3EB" : null) }}>
+                  <div className="py-2 px-4 is-flex is-flex-grow-1 is-align-items-center">
+                    <div className="is-flex-grow-1">
+                      <p className="mb-1" style={{ fontWeight: 600 }}>{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
+                      <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                        <p>Qua {s.quality}+</p>
+                        <p className="ml-2">Def {s.defense}+</p>
+                      </div>
                     </div>
+                    <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>
+                    <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(s); }}>
+                      <RemoveIcon />
+                    </IconButton>
                   </div>
-                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>
-                  <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(s); }}>
-                    <RemoveIcon />
-                  </IconButton>
-                </div>
-                <div className="pb-2 px-4" style={{ fontSize: "14px", color: "#666666" }}>
-                  <div>
-                    {s.equipment.filter(e => e.count > 0).map((eqp, i) => (
-                      <span key={i}>
-                        {i > 0 ? ", " : ""}{eqp.label}
-                      </span>
-                    ))}
+                  <div className="pb-2 px-4" style={{ fontSize: "14px", color: "#666666" }}>
+                    <div>
+                      {distinct(equipmentWeaponNames.concat(upgradeWeaponNames)).map((label, i) => (
+                        <span key={i}>
+                          {i > 0 ? ", " : ""}{label}
+                        </span>
+                      ))}
+                    </div>
+                    <RuleList specialRules={s.specialRules.concat(UnitService.getAllUpgradedRules(s))} />
                   </div>
-                  <RuleList specialRules={s.specialRules.concat(UnitService.getAllUpgradedRules(s))} />
-                </div>
-              </Paper>
-            </li>
-          ))
+                </Paper>
+              </li>
+            );
+          })
         }
       </ul>
     </>
