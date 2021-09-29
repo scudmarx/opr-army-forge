@@ -104,7 +104,6 @@ export default class DataParsingService {
                         groupIndex++;
 
                     const groupId = setLetter + groupIndex;
-                    console.log(groupId);
 
                     results[groupId] = {
                         uid: groupId,
@@ -172,25 +171,32 @@ export default class DataParsingService {
                 /^(.+)\[(\d+)\]\s(\d+\+|-)\s(\d+\+|-)\s(.*?\)\s|-)(.+?)((?:[A-Z],?\s?|-\s?)+)(\d+)pt/gm.exec(
                     line
                 );
+            try {
 
-            const parsed = {
-                id: nanoid(7),
-                name: parsedUnit[1].trim(),
-                size: parseInt(parsedUnit[2]),
-                quality: parseInt(parsedUnit[3]),
-                defense: parseInt(parsedUnit[4]),
-                equipment: DataParsingService.parseEquipmentList(parsedUnit[5]),
-                specialRules: parsedUnit[6].split(",").map((s) => s.trim()).map(this.parseRule),
-                upgrades:
-                    parsedUnit[7] && parsedUnit[7].trim() === "-"
-                        ? []
-                        : parsedUnit[7].split(",").map((s) => s.trim()),
-                cost: parseInt(parsedUnit[8]),
-                costMode: "manually",
-                splitPageNumber: pageNumber
-            };
+                const parsed = {
+                    id: nanoid(7),
+                    name: parsedUnit[1].trim(),
+                    size: parseInt(parsedUnit[2]),
+                    quality: parseInt(parsedUnit[3]),
+                    defense: parseInt(parsedUnit[4]),
+                    equipment: DataParsingService.parseEquipmentList(parsedUnit[5]),
+                    specialRules: parsedUnit[6].split(",").map((s) => s.trim()).map(this.parseRule),
+                    upgrades:
+                        parsedUnit[7] && parsedUnit[7].trim() === "-"
+                            ? []
+                            : parsedUnit[7].split(",").map((s) => s.trim()),
+                    cost: parseInt(parsedUnit[8]),
+                    costMode: "manually",
+                    splitPageNumber: pageNumber
+                };
 
-            results.push(parsed);
+                results.push(parsed);
+            }
+            catch (e) {
+                console.error(e);
+                console.log(line);
+                throw e;
+            }
         }
 
         return results;
