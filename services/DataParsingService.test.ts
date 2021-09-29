@@ -983,3 +983,8 @@ Cleaving Rune (6+): Target 2 enemy units within 12” take 6 automatic hits each
 
 //#endregion
 
+test("Prime bros tank parse", () => {
+    const input = `Combat Bike (Fast, Impact(1), Twin Assault Rifle (24”,A2)) +5pts`;
+    const result = parse(input, true)
+    //expect(result).toStrictEqual({});
+})

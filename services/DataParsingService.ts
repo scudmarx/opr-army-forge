@@ -164,6 +164,7 @@ export default class DataParsingService {
     }
 
     public static parseUnits(units: string, pageNumber: number) {
+
         const results = [];
 
         for (let line of units.split("\n").filter((l) => !!l)) {
@@ -298,11 +299,36 @@ export default class DataParsingService {
                 // If it's words only, it's a rule
                 // or Parameter rules like Impact(1) Tough(2)
                 if (/^[^\(\)]+$/.test(rule) || /\w+\(\d+\)/.test(rule)) {
-                    mountRules.push(rule);
+                    mountRules.push(this.parseRule(rule));
                 } else { // It's a weapon
-                    mountWeapon = this.parseEquipment(mountName + " " + rule, isUpgrade);
+                    mountWeapon = this.parseEquipment(rule, isUpgrade);
                 }
             }
+
+            return {
+                id: nanoid(7),
+                cost: parseInt(mountMatch[3]),
+                label: part.replace(costRegex, ""),
+                gains: [
+                    {
+                        label: mountName,
+                        name: mountName,
+                        content: mountRules.map(r => ({
+                            ...r,
+                            label: r.name,
+                            rating: r.rating || "",
+                            condition: "",
+                            modify: false
+                        })).concat([
+                            {
+                                ...mountWeapon
+                            }
+                        ]).filter(e => !!e),
+                        type: "ArmyBookItem"
+                    },
+
+                ]
+            };
 
             return {
                 id: nanoid(7),
@@ -420,8 +446,6 @@ export default class DataParsingService {
 
     public static parseMount(text: string, isUpgrade: boolean): any {
 
-        console.log(text);
-        debugger;
         const textParts = text.split(" - ");
         const name = textParts[0].trim();
         const match = /(.+)([+-]\d+)pts$/.exec(textParts[1]);
