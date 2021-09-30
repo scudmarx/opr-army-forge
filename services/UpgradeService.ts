@@ -4,6 +4,7 @@ import "../extensions";
 import DataParsingService from "./DataParsingService";
 import RulesService from "./RulesService";
 import { loadOptions } from "@babel/core";
+import { current } from "immer";
 
 export default class UpgradeService {
     static calculateListTotal(list: ISelectedUnit[]) {
@@ -195,7 +196,7 @@ export default class UpgradeService {
                     return;
                 }
 
-                console.log("Replacing... ", toReplace);
+                console.log("Replacing... ", current(toReplace));
 
                 available = Math.min(available, toReplace.count);
 
@@ -214,21 +215,12 @@ export default class UpgradeService {
 
     public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
-        const count = (typeof (upgrade.affects) === "number"
-            ? upgrade.affects
-            : upgrade.affects === "all"
-                ? unit.size || 1 // All in unit
-                : 1);// TODO: Fix count for WC data * (option.count || 1);
-
         const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
+        const toRemove = unit.selectedUpgrades[removeAt];
+        const count = toRemove.gains[0]?.count;
         unit.selectedUpgrades.splice(removeAt, 1);
 
         if (upgrade.type === "upgradeRule") {
-
-            // Remove upgrades rule(s)
-            // for (let i = unit.specialRules.length - 1; i >= 0; i--)
-            //     if (option.specialRules.indexOf(unit.specialRules[i]) >= 0)
-            //         unit.specialRules.splice(i, 1);
 
             // Re-add original rule
             unit.specialRules.push(DataParsingService.parseRule(upgrade.replaceWhat as string));
@@ -259,21 +251,13 @@ export default class UpgradeService {
                 ? [upgrade.replaceWhat]
                 : upgrade.replaceWhat;
 
+            // For each bit of equipment that was originally replaced
             for (let what of replaceWhat) {
 
                 const current = EquipmentService.findLast(unit.equipment, what);
 
-                if (current) {
-
-                    current.count += count;
-
-                } else {
-
-                    const original = EquipmentService.findLast(unit.equipment, what);
-
-                    // put the original item back
-                    unit.equipment.push({ ...original, count: original.count || unit.size });
-                }
+                // Increase the count by however much was replaced
+                current.count += count;
             }
         }
     }

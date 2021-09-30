@@ -264,7 +264,7 @@ export default function Files() {
                 {customArmies && <>
                     <h3>Custom Armies</h3>
                     {customArmies.map((customArmy, i) => (
-                        <Accordion key={customArmy.name}
+                        <Accordion key={i}
                             disableGutters
                             square
                             elevation={0}
