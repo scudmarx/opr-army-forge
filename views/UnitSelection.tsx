@@ -26,23 +26,39 @@ export function UnitSelection({ onSelected }) {
     return null;
 
   // Group army units by category
-  //var unitGroups = groupBy(army.units, "category");
   const isTough = (u: IUnit, threshold) => u.specialRules.filter(r => {
     if (r.name !== "Tough")
       return false;
     const toughness = parseInt(r.rating);
     return toughness >= threshold;
   }).length > 0
-  const isHero = (u: IUnit) => u.specialRules.filter(r => r.name === "Hero").length > 0;
+  const hasRule = (u: IUnit, rule: string) => u.specialRules.filter(r => r.name === rule).length > 0;
   const isLarge = (u) => isTough(u, 6);
   const isElite = (u) => isTough(u, 3);
 
   const unitGroups = {
-    "Heroes": army.units.filter(isHero),
-    "Core": army.units.filter(u => !isElite(u) && !isHero(u)),
-    "Elite": army.units.filter(u => !isLarge(u) && !isHero(u) && isElite(u)),
-    "Large": army.units.filter(u => isLarge(u) && !isHero(u))
+    "Heroes": [],
+    "Core": [],
+    "Elite": [],
+    "Large": [],
+    "Artillery": [],
+    "Aircraft": [],
   };
+
+  for (let unit of army.units) {
+    if (hasRule(unit, "Hero"))
+      unitGroups["Heroes"].push(unit);
+    else if (hasRule(unit, "Aircraft"))
+      unitGroups["Aircraft"].push(unit);
+    else if (hasRule(unit, "Artillery"))
+      unitGroups["Artillery"].push(unit);
+    else if (isLarge(unit))
+      unitGroups["Large"].push(unit);
+    else if (isElite(unit))
+      unitGroups["Elite"].push(unit);
+    else
+      unitGroups["Core"].push(unit);
+  }
 
   const handleSelection = (unit) => {
     dispatch(addUnit(unit));
@@ -65,7 +81,7 @@ export function UnitSelection({ onSelected }) {
         // For each category
         Object.keys(unitGroups).map(key => (
           <Fragment key={key}>
-            {key !== "undefined" && <p className="menu-label px-4 pt-3">{key}</p>}
+            {key !== "undefined" && unitGroups[key].length > 0 && <p className="menu-label px-4 pt-3">{key}</p>}
             <ul className="menu-list">
               {
                 // For each unit in category

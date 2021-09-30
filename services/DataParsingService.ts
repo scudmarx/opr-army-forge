@@ -142,16 +142,18 @@ export default class DataParsingService {
                         }
                     }
 
+                    // Find section
+                    const sections = results[lastGroupId].sections.filter((u) => u.label === lastUpgradeText);
+                    const section = sections[sections.length - 1];
+
                     // Add to options!
-                    results[lastGroupId].sections
-                        .filter((u) => u.label === lastUpgradeText)[0]
-                        .options.push({
-                            id: option.id || nanoid(5),
-                            type: "ArmyBookUpgradeOption",
-                            cost: parseInt(cost),
-                            label: line.replace(costRegex, ""),
-                            gains: gains
-                        });
+                    section.options.push({
+                        id: option.id || nanoid(5),
+                        type: "ArmyBookUpgradeOption",
+                        cost: parseInt(cost),
+                        label: line.replace(costRegex, ""),
+                        gains: gains
+                    });
                 }
             } catch (e) {
                 console.log(e);
