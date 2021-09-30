@@ -56,10 +56,11 @@ export default class UpgradeService {
 
         const controlType = this.getControlType(unit, upgrade);
         const alreadySelected = this.countApplied(unit, upgrade, option);
+        const appliedInGroup = upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0);
 
         // if it's a radio, it's valid if any other upgrade in the group is already applied
         if (controlType === "radio")
-            if (upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0) > 0)
+            if (appliedInGroup > 0)
                 return true;
 
         if (upgrade.type === "replace") {
@@ -105,7 +106,7 @@ export default class UpgradeService {
 
                 // May only select up to the limit
                 if (typeof (upgrade.select) === "number") {
-                    if (alreadySelected >= upgrade.select)
+                    if (appliedInGroup >= upgrade.select)
                         return false;
                 }
             }
