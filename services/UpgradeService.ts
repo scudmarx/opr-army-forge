@@ -34,8 +34,8 @@ export default class UpgradeService {
         // Try and find item to replace...
         var toReplace = EquipmentService.findLast(unit.equipment, what) as { count?: number };
 
-        // Couldn't find the item to replace
-        if (!toReplace) {
+        // Couldn't find the item to replace or there are none left
+        if (!toReplace || toReplace.count <= 0) {
 
             // Try and find an upgrade instead
             for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
@@ -79,13 +79,28 @@ export default class UpgradeService {
 
             for (let what of replaceWhat) {
 
-                const toReplace = this.findToReplace(unit, what);
+                var toRestore = null;
 
-                if (!toReplace)
+                // Try and find an upgrade instead
+                for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
+                    const upgrade = unit.selectedUpgrades[i];
+                    toRestore = upgrade
+                        .gains
+                        .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+
+                    if (toRestore && toRestore.count)
+                        break;
+                }
+
+                // Couldn't find the upgrade to replace
+                if (!toRestore || toRestore.count <= 0)
+                    toRestore = EquipmentService.findLast(unit.equipment, what);
+
+                if (!toRestore)
                     return false;
 
                 // Nothing left to replace
-                if (toReplace.count <= 0)
+                if (toRestore.count <= 0)
                     return false;
 
                 // May only select up to the limit
