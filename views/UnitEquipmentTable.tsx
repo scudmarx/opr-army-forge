@@ -7,6 +7,7 @@ import UnitService from '../services/UnitService';
 import DataParsingService from '../services/DataParsingService';
 import { groupBy } from '../services/Helpers';
 import RulesService from '../services/RulesService';
+import { Fragment } from 'react';
 
 export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEquipment, isProfile: boolean }) {
 
@@ -101,23 +102,26 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                 const group = weaponGroups[key]
                                 const upgrade = group[0];
                                 const e = upgradeToEquipment(upgrade, group.length);
-                                
+                                // Upgrade may have been replaced
+                                if (!e.count)
+                                    return null;
+
                                 if (upgrade.type === "ArmyBookMultiWeapon") {
                                     console.log(upgrade.profiles);
                                     return (
-                                        <>
+                                        <Fragment key={key}>
                                             <TableRow>
                                                 <TableCell style={{ border: "none", borderTop: "1px solid rgb(224, 224, 224)" }} colSpan={5}>{upgrade.name}</TableCell>
                                             </TableRow>
                                             {upgrade.profiles.map((profile, i) => (
-                                                <WeaponRow unit={unit} e={upgradeToEquipment(profile, 1)} isProfile={true} />
+                                                <WeaponRow key={i} unit={unit} e={upgradeToEquipment(profile, 1)} isProfile={true} />
                                             ))}
-                                        </>
+                                        </Fragment>
                                     );
                                 }
 
                                 return (
-                                    <WeaponRow unit={unit} e={e} isProfile={false} />
+                                    <WeaponRow key={key} unit={unit} e={e} isProfile={false} />
                                 );
                             })
                         }

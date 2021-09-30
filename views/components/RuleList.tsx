@@ -19,10 +19,13 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
         return null;
 
     const ruleGroups = groupBy(rules, "name");
+    const keys = Object.keys(ruleGroups);
+    // Sort rules alphabetically
+    keys.sort((a, b) => a.localeCompare(b));
 
     return (
         <div>
-            {Object.keys(ruleGroups).map((key, index) => {
+            {keys.map((key, index) => {
                 const group = ruleGroups[key];
                 const rule = group[0];
                 const rating = group.reduce((total, next) => next.rating ? total + parseInt(next.rating) : total, 0);

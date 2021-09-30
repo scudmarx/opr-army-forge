@@ -30,9 +30,37 @@ export default class UpgradeService {
         return unit.selectedUpgrades.filter(u => u.id === option.id).length;
     }
 
+    public static findToReplace(unit: ISelectedUnit, what: string) {
+        // Try and find item to replace...
+        var toReplace = EquipmentService.findLast(unit.equipment, what) as { count?: number };
+
+        // Couldn't find the item to replace
+        if (!toReplace) {
+
+            // Try and find an upgrade instead
+            for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
+                const upgrade = unit.selectedUpgrades[i];
+                toReplace = upgrade
+                    .gains
+                    .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+
+                if (toReplace)
+                    break;
+            }
+        }
+
+        return toReplace;
+    }
+
     public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
+        const controlType = this.getControlType(unit, upgrade);
         const alreadySelected = this.countApplied(unit, upgrade, option);
+
+        // if it's a radio, it's valid if any other upgrade in the group is already applied
+        if (controlType === "radio")
+            if (upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0) > 0)
+                return true;
 
         if (upgrade.type === "replace") {
 
@@ -51,7 +79,7 @@ export default class UpgradeService {
 
             for (let what of replaceWhat) {
 
-                const toReplace = EquipmentService.findLast(unit.equipment, what);
+                const toReplace = this.findToReplace(unit, what);
 
                 if (!toReplace)
                     return false;
@@ -187,8 +215,7 @@ export default class UpgradeService {
             for (let what of replaceWhat) {
 
                 // Try and find item to replace...
-                const replaceIndex = EquipmentService.findLastIndex(unit.equipment, what);
-                const toReplace = unit.equipment[replaceIndex];
+                var toReplace = this.findToReplace(unit, what);
 
                 // Couldn't find the item to replace
                 if (!toReplace) {
@@ -206,7 +233,8 @@ export default class UpgradeService {
                 // TODO: Use Math.max... ?
                 if (toReplace.count <= 0)
                     toReplace.count = 0;
-                //     unit.equipment.splice(replaceIndex, 1);
+
+                console.log("Replaced... ", current(toReplace));
             }
 
             apply(available);
@@ -214,6 +242,7 @@ export default class UpgradeService {
     }
 
     public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
+        debugger;
 
         const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
         const toRemove = unit.selectedUpgrades[removeAt];
@@ -228,23 +257,6 @@ export default class UpgradeService {
             return;
         }
 
-
-
-        // for (let e of option.gains) {
-        //     const selection = EquipmentService.findLast(unit.equipment, e.name);
-
-        //     // If multiple selections
-        //     if (selection.count) {
-        //         selection.count -= count;
-        //     }
-
-        //     if (selection.count <= 0) {
-        //         // Remove the upgrade from the list
-        //         const removeIndex = EquipmentService.findLastIndex(unit.equipment, e.name)
-        //         unit.equipment.splice(removeIndex, 1);
-        //     }
-        // }
-
         if (upgrade.type === "replace") {
 
             const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
@@ -254,10 +266,31 @@ export default class UpgradeService {
             // For each bit of equipment that was originally replaced
             for (let what of replaceWhat) {
 
-                const current = EquipmentService.findLast(unit.equipment, what);
+                var toRestore = null;// EquipmentService.findLast(unit.equipment, what) as { count?: number };
+
+                // Try and find an upgrade instead
+                for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
+                    const upgrade = unit.selectedUpgrades[i];
+                    toRestore = upgrade
+                        .gains
+                        .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+
+                    if (toRestore)
+                        break;
+                }
+
+                // Couldn't find the upgrade to replace
+                if (!toRestore)
+                    toRestore = EquipmentService.findLast(unit.equipment, what);
+
+                if (!toRestore) {
+                    // Uh oh
+                    console.log("Could not restore " + what, current(unit));
+                    return;
+                }
 
                 // Increase the count by however much was replaced
-                current.count += count;
+                toRestore.count += count;
             }
         }
     }
