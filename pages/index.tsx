@@ -26,7 +26,6 @@ export default function Home() {
     dispatch(setGameSystem(gameSystem));
     router.push("/files");
   };
-  const boxShadow = "0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)";
 
   return (
     <>
@@ -63,9 +62,11 @@ export default function Home() {
               // For each game system
               ["gf", "gff", "aof", "aofs"].map(gameSystem => (
                 <div key={gameSystem} className="column is-half">
-                  <img onClick={() => selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
-                    className="game-system-tile"
-                    style={{ borderRadius: "4px", boxShadow }} />
+                  <Paper>
+                    <img onClick={() => selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
+                      className="game-system-tile"
+                      style={{ borderRadius: "4px", display: "block" }} />
+                  </Paper>
                 </div>
               ))
             }
