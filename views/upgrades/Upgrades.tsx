@@ -42,7 +42,7 @@ export function Upgrades() {
             </div>
             {specialRules?.length > 0 && <Paper square elevation={0}>
                 <div className="p-4 mb-4">
-                    <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
+                    <h4 style={{ fontWeight: 600, fontSize: "14px" }}>Special Rules</h4>
                     <RuleList specialRules={specialRules} />
                 </div>
             </Paper>}
