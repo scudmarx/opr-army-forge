@@ -118,7 +118,7 @@ export default function MobileView() {
                     </Toolbar>
                 </AppBar>
                 <AppBar elevation={0} position="static" style={{ position: "sticky", top: 0, zIndex: 1 }}>
-                    <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="secondary">
+                    <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
                         <Tab label={`${army?.data?.name} v${army?.data?.version}`} />
                         <Tab label={`My List - ${UpgradeService.calculateListTotal(list.units)}pts`} />
                     </Tabs>
@@ -129,7 +129,7 @@ export default function MobileView() {
                 <div>
                     <UnitSelection onSelected={() => { }} />
                 </div>
-                <div className="mt-4">
+                <div className="">
                     {list.units.length > 0 ? <MainList onSelected={onUnitSelected} /> : (
                         <div className="p-4 has-text-centered">
                             <h3 className="is-size-3 mb-4">Your list is empty</h3>

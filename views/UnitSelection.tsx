@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
 import { addUnit } from '../data/listSlice';
 import { Fragment, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Button, IconButton, Modal, Paper, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, IconButton, Modal, Paper, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import WarningIcon from "@mui/icons-material/Warning";
 import EquipmentService from "../services/EquipmentService";
@@ -11,7 +11,7 @@ import { dataToolVersion } from "../pages/data";
 import RuleList from "./components/RuleList";
 import { IUnit } from "../data/interfaces";
 import { useMediaQuery } from "react-responsive";
-import MenuIcon from "@mui/icons-material/Menu";
+import FullCompactToggle from "./components/FullCompactToggle";
 
 export function UnitSelection({ onSelected }) {
 
@@ -82,13 +82,7 @@ export function UnitSelection({ onSelected }) {
         {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
       </div>}
 
-      <div className="is-flex px-4" style={{ alignItems: "center" }}>
-        <p className="is-flex-grow-1" style={{ fontWeight: 600 }}>Units</p>
-        <Button onClick={() => setExpandAll(!expandAll)}>
-          <MenuIcon />
-          <span className="pl-2 full-compact-text">{expandAll ? "Full" : "Compact"}</span>
-        </Button>
-      </div>
+      <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
 
       {
         // For each category
@@ -107,19 +101,18 @@ export function UnitSelection({ onSelected }) {
                       key={u.name}
                       style={{
                         backgroundColor: countInList > 0 ? "#F9FDFF" : null,
-                        borderLeft: countInList > 0 ? "2px solid #3f51b5" : null,
+                        borderLeft: countInList > 0 ? "2px solid #0F71B4" : null,
                       }}
                       disableGutters
                       square
-                      elevation={0}
-                      variant="outlined"
+                      elevation={1}
                       expanded={expandedId === u.name || expandAll}
                       onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
                       <AccordionSummary>
                         <div className="is-flex is-flex-grow-1 is-align-items-center">
                           <div className="is-flex-grow-1" onClick={() => setExpandedId(u.name)}>
                             <p className="mb-1" style={{ fontWeight: 600 }}>
-                              {countInList > 0 && <span style={{ color: "#3f51b5" }}>{countInList}x </span>}
+                              {countInList > 0 && <span style={{ color: "#0F71B4" }}>{countInList}x </span>}
                               <span>{u.name} </span>
                               <span style={{ color: "#656565" }}>{u.size > 1 ? `[${u.size}]` : ''}</span>
                             </p>
@@ -134,15 +127,15 @@ export function UnitSelection({ onSelected }) {
                           </IconButton>
                         </div>
                       </AccordionSummary>
-                      <AccordionDetails className="pt-0" style={{ flexDirection: "column" }}>
+                      <AccordionDetails className="pt-0" style={{ flexDirection: "column", fontSize: "14px", color: "#666", lineHeight: 1.4 }}>
                         <div>
                           {u.equipment.map((eqp, i) => (
-                            <span key={i} style={{ fontSize: "14px" }}>
+                            <p key={i}>
                               {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
-                            </span>
+                            </p>
                           ))}
                         </div>
-                        <div style={{ fontSize: "14px" }}>
+                        <div>
                           <RuleList specialRules={u.specialRules} />
                         </div>
                       </AccordionDetails>

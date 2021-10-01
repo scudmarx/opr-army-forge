@@ -11,6 +11,7 @@ import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
 import MenuIcon from "@mui/icons-material/Menu";
+import FullCompactToggle from "./components/FullCompactToggle";
 
 export function MainList({ onSelected }) {
 
@@ -33,15 +34,9 @@ export function MainList({ onSelected }) {
 
   return (
     <>
-      <Button onClick={() => router.push("/cards")}>View Cards</Button>
-      <div className="is-flex">
-        <p className="is-flex-grow-1">Units</p>
-        <Button onClick={() => setExpandAll(!expandAll)}>
-          <MenuIcon />
-          {expandAll ? "Full" : "Compact"}
-        </Button>
-      </div>
-      <ul>
+      {/* <Button onClick={() => router.push("/cards")}>View Cards</Button> */}
+      <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
+      <ul className="mt-2">
         {
           // For each selected unit
           list.units.map((s: ISelectedUnit, index: number) => {
