@@ -228,8 +228,8 @@ export default function Files() {
                                 const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
 
                                 return (
-                                    <div className="column is-half">
-                                        <Accordion key={index}
+                                    <div key={index} className="column is-half">
+                                        <Accordion
                                             disableGutters
                                             square
                                             elevation={0}
