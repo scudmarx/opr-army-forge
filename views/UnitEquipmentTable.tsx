@@ -21,6 +21,7 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
             : unit.size
         : count;
 
+    const cellStyle = { paddingLeft: "8px", paddingRight: "8px" };
     const borderStyle = {
         borderBottom: "none",
         borderTop: isProfile ? "none" : "1px solid rgb(224, 224, 224)"
@@ -31,7 +32,7 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
 
     return (
         <TableRow>
-            <TableCell style={{ ...borderStyle, fontWeight: 600 }}>
+            <TableCell style={{ ...borderStyle, ...cellStyle, fontWeight: 600 }}>
                 {displayCount > 1 ? `[${displayCount}] ` : " "}{multiplier > 1 ? `${multiplier}x ` : ""}{isProfile ? `- ${name}` : name}
             </TableCell>
             <TableCell style={borderStyle}>{e.range ? e.range + '"' : '-'}</TableCell>
@@ -76,17 +77,20 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
         };
     };
 
+    const cellStyle = { paddingLeft: "8px", paddingRight: "8px" };
+    const headerStyle = { ...cellStyle, fontWeight: 600 };
+
     return (
         <>
-            {hasWeapons && <TableContainer component={Paper} className="mb-4" elevation={0}>
+            {hasWeapons && <TableContainer component={Paper} elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
                 <Table size="small">
                     <TableHead>
                         <TableRow style={{ backgroundColor: "#EBEBEB", fontWeight: 600 }}>
-                            <TableCell style={{ fontWeight: 600 }}>Weapon</TableCell>
-                            <TableCell style={{ fontWeight: 600 }}>RNG</TableCell>
-                            <TableCell style={{ fontWeight: 600 }}>ATK</TableCell>
-                            <TableCell style={{ fontWeight: 600 }}>AP</TableCell>
-                            <TableCell style={{ fontWeight: 600 }}>SPE</TableCell>
+                            <TableCell style={headerStyle}>Weapon</TableCell>
+                            <TableCell style={headerStyle}>RNG</TableCell>
+                            <TableCell style={headerStyle}>ATK</TableCell>
+                            <TableCell style={headerStyle}>AP</TableCell>
+                            <TableCell style={headerStyle}>SPE</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
