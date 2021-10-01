@@ -82,11 +82,11 @@ export function UnitSelection({ onSelected }) {
         {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
       </div>}
 
-      <div className="is-flex">
-        <p className="is-flex-grow-1">Units</p>
+      <div className="is-flex px-4" style={{alignItems:"center"}}>
+        <p className="is-flex-grow-1" style={{fontWeight:600}}>Units</p>
         <Button onClick={() => setExpandAll(!expandAll)}>
           <MenuIcon />
-          {expandAll ? "Full" : "Compact"}
+          <span className="pl-2 full-compact-text">{expandAll ? "Full" : "Compact"}</span>
         </Button>
       </div>
 

@@ -9,13 +9,14 @@ import "slick-carousel/slick/slick-theme.css";
 import 'react-spring-bottom-sheet/dist/style.css';
 import { Upgrades } from "../upgrades/Upgrades";
 import { BottomSheet } from "react-spring-bottom-sheet";
-import { AppBar, Paper, Tab, Tabs, Toolbar, Typography, IconButton, TextField, Menu, MenuItem } from "@mui/material";
+import { AppBar, Paper, Tab, Tabs, Toolbar, Typography, IconButton, TextField, Menu, MenuItem, Button } from "@mui/material";
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import UpgradeService from "../../services/UpgradeService";
 import { renameUnit, selectUnit } from "../../data/listSlice";
 import { useRouter } from "next/router";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";
+import Add from "@mui/icons-material/Add";
 
 export default function MobileView() {
 
@@ -27,7 +28,7 @@ export default function MobileView() {
 
     const [slider, setSlider] = useState(null);
     const [sheetOpen, setSheetOpen] = useState(false);
-    const [slideIndex, setSlideIndex] = useState(0);
+    const [slideIndex, setSlideIndex] = useState(1);
     const [anchorEl, setAnchorEl] = useState(null);
 
     // Open bottom sheet when unit is selected
@@ -57,6 +58,7 @@ export default function MobileView() {
         slidesToShow: 1,
         infinite: false,
         arrows: false,
+        initialSlide: 1,
         beforeChange: (current, next) => handleSlideChange(null, next)
     };
 
@@ -67,6 +69,7 @@ export default function MobileView() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
 
     return (
         <>
@@ -79,6 +82,7 @@ export default function MobileView() {
                             color="inherit"
                             aria-label="menu"
                             sx={{ mr: 2 }}
+                            onClick={() => router.back()}
                         >
                             <BackIcon />
                         </IconButton>
@@ -126,7 +130,14 @@ export default function MobileView() {
                     <UnitSelection onSelected={() => { }} />
                 </div>
                 <div className="mt-4">
-                    <MainList onSelected={onUnitSelected} />
+                    {list.units.length > 0 ? <MainList onSelected={onUnitSelected} /> : (
+                        <div className="p-4 has-text-centered">
+                            <h3 className="is-size-3 mb-4">Your list is empty</h3>
+                            <Button variant="outlined" onClick={() => handleSlideChange(null, 0)}>
+                                <Add /> Add Units
+                            </Button>
+                        </div>
+                    )}
                 </div>
             </Slider>
 

@@ -180,12 +180,14 @@ export default class UpgradeService {
 
     public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
+        // How many of this upgrade do we need to apply
         const count = (typeof (upgrade.affects) === "number"
             ? upgrade.affects
             : upgrade.affects === "all"
                 ? unit.size || 1 // All in unit
                 : 1); // TODO: Add back multiple count weapons? * (option.count || 1);
 
+        // Function to apply the upgrade option to the unit
         const apply = (available: number) => {
             unit.selectedUpgrades.push({
                 ...option,

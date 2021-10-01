@@ -203,6 +203,7 @@ export default function Files() {
                             color="inherit"
                             aria-label="menu"
                             sx={{ mr: 2 }}
+                            onClick={() => router.back()}
                         >
                             <BackIcon />
                         </IconButton>
