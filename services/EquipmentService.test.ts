@@ -1,4 +1,5 @@
 import { IEquipment, IUpgradeGainsItem, IUpgradeGainsRule } from '../data/interfaces';
+import DataParsingService from './DataParsingService';
 import EquipmentService from './EquipmentService';
 
 test("Format basic string", () => {
@@ -66,3 +67,10 @@ test("String parts for item", () => {
 
     const parts = EquipmentService.getStringParts(item, 3);
 });
+
+test("String parts for weapon platform", () => {
+    var input = 'Gun Platform (Star Cannon (36”, A2, AP(2))) +20pts';
+    var upgrade = DataParsingService.parseEquipment(input, true);
+    var parts = EquipmentService.getStringParts(upgrade, 1);
+    expect(parts).toStrictEqual({});
+})

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
 import { ISelectedUnit } from "../data/interfaces";
@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export function MainList({ onSelected }) {
 
@@ -17,6 +18,7 @@ export function MainList({ onSelected }) {
 
   const dispatch = useDispatch();
   const router = useRouter();
+  const [expandAll, setExpandAll] = useState(false);
 
   const handleSelectUnit = (unit: ISelectedUnit) => {
     if (list.selectedUnitId !== unit.selectionId) {
@@ -32,6 +34,13 @@ export function MainList({ onSelected }) {
   return (
     <>
       <Button onClick={() => router.push("/cards")}>View Cards</Button>
+      <div className="is-flex">
+        <p className="is-flex-grow-1">Units</p>
+        <Button onClick={() => setExpandAll(!expandAll)}>
+          <MenuIcon />
+          {expandAll ? "Full" : "Compact"}
+        </Button>
+      </div>
       <ul>
         {
           // For each selected unit

@@ -546,7 +546,9 @@ test("multiple profile weapon 1", () => {
                             {
                                 key: "blast",
                                 name: "Blast",
-                                rating: "3"
+                                label: "Blast(3)",
+                                rating: "3",
+                                type: "ArmyBookRule"
                             }
                         ],
                         type: "ArmyBookWeapon"
@@ -560,12 +562,16 @@ test("multiple profile weapon 1", () => {
                             {
                                 key: "ap",
                                 name: "AP",
-                                rating: "1"
+                                label: "AP(1)",
+                                rating: "1",
+                                type: "ArmyBookRule"
                             },
                             {
                                 key: "deadly",
                                 name: "Deadly",
-                                rating: "3"
+                                label: "Deadly(3)",
+                                rating: "3",
+                                type: "ArmyBookRule"
                             }
                         ],
                         type: "ArmyBookWeapon"
@@ -987,4 +993,10 @@ test("Prime bros tank parse", () => {
     const input = `Combat Bike (Fast, Impact(1), Twin Assault Rifle (24”,A2)) +5pts`;
     const result = parse(input, true)
     //expect(result).toStrictEqual({});
+});
+
+test("High Elf weapon platform", () => {
+    var input = 'Gun Platform (Star Cannon (36”, A2, AP(2))) +20pts';
+    var result = parse(input);
+    expect(result).toStrictEqual({});
 })

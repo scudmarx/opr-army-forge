@@ -15,6 +15,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import UpgradeService from "../../services/UpgradeService";
 import { renameUnit, selectUnit } from "../../data/listSlice";
 import { useRouter } from "next/router";
+import UpgradePanelHeader from "../components/UpgradePanelHeader";
 
 export default function MobileView() {
 
@@ -141,16 +142,7 @@ export default function MobileView() {
                     maxHeight * 0.9
                 ]}
                 header={
-                    selectedUnit && <div className="is-flex is-align-items-center">
-                        {/* <h3 className="is-size-4 is-flex-grow-1 has-text-left">{selectedUnit.name} {selectedUnit.size > 1 ? `[${selectedUnit.size}]` : ''}</h3> */}
-                        <TextField
-                            variant="standard"
-                            className="is-flex-grow-1"
-                            value={selectedUnit.customName || selectedUnit.name}
-                            onChange={e => dispatch(renameUnit({ unitId: selectedUnit.selectionId, name: e.target.value }))}
-                        />
-                        <p className="ml-4">{UpgradeService.calculateUnitTotal(selectedUnit)}pts</p>
-                    </div>
+                    <UpgradePanelHeader selectedUnit={selectedUnit} />
                 }>
                 <Upgrades />
             </BottomSheet>

@@ -3,13 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
 import { addUnit } from '../data/listSlice';
 import { Fragment, useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, IconButton, Modal, Paper, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Button, IconButton, Modal, Paper, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import WarningIcon from "@mui/icons-material/Warning";
 import EquipmentService from "../services/EquipmentService";
 import { dataToolVersion } from "../pages/data";
 import RuleList from "./components/RuleList";
 import { IUnit } from "../data/interfaces";
+import { useMediaQuery } from "react-responsive";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export function UnitSelection({ onSelected }) {
 
@@ -19,6 +21,7 @@ export function UnitSelection({ onSelected }) {
   const army = armyData.data;
   const dispatch = useDispatch();
   const [expandedId, setExpandedId] = useState(null);
+  const [expandAll, setExpandAll] = useState(null);
   const [ruleModalOpen, setRuleModalOpen] = useState(false);
 
   // If army has not been selected yet, show nothing
@@ -65,16 +68,26 @@ export function UnitSelection({ onSelected }) {
     onSelected(unit);
   };
 
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+
   return (
     <aside
       className={styles.menu + " menu"}
       style={{ minHeight: "100%" }}
     >
-      <div className="is-flex is-align-items-center">
+      {isBigScreen && <div className="is-flex is-align-items-center">
         <h3 className="is-size-4 p-4 is-flex-grow-1">
           {army.name} - v{army.version}
         </h3>
         {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+      </div>}
+
+      <div className="is-flex">
+        <p className="is-flex-grow-1">Units</p>
+        <Button onClick={() => setExpandAll(!expandAll)}>
+          <MenuIcon />
+          {expandAll ? "Full" : "Compact"}
+        </Button>
       </div>
 
       {
@@ -100,7 +113,7 @@ export function UnitSelection({ onSelected }) {
                       square
                       elevation={0}
                       variant="outlined"
-                      expanded={expandedId === u.name}
+                      expanded={expandedId === u.name || expandAll}
                       onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
                       <AccordionSummary>
                         <div className="is-flex is-flex-grow-1 is-align-items-center">

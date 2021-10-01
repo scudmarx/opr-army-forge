@@ -301,15 +301,20 @@ export default class DataParsingService {
             const mountName = mountMatch[1].trim();
             const mountRules = [];
             let mountWeapon = null;
-            // For each rule/weapon in the (Fast, Impact(1), Weapon (16", A2))
-            // Split on any comma that is preceeded by a letter or )
-            for (let rule of mountMatch[2].split(/(?<=\)|\w),/).map(r => r.trim())) {
-                // If it's words only, it's a rule
-                // or Parameter rules like Impact(1) Tough(2)
-                if (/^[^\(\)]+$/.test(rule) || /\w+\(\d+\)/.test(rule)) {
-                    mountRules.push(this.parseRule(rule));
-                } else { // It's a weapon
-                    mountWeapon = this.parseEquipment(rule, isUpgrade);
+            const isOneWeapon = /^[^,]+\(.+\)$/.test(mountMatch[2]);
+            if (isOneWeapon) {
+                mountWeapon = this.parseEquipment(mountMatch[2], isUpgrade);
+            } else {
+                // For each rule/weapon in the (Fast, Impact(1), Weapon (16", A2))
+                // Split on any comma that is preceeded by a letter or )
+                for (let rule of mountMatch[2].split(/(?<=\)|\w),/).map(r => r.trim())) {
+                    // If it's words only, it's a rule
+                    // or Parameter rules like Impact(1) Tough(2)
+                    if (/^[^\(\)]+$/.test(rule) || /\w+\(\d+\)/.test(rule)) {
+                        mountRules.push(this.parseRule(rule));
+                    } else { // It's a weapon
+                        mountWeapon = this.parseEquipment(rule, isUpgrade);
+                    }
                 }
             }
 

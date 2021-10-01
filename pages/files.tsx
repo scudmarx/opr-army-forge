@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { load, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Accordion, AccordionDetails, AccordionSummary, Button, IconButton } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { AppBar, IconButton, Paper, Toolbar, Typography } from '@mui/material';
+import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
@@ -79,7 +81,7 @@ export default function Files() {
                 .then((data) => {
                     const valid = data
                         .filter(a => a.unitCount > 2)
-                        //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
+                    //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
 
                     setCustomArmies(valid);
                 });
@@ -113,7 +115,7 @@ export default function Files() {
                         // Iterate backwards through gains array so we can push new 
                         for (let original of opt.gains) {
                             // Match "2x ", etc
-                            
+
                             // Replace "2x " in label/name of original gain
                             const gain = {
                                 ...original,
@@ -162,7 +164,7 @@ export default function Files() {
 
     const selectCustomList = (customArmy: any) => {
 
-        
+
 
         // TODO: Web companion integration
         // Load army data
@@ -191,110 +193,147 @@ export default function Files() {
     const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
 
     return (
-        <div className="container">
-            <div className="card mx-auto mt-6" style={{ maxWidth: "480px" }}>
-                <h3 className="is-size-4 has-text-centered mb-4 pt-4">Select Army List</h3>
+        <>
+            <Paper elevation={2} color="primary" square>
+                <AppBar position="static" elevation={0}>
+                    <Toolbar>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                        >
+                            <BackIcon />
+                        </IconButton>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            Create new list
+                        </Typography>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                        >
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+            </Paper>
+            <div className="container">
+                <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
+                    <h3 className="is-size-4 has-text-centered mb-4 pt-4">Choose your army</h3>
+                    <div className="columns is-mobile is-multiline">
+                        {
+                            !armyFiles ? null : armies.map((file, index) => {
+                                const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
 
-                {
-                    !armyFiles ? null : armies.map((file, index) => {
-                        const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
-
-                        return (
-                            <Accordion key={index}
-                                disableGutters
-                                square
-                                elevation={0}
-                                variant="outlined"
-                                expanded={expandedId === file.name}
-                                onChange={() => setExpandedId(expandedId === file.name ? null : file.name)}>
-                                <AccordionSummary onClick={() => selectArmy(file.path)}>
-                                    <div className="is-flex is-flex-grow-1 is-align-items-center">
-                                        <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
-                                            <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
-                                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                                                by OnePageRules
-                                            </div>
-                                        </div>
-                                        {driveArmy && driveArmy.version > file.version && <div className="mr-4" title="Army file may be out of date"><WarningIcon /></div>}
-                                        {file.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
-                                        <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectArmy(file.path); }}>
-                                            <RightIcon />
-                                        </IconButton>
+                                return (
+                                    <div className="column is-half">
+                                        <Accordion key={index}
+                                            disableGutters
+                                            square
+                                            elevation={0}
+                                            variant="outlined"
+                                            expanded={expandedId === file.name}
+                                            onChange={() => setExpandedId(expandedId === file.name ? null : file.name)}>
+                                            <AccordionSummary onClick={() => selectArmy(file.path)}>
+                                                <div className="is-flex is-flex-direction-column is-flex-grow-1">
+                                                    <div className="is-flex" style={{
+                                                        height: "100px",
+                                                        backgroundImage: `url("img/gf_armies/${file.name}.png")`,
+                                                        backgroundPosition: "center",
+                                                        backgroundSize: "contain",
+                                                        backgroundRepeat: 'no-repeat'
+                                                    }}>
+                                                    </div>
+                                                    <div className="is-flex is-flex-grow-1 is-align-items-center">
+                                                        <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
+                                                            <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
+                                                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                                                                by OnePageRules
+                                                            </div>
+                                                        </div>
+                                                        {driveArmy && driveArmy.version > file.version && <div className="mr-4" title="Army file may be out of date"><WarningIcon /></div>}
+                                                        {file.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+                                                    </div>
+                                                </div>
+                                            </AccordionSummary>
+                                            <AccordionDetails style={{ flexDirection: "column" }}>
+                                                <p>Additional info...?</p>
+                                            </AccordionDetails>
+                                        </Accordion>
                                     </div>
-                                </AccordionSummary>
-                                <AccordionDetails style={{ flexDirection: "column" }}>
-                                    <p>Additional info...?</p>
-                                </AccordionDetails>
-                            </Accordion>
-                            // <li key={index} className="mb-4">
-                            //     <Button variant="contained" color="primary" onClick={() => selectArmy(file.path)}>
-                            //         {file.name}
-                            //     </Button>
-                            // </li>
-                        );
-                    })
-                }
+                                    // <li key={index} className="mb-4">
+                                    //     <Button variant="contained" color="primary" onClick={() => selectArmy(file.path)}>
+                                    //         {file.name}
+                                    //     </Button>
+                                    // </li>
+                                );
+                            })
+                        }
 
-                {
-                    false && driveArmies && (
-                        <div>
-                            <p className="p-4">To be released...</p>
-                            {driveArmies.filter(da => armies.findIndex(af => af.name.toUpperCase() === da.name.toUpperCase()) === -1).map((file, index) => (
-                                <Accordion key={index}
+                        {/* {
+                            false && driveArmies && (
+                                <div>
+                                    <p className="p-4">To be released...</p>
+                                    {driveArmies.filter(da => armies.findIndex(af => af.name.toUpperCase() === da.name.toUpperCase()) === -1).map((file, index) => (
+                                        <Accordion key={index}
+                                            disableGutters
+                                            square
+                                            elevation={0}
+                                            variant="outlined">
+                                            <AccordionSummary>
+                                                <div className="is-flex is-flex-grow-1 is-align-items-center">
+                                                    <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
+                                                        <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
+                                                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                                                            by OnePageRules
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </AccordionSummary>
+                                        </Accordion>
+                                    ))}
+                                </div>
+                            )
+                        } */}
+
+                        {customArmies && <>
+                            <h3>Custom Armies</h3>
+                            {customArmies.map((customArmy, i) => (
+                                <Accordion key={i}
                                     disableGutters
                                     square
                                     elevation={0}
-                                    variant="outlined">
+                                    variant="outlined"
+                                    expanded={expandedId === customArmy.name}
+                                    onChange={() => setExpandedId(expandedId === customArmy.name ? null : customArmy.name)}>
                                     <AccordionSummary>
                                         <div className="is-flex is-flex-grow-1 is-align-items-center">
-                                            <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
-                                                <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
+                                            <div className="is-flex-grow-1" onClick={() => setExpandedId(customArmy.name)}>
+                                                <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
                                                 <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                                                    by OnePageRules
+                                                    by {customArmy.username}
+                                                    {/* <p>Qua {u.quality}</p>
+                                            <p className="ml-2">Def {u.defense}</p> */}
                                                 </div>
                                             </div>
+                                            {/* <p className="mr-2">{u.cost}pts</p> */}
+                                            <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                                                <RightIcon />
+                                            </IconButton>
                                         </div>
                                     </AccordionSummary>
+                                    <AccordionDetails style={{ flexDirection: "column" }}>
+                                        <p>{customArmy.hint}</p>
+                                    </AccordionDetails>
                                 </Accordion>
                             ))}
-                        </div>
-                    )
-                }
-
-                {customArmies && <>
-                    <h3>Custom Armies</h3>
-                    {customArmies.map((customArmy, i) => (
-                        <Accordion key={i}
-                            disableGutters
-                            square
-                            elevation={0}
-                            variant="outlined"
-                            expanded={expandedId === customArmy.name}
-                            onChange={() => setExpandedId(expandedId === customArmy.name ? null : customArmy.name)}>
-                            <AccordionSummary>
-                                <div className="is-flex is-flex-grow-1 is-align-items-center">
-                                    <div className="is-flex-grow-1" onClick={() => setExpandedId(customArmy.name)}>
-                                        <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
-                                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                                            by {customArmy.username}
-                                            {/* <p>Qua {u.quality}</p>
-                                            <p className="ml-2">Def {u.defense}</p> */}
-                                        </div>
-                                    </div>
-                                    {/* <p className="mr-2">{u.cost}pts</p> */}
-                                    <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
-                                        <RightIcon />
-                                    </IconButton>
-                                </div>
-                            </AccordionSummary>
-                            <AccordionDetails style={{ flexDirection: "column" }}>
-                                <p>{customArmy.hint}</p>
-                            </AccordionDetails>
-                        </Accordion>
-                    ))}
-                </>
-                }
+                        </>
+                        }
+                    </div>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
