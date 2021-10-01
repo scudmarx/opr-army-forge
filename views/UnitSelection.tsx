@@ -82,8 +82,8 @@ export function UnitSelection({ onSelected }) {
         {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
       </div>}
 
-      <div className="is-flex px-4" style={{alignItems:"center"}}>
-        <p className="is-flex-grow-1" style={{fontWeight:600}}>Units</p>
+      <div className="is-flex px-4" style={{ alignItems: "center" }}>
+        <p className="is-flex-grow-1" style={{ fontWeight: 600 }}>Units</p>
         <Button onClick={() => setExpandAll(!expandAll)}>
           <MenuIcon />
           <span className="pl-2 full-compact-text">{expandAll ? "Full" : "Compact"}</span>
@@ -92,9 +92,9 @@ export function UnitSelection({ onSelected }) {
 
       {
         // For each category
-        Object.keys(unitGroups).map(key => (
+        Object.keys(unitGroups).map((key, i) => (
           <Fragment key={key}>
-            {key !== "undefined" && unitGroups[key].length > 0 && <p className="menu-label px-4 pt-3">{key}</p>}
+            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>{key}</p>}
             <ul className="menu-list">
               {
                 // For each unit in category
@@ -128,21 +128,23 @@ export function UnitSelection({ onSelected }) {
                               <p className="ml-2">Def {u.defense}+</p>
                             </div>
                           </div>
-                          <p className="mr-2">{u.cost}pts</p>
+                          <p>{u.cost}pts</p>
                           <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleSelection(u); }}>
                             <AddIcon />
                           </IconButton>
                         </div>
                       </AccordionSummary>
-                      <AccordionDetails style={{ flexDirection: "column" }}>
-                        <div className="mb-2">
+                      <AccordionDetails className="pt-0" style={{ flexDirection: "column" }}>
+                        <div>
                           {u.equipment.map((eqp, i) => (
-                            <span key={i}>
+                            <span key={i} style={{ fontSize: "14px" }}>
                               {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
                             </span>
                           ))}
                         </div>
-                        <RuleList specialRules={u.specialRules} />
+                        <div style={{ fontSize: "14px" }}>
+                          <RuleList specialRules={u.specialRules} />
+                        </div>
                       </AccordionDetails>
                     </Accordion>
                   );
