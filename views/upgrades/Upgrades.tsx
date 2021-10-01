@@ -37,15 +37,16 @@ export function Upgrades() {
     return (
         <div className={styles["upgrade-panel"]}>
             <h3 className="px-4 is-size-4 is-hidden-mobile mb-4">{selectedUnit.name} Upgrades</h3>
-            <div className="p-4" style={{backgroundColor:"white"}}>
-                <UnitEquipmentTable unit={selectedUnit} />
-            </div>
-            {specialRules?.length > 0 && <Paper square elevation={0}>
-                <div className="p-4 mb-4">
-                    <h4 style={{ fontWeight: 600, fontSize: "14px" }}>Special Rules</h4>
-                    <RuleList specialRules={specialRules} />
+            <Paper square elevation={0}>
+                <div className="px-4 pt-4">
+                    <UnitEquipmentTable unit={selectedUnit} />
                 </div>
-            </Paper>}
+                {specialRules?.length > 0 &&
+                    <div className="p-4 mb-4">
+                        <h4 style={{ fontWeight: 600, fontSize: "14px" }}>Special Rules</h4>
+                        <RuleList specialRules={specialRules} />
+                    </div>}
+            </Paper>
             {(selectedUnit.upgrades || [])
                 .map((setId) => getUpgradeSet(setId))
                 .filter((s) => !!s) // remove empty sets?
@@ -54,7 +55,7 @@ export function Upgrades() {
                         {/* <p className="px-2">{set.id}</p> */}
                         {pkg.sections.map((u, i) => (
                             <div className={"mt-4"} key={i}>
-                                <p className="px-4 pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight:1.7 }}>{u.label}:</p>
+                                <p className="px-4 pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>{u.label}:</p>
                                 <UpgradeGroup upgrade={u} />
                             </div>
                         ))}

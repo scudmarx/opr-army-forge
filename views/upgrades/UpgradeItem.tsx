@@ -15,7 +15,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
     const isValid = option ? UpgradeService.isValid(selectedUnit, upgrade, option) : true;
 
     return (
-        <div className="is-flex is-align-items-center">
+        <div className="is-flex is-align-items-center mb-1">
             <div className="is-flex-grow-1 pr-2">
 
                 {

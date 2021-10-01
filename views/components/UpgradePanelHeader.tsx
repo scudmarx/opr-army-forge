@@ -27,19 +27,19 @@ export default function UpgradePanelHeader({ selectedUnit }: { selectedUnit: ISe
             {editMode ? (
                 <TextField
                     variant="standard"
-                    className="is-flex-grow-1"
+                    className=""
                     value={selectedUnit.customName || selectedUnit.name}
                     onChange={e => dispatch(renameUnit({ unitId: selectedUnit.selectionId, name: e.target.value }))}
                 />
             ) : (
-                <div className="is-flex-grow-1 is-flex">
+                <div className="is-flex">
                     <h3 className="is-size-4 has-text-left">{selectedUnit.customName || selectedUnit.name} {`[${selectedUnit.size}]`}</h3>
                 </div>
             )}
-            <IconButton color="primary" onClick={() => toggleEditMode()}>
+            <IconButton color="primary" className="ml-2" onClick={() => toggleEditMode()}>
                 <EditIcon />
             </IconButton>
-            <p className="ml-4">{UpgradeService.calculateUnitTotal(selectedUnit)}pts</p>
+            <p className="ml-4 is-flex-grow-1" style={{textAlign:"right"}}>{UpgradeService.calculateUnitTotal(selectedUnit)}pts</p>
         </div>
     );
 }
