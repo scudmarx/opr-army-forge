@@ -143,7 +143,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                                 <TableCell style={{ border: "none", borderTop: "1px solid rgb(224, 224, 224)" }} colSpan={5}>{upgrade.name}</TableCell>
                                             </TableRow>
                                             {upgrade.profiles.map((profile, i) => (
-                                                <WeaponRow key={i} unit={unit} e={upgradeToEquipment(profile, 1)} isProfile={true} />
+                                                <WeaponRow key={i} unit={unit} e={upgradeToEquipment(profile)} isProfile={true} />
                                             ))}
                                         </Fragment>
                                     );

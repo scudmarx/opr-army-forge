@@ -5,7 +5,7 @@ import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
 import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
-import { ISpecialRule, IUpgradeGainsRule, IUpgradePackage } from '../../data/interfaces';
+import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
 
 export function Upgrades() {
