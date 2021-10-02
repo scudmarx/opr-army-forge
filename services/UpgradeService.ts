@@ -260,8 +260,6 @@ export default class UpgradeService {
     }
 
     public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-        debugger;
-
         const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
         const toRemove = unit.selectedUpgrades[removeAt];
         const count = toRemove.gains[0]?.count;
