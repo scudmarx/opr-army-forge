@@ -18,26 +18,24 @@ export function Upgrades() {
         : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
     const getUpgradeSet = (id) => army.upgradePackages.filter((s) => s.uid === id)[0];
-    if (!selectedUnit)
-        return null;
 
-    const equipmentSpecialRules: ISpecialRule[] = selectedUnit
+    const equipmentSpecialRules: ISpecialRule[] = selectedUnit && selectedUnit
         .equipment
         .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
         .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
-    const unitUpgradeRules: ISpecialRule[] = UnitService
+    const unitUpgradeRules: ISpecialRule[] = selectedUnit && UnitService
         .getAllUpgradedRules(selectedUnit);
 
-    const specialRules = (selectedUnit.specialRules || [])
+    const specialRules = selectedUnit && (selectedUnit.specialRules || [])
         .concat(equipmentSpecialRules)
         .concat(unitUpgradeRules)
         .filter(r => r.name !== "-");
 
     return (
         <div className={styles["upgrade-panel"]}>
-            <h3 className="px-4 is-size-4 is-hidden-mobile mb-4">{selectedUnit.name} Upgrades</h3>
-            <Paper square elevation={0}>
+            <h3 className="p-4 is-size-4 is-hidden-mobile">{selectedUnit?.customName || selectedUnit?.name} Upgrades</h3>
+            {selectedUnit && <Paper square elevation={0}>
                 <div className="px-4 pt-4">
                     <UnitEquipmentTable unit={selectedUnit} />
                 </div>
@@ -46,8 +44,8 @@ export function Upgrades() {
                         <h4 style={{ fontWeight: 600, fontSize: "14px" }}>Special Rules</h4>
                         <RuleList specialRules={specialRules} />
                     </div>}
-            </Paper>
-            {(selectedUnit.upgrades || [])
+            </Paper>}
+            {(selectedUnit?.upgrades || [])
                 .map((setId) => getUpgradeSet(setId))
                 .filter((s) => !!s) // remove empty sets?
                 .map((pkg: IUpgradePackage) => (

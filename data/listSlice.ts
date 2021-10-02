@@ -80,6 +80,6 @@ export const listSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addUnit, applyUpgrade, removeUpgrade, selectUnit, removeUnit, renameUnit } = listSlice.actions
+export const { addUnit, applyUpgrade, removeUpgrade, selectUnit, removeUnit, renameUnit, loadSavedList } = listSlice.actions
 
 export default listSlice.reducer
