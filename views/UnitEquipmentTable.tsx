@@ -76,16 +76,29 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
     const upgradedEquipment = weaponUpgrades.map(upgradeToEquipment);
     // Combine upgradedEquipment with weapons
     const combinedWeapons = [];
-
+    const addedUpgrades = [];
     weapons.forEach((w, index) => {
         const weapon = { ...w };
         upgradedEquipment.forEach((e) => {
             if (e.label === w.label) {
                 weapon.count += e.count;
+                addedUpgrades.push(e.label);
             }
         })
         combinedWeapons.push(weapon);
     });
+
+    upgradedEquipment.forEach((e) => {
+        if (!addedUpgrades.includes(e.label)) {
+            const index = combinedWeapons.findIndex((w) =>  pluralise.singular(w.label) === pluralise.singular(e.label));
+
+            if (index !== -1) {
+                combinedWeapons[index].count += e.count;
+            } else {
+                combinedWeapons.push(e);
+            }
+        }
+    })
 
     const weaponGroups = groupBy(combinedWeapons, "name");
 
