@@ -20,6 +20,12 @@ export const listSlice = createSlice({
     name: 'army',
     initialState,
     reducers: {
+        loadSavedList(state, action: PayloadAction<ISelectedUnit[]>) {
+            return {
+                ...state,
+                units: action.payload
+            };
+        },
         addUnit: (state, action: PayloadAction<any>) => {
             state.units.push({
                 ...action.payload,
