@@ -90,7 +90,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
     upgradedEquipment.forEach((e) => {
         if (!addedUpgrades.includes(e.label)) {
-            const index = combinedWeapons.findIndex((w) =>  pluralise.singular(w.label) === pluralise.singular(e.label));
+            const index = combinedWeapons.findIndex((w) => pluralise.singular(w.label) === pluralise.singular(e.label));
 
             if (index !== -1) {
                 combinedWeapons[index].count += e.count;
@@ -102,7 +102,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
     const weaponGroups = groupBy(combinedWeapons, "name");
 
-    const cellStyle = { paddingLeft: "8px", paddingRight: "8px" };
+    const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
     const headerStyle = { ...cellStyle, fontWeight: 600 };
 
     return (
@@ -157,12 +157,12 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                     </TableBody>
                 </Table>
             </TableContainer>}
-            {hasEquipment && <TableContainer component={Paper} className="mb-4" elevation={0}>
+            {hasEquipment && <TableContainer component={Paper} className="mb-4 mt-2" elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
                 <Table size="small">
                     <TableHead>
                         <TableRow style={{ backgroundColor: "#EBEBEB", fontWeight: 600 }}>
-                            <TableCell style={{ fontWeight: 600 }}>Equipment</TableCell>
-                            <TableCell style={{ fontWeight: 600 }}>SPE</TableCell>
+                            <TableCell style={headerStyle}>Equipment</TableCell>
+                            <TableCell style={headerStyle}>SPE</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -172,8 +172,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.label) : e.label}</TableCell>
-                                        <TableCell>
+                                        <TableCell style={cellStyle}>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.label) : e.label}</TableCell>
+                                        <TableCell style={cellStyle}>
                                             <RuleList specialRules={e.specialRules.map(DataParsingService.parseRule)} />
                                         </TableCell>
                                     </TableRow>
@@ -188,8 +188,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell>{e.name}</TableCell>
-                                        <TableCell>
+                                        <TableCell style={cellStyle}>{e.name}</TableCell>
+                                        <TableCell style={cellStyle}>
                                             <RuleList specialRules={rules} />
                                         </TableCell>
                                     </TableRow>
