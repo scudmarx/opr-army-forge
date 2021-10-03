@@ -25,11 +25,13 @@ export default function MainMenu() {
 
     const handleSave = () => {
         const unitsJson = JSON.stringify(list.units);
-        localStorage["AF_Save"] = unitsJson;
+        const saveName = prompt("Saved list name:");
+        localStorage["AF_Save_" + saveName] = unitsJson;
     };
 
     const handleLoad = () => {
-        const units = JSON.parse(localStorage["AF_Save"]);
+        const loadName = prompt("Load list name:");
+        const units = JSON.parse(localStorage["AF_Save_" + loadName]);
         dispatch(loadSavedList(units));
     };
 

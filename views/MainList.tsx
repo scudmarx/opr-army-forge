@@ -47,7 +47,7 @@ export function MainList({ onSelected }) {
             return (
               <li key={index}
                 onClick={() => handleSelectUnit(s)} >
-                <Paper square elevation={1} style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "#D7E3EB" : null) }}>
+                <Paper square elevation={1} style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "rgba(249, 253, 255, 1)" : null) }}>
                   <div className="py-2 px-4 is-flex is-flex-grow-1 is-align-items-center">
                     <div className="is-flex-grow-1">
                       <p className="mb-1" style={{ fontWeight: 600 }}>{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
