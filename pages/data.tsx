@@ -237,9 +237,9 @@ export default function Data() {
                     <label>Units - Page 3</label>
                     <textarea className="textarea" value={units3} onChange={(e) => setUnits3(e.target.value)} rows={15}></textarea>
                     <label>Units - Page 4</label>
-                    <textarea className="textarea" value={units3} onChange={(e) => setUnits4(e.target.value)} rows={15}></textarea>
+                    <textarea className="textarea" value={units4} onChange={(e) => setUnits4(e.target.value)} rows={15}></textarea>
                     <label>Units - Page 5</label>
-                    <textarea className="textarea" value={units3} onChange={(e) => setUnits5(e.target.value)} rows={15}></textarea>
+                    <textarea className="textarea" value={units5} onChange={(e) => setUnits5(e.target.value)} rows={15}></textarea>
                 </div>
                 <div className="column">
                     <p className="mb-2">Copy &amp; paste upgrade tables from pdf page by page.</p>
