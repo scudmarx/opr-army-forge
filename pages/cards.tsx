@@ -20,7 +20,7 @@ export default function Cards() {
     const router = useRouter();
 
     const gameRules = army.rules;
-    const armyRules = army.data.specialRules;
+    const armyRules = army.data?.specialRules;
     const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
 
