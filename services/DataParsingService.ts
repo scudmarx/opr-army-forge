@@ -87,7 +87,7 @@ export default class DataParsingService {
         let groupIndex = 1;
         let lastGroupId = null;
         let lastUpgradeText = null;
-        for (let line of upgrades.split("\n").filter((l) => !!l)) {
+        for (let line of upgrades.split("\n").filter((l) => !!l?.trim())) {
             try {
                 const parsedUpgrade = /^(\D\s)?(.+?)(?<!to fire):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(line);
 
@@ -342,18 +342,6 @@ export default class DataParsingService {
 
                 ]
             };
-
-            return {
-                id: nanoid(7),
-                cost: parseInt(mountMatch[3]),
-                gains: [
-                    {
-                        label: mountName,
-                        specialRules: mountRules
-                    },
-                    mountWeapon
-                ].filter(e => !!e)
-            };
         }
 
         if (/ - /.test(part))
@@ -394,7 +382,7 @@ export default class DataParsingService {
         }
 
         // "Camo Cloaks (Stealth)"
-        const itemRuleMatch = /^(([\w\s]+)\(([\w\s]+|Defense \+\d)( in melee)?\))\s([-+]\d+)pt/.exec(part);
+        const itemRuleMatch = /^(([\w\s]+)\(([\w\s]+|Defense \+\d)( in melee)?(?<!A\d)\))\s([-+]\d+)pt/.exec(part);
         if (itemRuleMatch) {
             return {
                 id: nanoid(7),
