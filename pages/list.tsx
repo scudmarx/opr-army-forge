@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from "next/router";
@@ -7,12 +7,17 @@ import { useMediaQuery } from 'react-responsive';
 import MobileView from "../views/listBuilder/MobileView";
 import DesktopView from "../views/listBuilder/DesktopView";
 import { setGameRules } from "../data/armySlice";
+import { AppBar, Paper, Tab, Tabs, Toolbar, Typography, IconButton, Menu, MenuItem } from "@mui/material";
+import BackIcon from '@mui/icons-material/ArrowBackIosNew';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function List() {
 
     const army = useSelector((state: RootState) => state.army);
     const router = useRouter();
     const dispatch = useDispatch();
+
+    const [anchorEl, setAnchorEl] = useState(null);
 
     // Load army list file 
     useEffect(() => {
@@ -43,6 +48,14 @@ export default function List() {
                 dispatch(setGameRules(rules));
             });
     }, []);
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     // Break from mobile to desktop layout at 1024px wide
     const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });

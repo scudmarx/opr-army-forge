@@ -20,6 +20,12 @@ export const listSlice = createSlice({
     name: 'army',
     initialState,
     reducers: {
+        loadSavedList(state, action: PayloadAction<ISelectedUnit[]>) {
+            return {
+                ...state,
+                units: action.payload
+            };
+        },
         addUnit: (state, action: PayloadAction<any>) => {
             state.units.push({
                 ...action.payload,
@@ -74,6 +80,6 @@ export const listSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addUnit, applyUpgrade, removeUpgrade, selectUnit, removeUnit, renameUnit } = listSlice.actions
+export const { addUnit, applyUpgrade, removeUpgrade, selectUnit, removeUnit, renameUnit, loadSavedList } = listSlice.actions
 
 export default listSlice.reducer

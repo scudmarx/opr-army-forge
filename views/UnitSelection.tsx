@@ -21,8 +21,7 @@ export function UnitSelection({ onSelected }) {
   const army = armyData.data;
   const dispatch = useDispatch();
   const [expandedId, setExpandedId] = useState(null);
-  const [expandAll, setExpandAll] = useState(null);
-  const [ruleModalOpen, setRuleModalOpen] = useState(false);
+  const [expandAll, setExpandAll] = useState(true);
 
   // If army has not been selected yet, show nothing
   if (!armyData.loaded)
@@ -147,21 +146,6 @@ export function UnitSelection({ onSelected }) {
           </Fragment>
         ))
       }
-      <Modal
-        open={ruleModalOpen}
-        onClose={() => setRuleModalOpen(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Paper className="p-4 m-4">
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Tough(3)
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Paper>
-      </Modal>
     </aside >
   );
 }

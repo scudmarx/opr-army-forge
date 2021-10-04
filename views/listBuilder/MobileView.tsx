@@ -9,14 +9,12 @@ import "slick-carousel/slick/slick-theme.css";
 import 'react-spring-bottom-sheet/dist/style.css';
 import { Upgrades } from "../upgrades/Upgrades";
 import { BottomSheet } from "react-spring-bottom-sheet";
-import { AppBar, Paper, Tab, Tabs, Toolbar, Typography, IconButton, TextField, Menu, MenuItem, Button } from "@mui/material";
-import BackIcon from '@mui/icons-material/ArrowBackIosNew';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { AppBar, Paper, Tab, Tabs, Button } from "@mui/material";
 import UpgradeService from "../../services/UpgradeService";
-import { renameUnit, selectUnit } from "../../data/listSlice";
-import { useRouter } from "next/router";
+import { selectUnit } from "../../data/listSlice";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";
 import Add from "@mui/icons-material/Add";
+import MainMenu from "../components/MainMenu";
 
 export default function MobileView() {
 
@@ -24,12 +22,11 @@ export default function MobileView() {
     const army = useSelector((state: RootState) => state.army);
 
     const dispatch = useDispatch();
-    const router = useRouter();
 
     const [slider, setSlider] = useState(null);
     const [sheetOpen, setSheetOpen] = useState(false);
     const [slideIndex, setSlideIndex] = useState(1);
-    const [anchorEl, setAnchorEl] = useState(null);
+
 
     // Open bottom sheet when unit is selected
     const onUnitSelected = () => {
@@ -62,61 +59,10 @@ export default function MobileView() {
         beforeChange: (current, next) => handleSlideChange(null, next)
     };
 
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-
     return (
         <>
-            <Paper elevation={2} color="primary" square>
-                <AppBar position="static" elevation={0}>
-                    <Toolbar>
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            sx={{ mr: 2 }}
-                            onClick={() => router.back()}
-                        >
-                            <BackIcon />
-                        </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            My List • 100pts
-                        </Typography>
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            onClick={handleMenu}
-                        >
-                            <MoreVertIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorEl}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
-                        >
-                            <MenuItem onClick={() => router.push("/cards")}>View Cards</MenuItem>
-                        </Menu>
-                    </Toolbar>
-                </AppBar>
+            <Paper elevation={1} color="primary" square>
+                <MainMenu />
                 <AppBar elevation={0} position="static" style={{ position: "sticky", top: 0, zIndex: 1 }}>
                     <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
                         <Tab label={`${army?.data?.name} v${army?.data?.version}`} />

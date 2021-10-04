@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { load, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Card } from "@mui/material";
 import { AppBar, IconButton, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -230,39 +230,39 @@ export default function Files() {
 
                                 return (
                                     <div key={index} className="column is-half">
-                                        <Accordion
-                                            disableGutters
-                                            square
-                                            elevation={0}
-                                            variant="outlined"
-                                            expanded={expandedId === file.name}
-                                            onChange={() => setExpandedId(expandedId === file.name ? null : file.name)}>
-                                            <AccordionSummary onClick={() => selectArmy(file.path)}>
-                                                <div className="is-flex is-flex-direction-column is-flex-grow-1">
+                                        <Card
+                                            elevation={2}
+                                            onClick={() => selectArmy(file.path)}>
+                                            <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
+                                                <div className="is-flex p-2" style={{ position: "relative", height: "100px", boxSizing: "content-box" }}>
+                                                    <div style={{
+                                                        zIndex: 0,
+                                                        position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
+                                                        backgroundImage: `url("img/army_bg.png")`,
+                                                        backgroundPosition: "center",
+                                                        backgroundSize: "contain",
+                                                        backgroundRepeat: 'no-repeat',
+                                                        transform: `rotate(${360 * Math.random()}deg)`
+                                                    }}></div>
                                                     <div className="is-flex" style={{
                                                         height: "100px",
+                                                        width: "100%",
                                                         backgroundImage: `url("img/gf_armies/${file.name}.png")`,
                                                         backgroundPosition: "center",
                                                         backgroundSize: "contain",
-                                                        backgroundRepeat: 'no-repeat'
-                                                    }}>
-                                                    </div>
-                                                    <div className="is-flex is-flex-grow-1 is-align-items-center">
-                                                        <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
-                                                            <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
-                                                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                                                                by OnePageRules
-                                                            </div>
-                                                        </div>
-                                                        {driveArmy && driveArmy.version > file.version && <div className="mr-4" title="Army file may be out of date"><WarningIcon /></div>}
-                                                        {file.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
-                                                    </div>
+                                                        backgroundRepeat: 'no-repeat',
+                                                        position: "relative", zIndex: 1
+                                                    }}></div>
                                                 </div>
-                                            </AccordionSummary>
-                                            <AccordionDetails style={{ flexDirection: "column" }}>
-                                                <p>Additional info...?</p>
-                                            </AccordionDetails>
-                                        </Accordion>
+                                                <div className="is-flex is-flex-grow-1 is-align-items-center">
+                                                    <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
+                                                        <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{file.name}</p>
+                                                    </div>
+                                                    {driveArmy && driveArmy.version > file.version && <div className="mr-4" title="Army file may be out of date"><WarningIcon /></div>}
+                                                    {file.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+                                                </div>
+                                            </div>
+                                        </Card>
                                     </div>
                                     // <li key={index} className="mb-4">
                                     //     <Button variant="contained" color="primary" onClick={() => selectArmy(file.path)}>

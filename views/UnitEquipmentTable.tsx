@@ -57,18 +57,15 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
     const hasEquipment = equipment.length > 0 || itemUpgrades.length > 0;
     const hasWeapons = weapons.length > 0 || weaponUpgrades.length > 0;
 
-    const weaponGroups = groupBy(weaponUpgrades, "name");
-
-    const upgradeToEquipment = (upgrade: IUpgradeGains, count: number): IEquipment => {
-
+    const upgradeToEquipment = (upgrade: IUpgradeGains): IEquipment => {
         if (upgrade.type === "ArmyBookWeapon") {
             const weapon = upgrade as IUpgradeGainsWeapon;
             const equipment: IEquipment = {
-                label: weapon.name,
+                label: pluralise.singular(weapon.name),
                 attacks: weapon.attacks,
                 range: weapon.range,
                 specialRules: weapon.specialRules.map(r => RulesService.displayName(r)),
-                count: upgrade.count * count
+                count: upgrade.count
             };
             return equipment
         }
@@ -76,8 +73,36 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
             label: upgrade.name,
         };
     };
+    const upgradedEquipment = weaponUpgrades.map(upgradeToEquipment);
+    // Combine upgradedEquipment with weapons
+    const combinedWeapons = [];
+    const addedUpgrades = [];
+    weapons.forEach((w, index) => {
+        const weapon = { ...w };
+        upgradedEquipment.forEach((e) => {
+            if (e.label === w.label) {
+                weapon.count += e.count;
+                addedUpgrades.push(e.label);
+            }
+        })
+        combinedWeapons.push(weapon);
+    });
 
-    const cellStyle = { paddingLeft: "8px", paddingRight: "8px" };
+    upgradedEquipment.forEach((e) => {
+        if (!addedUpgrades.includes(e.label)) {
+            const index = combinedWeapons.findIndex((w) => pluralise.singular(w.label) === pluralise.singular(e.label));
+
+            if (index !== -1) {
+                combinedWeapons[index].count += e.count;
+            } else {
+                combinedWeapons.push(e);
+            }
+        }
+    })
+
+    const weaponGroups = groupBy(combinedWeapons, "name");
+
+    const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
     const headerStyle = { ...cellStyle, fontWeight: 600 };
 
     return (
@@ -95,7 +120,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                     </TableHead>
                     <TableBody>
                         {
-                            weapons.filter(e => e.count).map((e, i) => {
+                            combinedWeapons.filter(e => e.count).map((e, i) => {
                                 return (
                                     <WeaponRow unit={unit} e={e} isProfile={false} />
                                 );
@@ -105,7 +130,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                             Object.keys(weaponGroups).map(key => {
                                 const group = weaponGroups[key]
                                 const upgrade = group[0];
-                                const e = upgradeToEquipment(upgrade, group.length);
+                                const e = upgradeToEquipment(upgrade);
                                 // Upgrade may have been replaced
                                 if (!e.count)
                                     return null;
@@ -118,7 +143,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                                                 <TableCell style={{ border: "none", borderTop: "1px solid rgb(224, 224, 224)" }} colSpan={5}>{upgrade.name}</TableCell>
                                             </TableRow>
                                             {upgrade.profiles.map((profile, i) => (
-                                                <WeaponRow key={i} unit={unit} e={upgradeToEquipment(profile, 1)} isProfile={true} />
+                                                <WeaponRow key={i} unit={unit} e={upgradeToEquipment(profile)} isProfile={true} />
                                             ))}
                                         </Fragment>
                                     );
@@ -132,12 +157,12 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                     </TableBody>
                 </Table>
             </TableContainer>}
-            {hasEquipment && <TableContainer component={Paper} className="mb-4" elevation={0}>
+            {hasEquipment && <TableContainer component={Paper} className="mb-4 mt-2" elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
                 <Table size="small">
                     <TableHead>
                         <TableRow style={{ backgroundColor: "#EBEBEB", fontWeight: 600 }}>
-                            <TableCell style={{ fontWeight: 600 }}>Equipment</TableCell>
-                            <TableCell style={{ fontWeight: 600 }}>SPE</TableCell>
+                            <TableCell style={headerStyle}>Equipment</TableCell>
+                            <TableCell style={headerStyle}>SPE</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -147,8 +172,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.label) : e.label}</TableCell>
-                                        <TableCell>
+                                        <TableCell style={cellStyle}>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.label) : e.label}</TableCell>
+                                        <TableCell style={cellStyle}>
                                             <RuleList specialRules={e.specialRules.map(DataParsingService.parseRule)} />
                                         </TableCell>
                                     </TableRow>
@@ -163,8 +188,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
                                 return (
                                     <TableRow key={i}>
-                                        <TableCell>{e.name}</TableCell>
-                                        <TableCell>
+                                        <TableCell style={cellStyle}>{e.name}</TableCell>
+                                        <TableCell style={cellStyle}>
                                             <RuleList specialRules={rules} />
                                         </TableCell>
                                     </TableRow>

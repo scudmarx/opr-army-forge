@@ -1,4 +1,4 @@
-import { IEquipment, ISelectedUnit, ISpecialRule, IUpgrade, IUpgradeOption } from "../data/interfaces";
+import { IEquipment, ISelectedUnit, ISpecialRule, IUpgrade, IUpgradeGainsItem, IUpgradeOption } from "../data/interfaces";
 import EquipmentService from "./EquipmentService";
 import "../extensions";
 import DataParsingService from "./DataParsingService";
@@ -189,13 +189,26 @@ export default class UpgradeService {
 
         // Function to apply the upgrade option to the unit
         const apply = (available: number) => {
-            unit.selectedUpgrades.push({
+            const toApply = {
                 ...option,
                 gains: option.gains.map(g => ({
                     ...g,
                     count: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
                 }))
-            });
+            };
+
+            // Apply counts to item content
+            for (let gain of toApply.gains) {
+                if (gain.type !== "ArmyBookItem")
+                    continue;
+                const item = gain as IUpgradeGainsItem;
+                item.content = item.content.map(c => ({
+                    ...c,
+                    count: gain.count
+                }));
+            }
+
+            unit.selectedUpgrades.push(toApply);
         };
 
         if (upgrade.type === "upgradeRule") {
@@ -260,8 +273,6 @@ export default class UpgradeService {
     }
 
     public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-        debugger;
-
         const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
         const toRemove = unit.selectedUpgrades[removeAt];
         const count = toRemove.gains[0]?.count;
