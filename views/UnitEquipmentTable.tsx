@@ -12,7 +12,7 @@ import { Fragment } from 'react';
 export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEquipment, isProfile: boolean }) {
 
     const count = e.count;
-    const name = e.count > 1 ? pluralise.plural(e.label) : e.label;
+    const name = e.count > 1 && e.label ? pluralise.plural(e.label) : e.label;
     const originalCount: number = null;
     const multiplier = count / unit.size; // 20 / 10 = "2x Weapons...""
     const displayCount = count > unit.size // 20 hand weapons, unit of 10
@@ -26,9 +26,9 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
         borderBottom: "none",
         borderTop: isProfile ? "none" : "1px solid rgb(224, 224, 224)"
     };
-    const rules = e.specialRules
+    const rules = e.specialRules ? e.specialRules
         .filter(r => r.indexOf("AP") === -1)
-        .map(DataParsingService.parseRule)
+        .map(DataParsingService.parseRule) : [];
 
     return (
         <TableRow>

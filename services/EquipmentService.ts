@@ -44,7 +44,7 @@ export default class EquipmentService {
     }
 
     static formatString(eqp: IEquipment): string {
-        const name = eqp.count > 1 ? pluralise.plural(eqp.label) : eqp.label;
+        const name = eqp.count > 1 && eqp.label ? pluralise.plural(eqp.label) : eqp.label;
         const range = eqp.range ? `${eqp.range}"` : null;
         const attacks = eqp.attacks ? `A${eqp.attacks}` : null;
 
