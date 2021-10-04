@@ -13,6 +13,8 @@ import DataParsingService from "../services/DataParsingService";
 import { nanoid } from "nanoid";
 import { IUnit, IUpgradeOption } from "../data/interfaces";
 
+const rotations = {} as any;
+
 export default function Files() {
 
     const army = useSelector((state: RootState) => state.army);
@@ -242,7 +244,7 @@ export default function Files() {
                                                         backgroundPosition: "center",
                                                         backgroundSize: "contain",
                                                         backgroundRepeat: 'no-repeat',
-                                                        transform: `rotate(${360 * Math.random()}deg)`
+                                                        transform: `rotate(${rotations[file.name] || (rotations[file.name] = 360 * Math.random())}deg)`
                                                     }}></div>
                                                     <div className="is-flex" style={{
                                                         height: "100px",
