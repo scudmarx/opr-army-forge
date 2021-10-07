@@ -1,0 +1,2255 @@
+{
+    "gameSystemId": 3,
+    "name": "Machine Cult",
+    "hint": "Machine Cult",
+    "background": "",
+    "armyWideRule": {},
+    "version": "2.11",
+    "dataToolVersion": "0.5.3",
+    "units": [
+      {
+        "id": "yKskCP4",
+        "name": "Machine Priest",
+        "size": 1,
+        "quality": 3,
+        "defense": 2,
+        "equipment": [
+          {
+            "id": "xGC6-Oj",
+            "label": "Axe-Halberd",
+            "attacks": 4,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "hero",
+            "name": "Hero",
+            "rating": ""
+          },
+          {
+            "key": "regeneration",
+            "name": "Regeneration",
+            "rating": ""
+          },
+          {
+            "key": "tough",
+            "name": "Tough",
+            "rating": "3"
+          }
+        ],
+        "upgrades": [
+          "A1",
+          "B1",
+          "C1"
+        ],
+        "cost": 95,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "aVFkrue",
+        "name": "Machine Deacon",
+        "size": 1,
+        "quality": 3,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "KPhxfix",
+            "label": "Axe-Halberd",
+            "attacks": 2,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "hero",
+            "name": "Hero",
+            "rating": ""
+          },
+          {
+            "key": "tough",
+            "name": "Tough",
+            "rating": "3"
+          }
+        ],
+        "upgrades": [
+          "A1",
+          "C1"
+        ],
+        "cost": 50,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "JWEzHRf",
+        "name": "Cult Alpha",
+        "size": 1,
+        "quality": 4,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "bS8A-42",
+            "label": "R-Carbine",
+            "attacks": 1,
+            "range": 18,
+            "specialRules": [
+              "Radiation"
+            ]
+          },
+          {
+            "id": "SVLAvA6",
+            "label": "CCW",
+            "attacks": 1,
+            "specialRules": []
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "hero",
+            "name": "Hero",
+            "rating": ""
+          },
+          {
+            "key": "strider",
+            "name": "Strider",
+            "rating": ""
+          },
+          {
+            "key": "tough",
+            "name": "Tough",
+            "rating": "3"
+          }
+        ],
+        "upgrades": [
+          "C1",
+          "D1"
+        ],
+        "cost": 45,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "_g-ZGLE",
+        "name": "Sect Chief",
+        "size": 1,
+        "quality": 3,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "nTkP5kF",
+            "label": "Sonic Razor & Claw",
+            "attacks": 2,
+            "specialRules": [
+              "Poison",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "furious",
+            "name": "Furious",
+            "rating": ""
+          },
+          {
+            "key": "regeneration",
+            "name": "Regeneration",
+            "rating": ""
+          },
+          {
+            "key": "hero",
+            "name": "Hero",
+            "rating": ""
+          },
+          {
+            "key": "scout",
+            "name": "Scout",
+            "rating": ""
+          },
+          {
+            "key": "stealth",
+            "name": "Stealth",
+            "rating": ""
+          },
+          {
+            "key": "strider",
+            "name": "Strider",
+            "rating": ""
+          },
+          {
+            "key": "tough",
+            "name": "Tough",
+            "rating": "3"
+          }
+        ],
+        "upgrades": [
+          "C1",
+          "E1"
+        ],
+        "cost": 85,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "fI8Rf3X",
+        "name": "Cult Vanguard",
+        "size": 1,
+        "quality": 4,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "qLI2Iok",
+            "label": "R-Carbine",
+            "attacks": 1,
+            "range": 18,
+            "specialRules": [
+              "Radiation"
+            ]
+          },
+          {
+            "id": "V23y2yf",
+            "label": "CCW",
+            "attacks": 1,
+            "specialRules": []
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "-",
+            "name": "-",
+            "rating": ""
+          }
+        ],
+        "upgrades": [
+          "D1",
+          "F1"
+        ],
+        "cost": 15,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "vK5boIN",
+        "name": "Cult Ranger",
+        "size": 1,
+        "quality": 4,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "-JlMZIt",
+            "label": "Rifle",
+            "attacks": 1,
+            "range": 30,
+            "specialRules": []
+          },
+          {
+            "id": "LW7hM5d",
+            "label": "CCW",
+            "attacks": 1,
+            "specialRules": []
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "strider",
+            "name": "Strider",
+            "rating": ""
+          }
+        ],
+        "upgrades": [
+          "D1",
+          "F1"
+        ],
+        "cost": 20,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "WQEd8lr",
+        "name": "Shock Priest",
+        "size": 1,
+        "quality": 4,
+        "defense": 6,
+        "equipment": [
+          {
+            "id": "e0ovpEd",
+            "label": "Shock Staff",
+            "attacks": 2,
+            "specialRules": [
+              "AP(2)"
+            ]
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "furious",
+            "name": "Furious",
+            "rating": ""
+          },
+          {
+            "key": "impact",
+            "name": "Impact",
+            "rating": "1"
+          },
+          {
+            "key": "regeneration",
+            "name": "Regeneration",
+            "rating": ""
+          }
+        ],
+        "upgrades": [
+          "G1"
+        ],
+        "cost": 25,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "z52Vs23",
+        "name": "Sect Stalker",
+        "size": 1,
+        "quality": 3,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "V_TxrpW",
+            "label": "Sonic Razor & Claw",
+            "attacks": 2,
+            "specialRules": [
+              "Poison",
+              "Rending"
+            ]
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "furious",
+            "name": "Furious",
+            "rating": ""
+          },
+          {
+            "key": "regeneration",
+            "name": "Regeneration",
+            "rating": ""
+          },
+          {
+            "key": "strider",
+            "name": "Strider",
+            "rating": ""
+          }
+        ],
+        "upgrades": [
+          "H1"
+        ],
+        "cost": 35,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "unqZ4Hs",
+        "name": "Sect Infiltrator",
+        "size": 1,
+        "quality": 3,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "l423IxC",
+            "label": "Blaster SMG",
+            "attacks": 5,
+            "range": 12,
+            "specialRules": []
+          },
+          {
+            "id": "IVyIxiS",
+            "label": "Taser Sword",
+            "attacks": 2,
+            "specialRules": [
+              "Taser"
+            ]
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "regeneration",
+            "name": "Regeneration",
+            "rating": ""
+          },
+          {
+            "key": "scout",
+            "name": "Scout",
+            "rating": ""
+          },
+          {
+            "key": "stealth",
+            "name": "Stealth",
+            "rating": ""
+          },
+          {
+            "key": "strider",
+            "name": "Strider",
+            "rating": ""
+          }
+        ],
+        "upgrades": [
+          "I1"
+        ],
+        "cost": 50,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "bPfEidR",
+        "name": "Sky Stalker",
+        "size": 1,
+        "quality": 3,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "pyfwMtU",
+            "label": "P-Thrower",
+            "attacks": 6,
+            "range": 12,
+            "specialRules": [
+              "Phosphor"
+            ]
+          },
+          {
+            "id": "bABXgMx",
+            "label": "CCW",
+            "attacks": 2,
+            "specialRules": []
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "ambush",
+            "name": "Ambush",
+            "rating": ""
+          },
+          {
+            "key": "flying",
+            "name": "Flying",
+            "rating": ""
+          },
+          {
+            "key": "furious",
+            "name": "Furious",
+            "rating": ""
+          }
+        ],
+        "upgrades": [
+          "J1"
+        ],
+        "cost": 50,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "c485DUW",
+        "name": "Raider Cavalry",
+        "size": 1,
+        "quality": 4,
+        "defense": 4,
+        "equipment": [
+          {
+            "id": "bkoL2m3",
+            "label": "P-Pistols",
+            "count": 2,
+            "attacks": 1,
+            "range": 12,
+            "specialRules": [
+              "Phosphor"
+            ]
+          },
+          {
+            "id": "hNqJdr_",
+            "label": "CCW",
+            "attacks": 1,
+            "specialRules": []
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "fast",
+            "name": "Fast",
+            "rating": ""
+          },
+          {
+            "key": "impact",
+            "name": "Impact",
+            "rating": "1"
+          },
+          {
+            "key": "scout",
+            "name": "Scout",
+            "rating": ""
+          },
+          {
+            "key": "strider",
+            "name": "Strider",
+            "rating": ""
+          }
+        ],
+        "upgrades": [
+          "K1"
+        ],
+        "cost": 35,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "svy9M87",
+        "name": "Breacher Cyborg",
+        "size": 1,
+        "quality": 4,
+        "defense": 2,
+        "equipment": [
+          {
+            "id": "3xqAfNO",
+            "label": "Contortion Cannon",
+            "attacks": 1,
+            "range": 24,
+            "specialRules": [
+              "AP(3)",
+              "Deadly(3)"
+            ]
+          },
+          {
+            "id": "JHjwYin",
+            "label": "Cyborg Claws",
+            "attacks": 3,
+            "specialRules": []
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "slow",
+            "name": "Slow",
+            "rating": ""
+          },
+          {
+            "key": "tough",
+            "name": "Tough",
+            "rating": "3"
+          }
+        ],
+        "upgrades": [
+          "L1"
+        ],
+        "cost": 70,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      },
+      {
+        "id": "2UMQkJk",
+        "name": "Destroyer Cyborg",
+        "size": 1,
+        "quality": 4,
+        "defense": 2,
+        "equipment": [
+          {
+            "id": "pELtAIk",
+            "label": "Heavy Gravity Cannon",
+            "attacks": 5,
+            "range": 30,
+            "specialRules": [
+              "Rending"
+            ]
+          },
+          {
+            "id": "k-2Oaiv",
+            "label": "Cyborg Claws",
+            "attacks": 3,
+            "specialRules": []
+          }
+        ],
+        "specialRules": [
+          {
+            "key": "slow",
+            "name": "Slow",
+            "rating": ""
+          },
+          {
+            "key": "tough",
+            "name": "Tough",
+            "rating": "3"
+          }
+        ],
+        "upgrades": [
+          "M1"
+        ],
+        "cost": 85,
+        "costMode": "manually",
+        "splitPageNumber": 1
+      }
+    ],
+    "upgradePackages": [
+      {
+        "uid": "A1",
+        "hint": "A1",
+        "sections": [
+          {
+            "label": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "id": "SfnXZ",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "Rail Gun (18”, A1, AP(2), Deadly(3))",
+                "gains": [
+                  {
+                    "label": "Rail Gun (18”, A1, AP(2), Deadly(3))",
+                    "name": "Rail Gun",
+                    "attacks": 1,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "2",
+                        "label": "AP(2)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "deadly",
+                        "name": "Deadly",
+                        "rating": "3",
+                        "label": "Deadly(3)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "BgsM6",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 20,
+                "label": "Trans Cannon (12”, A6, AP(1))",
+                "gains": [
+                  {
+                    "label": "Trans Cannon (12”, A6, AP(1))",
+                    "name": "Trans Cannon",
+                    "attacks": 6,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "vwwUd",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 20,
+                "label": "Death Ray (18”, A1, AP(2), Blast(3))",
+                "gains": [
+                  {
+                    "label": "Death Ray (18”, A1, AP(2), Blast(3))",
+                    "name": "Death Ray",
+                    "attacks": 1,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "2",
+                        "label": "AP(2)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "blast",
+                        "name": "Blast",
+                        "rating": "3",
+                        "label": "Blast(3)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "2Jb_G",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 20,
+                "label": "Combustion Blaster (24”, A3, AP(1))",
+                "gains": [
+                  {
+                    "label": "Combustion Blaster (24”, A3, AP(1))",
+                    "name": "Combustion Blaster",
+                    "attacks": 3,
+                    "range": 24,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "id": "XqkNi",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "P-Carbine (18”, A1, AP(1), Phosphor)",
+                "gains": [
+                  {
+                    "label": "P-Carbine (18”, A1, AP(1), Phosphor)",
+                    "name": "P-Carbine",
+                    "attacks": 1,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "phosphor",
+                        "name": "Phosphor",
+                        "rating": "",
+                        "label": "Phosphor",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "8lwA-",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 15,
+                "label": "Macro Pistol (12”, A5, AP(1))",
+                "gains": [
+                  {
+                    "label": "Macro Pistol (12”, A5, AP(1))",
+                    "name": "Macro Pistol",
+                    "attacks": 5,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Upgrade with any",
+            "type": "upgrade",
+            "select": "any",
+            "options": [
+              {
+                "id": "3z43K",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 20,
+                "label": "Machine Lore (Psychic(1))",
+                "gains": [
+                  {
+                    "label": "Machine Lore (Psychic(1))",
+                    "name": "Machine Lore",
+                    "type": "ArmyBookItem",
+                    "content": [
+                      {
+                        "key": "psychic",
+                        "name": "Psychic",
+                        "rating": "1",
+                        "label": "Psychic(1)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "pF9rS_z",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 30,
+                "label": "Repair Master",
+                "gains": [
+                  {
+                    "key": "repair-master",
+                    "name": "Repair Master",
+                    "rating": "",
+                    "label": "Repair Master",
+                    "type": "ArmyBookRule"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "B1",
+        "hint": "B1",
+        "sections": [
+          {
+            "label": "Upgrade Psychic(1)",
+            "type": "upgradeRule",
+            "replaceWhat": "Psychic(1)",
+            "options": [
+              {
+                "id": "nhDZoEb",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 15,
+                "label": "Psychic(2)",
+                "gains": [
+                  {
+                    "key": "psychic",
+                    "name": "Psychic",
+                    "rating": "2",
+                    "label": "Psychic(2)",
+                    "type": "ArmyBookRule"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "C1",
+        "hint": "C1",
+        "sections": [
+          {
+            "label": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "id": "ql4I-y_",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 25,
+                "label": "Canticles",
+                "gains": [
+                  {
+                    "key": "canticles",
+                    "name": "Canticles",
+                    "rating": "",
+                    "label": "Canticles",
+                    "type": "ArmyBookRule"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "D1",
+        "hint": "D1",
+        "sections": [
+          {
+            "label": "Replace R-Carbine",
+            "type": "replace",
+            "replaceWhat": "R-Carbine",
+            "options": [
+              {
+                "id": "1ZE84",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 0,
+                "label": "Rifle (30”, A1)",
+                "gains": [
+                  {
+                    "label": "Rifle (30”, A1)",
+                    "name": "Rifle",
+                    "attacks": 1,
+                    "range": 30,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace R-Carbine / Rifle and CCW",
+            "type": "replace",
+            "replaceWhat": [
+              "R-Carbine / Rifle",
+              "CCW"
+            ],
+            "options": [
+              {
+                "id": "xI3AkbP",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 0,
+                "label": "Pistol (12”, A1) and CCW (A2)",
+                "gains": [
+                  {
+                    "label": "Pistol (12”, A1)",
+                    "name": "Pistol",
+                    "attacks": 1,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  },
+                  {
+                    "label": "CCW (A2)",
+                    "name": "CCW",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace Pistol",
+            "type": "replace",
+            "replaceWhat": "Pistol",
+            "options": [
+              {
+                "id": "eOaf2",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "P-Pistol (12”, A1, Phosphor)",
+                "gains": [
+                  {
+                    "label": "P-Pistol (12”, A1, Phosphor)",
+                    "name": "P-Pistol",
+                    "attacks": 1,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "phosphor",
+                        "name": "Phosphor",
+                        "rating": "",
+                        "label": "Phosphor",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "7gJDw",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "R-Pistol (12”, A1, Radiation)",
+                "gains": [
+                  {
+                    "label": "R-Pistol (12”, A1, Radiation)",
+                    "name": "R-Pistol",
+                    "attacks": 1,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "radiation",
+                        "name": "Radiation",
+                        "rating": "",
+                        "label": "Radiation",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "gNsZ4",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "EMP Pistol (12”, A1, EMP)",
+                "gains": [
+                  {
+                    "label": "EMP Pistol (12”, A1, EMP)",
+                    "name": "EMP Pistol",
+                    "attacks": 1,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace CCW",
+            "type": "replace",
+            "replaceWhat": "CCW",
+            "options": [
+              {
+                "id": "Z6wNT",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Energy Sword (A2, AP(1), Rending)",
+                "gains": [
+                  {
+                    "label": "Energy Sword (A2, AP(1), Rending)",
+                    "name": "Energy Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "qrwEC",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Taser Sword (A2, Taser)",
+                "gains": [
+                  {
+                    "label": "Taser Sword (A2, Taser)",
+                    "name": "Taser Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "taser",
+                        "name": "Taser",
+                        "rating": "",
+                        "label": "Taser",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "DzQee",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "EMP Sword (A2, EMP)",
+                "gains": [
+                  {
+                    "label": "EMP Sword (A2, EMP)",
+                    "name": "EMP Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "E1",
+        "hint": "E1",
+        "sections": [
+          {
+            "label": "Replace Sonic Razor & Claw",
+            "type": "replace",
+            "replaceWhat": "Sonic Razor & Claw",
+            "options": [
+              {
+                "id": "LiGna",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 0,
+                "label": "2x Sonic Blades (A1, AP(1), Rending)",
+                "gains": [
+                  {
+                    "label": "Sonic Blades (A1, AP(1), Rending)",
+                    "name": "Sonic Blades",
+                    "attacks": 1,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Sonic Blades (A1, AP(1), Rending)",
+                    "name": "Sonic Blades",
+                    "attacks": 1,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "OJiUrlA",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "Blaster SMG (12”, A5) and Taser Sword (A2, Taser)",
+                "gains": [
+                  {
+                    "label": "Blaster SMG (12”, A5)",
+                    "name": "Blaster SMG",
+                    "attacks": 5,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  },
+                  {
+                    "label": "Taser Sword (A2, Taser)",
+                    "name": "Taser Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "taser",
+                        "name": "Taser",
+                        "rating": "",
+                        "label": "Taser",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "U5f9oYJ",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "Burst Carbine (18”, A3) and Taser Sword (A2, Taser)",
+                "gains": [
+                  {
+                    "label": "Burst Carbine (18”, A3)",
+                    "name": "Burst Carbine",
+                    "attacks": 3,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  },
+                  {
+                    "label": "Taser Sword (A2, Taser)",
+                    "name": "Taser Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "taser",
+                        "name": "Taser",
+                        "rating": "",
+                        "label": "Taser",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace Taser Sword",
+            "type": "replace",
+            "replaceWhat": "Taser Sword",
+            "options": [
+              {
+                "id": "Qfv2E",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 0,
+                "label": "Energy Sword (A2, AP(1), Rending)",
+                "gains": [
+                  {
+                    "label": "Energy Sword (A2, AP(1), Rending)",
+                    "name": "Energy Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "id": "Z7BQS",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Metal Spike (A1, EMP)",
+                "gains": [
+                  {
+                    "label": "Metal Spike (A1, EMP)",
+                    "name": "Metal Spike",
+                    "attacks": 1,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "F1",
+        "hint": "F1",
+        "sections": [
+          {
+            "label": "Replace R-Carbine / Rifle",
+            "type": "replace",
+            "replaceWhat": "R-Carbine / Rifle",
+            "options": [
+              {
+                "id": "ZnEo0",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Flamethrower (12”, A6)",
+                "gains": [
+                  {
+                    "label": "Flamethrower (12”, A6)",
+                    "name": "Flamethrower",
+                    "attacks": 6,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  }
+                ]
+              },
+              {
+                "id": "Z7CEb",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "EMP Rifle (24”, A1, EMP)",
+                "gains": [
+                  {
+                    "label": "EMP Rifle (24”, A1, EMP)",
+                    "name": "EMP Rifle",
+                    "attacks": 1,
+                    "range": 24,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "ObfhJ",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "Plasma Burst Carbine (18”, A3, AP(2))",
+                "gains": [
+                  {
+                    "label": "Plasma Burst Carbine (18”, A3, AP(2))",
+                    "name": "Plasma Burst Carbine",
+                    "attacks": 3,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "2",
+                        "label": "AP(2)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "42kvs",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "Heavy EMP Rifle (24”, A1, EMP, Deadly(3))",
+                "gains": [
+                  {
+                    "label": "Heavy EMP Rifle (24”, A1, EMP, Deadly(3))",
+                    "name": "Heavy EMP Rifle",
+                    "attacks": 1,
+                    "range": 24,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "deadly",
+                        "name": "Deadly",
+                        "rating": "3",
+                        "label": "Deadly(3)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "g3wus",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 40,
+                "label": "Uranium Rifle (48”, A1, AP(4), Sniper)",
+                "gains": [
+                  {
+                    "label": "Uranium Rifle (48”, A1, AP(4), Sniper)",
+                    "name": "Uranium Rifle",
+                    "attacks": 1,
+                    "range": 48,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "4",
+                        "label": "AP(4)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "sniper",
+                        "name": "Sniper",
+                        "rating": "",
+                        "label": "Sniper",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "G1",
+        "hint": "G1",
+        "sections": [
+          {
+            "label": "Replace Shock Staff",
+            "type": "replace",
+            "replaceWhat": "Shock Staff",
+            "options": [
+              {
+                "id": "n9vbkb4",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Taser Gauntlets (A2, Taser) and Gauntlet Shocks (12”, A2, Taser)",
+                "gains": [
+                  {
+                    "label": "Taser Gauntlets (A2, Taser)",
+                    "name": "Taser Gauntlets",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "taser",
+                        "name": "Taser",
+                        "rating": "",
+                        "label": "Taser",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Gauntlet Shocks (12”, A2, Taser)",
+                    "name": "Gauntlet Shocks",
+                    "attacks": 2,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "taser",
+                        "name": "Taser",
+                        "rating": "",
+                        "label": "Taser",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "H1",
+        "hint": "H1",
+        "sections": [
+          {
+            "label": "Replace Sonic Razor & Claw",
+            "type": "replace",
+            "replaceWhat": "Sonic Razor & Claw",
+            "options": [
+              {
+                "id": "5wrMC",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 0,
+                "label": "2x Sonic Blades (A1, AP(1), Rending)",
+                "gains": [
+                  {
+                    "label": "Sonic Blades (A1, AP(1), Rending)",
+                    "name": "Sonic Blades",
+                    "attacks": 1,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Sonic Blades (A1, AP(1), Rending)",
+                    "name": "Sonic Blades",
+                    "attacks": 1,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "id": "kdN78",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Metal Spike (A1, EMP)",
+                "gains": [
+                  {
+                    "label": "Metal Spike (A1, EMP)",
+                    "name": "Metal Spike",
+                    "attacks": 1,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "I1",
+        "hint": "I1",
+        "sections": [
+          {
+            "label": "Replace Blaster SMG and Taser Sword",
+            "type": "replace",
+            "replaceWhat": [
+              "Blaster SMG",
+              "Taser Sword"
+            ],
+            "options": [
+              {
+                "id": "16jo2lU",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Burst Carbine (18”, A3) and Energy Sword (A2, AP(1), Rending)",
+                "gains": [
+                  {
+                    "label": "Burst Carbine (18”, A3)",
+                    "name": "Burst Carbine",
+                    "attacks": 3,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  },
+                  {
+                    "label": "Energy Sword (A2, AP(1), Rending)",
+                    "name": "Energy Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "J1",
+        "hint": "J1",
+        "sections": [
+          {
+            "label": "Replace P-Thrower",
+            "type": "replace",
+            "replaceWhat": "P-Thrower",
+            "options": [
+              {
+                "id": "rAlVC",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Blaster Carbine (24”, A5)",
+                "gains": [
+                  {
+                    "label": "Blaster Carbine (24”, A5)",
+                    "name": "Blaster Carbine",
+                    "attacks": 5,
+                    "range": 24,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace P-Thrower and CCW",
+            "type": "replace",
+            "replaceWhat": [
+              "P-Thrower",
+              "CCW"
+            ],
+            "options": [
+              {
+                "id": "fTqUpue",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 0,
+                "label": "Blaster SMG (12”, A5) and Taser Sword (A2, Taser)",
+                "gains": [
+                  {
+                    "label": "Blaster SMG (12”, A5)",
+                    "name": "Blaster SMG",
+                    "attacks": 5,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  },
+                  {
+                    "label": "Taser Sword (A2, Taser)",
+                    "name": "Taser Sword",
+                    "attacks": 2,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "taser",
+                        "name": "Taser",
+                        "rating": "",
+                        "label": "Taser",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "id": "N0JgC",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Cluster Grenades (Impact(1))",
+                "gains": [
+                  {
+                    "label": "Cluster Grenades (Impact(1))",
+                    "name": "Cluster Grenades",
+                    "type": "ArmyBookItem",
+                    "content": [
+                      {
+                        "key": "impact",
+                        "name": "Impact",
+                        "rating": "1",
+                        "label": "Impact(1)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "K1",
+        "hint": "K1",
+        "sections": [
+          {
+            "label": "Replace 2x P-Pistols",
+            "type": "replace",
+            "affects": 2,
+            "replaceWhat": "P-Pistols",
+            "options": [
+              {
+                "id": "WhYNF",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Carbine (18”, A2)",
+                "gains": [
+                  {
+                    "label": "Carbine (18”, A2)",
+                    "name": "Carbine",
+                    "attacks": 2,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  }
+                ]
+              },
+              {
+                "id": "xU9OJ",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "P-Blaster Carbine (18”, A4, Phosphor)",
+                "gains": [
+                  {
+                    "label": "P-Blaster Carbine (18”, A4, Phosphor)",
+                    "name": "P-Blaster Carbine",
+                    "attacks": 4,
+                    "range": 18,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "phosphor",
+                        "name": "Phosphor",
+                        "rating": "",
+                        "label": "Phosphor",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace 2x P-Pistols and CCW",
+            "type": "replace",
+            "affects": 2,
+            "replaceWhat": [
+              "P-Pistols",
+              "CCW"
+            ],
+            "options": [
+              {
+                "id": "mundg",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "P-Blaster Pistol (12”,A2,Phosphor), Energy Sword (A2, AP(1), Rending)",
+                "gains": [
+                  {
+                    "label": "P-Blaster Pistol (12”,A2,Phosphor), Energy Sword (A2, AP(1), Rending)",
+                    "name": "P-Blaster Pistol",
+                    "attacks": 2,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "phosphor)",
+                        "name": "Phosphor)",
+                        "rating": "",
+                        "label": "Phosphor)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "energy-sword-(a2",
+                        "name": "Energy Sword (A2",
+                        "rating": "",
+                        "label": "Energy Sword (A2",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "rending",
+                        "name": "Rending",
+                        "rating": "",
+                        "label": "Rending",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Upgrade with",
+            "type": "upgrade",
+            "options": [
+              {
+                "id": "y_7nR",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "P-Breath (12”, A3, Phosphor)",
+                "gains": [
+                  {
+                    "label": "P-Breath (12”, A3, Phosphor)",
+                    "name": "P-Breath",
+                    "attacks": 3,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "phosphor",
+                        "name": "Phosphor",
+                        "rating": "",
+                        "label": "Phosphor",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "L1",
+        "hint": "L1",
+        "sections": [
+          {
+            "label": "Replace Contortion Cannon",
+            "type": "replace",
+            "replaceWhat": "Contortion Cannon",
+            "options": [
+              {
+                "id": "Jdo9E",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "EMP Cannon (36”, A2, EMP)",
+                "gains": [
+                  {
+                    "label": "EMP Cannon (36”, A2, EMP)",
+                    "name": "EMP Cannon",
+                    "attacks": 2,
+                    "range": 36,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "dK0HL",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 20,
+                "label": "Heavy EMP Cannon (36”, A2, EMP, Deadly(3))",
+                "gains": [
+                  {
+                    "label": "Heavy EMP Cannon (36”, A2, EMP, Deadly(3))",
+                    "name": "Heavy EMP Cannon",
+                    "attacks": 2,
+                    "range": 36,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "deadly",
+                        "name": "Deadly",
+                        "rating": "3",
+                        "label": "Deadly(3)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace Cyborg Claws",
+            "type": "replace",
+            "replaceWhat": "Cyborg Claws",
+            "options": [
+              {
+                "id": "Q61Wm",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Iron Claws (A3, AP(2))",
+                "gains": [
+                  {
+                    "label": "Iron Claws (A3, AP(2))",
+                    "name": "Iron Claws",
+                    "attacks": 3,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "2",
+                        "label": "AP(2)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "mLV1Q",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "EMP Claws (A3, EMP)",
+                "gains": [
+                  {
+                    "label": "EMP Claws (A3, EMP)",
+                    "name": "EMP Claws",
+                    "attacks": 3,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uid": "M1",
+        "hint": "M1",
+        "sections": [
+          {
+            "label": "Replace Heavy Gravity Cannon",
+            "type": "replace",
+            "replaceWhat": "Heavy Gravity Cannon",
+            "options": [
+              {
+                "id": "500d7",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Mini Plasma Cannon (24”, A2, AP(2), Blast(3))",
+                "gains": [
+                  {
+                    "label": "Mini Plasma Cannon (24”, A2, AP(2), Blast(3))",
+                    "name": "Mini Plasma Cannon",
+                    "attacks": 2,
+                    "range": 24,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "2",
+                        "label": "AP(2)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "blast",
+                        "name": "Blast",
+                        "rating": "3",
+                        "label": "Blast(3)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Upgrade with one",
+            "type": "upgrade",
+            "select": 1,
+            "options": [
+              {
+                "id": "zMRx0",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "P-Rifle (24”, A1, AP(1), Phosphor)",
+                "gains": [
+                  {
+                    "label": "P-Rifle (24”, A1, AP(1), Phosphor)",
+                    "name": "P-Rifle",
+                    "attacks": 1,
+                    "range": 24,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "1",
+                        "label": "AP(1)",
+                        "type": "ArmyBookRule"
+                      },
+                      {
+                        "key": "phosphor",
+                        "name": "Phosphor",
+                        "rating": "",
+                        "label": "Phosphor",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "_Xa_2",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 10,
+                "label": "Flamethrower (12”, A6)",
+                "gains": [
+                  {
+                    "label": "Flamethrower (12”, A6)",
+                    "name": "Flamethrower",
+                    "attacks": 6,
+                    "range": 12,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Replace Cyborg Claws",
+            "type": "replace",
+            "replaceWhat": "Cyborg Claws",
+            "options": [
+              {
+                "id": "k6wBG",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "Iron Claws (A3, AP(2))",
+                "gains": [
+                  {
+                    "label": "Iron Claws (A3, AP(2))",
+                    "name": "Iron Claws",
+                    "attacks": 3,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "ap",
+                        "name": "AP",
+                        "rating": "2",
+                        "label": "AP(2)",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "9KelZ",
+                "type": "ArmyBookUpgradeOption",
+                "cost": 5,
+                "label": "EMP Claws (A3, EMP)",
+                "gains": [
+                  {
+                    "label": "EMP Claws (A3, EMP)",
+                    "name": "EMP Claws",
+                    "attacks": 3,
+                    "type": "ArmyBookWeapon",
+                    "specialRules": [
+                      {
+                        "key": "emp",
+                        "name": "EMP",
+                        "rating": "",
+                        "label": "EMP",
+                        "type": "ArmyBookRule"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "specialRules": [
+      {
+        "id": "K8yZQ",
+        "key": "canticles",
+        "hint": "When the hero is activated pick one of the following canticles, and the hero and all friendly models within 12” get one of these special rules until the end of the round: • Incantation: +3” when moving • Benediction: AP(+1) when shooting • Invocation: AP(+1) when in melee • Psalm: enemies get -1 to melee hits EMP: This weapon counts as having Rending but only needs rolls of 5-6 to take effect.",
+        "name": "Canticles",
+        "tags": [],
+        "label": "Canticles",
+        "forUnit": true,
+        "forWeapon": false,
+        "hasRating": false,
+        "description": "When the hero is activated pick one of the following canticles, and the hero and all friendly models within 12” get one of these special rules until the end of the round: • Incantation: +3” when moving • Benediction: AP(+1) when shooting • Invocation: AP(+1) when in melee • Psalm: enemies get -1 to melee hits EMP: This weapon counts as having Rending but only needs rolls of 5-6 to take effect."
+      },
+      {
+        "id": "3wQff",
+        "key": "phosphor",
+        "hint": "This weapon ignores cover.",
+        "name": "Phosphor",
+        "tags": [],
+        "label": "Phosphor",
+        "forUnit": true,
+        "forWeapon": false,
+        "hasRating": false,
+        "description": "This weapon ignores cover."
+      },
+      {
+        "id": "LNOE-",
+        "key": "radiation",
+        "hint": "Enemies that roll to block hits from this weapon take one additional wound for each unmodified result of 1 that they roll.",
+        "name": "Radiation",
+        "tags": [],
+        "label": "Radiation",
+        "forUnit": true,
+        "forWeapon": false,
+        "hasRating": false,
+        "description": "Enemies that roll to block hits from this weapon take one additional wound for each unmodified result of 1 that they roll."
+      },
+      {
+        "id": "Jweiu",
+        "key": "repair-master",
+        "hint": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 3 wounds from the target.",
+        "name": "Repair Master",
+        "tags": [],
+        "label": "Repair Master",
+        "forUnit": true,
+        "forWeapon": false,
+        "hasRating": false,
+        "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 3 wounds from the target."
+      },
+      {
+        "id": "aCmPj",
+        "key": "taser",
+        "hint": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4.",
+        "name": "Taser",
+        "tags": [],
+        "label": "Taser",
+        "forUnit": true,
+        "forWeapon": false,
+        "hasRating": false,
+        "description": "For each unmodified result of 6 you roll to hit that hit is multiplied by 4."
+      }
+    ],
+    "spells": [
+      {
+        "id": "-wLnh",
+        "name": "Lock-On",
+        "threshold": 4,
+        "effect": "Target friendly unit within 12” gets AP(+1) next time it shoots."
+      },
+      {
+        "id": "fjLag",
+        "name": "Solar Beam",
+        "threshold": 4,
+        "effect": "Target enemy model within 12” takes 1 automatic hit with AP(2)."
+      },
+      {
+        "id": "xeZ0f",
+        "name": "Steel Body",
+        "threshold": 5,
+        "effect": "Target friendly unit within 12” may heal 1 wound or restore 1 model (with only 1 health left if it had Tough)."
+      },
+      {
+        "id": "G_MkO",
+        "name": "Shrapnel",
+        "threshold": 5,
+        "effect": "Target 2 enemy units within 6” take 3 automatic hits with AP(2) each."
+      },
+      {
+        "id": "u48kb",
+        "name": "Corroded Metal",
+        "threshold": 6,
+        "effect": "Target enemy unit within 12” gets -2 to defense next time it takes hits."
+      },
+      {
+        "id": "MP6wh",
+        "name": "Machine Terror",
+        "threshold": 6,
+        "effect": "Target enemy unit within 12” takes 8 automatic hits."
+      }
+    ],
+    "modifiedAt": "2021-10-07T07:58:33.529Z",
+    "official": true,
+    "public": false,
+    "versionString": "draft",
+    "coverImagePath": null,
+    "coverImageCredit": null,
+    "isLive": false,
+    "gameSystemSlug": "grimdark-future-firefight",
+    "fullname": "Grimdark Future: Firefight",
+    "aberration": "GFF",
+    "universe": "Grimdark Future",
+    "shortname": "GF: Firefight"
+  }

@@ -81,6 +81,7 @@ export default function Files() {
             fetch(webCompanionUrl + "/army-books?gameSystemSlug=" + slug)
                 .then((res) => res.json())
                 .then((data) => {
+                    console.log(data);
                     const valid = data
                         .filter(a => a.unitCount > 2)
                     //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
@@ -165,8 +166,6 @@ export default function Files() {
     };
 
     const selectCustomList = (customArmy: any) => {
-
-
 
         // TODO: Web companion integration
         // Load army data
@@ -274,46 +273,18 @@ export default function Files() {
                                 );
                             })
                         }
+                    </div>
 
-                        {/* {
-                            false && driveArmies && (
-                                <div>
-                                    <p className="p-4">To be released...</p>
-                                    {driveArmies.filter(da => armies.findIndex(af => af.name.toUpperCase() === da.name.toUpperCase()) === -1).map((file, index) => (
-                                        <Accordion key={index}
-                                            disableGutters
-                                            square
-                                            elevation={0}
-                                            variant="outlined">
-                                            <AccordionSummary>
-                                                <div className="is-flex is-flex-grow-1 is-align-items-center">
-                                                    <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
-                                                        <p className="mb-1" style={{ fontWeight: 600 }}>{file.name}</p>
-                                                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                                                            by OnePageRules
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </AccordionSummary>
-                                        </Accordion>
-                                    ))}
-                                </div>
-                            )
-                        } */}
-
-                        {customArmies && <>
-                            <h3>Custom Armies</h3>
+                    {customArmies && <>
+                        <h3>Custom Armies</h3>
+                        <div className="columns is-multiline">
                             {customArmies.map((customArmy, i) => (
-                                <Accordion key={i}
-                                    disableGutters
-                                    square
-                                    elevation={0}
-                                    variant="outlined"
-                                    expanded={expandedId === customArmy.name}
-                                    onChange={() => setExpandedId(expandedId === customArmy.name ? null : customArmy.name)}>
-                                    <AccordionSummary>
-                                        <div className="is-flex is-flex-grow-1 is-align-items-center">
-                                            <div className="is-flex-grow-1" onClick={() => setExpandedId(customArmy.name)}>
+                                <div key={i} className="column is-half">
+                                    <Card
+                                        elevation={1}
+                                        onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                                        <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
+                                            <div className="is-flex-grow-1">
                                                 <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
                                                 <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
                                                     by {customArmy.username}
@@ -322,19 +293,16 @@ export default function Files() {
                                                 </div>
                                             </div>
                                             {/* <p className="mr-2">{u.cost}pts</p> */}
-                                            <IconButton color="primary" onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                                            <IconButton color="primary">
                                                 <RightIcon />
                                             </IconButton>
                                         </div>
-                                    </AccordionSummary>
-                                    <AccordionDetails style={{ flexDirection: "column" }}>
-                                        <p>{customArmy.hint}</p>
-                                    </AccordionDetails>
-                                </Accordion>
+                                    </Card>
+                                </div>
                             ))}
-                        </>
-                        }
-                    </div>
+                        </div>
+                    </>
+                    }
                 </div>
             </div>
         </>
