@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from 'next/router';
-import { Button, Dialog, TextField } from "@mui/material";
+import { Button, Dialog, Slide, TextField } from "@mui/material";
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import { createList } from "../data/listSlice";
+import { TransitionProps } from "@mui/material/transitions";
 
-const rotations = {} as any;
+const Transition = forwardRef(function Transition(
+  props: TransitionProps & {
+    children?: React.ReactElement;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function CreateListDialog({ open, setOpen }) {
 
@@ -23,7 +31,7 @@ export default function CreateListDialog({ open, setOpen }) {
   };
 
   return (
-    <Dialog fullScreen open={open} onClose={() => setOpen(false)}>
+    <Dialog fullScreen open={open} onClose={() => setOpen(false)} TransitionComponent={Transition}>
       <AppBar position="static" elevation={0} color="transparent">
         <Toolbar>
           <IconButton

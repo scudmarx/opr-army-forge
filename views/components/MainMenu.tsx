@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from "@mui/material";
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../data/store";
@@ -53,6 +54,16 @@ export default function MainMenu() {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     {list.name} • {points}pts
                 </Typography>
+                <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    onClick={() => router.push("/cards")}
+                    className="mr-4"
+                >
+                    <VisibilityIcon />
+                </IconButton>
                 <IconButton
                     size="large"
                     edge="start"
