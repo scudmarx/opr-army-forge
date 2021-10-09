@@ -91,6 +91,8 @@ export default function MobileView() {
                 open={sheetOpen}
                 onDismiss={onDismissSheet}
                 initialFocusRef={false}
+                expandOnContentDrag={true}
+                scrollLocking={false}
                 defaultSnap={({ snapPoints, lastSnap }) =>
                     lastSnap ?? Math.min(...snapPoints)
                 }
