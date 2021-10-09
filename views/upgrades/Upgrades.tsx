@@ -1,5 +1,5 @@
-import { Paper } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { Checkbox, FormControlLabel, FormGroup, IconButton, Paper } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
@@ -7,11 +7,14 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
+import { toggleUnitCombined } from '../../data/listSlice';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 export function Upgrades() {
 
     const list = useSelector((state: RootState) => state.list);
     const army = useSelector((state: RootState) => state.army.data);
+    const dispatch = useDispatch();
 
     const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
         ? null
@@ -35,8 +38,15 @@ export function Upgrades() {
     return (
         <div className={styles["upgrade-panel"]}>
             <h3 className="p-4 is-size-4 is-hidden-mobile">{selectedUnit?.customName || selectedUnit?.name} Upgrades</h3>
+
             {selectedUnit && <Paper square elevation={0}>
-                <div className="px-4 pt-4">
+                <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+                    <FormControlLabel control={
+                        <Checkbox checked={selectedUnit.combined} onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))
+                        } />} label="Combined Unit" className="mr-2" />
+                        <InfoOutlinedIcon color="primary" />
+                </FormGroup>
+                <div className="px-4 pt-2">
                     <UnitEquipmentTable unit={selectedUnit} />
                 </div>
                 {specialRules?.length > 0 &&

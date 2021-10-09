@@ -51,7 +51,7 @@ export default function MainMenu() {
                     <BackIcon />
                 </IconButton>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    My List • {points}pts
+                    {list.name} • {points}pts
                 </Typography>
                 <IconButton
                     size="large"

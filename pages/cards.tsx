@@ -88,7 +88,7 @@ export default function Cards() {
                                                 <RuleList specialRules={specialRules} />
                                             </div>
                                         </Paper>} */}
-                                        {specialRules?.length && <Paper square elevation={0}>
+                                        {specialRules?.length > 0 && <Paper square elevation={0}>
                                             <div className="px-4 my-2">
                                                 {keys.map((key, index) => {
                                                     const group = ruleGroups[key];

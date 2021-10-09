@@ -3,73 +3,31 @@ import { RootState } from '../data/store'
 import { setGameSystem } from '../data/armySlice'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { AppBar, IconButton, Menu, MenuItem, Paper, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, IconButton, Menu, MenuItem, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import AddIcon from '@mui/icons-material/Add';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Home() {
 
-  const army = useSelector((state: RootState) => state.army);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  // Web Companion test
-  useEffect(() => {
-    // fetch("https://opr-list-builder.herokuapp.com/api/army-books/lkq2s1575t962k3t")
-    //   .then(res => res.json())
-    //   .then(r => console.log(r));
-    // fetch("https://opr-list-builder.herokuapp.com/api/army-books")
-    //   .then(res => res.json())
-    //   .then(r => console.log(r));
-  }, []);
-
-  const selectGameSystem = (gameSystem: string) => {
-    dispatch(setGameSystem(gameSystem));
-    router.push("/files");
-  };
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
 
   return (
     <>
-      <Paper elevation={2} color="primary" square>
-        <AppBar position="static" elevation={0}>
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <BackIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Create a new list
-            </Typography>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-            >
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </Paper>
       <div className="container">
         <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
-          <h3 className="is-size-4 has-text-centered mb-4">Select Game System</h3>
-          <div className="columns is-multiline is-mobile">
-            {
-              // For each game system
-              ["gf", "gff", "aof", "aofs"].map(gameSystem => (
-                <div key={gameSystem} className="column is-half">
-                  <Paper>
-                    <img onClick={() => selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
-                      className="game-system-tile"
-                      style={{ borderRadius: "4px", display: "block" }} />
-                  </Paper>
-                </div>
-              ))
-            }
+          <h1 className="is-size-3 has-text-centered mb-4">Army Forge</h1>
+          <div className="is-flex is-flex-direction-column p-4" style={(!isBigScreen ? { position: "fixed", bottom: "16px", left: "16px", right: "16px" } : null)}>
+            <Button variant="contained" color="primary" className="mb-4" onClick={() => router.push("/gameSystem")}>
+              <AddIcon /> Create A New List
+            </Button>
+            <Button variant="outlined" onClick={() => router.push("/load")}>
+              <FileUploadOutlinedIcon /> Import A List
+            </Button>
           </div>
         </div>
 

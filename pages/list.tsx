@@ -7,9 +7,6 @@ import { useMediaQuery } from 'react-responsive';
 import MobileView from "../views/listBuilder/MobileView";
 import DesktopView from "../views/listBuilder/DesktopView";
 import { setGameRules } from "../data/armySlice";
-import { AppBar, Paper, Tab, Tabs, Toolbar, Typography, IconButton, Menu, MenuItem } from "@mui/material";
-import BackIcon from '@mui/icons-material/ArrowBackIosNew';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function List() {
 
@@ -48,14 +45,6 @@ export default function List() {
                 dispatch(setGameRules(rules));
             });
     }, []);
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     // Break from mobile to desktop layout at 1024px wide
     const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });

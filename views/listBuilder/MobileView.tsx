@@ -66,7 +66,7 @@ export default function MobileView() {
                 <AppBar elevation={0} position="static" style={{ position: "sticky", top: 0, zIndex: 1 }}>
                     <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
                         <Tab label={`${army?.data?.name} v${army?.data?.version}`} />
-                        <Tab label={`My List - ${UpgradeService.calculateListTotal(list.units)}pts`} />
+                        <Tab label={`${list.name} - ${UpgradeService.calculateListTotal(list.units)}pts`} />
                     </Tabs>
                 </AppBar>
             </Paper>

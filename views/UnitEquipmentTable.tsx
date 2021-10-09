@@ -67,19 +67,23 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                 specialRules: weapon.specialRules.map(r => RulesService.displayName(r)),
                 count: upgrade.count
             };
-            return equipment
+            return equipment;
+        } else if (upgrade.type === "ArmyBookMultiWeapon") {
+            return upgrade as IUpgradeGainsMultiWeapon;
         }
         return {
             label: upgrade.name,
         };
     };
-    const upgradedEquipment = weaponUpgrades.map(upgradeToEquipment);
-    // Combine upgradedEquipment with weapons
-    const combinedWeapons = [];
-    const addedUpgrades = [];
+    const upgradesAsEquipment = weaponUpgrades.map(upgradeToEquipment);
+    
+    // Combine upgradesAsEquipment with weapons
+    const combinedWeapons: IEquipment[] = [];
+    const addedUpgrades: string[] = [];
+
     weapons.forEach((w, index) => {
         const weapon = { ...w };
-        upgradedEquipment.forEach((e) => {
+        upgradesAsEquipment.forEach((e) => {
             if (e.label === w.label) {
                 weapon.count += e.count;
                 addedUpgrades.push(e.label);
@@ -88,7 +92,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
         combinedWeapons.push(weapon);
     });
 
-    upgradedEquipment.forEach((e) => {
+    upgradesAsEquipment.forEach((e) => {
         if (!addedUpgrades.includes(e.label)) {
             const index = combinedWeapons.findIndex((w) => pluralise.singular(w.label) === pluralise.singular(e.label));
 
@@ -100,7 +104,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
         }
     })
 
-    const weaponGroups = groupBy(combinedWeapons, "name");
+    const weaponGroups = groupBy(combinedWeapons, "label");
+    console.log(weaponGroups);
 
     const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
     const headerStyle = { ...cellStyle, fontWeight: 600 };
@@ -130,7 +135,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
                             Object.keys(weaponGroups).map(key => {
                                 const group = weaponGroups[key]
                                 const upgrade = group[0];
-                                const e = upgradeToEquipment(upgrade);
+                                const e = upgrade;
+                                //const e = upgradeToEquipment(upgrade);
                                 // Upgrade may have been replaced
                                 if (!e.count)
                                     return null;
