@@ -92,7 +92,7 @@ export default function MobileView() {
                 onDismiss={onDismissSheet}
                 initialFocusRef={false}
                 expandOnContentDrag={true}
-                scrollLocking={false}
+                onScrollCapture={(e) => e.preventDefault()}
                 defaultSnap={({ snapPoints, lastSnap }) =>
                     lastSnap ?? Math.min(...snapPoints)
                 }

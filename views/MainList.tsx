@@ -5,12 +5,11 @@ import { ISelectedUnit } from "../data/interfaces";
 import RemoveIcon from '@mui/icons-material/Clear';
 import { selectUnit, removeUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
-import { Button, Chip, IconButton, Paper } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
 import { useRouter } from "next/router";
 import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
-import MenuIcon from "@mui/icons-material/Menu";
 import FullCompactToggle from "./components/FullCompactToggle";
 
 export function MainList({ onSelected }) {
@@ -19,7 +18,7 @@ export function MainList({ onSelected }) {
 
   const dispatch = useDispatch();
   const router = useRouter();
-  const [expandAll, setExpandAll] = useState(false);
+  const [expandAll, setExpandAll] = useState(true);
 
   const handleSelectUnit = (unit: ISelectedUnit) => {
     if (list.selectedUnitId !== unit.selectionId) {
@@ -47,31 +46,40 @@ export function MainList({ onSelected }) {
             return (
               <li key={index}
                 onClick={() => handleSelectUnit(s)} >
-                <Paper square elevation={1} style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "rgba(249, 253, 255, 1)" : null) }}>
-                  <div className="py-2 px-4 is-flex is-flex-grow-1 is-align-items-center">
-                    <div className="is-flex-grow-1">
-                      <p className="mb-1" style={{ fontWeight: 600 }}>{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
-                      <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                        <p>Qua {s.quality}+</p>
-                        <p className="ml-2">Def {s.defense}+</p>
+                <Accordion
+                  square
+                  disableGutters
+                  elevation={1}
+                  expanded={expandAll}
+                  style={{ backgroundColor: (list.selectedUnitId === s.selectionId ? "rgba(249, 253, 255, 1)" : null) }}>
+                  <AccordionSummary>
+                    <div className="is-flex is-flex-grow-1 is-align-items-center">
+                      <div className="is-flex-grow-1">
+                        <p className="mb-1" style={{ fontWeight: 600 }}>{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
+                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                          <p>Qua {s.quality}+</p>
+                          <p className="ml-2">Def {s.defense}+</p>
+                        </div>
                       </div>
+                      <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>
+                      <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(s); }}>
+                        <RemoveIcon />
+                      </IconButton>
                     </div>
-                    <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>
-                    <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(s); }}>
-                      <RemoveIcon />
-                    </IconButton>
-                  </div>
-                  <div className="pb-2 px-4" style={{ fontSize: "14px", color: "#666666" }}>
-                    <div>
-                      {distinct(equipmentWeaponNames.concat(upgradeWeaponNames)).map((label, i) => (
-                        <span key={i}>
-                          {i > 0 ? ", " : ""}{label}
-                        </span>
-                      ))}
+                  </AccordionSummary>
+                  <AccordionDetails className="pt-0">
+                    <div style={{ fontSize: "14px", color: "#666666" }}>
+                      <div>
+                        {distinct(equipmentWeaponNames.concat(upgradeWeaponNames)).map((label, i) => (
+                          <span key={i}>
+                            {i > 0 ? ", " : ""}{label}
+                          </span>
+                        ))}
+                      </div>
+                      <RuleList specialRules={s.specialRules.concat(UnitService.getAllUpgradedRules(s))} />
                     </div>
-                    <RuleList specialRules={s.specialRules.concat(UnitService.getAllUpgradedRules(s))} />
-                  </div>
-                </Paper>
+                  </AccordionDetails>
+                </Accordion>
               </li>
             );
           })
