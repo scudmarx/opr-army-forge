@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { IUnit, IUpgradeOption } from "../data/interfaces";
 import DataParsingService from "../services/DataParsingService";
+import { groupBy } from "./Helpers";
 
 export default class DataService {
 
@@ -25,7 +26,7 @@ export default class DataService {
   public static transformApiData(input) {
     const countRegex = /^(\d+)x\s/;
 
-    return {
+    const data = {
       ...input,
       units: input.units.map((u: IUnit) => ({
         ...u,
@@ -74,5 +75,20 @@ export default class DataService {
         }))
       }))
     };
+
+    for (let unit of data.units) {
+      const groups = groupBy(unit.equipment, "name");
+      console.log(groups);
+      unit.equipment = Object.keys(groups).map(key => {
+        const grp = groups[key];
+        const item = grp[0];
+        return {
+          ...item,
+          count: grp.length
+        };
+      })
+    }
+
+    return data;
   }
 }

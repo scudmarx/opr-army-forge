@@ -80,7 +80,7 @@ export function UnitSelection({ onSelected }) {
           <h3 className="is-size-4 px-4 pt-4 is-flex-grow-1">
             {army.name} - {army.versionString}
           </h3>
-          {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+          {army.uid == null && army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
         </div>}
 
         <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
