@@ -7,25 +7,25 @@ import UpgradeItem from './UpgradeItem';
 
 export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
 
-    const list = useSelector((state: RootState) => state.list);
+  const list = useSelector((state: RootState) => state.list);
 
-    const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
-        ? null
-        : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
+  const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
+    ? null
+    : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
-    const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
+  const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
 
-    // const defaultOpt = controlType === "radio" && upgrade.type === "replace" && typeof (upgrade.replaceWhat) === "string"
-    //     ? EquipmentService.findLast(selectedUnit.equipment, upgrade.replaceWhat as string)
-    //     : null;
+  // const defaultOpt = controlType === "radio" && upgrade.type === "replace" && typeof (upgrade.replaceWhat) === "string"
+  //     ? EquipmentService.findLast(selectedUnit.equipment, upgrade.replaceWhat as string)
+  //     : null;
 
-    return (
-        <Paper className="px-4 py-2" square elevation={0}>
-            {
-                // "None" / Default option for radio group
-                controlType === "radio" && <UpgradeItem selectedUnit={selectedUnit} upgrade={upgrade} option={null} />
-            }
-            {upgrade.options.map((opt, i) => <UpgradeItem key={i} selectedUnit={selectedUnit} upgrade={upgrade} option={opt} />)}
-        </Paper>
-    );
+  return (
+    <Paper className="px-4 py-2" square elevation={0}>
+      {
+        // "None" / Default option for radio group
+        controlType === "radio" && <UpgradeItem selectedUnit={selectedUnit} upgrade={upgrade} option={null} />
+      }
+      {upgrade.options.map((opt, i) => <UpgradeItem key={i} selectedUnit={selectedUnit} upgrade={upgrade} option={opt} />)}
+    </Paper>
+  );
 }

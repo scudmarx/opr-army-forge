@@ -78,7 +78,7 @@ export function UnitSelection({ onSelected }) {
       <div style={isBigScreen ? stickyHeader : null}>
         {isBigScreen && <div className="is-flex is-align-items-center">
           <h3 className="is-size-4 px-4 pt-4 is-flex-grow-1">
-            {army.name} - v{army.version}
+            {army.name} - {army.versionString}
           </h3>
           {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
         </div>}

@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from 'next/router';
 import { Button, Dialog, Slide, TextField } from "@mui/material";
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, IconButton, Toolbar, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import { createList } from "../data/listSlice";
 import { TransitionProps } from "@mui/material/transitions";
+import DataService from "../services/DataServices";
+import { load } from "../data/armySlice";
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -17,17 +19,36 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CreateListDialog({ open, setOpen }) {
+export default function CreateListDialog({ open, setOpen, showBetaFlag, customArmies }) {
 
   const army = useSelector((state: RootState) => state.army);
   const [armyName, setArmyName] = useState("");
   const [pointsLimit, setPointsLimit] = useState(null);
+  const [useBeta, setUseBeta] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const create = () => {
-    dispatch(createList({ name: armyName || "My List", pointsLimit: pointsLimit || null }));
-    router.push('/list');
+
+    const finish = () => {
+      dispatch(createList({ name: armyName || "My List", pointsLimit: pointsLimit || null }));
+      router.push('/list');
+    };
+
+    if (useBeta) {
+
+      const apiArmy = customArmies.filter(a => a.name === army.data.name && a.official)[0];
+
+      DataService.getApiData(apiArmy.uid, afData => {
+
+        dispatch(load(afData));
+
+        finish();
+      });
+
+    } else {
+      finish();
+    }
   };
 
   return (
@@ -74,6 +95,11 @@ export default function CreateListDialog({ open, setOpen }) {
             </div>
             <TextField variant="filled" label="List Name" className="mb-4" value={armyName} onChange={(e) => setArmyName(e.target.value)} />
             <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />
+            {showBetaFlag && <FormGroup className="mb-4 is-flex-direction-row is-align-items-center">
+              <FormControlLabel control={
+                <Checkbox checked={useBeta} onClick={() => setUseBeta(!useBeta)} />
+              } label="Use v2.5 Beta" />
+            </FormGroup>}
             <Button variant="contained" onClick={() => create()}>Create List</Button>
           </div>
         </div>

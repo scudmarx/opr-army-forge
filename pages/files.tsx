@@ -3,18 +3,14 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { load, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Button, Card, Dialog, TextField } from "@mui/material";
-import { AppBar, IconButton, Paper, Toolbar, Typography } from '@mui/material';
+import { Card, AppBar, IconButton, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
-import ClearIcon from '@mui/icons-material/Clear';
 import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
-import DataParsingService from "../services/DataParsingService";
-import { nanoid } from "nanoid";
-import { IUnit, IUpgradeOption } from "../data/interfaces";
 import { resetList } from "../data/listSlice";
 import CreateListDialog from "../views/CreateListDialog";
+import DataService from "../services/DataServices";
 
 const rotations = {} as any;
 
@@ -82,75 +78,18 @@ export default function Files() {
       }
     })();
 
-    const loadCustomArmies = true;
-    if (loadCustomArmies) {
-      // Load custom data books from Web Companion
-      fetch(webCompanionUrl + "/army-books?gameSystemSlug=" + slug)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          const valid = data
-            .filter(a => a.unitCount > 2)
-          //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
+    // Load custom data books from Web Companion
+    fetch(webCompanionUrl + "/army-books?gameSystemSlug=" + slug)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const valid = data
+          .filter(a => a.unitCount > 2)
+        //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
 
-          setCustomArmies(valid);
-        });
-    }
+        setCustomArmies(valid);
+      });
   }, []);
-
-  const transform = (input) => {
-    const countRegex = /^(\d+)x\s/;
-
-    return {
-      ...input,
-      units: input.units.map((u: IUnit) => ({
-        ...u,
-        equipment: u.equipment.map(e => {
-          // Capture the count digit from the name
-          const countMatch = countRegex.exec(e.label);
-          return {
-            ...e,
-            label: e.label.replace(countRegex, ""),
-            count: countMatch ? parseInt(countMatch[1]) * u.size : u.size
-          }
-        })
-      })),
-      upgradePackages: input.upgradePackages.map(pkg => ({
-        ...pkg,
-        sections: pkg.sections.map(section => ({
-          ...section,
-          ...DataParsingService.parseUpgradeText(section.label),
-          options: section.options.map((opt: IUpgradeOption) => {
-            const gains = [];
-            // Iterate backwards through gains array so we can push new 
-            for (let original of opt.gains) {
-              // Match "2x ", etc
-
-              // Replace "2x " in label/name of original gain
-              const gain = {
-                ...original,
-                label: original.label?.replace(countRegex, ""),
-                name: original.name?.replace(countRegex, "")
-              };
-              // Capture the count digit from the name
-              const countMatch = countRegex.exec(original.name);
-              // Parse the count if present, otherwise default to 1
-              const count = countMatch ? parseInt(countMatch[1]) : 1;
-              // Push the gain into the array as many times as the count
-              for (let y = 0; y < count; y++) {
-                gains.push(gain);
-              }
-            }
-            return ({
-              ...opt,
-              id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
-              gains
-            });
-          })
-        }))
-      }))
-    };
-  };
 
   const selectArmy = (filePath: string) => {
     // TODO: Clear existing data
@@ -175,28 +114,12 @@ export default function Files() {
 
   const selectCustomList = (customArmy: any) => {
 
-    // TODO: Web companion integration
-    // Load army data
-    fetch(webCompanionUrl + `/army-books/${customArmy.uid}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    DataService.getApiData(customArmy.uid, afData => {
 
-        const afData = transform(data);
-        console.log(afData);
+      dispatch(load(afData));
 
-        // var allSections = afData.upgradePackages.reduce((value, pkg) => value.concat(pkg.sections), []);
-        // var allOptions = allSections.reduce((value, section) => value.concat(section.options), []);
-        // console.log("Sections:", allSections);
-        // console.log("Options:", allOptions);
-        // console.log("Options with gains as string:", allOptions.filter(opt => typeof(opt.gains[0]) === "string"));
-
-        dispatch(load(afData));
-
-        // TODO: Loading wheel view...?
-        // Redirect to list builder once data is loaded
-        router.push('/list');
-      });
+      setNewArmyDialogOpen(true);
+    });
   };
 
   const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
@@ -223,7 +146,7 @@ export default function Files() {
         </AppBar>
       </Paper>
       <div className="container">
-        <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
+        <div className="mx-auto p-4">
           <h3 className="is-size-4 has-text-centered mb-4 pt-4">Choose your army</h3>
           <div className="columns is-mobile is-multiline">
             {
@@ -231,9 +154,10 @@ export default function Files() {
                 const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
 
                 return (
-                  <div key={index} className="column is-half">
+                  <div key={index} className="column is-half-mobile is-one-third-tablet">
                     <Card
                       elevation={2}
+                      style={{ cursor: "pointer" }}
                       onClick={() => selectArmy(file.path)}>
                       <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
                         <div className="is-flex p-2" style={{ position: "relative", height: "100px", boxSizing: "content-box" }}>
@@ -279,18 +203,20 @@ export default function Files() {
           {customArmies && <>
             <h3>Custom Armies</h3>
             <div className="columns is-multiline">
-              {customArmies.map((customArmy, i) => (
+              {customArmies.filter(a => a.official === false).map((customArmy, i) => (
                 <div key={i} className="column is-half">
                   <Card
                     elevation={1}
+                    style={{
+                      backgroundColor: customArmy.official ? "#F9FDFF" : null,
+                      borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
+                    }}
                     onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
                     <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
                       <div className="is-flex-grow-1">
                         <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
                         <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                          by {customArmy.username}
-                          {/* <p>Qua {u.quality}</p>
-                                            <p className="ml-2">Def {u.defense}</p> */}
+                          {customArmy.versionString} by {customArmy.username}
                         </div>
                       </div>
                       {/* <p className="mr-2">{u.cost}pts</p> */}
@@ -306,7 +232,7 @@ export default function Files() {
           }
         </div>
       </div>
-      <CreateListDialog open={newArmyDialogOpen} setOpen={setNewArmyDialogOpen} />
+      <CreateListDialog open={newArmyDialogOpen} setOpen={setNewArmyDialogOpen} showBetaFlag={army.gameSystem === "gf" && army.data?.uid == null} customArmies={customArmies} />
     </>
   );
 }

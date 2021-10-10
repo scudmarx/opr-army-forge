@@ -17,7 +17,7 @@ export interface ArmyState {
 
 export interface IArmyData {
     name: string;
-    version: string;
+    versionString: string;
     dataToolVersion: string;
     units: IUnit[];
     upgradePackages: IUpgradePackage[];

@@ -1,44 +1,51 @@
-import { IEquipment, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon, IUpgradeOption } from "../data/interfaces";
-import { groupBy } from "./Helpers";
+import { ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
+import { ListState } from "../data/listSlice";
 
 export default class UnitService {
-    public static getAllUpgrades(unit: ISelectedUnit): IUpgradeGains[] {
-        return unit
-            .selectedUpgrades
-            .reduce((value, option) => value.concat(option.gains), []);
-    }
 
-    public static getAllUpgradedRules(unit: ISelectedUnit): IUpgradeGainsRule[] {
-        const upgrades = this.getAllUpgrades(unit);
+  public static getSelected(list: ListState): ISelectedUnit {
+    return list.selectedUnitId === null || list.selectedUnitId === undefined
+      ? null
+      : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
+  }
 
-        const rules = upgrades.filter(u => u.type === "ArmyBookRule") || [];
-        const rulesFromitems = upgrades
-            .filter(u => u.type === "ArmyBookItem")
-            .reduce((value, u: IUpgradeGainsItem) => value.concat(u.content.filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense")), []) || [];
+  public static getAllUpgrades(unit: ISelectedUnit): IUpgradeGains[] {
+    return unit
+      .selectedUpgrades
+      .reduce((value, option) => value.concat(option.gains), []);
+  }
 
-        const allRules: IUpgradeGainsRule[] = rules.concat(rulesFromitems) as IUpgradeGainsRule[];
+  public static getAllUpgradedRules(unit: ISelectedUnit): IUpgradeGainsRule[] {
+    const upgrades = this.getAllUpgrades(unit);
 
-        return allRules;
-    }
+    const rules = upgrades.filter(u => u.type === "ArmyBookRule") || [];
+    const rulesFromitems = upgrades
+      .filter(u => u.type === "ArmyBookItem")
+      .reduce((value, u: IUpgradeGainsItem) => value.concat(u.content.filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense")), []) || [];
 
-    public static getAllUpgradeWeapons(unit: ISelectedUnit): (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[] {
+    const allRules: IUpgradeGainsRule[] = rules.concat(rulesFromitems) as IUpgradeGainsRule[];
 
-        const isWeapon = u => u.type === "ArmyBookWeapon" || u.type === "ArmyBookMultiWeapon";
-        const itemWeapons = this
-            .getAllUpgradeItems(unit)
-            .reduce((value, i) => value.concat(i.content.filter(isWeapon)), []);
+    return allRules;
+  }
 
-        const all = this
-            .getAllUpgrades(unit)
-            .filter(isWeapon)
-            .concat(itemWeapons) as (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[];
+  public static getAllUpgradeWeapons(unit: ISelectedUnit): (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[] {
 
-        return all;
-    }
+    const isWeapon = u => u.type === "ArmyBookWeapon" || u.type === "ArmyBookMultiWeapon";
+    const itemWeapons = this
+      .getAllUpgradeItems(unit)
+      .reduce((value, i) => value.concat(i.content.filter(isWeapon)), []);
 
-    public static getAllUpgradeItems(unit: ISelectedUnit): IUpgradeGainsItem[] {
-        return this
-            .getAllUpgrades(unit)
-            .filter(u => u.type === "ArmyBookItem") as IUpgradeGainsItem[];
-    }
+    const all = this
+      .getAllUpgrades(unit)
+      .filter(isWeapon)
+      .concat(itemWeapons) as (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[];
+
+    return all;
+  }
+
+  public static getAllUpgradeItems(unit: ISelectedUnit): IUpgradeGainsItem[] {
+    return this
+      .getAllUpgrades(unit)
+      .filter(u => u.type === "ArmyBookItem") as IUpgradeGainsItem[];
+  }
 }

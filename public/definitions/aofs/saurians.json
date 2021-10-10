@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Saurians",
-  "version": "2.8",
+  "versionString": "v2.8",
   "dataToolVersion": "0.3.0",
   "units": [
     {
@@ -304,7 +304,7 @@
           "select": 1,
           "options": [
             {
-              "name": "Raptor – Claws",
+              "name": "Raptor ï¿½ Claws",
               "attacks": 2,
               "specialRules": [
                 "Fast",
@@ -380,7 +380,7 @@
           "select": 1,
           "options": [
             {
-              "name": "Pterodactyl – Claws",
+              "name": "Pterodactyl ï¿½ Claws",
               "attacks": 3,
               "specialRules": [
                 "Fast",
@@ -620,7 +620,7 @@
     },
     {
       "name": "Predator",
-      "description": "For each unmodified roll of 6 to hit when attacking in melee this model may roll 1 extra attack. This rule doesn’t apply to newly generated attacks."
+      "description": "For each unmodified roll of 6 to hit when attacking in melee this model may roll 1 extra attack. This rule doesnï¿½t apply to newly generated attacks."
     },
     {
       "name": "Rock Bombs",
@@ -631,32 +631,32 @@
     {
       "name": "Scrutiny",
       "test": "4+",
-      "description": "Target enemy unit within 12” gets -1 to melee rolls next time it fights."
+      "description": "Target enemy unit within 12ï¿½ gets -1 to melee rolls next time it fights."
     },
     {
       "name": "Serpent Egg",
       "test": "4+",
-      "description": "Target enemy unit within 12” takes 4 automatic hits."
+      "description": "Target enemy unit within 12ï¿½ takes 4 automatic hits."
     },
     {
       "name": "Transcend",
       "test": "5+",
-      "description": "Target friendly unit within 12” may heal 1 wound or restore 1 model (with only 1 health left if it had Tough)."
+      "description": "Target friendly unit within 12ï¿½ may heal 1 wound or restore 1 model (with only 1 health left if it had Tough)."
     },
     {
       "name": "Jaguar Pounce",
       "test": "5+",
-      "description": "Target enemy model within 12” takes 1 automatic hit with AP(3)."
+      "description": "Target enemy model within 12ï¿½ takes 1 automatic hit with AP(3)."
     },
     {
       "name": "Energy Reservoir",
       "test": "6+",
-      "description": "Target friendly unit within 12” gets +9” next time it moves."
+      "description": "Target friendly unit within 12ï¿½ gets +9ï¿½ next time it moves."
     },
     {
       "name": "Piranha Swarm",
       "test": "6+",
-      "description": "Target 2 enemy units within 6” take 6 hits with AP(1) each."
+      "description": "Target 2 enemy units within 6ï¿½ take 6 hits with AP(1) each."
     }
   ]
 }

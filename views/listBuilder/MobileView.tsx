@@ -65,7 +65,7 @@ export default function MobileView() {
         <MainMenu />
         <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
           <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
-            <Tab label={`${army?.data?.name} v${army?.data?.version}`} />
+            <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
             <Tab label={`${list.name} - ${UpgradeService.calculateListTotal(list.units)}pts`} />
           </Tabs>
         </AppBar>
@@ -100,9 +100,7 @@ export default function MobileView() {
           minHeight,
           maxHeight * 0.9
         ]}
-        header={
-          <UpgradePanelHeader selectedUnit={selectedUnit} />
-        }>
+        header={<UpgradePanelHeader />}>
         <Upgrades />
       </BottomSheet>
     </>

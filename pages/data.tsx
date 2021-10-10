@@ -106,7 +106,7 @@ export default function Data() {
                 hint: name,
                 background: "",
                 "armyWideRule": {},
-                version,
+                versionString: "v" + version,
                 dataToolVersion,
                 units: parsedUnits
                     .concat(parsedUnits2)

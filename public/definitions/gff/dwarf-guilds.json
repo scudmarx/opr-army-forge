@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
   "name": "Dwarf Guilds",
-  "version": "2.7",
+  "versionString": "v2.7",
   "dataToolVersion": "0.3.0",
   "units": [
     {
@@ -722,7 +722,7 @@
               "cost": 25,
               "equipment": [
                 {
-                  "name": "Missile Launcher – pick one to fire",
+                  "name": "Missile Launcher ï¿½ pick one to fire",
                   "type": "weaponHeader"
                 },
                 {
@@ -797,7 +797,7 @@
               "cost": 30,
               "equipment": [
                 {
-                  "name": "Missile Launcher – pick one to fire",
+                  "name": "Missile Launcher ï¿½ pick one to fire",
                   "type": "weaponHeader"
                 },
                 {
@@ -960,7 +960,7 @@
               "cost": 35,
               "equipment": [
                 {
-                  "name": "Missile Launcher – pick one to fire",
+                  "name": "Missile Launcher ï¿½ pick one to fire",
                   "type": "weaponHeader"
                 },
                 {
@@ -1111,7 +1111,7 @@
               "cost": 40,
               "equipment": [
                 {
-                  "name": "Heavy Missiles – pick one to fire",
+                  "name": "Heavy Missiles ï¿½ pick one to fire",
                   "type": "weaponHeader"
                 },
                 {
@@ -1171,7 +1171,7 @@
               "cost": 10,
               "equipment": [
                 {
-                  "name": "Missile Launcher – pick one to fire",
+                  "name": "Missile Launcher ï¿½ pick one to fire",
                   "type": "weaponHeader"
                 },
                 {
@@ -1228,7 +1228,7 @@
               "cost": 10,
               "equipment": [
                 {
-                  "name": "Grenade Launcher–pick one to fire",
+                  "name": "Grenade Launcherï¿½pick one to fire",
                   "type": "weaponHeader"
                 },
                 {
@@ -1322,7 +1322,7 @@
               "cost": 15,
               "equipment": [
                 {
-                  "name": "Missile Launcher – pick one to fire",
+                  "name": "Missile Launcher ï¿½ pick one to fire",
                   "type": "weaponHeader"
                 },
                 {
@@ -1387,15 +1387,15 @@
   "specialRules": [
     {
       "name": "Battle Lore",
-      "description": "The hero and all friendly units within 12” get +1 to hit when fighting in melee."
+      "description": "The hero and all friendly units within 12ï¿½ get +1 to hit when fighting in melee."
     },
     {
       "name": "Guild Defender",
-      "description": "The hero and all friendly units within 12” get +1 to hit when shooting."
+      "description": "The hero and all friendly units within 12ï¿½ get +1 to hit when shooting."
     },
     {
       "name": "Repair",
-      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+      "description": "Once per turn, if within 2ï¿½ of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
     },
     {
       "name": "Shield Wall",
@@ -1414,32 +1414,32 @@
     {
       "name": "Spite Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12” gets -1 to hit in melee next time it fights."
+      "description": "Target enemy unit within 12ï¿½ gets -1 to hit in melee next time it fights."
     },
     {
       "name": "Smiting Rune",
       "test": "4+",
-      "description": "Target enemy unit within 12” takes 4 automatic hits."
+      "description": "Target enemy unit within 12ï¿½ takes 4 automatic hits."
     },
     {
       "name": "Battle Rune",
       "test": "5+",
-      "description": "Target friendly unit within 12” gets +6” next time it moves."
+      "description": "Target friendly unit within 12ï¿½ gets +6ï¿½ next time it moves."
     },
     {
       "name": "Breaking Rune",
       "test": "5+",
-      "description": "Target enemy model within 12” takes 2 automatic hits with AP(2)."
+      "description": "Target enemy model within 12ï¿½ takes 2 automatic hits with AP(2)."
     },
     {
       "name": "Drill Rune",
       "test": "6+",
-      "description": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
+      "description": "Target piece of terrain within 6ï¿½ may be moved by up to 6ï¿½ in any direction or may be removed from play."
     },
     {
       "name": "Cleaving Rune",
       "test": "6+",
-      "description": "Target 2 enemy units within 12” take 6 automatic hits each."
+      "description": "Target 2 enemy units within 12ï¿½ take 6 automatic hits each."
     }
   ]
 }

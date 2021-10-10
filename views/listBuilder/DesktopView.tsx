@@ -7,6 +7,7 @@ import { Upgrades } from "../upgrades/Upgrades";
 import UpgradeService from "../../services/UpgradeService";
 import MainMenu from "../components/MainMenu";
 import { Paper } from "@mui/material";
+import UpgradePanelHeader from "../components/UpgradePanelHeader";
 
 export default function DesktopView() {
 
@@ -25,7 +26,10 @@ export default function DesktopView() {
           <h3 className="m-4 is-size-4 is-hidden-mobile">{`My List - ${UpgradeService.calculateListTotal(list.units)}pts`}</h3>
           <MainList onSelected={() => { }} />
         </div>
-        <div className="column py-0" style={columnStyle}>
+        <div className="column py-0 px-0" style={columnStyle}>
+          <div className="px-4 pt-4">
+            <UpgradePanelHeader />
+          </div>
           <Upgrades />
         </div>
       </div>
