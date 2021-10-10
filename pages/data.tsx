@@ -119,7 +119,6 @@ export default function Data() {
                 "modifiedAt": new Date().toISOString(),
                 "official": true,
                 "public": false,
-                "versionString": "draft",
                 "coverImagePath": null,
                 "coverImageCredit": null,
                 "isLive": false,
