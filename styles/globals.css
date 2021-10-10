@@ -30,3 +30,13 @@ a {
 .MuiTabs-indicator {
   background-color: white;
 }
+
+.interactable {
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+
+.interactable:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}

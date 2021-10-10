@@ -54,7 +54,7 @@ export default function GameSystem() {
                 <div key={gameSystem} className="column is-half">
                   <Paper>
                     <img onClick={() => selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
-                      className="game-system-tile"
+                      className="game-system-tile interactable"
                       style={{ borderRadius: "4px", display: "block" }} />
                   </Paper>
                 </div>

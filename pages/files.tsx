@@ -158,6 +158,7 @@ export default function Files() {
                     <Card
                       elevation={2}
                       style={{ cursor: "pointer" }}
+                      className="interactable"
                       onClick={() => selectArmy(file.path)}>
                       <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
                         <div className="is-flex p-2" style={{ position: "relative", height: "100px", boxSizing: "content-box" }}>
@@ -207,6 +208,7 @@ export default function Files() {
                 <div key={i} className="column is-half">
                   <Card
                     elevation={1}
+                    className="interactable"
                     style={{
                       backgroundColor: customArmy.official ? "#F9FDFF" : null,
                       borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
