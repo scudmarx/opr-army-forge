@@ -72,7 +72,7 @@ export default class UpgradeService {
           ? unit.size || 1 // All in unit
           : 1;
 
-      //debugger;
+      debugger;
 
       const replaceWhat: string[] = typeof (upgrade.replaceWhat) === "string"
         ? [upgrade.replaceWhat]
@@ -106,7 +106,11 @@ export default class UpgradeService {
 
         // May only select up to the limit
         if (typeof (upgrade.select) === "number") {
-          if (appliedInGroup >= upgrade.select)
+          // Any model may replace 1...
+          if (upgrade.affects === "any") {
+            if (appliedInGroup >= upgrade.select * unit.size)
+              return false;
+          } else if (appliedInGroup >= upgrade.select)
             return false;
         }
       }

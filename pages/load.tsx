@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { AppBar, Button, IconButton, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import { loadSavedList } from '../data/listSlice';
+import DataService from "../services/DataService";
+import { load } from '../data/armySlice';
 
 export default function Load() {
 
@@ -19,11 +21,20 @@ export default function Load() {
   }, []);
 
   const loadSave = (key) => {
-    const units = JSON.parse(localStorage[key]);
-    // Load army
-    // redirect?
-    // Load saved units
-    dispatch(loadSavedList(units));
+    const save = JSON.parse(localStorage[key]);
+    if (save.armyId) {
+      DataService.getApiData(save.armyId, data => {
+        dispatch(load(data));
+        dispatch(loadSavedList(data.list));
+        router.push("/list");
+      });
+    } else {
+      DataService.getJsonData(save.armyFile, data => {
+        dispatch(load(data));
+        dispatch(loadSavedList(data.list));
+        router.push("/list");
+      });
+    }
   }
 
   return (

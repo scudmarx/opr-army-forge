@@ -1,7 +1,7 @@
 export interface IEquipment {
     //type?: "combined" | "mount" | "weaponPart" | "weaponHeader" | "ArmyBookWeapon" | "ArmyBookItem";
     label?: string;
-    //name?: string;
+    name?: string;
     range?: number;
     attacks?: number;
     //cost?: number;

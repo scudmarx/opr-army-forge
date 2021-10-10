@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { IUnit, IUpgradeOption } from "../data/interfaces";
-import DataParsingService from "../services/DataParsingService";
+import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 
 export default class DataService {
@@ -8,6 +8,17 @@ export default class DataService {
   private static useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
   private static webCompanionUrl = 'https://opr-list-bui-feature-po-r8wmtp.herokuapp.com/api';
+
+  public static getJsonData(filePath: string, callback: (armyData: any) => void) {
+
+    fetch(filePath)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        callback(data);
+      });
+  }
 
   public static getApiData(armyId: string, callback: (armyData: any) => void) {
 
@@ -33,9 +44,11 @@ export default class DataService {
         equipment: u.equipment.map(e => {
           // Capture the count digit from the name
           const countMatch = countRegex.exec(e.label);
+          const label = e.label.replace(countRegex, "");
           return {
             ...e,
-            label: e.label.replace(countRegex, ""),
+            label: label,
+            name: e.name || label,
             count: countMatch ? parseInt(countMatch[1]) * u.size : u.size
           }
         })
@@ -44,7 +57,7 @@ export default class DataService {
         ...pkg,
         sections: pkg.sections.map(section => ({
           ...section,
-          ...DataParsingService.parseUpgradeText(section.label),
+          ...DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":")),
           options: section.options.map((opt: IUpgradeOption) => {
             const gains = [];
             // Iterate backwards through gains array so we can push new 
@@ -84,7 +97,7 @@ export default class DataService {
         const item = grp[0];
         return {
           ...item,
-          count: grp.length
+          count: grp.length * unit.size
         };
       })
     }

@@ -28,11 +28,8 @@ export const listSlice = createSlice({
       state.name = name;
       state.pointsLimit = pointsLimit;
     },
-    loadSavedList(state, action: PayloadAction<ISelectedUnit[]>) {
-      return {
-        ...state,
-        units: action.payload
-      };
+    loadSavedList(state, action: PayloadAction<ListState>) {
+      state = action.payload
     },
     addUnit: (state, action: PayloadAction<any>) => {
       state.units.push({

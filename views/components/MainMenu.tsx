@@ -11,6 +11,7 @@ import UpgradeService from "../../services/UpgradeService";
 
 export default function MainMenu() {
 
+  const army = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -25,9 +26,13 @@ export default function MainMenu() {
   };
 
   const handleSave = () => {
-    const unitsJson = JSON.stringify(list.units);
+    const json = JSON.stringify({
+      armyId: army.data.uid,
+      armyFile: army.armyFile,
+      list,
+    });
     const saveName = prompt("Saved list name:");
-    localStorage["AF_Save_" + saveName] = unitsJson;
+    localStorage["AF_Save_" + saveName] = json;
   };
 
   const handleLoad = () => {

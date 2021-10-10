@@ -7,7 +7,7 @@ import { AppBar, IconButton, Toolbar, Typography, FormGroup, FormControlLabel, C
 import ClearIcon from '@mui/icons-material/Clear';
 import { createList } from "../data/listSlice";
 import { TransitionProps } from "@mui/material/transitions";
-import DataService from "../services/DataServices";
+import DataService from "../services/DataService";
 import { load } from "../data/armySlice";
 
 const Transition = forwardRef(function Transition(

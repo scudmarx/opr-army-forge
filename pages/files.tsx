@@ -10,7 +10,7 @@ import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
 import { resetList } from "../data/listSlice";
 import CreateListDialog from "../views/CreateListDialog";
-import DataService from "../services/DataServices";
+import DataService from "../services/DataService";
 
 const rotations = {} as any;
 
@@ -98,18 +98,10 @@ export default function Files() {
     dispatch(setArmyFile(filePath));
 
     // Load army data
-    fetch(filePath)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-
-        dispatch(load(data));
-
-        // TODO: Loading wheel view...?
-        // Redirect to list builder once data is loaded
-        //router.push('/list');
-        setNewArmyDialogOpen(true);
-      });
+    DataService.getJsonData(filePath, data => {
+      dispatch(load(data));
+      setNewArmyDialogOpen(true);
+    });
   };
 
   const selectCustomList = (customArmy: any) => {
