@@ -71,7 +71,8 @@ export default function CreateListDialog({ open, setOpen }) {
           }}></div>
         </div>
         <TextField variant="filled" label="List Name" className="mb-4" value={armyName} onChange={(e) => setArmyName(e.target.value)} />
-        <TextField variant="filled" label="Points Limit" type="number" />
+        <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />
+        <Button variant="contained" onClick={() => create()}>Create List</Button>
       </div>
     </Dialog>
   );

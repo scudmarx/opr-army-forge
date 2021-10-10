@@ -23,10 +23,10 @@ export default function Home() {
           <h1 className="is-size-3 has-text-centered mb-4">Army Forge</h1>
           <div className="is-flex is-flex-direction-column p-4" style={(!isBigScreen ? { position: "fixed", bottom: "16px", left: "16px", right: "16px" } : null)}>
             <Button variant="contained" color="primary" className="mb-4" onClick={() => router.push("/gameSystem")}>
-              <AddIcon /> Create A New List
+              <AddIcon /> <span className="ml-2">Create A New List</span>
             </Button>
             <Button variant="outlined" onClick={() => router.push("/load")}>
-              <FileUploadOutlinedIcon /> Import A List
+              <FileUploadOutlinedIcon /> <span className="ml-2">Import A List</span>
             </Button>
           </div>
         </div>

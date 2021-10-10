@@ -68,20 +68,23 @@ export function UnitSelection({ onSelected }) {
   };
 
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+  const stickyHeader: any = { position: "sticky", top: 0, backgroundColor: "#FAFAFA", zIndex: 10 };
 
   return (
     <aside
       className={styles.menu + " menu"}
       style={{ minHeight: "100%" }}
     >
-      {isBigScreen && <div className="is-flex is-align-items-center">
-        <h3 className="is-size-4 p-4 is-flex-grow-1">
-          {army.name} - v{army.version}
-        </h3>
-        {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
-      </div>}
+      <div style={isBigScreen ? stickyHeader : null}>
+        {isBigScreen && <div className="is-flex is-align-items-center">
+          <h3 className="is-size-4 px-4 pt-4 is-flex-grow-1">
+            {army.name} - v{army.version}
+          </h3>
+          {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+        </div>}
 
-      <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
+        <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
+      </div>
 
       {
         // For each category
