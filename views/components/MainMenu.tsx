@@ -29,6 +29,7 @@ export default function MainMenu() {
     const json = JSON.stringify({
       armyId: army.data.uid,
       armyFile: army.armyFile,
+      armyName: army.data.name,
       list,
     });
     const saveName = prompt("Saved list name:");

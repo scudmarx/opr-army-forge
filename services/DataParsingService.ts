@@ -44,7 +44,7 @@ export default class DataParsingService {
         type: "replace",
         affects: "any",
         select: parseInt(anyModelReplaceMatch[1]) || this.numberFromName(anyModelReplaceMatch[1]) || anyModelReplaceMatch[1] as any,
-        replaceWhat: anyModelReplaceMatch[2]
+        replaceWhat: [anyModelReplaceMatch[2]]
       }
     }
 
@@ -74,12 +74,18 @@ export default class DataParsingService {
       result.select = parseInt(match[groups.upTo]) || this.numberFromName(match[groups.upTo]) || match[groups.upTo] as any;
 
     if (match[groups.upgradeWhat])
-      result.replaceWhat = match[groups.upgradeWhat];
+      result.replaceWhat = [match[groups.upgradeWhat]];
 
     if (replaceWhat) {
-      result.replaceWhat = replaceWhat.indexOf(" and ") > -1
-        ? replaceWhat.split(" and ")
-        : replaceWhat;
+      // has alternative replave options like "Replace one R-Carbine and CCW / G-Rifle and CCW:"
+      if (replaceWhat.indexOf("/") > -1) {
+        result.replaceWhat = replaceWhat
+          .split("/")
+          .map(part => part.trim())
+          .map(part => part.split(" and "));
+      } else {
+        result.replaceWhat = replaceWhat.split(" and ");
+      }
     }
 
     // TODO: Better way of doing this?

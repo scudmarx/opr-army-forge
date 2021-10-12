@@ -8,6 +8,7 @@ import DataParsingService from '../services/DataParsingService';
 import { groupBy } from '../services/Helpers';
 import RulesService from '../services/RulesService';
 import { Fragment } from 'react';
+import _ from "lodash";
 
 export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEquipment, isProfile: boolean }) {
 
@@ -84,7 +85,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
   weapons.forEach((w, index) => {
     const weapon = { ...w };
     upgradesAsEquipment.forEach((e) => {
-      if (e.label === w.label) {
+      if (e.label === w.label && e.attacks === w.attacks) {
         weapon.count += e.count;
         addedUpgrades.push(e.label);
       }
@@ -94,7 +95,8 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
   upgradesAsEquipment.forEach((e) => {
     if (!addedUpgrades.includes(e.label)) {
-      const index = combinedWeapons.findIndex((w) => pluralise.singular(w.label) === pluralise.singular(e.label));
+      const index = combinedWeapons
+      .findIndex((w) => pluralise.singular(w.label) === pluralise.singular(e.label) && w.attacks === e.attacks);
 
       if (index !== -1) {
         combinedWeapons[index].count += e.count;

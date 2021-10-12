@@ -7,6 +7,7 @@ import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import { loadSavedList } from '../data/listSlice';
 import DataService from "../services/DataService";
 import { load } from '../data/armySlice';
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 
 export default function Load() {
 
@@ -53,7 +54,7 @@ export default function Load() {
               <BackIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Import A List
+              Open A List
             </Typography>
             <IconButton
               size="large"
@@ -67,6 +68,9 @@ export default function Load() {
       </Paper>
       <div className="container">
         <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
+          <Button variant="contained" color="primary">
+            <FileUploadOutlinedIcon /> <span className="ml-2">Import A List</span>
+          </Button>
           <h4 className="is-size-4 has-text-centered mb-4">Saved Lists</h4>
           <List>
             {localSaves.map(key => (

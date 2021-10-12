@@ -1,17 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../data/store'
-import { setGameSystem } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { AppBar, Button, IconButton, Menu, MenuItem, Paper, Toolbar, Typography } from '@mui/material';
-import BackIcon from '@mui/icons-material/ArrowBackIosNew';
-import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import { Button } from '@mui/material';
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import AddIcon from '@mui/icons-material/Add';
 import { useMediaQuery } from 'react-responsive';
 
 export default function Home() {
 
-  const dispatch = useDispatch();
   const router = useRouter();
 
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
@@ -26,7 +20,7 @@ export default function Home() {
               <AddIcon /> <span className="ml-2">Create A New List</span>
             </Button>
             <Button variant="outlined" onClick={() => router.push("/load")}>
-              <FileUploadOutlinedIcon /> <span className="ml-2">Import A List</span>
+              <FolderOpenIcon /> <span className="ml-2">Open A List</span>
             </Button>
           </div>
         </div>

@@ -90,16 +90,18 @@ export default class DataService {
     };
 
     for (let unit of data.units) {
+      // Group equipment by name
       const groups = groupBy(unit.equipment, "name");
+
       console.log(groups);
-      unit.equipment = Object.keys(groups).map(key => {
-        const grp = groups[key];
-        const item = grp[0];
-        return {
-          ...item,
-          count: grp.length * unit.size
-        };
-      })
+
+      // Take first equipment in each group, with a count set to how many are in the group
+      unit.equipment = Object
+        .values(groups)
+        .map((group: any[]) => ({
+          ...group[0],
+          count: group.length * unit.size
+        }))
     }
 
     return data;

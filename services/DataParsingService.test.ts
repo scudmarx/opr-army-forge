@@ -114,7 +114,7 @@ test("Parse 'Upgrade all [weapons] with one:'", () => {
     type: "upgrade",
     select: 1,
     affects: "all",
-    replaceWhat: "Crossbows"
+    replaceWhat: ["Crossbows"]
   });
 });
 
@@ -126,7 +126,7 @@ test("Parse 'Replace [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace Gauss Rifle:");
   expect(upgrade).toStrictEqual({
     type: "replace",
-    replaceWhat: "Gauss Rifle"
+    replaceWhat: ["Gauss Rifle"]
   });
 });
 
@@ -135,7 +135,7 @@ test("Parse 'Replace one [weapon]:'", () => {
   expect(upgrade).toStrictEqual({
     type: "replace",
     affects: 1,
-    replaceWhat: "CCW"
+    replaceWhat: ["CCW"]
   });
 });
 
@@ -144,7 +144,7 @@ test("Parse 'Replace 2x [weapon]:'", () => {
   expect(upgrade).toStrictEqual({
     type: "replace",
     affects: 2,
-    replaceWhat: "Armblades"
+    replaceWhat: ["Armblades"]
   });
 });
 
@@ -153,7 +153,7 @@ test("Parse 'Replace any [weapon]:'", () => {
   expect(upgrade).toStrictEqual({
     type: "replace",
     affects: "any",
-    replaceWhat: "Assault Rifle"
+    replaceWhat: ["Assault Rifle"]
   });
 });
 
@@ -162,7 +162,7 @@ test("Parse 'Replace all [weapon]:'", () => {
   expect(upgrade).toStrictEqual({
     type: "replace",
     affects: "all",
-    replaceWhat: "Assault Rifles"
+    replaceWhat: ["Assault Rifles"]
   });
 });
 
@@ -171,7 +171,7 @@ test("Parse 'Replace up to 2 [weapon]:'", () => {
   expect(upgrade).toStrictEqual({
     type: "replace",
     select: 2,
-    replaceWhat: "Assault Rifles"
+    replaceWhat: ["Assault Rifles"]
   });
 });
 
@@ -224,7 +224,19 @@ test("Parse 'Any model may replace one Razor Claws:'", () => {
     type: "replace",
     affects: "any",
     select: 1,
-    replaceWhat: "Razor Claws"
+    replaceWhat: ["Razor Claws"]
+  });
+});
+
+test("Parse 'Replace any [weapon1] and [weapon2] / [weapon3] and [weapon4]:'", () => {
+  const upgrade = DataParsingService.parseUpgradeText("Replace one R-Carbine and CCW / G-Rifle and CCW:");
+  expect(upgrade).toStrictEqual({
+    type: "replace",
+    affects: 1,
+    replaceWhat: [
+      ["R-Carbine", "CCW"],
+      ["G-Rifle", "CCW"],
+    ]
   });
 });
 
@@ -236,7 +248,7 @@ test("Parse 'Upgrade [rule]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade Psychic(1):");
   expect(upgrade).toStrictEqual({
     type: "upgradeRule",
-    replaceWhat: "Psychic(1)"
+    replaceWhat: ["Psychic(1)"]
   });
 });
 
@@ -847,7 +859,7 @@ Psychic(2) +15pts
       {
         "label": "Upgrade Psychic(1)",
         "type": "upgradeRule",
-        "replaceWhat": "Psychic(1)",
+        "replaceWhat": ["Psychic(1)"],
         "options": [
           {
             "cost": 15,
@@ -896,7 +908,7 @@ Energy Sword (A2, AP(1), Rending) +5pts
       label: "Replace one CCW",
       type: "replace",
       affects: 1,
-      replaceWhat: "CCW",
+      replaceWhat: ["CCW"],
       options: [
         {
           "cost": 5,
@@ -934,89 +946,6 @@ Energy Sword (A2, AP(1), Rending) +5pts
 
 //#endregion
 
-//#region Parse Rules
-
-test("Parse rules from pdf", () => {
-  const input = `
-Attack Bomb: Whenever this unit moves over enemies pick one of them and roll 1 die, on a 2+ it takes 3 hits with AP(1).
-Ballistic Master: When the hero is activated pick one friendly Artillery unit within 6”, which may either get +2 to its shooting rolls or move up to 6” during its next activation.
-Bombing Run: Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 3 hits with AP(1).
-Drill: The unit may be deployed from Ambush at up to 3” from enemy units.
-Grudge: The hero and his unit get +1 to their rolls when fighting in melee.
-Slayer: This model gets AP(+2) when fighting units with Tough(3) or higher.
-Swift: The hero may ignore the Slow rule.
-`;
-
-  const rules = DataParsingService.parseRules(input);
-
-  expect(rules.length).toBe(7);
-  expect(rules[2]).toStrictEqual({
-    label: "Bombing Run",
-    description: "Whenever this unit moves over enemies pick one of them and roll 3 dice, for each 2+ it takes 3 hits with AP(1)."
-  });
-
-});
-
-test("Parse special rules with bullets:", () => {
-  const input = `
-Battle Drills: The hero and his unit get the Furious special rule.
-Commander: When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:  Double Time: +3” when moving  Take Aim: +1 to shooting rolls  Focus Fire: AP(+1) when shooting  Fix Bayonets: +1 to melee rolls
-    `;
-
-  const rules = DataParsingService.parseRules(input);
-  expect(rules).toStrictEqual([
-    {
-      label: "Battle Drills",
-      description: "The hero and his unit get the Furious special rule."
-    },
-    {
-      label: "Commander",
-      description: "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:",
-      options: [
-        "Double Time: +3” when moving",
-        "Take Aim: +1 to shooting rolls",
-        "Focus Fire: AP(+1) when shooting",
-        "Fix Bayonets: +1 to melee rolls"
-      ]
-    }
-  ]);
-});
-
-test('Parse special rules with bullets 2', () => {
-  const input = `
-    Captain: When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round: • At the Double: +3” when moving • Precision Fire: +1 to shooting rolls • Crank Up: AP(+1) when shooting • Assault Stance: +1 to melee rolls
-    Good Shot: This model shoots at Quality 4+.
-    Trickster: When this model fights in melee roll one die and apply one bonus: • 1-3: Unit gets AP(+1) • 4-6: Enemies get -1 to hit
-`;
-  const rules = DataParsingService.parseRules(input);
-  expect(rules).toStrictEqual([
-    {
-      label: "Captain",
-      description: "When the hero and his unit are activated pick one of the following orders, and they get one of these special rules until the end of the round:",
-      options: [
-        "At the Double: +3” when moving",
-        "Precision Fire: +1 to shooting rolls",
-        "Crank Up: AP(+1) when shooting",
-        "Assault Stance: +1 to melee rolls"
-      ]
-    },
-    {
-      label: "Good Shot",
-      description: "This model shoots at Quality 4+."
-    },
-    {
-      label: "Trickster",
-      description: "When this model fights in melee roll one die and apply one bonus:",
-      options: [
-        "1-3: Unit gets AP(+1)",
-        "4-6: Enemies get -1 to hit"
-      ]
-    }
-  ]);
-})
-
-//#endregion
-
 //#region Parse Spells
 
 test("Parse Spells from pdf", () => {
@@ -1032,11 +961,6 @@ Cleaving Rune (6+): Target 2 enemy units within 12” take 6 automatic hits each
   const spells = DataParsingService.parseSpells(input);
 
   expect(spells.length).toBe(6);
-  expect(spells[2]).toStrictEqual({
-    label: "Battle Rune",
-    test: "5+",
-    description: "Target friendly unit within 12” gets +6” next time it moves."
-  });
 });
 
 //#endregion

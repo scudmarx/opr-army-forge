@@ -45,7 +45,7 @@ export interface IUpgrade {
     affects?: "any" | "all" | number;
     select?: string | number;
     limit?: number;
-    replaceWhat?: string | string[];
+    replaceWhat?: string[] | string[][];
     options?: IUpgradeOption[];
 }
 
