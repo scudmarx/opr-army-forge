@@ -104,10 +104,14 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
         combinedWeapons.push(e);
       }
     }
-  })
+  });
 
-  const weaponGroups = groupBy(combinedWeapons, "label");
-  console.log(weaponGroups);
+  const weaponGroups = _.groupBy(combinedWeapons, w => w.label + w.attacks);
+
+  // console.log("Weapon upgrades: ", weaponUpgrades);
+  // console.log("Upgrades as equipment: ", upgradesAsEquipment);
+  // console.log("Combined weapons: ", combinedWeapons);
+  // console.log("Weapon groups", weaponGroups);
 
   const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
   const headerStyle = { ...cellStyle, fontWeight: 600 };
