@@ -15,9 +15,14 @@ export default class UpgradeService {
     let cost = unit.cost * (unit.combined ? 2 : 1);
 
     for (const upgrade of unit.selectedUpgrades) {
-      if (upgrade.cost)
-        cost += parseInt(upgrade.cost);
+
+      var upgradeGroup = { affects: "all" };
+
+      if (upgrade.cost) {
+        cost += upgrade.cost * (unit.combined && upgradeGroup.affects === "all" ? 2 : 1);
+      }
     }
+    
     return cost;
   }
 

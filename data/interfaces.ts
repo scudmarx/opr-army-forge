@@ -51,7 +51,7 @@ export interface IUpgrade {
 
 export interface IUpgradeOption {
     id: string;
-    cost: string;
+    cost: number;
     label: string;
     gains: IUpgradeGains[];// IEquipment[] | ISpecialRule[];
     type: "ArmyBookUpgradeOption";

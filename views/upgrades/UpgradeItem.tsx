@@ -8,6 +8,7 @@ import { Fragment } from 'react';
 import { groupBy } from '../../services/Helpers';
 import pluralise from "pluralize";
 import RulesService from '../../services/RulesService';
+import UnitService from '../../services/UnitService';
 
 export default function UpgradeItem({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
 
@@ -33,16 +34,47 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
                 </Fragment>
               );
             }
-            const eqp = e;
-            const name = count > 1 ? pluralise.plural(eqp.name || eqp.label) : eqp.name || eqp.label;
-            const weapon = eqp.type === "ArmyBookWeapon" ? eqp as IUpgradeGainsWeapon : null;
-            const item = eqp.type === "ArmyBookItem" ? eqp as IUpgradeGainsItem : null;
-            const range = weapon && weapon.range ? `${weapon.range}"` : null;
-            const attacks = weapon && weapon.attacks ? `A${weapon.attacks}` : null;
-            const specialRules = weapon?.specialRules
-              || item?.content.filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense") as IUpgradeGainsRule[]
-              || [];
 
+            const name = count > 1 ? pluralise.plural(e.name || e.label) : e.name || e.label;
+
+            const display = (eqp) => {
+              switch (eqp.type) {
+                case "ArmyBookRule": {
+                  return (
+                    <Fragment key={i}>
+                      <span style={{ color: "#000000" }}>{e.label}</span>
+                    </Fragment>
+                  );
+                }
+                case "ArmyBookWeapon": {
+                  const weapon = eqp as IUpgradeGainsWeapon;
+                  const range = weapon && weapon.range ? `${weapon.range}"` : null;
+                  const attacks = weapon && weapon.attacks ? `A${weapon.attacks}` : null;
+                  return (
+                    <Fragment key={i}>
+                      {count > 1 && <span>{count}x </span>}
+                      <span style={{ color: "#000000" }}>{name} </span>
+                      <span className="mr-2" style={{ color: "#656565" }}>
+                        ({[range, attacks].concat(weapon.specialRules.map(RulesService.displayName)).filter(r => !!r).join(", ")})
+                      </span>
+                    </Fragment>
+                  );
+                }
+                case "ArmyBookItem": {
+                  const item = eqp as IUpgradeGainsItem;
+                  return (
+                    <Fragment key={i}>
+                      {count > 1 && <span>{count}x </span>}
+                      <span style={{ color: "#000000" }}>{name} </span>
+                      <span className="mr-2" style={{ color: "#656565" }}>
+                        {item.content.map(c => display(c))}
+                        {/* ({[range, attacks].concat(weapon.specialRules.map(RulesService.displayName)).filter(r => !!r).join(", ")}) */}
+                      </span>
+                    </Fragment>
+                  );
+                }
+              }
+            }
             // return {
             //   name: name,
             //   rules: [range, attacks] // Range, then attacks
@@ -62,7 +94,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
           }) : <span style={{ color: "#000000" }}>None</span>
         }
       </div>
-      <div>{option?.cost ? `${option.cost}pts` : "Free"}&nbsp;</div>
+      <div>{option?.cost ? `${option.cost * (selectedUnit.combined && upgrade.affects === "all" ? 2 : 1)}pts` : "Free"}&nbsp;</div>
       {(() => {
         switch (controlType) {
           case "check": return <UpgradeCheckbox selectedUnit={selectedUnit} upgrade={upgrade} option={option} />;
