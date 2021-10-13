@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, IconButton, Paper } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, Paper } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
@@ -9,12 +9,13 @@ import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
 import { toggleUnitCombined } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import UpgradePanelHeader from '../components/UpgradePanelHeader';
+import SpellsTable from '../SpellsTable';
 
 export function Upgrades() {
 
   const list = useSelector((state: RootState) => state.list);
   const army = useSelector((state: RootState) => state.army.data);
+  const spells = army.spells;
   const dispatch = useDispatch();
 
   const selectedUnit = UnitService.getSelected(list);
@@ -34,6 +35,8 @@ export function Upgrades() {
     .concat(unitUpgradeRules)
     .filter(r => r.name !== "-");
 
+  const isPsychic = specialRules.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
+
   return (
     <div className={styles["upgrade-panel"]}>
 
@@ -47,12 +50,17 @@ export function Upgrades() {
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} />
         </div>
+        <div className="px-4 pt-2">
+          {isPsychic && <SpellsTable />}
+        </div>
         {specialRules?.length > 0 &&
           <div className="p-4 mb-4">
             <h4 style={{ fontWeight: 600, fontSize: "14px" }}>Special Rules</h4>
             <RuleList specialRules={specialRules} />
           </div>}
+
       </Paper>}
+
       {(selectedUnit?.upgrades || [])
         .map((setId) => getUpgradeSet(setId))
         .filter((s) => !!s) // remove empty sets?

@@ -22,7 +22,7 @@ export default class UpgradeService {
         cost += upgrade.cost * (unit.combined && upgradeGroup.affects === "all" ? 2 : 1);
       }
     }
-    
+
     return cost;
   }
 
@@ -257,7 +257,6 @@ export default class UpgradeService {
 
       console.log("Replace " + count);
 
-
       let available = 999;
 
       const replace = (options: string[]) => {
@@ -268,7 +267,7 @@ export default class UpgradeService {
         for (let what of options) {
 
           // Try and find item to replace...
-          var toReplace = this.findToReplace(unit, what);
+          const toReplace = this.findToReplace(unit, what);
 
           // Couldn't find the item to replace
           if (!toReplace) {
@@ -292,6 +291,13 @@ export default class UpgradeService {
           // TODO: Use Math.max... ?
           if (toReplace.count <= 0)
             toReplace.count = 0;
+
+
+          // If we're replacing an upgrade...
+          if (toReplace.type) {
+            // ...then track which upgrade replaced it
+            (toReplace.dependencies || (toReplace.dependencies = [])).push(option.id);
+          }
 
           console.log("Replaced... ", current(toReplace));
         }
