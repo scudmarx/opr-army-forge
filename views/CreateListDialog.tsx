@@ -31,7 +31,7 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
   const create = () => {
 
     const finish = () => {
-      dispatch(createList({ name: armyName || "My List", pointsLimit: pointsLimit || null }));
+      dispatch(createList({ name: armyName || "My List", pointsLimit: pointsLimit || 0 }));
       router.push('/list');
     };
 

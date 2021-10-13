@@ -24,7 +24,7 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
   keys.sort((a, b) => a.localeCompare(b));
 
   return (
-    <div>
+    <>
       {keys.map((key, index) => {
         const group = ruleGroups[key];
         const rule = group[0];
@@ -40,6 +40,6 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
           </Fragment>
         );
       })}
-    </div>
+    </>
   );
 }

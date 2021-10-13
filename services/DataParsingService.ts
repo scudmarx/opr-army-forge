@@ -39,7 +39,6 @@ export default class DataParsingService {
 
     const anyModelReplaceMatch = /^Any model may replace (\d+|one|two|three) (.+):/gi.exec(text);
     if (anyModelReplaceMatch) {
-      debugger;
       return {
         type: "replace",
         affects: "any",
