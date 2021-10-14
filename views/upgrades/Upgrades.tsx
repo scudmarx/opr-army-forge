@@ -15,7 +15,7 @@ export function Upgrades() {
 
   const list = useSelector((state: RootState) => state.list);
   const army = useSelector((state: RootState) => state.army.data);
-  const spells = army.spells;
+  const spells = army?.spells;
   const dispatch = useDispatch();
 
   const selectedUnit = UnitService.getSelected(list);
@@ -35,7 +35,7 @@ export function Upgrades() {
     .concat(unitUpgradeRules)
     .filter(r => r.name !== "-");
 
-  const isPsychic = specialRules.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
+  const isPsychic = specialRules?.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
 
   return (
     <div className={styles["upgrade-panel"]}>

@@ -78,6 +78,9 @@ export default class UpgradeService {
           : 1;
 
       const canReplaceSet = (options: string[]) => {
+        if (!Array.isArray(options)) {
+          options = [options];
+        }
         for (let what of options) {
 
           var toRestore = null;
@@ -262,7 +265,9 @@ export default class UpgradeService {
       const replace = (options: string[]) => {
 
         const replace = [];
-
+        if (!Array.isArray(options)) {
+          options = [options];
+        }
         // Check each option to make sure it's present before acting
         for (let what of options) {
 
@@ -345,7 +350,9 @@ export default class UpgradeService {
       const restore = (options: string[]) => {
 
         const items = [];
-
+        if (!Array.isArray(options)) {
+          options = [options];
+        }
         // For each bit of equipment that was originally replaced
         for (let what of options) {
 
