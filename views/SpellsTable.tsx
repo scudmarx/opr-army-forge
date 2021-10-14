@@ -5,7 +5,7 @@ import { RootState } from '../data/store';
 export default function SpellsTable() {
 
   const army = useSelector((state: RootState) => state.army.data);
-  const spells = army.spells;
+  const spells = army?.spells;
 
   const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
   const headerStyle = { ...cellStyle, fontWeight: 600 };
@@ -21,7 +21,7 @@ export default function SpellsTable() {
         </TableHead>
         <TableBody>
           {
-            spells.map(spell => (
+            spells && spells.map(spell => (
               <TableRow key={spell.name}>
                 <TableCell style={headerStyle}>{spell.name} ({spell.threshold}+)</TableCell>
                 <TableCell style={cellStyle}>{spell.effect}</TableCell>
