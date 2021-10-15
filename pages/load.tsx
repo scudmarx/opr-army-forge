@@ -6,7 +6,7 @@ import { AppBar, Avatar, Button, IconButton, List, ListItem, ListItemAvatar, Lis
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import _ from "lodash";
-import { Delete } from '@mui/icons-material';
+import { Delete, NoEncryption } from '@mui/icons-material';
 import PersistenceService from '../services/PersistenceService';
 
 export default function Load() {
@@ -21,6 +21,13 @@ export default function Load() {
     setLocalSaves(saves);
   }, [forceLoad]);
 
+  const importFile = () => {
+    var fileInput = document.getElementById("file-input");
+    fileInput.dispatchEvent(new MouseEvent("click"));
+    //const fileSystemHandles = window.showOpenFilePicker();
+    //console.log(fileSystemHandles);
+  }
+
   const loadSave = (save) => {
     PersistenceService.load(dispatch, save, armyData => {
       router.push("/list");
@@ -30,6 +37,21 @@ export default function Load() {
   const deleteSave = (name) => {
     PersistenceService.delete(name);
     setTimeout(() => setForceLoad(forceLoad + 1), 1);
+  };
+
+  const readSingleFile = (e) => {
+    var file = e.target.files[0];
+    if (!file)
+      return;
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      const json: string = event.target.result as string;
+      console.log(json);
+      PersistenceService.load(dispatch, JSON.parse(json), _ => {
+        router.push("/list");
+      });
+    };
+    reader.readAsText(file);
   };
 
   return (
@@ -61,9 +83,10 @@ export default function Load() {
         </AppBar>
       </Paper>
       <div className="container">
+        <input type="file" id="file-input" style={{ display: "none" }} onChange={readSingleFile} />
         <div className="mx-auto" style={{ maxWidth: "480px" }}>
           <div className="is-flex is-justify-content-center p-4 my-4">
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={() => importFile()}>
               <FileUploadOutlinedIcon /> <span className="ml-2">Upload A List File</span>
             </Button>
           </div>
