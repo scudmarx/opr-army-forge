@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ISelectedUnit, IUpgrade, IUpgradeOption } from './interfaces';
 import UpgradeService from '../services/UpgradeService';
+import { debounce } from 'throttle-debounce';
+import { current } from 'immer';
+import PersistenceService from '../services/PersistenceService';
 
 export interface ListState {
   name: string,
   pointsLimit?: number;
   units: ISelectedUnit[],
-  selectedUnitId: number
+  selectedUnitId?: number
 }
 
 const initialState: ListState = {
@@ -15,6 +18,10 @@ const initialState: ListState = {
   units: [],
   selectedUnitId: null
 }
+
+const debounceSave = debounce(1500, (state: ListState) => {
+  PersistenceService.updateSave(state);
+});
 
 export const listSlice = createSlice({
   name: 'army',
@@ -29,7 +36,7 @@ export const listSlice = createSlice({
       state.pointsLimit = pointsLimit;
     },
     loadSavedList(state, action: PayloadAction<ListState>) {
-      state = action.payload
+      return { ...action.payload };
     },
     addUnit: (state, action: PayloadAction<any>) => {
       state.units.push({
@@ -42,6 +49,8 @@ export const listSlice = createSlice({
           count: eqp.count || action.payload.size // Add count to unit size if not already present
         }))
       });
+
+      debounceSave(current(state));
     },
     selectUnit: (state, action: PayloadAction<number>) => {
       state.selectedUnitId = action.payload;
@@ -57,11 +66,15 @@ export const listSlice = createSlice({
       for (let i = 0; i < state.units.length; i++) {
         state.units[i].selectionId = i;
       }
+
+      debounceSave(current(state));
     },
     renameUnit: (state, action: PayloadAction<{ unitId: number, name: string }>) => {
       const { unitId, name } = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
       unit.customName = name;
+
+      debounceSave(current(state));
     },
     toggleUnitCombined: (state, action: PayloadAction<number>) => {
       const unitId = action.payload;
@@ -71,6 +84,8 @@ export const listSlice = createSlice({
         unit.size *= 2;
       else
         unit.size /= 2;
+
+      debounceSave(current(state));
     },
     applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IUpgradeOption }>) => {
 
@@ -80,6 +95,8 @@ export const listSlice = createSlice({
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
 
       UpgradeService.apply(unit, upgrade, option);
+
+      debounceSave(current(state));
     },
     removeUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IUpgradeOption }>) => {
 
@@ -89,6 +106,8 @@ export const listSlice = createSlice({
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
 
       UpgradeService.remove(unit, upgrade, option);
+
+      debounceSave(current(state));
     }
 
   },

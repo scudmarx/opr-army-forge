@@ -2,41 +2,35 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { AppBar, Button, IconButton, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem, Paper, Toolbar, Typography } from '@mui/material';
+import { AppBar, Avatar, Button, IconButton, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Menu, MenuItem, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
-import { loadSavedList } from '../data/listSlice';
-import DataService from "../services/DataService";
-import { load } from '../data/armySlice';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import _ from "lodash";
+import { Delete } from '@mui/icons-material';
+import PersistenceService from '../services/PersistenceService';
 
 export default function Load() {
 
-  const army = useSelector((state: RootState) => state.army);
   const dispatch = useDispatch();
   const router = useRouter();
   const [localSaves, setLocalSaves] = useState([]);
+  const [forceLoad, setForceLoad] = useState(1);
 
   useEffect(() => {
     const saves = Object.keys(localStorage).filter(k => k.startsWith("AF_Save"));
     setLocalSaves(saves);
-  }, []);
+  }, [forceLoad]);
 
-  const loadSave = (key) => {
-    const save = JSON.parse(localStorage[key]);
-    if (save.armyId) {
-      DataService.getApiData(save.armyId, data => {
-        dispatch(load(data));
-        dispatch(loadSavedList(data.list));
-        router.push("/list");
-      });
-    } else {
-      DataService.getJsonData(save.armyFile, data => {
-        dispatch(load(data));
-        dispatch(loadSavedList(data.list));
-        router.push("/list");
-      });
-    }
-  }
+  const loadSave = (save) => {
+    PersistenceService.load(dispatch, save, armyData => {
+      router.push("/list");
+    })
+  };
+
+  const deleteSave = (name) => {
+    PersistenceService.delete(name);
+    setTimeout(() => setForceLoad(forceLoad + 1), 1);
+  };
 
   return (
     <>
@@ -67,20 +61,49 @@ export default function Load() {
         </AppBar>
       </Paper>
       <div className="container">
-        <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
-          <Button variant="contained" color="primary">
-            <FileUploadOutlinedIcon /> <span className="ml-2">Import A List</span>
-          </Button>
-          <h4 className="is-size-4 has-text-centered mb-4">Saved Lists</h4>
-          <List>
-            {localSaves.map(key => (
-              <ListItem key={key} disablePadding>
-                <ListItemButton onClick={() => loadSave(key)}>
-                  <ListItemText>{key.replace("AF_Save_", "")}</ListItemText>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+        <div className="mx-auto" style={{ maxWidth: "480px" }}>
+          <div className="is-flex is-justify-content-center p-4 my-4">
+            <Button variant="contained" color="primary">
+              <FileUploadOutlinedIcon /> <span className="ml-2">Upload A List File</span>
+            </Button>
+          </div>
+          <p className="px-4 mb-2" style={{ fontWeight: 600 }}>Saved Lists</p>
+          <Paper square elevation={0}>
+            <List>
+              {
+                _.sortBy(localSaves.map(save => JSON.parse(localStorage[save])), save => save.modified).reverse().map(save => {
+                  const modified = new Date(save.modified);
+                  const points = save.listPoints;
+                  const title = (
+                    <>
+                      <span style={{ fontWeight: 600 }}>{save.list.name}</span>
+                      <span style={{ color: "#656565" }}> • {points}pts</span>
+                    </>
+                  );
+
+                  const deleteButton = (
+                    <IconButton onClick={() => deleteSave(save.list.name)}>
+                      <Delete />
+                    </IconButton>
+                  );
+
+                  return (
+                    <ListItem key={save.list.name} disablePadding secondaryAction={deleteButton}>
+                      <ListItemButton onClick={() => loadSave(save)}>
+                        <ListItemAvatar>
+                          <Avatar>
+
+                          </Avatar>
+                        </ListItemAvatar>
+                        {/* <ArmyImage name={save.armyName} /> */}
+                        <ListItemText primary={title} secondary={modified.toLocaleDateString()} />
+                      </ListItemButton>
+                    </ListItem>
+                  );
+                })
+              }
+            </List>
+          </Paper>
         </div>
 
       </div>

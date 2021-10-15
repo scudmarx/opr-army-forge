@@ -9,6 +9,8 @@ import { createList } from "../data/listSlice";
 import { TransitionProps } from "@mui/material/transitions";
 import DataService from "../services/DataService";
 import { load } from "../data/armySlice";
+import ArmyImage from "./components/ArmyImage";
+import PersistenceService from "../services/PersistenceService";
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
@@ -37,7 +39,9 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
   const create = () => {
 
     const finish = () => {
-      dispatch(createList({ name: armyName || "My List", pointsLimit: pointsLimit || 0 }));
+      const name = armyName || "My List";
+      dispatch(createList({ name, pointsLimit: pointsLimit || 0 }));
+      PersistenceService.createSave(army, name);
       router.push('/list');
     };
 
@@ -79,24 +83,8 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
       <div>
         <div className="mx-auto" style={{ maxWidth: "480px" }}>
           <div className="is-flex is-flex-direction-column p-4 mx-auto">
-            <div className="is-flex p-2 mb-6" style={{ position: "relative", height: "100px", boxSizing: "content-box" }}>
-              <div style={{
-                zIndex: 0,
-                position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
-                backgroundImage: `url("img/army_bg.png")`,
-                backgroundPosition: "center",
-                backgroundSize: "contain",
-                backgroundRepeat: 'no-repeat'
-              }}></div>
-              <div className="is-flex" style={{
-                height: "100px",
-                width: "100%",
-                backgroundImage: `url("img/gf_armies/${army.data?.name}.png")`,
-                backgroundPosition: "center",
-                backgroundSize: "contain",
-                backgroundRepeat: 'no-repeat',
-                position: "relative", zIndex: 1
-              }}></div>
+            <div className="mb-6">
+              <ArmyImage name={army.data?.name} />
             </div>
             <TextField variant="filled" label="List Name" className="mb-4" value={armyName} onChange={(e) => setArmyName(e.target.value)} />
             <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />

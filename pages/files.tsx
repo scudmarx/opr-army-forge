@@ -10,9 +10,8 @@ import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
 import { resetList } from "../data/listSlice";
 import CreateListDialog from "../views/CreateListDialog";
+import ArmyImage from "../views/components/ArmyImage";
 import DataService from "../services/DataService";
-
-const rotations = {} as any;
 
 export default function Files() {
 
@@ -153,26 +152,7 @@ export default function Files() {
                       className="interactable"
                       onClick={() => selectArmy(file.path)}>
                       <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
-                        <div className="is-flex p-2" style={{ position: "relative", height: "100px", boxSizing: "content-box" }}>
-                          <div style={{
-                            zIndex: 0,
-                            position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
-                            backgroundImage: `url("img/army_bg.png")`,
-                            backgroundPosition: "center",
-                            backgroundSize: "contain",
-                            backgroundRepeat: 'no-repeat',
-                            transform: `rotate(${rotations[file.name] || (rotations[file.name] = 360 * Math.random())}deg)`
-                          }}></div>
-                          <div className="is-flex" style={{
-                            height: "100px",
-                            width: "100%",
-                            backgroundImage: `url("img/gf_armies/${file.name}.png")`,
-                            backgroundPosition: "center",
-                            backgroundSize: "contain",
-                            backgroundRepeat: 'no-repeat',
-                            position: "relative", zIndex: 1
-                          }}></div>
-                        </div>
+                        <ArmyImage name={file.name} />
                         <div className="is-flex is-flex-grow-1 is-align-items-center">
                           <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
                             <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{file.name}</p>

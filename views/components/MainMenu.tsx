@@ -6,8 +6,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../data/store";
-import { loadSavedList } from "../../data/listSlice";
 import UpgradeService from "../../services/UpgradeService";
+import PersistenceService from "../../services/PersistenceService";
 
 export default function MainMenu() {
 
@@ -25,22 +25,13 @@ export default function MainMenu() {
     setAnchorEl(null);
   };
 
-  const handleSave = () => {
-    const json = JSON.stringify({
-      armyId: army.data.uid,
-      armyFile: army.armyFile,
-      armyName: army.data.name,
-      list,
-    });
-    const saveName = prompt("Saved list name:");
-    localStorage["AF_Save_" + saveName] = json;
+  const handleLoad = () => {
+    router.push("/load");
   };
 
-  const handleLoad = () => {
-    const loadName = prompt("Load list name:");
-    const units = JSON.parse(localStorage["AF_Save_" + loadName]);
-    dispatch(loadSavedList(units));
-  };
+  const handleShare = () => {
+    PersistenceService.download(list.name);
+  }
 
   const points = UpgradeService.calculateListTotal(list.units);
 
@@ -95,7 +86,7 @@ export default function MainMenu() {
           onClose={handleClose}
         >
           <MenuItem onClick={() => router.push("/cards")}>View Cards</MenuItem>
-          <MenuItem onClick={handleSave}>Save List</MenuItem>
+          <MenuItem onClick={handleShare}>Export/Share List</MenuItem>
           <MenuItem onClick={handleLoad}>Load List</MenuItem>
         </Menu>
       </Toolbar>
