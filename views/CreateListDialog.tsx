@@ -1,4 +1,4 @@
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from 'next/router';
@@ -27,6 +27,12 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
   const [useBeta, setUseBeta] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  // Update default name once data comes in
+  useEffect(() => {
+    if (!armyName && army.data && army.data.name)
+      setArmyName(army.data.name);
+  }, [army.data]);
 
   const create = () => {
 
@@ -68,7 +74,6 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {army.data?.name || "New Army"}
           </Typography>
-          <Button variant="contained" onClick={() => create()}>Create List</Button>
         </Toolbar>
       </AppBar>
       <div>
