@@ -38,7 +38,7 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
 
   const create = () => {
 
-    const finish = () => {
+    const finish = (army) => {
       const name = armyName || "My List";
       dispatch(createList({ name, pointsLimit: pointsLimit || 0 }));
       PersistenceService.createSave(army, name);
@@ -53,11 +53,11 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
 
         dispatch(load(afData));
 
-        finish();
+        finish({ ...army, data: afData });
       });
 
     } else {
-      finish();
+      finish(army);
     }
   };
 
