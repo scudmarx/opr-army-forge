@@ -21,13 +21,13 @@ export default function ViewCards({ showPsychic, showFullRules }) {
 
   const gameRules = army.rules;
   const armyRules = army.data?.specialRules;
-  const spells = army.data?.spells;
+  const spells = army.data?.spells || [];
   const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
   return (
     <>
       <div className="columns is-multiline">
-        {list.units.map((u, i) => {
+        {(list?.units || []).map((u, i) => {
 
           const equipmentSpecialRules = u
             .equipment

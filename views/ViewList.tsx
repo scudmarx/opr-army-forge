@@ -29,13 +29,13 @@ export default function ViewList({ showPsychic, showFullRules }) {
 
   const gameRules = army.rules;
   const armyRules = army.data?.specialRules;
-  const spells = army.data?.spells;
+  const spells = army.data?.spells || [];
   const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
   return (
     <div>
       {
-        list.units.map((s: ISelectedUnit, index: number) => {
+        (list?.units || []).map((s: ISelectedUnit, index: number) => {
 
           const equipmentAsUpgrades: IUpgradeGainsWeapon[] = s.equipment.map(e => ({
             label: e.label,
