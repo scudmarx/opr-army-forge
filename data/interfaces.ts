@@ -10,17 +10,12 @@ export interface ISaveData {
   list: ListState;
 }
 export interface IEquipment {
-  //type?: "combined" | "mount" | "weaponPart" | "weaponHeader" | "ArmyBookWeapon" | "ArmyBookItem";
   label?: string;
   name?: string;
   range?: number;
   attacks?: number;
-  //cost?: number;
   count?: number;
-  //originalCount?: number;
-  //specialRules?: ISpecialRule[];
   specialRules?: string[]
-  //equipment?: IEquipment[]; // For { "type": "combined" }
 }
 
 export interface ISpecialRule {

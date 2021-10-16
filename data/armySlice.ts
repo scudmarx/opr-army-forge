@@ -23,7 +23,7 @@ export interface IArmyData {
   units: IUnit[];
   upgradePackages: IUpgradePackage[];
   specialRules: IGameRule[];
-  spells: { name: string; effect: string; threshold: number; }[];
+  spells: { id: string; name: string; effect: string; threshold: number; }[];
 }
 
 const initialState: ArmyState = {

@@ -56,7 +56,7 @@ export default function MainMenu() {
           edge="start"
           color="inherit"
           aria-label="menu"
-          onClick={() => router.push("/cards")}
+          onClick={() => router.push("/view")}
           className="mr-4"
         >
           <VisibilityIcon />

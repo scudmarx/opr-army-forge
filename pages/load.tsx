@@ -112,34 +112,39 @@ export default function Load() {
             <List>
               {
                 _.sortBy(localSaves.map(save => JSON.parse(localStorage[save])), save => save.modified).reverse().map(save => {
-                  const modified = new Date(save.modified);
-                  const points = save.listPoints;
-                  const title = (
-                    <>
-                      <span style={{ fontWeight: 600 }}>{save.list.name}</span>
-                      <span style={{ color: "#656565" }}> • {points}pts</span>
-                    </>
-                  );
+                  try {
+                    const modified = new Date(save.modified);
+                    const points = save.listPoints;
+                    const title = (
+                      <>
+                        <span style={{ fontWeight: 600 }}>{save.list.name}</span>
+                        <span style={{ color: "#656565" }}> • {points}pts</span>
+                      </>
+                    );
 
-                  const deleteButton = (
-                    <IconButton onClick={() => deleteSave(save.list.name)}>
-                      <Delete />
-                    </IconButton>
-                  );
+                    const deleteButton = (
+                      <IconButton onClick={() => deleteSave(save.list.name)}>
+                        <Delete />
+                      </IconButton>
+                    );
 
-                  return (
-                    <ListItem key={save.list.name} disablePadding secondaryAction={deleteButton}>
-                      <ListItemButton onClick={() => loadSave(save)}>
-                        <ListItemAvatar>
-                          <Avatar>
+                    return (
+                      <ListItem key={save.list.name} disablePadding secondaryAction={deleteButton}>
+                        <ListItemButton onClick={() => loadSave(save)}>
+                          <ListItemAvatar>
+                            <Avatar>
 
-                          </Avatar>
-                        </ListItemAvatar>
-                        {/* <ArmyImage name={save.armyName} /> */}
-                        <ListItemText primary={title} secondary={modified.toLocaleDateString()} />
-                      </ListItemButton>
-                    </ListItem>
-                  );
+                            </Avatar>
+                          </ListItemAvatar>
+                          {/* <ArmyImage name={save.armyName} /> */}
+                          <ListItemText primary={title} secondary={modified.toLocaleDateString()} />
+                        </ListItemButton>
+                      </ListItem>
+                    );
+                  }
+                  catch (e) {
+                    console.error(e);
+                  }
                 })
               }
             </List>
