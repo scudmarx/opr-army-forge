@@ -43,14 +43,31 @@ export default function Load() {
     var file = e.target.files[0];
     if (!file)
       return;
+
     const reader = new FileReader();
+
     reader.onload = function (event) {
-      const json: string = event.target.result as string;
-      console.log(json);
-      PersistenceService.load(dispatch, JSON.parse(json), _ => {
-        router.push("/list");
-      });
+      try {
+        const json: string = event.target.result as string;
+
+        console.log(json);
+        console.log(file);
+
+        PersistenceService.load(dispatch, JSON.parse(json), _ => {
+          router.push("/list");
+          // Save to local
+          const saveName = file.name.replace(".json", "");
+          // if it doesn't exist, or user confirms they are happy to overwrite
+          if (!PersistenceService.checkExists(saveName) || confirm("List with this name already exists. Are you sure you'd like to overwrite it?")) {
+            PersistenceService.saveImport(saveName, json);
+          }
+        });
+      }
+      catch (e) {
+
+      }
     };
+
     reader.readAsText(file);
   };
 

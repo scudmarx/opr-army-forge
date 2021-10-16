@@ -6,6 +6,13 @@ import DataService from "./DataService";
 import UpgradeService from "./UpgradeService";
 
 export default class PersistenceService {
+
+  private static prefix = "AF_Save_";
+
+  public static saveImport(saveName: any, json: string) {
+    localStorage[this.prefix + saveName] = json;
+  }
+
   public static createSave(army: ArmyState, name: string) {
 
     const saveData: ISaveData = {
@@ -25,7 +32,7 @@ export default class PersistenceService {
 
     const json = JSON.stringify(saveData);
 
-    localStorage["AF_Save_" + name] = json;
+    localStorage[this.prefix + name] = json;
   }
 
   public static updateSave(list: ListState) {
@@ -44,11 +51,11 @@ export default class PersistenceService {
 
     const json = JSON.stringify(saveData);
 
-    localStorage["AF_Save_" + list.name] = json;
+    localStorage[this.prefix + list.name] = json;
   }
 
   public static delete(saveName: string) {
-    delete localStorage["AF_Save_" + saveName];
+    delete localStorage[this.prefix + saveName];
   }
 
   public static load(dispatch: Dispatch<any>, save: ISaveData, callback: (armyData: any) => void) {
@@ -75,12 +82,16 @@ export default class PersistenceService {
   }
 
   public static download(name: string) {
-    const saveData = localStorage["AF_Save_" + name];
+    const saveData = localStorage[this.prefix + name];
     const blob = new Blob([saveData], { type: "application/json" })
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = `${name}.json`;
     document.body.appendChild(a);
     a.dispatchEvent(new MouseEvent('click'));
+  }
+
+  public static checkExists(name: string): boolean {
+    return !!localStorage[this.prefix + name];
   }
 }

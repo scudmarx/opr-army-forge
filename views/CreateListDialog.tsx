@@ -40,9 +40,16 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
 
     const finish = (army) => {
       const name = armyName || "My List";
-      dispatch(createList({ name, pointsLimit: pointsLimit || 0 }));
-      PersistenceService.createSave(army, name);
-      router.push('/list');
+      const saveExists = PersistenceService.checkExists(name);
+
+      if (!saveExists || confirm("List with this name already exists. Are you sure you'd like to overwrite it?")) {
+
+        PersistenceService.createSave(army, name);
+
+        dispatch(createList({ name, pointsLimit: pointsLimit || 0 }));
+
+        router.push('/list');
+      }
     };
 
     if (useBeta) {
