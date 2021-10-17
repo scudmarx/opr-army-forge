@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { load, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Card, AppBar, IconButton, Paper, Toolbar, Typography } from '@mui/material';
+import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
@@ -172,37 +172,44 @@ export default function Files() {
               })
             }
           </div>
-
-          {customArmies && <>
-            <h3>Custom Armies</h3>
-            <div className="columns is-multiline">
-              {customArmies.filter(a => a.official === false).map((customArmy, i) => (
-                <div key={i} className="column is-half">
-                  <Card
-                    elevation={1}
-                    className="interactable"
-                    style={{
-                      backgroundColor: customArmy.official ? "#F9FDFF" : null,
-                      borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
-                    }}
-                    onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
-                    <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
-                      <div className="is-flex-grow-1">
-                        <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
-                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                          {customArmy.versionString} by {customArmy.username}
+          {
+            customArmies ? (
+              <>
+                <h3>Custom Armies</h3>
+                <div className="columns is-multiline">
+                  {customArmies.filter(a => a.official === false).map((customArmy, i) => (
+                    <div key={i} className="column is-half">
+                      <Card
+                        elevation={1}
+                        className="interactable"
+                        style={{
+                          backgroundColor: customArmy.official ? "#F9FDFF" : null,
+                          borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
+                        }}
+                        onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                        <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
+                          <div className="is-flex-grow-1">
+                            <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
+                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                              {customArmy.versionString} by {customArmy.username}
+                            </div>
+                          </div>
+                          {/* <p className="mr-2">{u.cost}pts</p> */}
+                          <IconButton color="primary">
+                            <RightIcon />
+                          </IconButton>
                         </div>
-                      </div>
-                      {/* <p className="mr-2">{u.cost}pts</p> */}
-                      <IconButton color="primary">
-                        <RightIcon />
-                      </IconButton>
+                      </Card>
                     </div>
-                  </Card>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </>
+              </>
+            ) : (
+              <div className="is-flex is-flex-direction-column is-align-items-center	">
+                <CircularProgress />
+                <p>Loading custom armies...</p>
+              </div>
+            )
           }
         </div>
       </div>

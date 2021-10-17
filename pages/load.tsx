@@ -1,12 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../data/store'
+import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { AppBar, Avatar, Button, IconButton, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Menu, MenuItem, Paper, Toolbar, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { AppBar, Avatar, Button, IconButton, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, CircularProgress, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import _ from "lodash";
-import { Delete, NoEncryption } from '@mui/icons-material';
+import { Delete } from '@mui/icons-material';
 import PersistenceService from '../services/PersistenceService';
 
 export default function Load() {
@@ -15,6 +14,7 @@ export default function Load() {
   const router = useRouter();
   const [localSaves, setLocalSaves] = useState([]);
   const [forceLoad, setForceLoad] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const saves = Object.keys(localStorage).filter(k => k.startsWith("AF_Save"));
@@ -29,8 +29,10 @@ export default function Load() {
   }
 
   const loadSave = (save) => {
+    setLoading(true);
     PersistenceService.load(dispatch, save, armyData => {
       router.push("/list");
+      setLoading(false);
     })
   };
 
@@ -44,14 +46,13 @@ export default function Load() {
     if (!file)
       return;
 
+    setLoading(true);
+
     const reader = new FileReader();
 
     reader.onload = function (event) {
       try {
         const json: string = event.target.result as string;
-
-        console.log(json);
-        console.log(file);
 
         PersistenceService.load(dispatch, JSON.parse(json), _ => {
           router.push("/list");
@@ -61,10 +62,12 @@ export default function Load() {
           if (!PersistenceService.checkExists(saveName) || confirm("List with this name already exists. Are you sure you'd like to overwrite it?")) {
             PersistenceService.saveImport(saveName, json);
           }
+
+          setLoading(false);
         });
       }
       catch (e) {
-
+        setLoading(false);
       }
     };
 
@@ -107,6 +110,10 @@ export default function Load() {
               <FileUploadOutlinedIcon /> <span className="ml-2">Upload A List File</span>
             </Button>
           </div>
+          {loading && <div className="is-flex is-flex-direction-column is-align-items-center	">
+            <CircularProgress />
+            <p>Loading army data...</p>
+          </div>}
           <p className="px-4 mb-2" style={{ fontWeight: 600 }}>Saved Lists</p>
           <Paper square elevation={0}>
             <List>

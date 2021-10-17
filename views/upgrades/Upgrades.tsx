@@ -35,7 +35,7 @@ export function Upgrades() {
     .concat(unitUpgradeRules)
     .filter(r => r.name !== "-");
 
-  const isHero = selectedUnit.specialRules.findIndex(sr => sr.name === "Hero") > -1;
+  const isHero = selectedUnit ? selectedUnit.specialRules.findIndex(sr => sr.name === "Hero") > -1 : false;
   const isPsychic = specialRules?.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
 
   return (

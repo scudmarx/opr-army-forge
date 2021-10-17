@@ -2,7 +2,7 @@ import { useState, forwardRef, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from 'next/router';
-import { Button, Dialog, Slide, TextField } from "@mui/material";
+import { Button, CircularProgress, Dialog, Slide, TextField } from "@mui/material";
 import { AppBar, IconButton, Toolbar, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import { createList } from "../data/listSlice";
@@ -100,7 +100,16 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
                 <Checkbox checked={useBeta} onClick={() => setUseBeta(!useBeta)} />
               } label="Use v2.5 Beta" />
             </FormGroup>}
-            <Button variant="contained" onClick={() => create()}>Create List</Button>
+            {
+              customArmies
+                ? <Button variant="contained" onClick={() => create()}>Create List</Button>
+                : (
+                  <div className="is-flex is-flex-direction-column is-align-items-center	">
+                    <CircularProgress />
+                    <p>Loading army data...</p>
+                  </div>
+                )
+            }
           </div>
         </div>
       </div>
