@@ -9,7 +9,7 @@ import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
 import { dataToolVersion } from "./data";
 import { resetList } from "../data/listSlice";
-import CreateListDialog from "../views/CreateListDialog";
+import ListConfigurationDialog from "../views/ListConfigurationDialog";
 import ArmyImage from "../views/components/ArmyImage";
 import DataService from "../services/DataService";
 
@@ -213,7 +213,7 @@ export default function Files() {
           }
         </div>
       </div>
-      <CreateListDialog open={newArmyDialogOpen} setOpen={setNewArmyDialogOpen} showBetaFlag={army.gameSystem === "gf" && army.data?.uid == null} customArmies={customArmies} />
+      <ListConfigurationDialog isEdit={false} open={newArmyDialogOpen} setOpen={setNewArmyDialogOpen} showBetaFlag={army.gameSystem === "gf" && army.data?.uid == null} customArmies={customArmies} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import { UnitSelection } from "../UnitSelection";
@@ -8,15 +8,19 @@ import UpgradeService from "../../services/UpgradeService";
 import MainMenu from "../components/MainMenu";
 import { Paper } from "@mui/material";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";
+import ListConfigurationDialog from "../ListConfigurationDialog";
 
 export default function DesktopView() {
 
   const list = useSelector((state: RootState) => state.list);
+  const [editListOpen, setEditListOpen] = useState(false);
+
   const columnStyle: any = { overflowY: "scroll", maxHeight: "100%" };
+
   return (
     <>
       <Paper elevation={1} color="primary" square>
-        <MainMenu />
+        <MainMenu setListConfigurationOpen={setEditListOpen} />
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
         <div className="column py-0" style={columnStyle}>
@@ -33,6 +37,12 @@ export default function DesktopView() {
           <Upgrades />
         </div>
       </div>
+      <ListConfigurationDialog
+        isEdit={true}
+        open={editListOpen}
+        setOpen={setEditListOpen}
+        showBetaFlag={false}
+        customArmies={null} />
     </>
   );
 }

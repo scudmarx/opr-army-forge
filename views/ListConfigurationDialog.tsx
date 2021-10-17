@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Button, CircularProgress, Dialog, Slide, TextField } from "@mui/material";
 import { AppBar, IconButton, Toolbar, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
-import { createList } from "../data/listSlice";
+import { createList, updateListSettings } from "../data/listSlice";
 import { TransitionProps } from "@mui/material/transitions";
 import DataService from "../services/DataService";
 import { load } from "../data/armySlice";
@@ -21,10 +21,12 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CreateListDialog({ open, setOpen, showBetaFlag, customArmies }) {
+export default function ListConfigurationDialog({ isEdit, open, setOpen, showBetaFlag, customArmies }) {
 
   const army = useSelector((state: RootState) => state.army);
-  const [armyName, setArmyName] = useState("");
+  const list = useSelector((state: RootState) => state.list);
+
+  const [armyName, setArmyName] = useState(isEdit ? list.name : "");
   const [pointsLimit, setPointsLimit] = useState(null);
   const [useBeta, setUseBeta] = useState(false);
   const dispatch = useDispatch();
@@ -32,7 +34,7 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
 
   // Update default name once data comes in
   useEffect(() => {
-    if (!armyName && army.data && army.data.name)
+    if (!isEdit && !armyName && army.data && army.data.name)
       setArmyName(army.data.name);
   }, [army.data]);
 
@@ -68,6 +70,11 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
     }
   };
 
+  const update = () => {
+    dispatch(updateListSettings({ name: armyName, pointsLimit: pointsLimit || 0 }));
+    setOpen(false);
+  };
+
   return (
     <Dialog fullScreen open={open} onClose={() => setOpen(false)} TransitionComponent={Transition}>
       <AppBar position="static" elevation={0} color="transparent">
@@ -101,14 +108,16 @@ export default function CreateListDialog({ open, setOpen, showBetaFlag, customAr
               } label="Use v2.5 Beta" />
             </FormGroup>}
             {
-              customArmies
-                ? <Button variant="contained" onClick={() => create()}>Create List</Button>
-                : (
-                  <div className="is-flex is-flex-direction-column is-align-items-center	">
-                    <CircularProgress />
-                    <p>Loading army data...</p>
-                  </div>
-                )
+              isEdit
+                ? <Button variant="contained" onClick={() => update()}>Save Changes</Button>
+                : customArmies
+                  ? <Button variant="contained" onClick={() => create()}>Create List</Button>
+                  : (
+                    <div className="is-flex is-flex-direction-column is-align-items-center	">
+                      <CircularProgress />
+                      <p>Loading army data...</p>
+                    </div>
+                  )
             }
           </div>
         </div>

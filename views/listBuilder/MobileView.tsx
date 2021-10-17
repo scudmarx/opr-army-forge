@@ -26,6 +26,7 @@ export default function MobileView() {
   const [slider, setSlider] = useState(null);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(1);
+  const [editListOpen, setEditListOpen] = useState(false);
 
 
   // Open bottom sheet when unit is selected
@@ -45,10 +46,6 @@ export default function MobileView() {
     slider.slickGoTo(newValue);
   };
 
-  const selectedUnit = list.selectedUnitId === null || list.selectedUnitId === undefined
-    ? null
-    : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
-
   // Slick carousel settings
   const sliderSettings = {
     dots: false,
@@ -62,7 +59,7 @@ export default function MobileView() {
   return (
     <>
       <Paper elevation={1} color="primary" square style={{ position: "sticky", top: 0, zIndex: 1 }}>
-        <MainMenu />
+        <MainMenu setListConfigurationOpen={setEditListOpen} />
         <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
           <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
             <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
@@ -103,6 +100,13 @@ export default function MobileView() {
         header={<UpgradePanelHeader />}>
         <Upgrades />
       </BottomSheet>
+
+      <ListConfigurationDialog
+        isEdit={true}
+        open={editListOpen}
+        setOpen={setEditListOpen}
+        showBetaFlag={false}
+        customArmies={null} />
     </>
   );
 }

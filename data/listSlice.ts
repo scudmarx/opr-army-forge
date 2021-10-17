@@ -14,7 +14,7 @@ export interface ListState {
 
 const initialState: ListState = {
   name: "New Army",
-  pointsLimit: null,
+  pointsLimit: 0,
   units: [],
   selectedUnitId: null
 }
@@ -28,12 +28,24 @@ export const listSlice = createSlice({
   initialState,
   reducers: {
     resetList: (state) => {
-      state.units = [];
+      return {
+        name: "New Army",
+        pointsLimit: 0,
+        initialised: false,
+        units: [],
+        selectedUnitId: null
+      };
     },
     createList: (state, action: PayloadAction<{ name: string, pointsLimit?: number }>) => {
       const { name, pointsLimit } = action.payload;
       state.name = name;
       state.pointsLimit = pointsLimit;
+    },
+    updateListSettings: (state, action: PayloadAction<{ name: string, pointsLimit?: number }>) => {
+      const { name, pointsLimit } = action.payload;
+      state.name = name;
+      state.pointsLimit = pointsLimit;
+      debounceSave(current(state));
     },
     loadSavedList(state, action: PayloadAction<ListState>) {
       return { ...action.payload };
@@ -133,7 +145,8 @@ export const {
   renameUnit,
   toggleUnitCombined,
   toggleUnitJoined,
-  loadSavedList
+  loadSavedList,
+  updateListSettings
 } = listSlice.actions
 
 export default listSlice.reducer

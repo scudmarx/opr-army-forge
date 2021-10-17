@@ -9,7 +9,7 @@ import { RootState } from "../../data/store";
 import UpgradeService from "../../services/UpgradeService";
 import PersistenceService from "../../services/PersistenceService";
 
-export default function MainMenu() {
+export default function MainMenu({ setListConfigurationOpen }) {
 
   const army = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
@@ -85,9 +85,10 @@ export default function MainMenu() {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={() => router.push("/cards")}>View Cards</MenuItem>
-          <MenuItem onClick={handleShare}>Export/Share List</MenuItem>
-          <MenuItem onClick={handleLoad}>Load List</MenuItem>
+          <MenuItem onClick={() => setListConfigurationOpen(true)}>Edit</MenuItem>
+          <MenuItem onClick={() => router.push("/view")}>View</MenuItem>
+          <MenuItem onClick={handleShare}>Export/Share</MenuItem>
+          <MenuItem onClick={handleLoad}>Load</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>
