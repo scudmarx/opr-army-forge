@@ -44,6 +44,7 @@ export const listSlice = createSlice({
         selectionId: state.units.length,
         selectedUpgrades: [],
         combined: false,
+        joined: false,
         equipment: action.payload.equipment.map(eqp => ({
           ...eqp,
           count: eqp.count || action.payload.size // Add count to unit size if not already present
@@ -87,6 +88,13 @@ export const listSlice = createSlice({
 
       debounceSave(current(state));
     },
+    toggleUnitJoined: (state, action: PayloadAction<number>) => {
+      const unitId = action.payload;
+      const unit = state.units.filter(u => u.selectionId === unitId)[0];
+      unit.joined = !unit.joined;
+
+      debounceSave(current(state));
+    },
     applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IUpgradeOption }>) => {
 
       // TODO: Refactor, break down, unit test...
@@ -124,6 +132,7 @@ export const {
   removeUnit,
   renameUnit,
   toggleUnitCombined,
+  toggleUnitJoined,
   loadSavedList
 } = listSlice.actions
 

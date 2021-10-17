@@ -43,6 +43,7 @@ export interface ISelectedUnit extends IUnit {
   customName?: string;
   selectedUpgrades: IUpgradeOption[];
   combined: boolean;
+  joined: boolean;
 }
 
 export interface IUpgrade {

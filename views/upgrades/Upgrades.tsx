@@ -7,7 +7,7 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { toggleUnitCombined } from '../../data/listSlice';
+import { toggleUnitCombined, toggleUnitJoined } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 
@@ -35,6 +35,7 @@ export function Upgrades() {
     .concat(unitUpgradeRules)
     .filter(r => r.name !== "-");
 
+  const isHero = selectedUnit.specialRules.findIndex(sr => sr.name === "Hero") > -1;
   const isPsychic = specialRules?.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
 
   return (
@@ -47,6 +48,12 @@ export function Upgrades() {
             } />} label="Double Unit Size" className="mr-2" />
           <InfoOutlinedIcon color="primary" />
         </FormGroup>
+        {isHero && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+          <FormControlLabel control={
+            <Checkbox checked={selectedUnit.joined} onClick={() => dispatch(toggleUnitJoined(selectedUnit.selectionId))
+            } />} label="Is Joining Unit" className="mr-2" />
+          <InfoOutlinedIcon color="primary" />
+        </FormGroup>}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} />
         </div>
