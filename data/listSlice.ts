@@ -101,11 +101,11 @@ export const listSlice = createSlice({
       debounceSave(current(state));
     },
     toggleUnitJoined: (state, action: PayloadAction<number>) => {
-      const unitId = action.payload;
-      const unit = state.units.filter(u => u.selectionId === unitId)[0];
-      unit.joined = !unit.joined;
+      // const unitId = action.payload;
+      // const unit = state.units.filter(u => u.selectionId === unitId)[0];
+      // unit.joined = !unit.joined;
 
-      debounceSave(current(state));
+      // debounceSave(current(state));
     },
     applyUpgrade: (state, action: PayloadAction<{ unitId: number, upgrade: IUpgrade, option: IUpgradeOption }>) => {
 

@@ -10,6 +10,7 @@ import UnitService from '../../services/UnitService';
 import { toggleUnitCombined, toggleUnitJoined } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
+import { CustomTooltip } from '../components/CustomTooltip';
 
 export function Upgrades() {
 
@@ -46,14 +47,16 @@ export function Upgrades() {
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))
             } />} label="Double Unit Size" className="mr-2" />
-          <InfoOutlinedIcon color="primary" />
+          <CustomTooltip title={"When preparing your army you may merge units by deploying two copies of the same unit as a single big unit, as long as any upgrades that are applied to all models are bought for both."} arrow enterTouchDelay={0} leaveTouchDelay={5000}>
+            <InfoOutlinedIcon color="primary" />
+          </CustomTooltip>
         </FormGroup>
-        {isHero && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {/* {isHero && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.joined} onClick={() => dispatch(toggleUnitJoined(selectedUnit.selectionId))
             } />} label="Is Joining Unit" className="mr-2" />
           <InfoOutlinedIcon color="primary" />
-        </FormGroup>}
+        </FormGroup>} */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} />
         </div>

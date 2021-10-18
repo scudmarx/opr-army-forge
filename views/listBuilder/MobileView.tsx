@@ -15,6 +15,7 @@ import { selectUnit } from "../../data/listSlice";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";
 import Add from "@mui/icons-material/Add";
 import MainMenu from "../components/MainMenu";
+import ListConfigurationDialog from "../ListConfigurationDialog";
 
 export default function MobileView() {
 
