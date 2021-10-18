@@ -1,18 +1,6 @@
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-
-import { styled } from '@mui/material/styles';
-
+import { CustomTooltip } from "./CustomTooltip";
 
 export default function RuleItem({ label, description }) {
-
-  const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: 'rgba(0,0,0,.6)',
-      padding: "8px"
-    },
-  }));
 
   const bullet = /•|/;
   const descParts = description.split(bullet).map(part => (<p>{part}</p>));
