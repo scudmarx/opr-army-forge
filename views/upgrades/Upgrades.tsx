@@ -50,11 +50,22 @@ export function Upgrades() {
     }));
   };
 
+  const originalUpgradeSets = (selectedUnit?.upgrades || [])
+    .map((setId) => getUpgradeSet(setId))
+    .filter((s) => !!s); // remove empty sets?
+
+  const upgradeSets = isHero
+    ? originalUpgradeSets
+    : [
+      ...originalUpgradeSets.splice(1),
+      originalUpgradeSets[0]
+    ].filter((s) => !!s);
+
   return (
     <div className={styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
-        {!isSkirmish &&<FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {!isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))
             } />} label="Double Unit Size" className="mr-2" />
@@ -91,20 +102,17 @@ export function Upgrades() {
 
       </Paper>}
 
-      {(selectedUnit?.upgrades || [])
-        .map((setId) => getUpgradeSet(setId))
-        .filter((s) => !!s) // remove empty sets?
-        .map((pkg: IUpgradePackage) => (
-          <div key={pkg.uid}>
-            {/* <p className="px-2">{set.id}</p> */}
-            {pkg.sections.map((u, i) => (
-              <div className={"mt-4"} key={i}>
-                <p className="px-4 pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>{u.label}:</p>
-                <UpgradeGroup upgrade={u} />
-              </div>
-            ))}
-          </div>
-        ))}
+      {upgradeSets.map((pkg: IUpgradePackage) => (
+        <div key={pkg.uid}>
+          {/* <p className="px-2">{set.id}</p> */}
+          {pkg.sections.map((u, i) => (
+            <div className={"mt-4"} key={i}>
+              <p className="px-4 pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>{u.label}:</p>
+              <UpgradeGroup upgrade={u} />
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
