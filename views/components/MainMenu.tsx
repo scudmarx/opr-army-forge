@@ -61,7 +61,7 @@ export default function MainMenu({ setListConfigurationOpen }) {
           edge="start"
           color="inherit"
           aria-label="menu"
-          onClick={() => router.push("/view")}
+          // onClick={() => router.push("/view")}
           className="mr-2"
         >
           <WarningIcon />
