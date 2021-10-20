@@ -10,6 +10,8 @@ import EquipmentService from "../services/EquipmentService";
 import { dataToolVersion } from "../pages/data";
 import RuleList from "./components/RuleList";
 import { IUnit } from "../data/interfaces";
+import { useMediaQuery } from "react-responsive";
+import FullCompactToggle from "./components/FullCompactToggle";
 
 export function UnitSelection({ onSelected }) {
 
@@ -19,53 +21,76 @@ export function UnitSelection({ onSelected }) {
   const army = armyData.data;
   const dispatch = useDispatch();
   const [expandedId, setExpandedId] = useState(null);
-  const [ruleModalOpen, setRuleModalOpen] = useState(false);
+  const [expandAll, setExpandAll] = useState(true);
 
   // If army has not been selected yet, show nothing
   if (!armyData.loaded)
     return null;
 
   // Group army units by category
-  //var unitGroups = groupBy(army.units, "category");
   const isTough = (u: IUnit, threshold) => u.specialRules.filter(r => {
     if (r.name !== "Tough")
       return false;
     const toughness = parseInt(r.rating);
     return toughness >= threshold;
   }).length > 0
-  const isHero = (u: IUnit) => u.specialRules.filter(r => r.name === "Hero").length > 0;
+  const hasRule = (u: IUnit, rule: string) => u.specialRules.filter(r => r.name === rule).length > 0;
   const isLarge = (u) => isTough(u, 6);
   const isElite = (u) => isTough(u, 3);
 
   const unitGroups = {
-    "Heroes": army.units.filter(isHero),
-    "Core": army.units.filter(u => !isElite(u) && !isHero(u)),
-    "Elite": army.units.filter(u => !isLarge(u) && !isHero(u) && isElite(u)),
-    "Large": army.units.filter(u => isLarge(u) && !isHero(u))
+    "Heroes": [],
+    "Core": [],
+    "Elite": [],
+    "Large": [],
+    "Artillery": [],
+    "Aircraft": [],
   };
+
+  for (let unit of army.units) {
+    if (hasRule(unit, "Hero"))
+      unitGroups["Heroes"].push(unit);
+    else if (hasRule(unit, "Aircraft"))
+      unitGroups["Aircraft"].push(unit);
+    else if (hasRule(unit, "Artillery"))
+      unitGroups["Artillery"].push(unit);
+    else if (isLarge(unit))
+      unitGroups["Large"].push(unit);
+    else if (isElite(unit))
+      unitGroups["Elite"].push(unit);
+    else
+      unitGroups["Core"].push(unit);
+  }
 
   const handleSelection = (unit) => {
     dispatch(addUnit(unit));
     onSelected(unit);
   };
 
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+  const stickyHeader: any = { position: "sticky", top: 0, backgroundColor: "#FAFAFA", zIndex: 10 };
+
   return (
     <aside
       className={styles.menu + " menu"}
       style={{ minHeight: "100%" }}
     >
-      <div className="is-flex is-align-items-center">
-        <h3 className="is-size-4 p-4 is-flex-grow-1">
-          {army.name} - v{army.version}
-        </h3>
-        {army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+      <div style={isBigScreen ? stickyHeader : null}>
+        {isBigScreen && <div className="is-flex is-align-items-center">
+          <h3 className="is-size-4 px-4 pt-4 is-flex-grow-1">
+            {army.name} - {army.versionString}
+          </h3>
+          {army.uid == null && army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+        </div>}
+
+        <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       </div>
 
       {
         // For each category
-        Object.keys(unitGroups).map(key => (
+        Object.keys(unitGroups).map((key, i) => (
           <Fragment key={key}>
-            {key !== "undefined" && <p className="menu-label px-4 pt-3">{key}</p>}
+            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>{key}</p>}
             <ul className="menu-list">
               {
                 // For each unit in category
@@ -78,19 +103,18 @@ export function UnitSelection({ onSelected }) {
                       key={u.name}
                       style={{
                         backgroundColor: countInList > 0 ? "#F9FDFF" : null,
-                        borderLeft: countInList > 0 ? "2px solid #3f51b5" : null,
+                        borderLeft: countInList > 0 ? "2px solid #0F71B4" : null,
                       }}
                       disableGutters
                       square
-                      elevation={0}
-                      variant="outlined"
-                      expanded={expandedId === u.name}
+                      elevation={1}
+                      expanded={expandedId === u.name || expandAll}
                       onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
                       <AccordionSummary>
                         <div className="is-flex is-flex-grow-1 is-align-items-center">
                           <div className="is-flex-grow-1" onClick={() => setExpandedId(u.name)}>
                             <p className="mb-1" style={{ fontWeight: 600 }}>
-                              {countInList > 0 && <span style={{ color: "#3f51b5" }}>{countInList}x </span>}
+                              {countInList > 0 && <span style={{ color: "#0F71B4" }}>{countInList}x </span>}
                               <span>{u.name} </span>
                               <span style={{ color: "#656565" }}>{u.size > 1 ? `[${u.size}]` : ''}</span>
                             </p>
@@ -99,21 +123,23 @@ export function UnitSelection({ onSelected }) {
                               <p className="ml-2">Def {u.defense}+</p>
                             </div>
                           </div>
-                          <p className="mr-2">{u.cost}pts</p>
+                          <p>{u.cost}pts</p>
                           <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleSelection(u); }}>
                             <AddIcon />
                           </IconButton>
                         </div>
                       </AccordionSummary>
-                      <AccordionDetails style={{ flexDirection: "column" }}>
-                        <div className="mb-2">
+                      <AccordionDetails className="pt-0" style={{ flexDirection: "column", fontSize: "14px", color: "#666", lineHeight: 1.4 }}>
+                        <div>
                           {u.equipment.map((eqp, i) => (
-                            <span key={i}>
+                            <p key={i}>
                               {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
-                            </span>
+                            </p>
                           ))}
                         </div>
-                        <RuleList specialRules={u.specialRules} />
+                        <div>
+                          <RuleList specialRules={u.specialRules} />
+                        </div>
                       </AccordionDetails>
                     </Accordion>
                   );
@@ -123,21 +149,6 @@ export function UnitSelection({ onSelected }) {
           </Fragment>
         ))
       }
-      <Modal
-        open={ruleModalOpen}
-        onClose={() => setRuleModalOpen(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Paper className="p-4 m-4">
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Tough(3)
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Paper>
-      </Modal>
     </aside >
   );
 }

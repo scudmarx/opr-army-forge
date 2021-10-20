@@ -38,10 +38,13 @@ export default function UpgradeRadio(
 
     // #endregion
 
+    const thisApplied = isApplied(option);
+
     return (
         <Radio
-            checked={isApplied(option)}
+            checked={thisApplied}
             onClick={() => handleRadio(option)}
+            disabled={!isValid && !thisApplied}
             name={hash(upgrade)}
             color="primary"
             value={option?.label || "None"} />

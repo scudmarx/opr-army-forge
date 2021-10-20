@@ -14,7 +14,6 @@ const defaultUnit: ISelectedUnit = {
     size: 1,
     specialRules: [],
     equipment: [],
-    equipment: [],
     upgradeSets: []
 }
 

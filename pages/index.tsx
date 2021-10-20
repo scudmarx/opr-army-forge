@@ -1,48 +1,29 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../data/store'
-import { setGameSystem } from '../data/armySlice'
+import styles from "../styles/Home.module.css";
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { Button } from '@mui/material';
+import FolderOpenIcon from '@mui/icons-material/FolderOpen';
+import AddIcon from '@mui/icons-material/Add';
 
 export default function Home() {
 
-  const army = useSelector((state: RootState) => state.army);
-  const dispatch = useDispatch();
   const router = useRouter();
 
-  // Web Companion test
-  useEffect(() => {
-    // fetch("https://opr-list-builder.herokuapp.com/api/army-books/lkq2s1575t962k3t")
-    //   .then(res => res.json())
-    //   .then(r => console.log(r));
-    // fetch("https://opr-list-builder.herokuapp.com/api/army-books")
-    //   .then(res => res.json())
-    //   .then(r => console.log(r));
-  }, []);
-
-  const selectGameSystem = (gameSystem: string) => {
-    dispatch(setGameSystem(gameSystem));
-    router.push("/files");
-  };
-
   return (
-    <div className="container">
-      <div className="card mx-auto mt-6" style={{ maxWidth: "480px" }}>
-        <div className="card-content">
-          <h3 className="is-size-4 has-text-centered mb-4">Select Game System</h3>
-          <div className="columns is-multiline">
-            {
-              // For each game system
-              ["gf", "gff", "aof", "aofs"].map(gameSystem => (
-                <div key={gameSystem} className="column is-half">
-                  <img onClick={() => selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`} className="game-system-tile" />
-                </div>
-              ))
-            }
+    <>
+      <div className="container">
+        <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
+          <h1 className="is-size-3 has-text-centered mb-4">Army Forge</h1>
+          <div className={styles.homeContainer + " is-flex is-flex-direction-column p-4"}>
+            <Button variant="contained" color="primary" className="mb-4" onClick={() => router.push("/gameSystem")}>
+              <AddIcon /> <span className="ml-2">Create A New List</span>
+            </Button>
+            <Button variant="outlined" onClick={() => router.push("/load")}>
+              <FolderOpenIcon /> <span className="ml-2">Open A List</span>
+            </Button>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div>
+    </>
   );
 }

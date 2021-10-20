@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from "next/router";
@@ -10,50 +10,52 @@ import { setGameRules } from "../data/armySlice";
 
 export default function List() {
 
-    const army = useSelector((state: RootState) => state.army);
-    const router = useRouter();
-    const dispatch = useDispatch();
+  const army = useSelector((state: RootState) => state.army);
+  const router = useRouter();
+  const dispatch = useDispatch();
 
-    // Load army list file 
-    useEffect(() => {
-        // Redirect to game selection screen if no army selected
-        if (!army.loaded) {
-            router.push("/", null, { shallow: true });
-            return;
-        }
+  const [anchorEl, setAnchorEl] = useState(null);
 
-        // AF to Web Companion game type mapping
-        const slug = (() => {
-            switch (army.gameSystem) {
-                case "gf": return "grimdark-future";
-                case "gff": return "grimdark-future-firefight";
-                case "aof": return "age-of-fantasy";
-                case "aofs": return "age-of-fantasy-skirmish";
-            }
-        })();
+  // Load army list file 
+  useEffect(() => {
+    // Redirect to game selection screen if no army selected
+    if (!army.loaded) {
+      router.push("/", null, { shallow: true });
+      return;
+    }
 
-        // Load army rules
-        fetch(`https://opr-list-builder.herokuapp.com/api/content/game-systems/${slug}/special-rules`)
-            .then(res => res.json())
-            .then(res => {
-                const rules = res.map(rule => ({
-                    name: rule.name,
-                    description: rule.description
-                }));
-                dispatch(setGameRules(rules));
-            });
-    }, []);
+    // AF to Web Companion game type mapping
+    const slug = (() => {
+      switch (army.gameSystem) {
+        case "gf": return "grimdark-future";
+        case "gff": return "grimdark-future-firefight";
+        case "aof": return "age-of-fantasy";
+        case "aofs": return "age-of-fantasy-skirmish";
+      }
+    })();
 
-    // Break from mobile to desktop layout at 1024px wide
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+    // Load army rules
+    fetch(`https://opr-list-builder.herokuapp.com/api/content/game-systems/${slug}/special-rules`)
+      .then(res => res.json())
+      .then(res => {
+        const rules = res.map(rule => ({
+          name: rule.name,
+          description: rule.description
+        }));
+        dispatch(setGameRules(rules));
+      });
+  }, []);
 
-    return (
-        <>
-            <Head>
-                <title>OPR Army Forge</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            {isBigScreen ? <DesktopView /> : <MobileView />}
-        </>
-    );
+  // Break from mobile to desktop layout at 1024px wide
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+
+  return (
+    <>
+      <Head>
+        <title>OPR Army Forge</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      {isBigScreen ? <DesktopView /> : <MobileView />}
+    </>
+  );
 }
