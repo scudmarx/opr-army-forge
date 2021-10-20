@@ -46,9 +46,9 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
 
       if (!saveExists || confirm("List with this name already exists. Are you sure you'd like to overwrite it?")) {
 
-        PersistenceService.createSave(army, name);
+        const creationTime = PersistenceService.createSave(army, name);
 
-        dispatch(createList({ name, pointsLimit: pointsLimit || 0 }));
+        dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime }));
 
         router.push('/list');
       }

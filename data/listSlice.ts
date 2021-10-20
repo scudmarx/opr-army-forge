@@ -7,6 +7,7 @@ import PersistenceService from '../services/PersistenceService';
 import { nanoid } from "nanoid";
 
 export interface ListState {
+  creationTime: string;
   name: string;
   pointsLimit?: number;
   units: ISelectedUnit[];
@@ -15,6 +16,7 @@ export interface ListState {
 }
 
 const initialState: ListState = {
+  creationTime: null,
   name: "New Army",
   pointsLimit: 0,
   units: [],
@@ -32,6 +34,7 @@ export const listSlice = createSlice({
   reducers: {
     resetList: (state) => {
       return {
+        creationTime: null,
         name: "New Army",
         pointsLimit: 0,
         initialised: false,
@@ -40,8 +43,9 @@ export const listSlice = createSlice({
         points: 0
       };
     },
-    createList: (state, action: PayloadAction<{ name: string, pointsLimit?: number }>) => {
-      const { name, pointsLimit } = action.payload;
+    createList: (state, action: PayloadAction<{ name: string; pointsLimit?: number; creationTime: string; }>) => {
+      const { name, pointsLimit, creationTime } = action.payload;
+      state.creationTime = creationTime;
       state.name = name;
       state.pointsLimit = pointsLimit;
     },

@@ -9,11 +9,23 @@ export default class PersistenceService {
 
   private static prefix = "AF_Save_";
 
+  private static getSaveKey(list: ListState) {
+    return this.prefix + list.name + list.creationTime;
+  }
+
   public static saveImport(saveName: any, json: string) {
     localStorage[this.prefix + saveName] = json;
   }
 
-  public static createSave(army: ArmyState, name: string) {
+  public static createSave(army: ArmyState, name: string): string {
+
+    const creationTime = new Date().getTime().toString();
+    const list: ListState = {
+      creationTime: creationTime,
+      name: name,
+      units: [],
+      points: 0
+    };
 
     const saveData: ISaveData = {
       gameSystem: army.gameSystem,
@@ -22,23 +34,21 @@ export default class PersistenceService {
       armyName: army.data.name,
       modified: new Date().toJSON(),
       listPoints: 0,
-      list: {
-        name: name,
-        units: [],
-        points: 0
-      }
+      list
     };
 
     console.log("Creating save...", saveData);
 
     const json = JSON.stringify(saveData);
 
-    localStorage[this.prefix + name] = json;
+    localStorage[this.getSaveKey(list)] = json;
+
+    return creationTime;
   }
 
   public static updateSave(list: ListState) {
 
-    const existingSave: ISaveData = JSON.parse(localStorage["AF_Save_" + list.name]);
+    const existingSave: ISaveData = JSON.parse(localStorage[this.getSaveKey(list)]);
     const points: number = UpgradeService.calculateListTotal(list.units);
 
     const saveData: ISaveData = {
@@ -52,11 +62,11 @@ export default class PersistenceService {
 
     const json = JSON.stringify(saveData);
 
-    localStorage[this.prefix + list.name] = json;
+    localStorage[this.getSaveKey(list)] = json;
   }
 
-  public static delete(saveName: string) {
-    delete localStorage[this.prefix + saveName];
+  public static delete(list: ListState) {
+    delete localStorage[this.getSaveKey(list)];
   }
 
   public static load(dispatch: Dispatch<any>, save: ISaveData, callback: (armyData: any) => void) {
@@ -82,17 +92,17 @@ export default class PersistenceService {
     }
   }
 
-  public static download(name: string) {
-    const saveData = localStorage[this.prefix + name];
+  public static download(list: ListState) {
+    const saveData = localStorage[this.getSaveKey(list)];
     const blob = new Blob([saveData], { type: "application/json" })
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `${name}.json`;
+    a.download = `${list.name}${list.creationTime}.json`;
     document.body.appendChild(a);
     a.dispatchEvent(new MouseEvent('click'));
   }
 
-  public static checkExists(name: string): boolean {
-    return !!localStorage[this.prefix + name];
+  public static checkExists(list: ListState): boolean {
+    return !!localStorage[this.getSaveKey(list)];
   }
 }
