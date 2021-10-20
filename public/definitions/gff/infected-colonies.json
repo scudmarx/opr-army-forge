@@ -1,0 +1,2085 @@
+{
+  "gameSystemId": 2,
+  "name": "Infected Colonies",
+  "hint": "Infected Colonies",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.5",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "hPPz2SD",
+      "name": "Monstrous Tyrant",
+      "size": 1,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "5XND7lo",
+          "label": "Monstrous Claws",
+          "attacks": 6,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "C1"
+      ],
+      "cost": 90,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "Ygnwozb",
+      "name": "Hunter Champion",
+      "size": 1,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "hPi8BkG",
+          "label": "Claws",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "B1",
+        "C1"
+      ],
+      "cost": 65,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "vWhlp0G",
+      "name": "Infected Champion",
+      "size": 1,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "PI2LNhx",
+          "label": "Carbine",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": []
+        },
+        {
+          "id": "47zflKM",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "plague-command",
+          "name": "Plague Command",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "D1"
+      ],
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "BxyYvDc",
+      "name": "Infected Scientist",
+      "size": 1,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "AGWkgCM",
+          "label": "Cursed Staff",
+          "attacks": 2,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "psychic",
+          "name": "Psychic",
+          "rating": "1"
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "E1"
+      ],
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "dOb40eA",
+      "name": "Zombies",
+      "size": 3,
+      "quality": 5,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "Md2YyF4",
+          "label": "Claws",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 40,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "H7j2SuV",
+      "name": "Runners",
+      "size": 3,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "u1UM7Xw",
+          "label": "Claws",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 40,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "FRxiKgN",
+      "name": "Infected",
+      "size": 3,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "C5n41xF",
+          "label": "Carbines",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": []
+        },
+        {
+          "id": "awdrGhj",
+          "label": "CCWs",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "D1",
+        "F1"
+      ],
+      "cost": 35,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "idxZ_bt",
+      "name": "Weapons Team",
+      "size": 1,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "jdkopGo",
+          "label": "Heavy Machinegun",
+          "attacks": 3,
+          "range": 36,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "A3-Hztg",
+          "label": "CCW",
+          "attacks": 1,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "G1"
+      ],
+      "cost": 40,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "bdH5E6p",
+      "name": "Specialist Infected",
+      "size": 1,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "0CjNkVI",
+          "label": "Carbine",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": []
+        },
+        {
+          "id": "qqefHnb",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "relentless",
+          "name": "Relentless",
+          "rating": ""
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "H1"
+      ],
+      "cost": 15,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "_brYjaC",
+      "name": "Infected Dog",
+      "size": 1,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "2AECv_U",
+          "label": "Vicious Jaws",
+          "attacks": 2,
+          "specialRules": [
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "scout",
+          "name": "Scout",
+          "rating": ""
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 20,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "PwVi37w",
+      "name": "Infected Hunter",
+      "size": 1,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "6iyss0B",
+          "label": "Claws",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "I1"
+      ],
+      "cost": 35,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "DXAmaFp",
+      "name": "Infected Boomer",
+      "size": 1,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "VjISrEU",
+          "label": "Putrid Fists",
+          "attacks": 4,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "boom!",
+          "name": "Boom!",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "VtAt-en",
+      "name": "Infected Chelonian",
+      "size": 1,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "h8O-4Aa",
+          "label": "Claws",
+          "count": 2,
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "J1"
+      ],
+      "cost": 60,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "gnpa6sa",
+      "name": "Infected Swarm",
+      "size": 1,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "LTMnuTZ",
+          "label": "Swarm Attacks",
+          "attacks": 3,
+          "specialRules": [
+            "Blast(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 35,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "RPjyoNm",
+      "name": "Infected Ravens",
+      "size": 1,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "Utj3J2W",
+          "label": "Beaks",
+          "attacks": 1,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "kFO-8OD",
+          "label": "Claws",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 30,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "MUWoLSp",
+      "name": "Infected Vulture",
+      "size": 1,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "auVdVJO",
+          "label": "Sharp Talons",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "undead",
+          "name": "Undead",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "K1"
+      ],
+      "cost": 55,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Replace Monstrous Claws",
+          "type": "replace",
+          "replaceWhat": [
+            "Monstrous Claws"
+          ],
+          "options": [
+            {
+              "id": "4BGXd",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Monstrous Fists (A4, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Monstrous Fists (A4, AP(2), Rending)",
+                  "name": "Monstrous Fists",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Y3DAg",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Monstrous Stings (A2, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Monstrous Stings (A2, AP(4), Deadly(3))",
+                  "name": "Monstrous Stings",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "WIuae",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Toxic Claws (Poison in melee)",
+              "gains": [
+                {
+                  "label": "Toxic Claws (Poison in melee)",
+                  "name": "Toxic Claws",
+                  "content": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "Poison in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "UNg2Q",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Sharp Claws (Rending in melee)",
+              "gains": [
+                {
+                  "label": "Sharp Claws (Rending in melee)",
+                  "name": "Sharp Claws",
+                  "content": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "Rending in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "pP9Sy",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Hardened Claws (AP(+2) in melee)",
+              "gains": [
+                {
+                  "label": "Hardened Claws (AP(+2) in melee)",
+                  "name": "Hardened Claws",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "ap(+2)",
+                      "name": "AP(+2)",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "AP(+2) in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "jDI_p",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Barbed Claws (Deadly(3) in melee)",
+              "gains": [
+                {
+                  "label": "Barbed Claws (Deadly(3) in melee)",
+                  "name": "Barbed Claws",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "condition": "in melee",
+                      "label": "Deadly(3) in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "G1bKsVh",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Bloodthirsty",
+              "gains": [
+                {
+                  "key": "bloodthirsty",
+                  "name": "Bloodthirsty",
+                  "rating": "",
+                  "label": "Bloodthirsty",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "9VCelFG",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Terrifying",
+              "gains": [
+                {
+                  "key": "terrifying",
+                  "name": "Terrifying",
+                  "rating": "",
+                  "label": "Terrifying",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "9FInkp7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 45,
+              "label": "Infection",
+              "gains": [
+                {
+                  "key": "infection",
+                  "name": "Infection",
+                  "rating": "",
+                  "label": "Infection",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Replace one Carbine and CCW",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Carbine",
+            "CCW"
+          ],
+          "options": [
+            {
+              "id": "aLOUNTc",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Pistol (12”, A1) and CCW (A3)",
+              "gains": [
+                {
+                  "label": "Pistol (12”, A1)",
+                  "name": "Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                },
+                {
+                  "label": "CCW (A3)",
+                  "name": "CCW",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace one Pistol",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Pistol"
+          ],
+          "options": [
+            {
+              "id": "qQye9",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Plasma Pistol (12”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Plasma Pistol (12”, A1, AP(2))",
+                  "name": "Plasma Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "d_XFQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Scoped Carbine (18”, A1, Sniper)",
+              "gains": [
+                {
+                  "label": "Scoped Carbine (18”, A1, Sniper)",
+                  "name": "Scoped Carbine",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "sniper",
+                      "name": "Sniper",
+                      "rating": "",
+                      "label": "Sniper",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace one CCW",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "CCW"
+          ],
+          "options": [
+            {
+              "id": "x0iTg",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Energy Sword (A3, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Energy Sword (A3, AP(1), Rending)",
+                  "name": "Energy Sword",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "lTQAY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Energy Fist (A3, AP(3))",
+              "gains": [
+                {
+                  "label": "Energy Fist (A3, AP(3))",
+                  "name": "Energy Fist",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade Psychic(1)",
+          "type": "upgradeRule",
+          "replaceWhat": [
+            "Psychic(1)"
+          ],
+          "options": [
+            {
+              "id": "yPGOblj",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Psychic(2)",
+              "gains": [
+                {
+                  "key": "psychic",
+                  "name": "Psychic",
+                  "rating": "2",
+                  "label": "Psychic(2)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Replace one Carbine",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Carbine"
+          ],
+          "options": [
+            {
+              "id": "IVzd5",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Flamethrower (12”, A6)",
+              "gains": [
+                {
+                  "label": "Flamethrower (12”, A6)",
+                  "name": "Flamethrower",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "jrEgO",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Shred Rifle (18”, A2, Rending)",
+              "gains": [
+                {
+                  "label": "Shred Rifle (18”, A2, Rending)",
+                  "name": "Shred Rifle",
+                  "attacks": 2,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ulkONyh",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Grenade Launcher–pick one to fire: HE (24”, A1, Blast(3)) AT (24”, A1, AP(1), Deadly(3))",
+              "gains": [
+                {
+                  "name": "Grenade Launcher–pick one to fire",
+                  "type": "ArmyBookMultiWeapon",
+                  "profiles": [
+                    {
+                      "id": "9pTIedH",
+                      "label": "HE (24”, A1, Blast(3))",
+                      "name": "HE",
+                      "attacks": 1,
+                      "range": 24,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "blast",
+                          "name": "Blast",
+                          "rating": "3",
+                          "label": "Blast(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "iKV0Ahq",
+                      "label": "AT (24”, A1, AP(1), Deadly(3))",
+                      "name": "AT",
+                      "attacks": 1,
+                      "range": 24,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "ap",
+                          "name": "AP",
+                          "rating": "1",
+                          "label": "AP(1)",
+                          "type": "ArmyBookRule"
+                        },
+                        {
+                          "key": "deadly",
+                          "name": "Deadly",
+                          "rating": "3",
+                          "label": "Deadly(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    }
+                  ],
+                  "label": "Grenade Launcher–pick one to fire"
+                }
+              ]
+            },
+            {
+              "id": "RwPW-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Fusion Rifle (12”,A1,AP(4),Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Rifle (12”,A1,AP(4),Deadly(6))",
+                  "name": "Fusion Rifle",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "t0obd",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Heavy Machinegun (36”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Heavy Machinegun (36”, A3, AP(1))",
+                  "name": "Heavy Machinegun",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade one model with one",
+          "type": "upgrade",
+          "affects": 1,
+          "select": 1,
+          "options": [
+            {
+              "id": "sQs-3",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Infected Dog (A2, AP(1))",
+              "gains": [
+                {
+                  "label": "Infected Dog (A2, AP(1))",
+                  "name": "Infected Dog",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "i6bVX",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Infected Swarm (A3)",
+              "gains": [
+                {
+                  "label": "Infected Swarm (A3)",
+                  "name": "Infected Swarm",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
+        {
+          "label": "Replace Heavy Machinegun",
+          "type": "replace",
+          "replaceWhat": [
+            "Heavy Machinegun"
+          ],
+          "options": [
+            {
+              "id": "3Q6rmIe",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Missile Launcher – pick one to fire: HE (48”, A1, Blast(3)) AT (48”, A1, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "name": "Missile Launcher – pick one to fire",
+                  "type": "ArmyBookMultiWeapon",
+                  "profiles": [
+                    {
+                      "id": "TXs97sv",
+                      "label": "HE (48”, A1, Blast(3))",
+                      "name": "HE",
+                      "attacks": 1,
+                      "range": 48,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "blast",
+                          "name": "Blast",
+                          "rating": "3",
+                          "label": "Blast(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "Xapv490",
+                      "label": "AT (48”, A1, AP(3), Deadly(3))",
+                      "name": "AT",
+                      "attacks": 1,
+                      "range": 48,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "ap",
+                          "name": "AP",
+                          "rating": "3",
+                          "label": "AP(3)",
+                          "type": "ArmyBookRule"
+                        },
+                        {
+                          "key": "deadly",
+                          "name": "Deadly",
+                          "rating": "3",
+                          "label": "Deadly(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    }
+                  ],
+                  "label": "Missile Launcher – pick one to fire"
+                }
+              ]
+            },
+            {
+              "id": "-sbPi",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Mortar (48”, A1, Blast(3), Indirect)",
+              "gains": [
+                {
+                  "label": "Mortar (48”, A1, Blast(3), Indirect)",
+                  "name": "Mortar",
+                  "attacks": 1,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "indirect",
+                      "name": "Indirect",
+                      "rating": "",
+                      "label": "Indirect",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "NGooM",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Autocannon (48”, A2, AP(2))",
+              "gains": [
+                {
+                  "label": "Autocannon (48”, A2, AP(2))",
+                  "name": "Autocannon",
+                  "attacks": 2,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "8Gyxf",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Laser Cannon (48”, A1, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Laser Cannon (48”, A1, AP(4), Deadly(3))",
+                  "name": "Laser Cannon",
+                  "attacks": 1,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "H1",
+      "hint": "H1",
+      "sections": [
+        {
+          "label": "Replace Carbine",
+          "type": "replace",
+          "replaceWhat": [
+            "Carbine"
+          ],
+          "options": [
+            {
+              "id": "jm0UW",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Flamethrower (12”, A6)",
+              "gains": [
+                {
+                  "label": "Flamethrower (12”, A6)",
+                  "name": "Flamethrower",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "2Yvto",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Shred Rifle (18”, A2, Rending)",
+              "gains": [
+                {
+                  "label": "Shred Rifle (18”, A2, Rending)",
+                  "name": "Shred Rifle",
+                  "attacks": 2,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "V_vfaNE",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Grenade Launcher–pick one to fire: HE (24”, A1, Blast(3)) AT (24”, A1, AP(1), Deadly(3))",
+              "gains": [
+                {
+                  "name": "Grenade Launcher–pick one to fire",
+                  "type": "ArmyBookMultiWeapon",
+                  "profiles": [
+                    {
+                      "id": "wuoa4oC",
+                      "label": "HE (24”, A1, Blast(3))",
+                      "name": "HE",
+                      "attacks": 1,
+                      "range": 24,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "blast",
+                          "name": "Blast",
+                          "rating": "3",
+                          "label": "Blast(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "oK1I-76",
+                      "label": "AT (24”, A1, AP(1), Deadly(3))",
+                      "name": "AT",
+                      "attacks": 1,
+                      "range": 24,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "ap",
+                          "name": "AP",
+                          "rating": "1",
+                          "label": "AP(1)",
+                          "type": "ArmyBookRule"
+                        },
+                        {
+                          "key": "deadly",
+                          "name": "Deadly",
+                          "rating": "3",
+                          "label": "Deadly(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    }
+                  ],
+                  "label": "Grenade Launcher–pick one to fire"
+                }
+              ]
+            },
+            {
+              "id": "gF0DY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Fusion Rifle (12”,A1,AP(4),Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Rifle (12”,A1,AP(4),Deadly(6))",
+                  "name": "Fusion Rifle",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mfCBt",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Heavy Machinegun (36”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Heavy Machinegun (36”, A3, AP(1))",
+                  "name": "Heavy Machinegun",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "I1",
+      "hint": "I1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "hc8pI",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Toxic Claws (Poison in melee)",
+              "gains": [
+                {
+                  "label": "Toxic Claws (Poison in melee)",
+                  "name": "Toxic Claws",
+                  "content": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "Poison in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "Ifkcj",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Sharp Claws (Rending in melee)",
+              "gains": [
+                {
+                  "label": "Sharp Claws (Rending in melee)",
+                  "name": "Sharp Claws",
+                  "content": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "Rending in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "4GObv",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Hardened Claws (AP(+2) in melee)",
+              "gains": [
+                {
+                  "label": "Hardened Claws (AP(+2) in melee)",
+                  "name": "Hardened Claws",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "ap(+2)",
+                      "name": "AP(+2)",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "AP(+2) in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3NEig",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Barbed Claws (Deadly(3) in melee)",
+              "gains": [
+                {
+                  "label": "Barbed Claws (Deadly(3) in melee)",
+                  "name": "Barbed Claws",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "condition": "in melee",
+                      "label": "Deadly(3) in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "J1",
+      "hint": "J1",
+      "sections": [
+        {
+          "label": "Replace any Claws",
+          "type": "replace",
+          "affects": "any",
+          "replaceWhat": [
+            "Claws"
+          ],
+          "options": [
+            {
+              "id": "3VVPG",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Piercing Talons (A2, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Piercing Talons (A2, AP(1), Rending)",
+                  "name": "Piercing Talons",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sTZRH",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Smashing Fists (A2, AP(3))",
+              "gains": [
+                {
+                  "label": "Smashing Fists (A2, AP(3))",
+                  "name": "Smashing Fists",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "sBB3n",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Serrated Pincers (A4, AP(1))",
+              "gains": [
+                {
+                  "label": "Serrated Pincers (A4, AP(1))",
+                  "name": "Serrated Pincers",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Sg-Zn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Sharp Stings (A2, AP(1), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Sharp Stings (A2, AP(1), Deadly(3))",
+                  "name": "Sharp Stings",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "K1",
+      "hint": "K1",
+      "sections": [
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "azgy7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Piercing Beak (A1, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Piercing Beak (A1, AP(4), Deadly(3))",
+                  "name": "Piercing Beak",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "oRwlq",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Swoop Attack (Impact(3))",
+              "gains": [
+                {
+                  "label": "Swoop Attack (Impact(3))",
+                  "name": "Swoop Attack",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "3",
+                      "label": "Impact(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "Bjp6p",
+      "key": "bloodthirsty",
+      "hint": "The hero and all friendly units within 12”t get the Furious special rule.",
+      "name": "Bloodthirsty",
+      "tags": [],
+      "label": "Bloodthirsty",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The hero and all friendly units within 12”t get the Furious special rule."
+    },
+    {
+      "id": "4LDPD",
+      "key": "boom!",
+      "hint": "If this model is killed in melee then the attacking unit takes 3 automatic hits.",
+      "name": "Boom!",
+      "tags": [],
+      "label": "Boom!",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "If this model is killed in melee then the attacking unit takes 3 automatic hits."
+    },
+    {
+      "id": "26meJ",
+      "key": "infection",
+      "hint": "Whenever the hero fights an enemy in melee, place an infection marker next to the target. Enemies with infection markers count as having Quality -1 for the rest of the game, and if they are within 3” of friendly units at the beginning of a round those units also become infected.",
+      "name": "Infection",
+      "tags": [],
+      "label": "Infection",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Whenever the hero fights an enemy in melee, place an infection marker next to the target. Enemies with infection markers count as having Quality -1 for the rest of the game, and if they are within 3” of friendly units at the beginning of a round those units also become infected."
+    },
+    {
+      "id": "PE_lX",
+      "key": "plague-command",
+      "hint": "When the hero is activated pick one of the following orders, and the hero and all friendly models within 12” get one of these special rules until the end of the round: • Plague Burst: +3” when moving.",
+      "name": "Plague Command",
+      "tags": [],
+      "label": "Plague Command",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When the hero is activated pick one of the following orders, and the hero and all friendly models within 12” get one of these special rules until the end of the round: • Plague Burst: +3” when moving."
+    },
+    {
+      "id": "Cgx_b",
+      "key": "•-living-ammo",
+      "hint": "+1 to shooting rolls.",
+      "name": "• Living Ammo",
+      "tags": [],
+      "label": "• Living Ammo",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "+1 to shooting rolls."
+    },
+    {
+      "id": "bNfzq",
+      "key": "•-toxic-ammo",
+      "hint": "Poison when shooting.",
+      "name": "• Toxic Ammo",
+      "tags": [],
+      "label": "• Toxic Ammo",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Poison when shooting."
+    },
+    {
+      "id": "sSOKw",
+      "key": "•-infectious-energy",
+      "hint": "+1 to melee rolls.",
+      "name": "• Infectious Energy",
+      "tags": [],
+      "label": "• Infectious Energy",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "+1 to melee rolls."
+    },
+    {
+      "id": "R6rPK",
+      "key": "terrifying",
+      "hint": "Enemy units fighting the hero in melee gets -1 to their morale test rolls.",
+      "name": "Terrifying",
+      "tags": [],
+      "label": "Terrifying",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Enemy units fighting the hero in melee gets -1 to their morale test rolls."
+    },
+    {
+      "id": "31eQr",
+      "key": "undead",
+      "hint": "Whenever this unit takes a morale test it is passed automatically. Then roll as many dice as remaining models/tough in the unit, and for each result of 1-2 the unit takes one wound, which can’t be regenerated.",
+      "name": "Undead",
+      "tags": [],
+      "label": "Undead",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Whenever this unit takes a morale test it is passed automatically. Then roll as many dice as remaining models/tough in the unit, and for each result of 1-2 the unit takes one wound, which can’t be regenerated."
+    }
+  ],
+  "spells": [
+    {
+      "id": "wt2QQ",
+      "name": "Infestation",
+      "threshold": 4,
+      "effect": "Target friendly unit within 12” gets Poison in melee next time it fights."
+    },
+    {
+      "id": "Mrmik",
+      "name": "Bio-Horror",
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” takes 1 automatic hit with AP(2) and Deadly(3)."
+    },
+    {
+      "id": "lv0KJ",
+      "name": "Vigour",
+      "threshold": 5,
+      "effect": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
+    },
+    {
+      "id": "uCBwT",
+      "name": "Panic Virus",
+      "threshold": 5,
+      "effect": "Target enemy unit within 24” must take a morale test. If failed it takes 3 automatic hits with AP(2)."
+    },
+    {
+      "id": "Bhgdy",
+      "name": "Onslaught",
+      "threshold": 6,
+      "effect": "Target friendly unit within 12” may immediately move by up to 6”."
+    },
+    {
+      "id": "eIEFq",
+      "name": "Plague",
+      "threshold": 6,
+      "effect": "Target enemy unit within 6” takes 1 automatic hit per model."
+    }
+  ],
+  "modifiedAt": "2021-10-20T13:40:51.786Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "grimdark-future",
+  "fullname": "Grimdark Future",
+  "aberration": "GF",
+  "universe": "Grimdark Future",
+  "shortname": "Grimdark Future"
+}

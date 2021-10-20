@@ -1,0 +1,2214 @@
+{
+  "gameSystemId": 2,
+  "name": "Prime Brothers",
+  "hint": "Prime Brothers",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.15",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "aEn7s3M",
+      "name": "Captain",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "B_ZNIQc",
+          "label": "Auto-Rifle",
+          "attacks": 3,
+          "range": 24,
+          "specialRules": []
+        },
+        {
+          "id": "hi7aAxp",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "B1",
+        "C1"
+      ],
+      "cost": 105,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "O9A-8mT",
+      "name": "Judge",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "OHAtqZT",
+          "label": "Pistol",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "-NAGIed",
+          "label": "Relic Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)",
+            "Deadly(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "B1"
+      ],
+      "cost": 115,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "lRQqzxg",
+      "name": "Psychic",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "e1gR_UL",
+          "label": "Auto-Rifle",
+          "attacks": 3,
+          "range": 24,
+          "specialRules": []
+        },
+        {
+          "id": "N8WOGxQ",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "psychic",
+          "name": "Psychic",
+          "rating": "1"
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "B1",
+        "D1"
+      ],
+      "cost": 125,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "HdhISPK",
+      "name": "Assault Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "iShimcn",
+          "label": "Pistol",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "BFJHcIh",
+          "label": "CCW",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "E1",
+        "F1"
+      ],
+      "cost": 35,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "ELJp8_x",
+      "name": "Prime Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "_FFnUDx",
+          "label": "Auto-Rifle",
+          "attacks": 3,
+          "range": 24,
+          "specialRules": []
+        },
+        {
+          "id": "BHtWRnf",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "E1",
+        "G1"
+      ],
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "DyKdhSV",
+      "name": "Raider Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "JDVo6o0",
+          "label": "Heavy Pistol",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "_LXZh4e",
+          "label": "CCW",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": ""
+        },
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "E1",
+        "H1"
+      ],
+      "cost": 40,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "PF2bkSc",
+      "name": "Blaster Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "BGe7S9K",
+          "label": "Heavy Plasma Rifle",
+          "attacks": 1,
+          "range": 30,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "BqadQ7y",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "E1",
+        "I1"
+      ],
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "FOXXOtL",
+      "name": "Infiltration Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "mQOUTq6",
+          "label": "Heavy Carbine",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": [
+            "Rending"
+          ]
+        },
+        {
+          "id": "CKfJDXO",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "scout",
+          "name": "Scout",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "E1"
+      ],
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "iU5IbpJ",
+      "name": "Guard Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "f-4rZGX",
+          "label": "Pistol",
+          "attacks": 1,
+          "specialRules": []
+        },
+        {
+          "id": "DPyruyX",
+          "label": "Energy Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)",
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "shield-wall",
+          "name": "Shield Wall",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 50,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "f_VH9fu",
+      "name": "Eradication Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "X_QLpSs",
+          "label": "Fusion Rifle",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(4)",
+            "Deadly(6)"
+          ]
+        },
+        {
+          "id": "uudCctz",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "relentless",
+          "name": "Relentless",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 60,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "5BI_nxy",
+      "name": "Elimination Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "NiS148L",
+          "label": "Sniper Rifle",
+          "attacks": 1,
+          "range": 36,
+          "specialRules": [
+            "AP(1)",
+            "Sniper"
+          ]
+        },
+        {
+          "id": "QM8fcOB",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "scout",
+          "name": "Scout",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "J1"
+      ],
+      "cost": 60,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "CJgRDM7",
+      "name": "Jetpack Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "lnLaEyb",
+          "label": "Plasma Carbines",
+          "count": 2,
+          "attacks": 1,
+          "range": 18,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "S7ro-Jg",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "K1"
+      ],
+      "cost": 60,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "di-5HR0",
+      "name": "Suppression Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "mzHsVN6",
+          "label": "Autocannon",
+          "attacks": 2,
+          "range": 48,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "Tf_C1qS",
+          "label": "CCW",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 80,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "AiF0Xfg",
+      "name": "Aggro Brother",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "GPOW7IT",
+          "label": "Fist-Carbines",
+          "count": 2,
+          "attacks": 3,
+          "range": 18,
+          "specialRules": []
+        },
+        {
+          "id": "fVtibMB",
+          "label": "Energy Fist",
+          "attacks": 2,
+          "specialRules": [
+            "AP(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "L1"
+      ],
+      "cost": 115,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "gLR-QJA",
+      "name": "Prime Biker",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "g3N3Qoh",
+          "label": "Pistol",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "SYMqMxd",
+          "label": "CCW",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "1"
+        },
+        {
+          "key": "prime",
+          "name": "Prime",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "M1"
+      ],
+      "cost": 50,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Replace Auto-Rifle and CCW",
+          "type": "replace",
+          "replaceWhat": [
+            "Auto-Rifle",
+            "CCW"
+          ],
+          "options": [
+            {
+              "id": "r1wBDlf",
+              "type": "ArmyBookUpgradeOption",
+              "cost": -5,
+              "label": "Pistol (12”, A1) and CCW (A4)",
+              "gains": [
+                {
+                  "label": "Pistol (12”, A1)",
+                  "name": "Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                },
+                {
+                  "label": "CCW (A4)",
+                  "name": "CCW",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace Pistol",
+          "type": "replace",
+          "replaceWhat": [
+            "Pistol"
+          ],
+          "options": [
+            {
+              "id": "HyP1B",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Shred Pistol (6”, A2, Rending)",
+              "gains": [
+                {
+                  "label": "Shred Pistol (6”, A2, Rending)",
+                  "name": "Shred Pistol",
+                  "attacks": 2,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "3oaxT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Plasma Pistol (12”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Plasma Pistol (12”, A1, AP(2))",
+                  "name": "Plasma Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qSV4L",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Heavy Carbine (18”, A1, Rending)",
+              "gains": [
+                {
+                  "label": "Heavy Carbine (18”, A1, Rending)",
+                  "name": "Heavy Carbine",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "liFWS",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Rifle (30”, A2)",
+              "gains": [
+                {
+                  "label": "Rifle (30”, A2)",
+                  "name": "Rifle",
+                  "attacks": 2,
+                  "range": 30,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "1AhBp",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Precision Rifle (36”, A1, AP(1))",
+              "gains": [
+                {
+                  "label": "Precision Rifle (36”, A1, AP(1))",
+                  "name": "Precision Rifle",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ba6Xi",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Flamethrower Pistol (12”, A6)",
+              "gains": [
+                {
+                  "label": "Flamethrower Pistol (12”, A6)",
+                  "name": "Flamethrower Pistol",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace CCW",
+          "type": "replace",
+          "replaceWhat": [
+            "CCW"
+          ],
+          "options": [
+            {
+              "id": "X2Nr7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Energy Sword (A4, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Energy Sword (A4, AP(1), Rending)",
+                  "name": "Energy Sword",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qXikc",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Energy Fist (A4, AP(3))",
+              "gains": [
+                {
+                  "label": "Energy Fist (A4, AP(3))",
+                  "name": "Energy Fist",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ruh5P",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "EnergyHammer(A4,AP(1),Deadly(3))",
+              "gains": [
+                {
+                  "label": "EnergyHammer(A4,AP(1),Deadly(3))",
+                  "name": "EnergyHammer",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "W7Uv3",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Camo Cloak (Scout, Stealth)",
+              "gains": [
+                {
+                  "label": "Camo Cloak (Scout, Stealth)",
+                  "name": "Camo Cloak",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "scout",
+                      "name": "Scout",
+                      "rating": "",
+                      "label": "Scout",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "stealth",
+                      "name": "Stealth",
+                      "rating": "",
+                      "label": "Stealth",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "RgMwr",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Combat Shield (Shield Wall)",
+              "gains": [
+                {
+                  "label": "Combat Shield (Shield Wall)",
+                  "name": "Combat Shield",
+                  "content": [
+                    {
+                      "key": "shield-wall",
+                      "name": "Shield Wall",
+                      "rating": "",
+                      "label": "Shield Wall",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "DUtpQNQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Combat Bike (Fast, Impact(1), Twin Rifle (30”,A4))",
+              "gains": [
+                {
+                  "label": "Combat Bike",
+                  "name": "Combat Bike",
+                  "content": [
+                    {
+                      "key": "fast",
+                      "name": "Fast",
+                      "rating": "",
+                      "label": "Fast",
+                      "condition": "",
+                      "modify": false
+                    },
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "label": "Impact",
+                      "condition": "",
+                      "modify": false
+                    },
+                    {
+                      "id": "A_0vSsj",
+                      "label": "Twin Rifle (30”,A4)",
+                      "name": "Twin Rifle",
+                      "attacks": 4,
+                      "range": 30,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": []
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "I_i4a",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 85,
+              "label": "Grave Armor (Tough(+3))",
+              "gains": [
+                {
+                  "label": "Grave Armor (Tough(+3))",
+                  "name": "Grave Armor",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough(+3)",
+                      "name": "Tough(+3)",
+                      "rating": "",
+                      "label": "Tough(+3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "LNxLq_J",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Veteran Infantry",
+              "gains": [
+                {
+                  "key": "veteran-infantry",
+                  "name": "Veteran Infantry",
+                  "rating": "",
+                  "label": "Veteran Infantry",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "C4LZveK",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Repair",
+              "gains": [
+                {
+                  "key": "repair",
+                  "name": "Repair",
+                  "rating": "",
+                  "label": "Repair",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "7PWoLnR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "War Chant",
+              "gains": [
+                {
+                  "key": "war-chant",
+                  "name": "War Chant",
+                  "rating": "",
+                  "label": "War Chant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "9OCBRcr",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Battle Rites",
+              "gains": [
+                {
+                  "key": "battle-rites",
+                  "name": "Battle Rites",
+                  "rating": "",
+                  "label": "Battle Rites",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "WuoA5",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Ancient Banner (Fear)",
+              "gains": [
+                {
+                  "label": "Ancient Banner (Fear)",
+                  "name": "Ancient Banner",
+                  "content": [
+                    {
+                      "key": "fear",
+                      "name": "Fear",
+                      "rating": "",
+                      "label": "Fear",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "mZqxXus",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 45,
+              "label": "Precision Shots",
+              "gains": [
+                {
+                  "key": "precision-shots",
+                  "name": "Precision Shots",
+                  "rating": "",
+                  "label": "Precision Shots",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade Psychic(1)",
+          "type": "upgradeRule",
+          "replaceWhat": [
+            "Psychic(1)"
+          ],
+          "options": [
+            {
+              "id": "SRJh_Zp",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Psychic(2)",
+              "gains": [
+                {
+                  "key": "psychic",
+                  "name": "Psychic",
+                  "rating": "2",
+                  "label": "Psychic(2)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "FyDCpF_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 45,
+              "label": "Medical Training",
+              "gains": [
+                {
+                  "key": "medical-training",
+                  "name": "Medical Training",
+                  "rating": "",
+                  "label": "Medical Training",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Replace Pistol",
+          "type": "replace",
+          "replaceWhat": [
+            "Pistol"
+          ],
+          "options": [
+            {
+              "id": "72nCW",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Plasma Pistol (12”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Plasma Pistol (12”, A1, AP(2))",
+                  "name": "Plasma Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "sjTdFrn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Veteran Infantry",
+              "gains": [
+                {
+                  "key": "veteran-infantry",
+                  "name": "Veteran Infantry",
+                  "rating": "",
+                  "label": "Veteran Infantry",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
+        {
+          "label": "Replace Auto-Rifle",
+          "type": "replace",
+          "replaceWhat": [
+            "Auto-Rifle"
+          ],
+          "options": [
+            {
+              "id": "-VEj8",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Flamethrower (12”, A6)",
+              "gains": [
+                {
+                  "label": "Flamethrower (12”, A6)",
+                  "name": "Flamethrower",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "GVbGP",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Gravity Rifle (18”, A2, Rending)",
+              "gains": [
+                {
+                  "label": "Gravity Rifle (18”, A2, Rending)",
+                  "name": "Gravity Rifle",
+                  "attacks": 2,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "vFv2c",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Plasma Rifle (24”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Plasma Rifle (24”, A1, AP(2))",
+                  "name": "Plasma Rifle",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9Uwtz",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Rifle (30”, A2)",
+              "gains": [
+                {
+                  "label": "Rifle (30”, A2)",
+                  "name": "Rifle",
+                  "attacks": 2,
+                  "range": 30,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "GPdLc",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Precision Rifle (36”, A1, AP(1))",
+              "gains": [
+                {
+                  "label": "Precision Rifle (36”, A1, AP(1))",
+                  "name": "Precision Rifle",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "GuNMV",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
+                  "name": "Fusion Rifle",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xzGoM",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Heavy Machinegun (36”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Heavy Machinegun (36”, A3, AP(1))",
+                  "name": "Heavy Machinegun",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Take one Auto-Rifle attachment",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "OGnVtvR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "GrenadeLauncher–pick one to fire: HE (24”, A1, Blast(3)) AT (24”, A1, AP(1), Deadly(3))",
+              "gains": [
+                {
+                  "name": "GrenadeLauncher–pick one to fire",
+                  "type": "ArmyBookMultiWeapon",
+                  "profiles": [
+                    {
+                      "id": "UCFTCEw",
+                      "label": "HE (24”, A1, Blast(3))",
+                      "name": "HE",
+                      "attacks": 1,
+                      "range": 24,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "blast",
+                          "name": "Blast",
+                          "rating": "3",
+                          "label": "Blast(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "F-eVMw3",
+                      "label": "AT (24”, A1, AP(1), Deadly(3))",
+                      "name": "AT",
+                      "attacks": 1,
+                      "range": 24,
+                      "type": "ArmyBookWeapon",
+                      "specialRules": [
+                        {
+                          "key": "ap",
+                          "name": "AP",
+                          "rating": "1",
+                          "label": "AP(1)",
+                          "type": "ArmyBookRule"
+                        },
+                        {
+                          "key": "deadly",
+                          "name": "Deadly",
+                          "rating": "3",
+                          "label": "Deadly(3)",
+                          "type": "ArmyBookRule"
+                        }
+                      ]
+                    }
+                  ],
+                  "label": "GrenadeLauncher–pick one to fire"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "Tq4ks3j",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Veteran Infantry",
+              "gains": [
+                {
+                  "key": "veteran-infantry",
+                  "name": "Veteran Infantry",
+                  "rating": "",
+                  "label": "Veteran Infantry",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "mYzb8",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Grave Armor (Tough(+3))",
+              "gains": [
+                {
+                  "label": "Grave Armor (Tough(+3))",
+                  "name": "Grave Armor",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough(+3)",
+                      "name": "Tough(+3)",
+                      "rating": "",
+                      "label": "Tough(+3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "H1",
+      "hint": "H1",
+      "sections": [
+        {
+          "label": "Replace Heavy Pistol and CCW",
+          "type": "replace",
+          "replaceWhat": [
+            "Heavy Pistol",
+            "CCW"
+          ],
+          "options": [
+            {
+              "id": "z2S_2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Assault Rifle (24”, A1), CCW (A2)",
+              "gains": [
+                {
+                  "label": "Assault Rifle (24”, A1), CCW (A2)",
+                  "name": "Assault Rifle",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ccw-(a2",
+                      "name": "CCW (A2",
+                      "rating": "",
+                      "label": "CCW (A2",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "DotEjm1",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Heavy Pistol (12”, A1, AP(1)) and Energy Sword (A3, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Heavy Pistol (12”, A1, AP(1))",
+                  "name": "Heavy Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Energy Sword (A3, AP(1), Rending)",
+                  "name": "Energy Sword",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5CcBxxL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Heavy Pistol (12”, A1, AP(1))) and Energy Fist (A3, AP(3))",
+              "gains": [
+                {
+                  "label": "Heavy Pistol (12”, A1, AP(1)))",
+                  "name": "Heavy Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap(1))",
+                      "name": "AP(1))",
+                      "rating": "",
+                      "label": "AP(1))",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Energy Fist (A3, AP(3))",
+                  "name": "Energy Fist",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "_lrmMnn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Heavy Pistol (12”, A1, AP(1)) and EnergyHammer(A3,AP(1),Deadly(3))",
+              "gains": [
+                {
+                  "label": "Heavy Pistol (12”, A1, AP(1))",
+                  "name": "Heavy Pistol",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "EnergyHammer(A3,AP(1),Deadly(3))",
+                  "name": "EnergyHammer",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "C7d6k",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Heavy Chainsaw Sword (A9, AP(1))",
+              "gains": [
+                {
+                  "label": "Heavy Chainsaw Sword (A9, AP(1))",
+                  "name": "Heavy Chainsaw Sword",
+                  "attacks": 9,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "kCmbS",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Grapnel (Strider)",
+              "gains": [
+                {
+                  "label": "Grapnel (Strider)",
+                  "name": "Grapnel",
+                  "content": [
+                    {
+                      "key": "strider",
+                      "name": "Strider",
+                      "rating": "",
+                      "label": "Strider",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "FuKYn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Orbital Deployment (Ambush)",
+              "gains": [
+                {
+                  "label": "Orbital Deployment (Ambush)",
+                  "name": "Orbital Deployment",
+                  "content": [
+                    {
+                      "key": "ambush",
+                      "name": "Ambush",
+                      "rating": "",
+                      "label": "Ambush",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "I1",
+      "hint": "I1",
+      "sections": [
+        {
+          "label": "Replace Heavy Plasma Rifle",
+          "type": "replace",
+          "replaceWhat": [
+            "Heavy Plasma Rifle"
+          ],
+          "options": [
+            {
+              "id": "9O3Ku",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Plasma Auto-Rifle (24”, A2, AP(1))",
+              "gains": [
+                {
+                  "label": "Plasma Auto-Rifle (24”, A2, AP(1))",
+                  "name": "Plasma Auto-Rifle",
+                  "attacks": 2,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "29gdr",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Light Plasma Cannon (36”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Light Plasma Cannon (36”, A1, AP(2))",
+                  "name": "Light Plasma Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "J1",
+      "hint": "J1",
+      "sections": [
+        {
+          "label": "Replace Sniper Rifle",
+          "type": "replace",
+          "replaceWhat": [
+            "Sniper Rifle"
+          ],
+          "options": [
+            {
+              "id": "xw0tQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Laser Rifle (36”,A1,AP(3),Deadly(3))",
+              "gains": [
+                {
+                  "label": "Laser Rifle (36”,A1,AP(3),Deadly(3))",
+                  "name": "Laser Rifle",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "K1",
+      "hint": "K1",
+      "sections": [
+        {
+          "label": "Replace 2x Plasma Carbines",
+          "type": "replace",
+          "affects": 2,
+          "replaceWhat": [
+            "Plasma Carbines"
+          ],
+          "options": [
+            {
+              "id": "4p4Oo",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "2x Assault Carbines (18”, A3)",
+              "gains": [
+                {
+                  "label": "Assault Carbines (18”, A3)",
+                  "name": "Assault Carbines",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                },
+                {
+                  "label": "Assault Carbines (18”, A3)",
+                  "name": "Assault Carbines",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "L1",
+      "hint": "L1",
+      "sections": [
+        {
+          "label": "Replace 2x Fist-Carbines",
+          "type": "replace",
+          "affects": 2,
+          "replaceWhat": [
+            "Fist-Carbines"
+          ],
+          "options": [
+            {
+              "id": "4Z9Ay",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "2x Fist-Flamethrowers (12”, A6)",
+              "gains": [
+                {
+                  "label": "Fist-Flamethrowers (12”, A6)",
+                  "name": "Fist-Flamethrowers",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                },
+                {
+                  "label": "Fist-Flamethrowers (12”, A6)",
+                  "name": "Fist-Flamethrowers",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "9Erkl",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Grenade Launcher (18”,A1,Blast(3))",
+              "gains": [
+                {
+                  "label": "Grenade Launcher (18”,A1,Blast(3))",
+                  "name": "Grenade Launcher",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "M1",
+      "hint": "M1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "jzpV2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Twin Rifle (30”, A4)",
+              "gains": [
+                {
+                  "label": "Twin Rifle (30”, A4)",
+                  "name": "Twin Rifle",
+                  "attacks": 4,
+                  "range": 30,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "4ZHtS",
+      "key": "battle-rites",
+      "hint": "The hero and all friendly units within 12” get +1 to their melee rolls.",
+      "name": "Battle Rites",
+      "tags": [],
+      "label": "Battle Rites",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The hero and all friendly units within 12” get +1 to their melee rolls."
+    },
+    {
+      "id": "nYRAo",
+      "key": "medical-training",
+      "hint": "This model and all friendly units within 12” get the Regeneration rule.",
+      "name": "Medical Training",
+      "tags": [],
+      "label": "Medical Training",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model and all friendly units within 12” get the Regeneration rule."
+    },
+    {
+      "id": "a4HiS",
+      "key": "precision-shots",
+      "hint": "The hero and all friendly units within 12” get AP(+1) when shooting.",
+      "name": "Precision Shots",
+      "tags": [],
+      "label": "Precision Shots",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The hero and all friendly units within 12” get AP(+1) when shooting."
+    },
+    {
+      "id": "evVDU",
+      "key": "prime",
+      "hint": "Counts as having the Fearless rule, as well as having Regeneration against non-spell attacks (this stacks with Regeneration).",
+      "name": "Prime",
+      "tags": [],
+      "label": "Prime",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Counts as having the Fearless rule, as well as having Regeneration against non-spell attacks (this stacks with Regeneration)."
+    },
+    {
+      "id": "1RV_l",
+      "key": "repair",
+      "hint": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target.",
+      "name": "Repair",
+      "tags": [],
+      "label": "Repair",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+    },
+    {
+      "id": "2aDmI",
+      "key": "shield-wall",
+      "hint": "Enemies get -1 to hit when they attack units where all models have this rule.",
+      "name": "Shield Wall",
+      "tags": [],
+      "label": "Shield Wall",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Enemies get -1 to hit when they attack units where all models have this rule."
+    },
+    {
+      "id": "ASESV",
+      "key": "veteran-infantry",
+      "hint": "This model gets +1 to its attack rolls for melee and shooting.",
+      "name": "Veteran Infantry",
+      "tags": [],
+      "label": "Veteran Infantry",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +1 to its attack rolls for melee and shooting."
+    },
+    {
+      "id": "Qc3s0",
+      "key": "war-chant",
+      "hint": "The hero and all friendly units within 12” get +1 attack when charging.",
+      "name": "War Chant",
+      "tags": [],
+      "label": "War Chant",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The hero and all friendly units within 12” get +1 attack when charging."
+    }
+  ],
+  "spells": [
+    {
+      "id": "pKO0k",
+      "name": "Blurred Sight",
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” gets -1 to hit next time it shoots."
+    },
+    {
+      "id": "0ALEB",
+      "name": "Psychic Terror",
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "id": "Q-VNH",
+      "name": "Cursed Ground",
+      "threshold": 5,
+      "effect": "Target enemy unit within 18” moves -6” next time it charges."
+    },
+    {
+      "id": "UICqD",
+      "name": "Cerebral Trauma",
+      "threshold": 5,
+      "effect": "Target enemy model within 12” takes 1 automatic hit with AP(3)."
+    },
+    {
+      "id": "FJge6",
+      "name": "Time Passage",
+      "threshold": 6,
+      "effect": "Target friendly unit within 12” may immediately move by up to 6”."
+    },
+    {
+      "id": "ClDkW",
+      "name": "Lightning Fog",
+      "threshold": 6,
+      "effect": "Target 2 enemy units within 6” take 8 automatic hits each."
+    }
+  ],
+  "modifiedAt": "2021-10-20T13:46:17.268Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "grimdark-future",
+  "fullname": "Grimdark Future",
+  "aberration": "GF",
+  "universe": "Grimdark Future",
+  "shortname": "Grimdark Future"
+}

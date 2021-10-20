@@ -70,13 +70,6 @@ export default class UpgradeService {
 
     if (upgrade.type === "replace") {
 
-      // TODO: Will we need this here? Replacing more than 1 at a time perhaps...
-      const replaceCount = typeof (upgrade.affects) === "number"
-        ? upgrade.affects
-        : upgrade.affects === "all"
-          ? unit.size || 1 // All in unit
-          : 1;
-
       const canReplaceSet = (options: string[]) => {
         if (!Array.isArray(options)) {
           options = [options];

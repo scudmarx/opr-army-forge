@@ -53,7 +53,6 @@ export function Upgrades() {
   return (
     <div className={styles["upgrade-panel"]}>
 
-      {selectedUnit && <Paper square elevation={0}>
       {allowCombined && selectedUnit && <Paper square elevation={0}>
         <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
@@ -63,7 +62,7 @@ export function Upgrades() {
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
         </FormGroup>
-        {isHero && <FormGroup className="px-4 pt-2">
+        {isHero && <FormGroup className="px-4 pt-2 pb-3">
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Join To Unit</InputLabel>
             <Select
@@ -75,16 +74,9 @@ export function Upgrades() {
               {list.units.filter(u => u.size > 1).map((u, index) => (
                 <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size}]</MenuItem>
               ))}
-              
             </Select>
           </FormControl>
         </FormGroup>}
-        {/* {isHero && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
-          <FormControlLabel control={
-            <Checkbox checked={selectedUnit.joined} onClick={() => dispatch(toggleUnitJoined(selectedUnit.selectionId))
-            } />} label="Is Joining Unit" className="mr-2" />
-          <InfoOutlinedIcon color="primary" />
-        </FormGroup>} */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} />
         </div>

@@ -31,8 +31,8 @@ export default function MainMenu({ setListConfigurationOpen }) {
   };
 
   const handleShare = () => {
-    PersistenceService.download(list.name);
-  }
+    PersistenceService.download(list);
+  };
 
   return (
     <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
