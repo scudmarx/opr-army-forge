@@ -130,13 +130,13 @@ export default function Load() {
                     );
 
                     const deleteButton = (
-                      <IconButton onClick={() => deleteSave(save.list.name)}>
+                      <IconButton onClick={() => deleteSave(save)}>
                         <Delete />
                       </IconButton>
                     );
 
                     return (
-                      <ListItem key={save.list.name} disablePadding secondaryAction={deleteButton}>
+                      <ListItem key={save.list.creationTime} disablePadding secondaryAction={deleteButton}>
                         <ListItemButton onClick={() => loadSave(save)}>
                           <ListItemAvatar>
                             <Avatar>
