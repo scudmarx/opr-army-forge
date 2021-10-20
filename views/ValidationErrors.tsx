@@ -7,10 +7,10 @@ export default function ValidationErrors() {
 
   const list = useSelector((state: RootState) => state.list);
 
-  const unitCount = list.units.length;
+  const unitCount = list.units.filter(u => !u.joinToUnit).length;
   const heroCount = list.units.filter(u => u.specialRules.findIndex(rule => rule.name === "Hero") >= 0).length;
 
-  return null;
+  //return null;
 
   return (
     <>

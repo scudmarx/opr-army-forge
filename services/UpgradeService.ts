@@ -60,7 +60,7 @@ export default class UpgradeService {
   public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
     const controlType = this.getControlType(unit, upgrade);
-    const alreadySelected = this.countApplied(unit, upgrade, option);
+    //const alreadySelected = this.countApplied(unit, upgrade, option);
     const appliedInGroup = upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0);
 
     // if it's a radio, it's valid if any other upgrade in the group is already applied
