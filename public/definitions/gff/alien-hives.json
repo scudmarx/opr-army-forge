@@ -1,22 +1,29 @@
 {
-  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "gameSystemId": 3,
   "name": "Alien Hives",
-  "version": "2.11",
-  "dataToolVersion": "0.3.0",
+  "hint": "Alien Hives",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.11",
+  "dataToolVersion": "0.5.3",
   "units": [
     {
+      "id": "j4PiE2J",
       "name": "Veteran Warrior",
       "size": 1,
-      "quality": "4+",
-      "defense": "3+",
+      "quality": 4,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Bio-Carbine",
+          "id": "eur21xa",
+          "label": "Bio-Carbine",
           "attacks": 3,
-          "range": 18
+          "range": 18,
+          "specialRules": []
         },
         {
-          "name": "Razor Claws",
+          "id": "u4LCiJ7",
+          "label": "Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(1)"
@@ -24,24 +31,36 @@
         }
       ],
       "specialRules": [
-        "Hero",
-        "Tough(6)"
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A1",
         "B1",
         "C1"
       ],
-      "cost": 100
+      "cost": 100,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "TMMhrEl",
       "name": "Snatcher Veteran",
       "size": 1,
-      "quality": "3+",
-      "defense": "4+",
+      "quality": 3,
+      "defense": 4,
       "equipment": [
         {
-          "name": "Piercing Claws",
+          "id": "Ho3nFzA",
+          "label": "Piercing Claws",
           "count": 2,
           "attacks": 3,
           "specialRules": [
@@ -50,94 +69,157 @@
         }
       ],
       "specialRules": [
-        "Fast",
-        "Hero",
-        "Scout",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "scout",
+          "name": "Scout",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "D1"
       ],
-      "cost": 80
+      "cost": 80,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "1YKgvhi",
       "name": "Grunts",
       "size": 3,
-      "quality": "5+",
-      "defense": "5+",
+      "quality": 5,
+      "defense": 5,
       "equipment": [
         {
-          "name": "Bio-Guns",
+          "id": "auLRv-G",
+          "label": "Bio-Guns",
           "attacks": 1,
-          "range": 12
+          "range": 12,
+          "specialRules": []
         },
         {
-          "name": "Razor Claws",
-          "attacks": 2
+          "id": "2BcqHyR",
+          "label": "Razor Claws",
+          "attacks": 2,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Strider"
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "E1"
       ],
-      "cost": 40
+      "cost": 40,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "WuOia7g",
       "name": "Assault Grunts",
       "size": 3,
-      "quality": "5+",
-      "defense": "5+",
+      "quality": 5,
+      "defense": 5,
       "equipment": [
         {
-          "name": "Razor Claws",
-          "attacks": 3
+          "id": "XwU4Nqh",
+          "label": "Razor Claws",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fast",
-        "Strider"
-      ],
-      "upgradeSets": [
-        "F1"
-      ],
-      "cost": 50
-    },
-    {
-      "name": "Winged Grunts",
-      "size": 3,
-      "quality": "5+",
-      "defense": "5+",
-      "equipment": [
         {
-          "name": "Bio-Guns",
-          "attacks": 1,
-          "range": 12
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
         },
         {
-          "name": "Razor Claws",
-          "attacks": 2
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "F1"
+      ],
+      "cost": 50,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "AadzSDS",
+      "name": "Winged Grunts",
+      "size": 3,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "5J1_EZV",
+          "label": "Bio-Guns",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "WnsoPSR",
+          "label": "Razor Claws",
+          "attacks": 2,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Ambush",
-        "Flying"
+        {
+          "key": "ambush",
+          "name": "Ambush",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "E1"
       ],
-      "cost": 55
+      "cost": 55,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "jCEVlaj",
       "name": "Soul-Snatcher",
       "size": 1,
-      "quality": "3+",
-      "defense": "4+",
+      "quality": 3,
+      "defense": 4,
       "equipment": [
         {
-          "name": "Piercing Claws",
+          "id": "5VxRN-7",
+          "label": "Piercing Claws",
           "attacks": 3,
           "specialRules": [
             "Rending"
@@ -145,23 +227,39 @@
         }
       ],
       "specialRules": [
-        "Fast",
-        "Scout",
-        "Strider"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "scout",
+          "name": "Scout",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "D1"
       ],
-      "cost": 45
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "mU_1TR9",
       "name": "Hive Swarm",
       "size": 1,
-      "quality": "6+",
-      "defense": "6+",
+      "quality": 6,
+      "defense": 6,
       "equipment": [
         {
-          "name": "Swarm Attacks",
+          "id": "tKYfJqN",
+          "label": "Swarm Attacks",
           "attacks": 3,
           "specialRules": [
             "Poison"
@@ -169,27 +267,41 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Tough(3)"
-      ],
-      "upgradeSets": [
-        "G1"
-      ],
-      "cost": 20
-    },
-    {
-      "name": "Hive Warrior",
-      "size": 1,
-      "quality": "4+",
-      "defense": "3+",
-      "equipment": [
         {
-          "name": "Bio-Carbine",
-          "attacks": 3,
-          "range": 18
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
         },
         {
-          "name": "Razor Claws",
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "G1"
+      ],
+      "cost": 20,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "Zfu5Six",
+      "name": "Hive Warrior",
+      "size": 1,
+      "quality": 4,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "uSjHuD0",
+          "label": "Bio-Carbine",
+          "attacks": 3,
+          "range": 18,
+          "specialRules": []
+        },
+        {
+          "id": "KUj-Ion",
+          "label": "Razor Claws",
           "attacks": 4,
           "specialRules": [
             "AP(1)"
@@ -197,24 +309,36 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Tough(3)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A1",
         "B1",
         "C1"
       ],
-      "cost": 65
+      "cost": 65,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "rdYKt_e",
       "name": "Ravenous Beast",
       "size": 1,
-      "quality": "4+",
-      "defense": "3+",
+      "quality": 4,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Razor Claws",
+          "id": "axC-7vp",
+          "label": "Razor Claws",
           "count": 2,
           "attacks": 4,
           "specialRules": [
@@ -223,24 +347,40 @@
         }
       ],
       "specialRules": [
-        "Fast",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "B1",
         "H1"
       ],
-      "cost": 70
+      "cost": 70,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "yuaO-bn",
       "name": "Venom Floater",
       "size": 1,
-      "quality": "4+",
-      "defense": "3+",
+      "quality": 4,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Whip Limbs",
+          "id": "caNOtwK",
+          "label": "Whip Limbs",
           "attacks": 8,
           "specialRules": [
             "Poison"
@@ -248,21 +388,37 @@
         }
       ],
       "specialRules": [
-        "Shrouding Mist",
-        "Stealth",
-        "Tough(3)"
+        {
+          "key": "shrouding-mist",
+          "name": "Shrouding Mist",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 110
+      "upgrades": [],
+      "cost": 110,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "i76VS7H",
       "name": "Synapse Floater",
       "size": 1,
-      "quality": "4+",
-      "defense": "3+",
+      "quality": 4,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Psychic Blast",
+          "id": "ewnU84p",
+          "label": "Psychic Blast",
           "attacks": 1,
           "range": 18,
           "specialRules": [
@@ -271,29 +427,51 @@
           ]
         },
         {
-          "name": "Psychic Shock",
-          "attacks": 1
+          "id": "2-WR4WF",
+          "label": "Psychic Shock",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Regeneration",
-        "Psychic(1)",
-        "Stealth",
-        "Tough(3)"
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "psychic",
+          "name": "Psychic",
+          "rating": "1"
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "C1"
       ],
-      "cost": 100
+      "cost": 100,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "oblrJy5",
       "name": "Hive Guardian",
       "size": 1,
-      "quality": "3+",
-      "defense": "2+",
+      "quality": 3,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Razor Claws",
+          "id": "tEy4XJl",
+          "label": "Razor Claws",
           "count": 2,
           "attacks": 4,
           "specialRules": [
@@ -302,553 +480,1330 @@
         }
       ],
       "specialRules": [
-        "Relentless",
-        "Tough(3)"
+        {
+          "key": "relentless",
+          "name": "Relentless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "I1"
       ],
-      "cost": 90
+      "cost": 90,
+      "costMode": "manually",
+      "splitPageNumber": 1
     }
   ],
-  "upgradeSets": [
+  "upgradePackages": [
     {
-      "id": "A1",
-      "upgrades": [
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
         {
-          "text": "Replace Bio-Carbine",
+          "label": "Replace Bio-Carbine",
           "type": "replace",
-          "replaceWhat": "Bio-Carbine",
+          "replaceWhat": [
+            "Bio-Carbine"
+          ],
           "options": [
             {
-              "name": "Razor Claws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
+              "id": "94Tg4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Razor Claws (A4, AP(1))",
+              "gains": [
+                {
+                  "label": "Razor Claws (A4, AP(1))",
+                  "name": "Razor Claws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Twin Bio-Pistols",
-              "attacks": 6,
-              "range": 12,
-              "cost": 5
+              "id": "z1k4m",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Twin Bio-Pistols (12”, A6)",
+              "gains": [
+                {
+                  "label": "Twin Bio-Pistols (12”, A6)",
+                  "name": "Twin Bio-Pistols",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Heavy Bio-Carbine",
-              "attacks": 3,
-              "range": 18,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
+              "id": "SSUeX",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Heavy Bio-Carbine (18”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Heavy Bio-Carbine (18”, A3, AP(1))",
+                  "name": "Heavy Bio-Carbine",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Bio-Spitter",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "Blast(3)",
-                "AP(1)"
-              ],
-              "cost": 10
+              "id": "khmOb",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Bio-Spitter (24”, A1, Blast(3), AP(1))",
+              "gains": [
+                {
+                  "label": "Bio-Spitter (24”, A1, Blast(3), AP(1))",
+                  "name": "Bio-Spitter",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Shredder Cannon",
-              "attacks": 4,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 10
+              "id": "WSvqP",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Shredder Cannon (24” A4, Rending)",
+              "gains": [
+                {
+                  "label": "Shredder Cannon (24” A4, Rending)",
+                  "name": "Shredder Cannon",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Barb Cannon",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "AP(1)",
-                "Blast(3)"
-              ],
-              "cost": 15
+              "id": "6_lFs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Barb Cannon (36”, A1, AP(1), Blast(3))",
+              "gains": [
+                {
+                  "label": "Barb Cannon (36”, A1, AP(1), Blast(3))",
+                  "name": "Barb Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Acid Cannon",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 15
+              "id": "3IeCg",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Acid Cannon (36”, A1, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Acid Cannon (36”, A1, AP(3), Deadly(3))",
+                  "name": "Acid Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade with one",
+          "label": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
             {
-              "name": "Poison Hooks",
-              "attacks": 3,
-              "range": 6,
-              "specialRules": [
-                "Poison"
-              ],
-              "cost": 5
+              "id": "J8r63",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Poison Hooks (6”, A3, Poison)",
+              "gains": [
+                {
+                  "label": "Poison Hooks (6”, A3, Poison)",
+                  "name": "Poison Hooks",
+                  "attacks": 3,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Shredding Hooks",
-              "attacks": 3,
-              "range": 6,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 5
+              "id": "1lPCB",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Shredding Hooks (6”, A3, Rending)",
+              "gains": [
+                {
+                  "label": "Shredding Hooks (6”, A3, Rending)",
+                  "name": "Shredding Hooks",
+                  "attacks": 3,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Shock Hooks",
-              "attacks": 3,
-              "range": 6,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 5
+              "id": "iaQsj",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Shock Hooks (6”, A3, AP(2))",
+              "gains": [
+                {
+                  "label": "Shock Hooks (6”, A3, AP(2))",
+                  "name": "Shock Hooks",
+                  "attacks": 3,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Acid Hooks",
-              "attacks": 3,
-              "range": 6,
-              "specialRules": [
-                "Deadly(3)"
-              ],
-              "cost": 5
+              "id": "KMDIK",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Acid Hooks (6”, A3, Deadly(3))",
+              "gains": [
+                {
+                  "label": "Acid Hooks (6”, A3, Deadly(3))",
+                  "name": "Acid Hooks",
+                  "attacks": 3,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade with",
+          "label": "Upgrade with",
           "type": "upgrade",
           "options": [
             {
-              "name": "Wings",
-              "specialRules": [
-                "Ambush",
-                "Flying"
-              ],
-              "cost": 15
+              "id": "KAt3V",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Wings (Ambush, Flying)",
+              "gains": [
+                {
+                  "label": "Wings (Ambush, Flying)",
+                  "name": "Wings",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "ambush",
+                      "name": "Ambush",
+                      "rating": "",
+                      "label": "Ambush",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "B1",
-      "upgrades": [
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
         {
-          "text": "Replace any Razor Claws",
+          "label": "Replace any Razor Claws",
           "type": "replace",
           "affects": "any",
-          "replaceWhat": "Razor Claws",
+          "replaceWhat": [
+            "Razor Claws"
+          ],
           "options": [
             {
-              "name": "Piercing Claws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(1)",
-                "Rending"
-              ],
-              "cost": 5
+              "id": "hd9fi",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Piercing Claws (A4, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Piercing Claws (A4, AP(1), Rending)",
+                  "name": "Piercing Claws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Smashing Claws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(3)"
-              ],
-              "cost": 5
+              "id": "tlv08",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Smashing Claws (A4, AP(3))",
+              "gains": [
+                {
+                  "label": "Smashing Claws (A4, AP(3))",
+                  "name": "Smashing Claws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Serrated Claws",
-              "attacks": 8,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 10
+              "id": "m7s-N",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Serrated Claws (A8, AP(1))",
+              "gains": [
+                {
+                  "label": "Serrated Claws (A8, AP(1))",
+                  "name": "Serrated Claws",
+                  "attacks": 8,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Sword Claws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(1)",
-                "Deadly(3)"
-              ],
-              "cost": 10
+              "id": "qexee",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Sword Claws (A4, AP(1), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Sword Claws (A4, AP(1), Deadly(3))",
+                  "name": "Sword Claws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Whip Limb and Sword Claw",
-              "attacks": 3,
-              "specialRules": [
-                "Deadly(6)"
-              ],
-              "cost": 10
+              "id": "DXcgs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Whip Limb and Sword Claw (A3, Deadly(6))",
+              "gains": [
+                {
+                  "label": "Whip Limb and Sword Claw (A3, Deadly(6))",
+                  "name": "Whip Limb and Sword Claw",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "C1",
-      "upgrades": [
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
         {
-          "text": "Upgrade with any",
+          "label": "Upgrade with any",
           "type": "upgrade",
           "select": "any",
           "options": [
             {
-              "name": "Psychic Barrier",
-              "specialRules": [
-                "Psychic Barrier"
-              ],
-              "cost": 10
+              "id": "DhW6otu",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Psychic Barrier",
+              "gains": [
+                {
+                  "key": "psychic-barrier",
+                  "name": "Psychic Barrier",
+                  "rating": "",
+                  "label": "Psychic Barrier",
+                  "type": "ArmyBookRule"
+                }
+              ]
             },
             {
-              "name": "Pheromones",
-              "specialRules": [
-                "Pheromones"
-              ],
-              "cost": 15
+              "id": "ppg09De",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Pheromones",
+              "gains": [
+                {
+                  "key": "pheromones",
+                  "name": "Pheromones",
+                  "rating": "",
+                  "label": "Pheromones",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "D1",
-      "upgrades": [
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
         {
-          "text": "Upgrade with any",
+          "label": "Upgrade with any",
           "type": "upgrade",
           "select": "any",
           "options": [
             {
-              "name": "Razor Claws",
-              "attacks": 3,
-              "cost": 5
+              "id": "V8iCg",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Razor Claws (A3)",
+              "gains": [
+                {
+                  "label": "Razor Claws (A3)",
+                  "name": "Razor Claws",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Psychic(1)",
-              "specialRules": [
-                "Psychic(1)"
-              ],
-              "cost": 20
+              "id": "NOnznYq",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Psychic(1)",
+              "gains": [
+                {
+                  "key": "psychic",
+                  "name": "Psychic",
+                  "rating": "1",
+                  "label": "Psychic(1)",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "E1",
-      "upgrades": [
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
         {
-          "text": "Replace any Bio-Gun",
+          "label": "Replace any Bio-Gun",
           "type": "replace",
           "affects": "any",
-          "replaceWhat": "Bio-Gun",
+          "replaceWhat": [
+            "Bio-Gun"
+          ],
           "options": [
             {
-              "name": "Twin Bio-Pistols",
-              "attacks": 2,
-              "range": 12,
-              "cost": 5
+              "id": "bHWNx",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Twin Bio-Pistols (12”, A2)",
+              "gains": [
+                {
+                  "label": "Twin Bio-Pistols (12”, A2)",
+                  "name": "Twin Bio-Pistols",
+                  "attacks": 2,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Bio-Spike",
-              "attacks": 1,
-              "range": 18,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
+              "id": "zTVhu",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Bio-Spike (18”, A1, AP(1))",
+              "gains": [
+                {
+                  "label": "Bio-Spike (18”, A1, AP(1))",
+                  "name": "Bio-Spike",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Bio-Carbine",
-              "attacks": 3,
-              "range": 18,
-              "cost": 10
+              "id": "s9MMA",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Bio-Carbine (18”, A3)",
+              "gains": [
+                {
+                  "label": "Bio-Carbine (18”, A3)",
+                  "name": "Bio-Carbine",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace one Bio-Gun",
+          "label": "Replace one Bio-Gun",
           "type": "replace",
           "affects": 1,
-          "replaceWhat": "Bio-Gun",
+          "replaceWhat": [
+            "Bio-Gun"
+          ],
           "options": [
             {
-              "name": "Bio-Shredder",
-              "attacks": 2,
-              "range": 6,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 5
+              "id": "dMGkY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Bio-Shredder (6”, A2, Rending)",
+              "gains": [
+                {
+                  "label": "Bio-Shredder (6”, A2, Rending)",
+                  "name": "Bio-Shredder",
+                  "attacks": 2,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Shock-Gun",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 5
+              "id": "8L6mn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Shock-Gun (12”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Shock-Gun (12”, A1, AP(2))",
+                  "name": "Shock-Gun",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Bio-Flamer",
-              "attacks": 6,
-              "range": 12,
-              "cost": 10
+              "id": "2NzOI",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Bio-Flamer (12”, A6)",
+              "gains": [
+                {
+                  "label": "Bio-Flamer (12”, A6)",
+                  "name": "Bio-Flamer",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Acid-Gun",
-              "attacks": 1,
-              "range": 6,
-              "specialRules": [
-                "AP(3)",
-                "Deadly(3)"
-              ],
-              "cost": 10
+              "id": "mZENl",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Acid-Gun (6”, A1, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Acid-Gun (6”, A1, AP(3), Deadly(3))",
+                  "name": "Acid-Gun",
+                  "attacks": 1,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Bio-Rifle",
-              "attacks": 1,
-              "range": 18,
-              "specialRules": [
-                "AP(1)",
-                "Sniper"
-              ],
-              "cost": 10
+              "id": "SCouU",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Bio-Rifle (18”, A1, AP(1), Sniper)",
+              "gains": [
+                {
+                  "label": "Bio-Rifle (18”, A1, AP(1), Sniper)",
+                  "name": "Bio-Rifle",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "sniper",
+                      "name": "Sniper",
+                      "rating": "",
+                      "label": "Sniper",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade all models with any",
+          "label": "Upgrade all models with any",
           "type": "upgrade",
           "affects": "all",
           "select": "any",
           "options": [
             {
-              "name": "Adrenaline",
-              "specialRules": [
-                "Furious"
-              ],
-              "cost": 10
+              "id": "lfGU-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Adrenaline (Furious)",
+              "gains": [
+                {
+                  "label": "Adrenaline (Furious)",
+                  "name": "Adrenaline",
+                  "content": [
+                    {
+                      "key": "furious",
+                      "name": "Furious",
+                      "rating": "",
+                      "label": "Furious",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             },
             {
-              "name": "Toxic Bite",
-              "specialRules": [
-                "Poison in melee"
-              ],
-              "cost": 10
+              "id": "tdfCR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Toxic Bite (Poison in melee)",
+              "gains": [
+                {
+                  "label": "Toxic Bite (Poison in melee)",
+                  "name": "Toxic Bite",
+                  "content": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "Poison in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "F1",
-      "upgrades": [
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
         {
-          "text": "Replace any Razor Claws",
+          "label": "Replace any Razor Claws",
           "type": "replace",
           "affects": "any",
-          "replaceWhat": "Razor Claws",
+          "replaceWhat": [
+            "Razor Claws"
+          ],
           "options": [
             {
-              "name": "Serrated Claws",
-              "attacks": 6,
-              "cost": 5
+              "id": "gp9Fe",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Serrated Claws (A6)",
+              "gains": [
+                {
+                  "label": "Serrated Claws (A6)",
+                  "name": "Serrated Claws",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Piercing Claws",
-              "attacks": 3,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 5
+              "id": "lCr8x",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Piercing Claws (A3, Rending)",
+              "gains": [
+                {
+                  "label": "Piercing Claws (A3, Rending)",
+                  "name": "Piercing Claws",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Smashing Claws",
-              "attacks": 3,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 5
+              "id": "IRPum",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Smashing Claws (A3, AP(2))",
+              "gains": [
+                {
+                  "label": "Smashing Claws (A3, AP(2))",
+                  "name": "Smashing Claws",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Sword Claws",
-              "attacks": 3,
-              "specialRules": [
-                "Deadly(3)"
-              ],
-              "cost": 5
+              "id": "fL0do",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Sword Claws (A3, Deadly(3))",
+              "gains": [
+                {
+                  "label": "Sword Claws (A3, Deadly(3))",
+                  "name": "Sword Claws",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade all models with any",
+          "label": "Upgrade all models with any",
           "type": "upgrade",
           "affects": "all",
           "select": "any",
           "options": [
             {
-              "name": "Adrenaline",
-              "specialRules": [
-                "Furious"
-              ],
-              "cost": 10
+              "id": "t80xI",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Adrenaline (Furious)",
+              "gains": [
+                {
+                  "label": "Adrenaline (Furious)",
+                  "name": "Adrenaline",
+                  "content": [
+                    {
+                      "key": "furious",
+                      "name": "Furious",
+                      "rating": "",
+                      "label": "Furious",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             },
             {
-              "name": "Toxic Bite",
-              "specialRules": [
-                "Poison in melee"
-              ],
-              "cost": 10
+              "id": "7JM_z",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Toxic Bite (Poison in melee)",
+              "gains": [
+                {
+                  "label": "Toxic Bite (Poison in melee)",
+                  "name": "Toxic Bite",
+                  "content": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "Poison in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "G1",
-      "upgrades": [
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
         {
-          "text": "Upgrade any",
+          "label": "Upgrade any",
           "type": "upgrade",
           "affects": "any",
           "options": [
             {
-              "name": "Burrow Attack",
-              "specialRules": [
-                "Ambush"
-              ],
-              "cost": 5
+              "id": "GRoiQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Burrow Attack (Ambush)",
+              "gains": [
+                {
+                  "label": "Burrow Attack (Ambush)",
+                  "name": "Burrow Attack",
+                  "content": [
+                    {
+                      "key": "ambush",
+                      "name": "Ambush",
+                      "rating": "",
+                      "label": "Ambush",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             },
             {
-              "name": "Twin Bio-Pistols",
-              "attacks": 6,
-              "range": 12,
-              "cost": 5
+              "id": "XTsKA",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Twin Bio-Pistols (12”, A6)",
+              "gains": [
+                {
+                  "label": "Twin Bio-Pistols (12”, A6)",
+                  "name": "Twin Bio-Pistols",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "H1",
-      "upgrades": [
+      "uid": "H1",
+      "hint": "H1",
+      "sections": [
         {
-          "text": "Upgrade with one",
+          "label": "Upgrade with one",
           "type": "upgrade",
           "select": 1,
           "options": [
             {
-              "name": "Tunnel Attack",
-              "specialRules": [
-                "Ambush"
-              ],
-              "cost": 5
+              "id": "x8yzl",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Tunnel Attack (Ambush)",
+              "gains": [
+                {
+                  "label": "Tunnel Attack (Ambush)",
+                  "name": "Tunnel Attack",
+                  "content": [
+                    {
+                      "key": "ambush",
+                      "name": "Ambush",
+                      "rating": "",
+                      "label": "Ambush",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             },
             {
-              "name": "Adrenaline Rush",
-              "specialRules": [
-                "Scout"
-              ],
-              "cost": 5
+              "id": "C9s4e",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Adrenaline Rush (Scout)",
+              "gains": [
+                {
+                  "label": "Adrenaline Rush (Scout)",
+                  "name": "Adrenaline Rush",
+                  "content": [
+                    {
+                      "key": "scout",
+                      "name": "Scout",
+                      "rating": "",
+                      "label": "Scout",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "I1",
-      "upgrades": [
+      "uid": "I1",
+      "hint": "I1",
+      "sections": [
         {
-          "text": "Replace any Razor Claws",
+          "label": "Replace any Razor Claws",
           "type": "replace",
           "affects": "any",
-          "replaceWhat": "Razor Claws",
+          "replaceWhat": [
+            "Razor Claws"
+          ],
           "options": [
             {
-              "name": "Piercing Claws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(2)",
-                "Rending"
-              ],
-              "cost": 5
+              "id": "iaDYH",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Piercing Claws (A4, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Piercing Claws (A4, AP(2), Rending)",
+                  "name": "Piercing Claws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Smashing Claws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(4)"
-              ],
-              "cost": 10
+              "id": "c95Wv",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Smashing Claws (A4, AP(4))",
+              "gains": [
+                {
+                  "label": "Smashing Claws (A4, AP(4))",
+                  "name": "Smashing Claws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Serrated Claws",
-              "attacks": 8,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 15
+              "id": "pE88i",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Serrated Claws (A8, AP(2))",
+              "gains": [
+                {
+                  "label": "Serrated Claws (A8, AP(2))",
+                  "name": "Serrated Claws",
+                  "attacks": 8,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Sword Claws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(2)",
-                "Deadly(3)"
-              ],
-              "cost": 15
+              "id": "kmjRl",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Sword Claws (A4, AP(2), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Sword Claws (A4, AP(2), Deadly(3))",
+                  "name": "Sword Claws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Whip Limb and Sword Claw",
-              "attacks": 3,
-              "specialRules": [
-                "AP(1)",
-                "Deadly(6)"
-              ],
-              "cost": 20
+              "id": "3zuzQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Whip Limb and Sword Claw (A3, AP(1), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Whip Limb and Sword Claw (A3, AP(1), Deadly(6))",
+                  "name": "Whip Limb and Sword Claw",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Replace one Razor Claws",
+          "label": "Replace one Razor Claws",
           "type": "replace",
           "affects": 1,
-          "replaceWhat": "Razor Claws",
+          "replaceWhat": [
+            "Razor Claws"
+          ],
           "options": [
             {
-              "name": "Heavy Shock-Gun",
-              "attacks": 1,
-              "range": 24,
-              "specialRules": [
-                "AP(2)",
-                "Blast(3)"
-              ],
-              "cost": 10
+              "id": "pzrRr",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Heavy Shock-Gun (24”, A1, AP(2), Blast(3))",
+              "gains": [
+                {
+                  "label": "Heavy Shock-Gun (24”, A1, AP(2), Blast(3))",
+                  "name": "Heavy Shock-Gun",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Bio-Harpoon",
-              "attacks": 2,
-              "range": 24,
-              "specialRules": [
-                "AP(4)",
-                "Deadly(3)"
-              ],
-              "cost": 30
+              "id": "Dd3Y0",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Bio-Harpoon (24”, A2, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Bio-Harpoon (24”, A2, AP(4), Deadly(3))",
+                  "name": "Bio-Harpoon",
+                  "attacks": 2,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -857,48 +1812,89 @@
   ],
   "specialRules": [
     {
+      "id": "SrKka",
+      "key": "pheromones",
+      "hint": "When this unit is activated, pick 2 friendly units within 12”. Next time that they fail a morale test, they take one wound and then all friendly units within 12” automatically pass morale tests until the end of the round.",
       "name": "Pheromones",
+      "tags": [],
+      "label": "Pheromones",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "When this unit is activated, pick 2 friendly units within 12”. Next time that they fail a morale test, they take one wound and then all friendly units within 12” automatically pass morale tests until the end of the round."
     },
     {
+      "id": "Ql1of",
+      "key": "psychic-barrier",
+      "hint": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls.",
       "name": "Psychic Barrier",
+      "tags": [],
+      "label": "Psychic Barrier",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "This model may block spells as if it had the Psychic(2) special rule. If it is a Psychic then it gets +2 to spell block rolls."
     },
     {
+      "id": "VxZ9f",
+      "key": "shrouding-mist",
+      "hint": "When this unit is activated, pick 2 friendly units within 6”. Those units and all friendly units within 12” get Stealth next time they are shot at.",
       "name": "Shrouding Mist",
+      "tags": [],
+      "label": "Shrouding Mist",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "When this unit is activated, pick 2 friendly units within 6”. Those units and all friendly units within 12” get Stealth next time they are shot at."
     }
   ],
   "spells": [
     {
+      "id": "0NV4A",
       "name": "Terror",
-      "test": "4+",
-      "description": "Target enemy unit within 12” gets -2 its next morale test roll."
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” gets -2 its next morale test roll."
     },
     {
+      "id": "4-UBK",
       "name": "Psychic Blast",
-      "test": "4+",
-      "description": "Target enemy unit within 12” takes 1 hit with AP(2) and Deadly(3)."
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” takes 1 hit with AP(2) and Deadly(3)."
     },
     {
+      "id": "YeqIF",
       "name": "Infuse Life",
-      "test": "5+",
-      "description": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
+      "threshold": 5,
+      "effect": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
     },
     {
+      "id": "xtAb6",
       "name": "Shriek",
-      "test": "5+",
-      "description": "Target 2 enemy units within 6” take 3 automatic hits with AP(2) each."
+      "threshold": 5,
+      "effect": "Target 2 enemy units within 6” take 3 automatic hits with AP(2) each."
     },
     {
+      "id": "sGsB_",
       "name": "Animate Flora",
-      "test": "6+",
-      "description": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
+      "threshold": 6,
+      "effect": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
     },
     {
+      "id": "oTHG2",
       "name": "Overwhelm",
-      "test": "6+",
-      "description": "Target enemy model within 12” takes 3 automatic hits with AP(2)."
+      "threshold": 6,
+      "effect": "Target enemy model within 12” takes 3 automatic hits with AP(2)."
     }
-  ]
+  ],
+  "modifiedAt": "2021-10-20T13:07:43.436Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "grimdark-future-firefight",
+  "fullname": "Grimdark Future: Firefight",
+  "aberration": "GFF",
+  "universe": "Grimdark Future",
+  "shortname": "GF: Firefight"
 }
