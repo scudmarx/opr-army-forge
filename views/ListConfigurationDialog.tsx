@@ -42,16 +42,12 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
 
     const finish = (army) => {
       const name = armyName || "My List";
-      const saveExists = PersistenceService.checkExists(name);
 
-      if (!saveExists || confirm("List with this name already exists. Are you sure you'd like to overwrite it?")) {
+      const creationTime = PersistenceService.createSave(army, name);
 
-        const creationTime = PersistenceService.createSave(army, name);
+      dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime }));
 
-        dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime }));
-
-        router.push('/list');
-      }
+      router.push('/list');
     };
 
     if (useBeta) {
