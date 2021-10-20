@@ -99,11 +99,11 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
             </div>
             <TextField variant="filled" label="List Name" className="mb-4" value={armyName} onChange={(e) => setArmyName(e.target.value)} />
             <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />
-            <FormGroup className="mb-0 is-flex-direction-row is-align-items-center">
+            {!isEdit && <FormGroup className="mb-0 is-flex-direction-row is-align-items-center">
               <FormControlLabel control={
                 <Checkbox checked={autoSave} onClick={() => setAutoSave(!autoSave)} />
               } label="Auto Save List" />
-            </FormGroup>
+            </FormGroup>}
             {showBetaFlag && <FormGroup className="is-flex-direction-row is-align-items-center">
               <FormControlLabel control={
                 <Checkbox checked={useBeta} onClick={() => setUseBeta(!useBeta)} />

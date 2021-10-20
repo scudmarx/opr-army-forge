@@ -10,7 +10,7 @@ export default class PersistenceService {
   private static prefix = "AF_Save_";
 
   private static getSaveKey(list: ListState) {
-    return this.prefix + list.name + list.creationTime;
+    return this.prefix + list.creationTime;
   }
 
   public static saveImport(saveName: any, json: string) {
