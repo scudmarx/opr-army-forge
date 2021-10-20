@@ -102,7 +102,7 @@ export default function MainMenu({ setListConfigurationOpen }) {
         >
           <MenuItem onClick={() => setListConfigurationOpen(true)}>Edit Details</MenuItem>
           <MenuItem onClick={() => router.push("/view")}>View</MenuItem>
-          {!PersistenceService.checkExists(list) && <MenuItem onClick={handleSave}>Save</MenuItem>}
+          {!list.creationTime && <MenuItem onClick={handleSave}>Save</MenuItem>}
           <MenuItem onClick={handleShare}>Export/Share</MenuItem>
           <MenuItem onClick={handleLoad}>Load</MenuItem>
         </Menu>
