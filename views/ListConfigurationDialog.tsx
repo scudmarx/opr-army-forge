@@ -29,6 +29,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
   const [armyName, setArmyName] = useState(isEdit ? list.name : "");
   const [pointsLimit, setPointsLimit] = useState(null);
   const [useBeta, setUseBeta] = useState(false);
+  const [autoSave, setAutoSave] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -43,7 +44,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
     const finish = (army) => {
       const name = armyName || "My List";
 
-      const creationTime = PersistenceService.createSave(army, name);
+      const creationTime = autoSave ? PersistenceService.createSave(army, name) : null;
 
       dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime }));
 
@@ -98,16 +99,21 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
             </div>
             <TextField variant="filled" label="List Name" className="mb-4" value={armyName} onChange={(e) => setArmyName(e.target.value)} />
             <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />
-            {showBetaFlag && <FormGroup className="mb-4 is-flex-direction-row is-align-items-center">
+            <FormGroup className="mb-0 is-flex-direction-row is-align-items-center">
+              <FormControlLabel control={
+                <Checkbox checked={autoSave} onClick={() => setAutoSave(!autoSave)} />
+              } label="Auto Save List" />
+            </FormGroup>
+            {showBetaFlag && <FormGroup className="is-flex-direction-row is-align-items-center">
               <FormControlLabel control={
                 <Checkbox checked={useBeta} onClick={() => setUseBeta(!useBeta)} />
               } label="Use v2.5 Beta" />
             </FormGroup>}
             {
               isEdit
-                ? <Button variant="contained" onClick={() => update()}>Save Changes</Button>
+                ? <Button className="mt-4" variant="contained" onClick={() => update()}>Save Changes</Button>
                 : customArmies
-                  ? <Button variant="contained" onClick={() => create()}>Create List</Button>
+                  ? <Button className="mt-4" variant="contained" onClick={() => create()}>Create List</Button>
                   : (
                     <div className="is-flex is-flex-direction-column is-align-items-center	">
                       <CircularProgress />

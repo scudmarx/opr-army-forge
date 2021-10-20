@@ -17,15 +17,20 @@ export default class PersistenceService {
     localStorage[this.prefix + saveName] = json;
   }
 
-  public static createSave(army: ArmyState, name: string): string {
+  public static createSave(army: ArmyState, name: string, existingList?: ListState): string {
 
     const creationTime = new Date().getTime().toString();
-    const list: ListState = {
-      creationTime: creationTime,
-      name: name,
-      units: [],
-      points: 0
-    };
+    const list: ListState = existingList
+      ? {
+        ...existingList,
+        creationTime: creationTime
+      }
+      : {
+        creationTime: creationTime,
+        name: name,
+        units: [],
+        points: 0
+      };
 
     const saveData: ISaveData = {
       gameSystem: army.gameSystem,
@@ -48,7 +53,11 @@ export default class PersistenceService {
 
   public static updateSave(list: ListState) {
 
-    const existingSave: ISaveData = JSON.parse(localStorage[this.getSaveKey(list)]);
+    const localSave = localStorage[this.getSaveKey(list)];
+    if (!localSave)
+      return;
+
+    const existingSave: ISaveData = JSON.parse(localSave);
     const points: number = UpgradeService.calculateListTotal(list.units);
 
     const saveData: ISaveData = {

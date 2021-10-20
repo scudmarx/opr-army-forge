@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../data/store";
 import UpgradeService from "../../services/UpgradeService";
 import PersistenceService from "../../services/PersistenceService";
+import { updateCreationTime } from "../../data/listSlice";
 
 export default function MainMenu({ setListConfigurationOpen }) {
 
@@ -28,6 +29,11 @@ export default function MainMenu({ setListConfigurationOpen }) {
 
   const handleLoad = () => {
     router.push("/load");
+  };
+
+  const handleSave = () => {
+    const creationTime = PersistenceService.createSave(army, list.name, list);
+    dispatch(updateCreationTime(creationTime));
   };
 
   const handleShare = () => {
@@ -96,6 +102,7 @@ export default function MainMenu({ setListConfigurationOpen }) {
         >
           <MenuItem onClick={() => setListConfigurationOpen(true)}>Edit Details</MenuItem>
           <MenuItem onClick={() => router.push("/view")}>View</MenuItem>
+          {!PersistenceService.checkExists(list) && <MenuItem onClick={handleSave}>Save</MenuItem>}
           <MenuItem onClick={handleShare}>Export/Share</MenuItem>
           <MenuItem onClick={handleLoad}>Load</MenuItem>
         </Menu>

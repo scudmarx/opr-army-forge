@@ -49,6 +49,10 @@ export const listSlice = createSlice({
       state.name = name;
       state.pointsLimit = pointsLimit;
     },
+    updateCreationTime: (state, action: PayloadAction<string>) => {
+      state.creationTime = action.payload;
+      debounceSave(current(state));
+    },
     updateListSettings: (state, action: PayloadAction<{ name: string, pointsLimit?: number }>) => {
       const { name, pointsLimit } = action.payload;
       state.name = name;
@@ -113,7 +117,7 @@ export const listSlice = createSlice({
       const { unitId, joinToUnitId } = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
       const joinToUnit = state.units.filter(u => u.selectionId === joinToUnitId)[0];
-      
+
       unit.joinToUnit = joinToUnit.selectionId;
 
       debounceSave(current(state));
@@ -161,7 +165,8 @@ export const {
   toggleUnitCombined,
   joinUnit,
   loadSavedList,
-  updateListSettings
+  updateListSettings,
+  updateCreationTime
 } = listSlice.actions
 
 export default listSlice.reducer
