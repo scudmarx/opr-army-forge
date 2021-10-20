@@ -36,9 +36,11 @@ export default function Load() {
     })
   };
 
-  const deleteSave = (name) => {
-    PersistenceService.delete(name);
-    setTimeout(() => setForceLoad(forceLoad + 1), 1);
+  const deleteSave = (save) => {
+    if (confirm(`Are you sure you want to delete ${save.name}?`)) {
+      PersistenceService.delete(save);
+      setTimeout(() => setForceLoad(forceLoad + 1), 1);
+    }
   };
 
   const readSingleFile = (e) => {
