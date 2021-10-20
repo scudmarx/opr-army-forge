@@ -24,7 +24,8 @@ export default class PersistenceService {
       listPoints: 0,
       list: {
         name: name,
-        units: []
+        units: [],
+        points: 0
       }
     };
 

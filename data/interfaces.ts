@@ -39,11 +39,11 @@ export interface IUnit {
 }
 
 export interface ISelectedUnit extends IUnit {
-  selectionId: number;
+  selectionId: string;
   customName?: string;
   selectedUpgrades: IUpgradeOption[];
   combined: boolean;
-  linkToUnit: number;
+  joinToUnit: string;
 }
 
 export interface IUpgrade {

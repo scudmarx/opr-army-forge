@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, Paper } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, Paper, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
@@ -7,7 +7,7 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { toggleUnitCombined, toggleUnitJoined } from '../../data/listSlice';
+import { toggleUnitCombined, joinUnit } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
@@ -39,6 +39,15 @@ export function Upgrades() {
   const isHero = selectedUnit ? selectedUnit.specialRules.findIndex(sr => sr.name === "Hero") > -1 : false;
   const isPsychic = specialRules?.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
 
+  const joinToUnit = (e) => {
+    const joinToUnitId = e.target.value;
+
+    dispatch(joinUnit({
+      unitId: selectedUnit.selectionId,
+      joinToUnitId: joinToUnitId
+    }));
+  };
+
   return (
     <div className={styles["upgrade-panel"]}>
 
@@ -51,6 +60,22 @@ export function Upgrades() {
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
         </FormGroup>
+        {isHero && <FormGroup className="px-4 pt-2">
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Join To Unit</InputLabel>
+            <Select
+              value={selectedUnit.joinToUnit}
+              label="Join To Unit"
+              onChange={joinToUnit}
+            >
+              <MenuItem value={null}>None</MenuItem>
+              {list.units.filter(u => u.size > 1).map((u, index) => (
+                <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size}]</MenuItem>
+              ))}
+              
+            </Select>
+          </FormControl>
+        </FormGroup>}
         {/* {isHero && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.joined} onClick={() => dispatch(toggleUnitJoined(selectedUnit.selectionId))

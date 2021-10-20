@@ -23,8 +23,6 @@ export default function View() {
   const [showPsychic, setShowPsychic] = useState(true);
   const [showFullRules, setShowFullRules] = useState(true);
 
-  const points = UpgradeService.calculateListTotal(list.units);
-
   return (
     <>
       {/* <Head>
@@ -45,7 +43,7 @@ export default function View() {
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {list.name} • {points}pts
+              {list.name} • {list.points}pts
             </Typography>
             <IconButton
               size="large"
