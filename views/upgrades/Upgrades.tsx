@@ -15,6 +15,7 @@ import { CustomTooltip } from '../components/CustomTooltip';
 export function Upgrades() {
 
   const list = useSelector((state: RootState) => state.list);
+  const gameSystem = useSelector((state: RootState) => state.army.gameSystem);
   const army = useSelector((state: RootState) => state.army.data);
   const spells = army?.spells;
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ export function Upgrades() {
     .concat(unitUpgradeRules)
     .filter(r => r.name !== "-");
 
+  const allowCombined = gameSystem === "gf" || gameSystem === "aof";
   const isHero = selectedUnit ? selectedUnit.specialRules.findIndex(sr => sr.name === "Hero") > -1 : false;
   const isPsychic = specialRules?.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
 
@@ -52,6 +54,7 @@ export function Upgrades() {
     <div className={styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
+      {allowCombined && selectedUnit && <Paper square elevation={0}>
         <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))
