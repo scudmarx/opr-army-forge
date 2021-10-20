@@ -37,7 +37,7 @@ export function Upgrades() {
     .concat(unitUpgradeRules)
     .filter(r => r.name !== "-");
 
-  const allowCombined = gameSystem === "gf" || gameSystem === "aof";
+  const isSkirmish = gameSystem !== "gf" && gameSystem !== "aof";
   const isHero = selectedUnit ? selectedUnit.specialRules.findIndex(sr => sr.name === "Hero") > -1 : false;
   const isPsychic = specialRules?.findIndex(r => r.name === "Psychic" || r.name === "Wizard") > -1;
 
@@ -54,7 +54,7 @@ export function Upgrades() {
     <div className={styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
-        {allowCombined &&<FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {!isSkirmish &&<FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))
             } />} label="Double Unit Size" className="mr-2" />
@@ -62,7 +62,7 @@ export function Upgrades() {
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
         </FormGroup>}
-        {isHero && <FormGroup className="px-4 pt-2 pb-3">
+        {!isSkirmish && isHero && <FormGroup className="px-4 pt-2 pb-3">
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Join To Unit</InputLabel>
             <Select
