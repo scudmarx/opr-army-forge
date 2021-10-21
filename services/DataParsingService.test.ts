@@ -680,7 +680,7 @@ test("Parse equipment with rule", () => {
 });
 
 test("Parse AoF format mount 1", () => {
-  const mount = parse('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts');
+  const mount = parse('Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts', true);
 
   const expected = {
     label: "Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3)",
@@ -701,7 +701,35 @@ test("Parse AoF format mount 1", () => {
     ]
   };
 
-  //expect(mount).toStrictEqual(expected);
+  expect(mount).toStrictEqual(expected);
+});
+
+test("Parse AoF format mount 1", () => {
+  const text = `
+A Mount on:
+Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3) +120pts`;
+  const mount = DataParsingService.parseUpgrades(text);
+
+  const expected = {
+    label: "Great War-Bear - Claws (A3, AP(1)), Fear, Impact(3), Swift, Tough(+3)",
+    cost: 120,
+    gains: [
+      {
+        label: "Great War-Bear",
+        content: [
+          "Fear", "Impact(3)", "Swift", "Tough(+3)"
+        ],
+        type: "ArmyBookItem"
+      },
+      {
+        label: "Great War-Bear - Claws",
+        attacks: 3,
+        specialRules: ["AP(1)"]
+      }
+    ]
+  };
+
+  expect(mount).toStrictEqual(expected);
 });
 
 test("Parse AoF format mount 2", () => {

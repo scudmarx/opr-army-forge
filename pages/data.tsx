@@ -44,15 +44,14 @@ export default function Data() {
         }
 
         try {
-            debugger;
-            const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units, 1), 1);
-            const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2, 2), 2);
-            const parsedUnits3: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units3, 3), 3);
-            const parsedUnits4: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units4, 4), 4);
-            const parsedUnits5: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units5, 5), 5);
-            const parsedUpgrades = DataParsingService.parseUpgrades(upgrades);
-            const parsedRules = distinct(DataParsingService.parseRules(rules), (a,b) => a.name === b.name);
-            const parsedSpells = DataParsingService.parseSpells(spells);
+            const parsedUnits: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units.replace("–", "-"), 1), 1);
+            const parsedUnits2: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units2.replace("–", "-"), 2), 2);
+            const parsedUnits3: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units3.replace("–", "-"), 3), 3);
+            const parsedUnits4: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units4.replace("–", "-"), 4), 4);
+            const parsedUnits5: any[] = replaceUpgradeSets(DataParsingService.parseUnits(units5.replace("–", "-"), 5), 5);
+            const parsedUpgrades = DataParsingService.parseUpgrades(upgrades.replace("–", "-"));
+            const parsedRules = distinct(DataParsingService.parseRules(rules.replace("–", "-")), (a,b) => a.name === b.name);
+            const parsedSpells = DataParsingService.parseSpells(spells.replace("–", "-"));
 
             const gameDetails = {
                 gf: {

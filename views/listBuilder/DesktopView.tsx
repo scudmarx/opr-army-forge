@@ -23,17 +23,17 @@ export default function DesktopView() {
         <MainMenu setListConfigurationOpen={setEditListOpen} />
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
-        <div className="column py-0" style={columnStyle}>
+        <div className="column py-0 pr-0" style={columnStyle}>
           <UnitSelection onSelected={() => { }} />
         </div>
-        <div className="column py-0" style={columnStyle}>
+        <div className="column p-0" style={columnStyle}>
           <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}pts`}</h3>
           <MainList onSelected={() => { }} />
         </div>
-        <div className="column py-0 px-0" style={columnStyle}>
-          <div className="px-4 pt-4">
+        <div className="column py-0 px-0 mr-4" style={columnStyle}>
+          <Paper square className="px-4 pt-4">
             <UpgradePanelHeader />
-          </div>
+          </Paper>
           <Upgrades />
         </div>
       </div>
