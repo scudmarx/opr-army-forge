@@ -1,38 +1,60 @@
 {
-  "$schema": "https://raw.githubusercontent.com/AdamLay/opr-army-forge/master/public/definitions/army.schema.json",
+  "gameSystemId": 4,
   "name": "Saurians",
+  "hint": "Saurians",
+  "background": "",
+  "armyWideRule": {},
   "versionString": "v2.8",
-  "dataToolVersion": "0.3.0",
+  "dataToolVersion": "0.5.3",
   "units": [
     {
+      "id": "YGAwv-l",
       "name": "Frog-Mage",
       "size": 1,
-      "quality": "2+",
-      "defense": "2+",
+      "quality": 2,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Energy Pulse",
-          "attacks": 1
+          "id": "KImzu7O",
+          "label": "Energy Pulse",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Hero",
-        "Tough(3)",
-        "Wizard(2)"
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "wizard",
+          "name": "Wizard",
+          "rating": "2"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "A1"
       ],
-      "cost": 110
+      "cost": 110,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "pa6wyDr",
       "name": "Saurian Veteran",
       "size": 1,
-      "quality": "3+",
-      "defense": "3+",
+      "quality": 3,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Hand Weapon",
+          "id": "GdYUmSU",
+          "label": "Hand Weapon",
           "attacks": 4,
           "specialRules": [
             "AP(1)"
@@ -40,88 +62,167 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Hero",
-        "Predator",
-        "Tough(3)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "predator",
+          "name": "Predator",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "B1"
       ],
-      "cost": 75
+      "cost": 75,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "1y-T_RQ",
       "name": "Gecko Chief",
       "size": 1,
-      "quality": "4+",
-      "defense": "5+",
+      "quality": 4,
+      "defense": 5,
       "equipment": [
         {
-          "name": "Hand Weapon",
-          "attacks": 3
+          "id": "A71N7GZ",
+          "label": "Hand Weapon",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Hero",
-        "Tough(3)",
-        "Strider"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "C1"
       ],
-      "cost": 45
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "d55aYz8",
       "name": "Gecko Priest",
       "size": 1,
-      "quality": "5+",
-      "defense": "6+",
+      "quality": 5,
+      "defense": 6,
       "equipment": [
         {
-          "name": "Hand Weapon",
-          "attacks": 1
+          "id": "ZRbCbwh",
+          "label": "Hand Weapon",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Hero",
-        "Tough(3)",
-        "Strider",
-        "Wizard(1)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "wizard",
+          "name": "Wizard",
+          "rating": "1"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 45
+      "upgrades": [],
+      "cost": 45,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "-dzHIq2",
       "name": "Geckos",
       "size": 5,
-      "quality": "5+",
-      "defense": "6+",
+      "quality": 5,
+      "defense": 6,
       "equipment": [
         {
-          "name": "Hand Weapons",
-          "attacks": 1
+          "id": "6F2tcTL",
+          "label": "Hand Weapons",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Strider"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "D1",
         "E1"
       ],
-      "cost": 55
+      "cost": 55,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "WMpRfKP",
       "name": "Chameleons",
       "size": 5,
-      "quality": "4+",
-      "defense": "6+",
+      "quality": 4,
+      "defense": 6,
       "equipment": [
         {
-          "name": "Blowpipes",
+          "id": "eeyjV6k",
+          "label": "Blowpipes",
           "attacks": 1,
           "range": 18,
           "specialRules": [
@@ -129,75 +230,137 @@
           ]
         },
         {
-          "name": "Hand Weapons",
-          "attacks": 1
+          "id": "8TUt1ny",
+          "label": "Hand Weapons",
+          "attacks": 1,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Chameleon",
-        "Fearless",
-        "Scout",
-        "Strider"
-      ],
-      "upgradeSets": [],
-      "cost": 135
-    },
-    {
-      "name": "Pterodactyl Riders",
-      "size": 3,
-      "quality": "5+",
-      "defense": "5+",
-      "equipment": [
         {
-          "name": "Hand Weapons",
-          "attacks": 1
+          "key": "chameleon",
+          "name": "Chameleon",
+          "rating": ""
         },
         {
-          "name": "Claws",
-          "attacks": 3
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "scout",
+          "name": "Scout",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
         }
       ],
-      "specialRules": [
-        "Fast",
-        "Fearless",
-        "Flying",
-        "Impact(1)",
-        "Tough(3)"
-      ],
-      "upgradeSets": [
-        "F1"
-      ],
-      "cost": 135
+      "upgrades": [],
+      "cost": 135,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
-      "name": "Saurian Warriors",
-      "size": 10,
-      "quality": "4+",
-      "defense": "4+",
+      "id": "BEZrR2x",
+      "name": "Pterodactyl Riders",
+      "size": 3,
+      "quality": 5,
+      "defense": 5,
       "equipment": [
         {
-          "name": "Hand Weapons",
-          "attacks": 2
+          "id": "5He0csq",
+          "label": "Hand Weapons",
+          "attacks": 1,
+          "specialRules": []
+        },
+        {
+          "id": "DgnuwmQ",
+          "label": "Claws",
+          "attacks": 3,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Predator"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "1"
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
+        "F1"
+      ],
+      "cost": 135,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "DSPI2UN",
+      "name": "Saurian Warriors",
+      "size": 10,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "N-7no9X",
+          "label": "Hand Weapons",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "predator",
+          "name": "Predator",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
         "D1",
         "G1"
       ],
-      "cost": 175
+      "cost": 175,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "kPWsHd2",
       "name": "Guardians",
       "size": 10,
-      "quality": "3+",
-      "defense": "3+",
+      "quality": 3,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Halberds",
+          "id": "3YFnC49",
+          "label": "Halberds",
           "attacks": 2,
           "specialRules": [
             "AP(1)",
@@ -206,50 +369,85 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Predator"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "predator",
+          "name": "Predator",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "D1",
         "H1"
       ],
-      "cost": 300
+      "cost": 300,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "mqxyYAa",
       "name": "Raptor Riders",
       "size": 5,
-      "quality": "3+",
-      "defense": "3+",
+      "quality": 3,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Hand Weapons",
-          "attacks": 2
+          "id": "ITBM13S",
+          "label": "Hand Weapons",
+          "attacks": 2,
+          "specialRules": []
         },
         {
-          "name": "Claws",
-          "attacks": 2
+          "id": "WvlVolT",
+          "label": "Claws",
+          "attacks": 2,
+          "specialRules": []
         }
       ],
       "specialRules": [
-        "Fast",
-        "Fearless",
-        "Impact(1)",
-        "Predator"
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "1"
+        },
+        {
+          "key": "predator",
+          "name": "Predator",
+          "rating": ""
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "D1",
         "I1"
       ],
-      "cost": 200
+      "cost": 200,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "YTF6kWT",
       "name": "Gators",
       "size": 3,
-      "quality": "4+",
-      "defense": "3+",
+      "quality": 4,
+      "defense": 3,
       "equipment": [
         {
-          "name": "Great Weapons",
+          "id": "DgCYR7q",
+          "label": "Great Weapons",
           "attacks": 3,
           "specialRules": [
             "AP(3)"
@@ -257,21 +455,37 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Predator",
-        "Tough(3)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "predator",
+          "name": "Predator",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 185
+      "upgrades": [],
+      "cost": 185,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "qVYc3NH",
       "name": "Snake Swarms",
       "size": 3,
-      "quality": "6+",
-      "defense": "6+",
+      "quality": 6,
+      "defense": 6,
       "equipment": [
         {
-          "name": "Swarm Attack",
+          "id": "Zh9CjVo",
+          "label": "Swarm Attack",
           "attacks": 3,
           "specialRules": [
             "Poison"
@@ -279,28 +493,45 @@
         }
       ],
       "specialRules": [
-        "Fearless",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [],
-      "cost": 65
+      "upgrades": [],
+      "cost": 65,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "kay7-b4",
       "name": "Dragon Lizard",
       "size": 1,
-      "quality": "4+",
-      "defense": "2+",
+      "quality": 4,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Spit Flames",
+          "id": "D17KPRy",
+          "label": "Spit Flames",
           "range": 12,
           "specialRules": [
             "AP(1)"
           ]
         },
         {
-          "name": "Claws",
+          "id": "Afg0Kjg",
+          "label": "Claws",
           "attacks": 2,
           "specialRules": [
             "AP(1)"
@@ -308,28 +539,50 @@
         }
       ],
       "specialRules": [
-        "Fear",
-        "Fearless",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "J1"
       ],
-      "cost": 105
+      "cost": 105,
+      "costMode": "manually",
+      "splitPageNumber": 1
     },
     {
+      "id": "4Q7ZmPs",
       "name": "Spiked Lizard",
       "size": 1,
-      "quality": "4+",
-      "defense": "2+",
+      "quality": 4,
+      "defense": 2,
       "equipment": [
         {
-          "name": "Shoot Spikes",
-          "range": 18
+          "id": "rSPH17_",
+          "label": "Shoot Spikes",
+          "range": 18,
+          "specialRules": []
         },
         {
-          "name": "Claws",
+          "id": "3O4HGoU",
+          "label": "Claws",
           "attacks": 2,
           "specialRules": [
             "AP(1)"
@@ -337,833 +590,1195 @@
         }
       ],
       "specialRules": [
-        "Fear",
-        "Fearless",
-        "Strider",
-        "Tough(3)"
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
       ],
-      "upgradeSets": [
+      "upgrades": [
         "J1"
       ],
-      "cost": 105
-    },
-    {
-      "name": "Triceratops",
-      "size": 1,
-      "quality": "4+",
-      "defense": "2+",
-      "equipment": [
-        {
-          "name": "Javelins",
-          "count": 4,
-          "attacks": 1,
-          "range": 12,
-          "specialRules": [
-            "AP(1)",
-            "Poison"
-          ]
-        },
-        {
-          "name": "Horns",
-          "attacks": 6,
-          "specialRules": [
-            "AP(1)"
-          ]
-        }
-      ],
-      "specialRules": [
-        "Fear",
-        "Fearless",
-        "Tough(6)"
-      ],
-      "upgradeSets": [
-        "A2"
-      ],
-      "cost": 165
-    },
-    {
-      "name": "Spinosaurus",
-      "size": 1,
-      "quality": "4+",
-      "defense": "2+",
-      "equipment": [
-        {
-          "name": "Spit Venom",
-          "attacks": 1,
-          "range": 18,
-          "specialRules": [
-            "Blast(3)",
-            "Poison"
-          ]
-        },
-        {
-          "name": "Claws",
-          "attacks": 6,
-          "specialRules": [
-            "AP(1)",
-            "Poison"
-          ]
-        }
-      ],
-      "specialRules": [
-        "Fear",
-        "Fearless",
-        "Predator",
-        "Tough(6)"
-      ],
-      "upgradeSets": [
-        "B2"
-      ],
-      "cost": 165
-    },
-    {
-      "name": "Ankylosaurus",
-      "size": 1,
-      "quality": "4+",
-      "defense": "2+",
-      "equipment": [
-        {
-          "name": "Javelins",
-          "count": 2,
-          "attacks": 1,
-          "range": 12,
-          "specialRules": [
-            "AP(1)",
-            "Poison"
-          ]
-        },
-        {
-          "name": "Crew Attacks",
-          "attacks": 2
-        },
-        {
-          "name": "Claws",
-          "attacks": 4,
-          "specialRules": [
-            "AP(1)"
-          ]
-        },
-        {
-          "name": "Mace Tail",
-          "attacks": 1,
-          "specialRules": [
-            "AP(4)",
-            "Deadly(3)"
-          ]
-        }
-      ],
-      "specialRules": [
-        "Fear",
-        "Fearless",
-        "Tough(9)"
-      ],
-      "upgradeSets": [
-        "C2"
-      ],
-      "cost": 230
-    },
-    {
-      "name": "Dread Behemoth",
-      "size": 1,
-      "quality": "3+",
-      "defense": "2+",
-      "equipment": [
-        {
-          "name": "Titanic Stomp",
-          "attacks": 12,
-          "specialRules": [
-            "AP(2)"
-          ]
-        },
-        {
-          "name": "Vicious Jaws",
-          "attacks": 3,
-          "specialRules": [
-            "AP(4)",
-            "Deadly(6)"
-          ]
-        },
-        {
-          "name": "Gigantic Tail",
-          "attacks": 2,
-          "specialRules": [
-            "AP(2)",
-            "Blast(6)",
-            "Rending"
-          ]
-        }
-      ],
-      "specialRules": [
-        "Fearless",
-        "Terrifying",
-        "Tough(24)"
-      ],
-      "upgradeSets": [
-        "D2"
-      ],
-      "cost": 830
+      "cost": 105,
+      "costMode": "manually",
+      "splitPageNumber": 1
     }
   ],
-  "upgradeSets": [
+  "upgradePackages": [
     {
-      "id": "A1",
-      "upgrades": [
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
         {
-          "text": "Replace Energy Pulse",
+          "label": "Replace Energy Pulse",
           "type": "replace",
-          "replaceWhat": "Energy Pulse",
+          "replaceWhat": [
+            "Energy Pulse"
+          ],
           "options": [
             {
-              "name": "Energy Shock",
-              "attacks": 3,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 5
+              "id": "72Uob",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Energy Shock (A3, Rending)",
+              "gains": [
+                {
+                  "label": "Energy Shock (A3, Rending)",
+                  "name": "Energy Shock",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Energy Blast",
-              "attacks": 1,
-              "specialRules": [
-                "Blast(3)",
-                "AP(1)"
-              ],
-              "cost": 5
+              "id": "89qyB",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Energy Blast (A1, Blast(3), AP(1))",
+              "gains": [
+                {
+                  "label": "Energy Blast (A1, Blast(3), AP(1))",
+                  "name": "Energy Blast",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade Wizard(2)",
+          "label": "Upgrade Wizard(2)",
           "type": "upgradeRule",
-          "replaceWhat": "Wizard(2)",
+          "replaceWhat": [
+            "Wizard(2)"
+          ],
           "options": [
             {
-              "name": "Wizard(3)",
-              "specialRules": [
-                "Wizard(3)"
-              ],
-              "cost": 15
-            }
-          ]
-        },
-        {
-          "text": "Mount on",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "Ancient Palanquin \" Fear, Strider, Tough",
-              "specialRules": [
-                "+3"
-              ],
-              "cost": 100
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "B1",
-      "upgrades": [
-        {
-          "text": "Replace Hand Weapon",
-          "type": "replace",
-          "replaceWhat": "Hand Weapon",
-          "options": [
-            {
-              "name": "Lance",
-              "attacks": 4,
-              "specialRules": [
-                "AP(1)",
-                "Impact(1)"
-              ]
-            },
-            {
-              "name": "Spear",
-              "attacks": 4,
-              "specialRules": [
-                "AP(1)",
-                "Phalanx"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Halberd",
-              "attacks": 4,
-              "specialRules": [
-                "AP(1)",
-                "Rending"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Hand Weapons",
-              "count": 2,
-              "attacks": 4,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 15
-            },
-            {
-              "name": "Great Weapon",
-              "attacks": 4,
-              "specialRules": [
-                "AP(3)"
-              ],
-              "cost": 15
-            }
-          ]
-        },
-        {
-          "text": "Mount on",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "Raptor \" Claws",
-              "attacks": 2,
-              "specialRules": [
-                "Fast",
-                "Impact(1"
-              ],
-              "cost": 15
-            },
-            {
-              "name": "Tyrannosaur \" Defense +1, Crushing Jaws",
-              "attacks": 4,
-              "specialRules": [
-                "AP(3))",
-                "Fear",
-                "Primal Roar",
-                "Tough(+6"
-              ],
-              "cost": 220
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "C1",
-      "upgrades": [
-        {
-          "text": "Replace Hand Weapon",
-          "type": "replace",
-          "replaceWhat": "Hand Weapon",
-          "options": [
-            {
-              "name": "Hand Weapons",
-              "count": 2,
-              "attacks": 3,
-              "cost": 5
-            },
-            {
-              "name": "Lance",
-              "attacks": 3,
-              "specialRules": [
-                "Impact(1)"
+              "id": "X8PChts",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Wizard(3)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "3",
+                  "label": "Wizard(3)",
+                  "type": "ArmyBookRule"
+                }
               ]
             }
           ]
         },
         {
-          "text": "Upgrade with one",
+          "label": "Mount on",
           "type": "upgrade",
           "select": 1,
           "options": [
             {
-              "name": "Javelin",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)",
-                "Poison"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Fire Bolas",
-              "attacks": 2,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 5
-            },
-            {
-              "name": "Blowpipe",
-              "attacks": 1,
-              "range": 18,
-              "specialRules": [
-                "Poison"
-              ],
-              "cost": 5
-            }
-          ]
-        },
-        {
-          "text": "Mount on",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "Pterodactyl \" Claws",
-              "attacks": 3,
-              "specialRules": [
-                "Fast",
-                "Flying",
-                "Impact(1)",
-                "Tough(+3"
-              ],
-              "cost": 55
-            }
-          ]
-        },
-        {
-          "text": "Upgrade Pterodactyl with one",
-          "type": "upgrade",
-          "select": 1,
-          "replaceWhat": "Pterodactyl",
-          "options": [
-            {
-              "name": "Ripper Breed",
-              "specialRules": [
-                "Furious",
-                "Impact(+2)"
-              ],
-              "cost": 10
-            },
-            {
-              "name": "Rock Bombs",
-              "specialRules": [
-                "Rock Bombs"
-              ],
-              "cost": 20
+              "id": "IgPmn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 100,
+              "label": "Ancient Palanquin – Fear, Strider, Tough(+3)",
+              "gains": [
+                {
+                  "label": "Ancient Palanquin – Fear, Strider, Tough(+3)",
+                  "name": "Ancient Palanquin – Fear, Strider, Tough",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "+3",
+                      "name": "+3",
+                      "rating": "",
+                      "label": "+3",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "D1",
-      "upgrades": [
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
         {
-          "text": "Upgrade with",
-          "type": "upgrade",
+          "label": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": [
+            "Hand Weapon"
+          ],
           "options": [
             {
-              "name": "Sergeant",
-              "specialRules": [
-                "Sergeant"
-              ],
-              "cost": 5
+              "id": "HlZ6-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": null,
+              "label": "Lance (A4, AP(1), Impact(1)) – mounted only",
+              "gains": [
+                {
+                  "label": "Lance (A4, AP(1), Impact(1)) – mounted only",
+                  "name": "Lance",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "label": "Impact(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Musician",
-              "specialRules": [
-                "Musician"
-              ],
-              "cost": 10
+              "id": "zd0UH",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Spear (A4, AP(1), Phalanx)",
+              "gains": [
+                {
+                  "label": "Spear (A4, AP(1), Phalanx)",
+                  "name": "Spear",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "phalanx",
+                      "name": "Phalanx",
+                      "rating": "",
+                      "label": "Phalanx",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Battle Standard",
-              "specialRules": [
-                "Battle Standard"
-              ],
-              "cost": 10
+              "id": "In5tW",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Halberd (A4, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Halberd (A4, AP(1), Rending)",
+                  "name": "Halberd",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bjaL-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "2x Hand Weapons (A4, AP(1))",
+              "gains": [
+                {
+                  "label": "Hand Weapons (A4, AP(1))",
+                  "name": "Hand Weapons",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Hand Weapons (A4, AP(1))",
+                  "name": "Hand Weapons",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "1G_GX",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Great Weapon (A4, AP(3))",
+              "gains": [
+                {
+                  "label": "Great Weapon (A4, AP(3))",
+                  "name": "Great Weapon",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "uOGBb",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Raptor – Claws (A2), Fast, Impact(1)",
+              "gains": [
+                {
+                  "label": "Raptor – Claws (A2), Fast, Impact(1)",
+                  "name": "Raptor – Claws",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "fast",
+                      "name": "Fast",
+                      "rating": "",
+                      "label": "Fast",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "impact(1",
+                      "name": "Impact(1",
+                      "rating": "",
+                      "label": "Impact(1",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "KyKEE",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 220,
+              "label": "Tyrannosaur – Defense +1, Crushing Jaws (A4, AP(3)), Fear, Primal Roar, Tough(+6)",
+              "gains": [
+                {
+                  "label": "Tyrannosaur – Defense +1, Crushing Jaws (A4, AP(3)), Fear, Primal Roar, Tough(+6)",
+                  "name": "Tyrannosaur – Defense +1, Crushing Jaws",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap(3))",
+                      "name": "AP(3))",
+                      "rating": "",
+                      "label": "AP(3))",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "fear",
+                      "name": "Fear",
+                      "rating": "",
+                      "label": "Fear",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "primal-roar",
+                      "name": "Primal Roar",
+                      "rating": "",
+                      "label": "Primal Roar",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough(+6",
+                      "name": "Tough(+6",
+                      "rating": "",
+                      "label": "Tough(+6",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "E1",
-      "upgrades": [
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
         {
-          "text": "Upgrade all models with one",
+          "label": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": [
+            "Hand Weapon"
+          ],
+          "options": [
+            {
+              "id": "wzyNc",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "2x Hand Weapons (A3)",
+              "gains": [
+                {
+                  "label": "Hand Weapons (A3)",
+                  "name": "Hand Weapons",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                },
+                {
+                  "label": "Hand Weapons (A3)",
+                  "name": "Hand Weapons",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "_q4PW",
+              "type": "ArmyBookUpgradeOption",
+              "cost": null,
+              "label": "Lance (A3, Impact(1)) – mounted only",
+              "gains": [
+                {
+                  "label": "Lance (A3, Impact(1)) – mounted only",
+                  "name": "Lance",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "label": "Impact(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "lyQ6B",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Javelin (12”, A1, AP(1), Poison)",
+              "gains": [
+                {
+                  "label": "Javelin (12”, A1, AP(1), Poison)",
+                  "name": "Javelin",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Wk44D",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Fire Bolas (12”, A2, AP(1))",
+              "gains": [
+                {
+                  "label": "Fire Bolas (12”, A2, AP(1))",
+                  "name": "Fire Bolas",
+                  "attacks": 2,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "aUmKL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Blowpipe (18”, A1, Poison)",
+              "gains": [
+                {
+                  "label": "Blowpipe (18”, A1, Poison)",
+                  "name": "Blowpipe",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "DAjA4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 55,
+              "label": "Pterodactyl – Claws (A3), Fast, Flying, Impact(1), Tough(+3)",
+              "gains": [
+                {
+                  "label": "Pterodactyl – Claws (A3), Fast, Flying, Impact(1), Tough(+3)",
+                  "name": "Pterodactyl – Claws",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "fast",
+                      "name": "Fast",
+                      "rating": "",
+                      "label": "Fast",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "label": "Impact(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough(+3",
+                      "name": "Tough(+3",
+                      "rating": "",
+                      "label": "Tough(+3",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade Pterodactyl with one",
+          "type": "upgrade",
+          "select": 1,
+          "replaceWhat": [
+            "Pterodactyl"
+          ],
+          "options": [
+            {
+              "id": "arJHs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Ripper Breed (Furious, Impact(+2))",
+              "gains": [
+                {
+                  "label": "Ripper Breed (Furious, Impact(+2))",
+                  "name": "Ripper Breed",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "furious",
+                      "name": "Furious",
+                      "rating": "",
+                      "label": "Furious",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "impact(+2)",
+                      "name": "Impact(+2)",
+                      "rating": "",
+                      "label": "Impact(+2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zrbBZgv",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Rock Bombs",
+              "gains": [
+                {
+                  "key": "rock-bombs",
+                  "name": "Rock Bombs",
+                  "rating": "",
+                  "label": "Rock Bombs",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "Kk7S3Ua",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Sergeant",
+              "gains": [
+                {
+                  "key": "sergeant",
+                  "name": "Sergeant",
+                  "rating": "",
+                  "label": "Sergeant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "VtbNh_a",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Musician",
+              "gains": [
+                {
+                  "key": "musician",
+                  "name": "Musician",
+                  "rating": "",
+                  "label": "Musician",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "wADuCOF",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Battle Standard",
+              "gains": [
+                {
+                  "key": "battle-standard",
+                  "name": "Battle Standard",
+                  "rating": "",
+                  "label": "Battle Standard",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade all models with one",
           "type": "upgrade",
           "affects": "all",
           "select": 1,
           "options": [
             {
-              "name": "Javelins",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)",
-                "Poison"
-              ],
-              "cost": 10
+              "id": "slf-A",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Javelins (12”, A1, AP(1), Poison)",
+              "gains": [
+                {
+                  "label": "Javelins (12”, A1, AP(1), Poison)",
+                  "name": "Javelins",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Blowpipes",
-              "attacks": 1,
-              "range": 18,
-              "specialRules": [
-                "Poison"
-              ],
-              "cost": 10
+              "id": "pQUUh",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Blowpipes (18”, A1, Poison)",
+              "gains": [
+                {
+                  "label": "Blowpipes (18”, A1, Poison)",
+                  "name": "Blowpipes",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade all models with any",
+          "label": "Upgrade all models with any",
           "type": "upgrade",
           "affects": "all",
           "select": "any",
           "options": [
             {
-              "name": "Jungle Toxins",
-              "specialRules": [
-                "Poison in melee"
-              ],
-              "cost": 5
+              "id": "3PcAB",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Jungle Toxins (Poison in melee)",
+              "gains": [
+                {
+                  "label": "Jungle Toxins (Poison in melee)",
+                  "name": "Jungle Toxins",
+                  "content": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "condition": "in melee",
+                      "label": "Poison in melee",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             },
             {
-              "name": "Camouflage Paint",
-              "specialRules": [
-                "Stealth"
-              ],
-              "cost": 10
+              "id": "O6MgD",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Camouflage Paint (Stealth)",
+              "gains": [
+                {
+                  "label": "Camouflage Paint (Stealth)",
+                  "name": "Camouflage Paint",
+                  "content": [
+                    {
+                      "key": "stealth",
+                      "name": "Stealth",
+                      "rating": "",
+                      "label": "Stealth",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "F1",
-      "upgrades": [
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
         {
-          "text": "Replace all Hand Weapons",
+          "label": "Replace all Hand Weapons",
           "type": "replace",
           "affects": "all",
-          "replaceWhat": "Hand Weapons",
+          "replaceWhat": [
+            "Hand Weapons"
+          ],
           "options": [
             {
-              "name": "Lances",
-              "attacks": 1,
-              "specialRules": [
-                "Impact(1)"
-              ],
-              "cost": 10
+              "id": "HPvGv",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Lances (A1, Impact(1))",
+              "gains": [
+                {
+                  "label": "Lances (A1, Impact(1))",
+                  "name": "Lances",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "label": "Impact(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade all models with",
+          "label": "Upgrade all models with",
           "type": "upgrade",
           "affects": "all",
           "options": [
             {
-              "name": "Javelins",
-              "attacks": 1,
-              "range": 12,
-              "specialRules": [
-                "AP(1)",
-                "Poison"
-              ],
-              "cost": 5
+              "id": "yGbTh",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Javelins (12”, A1, AP(1), Poison)",
+              "gains": [
+                {
+                  "label": "Javelins (12”, A1, AP(1), Poison)",
+                  "name": "Javelins",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Fire Bolas",
-              "attacks": 2,
-              "range": 12,
-              "specialRules": [
-                "AP(1)"
-              ],
-              "cost": 10
+              "id": "RRiBN",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Fire Bolas (12”, A2, AP(1))",
+              "gains": [
+                {
+                  "label": "Fire Bolas (12”, A2, AP(1))",
+                  "name": "Fire Bolas",
+                  "attacks": 2,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "text": "Upgrade all models with one",
+          "label": "Upgrade all models with one",
           "type": "upgrade",
           "affects": "all",
           "select": 1,
           "options": [
             {
-              "name": "Ripper Breed",
-              "specialRules": [
-                "Furious",
-                "Impact(+2)"
-              ],
-              "cost": 25
+              "id": "WDYPY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Ripper Breed (Furious, Impact(+2))",
+              "gains": [
+                {
+                  "label": "Ripper Breed (Furious, Impact(+2))",
+                  "name": "Ripper Breed",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "furious",
+                      "name": "Furious",
+                      "rating": "",
+                      "label": "Furious",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "impact(+2)",
+                      "name": "Impact(+2)",
+                      "rating": "",
+                      "label": "Impact(+2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Rock Bombs",
-              "specialRules": [
-                "Rock Bombs"
-              ],
-              "cost": 60
+              "id": "jA01dGY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Rock Bombs",
+              "gains": [
+                {
+                  "key": "rock-bombs",
+                  "name": "Rock Bombs",
+                  "rating": "",
+                  "label": "Rock Bombs",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "G1",
-      "upgrades": [
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
         {
-          "text": "Replace all Hand Weapons",
+          "label": "Replace all Hand Weapons",
           "type": "replace",
           "affects": "all",
-          "replaceWhat": "Hand Weapons",
+          "replaceWhat": [
+            "Hand Weapons"
+          ],
           "options": [
             {
-              "name": "Halberds",
-              "attacks": 2,
-              "specialRules": [
-                "Rending"
-              ],
-              "cost": 15
+              "id": "TOSGt",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Halberds (A2, Rending)",
+              "gains": [
+                {
+                  "label": "Halberds (A2, Rending)",
+                  "name": "Halberds",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Spears",
-              "attacks": 2,
-              "specialRules": [
-                "Phalanx"
-              ],
-              "cost": 30
+              "id": "W50rE",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Spears (A2, Phalanx)",
+              "gains": [
+                {
+                  "label": "Spears (A2, Phalanx)",
+                  "name": "Spears",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "phalanx",
+                      "name": "Phalanx",
+                      "rating": "",
+                      "label": "Phalanx",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             },
             {
-              "name": "Hand Weapons",
-              "count": 2,
-              "attacks": 2,
-              "cost": 35
+              "id": "durCd",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "2x Hand Weapons (A2)",
+              "gains": [
+                {
+                  "label": "Hand Weapons (A2)",
+                  "name": "Hand Weapons",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                },
+                {
+                  "label": "Hand Weapons (A2)",
+                  "name": "Hand Weapons",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
             },
             {
-              "name": "Great Weapons",
-              "attacks": 2,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 35
+              "id": "axWxl",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Great Weapons (A2, AP(2))",
+              "gains": [
+                {
+                  "label": "Great Weapons (A2, AP(2))",
+                  "name": "Great Weapons",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "H1",
-      "upgrades": [
+      "uid": "H1",
+      "hint": "H1",
+      "sections": [
         {
-          "text": "Replace all Halberds",
+          "label": "Replace all Halberds",
           "type": "replace",
           "affects": "all",
-          "replaceWhat": "Halberds",
+          "replaceWhat": [
+            "Halberds"
+          ],
           "options": [
             {
-              "name": "Great Weapons",
-              "attacks": 2,
-              "specialRules": [
-                "AP(3)"
-              ],
-              "cost": 10
+              "id": "A_uPs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Great Weapons (A2, AP(3))",
+              "gains": [
+                {
+                  "label": "Great Weapons (A2, AP(3))",
+                  "name": "Great Weapons",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "I1",
-      "upgrades": [
+      "uid": "I1",
+      "hint": "I1",
+      "sections": [
         {
-          "text": "Replace all Hand Weapons",
+          "label": "Replace all Hand Weapons",
           "type": "replace",
           "affects": "all",
-          "replaceWhat": "Hand Weapons",
+          "replaceWhat": [
+            "Hand Weapons"
+          ],
           "options": [
             {
-              "name": "Lances",
-              "attacks": 2,
-              "specialRules": [
-                "Impact(1)"
-              ],
-              "cost": 15
+              "id": "0cCLo",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Lances (A2, Impact(1))",
+              "gains": [
+                {
+                  "label": "Lances (A2, Impact(1))",
+                  "name": "Lances",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "label": "Impact(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "J1",
-      "upgrades": [
+      "uid": "J1",
+      "hint": "J1",
+      "sections": [
         {
-          "text": "Upgrade with up to three",
+          "label": "Upgrade with up to three",
           "type": "upgrade",
           "select": 3,
           "options": [
             {
-              "name": "Lizard Handler",
-              "specialRules": [
-                "Lizard Handler"
-              ],
-              "cost": 5
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "A2",
-      "upgrades": [
-        {
-          "text": "Upgrade with any",
-          "type": "upgrade",
-          "select": "any",
-          "options": [
-            {
-              "name": "Trample",
-              "specialRules": [
-                "Impact(3)"
-              ],
-              "cost": 10
-            },
-            {
-              "name": "Bladed Horns",
-              "specialRules": [
-                "AP(+2) in melee)"
-              ],
-              "cost": 10
-            }
-          ]
-        },
-        {
-          "text": "Upgrade with one",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "Giant Blowpipes",
-              "count": 2,
-              "attacks": 3,
-              "range": 18,
-              "specialRules": [
-                "Poison"
-              ],
-              "cost": 15
-            },
-            {
-              "name": "Giant Crossbow",
-              "attacks": 1,
-              "range": 36,
-              "specialRules": [
-                "AP(2)",
-                "Deadly(3)"
-              ],
-              "cost": 20
-            },
-            {
-              "name": "Altar of the Gods",
-              "specialRules": [
-                "Altar of the Gods"
-              ],
-              "cost": 60
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "B2",
-      "upgrades": [
-        {
-          "text": "Upgrade with any",
-          "type": "upgrade",
-          "select": "any",
-          "options": [
-            {
-              "name": "Primal Roar",
-              "specialRules": [
-                "Primal Roar"
-              ],
-              "cost": 10
-            },
-            {
-              "name": "Priest Rider",
-              "specialRules": [
-                "Wizard(1)"
-              ],
-              "cost": 20
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "C2",
-      "upgrades": [
-        {
-          "text": "Upgrade with one",
-          "type": "upgrade",
-          "select": 1,
-          "options": [
-            {
-              "name": "Ark of Snakes",
-              "specialRules": [
-                "Ark of Snakes"
-              ],
-              "cost": 15
-            },
-            {
-              "name": "Solar Beam",
-              "attacks": 6,
-              "range": 24,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 35
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "D2",
-      "upgrades": [
-        {
-          "text": "Upgrade with any",
-          "type": "upgrade",
-          "select": "any",
-          "options": [
-            {
-              "name": "Primal Roar",
-              "specialRules": [
-                "Primal Roar"
-              ],
-              "cost": 10
-            },
-            {
-              "name": "Bull Charge",
-              "specialRules": [
-                "Impact(12)"
-              ],
-              "cost": 35
-            },
-            {
-              "name": "Transport(21)",
-              "specialRules": [
-                "Transport(21)"
-              ],
-              "cost": 40
-            },
-            {
-              "name": "Stomp",
-              "count": 4,
-              "attacks": 6,
-              "range": 6,
-              "specialRules": [
-                "AP(2)"
-              ],
-              "cost": 50
-            },
-            {
-              "name": "Saurian Ancient",
-              "specialRules": [
-                "Saurian Ancient"
-              ],
-              "cost": 120
+              "id": "4o4rBme",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Lizard Handler",
+              "gains": [
+                {
+                  "key": "lizard-handler",
+                  "name": "Lizard Handler",
+                  "rating": "",
+                  "label": "Lizard Handler",
+                  "type": "ArmyBookRule"
+                }
+              ]
             }
           ]
         }
@@ -1172,80 +1787,101 @@
   ],
   "specialRules": [
     {
+      "id": "PCWiG",
+      "key": "chameleon",
+      "hint": "Enemies get -2 to their shooting rolls against this unit.",
       "name": "Chameleon",
+      "tags": [],
+      "label": "Chameleon",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "Enemies get -2 to their shooting rolls against this unit."
     },
     {
+      "id": "Ff9JW",
+      "key": "lizard-handler",
+      "hint": "When rolling to determine the number of ranged attacks you may re-roll one die for each Lizard Handler.",
       "name": "Lizard Handler",
+      "tags": [],
+      "label": "Lizard Handler",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "When rolling to determine the number of ranged attacks you may re-roll one die for each Lizard Handler."
     },
     {
+      "id": "XhAGf",
+      "key": "predator",
+      "hint": "For each unmodified roll of 6 to hit when attacking in melee this model may roll 1 extra attack. This rule doesn’t apply to newly generated attacks.",
       "name": "Predator",
-      "description": "For each unmodified roll of 6 to hit when attacking in melee this model may roll 1 extra attack. This rule doesn\"t apply to newly generated attacks."
+      "tags": [],
+      "label": "Predator",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "For each unmodified roll of 6 to hit when attacking in melee this model may roll 1 extra attack. This rule doesn’t apply to newly generated attacks."
     },
     {
+      "id": "spBM9",
+      "key": "rock-bombs",
+      "hint": "Whenever this model moves over enemies pick one of them and roll 1 die, on a 2+ it takes 3 hits with AP(1).",
       "name": "Rock Bombs",
+      "tags": [],
+      "label": "Rock Bombs",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
       "description": "Whenever this model moves over enemies pick one of them and roll 1 die, on a 2+ it takes 3 hits with AP(1)."
-    },
-    {
-      "name": "Altar of the Gods",
-      "description": "When this unit is activated pick 2 friendly units within 6\", which get the Stealth rule next time they are shot at."
-    },
-    {
-      "name": "Ark of Snakes",
-      "description": "When this unit is activated pick 2 enemy units within 6\" and roll one die for each. On a 2+ they take 3 automatic hits, on a 6 they take 9 automatic hits."
-    },
-    {
-      "name": "Predator",
-      "description": "For each unmodified roll of 6 to hit when attacking in melee this model may roll 1 extra attack. This rule doesn\"t apply to newly generated attacks."
-    },
-    {
-      "name": "Primal Roar",
-      "description": "Once per game when this unit is activated pick 2 friendly units with Predator within 6\". Those units may roll extra attacks on results of 5-6 next time they fight."
-    },
-    {
-      "name": "Saurian Ancient",
-      "description": "This model gets +1 to its attack rolls for melee and shooting."
-    },
-    {
-      "name": "Terrifying",
-      "description": "This model counts as having the Fear special rule, and gets +4 to its Fear rolls."
-    },
-    {
-      "name": "Transport(X)",
-      "description": "This model may transport up to X models. Units embark by moving into contact and may use any action to disembark but only move by 6\". Units may also be deployed within a transport. If a unit is inside a transport when it\"s destroyed then it must take a Dangerous Terrain test, is immediately Wavering, and surviving models must be placed within 6\" of the transport before it\"s removed from play."
     }
   ],
   "spells": [
     {
+      "id": "ZQUY7",
       "name": "Scrutiny",
-      "test": "4+",
-      "description": "Target enemy unit within 12\" gets -1 to melee rolls next time it fights."
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” gets -1 to melee rolls next time it fights."
     },
     {
+      "id": "pgHIK",
       "name": "Serpent Egg",
-      "test": "4+",
-      "description": "Target enemy unit within 12\" takes 4 automatic hits."
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” takes 4 automatic hits."
     },
     {
+      "id": "sw_dw",
       "name": "Transcend",
-      "test": "5+",
-      "description": "Target friendly unit within 12\" may heal 1 wound or restore 1 model (with only 1 health left if it had Tough)."
+      "threshold": 5,
+      "effect": "Target friendly unit within 12” may heal 1 wound or restore 1 model (with only 1 health left if it had Tough)."
     },
     {
+      "id": "LVBgl",
       "name": "Jaguar Pounce",
-      "test": "5+",
-      "description": "Target enemy model within 12\" takes 1 automatic hit with AP(3)."
+      "threshold": 5,
+      "effect": "Target enemy model within 12” takes 1 automatic hit with AP(3)."
     },
     {
+      "id": "GahyY",
       "name": "Energy Reservoir",
-      "test": "6+",
-      "description": "Target friendly unit within 12\" gets +9\" next time it moves."
+      "threshold": 6,
+      "effect": "Target friendly unit within 12” gets +9” next time it moves."
     },
     {
+      "id": "AjyG6",
       "name": "Piranha Swarm",
-      "test": "6+",
-      "description": "Target 2 enemy units within 6\" take 6 hits with AP(1) each."
+      "threshold": 6,
+      "effect": "Target 2 enemy units within 6” take 6 hits with AP(1) each."
     }
-  ]
+  ],
+  "modifiedAt": "2021-10-21T16:46:39.868Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "age-of-fantasy",
+  "fullname": "Age of Fantasy",
+  "aberration": "AOF",
+  "universe": "Age of Fantasy",
+  "shortname": "Age of Fantasy"
 }
