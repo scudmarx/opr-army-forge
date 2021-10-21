@@ -34,7 +34,7 @@ export function MainList({ onSelected }) {
 
   return (
     <>
-      <ValidationErrors />
+      {/* <ValidationErrors /> */}
       {/* <Button onClick={() => router.push("/cards")}>View Cards</Button> */}
       <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       <ul className="mt-2">

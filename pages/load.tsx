@@ -5,8 +5,9 @@ import { AppBar, Avatar, Button, IconButton, List, ListItem, ListItemAvatar, Lis
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import _ from "lodash";
-import { Delete } from '@mui/icons-material';
+import { Delete, MobiledataOffOutlined } from '@mui/icons-material';
 import PersistenceService from '../services/PersistenceService';
+import { ISaveData } from '../data/interfaces';
 
 export default function Load() {
 
@@ -37,9 +38,10 @@ export default function Load() {
   };
 
   const deleteSave = (save) => {
-    if (confirm(`Are you sure you want to delete ${save.name}?`)) {
-      PersistenceService.delete(save);
-      setTimeout(() => setForceLoad(forceLoad + 1), 1);
+    if (confirm(`Are you sure you want to delete ${save.list.name}?`)) {
+      PersistenceService.delete(save.list);
+      setForceLoad(forceLoad + 1);
+      setLocalSaves([]);
     }
   };
 
@@ -55,13 +57,14 @@ export default function Load() {
     reader.onload = function (event) {
       try {
         const json: string = event.target.result as string;
+        const saveData: ISaveData = JSON.parse(json);
 
-        PersistenceService.load(dispatch, JSON.parse(json), _ => {
+        PersistenceService.load(dispatch, saveData, _ => {
           router.push("/list");
           // Save to local
           const saveName = file.name.replace(".json", "");
           // if it doesn't exist, or user confirms they are happy to overwrite
-          if (!PersistenceService.checkExists(saveName) || confirm("List with this name already exists. Are you sure you'd like to overwrite it?")) {
+          if (!PersistenceService.checkExists(saveData.list) || confirm("It looks like this list already exists. Are you sure you'd like to overwrite it?")) {
             PersistenceService.saveImport(saveName, json);
           }
 
@@ -123,10 +126,11 @@ export default function Load() {
                 _.sortBy(localSaves.map(save => JSON.parse(localStorage[save])), save => save.modified).reverse().map(save => {
                   try {
                     const modified = new Date(save.modified);
+                    const time = modified.getHours() + ":" + modified.getMinutes();
                     const points = save.listPoints;
                     const title = (
                       <>
-                        <span style={{ fontWeight: 600 }}>{save.list.name}</span>
+                        <span style={{ fontWeight: 600 }}>{save.gameSystem.toUpperCase()} - {save.list.name}</span>
                         <span style={{ color: "#656565" }}> • {points}pts</span>
                       </>
                     );
@@ -141,12 +145,20 @@ export default function Load() {
                       <ListItem key={save.list.creationTime} disablePadding secondaryAction={deleteButton}>
                         <ListItemButton onClick={() => loadSave(save)}>
                           <ListItemAvatar>
-                            <Avatar>
-
+                            <Avatar sx={{ bgcolor: "#CcE7Fa" }} style={{ overflow: "visible" }}>
+                              <div className="is-flex" style={{
+                                height: "100%",
+                                width: "100%",
+                                backgroundImage: `url("img/gf_armies/${save.armyName}.png")`,
+                                backgroundPosition: "center",
+                                backgroundSize: "contain",
+                                backgroundRepeat: 'no-repeat',
+                                position: "relative", zIndex: 1
+                              }}></div>
                             </Avatar>
                           </ListItemAvatar>
                           {/* <ArmyImage name={save.armyName} /> */}
-                          <ListItemText primary={title} secondary={modified.toLocaleDateString()} />
+                          <ListItemText primary={title} secondary={"Modified " + modified.toLocaleDateString() + " " + time} />
                         </ListItemButton>
                       </ListItem>
                     );

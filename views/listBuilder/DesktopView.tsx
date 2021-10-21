@@ -27,7 +27,7 @@ export default function DesktopView() {
           <UnitSelection onSelected={() => { }} />
         </div>
         <div className="column py-0" style={columnStyle}>
-          <h3 className="m-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}pts`}</h3>
+          <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}pts`}</h3>
           <MainList onSelected={() => { }} />
         </div>
         <div className="column py-0 px-0" style={columnStyle}>
