@@ -230,12 +230,13 @@ export default class DataParsingService {
         condition: defenseMatch[3] || ""
       }
     }
-    const rMatch = /^(.+?)(?:\((\d+)\))?( in melee)?$/.exec(r);
+    const rMatch = /^(.+?)(?:\((\+?)(\d+)\))?( in melee)?$/.exec(r);
     const result = {
       key: rMatch[1].toLowerCase().replace(/\s+/g, "-"),
       name: rMatch[1],
-      rating: rMatch[2] || "",
-      condition: rMatch[3] ? rMatch[3].trim() : null
+      rating: rMatch[3] || "",
+      modify: rMatch[2] === "+",
+      condition: rMatch[4] ? rMatch[4].trim() : null
     };
     if (!result.condition)
       delete result.condition;
@@ -479,10 +480,10 @@ export default class DataParsingService {
           name,
           content: rules.map(r => ({
             ...r,
-            label: r.name,
+            label: r.name + (r.rating ? `(${r.modify ? "+" : ""}${r.rating})` : ""),
             rating: r.rating || "",
             condition: "",
-            modify: false
+            modify: r.modify || false
           })).concat([
             weaponMatch && {
               ...this.parseEquipment(weaponMatch[1], isUpgrade),
