@@ -1,0 +1,2098 @@
+{
+  "gameSystemId": 4,
+  "name": "Sky-City Dwarves",
+  "hint": "Sky-City Dwarves",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.8",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "_3W0yn0",
+      "name": "Sky-City Lord",
+      "size": 1,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "w56lKWp",
+          "label": "Sky-Cannon",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(2)",
+            "Blast(3)"
+          ]
+        },
+        {
+          "id": "8b5kklV",
+          "label": "Wrist-Gun",
+          "attacks": 3,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "UIchmtl",
+          "label": "Moustache-Gun",
+          "attacks": 2,
+          "range": 6,
+          "specialRules": []
+        },
+        {
+          "id": "BjkGWce",
+          "label": "Chainsaw Sword",
+          "attacks": 6,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [],
+      "cost": 155,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "dIDpBxS",
+      "name": "Admiral",
+      "size": 1,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "kWkhU3N",
+          "label": "Volley Pistol",
+          "attacks": 3,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "od0qC20",
+          "label": "Great Weapon",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 60,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "8PHCqV4",
+      "name": "Navigator",
+      "size": 1,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "5mYa5rC",
+          "label": "Pistol",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "8lAxo4w",
+          "label": "Hand Weapon",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "B1"
+      ],
+      "cost": 50,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "uwXf4Eh",
+      "name": "Engine Master",
+      "size": 1,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "IZ4HZDA",
+          "label": "Great Weapon",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "C1"
+      ],
+      "cost": 50,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "HqoTEiP",
+      "name": "Chemist",
+      "size": 1,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "hJ9tmWq",
+          "label": "Chem-Rifle",
+          "attacks": 6,
+          "range": 12,
+          "specialRules": [
+            "Poison"
+          ]
+        },
+        {
+          "id": "gamh8H1",
+          "label": "Hand Weapon",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "D1"
+      ],
+      "cost": 55,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "w12ZDLx",
+      "name": "Aether Master",
+      "size": 1,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "tJKlpJz",
+          "label": "Pistol",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "vqojk2J",
+          "label": "Hand Weapon",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        },
+        {
+          "key": "wizard",
+          "name": "Wizard",
+          "rating": "1"
+        }
+      ],
+      "upgrades": [
+        "E1"
+      ],
+      "cost": 65,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "X5AOSPf",
+      "name": "Balloon Master",
+      "size": 1,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "glMD0fv",
+          "label": "Pistol",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "65rpQ8g",
+          "label": "Hand Weapon",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [
+        "F1"
+      ],
+      "cost": 110,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "b3M-zMY",
+      "name": "Crew",
+      "size": 10,
+      "quality": 4,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "f8_G5A6",
+          "label": "Pistols",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "d_98fRJ",
+          "label": "Hand Weapons",
+          "attacks": 1,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "G1"
+      ],
+      "cost": 80,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "6n6FVp1",
+      "name": "Gunners",
+      "size": 5,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "IrF8Jwt",
+          "label": "Sky-Rifles",
+          "attacks": 1,
+          "range": 18,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "CSyi8uQ",
+          "label": "Hand Weapons",
+          "attacks": 1,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "slow",
+          "name": "Slow",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "H1"
+      ],
+      "cost": 55,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "GAv2Gne",
+      "name": "Balloon Wardens",
+      "size": 3,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "cSeBU5m",
+          "label": "Pistols",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "3TWRt9x",
+          "label": "Pikes",
+          "attacks": 1,
+          "specialRules": [
+            "AP(2)",
+            "Rending"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "I1"
+      ],
+      "cost": 145,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "9RNH8bA",
+      "name": "Balloon Riggers",
+      "size": 3,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "VoyQIDJ",
+          "label": "Rivet Guns",
+          "attacks": 2,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "raDt8RO",
+          "label": "Chainsaw Swords",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "J1"
+      ],
+      "cost": 150,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "9EWSU8b",
+      "name": "Sky-Gunboat",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "FE0oRA8",
+          "label": "Sky-Cannon",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(2)",
+            "Blast(3)"
+          ]
+        },
+        {
+          "id": "a9c_dth",
+          "label": "Sky-Carbine",
+          "attacks": 2,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "70u_ktO",
+          "label": "Crew",
+          "attacks": 1,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [
+        "K1",
+        "L1"
+      ],
+      "cost": 145,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "c7LqbhT",
+      "name": "Sky-Frigate",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "KJYWD_B",
+          "label": "Hook Cannon",
+          "attacks": 1,
+          "range": 36,
+          "specialRules": [
+            "AP(2)",
+            "Blast(3)"
+          ]
+        },
+        {
+          "id": "yxKwn0b",
+          "label": "Sky-Carbine",
+          "count": 2,
+          "attacks": 2,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "9lc4_N0",
+          "label": "Crew",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "9"
+        },
+        {
+          "key": "transport-",
+          "name": "Transport ",
+          "rating": "11"
+        }
+      ],
+      "upgrades": [
+        "K1",
+        "M1"
+      ],
+      "cost": 235,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "rsLB9ab",
+      "name": "Sky-Ironclad",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "xCENDww",
+          "label": "Sky-Torpedoes",
+          "attacks": 4,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "d81h6o1",
+          "label": "Heavy Hook Cannon",
+          "attacks": 1,
+          "range": 36,
+          "specialRules": [
+            "AP(2)",
+            "Blast(6)"
+          ]
+        },
+        {
+          "id": "SDi_Hmy",
+          "label": "Sky-Carbines",
+          "count": 4,
+          "attacks": 2,
+          "range": 12,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "lX8o9EQ",
+          "label": "Crew",
+          "attacks": 4,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        },
+        {
+          "key": "transport",
+          "name": "Transport",
+          "rating": "21"
+        }
+      ],
+      "upgrades": [
+        "K1",
+        "N1"
+      ],
+      "cost": 365,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "c4KsNlY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Follow the Code",
+              "gains": [
+                {
+                  "key": "follow-the-code",
+                  "name": "Follow the Code",
+                  "rating": "",
+                  "label": "Follow the Code",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "ZxEmUkv",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Storm Sight",
+              "gains": [
+                {
+                  "key": "storm-sight",
+                  "name": "Storm Sight",
+                  "rating": "",
+                  "label": "Storm Sight",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "TNj3jBD",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Wind Reader",
+              "gains": [
+                {
+                  "key": "wind-reader",
+                  "name": "Wind Reader",
+                  "rating": "",
+                  "label": "Wind Reader",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "mzP4m",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Eye-Beam (12”, A1, AP(2))",
+              "gains": [
+                {
+                  "label": "Eye-Beam (12”, A1, AP(2))",
+                  "name": "Eye-Beam",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yxrJkV8",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Repair",
+              "gains": [
+                {
+                  "key": "repair",
+                  "name": "Repair",
+                  "rating": "",
+                  "label": "Repair",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "KqMYyE2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Augment",
+              "gains": [
+                {
+                  "key": "augment",
+                  "name": "Augment",
+                  "rating": "",
+                  "label": "Augment",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade Wizard(1)",
+          "type": "upgradeRule",
+          "replaceWhat": [
+            "Wizard(1)"
+          ],
+          "options": [
+            {
+              "id": "IOZsGWx",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Wizard(2)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "2",
+                  "label": "Wizard(2)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Replace Pistol",
+          "type": "replace",
+          "replaceWhat": [
+            "Pistol"
+          ],
+          "options": [
+            {
+              "id": "7Zwpl",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Cannon-Rifle (18”, A1, AP(2), Blast(3))",
+              "gains": [
+                {
+                  "label": "Cannon-Rifle (18”, A1, AP(2), Blast(3))",
+                  "name": "Cannon-Rifle",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace Hand Weapon",
+          "type": "replace",
+          "replaceWhat": [
+            "Hand Weapon"
+          ],
+          "options": [
+            {
+              "id": "CLhTC",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Chainsaw Sword (A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Chainsaw Sword (A6, AP(1))",
+                  "name": "Chainsaw Sword",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "RqgfL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Weapon-Rig (12”, A4, AP(1))",
+              "gains": [
+                {
+                  "label": "Weapon-Rig (12”, A4, AP(1))",
+                  "name": "Weapon-Rig",
+                  "attacks": 4,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
+        {
+          "label": "Replace up to three Pistols and Hand Weapons",
+          "type": "replace",
+          "select": 3,
+          "replaceWhat": [
+            "Pistols",
+            "Hand Weapons"
+          ],
+          "options": [
+            {
+              "id": "S2Of4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Pike (A1, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Pike (A1, AP(2), Rending)",
+                  "name": "Pike",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "vIgh8uX",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Hook Rifle (24”, A1, AP(2)) and Hand Weapon (A1)",
+              "gains": [
+                {
+                  "label": "Hook Rifle (24”, A1, AP(2))",
+                  "name": "Hook Rifle",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Hand Weapon (A1)",
+                  "name": "Hand Weapon",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "IA6Hr4A",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Volley Rifle (18”, A3, AP(1)) and Hand Weapon (A1)",
+              "gains": [
+                {
+                  "label": "Volley Rifle (18”, A3, AP(1))",
+                  "name": "Volley Rifle",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Hand Weapon (A1)",
+                  "name": "Hand Weapon",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace one Pistol",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Pistol"
+          ],
+          "options": [
+            {
+              "id": "1uBox",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Volley Pistol (12”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Volley Pistol (12”, A3, AP(1))",
+                  "name": "Volley Pistol",
+                  "attacks": 3,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "X8OwU",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Flame-Rifle (12”, A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Flame-Rifle (12”, A6, AP(1))",
+                  "name": "Flame-Rifle",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Y5jN4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Drill Rifle (12”,A1,AP(4),Deadly(3))",
+              "gains": [
+                {
+                  "label": "Drill Rifle (12”,A1,AP(4),Deadly(3))",
+                  "name": "Drill Rifle",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "H1",
+      "hint": "H1",
+      "sections": [
+        {
+          "label": "Replace any Sky-Rifle",
+          "type": "replace",
+          "affects": "any",
+          "replaceWhat": [
+            "Sky-Rifle"
+          ],
+          "options": [
+            {
+              "id": "hVSDS",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Flame-Rifle (12”, A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Flame-Rifle (12”, A6, AP(1))",
+                  "name": "Flame-Rifle",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "lQ3CL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Cannon-Rifle (18”, A1, AP(2), Blast(3))",
+              "gains": [
+                {
+                  "label": "Cannon-Rifle (18”, A1, AP(2), Blast(3))",
+                  "name": "Cannon-Rifle",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xlizt",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Mortar-Rifle (36”, A1, Blast(3), Indirect)",
+              "gains": [
+                {
+                  "label": "Mortar-Rifle (36”, A1, Blast(3), Indirect)",
+                  "name": "Mortar-Rifle",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "indirect",
+                      "name": "Indirect",
+                      "rating": "",
+                      "label": "Indirect",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "aQBZx",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Organ-Rifle (12”, A12)",
+              "gains": [
+                {
+                  "label": "Organ-Rifle (12”, A12)",
+                  "name": "Organ-Rifle",
+                  "attacks": 12,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace one Sky-Rifle",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Sky-Rifle"
+          ],
+          "options": [
+            {
+              "id": "Px7an",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Double-Barrel Sky-Rifle (18”, A2, AP(1))",
+              "gains": [
+                {
+                  "label": "Double-Barrel Sky-Rifle (18”, A2, AP(1))",
+                  "name": "Double-Barrel Sky-Rifle",
+                  "attacks": 2,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade one model with",
+          "type": "upgrade",
+          "affects": 1,
+          "options": [
+            {
+              "id": "YNvqB",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Mechanical Parrot (12”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Mechanical Parrot (12”, A3, AP(1))",
+                  "name": "Mechanical Parrot",
+                  "attacks": 3,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "I1",
+      "hint": "I1",
+      "sections": [
+        {
+          "label": "Replace one Pistol",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Pistol"
+          ],
+          "options": [
+            {
+              "id": "NUAPy",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Volley Rifle (18”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Volley Rifle (18”, A3, AP(1))",
+                  "name": "Volley Rifle",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "aMKHJ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Drill Cannon (18”, A1, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Drill Cannon (18”, A1, AP(3), Deadly(3))",
+                  "name": "Drill Cannon",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "E0ctb",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Grappling Hook Launcher (24”, A1, AP(2), Grappling Hook)",
+              "gains": [
+                {
+                  "label": "Grappling Hook Launcher (24”, A1, AP(2), Grappling Hook)",
+                  "name": "Grappling Hook Launcher",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "grappling-hook",
+                      "name": "Grappling Hook",
+                      "rating": "",
+                      "label": "Grappling Hook",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "AAd3v",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Heavy Hook Rifle (24”, A1, AP(2), Blast(3))",
+              "gains": [
+                {
+                  "label": "Heavy Hook Rifle (24”, A1, AP(2), Blast(3))",
+                  "name": "Heavy Hook Rifle",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade all models with",
+          "type": "upgrade",
+          "affects": "all",
+          "options": [
+            {
+              "id": "7uNmq",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Sky-Mines (Phalanx)",
+              "gains": [
+                {
+                  "label": "Sky-Mines (Phalanx)",
+                  "name": "Sky-Mines",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "phalanx",
+                      "name": "Phalanx",
+                      "rating": "",
+                      "label": "Phalanx",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "J1",
+      "hint": "J1",
+      "sections": [
+        {
+          "label": "Replace one Rivet Gun",
+          "type": "replace",
+          "affects": 1,
+          "replaceWhat": [
+            "Rivet Gun"
+          ],
+          "options": [
+            {
+              "id": "xnVv4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Volley Rifle (18”, A3, AP(1))",
+              "gains": [
+                {
+                  "label": "Volley Rifle (18”, A3, AP(1))",
+                  "name": "Volley Rifle",
+                  "attacks": 3,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "WbQxw",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Drill Cannon (18”, A1, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Drill Cannon (18”, A1, AP(3), Deadly(3))",
+                  "name": "Drill Cannon",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zxT6K",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Grappling Hook Launcher (24”, A1, AP(2), Grappling Hook)",
+              "gains": [
+                {
+                  "label": "Grappling Hook Launcher (24”, A1, AP(2), Grappling Hook)",
+                  "name": "Grappling Hook Launcher",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "grappling-hook",
+                      "name": "Grappling Hook",
+                      "rating": "",
+                      "label": "Grappling Hook",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "FKV39",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Heavy Hook Rifle (24”, A1, AP(2), Blast(3))",
+              "gains": [
+                {
+                  "label": "Heavy Hook Rifle (24”, A1, AP(2), Blast(3))",
+                  "name": "Heavy Hook Rifle",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade any model with",
+          "type": "upgrade",
+          "affects": "any",
+          "options": [
+            {
+              "id": "m7ItW",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Sky-Rigger (Repair)",
+              "gains": [
+                {
+                  "label": "Sky-Rigger (Repair)",
+                  "name": "Sky-Rigger",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "repair",
+                      "name": "Repair",
+                      "rating": "",
+                      "label": "Repair",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "K1",
+      "hint": "K1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "QJJv2l_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Bomb Racks",
+              "gains": [
+                {
+                  "key": "bomb-racks",
+                  "name": "Bomb Racks",
+                  "rating": "",
+                  "label": "Bomb Racks",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "L1",
+      "hint": "L1",
+      "sections": [
+        {
+          "label": "Replace Sky-Cannon",
+          "type": "replace",
+          "replaceWhat": [
+            "Sky-Cannon"
+          ],
+          "options": [
+            {
+              "id": "ajQyT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Drill Cannon (18”, A1, AP(3), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Drill Cannon (18”, A1, AP(3), Deadly(6))",
+                  "name": "Drill Cannon",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "M1",
+      "hint": "M1",
+      "sections": [
+        {
+          "label": "Replace Hook Cannon",
+          "type": "replace",
+          "replaceWhat": [
+            "Hook Cannon"
+          ],
+          "options": [
+            {
+              "id": "ouIrt",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Heavy Sky-Cannon (24”, A1, AP(4), Blast(3))",
+              "gains": [
+                {
+                  "label": "Heavy Sky-Cannon (24”, A1, AP(4), Blast(3))",
+                  "name": "Heavy Sky-Cannon",
+                  "attacks": 1,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "N1",
+      "hint": "N1",
+      "sections": [
+        {
+          "label": "Replace Heavy Hook Cannon",
+          "type": "replace",
+          "replaceWhat": [
+            "Heavy Hook Cannon"
+          ],
+          "options": [
+            {
+              "id": "5k951",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Volley Cannon (18”, A9, AP(1))",
+              "gains": [
+                {
+                  "label": "Volley Cannon (18”, A9, AP(1))",
+                  "name": "Volley Cannon",
+                  "attacks": 9,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "EFLtk",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Great Sky-Cannon (36”, A1, AP(4), Blast(3))",
+              "gains": [
+                {
+                  "label": "Great Sky-Cannon (36”, A1, AP(4), Blast(3))",
+                  "name": "Great Sky-Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "CDowf",
+      "key": "augment",
+      "hint": "The hero and his unit get +1 to their shooting rolls.",
+      "name": "Augment",
+      "tags": [],
+      "label": "Augment",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The hero and his unit get +1 to their shooting rolls."
+    },
+    {
+      "id": "Fh3KS",
+      "key": "bomb-racks",
+      "hint": "Whenever this unit moves over enemies pick one enemy unit to attack and select a bomb type below.",
+      "name": "Bomb Racks",
+      "tags": [],
+      "label": "Bomb Racks",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Whenever this unit moves over enemies pick one enemy unit to attack and select a bomb type below."
+    },
+    {
+      "id": "qxE9T",
+      "key": "then-roll-1-die-and-on-a-2+-it-takes-hits-as-described",
+      "hint": "• Frag Bombs: A1, Blast(6).",
+      "name": "Then roll 1 die and on a 2+ it takes hits as described",
+      "tags": [],
+      "label": "Then roll 1 die and on a 2+ it takes hits as described",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "• Frag Bombs: A1, Blast(6)."
+    },
+    {
+      "id": "qvjBU",
+      "key": "•-ap-bombs",
+      "hint": "A1, AP(2), Blast(3).",
+      "name": "• AP Bombs",
+      "tags": [],
+      "label": "• AP Bombs",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "A1, AP(2), Blast(3)."
+    },
+    {
+      "id": "eAFBa",
+      "key": "•-drill-bombs",
+      "hint": "A1, AP(4), Deadly(3).",
+      "name": "• Drill Bombs",
+      "tags": [],
+      "label": "• Drill Bombs",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "A1, AP(4), Deadly(3)."
+    },
+    {
+      "id": "Ao_Uv",
+      "key": "follow-the-code",
+      "hint": "When the hero is activated pick one of the following codes, and they get one of these rules until the end of the round: • Lead by Example: Fear.",
+      "name": "Follow the Code",
+      "tags": [],
+      "label": "Follow the Code",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When the hero is activated pick one of the following codes, and they get one of these rules until the end of the round: • Lead by Example: Fear."
+    },
+    {
+      "id": "0KcT6",
+      "key": "•-always-look-out",
+      "hint": "Stealth.",
+      "name": "• Always Look Out",
+      "tags": [],
+      "label": "• Always Look Out",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Stealth."
+    },
+    {
+      "id": "0bTQP",
+      "key": "•-full-steam-ahead",
+      "hint": "Furious.",
+      "name": "• Full Steam Ahead",
+      "tags": [],
+      "label": "• Full Steam Ahead",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Furious."
+    },
+    {
+      "id": "HlVTo",
+      "key": "grappling-hook",
+      "hint": "If this unit manages to hit its target it may move up to 6” directly toward it, if physically possible.",
+      "name": "Grappling Hook",
+      "tags": [],
+      "label": "Grappling Hook",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "If this unit manages to hit its target it may move up to 6” directly toward it, if physically possible."
+    },
+    {
+      "id": "unpz1",
+      "key": "repair",
+      "hint": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target.",
+      "name": "Repair",
+      "tags": [],
+      "label": "Repair",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Once per turn, if within 2” of a unit with Tough, roll one die. On a 2+ you may repair 1 wound from the target."
+    },
+    {
+      "id": "BIff7",
+      "key": "storm-sight",
+      "hint": "This unit may block spells as if it had the Wizard(2) special rule.",
+      "name": "Storm Sight",
+      "tags": [],
+      "label": "Storm Sight",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This unit may block spells as if it had the Wizard(2) special rule."
+    },
+    {
+      "id": "gpYBl",
+      "key": "transport(x)",
+      "hint": "This model may transport up to X models. Units embark by moving into contact and may use any action to disembark but only move by 6”. Units may also be deployed within a transport. If a unit is inside a transport when it’s destroyed then it must take a Dangerous Terrain test, is immediately Wavering, and surviving models must be placed within 6” of the transport before it’s removed from play.",
+      "name": "Transport(X)",
+      "tags": [],
+      "label": "Transport(X)",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model may transport up to X models. Units embark by moving into contact and may use any action to disembark but only move by 6”. Units may also be deployed within a transport. If a unit is inside a transport when it’s destroyed then it must take a Dangerous Terrain test, is immediately Wavering, and surviving models must be placed within 6” of the transport before it’s removed from play."
+    },
+    {
+      "id": "cO8u9",
+      "key": "wind-reader",
+      "hint": "When the hero is activated, if it is inside or within 2” of a Sky-Gunboat, Sky-Frigate or Sky-Ironclad, the ship may immediately move up to 6”.",
+      "name": "Wind-Reader",
+      "tags": [],
+      "label": "Wind-Reader",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When the hero is activated, if it is inside or within 2” of a Sky-Gunboat, Sky-Frigate or Sky-Ironclad, the ship may immediately move up to 6”."
+    }
+  ],
+  "spells": [
+    {
+      "id": "-8Md0",
+      "name": "Wind Rune",
+      "threshold": 4,
+      "effect": "Target friendly unit within 12” gets +3” next time it moves."
+    },
+    {
+      "id": "tzZOm",
+      "name": "Aether Shock",
+      "threshold": 4,
+      "effect": "Target enemy model within 12” takes 1 automatic hit with AP(2)."
+    },
+    {
+      "id": "uzRwK",
+      "name": "Tinker",
+      "threshold": 5,
+      "effect": "Target friendly unit within 12” may heal 1 wound or restore 1 model (with only 1 health left if it had Tough)."
+    },
+    {
+      "id": "lgG43",
+      "name": "Sledge Shock",
+      "threshold": 5,
+      "effect": "Target 2 enemy units within 6” take 3 hits with AP(2) each."
+    },
+    {
+      "id": "Gw26L",
+      "name": "Sky-Sight",
+      "threshold": 6,
+      "effect": "Target enemy unit within 12” gets -2 to defense next time it takes hits."
+    },
+    {
+      "id": "jerYh",
+      "name": "Sky Shock",
+      "threshold": 6,
+      "effect": "Target enemy unit within 12” takes 8 automatic hits."
+    }
+  ],
+  "modifiedAt": "2021-10-21T16:50:28.473Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "age-of-fantasy",
+  "fullname": "Age of Fantasy",
+  "aberration": "AOF",
+  "universe": "Age of Fantasy",
+  "shortname": "Age of Fantasy"
+}

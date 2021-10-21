@@ -1,0 +1,1478 @@
+{
+  "gameSystemId": 4,
+  "name": "Rift Daemons [Plague]",
+  "hint": "Rift Daemons [Plague]",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.9",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "A4N8pUR",
+      "name": "Greater Daemon of Plague",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "p1RaUGN",
+          "label": "Exalted Plague Sword",
+          "attacks": 9,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        },
+        {
+          "key": "wizard",
+          "name": "Wizard",
+          "rating": "2"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 450,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "ZUd6WBT",
+      "name": "Daemon Champion of Plague",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "Qfkc11J",
+          "label": "Great Plague Sword",
+          "attacks": 6,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [
+        "B1"
+      ],
+      "cost": 225,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "fkhZnEu",
+      "name": "Champion of Plague",
+      "size": 1,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "XaFWmaH",
+          "label": "Plague Sword",
+          "attacks": 3,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "C1"
+      ],
+      "cost": 70,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "lDsAID4",
+      "name": "Plague Warriors",
+      "size": 10,
+      "quality": 4,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "tQW5Z7V",
+          "label": "Hand Weapons",
+          "attacks": 1,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "D1",
+        "E1"
+      ],
+      "cost": 180,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "mTWCKxr",
+      "name": "Plague Swarms",
+      "size": 3,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "A9SRh7x",
+          "label": "Swarm Attacks",
+          "attacks": 3,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "scout",
+          "name": "Scout",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [],
+      "cost": 150,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "LdCeE7K",
+      "name": "Plague Fly Riders",
+      "size": 3,
+      "quality": 4,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "JlWoB-_",
+          "label": "Hand Weapons",
+          "attacks": 1,
+          "specialRules": [
+            "Poison"
+          ]
+        },
+        {
+          "id": "6262NmB",
+          "label": "Stingers",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "D1",
+        "F1"
+      ],
+      "cost": 215,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "DIkLWMC",
+      "name": "Plague Beast",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "WQ1uj1U",
+          "label": "Claws",
+          "attacks": 4,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [],
+      "cost": 100,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "l62mjwK",
+      "name": "Crab Daemon of Plague",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "_MASkUe",
+          "label": "Plague Cannon",
+          "attacks": 3,
+          "range": 24,
+          "specialRules": [
+            "Poison"
+          ]
+        },
+        {
+          "id": "N_E6AKr",
+          "label": "Plague Claw",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)",
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "regeneration",
+          "name": "Regeneration",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        }
+      ],
+      "upgrades": [
+        "G1"
+      ],
+      "cost": 360,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Replace Exalted Plague Sword",
+          "type": "replace",
+          "replaceWhat": [
+            "Exalted Plague Sword"
+          ],
+          "options": [
+            {
+              "id": "DbW1Q",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Plague Hammer (A6, Poison, Rending)",
+              "gains": [
+                {
+                  "label": "Exalted Plague Hammer (A6, Poison, Rending)",
+                  "name": "Exalted Plague Hammer",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "rb-cz",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Exalted Plague Spear (A3, AP(2), Deadly(3), Poison)",
+              "gains": [
+                {
+                  "label": "Exalted Plague Spear (A3, AP(2), Deadly(3), Poison)",
+                  "name": "Exalted Plague Spear",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "-1WLC",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Exalted Toxic Bile (6”, A6, Poison)",
+              "gains": [
+                {
+                  "label": "Exalted Toxic Bile (6”, A6, Poison)",
+                  "name": "Exalted Toxic Bile",
+                  "attacks": 6,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "W-my1",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Exalted Toxic Spit (12”, A6, Poison)",
+              "gains": [
+                {
+                  "label": "Exalted Toxic Spit (12”, A6, Poison)",
+                  "name": "Exalted Toxic Spit",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "tN1Zu",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Symbol of Plague(2+)",
+              "gains": [
+                {
+                  "label": "Symbol of Plague(2+)",
+                  "name": "Symbol of Plague",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "2+",
+                      "name": "2+",
+                      "rating": "",
+                      "label": "2+",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Replace Great Plague Sword",
+          "type": "replace",
+          "replaceWhat": [
+            "Great Plague Sword"
+          ],
+          "options": [
+            {
+              "id": "tdkXt",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Plague Hammer (A4, Poison, Rending)",
+              "gains": [
+                {
+                  "label": "Great Plague Hammer (A4, Poison, Rending)",
+                  "name": "Great Plague Hammer",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "GbhuN",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Great Plague Spear (A2, AP(2), Deadly(3), Poison)",
+              "gains": [
+                {
+                  "label": "Great Plague Spear (A2, AP(2), Deadly(3), Poison)",
+                  "name": "Great Plague Spear",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "gWpoS",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Great Toxic Bile (6”, A4, Poison)",
+              "gains": [
+                {
+                  "label": "Great Toxic Bile (6”, A4, Poison)",
+                  "name": "Great Toxic Bile",
+                  "attacks": 4,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CRksq",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Great Toxic Spit (12”, A4, Poison)",
+              "gains": [
+                {
+                  "label": "Great Toxic Spit (12”, A4, Poison)",
+                  "name": "Great Toxic Spit",
+                  "attacks": 4,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "1x9-b",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Wings (Flying)",
+              "gains": [
+                {
+                  "label": "Wings (Flying)",
+                  "name": "Wings",
+                  "content": [
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "OjDNT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Symbol of Plague(3+)",
+              "gains": [
+                {
+                  "label": "Symbol of Plague(3+)",
+                  "name": "Symbol of Plague",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "3+",
+                      "name": "3+",
+                      "rating": "",
+                      "label": "3+",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "wTtq45T",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Wizard(1)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "1",
+                  "label": "Wizard(1)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "PIoJbXR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Wizard(2)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "2",
+                  "label": "Wizard(2)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Replace Plague Sword",
+          "type": "replace",
+          "replaceWhat": [
+            "Plague Sword"
+          ],
+          "options": [
+            {
+              "id": "j2Ui0",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Plague Hammer (A2, Poison, Rending)",
+              "gains": [
+                {
+                  "label": "Plague Hammer (A2, Poison, Rending)",
+                  "name": "Plague Hammer",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "QH6TY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Plague Spear (A1, AP(2), Deadly(3), Poison)",
+              "gains": [
+                {
+                  "label": "Plague Spear (A1, AP(2), Deadly(3), Poison)",
+                  "name": "Plague Spear",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "DixNJ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Toxic Bile (6”, A2, Poison)",
+              "gains": [
+                {
+                  "label": "Toxic Bile (6”, A2, Poison)",
+                  "name": "Toxic Bile",
+                  "attacks": 2,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ZvZnR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Toxic Spit (12”, A2, Poison)",
+              "gains": [
+                {
+                  "label": "Toxic Spit (12”, A2, Poison)",
+                  "name": "Toxic Spit",
+                  "attacks": 2,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "olZZt",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Symbol of Plague(4+)",
+              "gains": [
+                {
+                  "label": "Symbol of Plague(4+)",
+                  "name": "Symbol of Plague",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "4+",
+                      "name": "4+",
+                      "rating": "",
+                      "label": "4+",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tV7vRnn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Wizard(1)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "1",
+                  "label": "Wizard(1)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "uxw-Z",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 75,
+              "label": "Throne of Plague – Claws (A6, Poison), Tough(+3)",
+              "gains": [
+                {
+                  "label": "Throne of Plague – Claws (A6, Poison), Tough(+3)",
+                  "name": "Throne of Plague – Claws",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison)",
+                      "name": "Poison)",
+                      "rating": "",
+                      "label": "Poison)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough(+3",
+                      "name": "Tough(+3",
+                      "rating": "",
+                      "label": "Tough(+3",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "QSSQf",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 150,
+              "label": "Giant Snail – Toxic Maw (A3, AP(1), Poison), Slime Trap, Slow, Tough(+6)",
+              "gains": [
+                {
+                  "label": "Giant Snail – Toxic Maw (A3, AP(1), Poison), Slime Trap, Slow, Tough(+6)",
+                  "name": "Giant Snail – Toxic Maw",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison)",
+                      "name": "Poison)",
+                      "rating": "",
+                      "label": "Poison)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "slime-trap",
+                      "name": "Slime Trap",
+                      "rating": "",
+                      "label": "Slime Trap",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "slow",
+                      "name": "Slow",
+                      "rating": "",
+                      "label": "Slow",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough(+6",
+                      "name": "Tough(+6",
+                      "rating": "",
+                      "label": "Tough(+6",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "wlhvLqY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Sergeant",
+              "gains": [
+                {
+                  "key": "sergeant",
+                  "name": "Sergeant",
+                  "rating": "",
+                  "label": "Sergeant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "Tmj6e9A",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Musician",
+              "gains": [
+                {
+                  "key": "musician",
+                  "name": "Musician",
+                  "rating": "",
+                  "label": "Musician",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "Ur-HG-b",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Battle Standard",
+              "gains": [
+                {
+                  "key": "battle-standard",
+                  "name": "Battle Standard",
+                  "rating": "",
+                  "label": "Battle Standard",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade one model with",
+          "type": "upgrade",
+          "affects": 1,
+          "options": [
+            {
+              "id": "n-BMB5A",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Banner of Plague",
+              "gains": [
+                {
+                  "key": "banner-of-plague",
+                  "name": "Banner of Plague",
+                  "rating": "",
+                  "label": "Banner of Plague",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace all Hand Weapons",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": [
+            "Hand Weapons"
+          ],
+          "options": [
+            {
+              "id": "HifBH",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Halberds (A1, Poison, Rending)",
+              "gains": [
+                {
+                  "label": "Halberds (A1, Poison, Rending)",
+                  "name": "Halberds",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Z5PTs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "2x Hand Weapons (A1, Poison)",
+              "gains": [
+                {
+                  "label": "Hand Weapons (A1, Poison)",
+                  "name": "Hand Weapons",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Hand Weapons (A1, Poison)",
+                  "name": "Hand Weapons",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "RxTec",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Great Weapons (A1, AP(2), Poison)",
+              "gains": [
+                {
+                  "label": "Great Weapons (A1, AP(2), Poison)",
+                  "name": "Great Weapons",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bSsyx",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Spears (A1, Poison, Phalanx)",
+              "gains": [
+                {
+                  "label": "Spears (A1, Poison, Phalanx)",
+                  "name": "Spears",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "phalanx",
+                      "name": "Phalanx",
+                      "rating": "",
+                      "label": "Phalanx",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Upgrade all models with",
+          "type": "upgrade",
+          "affects": "all",
+          "options": [
+            {
+              "id": "O4SaB",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Poisoned Spit (12”, A1, Poison)",
+              "gains": [
+                {
+                  "label": "Poisoned Spit (12”, A1, Poison)",
+                  "name": "Poisoned Spit",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace all Stingers",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": [
+            "Stingers"
+          ],
+          "options": [
+            {
+              "id": "7yP2y",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Poisoned Stingers (A3, AP(1), Poison)",
+              "gains": [
+                {
+                  "label": "Poisoned Stingers (A3, AP(1), Poison)",
+                  "name": "Poisoned Stingers",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
+        {
+          "label": "Replace Plague Claw",
+          "type": "replace",
+          "replaceWhat": [
+            "Plague Claw"
+          ],
+          "options": [
+            {
+              "id": "rrVi_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Plague Blade (A6, Poison)",
+              "gains": [
+                {
+                  "label": "Plague Blade (A6, Poison)",
+                  "name": "Plague Blade",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace Plague Cannon",
+          "type": "replace",
+          "replaceWhat": [
+            "Plague Cannon"
+          ],
+          "options": [
+            {
+              "id": "lsOCN",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Heavy Plague Cannon (24”, A3, AP(2), Poison)",
+              "gains": [
+                {
+                  "label": "Heavy Plague Cannon (24”, A3, AP(2), Poison)",
+                  "name": "Heavy Plague Cannon",
+                  "attacks": 3,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison",
+                      "name": "Poison",
+                      "rating": "",
+                      "label": "Poison",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "Y610G",
+      "key": "banner-of-plague",
+      "hint": "The unit gets Rending.",
+      "name": "Banner of Plague",
+      "tags": [],
+      "label": "Banner of Plague",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The unit gets Rending."
+    },
+    {
+      "id": "kAe0u",
+      "key": "slime-trap",
+      "hint": "Enemy units that fight in melee against the hero count as having the Slow special rule for the rest of the game.",
+      "name": "Slime Trap",
+      "tags": [],
+      "label": "Slime Trap",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Enemy units that fight in melee against the hero count as having the Slow special rule for the rest of the game."
+    },
+    {
+      "id": "-0VL4",
+      "key": "symbol-of-plague(x+)",
+      "hint": "When the hero is activated roll one die. On an X+ one enemy unit within 18” must immediately take a Dangerous Terrain test.",
+      "name": "Symbol of Plague(X+)",
+      "tags": [],
+      "label": "Symbol of Plague(X+)",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When the hero is activated roll one die. On an X+ one enemy unit within 18” must immediately take a Dangerous Terrain test."
+    }
+  ],
+  "spells": [
+    {
+      "id": "l0Fpw",
+      "name": "Abundance",
+      "threshold": 4,
+      "effect": "Target friendly unit within 12” gets Stealth next time it’s shot at."
+    },
+    {
+      "id": "TaVYN",
+      "name": "Corruption",
+      "threshold": 4,
+      "effect": "Target enemy unit within 6” must take a dangerous terrain test."
+    },
+    {
+      "id": "l5ENs",
+      "name": "Putrefaction",
+      "threshold": 5,
+      "effect": "Target friendly unit within 12” gets AP(+2) in melee next time it fights."
+    },
+    {
+      "id": "_R8tA",
+      "name": "Visitations",
+      "threshold": 5,
+      "effect": "Target enemy unit within 12” takes 1 hit with AP(4) and Deadly(3)."
+    },
+    {
+      "id": "POQsH",
+      "name": "Pestilence",
+      "threshold": 6,
+      "effect": "Target friendly unit within 12” may immediately move by up to 6”."
+    },
+    {
+      "id": "Gc8BN",
+      "name": "Plague Curse",
+      "threshold": 6,
+      "effect": "Target enemy unit within 12” takes 4 automatic hits with AP(2)."
+    }
+  ],
+  "modifiedAt": "2021-10-21T16:40:53.071Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "age-of-fantasy",
+  "fullname": "Age of Fantasy",
+  "aberration": "AOF",
+  "universe": "Age of Fantasy",
+  "shortname": "Age of Fantasy"
+}

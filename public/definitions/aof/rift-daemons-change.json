@@ -1,0 +1,1550 @@
+{
+  "gameSystemId": 4,
+  "name": "Rift Daemons [Change]",
+  "hint": "Rift Daemons [Change]",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.9",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "02EjueZ",
+      "name": "Greater Daemon of Change",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "SMtqHtJ",
+          "label": "Exalted Power Staff",
+          "attacks": 9,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        },
+        {
+          "key": "wizard",
+          "name": "Wizard",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 435,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "lKbSdA8",
+      "name": "Daemon Champion of Change",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "9P79WeQ",
+          "label": "Great Power Staff",
+          "attacks": 6,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [
+        "B1"
+      ],
+      "cost": 205,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "7La-ZkW",
+      "name": "Champion of Change",
+      "size": 1,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "LjYEs-Q",
+          "label": "Power Staff",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [
+        "C1"
+      ],
+      "cost": 50,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "7PQEUrV",
+      "name": "Change Warriors",
+      "size": 10,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "D_lhUZd",
+          "label": "Fireballs",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "7_7Atvl",
+          "label": "Claws",
+          "attacks": 1,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "D1",
+        "E1"
+      ],
+      "cost": 125,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "yQlexDf",
+      "name": "Pink Warriors",
+      "size": 10,
+      "quality": 5,
+      "defense": 5,
+      "equipment": [
+        {
+          "id": "dNWpvDX",
+          "label": "Fireballs",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "jM_LeCp",
+          "label": "Claws",
+          "attacks": 1,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "split",
+          "name": "Split",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        }
+      ],
+      "upgrades": [
+        "D1",
+        "E1"
+      ],
+      "cost": 375,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "Nss6zS5",
+      "name": "Blue Warriors",
+      "size": 10,
+      "quality": 6,
+      "defense": 6,
+      "equipment": [
+        {
+          "id": "YsRMDvG",
+          "label": "Fireballs",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "JGNNklT",
+          "label": "Claws",
+          "attacks": 1,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "split-again",
+          "name": "Split Again",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 125,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "8JNsMGW",
+      "name": "Yellow Warriors",
+      "size": 10,
+      "quality": 6,
+      "defense": null,
+      "equipment": [
+        {
+          "id": "6CgW8va",
+          "label": "Fireballs",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": []
+        },
+        {
+          "id": "Osvb1-5",
+          "label": "Claws",
+          "attacks": 1,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "squishy",
+          "name": "Squishy",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        }
+      ],
+      "upgrades": [],
+      "cost": 55,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "ngvHaLp",
+      "name": "Manta Daemons",
+      "size": 3,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "AukLckz",
+          "label": "Claws",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [],
+      "cost": 165,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "nF9oIi-",
+      "name": "Flame Daemons",
+      "size": 3,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "iR4pgT5",
+          "label": "Spout Flames",
+          "attacks": 3,
+          "range": 18,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "4rQdwqO",
+          "label": "Claws",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3"
+        }
+      ],
+      "upgrades": [],
+      "cost": 170,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "YQnVTO4",
+      "name": "Flame Chariot",
+      "size": 1,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "j0bv8Ws",
+          "label": "Spout Flames",
+          "attacks": 3,
+          "range": 18,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "_Vlrmq_",
+          "label": "Claws",
+          "attacks": 9,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": ""
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "strider",
+          "name": "Strider",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [],
+      "cost": 135,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "TnOPPQm",
+      "name": "Crab Daemon of Change",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "0C-c2Yb",
+          "label": "Power Cannon",
+          "attacks": 3,
+          "range": 24,
+          "specialRules": [
+            "AP(1)"
+          ]
+        },
+        {
+          "id": "VLnvBgp",
+          "label": "Power Claw",
+          "attacks": 3,
+          "specialRules": [
+            "AP(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "stealth",
+          "name": "Stealth",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        }
+      ],
+      "upgrades": [
+        "F1"
+      ],
+      "cost": 285,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Replace Exalted Power Staff",
+          "type": "replace",
+          "replaceWhat": [
+            "Exalted Power Staff"
+          ],
+          "options": [
+            {
+              "id": "dXIIj",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Power Hammer (A6, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Exalted Power Hammer (A6, AP(1), Rending)",
+                  "name": "Exalted Power Hammer",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "6s_ba",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Power Spear (A3, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Exalted Power Spear (A3, AP(3), Deadly(3))",
+                  "name": "Exalted Power Spear",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "FgWIL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Exalted Magic Blast (6”, A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Exalted Magic Blast (6”, A6, AP(1))",
+                  "name": "Exalted Magic Blast",
+                  "attacks": 6,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Vc8QJ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Exalted Magic Bolt (12”, A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Exalted Magic Bolt (12”, A6, AP(1))",
+                  "name": "Exalted Magic Bolt",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "fdytW",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Symbol of Change(2+)",
+              "gains": [
+                {
+                  "label": "Symbol of Change(2+)",
+                  "name": "Symbol of Change",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "2+",
+                      "name": "2+",
+                      "rating": "",
+                      "label": "2+",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Replace Great Power Staff",
+          "type": "replace",
+          "replaceWhat": [
+            "Great Power Staff"
+          ],
+          "options": [
+            {
+              "id": "cQqgk",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Power Hammer (A4, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Great Power Hammer (A4, AP(1), Rending)",
+                  "name": "Great Power Hammer",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "mY9MD",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Power Spear (A2, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Great Power Spear (A2, AP(3), Deadly(3))",
+                  "name": "Great Power Spear",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "6GnW8",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Great Magic Blast (6”, A4, AP(1))",
+              "gains": [
+                {
+                  "label": "Great Magic Blast (6”, A4, AP(1))",
+                  "name": "Great Magic Blast",
+                  "attacks": 4,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "z5qO2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Great Magic Bolt (12”, A4, AP(1))",
+              "gains": [
+                {
+                  "label": "Great Magic Bolt (12”, A4, AP(1))",
+                  "name": "Great Magic Bolt",
+                  "attacks": 4,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "6-jsa",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Wings (Flying)",
+              "gains": [
+                {
+                  "label": "Wings (Flying)",
+                  "name": "Wings",
+                  "content": [
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "q1OiQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Symbol of Change(3+)",
+              "gains": [
+                {
+                  "label": "Symbol of Change(3+)",
+                  "name": "Symbol of Change",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "3+",
+                      "name": "3+",
+                      "rating": "",
+                      "label": "3+",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "a4CkISD",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Wizard(1)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "1",
+                  "label": "Wizard(1)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "Um4jJ5l",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Wizard(2)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "2",
+                  "label": "Wizard(2)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "8oYa9XI",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 50,
+              "label": "Wizard(3)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "3",
+                  "label": "Wizard(3)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Replace Power Staff",
+          "type": "replace",
+          "replaceWhat": [
+            "Power Staff"
+          ],
+          "options": [
+            {
+              "id": "Tv6MJ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Power Hammer (A2, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Power Hammer (A2, AP(1), Rending)",
+                  "name": "Power Hammer",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "GmMIm",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Power Spear (A1, AP(3), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Power Spear (A1, AP(3), Deadly(3))",
+                  "name": "Power Spear",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "GurYL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Magic Blast (6”, A2, AP(1))",
+              "gains": [
+                {
+                  "label": "Magic Blast (6”, A2, AP(1))",
+                  "name": "Magic Blast",
+                  "attacks": 2,
+                  "range": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VPj2g",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Magic Bolt (12”, A2, AP(1))",
+              "gains": [
+                {
+                  "label": "Magic Bolt (12”, A2, AP(1))",
+                  "name": "Magic Bolt",
+                  "attacks": 2,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "select": "any",
+          "options": [
+            {
+              "id": "94Yw_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Symbol of Change(4+)",
+              "gains": [
+                {
+                  "label": "Symbol of Change(4+)",
+                  "name": "Symbol of Change",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "4+",
+                      "name": "4+",
+                      "rating": "",
+                      "label": "4+",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "i81JaNh",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Wizard(1)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "1",
+                  "label": "Wizard(1)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "dDxOy",
+              "type": "ArmyBookUpgradeOption",
+              "cost": null,
+              "label": "Disc of Change – Fast, Impact(1), Strider",
+              "gains": [
+                {
+                  "label": "Disc of Change – Fast, Impact(1), Strider",
+                  "name": "Disc of Change – Fast, Impact",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "1",
+                      "name": "1",
+                      "rating": "",
+                      "label": "1",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "lihT-",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 155,
+              "label": "Flame Chariot – Defense +2, Claws (A6), Fast, Strider, Tough(+6)",
+              "gains": [
+                {
+                  "label": "Flame Chariot – Defense +2, Claws (A6), Fast, Strider, Tough(+6)",
+                  "name": "Flame Chariot – Defense +2, Claws",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "fast",
+                      "name": "Fast",
+                      "rating": "",
+                      "label": "Fast",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "strider",
+                      "name": "Strider",
+                      "rating": "",
+                      "label": "Strider",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough(+6",
+                      "name": "Tough(+6",
+                      "rating": "",
+                      "label": "Tough(+6",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "vsz0p8a",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Sergeant",
+              "gains": [
+                {
+                  "key": "sergeant",
+                  "name": "Sergeant",
+                  "rating": "",
+                  "label": "Sergeant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "qPyVqo2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Musician",
+              "gains": [
+                {
+                  "key": "musician",
+                  "name": "Musician",
+                  "rating": "",
+                  "label": "Musician",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "I7FXII7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Battle Standard",
+              "gains": [
+                {
+                  "key": "battle-standard",
+                  "name": "Battle Standard",
+                  "rating": "",
+                  "label": "Battle Standard",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade one model with",
+          "type": "upgrade",
+          "affects": 1,
+          "options": [
+            {
+              "id": "-PoEMyn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Banner of Change",
+              "gains": [
+                {
+                  "key": "banner-of-change",
+                  "name": "Banner of Change",
+                  "rating": "",
+                  "label": "Banner of Change",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace all Claws",
+          "type": "replace",
+          "affects": "all",
+          "replaceWhat": [
+            "Claws"
+          ],
+          "options": [
+            {
+              "id": "HuGgR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Halberds (A1, AP(1), Rending)",
+              "gains": [
+                {
+                  "label": "Halberds (A1, AP(1), Rending)",
+                  "name": "Halberds",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "42tCZ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Great Weapons (A1, AP(3))",
+              "gains": [
+                {
+                  "label": "Great Weapons (A1, AP(3))",
+                  "name": "Great Weapons",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Piitm",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "2x Hand Weapons (A1, AP(1))",
+              "gains": [
+                {
+                  "label": "Hand Weapons (A1, AP(1))",
+                  "name": "Hand Weapons",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Hand Weapons (A1, AP(1))",
+                  "name": "Hand Weapons",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "EjFvn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 30,
+              "label": "Spears (A1, AP(1), Phalanx)",
+              "gains": [
+                {
+                  "label": "Spears (A1, AP(1), Phalanx)",
+                  "name": "Spears",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "phalanx",
+                      "name": "Phalanx",
+                      "rating": "",
+                      "label": "Phalanx",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade one model with",
+          "type": "upgrade",
+          "affects": 1,
+          "options": [
+            {
+              "id": "xKoW63Z",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Wizard(1)",
+              "gains": [
+                {
+                  "key": "wizard",
+                  "name": "Wizard",
+                  "rating": "1",
+                  "label": "Wizard(1)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Replace Power Claw",
+          "type": "replace",
+          "replaceWhat": [
+            "Power Claw"
+          ],
+          "options": [
+            {
+              "id": "K1jYY",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Power Blade (A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Power Blade (A6, AP(1))",
+                  "name": "Power Blade",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace Power Cannon",
+          "type": "replace",
+          "replaceWhat": [
+            "Power Cannon"
+          ],
+          "options": [
+            {
+              "id": "vLDSO",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Heavy Power Cannon (24”, A3, AP(3))",
+              "gains": [
+                {
+                  "label": "Heavy Power Cannon (24”, A3, AP(3))",
+                  "name": "Heavy Power Cannon",
+                  "attacks": 3,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "OFSSL",
+      "key": "banner-of-change",
+      "hint": "This unit gets AP(+1) when fighting in melee.",
+      "name": "Banner of Change",
+      "tags": [],
+      "label": "Banner of Change",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This unit gets AP(+1) when fighting in melee."
+    },
+    {
+      "id": "LfeLH",
+      "key": "split",
+      "hint": "Whenever a Pink Warrior is killed you may replace it with 2 Blue Warriors. Note that you may only start assigning wounds to Blue Warriors once all Pink Warriors are killed.",
+      "name": "Split",
+      "tags": [],
+      "label": "Split",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Whenever a Pink Warrior is killed you may replace it with 2 Blue Warriors. Note that you may only start assigning wounds to Blue Warriors once all Pink Warriors are killed."
+    },
+    {
+      "id": "Jg4Mj",
+      "key": "split-again",
+      "hint": "Whenever a Blue Warrior is killed you replace it with 1 Yellow Warrior. Note that you may only start assigning wounds to Yellow Warriors once all Blue Warriors are killed.",
+      "name": "Split Again",
+      "tags": [],
+      "label": "Split Again",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Whenever a Blue Warrior is killed you replace it with 1 Yellow Warrior. Note that you may only start assigning wounds to Yellow Warriors once all Blue Warriors are killed."
+    },
+    {
+      "id": "qFmdu",
+      "key": "squish",
+      "hint": "This model has no Defense value, so every hit causes a wound.",
+      "name": "Squish",
+      "tags": [],
+      "label": "Squish",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model has no Defense value, so every hit causes a wound."
+    },
+    {
+      "id": "244za",
+      "key": "symbol-of-change(x+)",
+      "hint": "When the hero is activated roll one die. On an X+ one enemy model within 18” takes 1 automatic hit with AP(4) and Deadly(3).",
+      "name": "Symbol of Change(X+)",
+      "tags": [],
+      "label": "Symbol of Change(X+)",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When the hero is activated roll one die. On an X+ one enemy model within 18” takes 1 automatic hit with AP(4) and Deadly(3)."
+    }
+  ],
+  "spells": [
+    {
+      "id": "9cx2s",
+      "name": "Hex Blades",
+      "threshold": 4,
+      "effect": "Target friendly unit within 12” may immediately charge by 3”."
+    },
+    {
+      "id": "1CCeV",
+      "name": "Blaze",
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” takes 2 automatic hits with AP(2)."
+    },
+    {
+      "id": "AuF5V",
+      "name": "Steal Power",
+      "threshold": 5,
+      "effect": "Target enemy unit within 18” gets -1 to hit next time it shoots."
+    },
+    {
+      "id": "G7Ef3",
+      "name": "Firestorm",
+      "threshold": 5,
+      "effect": "Target enemy unit within 12” must take a dangerous terrain test."
+    },
+    {
+      "id": "m5QfV",
+      "name": "Loyalty",
+      "threshold": 6,
+      "effect": "Target friendly units within 12” gets Regeneration on rolls of 4+ next time it takes wounds."
+    },
+    {
+      "id": "VY9Pw",
+      "name": "Change Bolt",
+      "threshold": 6,
+      "effect": "Target enemy unit within 12” takes 1 hit with AP(4) and Deadly(6)."
+    }
+  ],
+  "modifiedAt": "2021-10-21T16:39:55.932Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "age-of-fantasy",
+  "fullname": "Age of Fantasy",
+  "aberration": "AOF",
+  "universe": "Age of Fantasy",
+  "shortname": "Age of Fantasy"
+}

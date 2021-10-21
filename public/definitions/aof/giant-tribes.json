@@ -1,0 +1,1498 @@
+{
+  "gameSystemId": 4,
+  "name": "Giant Tribes",
+  "hint": "Giant Tribes",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.0",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "UR1mY8U",
+      "name": "Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "-zepx9J",
+          "label": "Giant Club",
+          "attacks": 6,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 155,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "T_9Xtqo",
+      "name": "Crusher Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "A24zXYr",
+          "label": "Giant Club",
+          "attacks": 6,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "wuGmMS0",
+          "label": "Crush",
+          "attacks": 1,
+          "specialRules": [
+            "AP(4)",
+            "Deadly(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 165,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "NyYJaQ6",
+      "name": "Drunken Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "bZt1T7I",
+          "label": "Giant Club",
+          "attacks": 6,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "gDlZnPn",
+          "label": "Drunken Swing",
+          "specialRules": [
+            "AD6",
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 165,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "TIvldRP",
+      "name": "Super Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "Dql40bZ",
+          "label": "Super Club",
+          "attacks": 9,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        }
+      ],
+      "upgrades": [
+        "B1"
+      ],
+      "cost": 285,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "TPIqHWb",
+      "name": "Monster Eater Mega-Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "gFq-e1b",
+          "label": "Mega Club",
+          "attacks": 12,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "ia9b1iM",
+          "label": "Stuff Net",
+          "specialRules": [
+            "AD3",
+            "AP(4)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18"
+        }
+      ],
+      "upgrades": [
+        "C1",
+        "D1"
+      ],
+      "cost": 425,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "TstB7Ct",
+      "name": "Battle Stomper Mega-Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "3NbJB2D",
+          "label": "Mega Club",
+          "attacks": 12,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "Z8Pa4a4",
+          "label": "Battle Stomp",
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18"
+        }
+      ],
+      "upgrades": [
+        "C1",
+        "E1"
+      ],
+      "cost": 425,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "hCekK5z",
+      "name": "Castle Breaker Mega-Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "Xduog5-",
+          "label": "Mega Club",
+          "attacks": 12,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "qhWHi8T",
+          "label": "Gate Smash",
+          "attacks": 1,
+          "specialRules": [
+            "AP(4)",
+            "Blast(3)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18"
+        }
+      ],
+      "upgrades": [
+        "C1",
+        "F1"
+      ],
+      "cost": 430,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "2qvltSv",
+      "name": "Bone Grinder Ultra-Giant",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "UL_foCG",
+          "label": "Ultra Club",
+          "attacks": 15,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "G1"
+      ],
+      "cost": 545,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Replace Giant Club",
+          "type": "replace",
+          "replaceWhat": [
+            "Giant Club"
+          ],
+          "options": [
+            {
+              "id": "Ai3W2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Giant Spear (A6, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Giant Spear (A6, AP(2), Rending)",
+                  "name": "Giant Spear",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "_kFi8",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Giant Hammer (A6, AP(4))",
+              "gains": [
+                {
+                  "label": "Giant Hammer (A6, AP(4))",
+                  "name": "Giant Hammer",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "g7xXA",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "2x Giant Clubs (A6, AP(2))",
+              "gains": [
+                {
+                  "label": "Giant Clubs (A6, AP(2))",
+                  "name": "Giant Clubs",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Giant Clubs (A6, AP(2))",
+                  "name": "Giant Clubs",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "FOTIS",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 10,
+              "label": "Rock Thrower (12”, A1, AP(2), Blast(3))",
+              "gains": [
+                {
+                  "label": "Rock Thrower (12”, A1, AP(2), Blast(3))",
+                  "name": "Rock Thrower",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "tAJFh",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "War Paint (Regeneration)",
+              "gains": [
+                {
+                  "label": "War Paint (Regeneration)",
+                  "name": "War Paint",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "UWfua",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Thick Skin (Tough(+3))",
+              "gains": [
+                {
+                  "label": "Thick Skin (Tough(+3))",
+                  "name": "Thick Skin",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough(+3)",
+                      "name": "Tough(+3)",
+                      "rating": "",
+                      "label": "Tough(+3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "nBqnqID",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Veteran Giant",
+              "gains": [
+                {
+                  "key": "veteran-giant",
+                  "name": "Veteran Giant",
+                  "rating": "",
+                  "label": "Veteran Giant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Replace Super Club",
+          "type": "replace",
+          "replaceWhat": [
+            "Super Club"
+          ],
+          "options": [
+            {
+              "id": "urLzZ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Super Spear (A9, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Super Spear (A9, AP(2), Rending)",
+                  "name": "Super Spear",
+                  "attacks": 9,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xP8NR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Super Hammer (A9, AP(4))",
+              "gains": [
+                {
+                  "label": "Super Hammer (A9, AP(4))",
+                  "name": "Super Hammer",
+                  "attacks": 9,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "aHO5H",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "2x Super Clubs (A9, AP(2))",
+              "gains": [
+                {
+                  "label": "Super Clubs (A9, AP(2))",
+                  "name": "Super Clubs",
+                  "attacks": 9,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Super Clubs (A9, AP(2))",
+                  "name": "Super Clubs",
+                  "attacks": 9,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "Hitnd",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Large Rock Thrower (12”, A1, AP(2), Blast(6))",
+              "gains": [
+                {
+                  "label": "Large Rock Thrower (12”, A1, AP(2), Blast(6))",
+                  "name": "Large Rock Thrower",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "6",
+                      "label": "Blast(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "tOruc",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Thick Skin (Tough(+3))",
+              "gains": [
+                {
+                  "label": "Thick Skin (Tough(+3))",
+                  "name": "Thick Skin",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough(+3)",
+                      "name": "Tough(+3)",
+                      "rating": "",
+                      "label": "Tough(+3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tDo3j",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 70,
+              "label": "War Paint (Regeneration)",
+              "gains": [
+                {
+                  "label": "War Paint (Regeneration)",
+                  "name": "War Paint",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "mXqRmpr",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Veteran Super-Giant",
+              "gains": [
+                {
+                  "key": "veteran-super-giant",
+                  "name": "Veteran Super-Giant",
+                  "rating": "",
+                  "label": "Veteran Super-Giant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Replace Mega Club",
+          "type": "replace",
+          "replaceWhat": [
+            "Mega Club"
+          ],
+          "options": [
+            {
+              "id": "rY20f",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Mega Spear (A12, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Mega Spear (A12, AP(2), Rending)",
+                  "name": "Mega Spear",
+                  "attacks": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zMIoi",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Mega Hammer (A12, AP(4))",
+              "gains": [
+                {
+                  "label": "Mega Hammer (A12, AP(4))",
+                  "name": "Mega Hammer",
+                  "attacks": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "dFuDF",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "2x Mega Clubs (A12, AP(2))",
+              "gains": [
+                {
+                  "label": "Mega Clubs (A12, AP(2))",
+                  "name": "Mega Clubs",
+                  "attacks": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Mega Clubs (A12, AP(2))",
+                  "name": "Mega Clubs",
+                  "attacks": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "jxUsi",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Thick Skin (Tough(+3))",
+              "gains": [
+                {
+                  "label": "Thick Skin (Tough(+3))",
+                  "name": "Thick Skin",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough(+3)",
+                      "name": "Tough(+3)",
+                      "rating": "",
+                      "label": "Tough(+3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "VksZr",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 105,
+              "label": "War Paint (Regeneration)",
+              "gains": [
+                {
+                  "label": "War Paint (Regeneration)",
+                  "name": "War Paint",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "5L0ArlM",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 40,
+              "label": "Veteran Mega-Giant",
+              "gains": [
+                {
+                  "key": "veteran-mega-giant",
+                  "name": "Veteran Mega-Giant",
+                  "rating": "",
+                  "label": "Veteran Mega-Giant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Replace Mega Club",
+          "type": "replace",
+          "replaceWhat": [
+            "Mega Club"
+          ],
+          "options": [
+            {
+              "id": "2dw4L",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Wrecker Club (A6, AP(2), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Wrecker Club (A6, AP(2), Deadly(3))",
+                  "name": "Wrecker Club",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "KoQXQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Debris Thrower (24”, A6, AP(1))",
+              "gains": [
+                {
+                  "label": "Debris Thrower (24”, A6, AP(1))",
+                  "name": "Debris Thrower",
+                  "attacks": 6,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Replace Mega Club",
+          "type": "replace",
+          "replaceWhat": [
+            "Mega Club"
+          ],
+          "options": [
+            {
+              "id": "9FDUU",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Titanic Club (A2, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Titanic Club (A2, AP(4), Deadly(6))",
+                  "name": "Titanic Club",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "rVBSn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 15,
+              "label": "Body Thrower (12”, A1, AP(2), Deadly(3), Sniper)",
+              "gains": [
+                {
+                  "label": "Body Thrower (12”, A1, AP(2), Deadly(3), Sniper)",
+                  "name": "Body Thrower",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "sniper",
+                      "name": "Sniper",
+                      "rating": "",
+                      "label": "Sniper",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Replace Mega Club",
+          "type": "replace",
+          "replaceWhat": [
+            "Mega Club"
+          ],
+          "options": [
+            {
+              "id": "FbVDG",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Crusher Flail (A3D6, AP(2))",
+              "gains": [
+                {
+                  "label": "Crusher Flail (A3D6, AP(2))",
+                  "name": "Crusher Flail",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "Jcbvv",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Boulder Thrower (18”, A1, AP(4), Blast(3))",
+              "gains": [
+                {
+                  "label": "Boulder Thrower (18”, A1, AP(4), Blast(3))",
+                  "name": "Boulder Thrower",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
+        {
+          "label": "Replace Ultra Club",
+          "type": "replace",
+          "replaceWhat": [
+            "Ultra Club"
+          ],
+          "options": [
+            {
+              "id": "qGPX7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Ultra Spear (A15, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Ultra Spear (A15, AP(2), Rending)",
+                  "name": "Ultra Spear",
+                  "attacks": 15,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "Wbcwe",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Ultra Hammer (A15, AP(4))",
+              "gains": [
+                {
+                  "label": "Ultra Hammer (A15, AP(4))",
+                  "name": "Ultra Hammer",
+                  "attacks": 15,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "0deQT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 45,
+              "label": "2x Ultra Clubs (A15, AP(2))",
+              "gains": [
+                {
+                  "label": "Ultra Clubs (A15, AP(2))",
+                  "name": "Ultra Clubs",
+                  "attacks": 15,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Ultra Clubs (A15, AP(2))",
+                  "name": "Ultra Clubs",
+                  "attacks": 15,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "XoK0R",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Massive Rock Thrower (18”, A1, AP(2), Blast(6))",
+              "gains": [
+                {
+                  "label": "Massive Rock Thrower (18”, A1, AP(2), Blast(6))",
+                  "name": "Massive Rock Thrower",
+                  "attacks": 1,
+                  "range": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "6",
+                      "label": "Blast(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "oitip",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Thick Skin (Tough(+3))",
+              "gains": [
+                {
+                  "label": "Thick Skin (Tough(+3))",
+                  "name": "Thick Skin",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough(+3)",
+                      "name": "Tough(+3)",
+                      "rating": "",
+                      "label": "Tough(+3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "RdqLD",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 140,
+              "label": "War Paint (Regeneration)",
+              "gains": [
+                {
+                  "label": "War Paint (Regeneration)",
+                  "name": "War Paint",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "LAjAxSs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 40,
+              "label": "Veteran Ultra-Giant",
+              "gains": [
+                {
+                  "key": "veteran-ultra-giant",
+                  "name": "Veteran Ultra-Giant",
+                  "rating": "",
+                  "label": "Veteran Ultra-Giant",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "8SEul",
+      "key": "veteran-giant",
+      "hint": "This model gets +1 to its attack rolls for melee and shooting.",
+      "name": "Veteran Giant",
+      "tags": [],
+      "label": "Veteran Giant",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +1 to its attack rolls for melee and shooting."
+    },
+    {
+      "id": "M3YC4",
+      "key": "veteran-mega-giant",
+      "hint": "This model gets +1 to its attack rolls for melee and shooting.",
+      "name": "Veteran Mega-Giant",
+      "tags": [],
+      "label": "Veteran Mega-Giant",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +1 to its attack rolls for melee and shooting."
+    },
+    {
+      "id": "59UDA",
+      "key": "veteran-super-giant",
+      "hint": "This model gets +1 to its attack rolls for melee and shooting.",
+      "name": "Veteran Super-Giant",
+      "tags": [],
+      "label": "Veteran Super-Giant",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +1 to its attack rolls for melee and shooting."
+    },
+    {
+      "id": "nOYR1",
+      "key": "veteran-ultra-giant",
+      "hint": "This model gets +1 to its attack rolls for melee and shooting.",
+      "name": "Veteran Ultra-Giant",
+      "tags": [],
+      "label": "Veteran Ultra-Giant",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +1 to its attack rolls for melee and shooting."
+    }
+  ],
+  "spells": [],
+  "modifiedAt": "2021-10-21T14:47:33.820Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "age-of-fantasy",
+  "fullname": "Age of Fantasy",
+  "aberration": "AOF",
+  "universe": "Age of Fantasy",
+  "shortname": "Age of Fantasy"
+}
