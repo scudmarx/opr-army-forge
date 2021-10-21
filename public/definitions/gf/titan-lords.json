@@ -1,1415 +1,1415 @@
 {
-    "gameSystemId": 2,
-    "name": "Titan Lords",
-    "hint": "Titan Lords",
-    "background": "",
-    "armyWideRule": {},
-    "versionString": "v2.4",
-    "dataToolVersion": "0.5.3",
-    "units": [
+  "gameSystemId": 2,
+  "name": "Titan Lords",
+  "hint": "Titan Lords",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.4",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "KX31GzD",
+      "name": "Hell Mini-Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
         {
-            "id": "KX31GzD",
-            "name": "Hell Mini-Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "wORD1gd",
-                    "label": "Hell Autocannons",
-                    "count": 2,
-                    "attacks": 4,
-                    "range": 48,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "id": "CibRl7u",
-                    "label": "Stomp",
-                    "attacks": 2,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "12"
-                }
-            ],
-            "upgrades": [
-                "E1"
-            ],
-            "cost": 480,
-            "costMode": "manually",
-            "splitPageNumber": 1
+          "id": "wORD1gd",
+          "label": "Hell Autocannons",
+          "count": 2,
+          "attacks": 4,
+          "range": 48,
+          "specialRules": [
+            "AP(2)"
+          ]
         },
         {
-            "id": "z1Y35RY",
-            "name": "Glaive Mini-Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "7mdXeNJ",
-                    "label": "Fusion Blaster",
-                    "attacks": 1,
-                    "range": 24,
-                    "specialRules": [
-                        "AP(4)",
-                        "Blast(3)",
-                        "Deadly(6)"
-                    ]
-                },
-                {
-                    "id": "6L5nHvp",
-                    "label": "Mini-Titan Sword",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "id": "y0rlOtz",
-                    "label": "Stomp",
-                    "attacks": 2,
-                    "specialRules": [
-                        "AP(1)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "12"
-                }
-            ],
-            "upgrades": [
-                "E1"
-            ],
-            "cost": 510,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "EvDKQqR",
-            "name": "Gallant Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "4PHeBQY",
-                    "label": "Titan Energy Fist",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(4)",
-                        "Deadly(3)"
-                    ]
-                },
-                {
-                    "id": "21YCMEY",
-                    "label": "Titan Sword",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(4)"
-                    ]
-                },
-                {
-                    "id": "5szdG24",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1"
-            ],
-            "cost": 765,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "eicttVf",
-            "name": "Warden Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "AkG2JGz",
-                    "label": "Gatling Cannon",
-                    "attacks": 12,
-                    "range": 36,
-                    "specialRules": [
-                        "AP(1)",
-                        "Rending"
-                    ]
-                },
-                {
-                    "id": "_ZG9UJ5",
-                    "label": "Machinegun",
-                    "attacks": 3,
-                    "range": 36,
-                    "specialRules": []
-                },
-                {
-                    "id": "tvM_Wqx",
-                    "label": "Titan Sword",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(4)"
-                    ]
-                },
-                {
-                    "id": "XfZG3s6",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1"
-            ],
-            "cost": 910,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "8jvJZz0",
-            "name": "Preceptor Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "PUDCskP",
-                    "label": "Pulse Laser",
-                    "attacks": 5,
-                    "specialRules": [
-                        "36“",
-                        "AP(4)",
-                        "Deadly(3)"
-                    ]
-                },
-                {
-                    "id": "VSt3lGY",
-                    "label": "Titan Sword",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(4)"
-                    ]
-                },
-                {
-                    "id": "sbJo82n",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1",
-                "C1"
-            ],
-            "cost": 910,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "CZg2HE4",
-            "name": "Errant Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "ZuGbkng",
-                    "label": "Fusion Cannon",
-                    "attacks": 1,
-                    "range": 36,
-                    "specialRules": [
-                        "AP(4)",
-                        "Blast(3)",
-                        "Deadly(6)"
-                    ]
-                },
-                {
-                    "id": "JT7y8ht",
-                    "label": "Titan Sword",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(4)"
-                    ]
-                },
-                {
-                    "id": "mfeUe2b",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1"
-            ],
-            "cost": 945,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "GHkbzCI",
-            "name": "Castellan Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "0vFTwIa",
-                    "label": "Plasma Battle Cannon",
-                    "attacks": 1,
-                    "range": 48,
-                    "specialRules": [
-                        "AP(2)",
-                        "Blast(6)"
-                    ]
-                },
-                {
-                    "id": "QxHszbR",
-                    "label": "Volcano Cannon",
-                    "attacks": 1,
-                    "range": 48,
-                    "specialRules": [
-                        "AP(4)",
-                        "Blast(3)",
-                        "Deadly(3)"
-                    ]
-                },
-                {
-                    "id": "UlKK17W",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1",
-                "D1"
-            ],
-            "cost": 945,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "7Ma-WY7",
-            "name": "Paladin Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "djAqXmm",
-                    "label": "Rapid Battle Cannon",
-                    "attacks": 2,
-                    "range": 48,
-                    "specialRules": [
-                        "AP(3)",
-                        "Blast(6)"
-                    ]
-                },
-                {
-                    "id": "yvOYxui",
-                    "label": "Machinegun",
-                    "attacks": 3,
-                    "range": 36,
-                    "specialRules": []
-                },
-                {
-                    "id": "uRzT-A4",
-                    "label": "Titan Sword",
-                    "attacks": 3,
-                    "specialRules": [
-                        "AP(4)"
-                    ]
-                },
-                {
-                    "id": "rfUQvPi",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1"
-            ],
-            "cost": 985,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "b17m4Nv",
-            "name": "Valiant Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "npKm_vR",
-                    "label": "Harpoon Cannon",
-                    "attacks": 1,
-                    "range": 12,
-                    "specialRules": [
-                        "AP(4)",
-                        "Deadly(12"
-                    ]
-                },
-                {
-                    "id": "TsJCy7L",
-                    "label": "Triple Flamethrower Cannon",
-                    "attacks": 18,
-                    "range": 18,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                },
-                {
-                    "id": "NUYE63Q",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1",
-                "D1"
-            ],
-            "cost": 1005,
-            "costMode": "manually",
-            "splitPageNumber": 1
-        },
-        {
-            "id": "Y-zZTzH",
-            "name": "Crusader Titan",
-            "size": 1,
-            "quality": 3,
-            "defense": 2,
-            "equipment": [
-                {
-                    "id": "IPgajLm",
-                    "label": "Gatling Cannon",
-                    "attacks": 12,
-                    "range": 36,
-                    "specialRules": [
-                        "AP(1)",
-                        "Rending"
-                    ]
-                },
-                {
-                    "id": "uVXZ9GW",
-                    "label": "Rapid Battle Cannon",
-                    "attacks": 2,
-                    "range": 48,
-                    "specialRules": [
-                        "AP(3)",
-                        "Blast(6)"
-                    ]
-                },
-                {
-                    "id": "Etnn8QO",
-                    "label": "Machineguns",
-                    "count": 2,
-                    "attacks": 3,
-                    "range": 36,
-                    "specialRules": []
-                },
-                {
-                    "id": "sJsxsBo",
-                    "label": "Stomp",
-                    "attacks": 4,
-                    "specialRules": [
-                        "AP(2)"
-                    ]
-                }
-            ],
-            "specialRules": [
-                {
-                    "key": "fear",
-                    "name": "Fear",
-                    "rating": ""
-                },
-                {
-                    "key": "fearless",
-                    "name": "Fearless",
-                    "rating": ""
-                },
-                {
-                    "key": "tough",
-                    "name": "Tough",
-                    "rating": "24"
-                }
-            ],
-            "upgrades": [
-                "A1",
-                "B1"
-            ],
-            "cost": 1145,
-            "costMode": "manually",
-            "splitPageNumber": 1
+          "id": "CibRl7u",
+          "label": "Stomp",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
         }
-    ],
-    "upgradePackages": [
+      ],
+      "specialRules": [
         {
-            "uid": "A1",
-            "hint": "A1",
-            "sections": [
-                {
-                    "label": "Upgrade with",
-                    "type": "upgrade",
-                    "options": [
-                        {
-                            "id": "t5Zuf",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 20,
-                            "label": "Machinegun (36”, A3)",
-                            "gains": [
-                                {
-                                    "label": "Machinegun (36”, A3)",
-                                    "name": "Machinegun",
-                                    "attacks": 3,
-                                    "range": 36,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": []
-                                }
-                            ]
-                        },
-                        {
-                            "id": "zxK9N2m",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 510,
-                            "label": "Veteran Titan",
-                            "gains": [
-                                {
-                                    "key": "veteran-titan",
-                                    "name": "Veteran Titan",
-                                    "rating": "",
-                                    "label": "Veteran Titan",
-                                    "type": "ArmyBookRule"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "label": "Replace any Machinegun",
-                    "type": "replace",
-                    "affects": "any",
-                    "replaceWhat": "Machinegun",
-                    "options": [
-                        {
-                            "id": "F0zMU",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 5,
-                            "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
-                            "gains": [
-                                {
-                                    "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
-                                    "name": "Fusion Rifle",
-                                    "attacks": 1,
-                                    "range": 12,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "label": "Upgrade with one",
-                    "type": "upgrade",
-                    "select": 1,
-                    "options": [
-                        {
-                            "id": "-sBEk",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 60,
-                            "label": "Rocket Pod (48”, A3, AP(3))",
-                            "gains": [
-                                {
-                                    "label": "Rocket Pod (48”, A3, AP(3))",
-                                    "name": "Rocket Pod",
-                                    "attacks": 3,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "3",
-                                            "label": "AP(3)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "UhJon",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 80,
-                            "label": "Twin AA-Cannon (48”, A4, AP(2), Anti-Air)",
-                            "gains": [
-                                {
-                                    "label": "Twin AA-Cannon (48”, A4, AP(2), Anti-Air)",
-                                    "name": "Twin AA-Cannon",
-                                    "attacks": 4,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "2",
-                                            "label": "AP(2)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "anti-air",
-                                            "name": "Anti-Air",
-                                            "rating": "",
-                                            "label": "Anti-Air",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "ztWWS",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 90,
-                            "label": "Missile Pod (48”, A1, AP(1), Blast(6), Indirect)",
-                            "gains": [
-                                {
-                                    "label": "Missile Pod (48”, A1, AP(1), Blast(6), Indirect)",
-                                    "name": "Missile Pod",
-                                    "attacks": 1,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "1",
-                                            "label": "AP(1)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "blast",
-                                            "name": "Blast",
-                                            "rating": "6",
-                                            "label": "Blast(6)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "indirect",
-                                            "name": "Indirect",
-                                            "rating": "",
-                                            "label": "Indirect",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "CIRRo",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 145,
-                            "label": "Power Shields (Regeneration)",
-                            "gains": [
-                                {
-                                    "label": "Power Shields (Regeneration)",
-                                    "name": "Power Shields",
-                                    "content": [
-                                        {
-                                            "key": "regeneration",
-                                            "name": "Regeneration",
-                                            "rating": "",
-                                            "label": "Regeneration",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ],
-                                    "type": "ArmyBookItem"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "5PZD5",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 290,
-                            "label": "Extra Armor (Tough(+12))",
-                            "gains": [
-                                {
-                                    "label": "Extra Armor (Tough(+12))",
-                                    "name": "Extra Armor",
-                                    "type": "ArmyBookItem",
-                                    "content": [
-                                        {
-                                            "key": "tough(+12)",
-                                            "name": "Tough(+12)",
-                                            "rating": "",
-                                            "label": "Tough(+12)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "label": "Upgrade with one",
-                    "type": "upgrade",
-                    "select": 1,
-                    "options": []
-                },
-                {
-                    "label": "Upgrade with",
-                    "type": "upgrade",
-                    "options": []
-                }
-            ]
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
         },
         {
-            "uid": "B1",
-            "hint": "B1",
-            "sections": [
-                {
-                    "label": "Replace Gatling Cannon",
-                    "type": "replace",
-                    "replaceWhat": "Gatling Cannon",
-                    "options": [
-                        {
-                            "id": "n7_Ld",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 55,
-                            "label": "Fusion Cannon (36”, A1, AP(4), Blast(3), Deadly(6))",
-                            "gains": [
-                                {
-                                    "label": "Fusion Cannon (36”, A1, AP(4), Blast(3), Deadly(6))",
-                                    "name": "Fusion Cannon",
-                                    "attacks": 1,
-                                    "range": 36,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "blast",
-                                            "name": "Blast",
-                                            "rating": "3",
-                                            "label": "Blast(3)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
         },
         {
-            "uid": "C1",
-            "hint": "C1",
-            "sections": [
-                {
-                    "label": "Upgrade with one",
-                    "type": "upgrade",
-                    "select": 1,
-                    "options": [
-                        {
-                            "id": "EPPAw",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 20,
-                            "label": "Machinegun (36”, A3)",
-                            "gains": [
-                                {
-                                    "label": "Machinegun (36”, A3)",
-                                    "name": "Machinegun",
-                                    "attacks": 3,
-                                    "range": 36,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": []
-                                }
-                            ]
-                        },
-                        {
-                            "id": "f2vDJ",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 35,
-                            "label": "Laser Machinegun (36”, A3, AP(2))",
-                            "gains": [
-                                {
-                                    "label": "Laser Machinegun (36”, A3, AP(2))",
-                                    "name": "Laser Machinegun",
-                                    "attacks": 3,
-                                    "range": 36,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "2",
-                                            "label": "AP(2)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "label": "Replace Titan Sword",
-                    "type": "replace",
-                    "replaceWhat": "Titan Sword",
-                    "options": [
-                        {
-                            "id": "fvJqQ",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 20,
-                            "label": "Titan Energy Fist (A3, AP(4), Deadly(3))",
-                            "gains": [
-                                {
-                                    "label": "Titan Energy Fist (A3, AP(4), Deadly(3))",
-                                    "name": "Titan Energy Fist",
-                                    "attacks": 3,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "3",
-                                            "label": "Deadly(3)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "uid": "D1",
-            "hint": "D1",
-            "sections": [
-                {
-                    "label": "Upgrade with",
-                    "type": "upgrade",
-                    "options": [
-                        {
-                            "id": "q1KGq",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 50,
-                            "label": "2x Twin Fusion Rifles (12”, A2, AP(4), Deadly(6))",
-                            "gains": [
-                                {
-                                    "label": "Twin Fusion Rifles (12”, A2, AP(4), Deadly(6))",
-                                    "name": "Twin Fusion Rifles",
-                                    "attacks": 2,
-                                    "range": 12,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "label": "Twin Fusion Rifles (12”, A2, AP(4), Deadly(6))",
-                                    "name": "Twin Fusion Rifles",
-                                    "attacks": 2,
-                                    "range": 12,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "label": "Upgrade with one",
-                    "type": "upgrade",
-                    "select": 1,
-                    "options": [
-                        {
-                            "id": "kFpH4",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 190,
-                            "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
-                            "gains": [
-                                {
-                                    "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
-                                    "name": "Twin Siege Cannon",
-                                    "attacks": 2,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "2",
-                                            "label": "AP(2)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "blast",
-                                            "name": "Blast",
-                                            "rating": "6",
-                                            "label": "Blast(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "1PYh7",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 190,
-                            "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
-                            "gains": [
-                                {
-                                    "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
-                                    "name": "Twin Shield Missiles",
-                                    "attacks": 2,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "y9K-I",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 380,
-                            "label": "2x Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
-                            "gains": [
-                                {
-                                    "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
-                                    "name": "Twin Siege Cannon",
-                                    "attacks": 2,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "2",
-                                            "label": "AP(2)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "blast",
-                                            "name": "Blast",
-                                            "rating": "6",
-                                            "label": "Blast(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
-                                    "name": "Twin Siege Cannon",
-                                    "attacks": 2,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "2",
-                                            "label": "AP(2)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "blast",
-                                            "name": "Blast",
-                                            "rating": "6",
-                                            "label": "Blast(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "aXQD3",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 380,
-                            "label": "2x Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
-                            "gains": [
-                                {
-                                    "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
-                                    "name": "Twin Shield Missiles",
-                                    "attacks": 2,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
-                                    "name": "Twin Shield Missiles",
-                                    "attacks": 2,
-                                    "range": 48,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "label": "Upgrade with one",
-                    "type": "upgrade",
-                    "select": 1,
-                    "options": []
-                }
-            ]
-        },
-        {
-            "uid": "E1",
-            "hint": "E1",
-            "sections": [
-                {
-                    "label": "Upgrade with one",
-                    "type": "upgrade",
-                    "select": 1,
-                    "options": [
-                        {
-                            "id": "Brr0J",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 20,
-                            "label": "Machinegun (36”, A3)",
-                            "gains": [
-                                {
-                                    "label": "Machinegun (36”, A3)",
-                                    "name": "Machinegun",
-                                    "attacks": 3,
-                                    "range": 36,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": []
-                                }
-                            ]
-                        },
-                        {
-                            "id": "0Cgkt",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 25,
-                            "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
-                            "gains": [
-                                {
-                                    "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
-                                    "name": "Fusion Rifle",
-                                    "attacks": 1,
-                                    "range": 12,
-                                    "type": "ArmyBookWeapon",
-                                    "specialRules": [
-                                        {
-                                            "key": "ap",
-                                            "name": "AP",
-                                            "rating": "4",
-                                            "label": "AP(4)",
-                                            "type": "ArmyBookRule"
-                                        },
-                                        {
-                                            "key": "deadly",
-                                            "name": "Deadly",
-                                            "rating": "6",
-                                            "label": "Deadly(6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "id": "0gKWu",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 70,
-                            "label": "Power Shields (Regeneration)",
-                            "gains": [
-                                {
-                                    "label": "Power Shields (Regeneration)",
-                                    "name": "Power Shields",
-                                    "content": [
-                                        {
-                                            "key": "regeneration",
-                                            "name": "Regeneration",
-                                            "rating": "",
-                                            "label": "Regeneration",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ],
-                                    "type": "ArmyBookItem"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "io4KQ",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 145,
-                            "label": "Extra Armor (Tough(+6))",
-                            "gains": [
-                                {
-                                    "label": "Extra Armor (Tough(+6))",
-                                    "name": "Extra Armor",
-                                    "type": "ArmyBookItem",
-                                    "content": [
-                                        {
-                                            "key": "tough(+6)",
-                                            "name": "Tough(+6)",
-                                            "rating": "",
-                                            "label": "Tough(+6)",
-                                            "type": "ArmyBookRule"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "label": "Upgrade with one",
-                    "type": "upgrade",
-                    "select": 1,
-                    "options": []
-                },
-                {
-                    "label": "Upgrade with",
-                    "type": "upgrade",
-                    "options": [
-                        {
-                            "id": "vy62c7H",
-                            "type": "ArmyBookUpgradeOption",
-                            "cost": 130,
-                            "label": "Veteran Mini-Titan",
-                            "gains": [
-                                {
-                                    "key": "veteran-mini-titan",
-                                    "name": "Veteran Mini-Titan",
-                                    "rating": "",
-                                    "label": "Veteran Mini-Titan",
-                                    "type": "ArmyBookRule"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
         }
-    ],
-    "specialRules": [
+      ],
+      "upgrades": [
+        "E1"
+      ],
+      "cost": 480,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "z1Y35RY",
+      "name": "Glaive Mini-Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
         {
-            "id": "7jyFz",
-            "key": "veteran-mini-titan",
-            "hint": "This model gets +1 to its attack rolls for melee and shooting.",
-            "name": "Veteran Mini-Titan",
-            "tags": [],
-            "label": "Veteran Mini-Titan",
-            "forUnit": true,
-            "forWeapon": false,
-            "hasRating": false,
-            "description": "This model gets +1 to its attack rolls for melee and shooting."
+          "id": "7mdXeNJ",
+          "label": "Fusion Blaster",
+          "attacks": 1,
+          "range": 24,
+          "specialRules": [
+            "AP(4)",
+            "Blast(3)",
+            "Deadly(6)"
+          ]
         },
         {
-            "id": "yVg2c",
-            "key": "veteran-titan",
-            "hint": "This model gets +1 to its attack rolls for melee and shooting.",
-            "name": "Veteran Titan",
-            "tags": [],
-            "label": "Veteran Titan",
-            "forUnit": true,
-            "forWeapon": false,
-            "hasRating": false,
-            "description": "This model gets +1 to its attack rolls for melee and shooting."
+          "id": "6L5nHvp",
+          "label": "Mini-Titan Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "y0rlOtz",
+          "label": "Stomp",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
         }
-    ],
-    "spells": [],
-    "modifiedAt": "2021-09-29T20:41:53.988Z",
-    "official": true,
-    "public": false,
-    
-    "coverImagePath": null,
-    "coverImageCredit": null,
-    "isLive": false,
-    "gameSystemSlug": "grimdark-future",
-    "fullname": "Grimdark Future",
-    "aberration": "GF",
-    "universe": "Grimdark Future",
-    "shortname": "Grimdark Future"
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "12"
+        }
+      ],
+      "upgrades": [
+        "E1"
+      ],
+      "cost": 510,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "EvDKQqR",
+      "name": "Gallant Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "4PHeBQY",
+          "label": "Titan Energy Fist",
+          "attacks": 3,
+          "specialRules": [
+            "AP(4)",
+            "Deadly(3)"
+          ]
+        },
+        {
+          "id": "21YCMEY",
+          "label": "Titan Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(4)"
+          ]
+        },
+        {
+          "id": "5szdG24",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 765,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "eicttVf",
+      "name": "Warden Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "AkG2JGz",
+          "label": "Gatling Cannon",
+          "attacks": 12,
+          "range": 36,
+          "specialRules": [
+            "AP(1)",
+            "Rending"
+          ]
+        },
+        {
+          "id": "_ZG9UJ5",
+          "label": "Machinegun",
+          "attacks": 3,
+          "range": 36,
+          "specialRules": []
+        },
+        {
+          "id": "tvM_Wqx",
+          "label": "Titan Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(4)"
+          ]
+        },
+        {
+          "id": "XfZG3s6",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 910,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "8jvJZz0",
+      "name": "Preceptor Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "PUDCskP",
+          "label": "Pulse Laser",
+          "attacks": 5,
+          "specialRules": [
+            "36“",
+            "AP(4)",
+            "Deadly(3)"
+          ]
+        },
+        {
+          "id": "VSt3lGY",
+          "label": "Titan Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(4)"
+          ]
+        },
+        {
+          "id": "sbJo82n",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "C1"
+      ],
+      "cost": 910,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "CZg2HE4",
+      "name": "Errant Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "ZuGbkng",
+          "label": "Fusion Cannon",
+          "attacks": 1,
+          "range": 36,
+          "specialRules": [
+            "AP(4)",
+            "Blast(3)",
+            "Deadly(6)"
+          ]
+        },
+        {
+          "id": "JT7y8ht",
+          "label": "Titan Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(4)"
+          ]
+        },
+        {
+          "id": "mfeUe2b",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 945,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "GHkbzCI",
+      "name": "Castellan Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "0vFTwIa",
+          "label": "Plasma Battle Cannon",
+          "attacks": 1,
+          "range": 48,
+          "specialRules": [
+            "AP(2)",
+            "Blast(6)"
+          ]
+        },
+        {
+          "id": "QxHszbR",
+          "label": "Volcano Cannon",
+          "attacks": 1,
+          "range": 48,
+          "specialRules": [
+            "AP(4)",
+            "Blast(3)",
+            "Deadly(3)"
+          ]
+        },
+        {
+          "id": "UlKK17W",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "D1"
+      ],
+      "cost": 945,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "7Ma-WY7",
+      "name": "Paladin Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "djAqXmm",
+          "label": "Rapid Battle Cannon",
+          "attacks": 2,
+          "range": 48,
+          "specialRules": [
+            "AP(3)",
+            "Blast(6)"
+          ]
+        },
+        {
+          "id": "yvOYxui",
+          "label": "Machinegun",
+          "attacks": 3,
+          "range": 36,
+          "specialRules": []
+        },
+        {
+          "id": "uRzT-A4",
+          "label": "Titan Sword",
+          "attacks": 3,
+          "specialRules": [
+            "AP(4)"
+          ]
+        },
+        {
+          "id": "rfUQvPi",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 985,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "b17m4Nv",
+      "name": "Valiant Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "npKm_vR",
+          "label": "Harpoon Cannon",
+          "attacks": 1,
+          "range": 12,
+          "specialRules": [
+            "AP(4)",
+            "Deadly(12"
+          ]
+        },
+        {
+          "id": "TsJCy7L",
+          "label": "Triple Flamethrower Cannon",
+          "attacks": 18,
+          "range": 18,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "NUYE63Q",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "D1"
+      ],
+      "cost": 1005,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "Y-zZTzH",
+      "name": "Crusader Titan",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "IPgajLm",
+          "label": "Gatling Cannon",
+          "attacks": 12,
+          "range": 36,
+          "specialRules": [
+            "AP(1)",
+            "Rending"
+          ]
+        },
+        {
+          "id": "uVXZ9GW",
+          "label": "Rapid Battle Cannon",
+          "attacks": 2,
+          "range": 48,
+          "specialRules": [
+            "AP(3)",
+            "Blast(6)"
+          ]
+        },
+        {
+          "id": "Etnn8QO",
+          "label": "Machineguns",
+          "count": 2,
+          "attacks": 3,
+          "range": 36,
+          "specialRules": []
+        },
+        {
+          "id": "sJsxsBo",
+          "label": "Stomp",
+          "attacks": 4,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": ""
+        },
+        {
+          "key": "fearless",
+          "name": "Fearless",
+          "rating": ""
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "24"
+        }
+      ],
+      "upgrades": [
+        "A1",
+        "B1"
+      ],
+      "cost": 1145,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "t5Zuf",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Machinegun (36”, A3)",
+              "gains": [
+                {
+                  "label": "Machinegun (36”, A3)",
+                  "name": "Machinegun",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "zxK9N2m",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 510,
+              "label": "Veteran Titan",
+              "gains": [
+                {
+                  "key": "veteran-titan",
+                  "name": "Veteran Titan",
+                  "rating": "",
+                  "label": "Veteran Titan",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace any Machinegun",
+          "type": "replace",
+          "affects": "any",
+          "replaceWhat": "Machinegun",
+          "options": [
+            {
+              "id": "F0zMU",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 5,
+              "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
+                  "name": "Fusion Rifle",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "-sBEk",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 60,
+              "label": "Rocket Pod (48”, A3, AP(3))",
+              "gains": [
+                {
+                  "label": "Rocket Pod (48”, A3, AP(3))",
+                  "name": "Rocket Pod",
+                  "attacks": 3,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "3",
+                      "label": "AP(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "UhJon",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 80,
+              "label": "Twin AA-Cannon (48”, A4, AP(2), Anti-Air)",
+              "gains": [
+                {
+                  "label": "Twin AA-Cannon (48”, A4, AP(2), Anti-Air)",
+                  "name": "Twin AA-Cannon",
+                  "attacks": 4,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "anti-air",
+                      "name": "Anti-Air",
+                      "rating": "",
+                      "label": "Anti-Air",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ztWWS",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 90,
+              "label": "Missile Pod (48”, A1, AP(1), Blast(6), Indirect)",
+              "gains": [
+                {
+                  "label": "Missile Pod (48”, A1, AP(1), Blast(6), Indirect)",
+                  "name": "Missile Pod",
+                  "attacks": 1,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "1",
+                      "label": "AP(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "6",
+                      "label": "Blast(6)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "indirect",
+                      "name": "Indirect",
+                      "rating": "",
+                      "label": "Indirect",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "CIRRo",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 145,
+              "label": "Power Shields (Regeneration)",
+              "gains": [
+                {
+                  "label": "Power Shields (Regeneration)",
+                  "name": "Power Shields",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "5PZD5",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 290,
+              "label": "Extra Armor (Tough(+12))",
+              "gains": [
+                {
+                  "label": "Extra Armor (Tough(+12))",
+                  "name": "Extra Armor",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough(+12)",
+                      "name": "Tough(+12)",
+                      "rating": "",
+                      "label": "Tough(+12)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": []
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": []
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Replace Gatling Cannon",
+          "type": "replace",
+          "replaceWhat": "Gatling Cannon",
+          "options": [
+            {
+              "id": "n7_Ld",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 55,
+              "label": "Fusion Cannon (36”, A1, AP(4), Blast(3), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Cannon (36”, A1, AP(4), Blast(3), Deadly(6))",
+                  "name": "Fusion Cannon",
+                  "attacks": 1,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "3",
+                      "label": "Blast(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "EPPAw",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Machinegun (36”, A3)",
+              "gains": [
+                {
+                  "label": "Machinegun (36”, A3)",
+                  "name": "Machinegun",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "f2vDJ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 35,
+              "label": "Laser Machinegun (36”, A3, AP(2))",
+              "gains": [
+                {
+                  "label": "Laser Machinegun (36”, A3, AP(2))",
+                  "name": "Laser Machinegun",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace Titan Sword",
+          "type": "replace",
+          "replaceWhat": "Titan Sword",
+          "options": [
+            {
+              "id": "fvJqQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Titan Energy Fist (A3, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Titan Energy Fist (A3, AP(4), Deadly(3))",
+                  "name": "Titan Energy Fist",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "q1KGq",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 50,
+              "label": "2x Twin Fusion Rifles (12”, A2, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Twin Fusion Rifles (12”, A2, AP(4), Deadly(6))",
+                  "name": "Twin Fusion Rifles",
+                  "attacks": 2,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Twin Fusion Rifles (12”, A2, AP(4), Deadly(6))",
+                  "name": "Twin Fusion Rifles",
+                  "attacks": 2,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "kFpH4",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 190,
+              "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
+              "gains": [
+                {
+                  "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
+                  "name": "Twin Siege Cannon",
+                  "attacks": 2,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "6",
+                      "label": "Blast(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "1PYh7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 190,
+              "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
+                  "name": "Twin Shield Missiles",
+                  "attacks": 2,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "y9K-I",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 380,
+              "label": "2x Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
+              "gains": [
+                {
+                  "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
+                  "name": "Twin Siege Cannon",
+                  "attacks": 2,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "6",
+                      "label": "Blast(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Twin Siege Cannon (48”, A2, AP(2), Blast(6))",
+                  "name": "Twin Siege Cannon",
+                  "attacks": 2,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "blast",
+                      "name": "Blast",
+                      "rating": "6",
+                      "label": "Blast(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "aXQD3",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 380,
+              "label": "2x Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
+                  "name": "Twin Shield Missiles",
+                  "attacks": 2,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                },
+                {
+                  "label": "Twin Shield Missiles (48”, A2, AP(4), Deadly(6))",
+                  "name": "Twin Shield Missiles",
+                  "attacks": 2,
+                  "range": 48,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": []
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "Brr0J",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 20,
+              "label": "Machinegun (36”, A3)",
+              "gains": [
+                {
+                  "label": "Machinegun (36”, A3)",
+                  "name": "Machinegun",
+                  "attacks": 3,
+                  "range": 36,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "0Cgkt",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 25,
+              "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
+              "gains": [
+                {
+                  "label": "Fusion Rifle (12”, A1, AP(4), Deadly(6))",
+                  "name": "Fusion Rifle",
+                  "attacks": 1,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "6",
+                      "label": "Deadly(6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "0gKWu",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 70,
+              "label": "Power Shields (Regeneration)",
+              "gains": [
+                {
+                  "label": "Power Shields (Regeneration)",
+                  "name": "Power Shields",
+                  "content": [
+                    {
+                      "key": "regeneration",
+                      "name": "Regeneration",
+                      "rating": "",
+                      "label": "Regeneration",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "io4KQ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 145,
+              "label": "Extra Armor (Tough(+6))",
+              "gains": [
+                {
+                  "label": "Extra Armor (Tough(+6))",
+                  "name": "Extra Armor",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "tough",
+                      "name": "Tough",
+                      "rating": "6",
+                      "label": "Tough(+6)",
+                      "modify": true,
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "select": 1,
+          "options": []
+        },
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "options": [
+            {
+              "id": "vy62c7H",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 130,
+              "label": "Veteran Mini-Titan",
+              "gains": [
+                {
+                  "key": "veteran-mini-titan",
+                  "name": "Veteran Mini-Titan",
+                  "rating": "",
+                  "label": "Veteran Mini-Titan",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "7jyFz",
+      "key": "veteran-mini-titan",
+      "hint": "This model gets +1 to its attack rolls for melee and shooting.",
+      "name": "Veteran Mini-Titan",
+      "tags": [],
+      "label": "Veteran Mini-Titan",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +1 to its attack rolls for melee and shooting."
+    },
+    {
+      "id": "yVg2c",
+      "key": "veteran-titan",
+      "hint": "This model gets +1 to its attack rolls for melee and shooting.",
+      "name": "Veteran Titan",
+      "tags": [],
+      "label": "Veteran Titan",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +1 to its attack rolls for melee and shooting."
+    }
+  ],
+  "spells": [],
+  "modifiedAt": "2021-09-29T20:41:53.988Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "grimdark-future",
+  "fullname": "Grimdark Future",
+  "aberration": "GF",
+  "universe": "Grimdark Future",
+  "shortname": "Grimdark Future"
 }

@@ -1030,11 +1030,11 @@
               "id": "GEUoY",
               "type": "ArmyBookUpgradeOption",
               "cost": 15,
-              "label": "War-Eel – Electric Skin (A1,AP(1)), Fast, Furious, Impact(1)",
+              "label": "War-Eel ï¿½ Electric Skin (A1,AP(1)), Fast, Furious, Impact(1)",
               "gains": [
                 {
-                  "label": "War-Eel – Electric Skin (A1,AP(1)), Fast, Furious, Impact(1)",
-                  "name": "War-Eel – Electric Skin",
+                  "label": "War-Eel ï¿½ Electric Skin (A1,AP(1)), Fast, Furious, Impact(1)",
+                  "name": "War-Eel ï¿½ Electric Skin",
                   "attacks": 1,
                   "type": "ArmyBookWeapon",
                   "specialRules": [
@@ -1074,11 +1074,11 @@
               "id": "LuVLm",
               "type": "ArmyBookUpgradeOption",
               "cost": 70,
-              "label": "Sea-Wyrm – Claws (A3, AP(1)), Fast, Impact(3) Tough(+3)",
+              "label": "Sea-Wyrm ï¿½ Claws (A3, AP(1)), Fast, Impact(3) Tough(+3)",
               "gains": [
                 {
-                  "label": "Sea-Wyrm – Claws (A3, AP(1)), Fast, Impact(3) Tough(+3)",
-                  "name": "Sea-Wyrm – Claws",
+                  "label": "Sea-Wyrm ï¿½ Claws (A3, AP(1)), Fast, Impact(3) Tough(+3)",
+                  "name": "Sea-Wyrm ï¿½ Claws",
                   "attacks": 3,
                   "type": "ArmyBookWeapon",
                   "specialRules": [
@@ -1111,11 +1111,11 @@
               "id": "4QiVS",
               "type": "ArmyBookUpgradeOption",
               "cost": 220,
-              "label": "Deep-Sea Dragon – Defense +2, Claws (A6, AP(2)), Fear, Tough(+6)",
+              "label": "Deep-Sea Dragon ï¿½ Defense +2, Claws (A6, AP(2)), Fear, Tough(+6)",
               "gains": [
                 {
-                  "label": "Deep-Sea Dragon – Defense +2, Claws (A6, AP(2)), Fear, Tough(+6)",
-                  "name": "Deep-Sea Dragon – Defense +2, Claws",
+                  "label": "Deep-Sea Dragon ï¿½ Defense +2, Claws (A6, AP(2)), Fear, Tough(+6)",
+                  "name": "Deep-Sea Dragon ï¿½ Defense +2, Claws",
                   "attacks": 6,
                   "type": "ArmyBookWeapon",
                   "specialRules": [
@@ -1192,7 +1192,7 @@
               "id": "KBIM9Eq",
               "type": "ArmyBookUpgradeOption",
               "cost": 45,
-              "label": "Giant Frog - Defense +1, Sticky Tongue (12”, A3, Poison), Leap Attack (A3,AP(1)), Tough(+3)",
+              "label": "Giant Frog - Defense +1, Sticky Tongue (12ï¿½, A3, Poison), Leap Attack (A3,AP(1)), Tough(+3)",
               "gains": [
                 {
                   "label": "Giant Frog",
@@ -1207,16 +1207,16 @@
                       "modify": false
                     },
                     {
-                      "key": "tough(+3)",
-                      "name": "Tough(+3)",
-                      "rating": "",
+                      "key": "tough",
+                      "name": "Tough",
+                      "rating": "3",
                       "label": "Tough(+3)",
-                      "condition": "",
-                      "modify": false
+                      "modify": true,
+                      "type": "ArmyBookRule"
                     },
                     {
                       "id": "JTriwMI",
-                      "label": "Defense +1, Sticky Tongue (12”, A3, Poison)",
+                      "label": "Defense +1, Sticky Tongue (12ï¿½, A3, Poison)",
                       "name": "Defense +1, Sticky Tongue",
                       "attacks": 3,
                       "range": 12,
@@ -1340,10 +1340,10 @@
               "id": "VaiaU",
               "type": "ArmyBookUpgradeOption",
               "cost": 10,
-              "label": "Javelins (12”, A1)",
+              "label": "Javelins (12ï¿½, A1)",
               "gains": [
                 {
-                  "label": "Javelins (12”, A1)",
+                  "label": "Javelins (12ï¿½, A1)",
                   "name": "Javelins",
                   "attacks": 1,
                   "range": 12,
@@ -1479,10 +1479,10 @@
               "id": "DQ-0S",
               "type": "ArmyBookUpgradeOption",
               "cost": 15,
-              "label": "Crossbows (30”, A1, Rending)",
+              "label": "Crossbows (30ï¿½, A1, Rending)",
               "gains": [
                 {
-                  "label": "Crossbows (30”, A1, Rending)",
+                  "label": "Crossbows (30ï¿½, A1, Rending)",
                   "name": "Crossbows",
                   "attacks": 1,
                   "range": 30,
@@ -1679,10 +1679,10 @@
               "id": "0g4F2",
               "type": "ArmyBookUpgradeOption",
               "cost": 10,
-              "label": "Electric Blast (12”, A1, Rending)",
+              "label": "Electric Blast (12ï¿½, A1, Rending)",
               "gains": [
                 {
-                  "label": "Electric Blast (12”, A1, Rending)",
+                  "label": "Electric Blast (12ï¿½, A1, Rending)",
                   "name": "Electric Blast",
                   "attacks": 1,
                   "range": 12,
@@ -1716,10 +1716,10 @@
               "id": "dAOy2",
               "type": "ArmyBookUpgradeOption",
               "cost": 15,
-              "label": "Harpoon Launcher (24”, A1, AP(2), Deadly(3))",
+              "label": "Harpoon Launcher (24ï¿½, A1, AP(2), Deadly(3))",
               "gains": [
                 {
-                  "label": "Harpoon Launcher (24”, A1, AP(2), Deadly(3))",
+                  "label": "Harpoon Launcher (24ï¿½, A1, AP(2), Deadly(3))",
                   "name": "Harpoon Launcher",
                   "attacks": 1,
                   "range": 24,
@@ -1747,10 +1747,10 @@
               "id": "ILS0z",
               "type": "ArmyBookUpgradeOption",
               "cost": 25,
-              "label": "Net Launcher (24”, A1, Blast(6))",
+              "label": "Net Launcher (24ï¿½, A1, Blast(6))",
               "gains": [
                 {
-                  "label": "Net Launcher (24”, A1, Blast(6))",
+                  "label": "Net Launcher (24ï¿½, A1, Blast(6))",
                   "name": "Net Launcher",
                   "attacks": 1,
                   "range": 24,
@@ -1814,10 +1814,10 @@
               "id": "fd-W4",
               "type": "ArmyBookUpgradeOption",
               "cost": 30,
-              "label": "2x Harpoon Launchers (24”, A1, AP(2), Deadly(3))",
+              "label": "2x Harpoon Launchers (24ï¿½, A1, AP(2), Deadly(3))",
               "gains": [
                 {
-                  "label": "Harpoon Launchers (24”, A1, AP(2), Deadly(3))",
+                  "label": "Harpoon Launchers (24ï¿½, A1, AP(2), Deadly(3))",
                   "name": "Harpoon Launchers",
                   "attacks": 1,
                   "range": 24,
@@ -1840,7 +1840,7 @@
                   ]
                 },
                 {
-                  "label": "Harpoon Launchers (24”, A1, AP(2), Deadly(3))",
+                  "label": "Harpoon Launchers (24ï¿½, A1, AP(2), Deadly(3))",
                   "name": "Harpoon Launchers",
                   "attacks": 1,
                   "range": 24,
@@ -1888,22 +1888,22 @@
     {
       "id": "3UyEr",
       "key": "blows-of-grace",
-      "hint": "Whenever this unit fights in melee pick one fighting style: • Cut: +1A in melee.",
+      "hint": "Whenever this unit fights in melee pick one fighting style: ï¿½ Cut: +1A in melee.",
       "name": "Blows of Grace",
       "tags": [],
       "label": "Blows of Grace",
       "forUnit": true,
       "forWeapon": false,
       "hasRating": false,
-      "description": "Whenever this unit fights in melee pick one fighting style: • Cut: +1A in melee."
+      "description": "Whenever this unit fights in melee pick one fighting style: ï¿½ Cut: +1A in melee."
     },
     {
       "id": "wg1xg",
-      "key": "•-chop",
+      "key": "ï¿½-chop",
       "hint": "AP(+2) in melee.",
-      "name": "• Chop",
+      "name": "ï¿½ Chop",
       "tags": [],
-      "label": "• Chop",
+      "label": "ï¿½ Chop",
       "forUnit": true,
       "forWeapon": false,
       "hasRating": false,
@@ -1912,14 +1912,14 @@
     {
       "id": "5NYXZ",
       "key": "distortion-drummer",
-      "hint": "When this unit is activated pick 2 friendly units within 12”, which get Stealth next time they are shot at.",
+      "hint": "When this unit is activated pick 2 friendly units within 12ï¿½, which get Stealth next time they are shot at.",
       "name": "Distortion Drummer",
       "tags": [],
       "label": "Distortion Drummer",
       "forUnit": true,
       "forWeapon": false,
       "hasRating": false,
-      "description": "When this unit is activated pick 2 friendly units within 12”, which get Stealth next time they are shot at."
+      "description": "When this unit is activated pick 2 friendly units within 12ï¿½, which get Stealth next time they are shot at."
     },
     {
       "id": "vILSO",
@@ -1936,34 +1936,34 @@
     {
       "id": "7aN-t",
       "key": "lantern-of-souls",
-      "hint": "Whenever the hero and his unit cause a wound place a healing marker next to any friendly unit within 12”. When a unit with healing markers takes a wound you may remove one healing marker and roll one die, on a 4+ the wound is ignored.",
+      "hint": "Whenever the hero and his unit cause a wound place a healing marker next to any friendly unit within 12ï¿½. When a unit with healing markers takes a wound you may remove one healing marker and roll one die, on a 4+ the wound is ignored.",
       "name": "Lantern of Souls",
       "tags": [],
       "label": "Lantern of Souls",
       "forUnit": true,
       "forWeapon": false,
       "hasRating": false,
-      "description": "Whenever the hero and his unit cause a wound place a healing marker next to any friendly unit within 12”. When a unit with healing markers takes a wound you may remove one healing marker and roll one die, on a 4+ the wound is ignored."
+      "description": "Whenever the hero and his unit cause a wound place a healing marker next to any friendly unit within 12ï¿½. When a unit with healing markers takes a wound you may remove one healing marker and roll one die, on a 4+ the wound is ignored."
     },
     {
       "id": "oT5tR",
       "key": "shots-of-grace",
-      "hint": "Whenever this unit shoots pick one shooting style: • Aim: +2 to hit when shooting.",
+      "hint": "Whenever this unit shoots pick one shooting style: ï¿½ Aim: +2 to hit when shooting.",
       "name": "Shots of Grace",
       "tags": [],
       "label": "Shots of Grace",
       "forUnit": true,
       "forWeapon": false,
       "hasRating": false,
-      "description": "Whenever this unit shoots pick one shooting style: • Aim: +2 to hit when shooting."
+      "description": "Whenever this unit shoots pick one shooting style: ï¿½ Aim: +2 to hit when shooting."
     },
     {
       "id": "n5g-J",
-      "key": "•-volley",
+      "key": "ï¿½-volley",
       "hint": "+1A when shooting.",
-      "name": "• Volley",
+      "name": "ï¿½ Volley",
       "tags": [],
-      "label": "• Volley",
+      "label": "ï¿½ Volley",
       "forUnit": true,
       "forWeapon": false,
       "hasRating": false,
@@ -1984,14 +1984,14 @@
     {
       "id": "KrARp",
       "key": "tide-master",
-      "hint": "When the hero is activated pick 2 friendly units within 12”, which get +1 attack in melee next time they fight.",
+      "hint": "When the hero is activated pick 2 friendly units within 12ï¿½, which get +1 attack in melee next time they fight.",
       "name": "Tide Master",
       "tags": [],
       "label": "Tide Master",
       "forUnit": true,
       "forWeapon": false,
       "hasRating": false,
-      "description": "When the hero is activated pick 2 friendly units within 12”, which get +1 attack in melee next time they fight."
+      "description": "When the hero is activated pick 2 friendly units within 12ï¿½, which get +1 attack in melee next time they fight."
     }
   ],
   "spells": [
@@ -1999,37 +1999,37 @@
       "id": "9oyRE",
       "name": "Power Tide",
       "threshold": 4,
-      "effect": "Target friendly unit within 12” gets AP(+1) in melee next time it fights."
+      "effect": "Target friendly unit within 12ï¿½ gets AP(+1) in melee next time it fights."
     },
     {
       "id": "ZebrL",
       "name": "Sea Storm",
       "threshold": 4,
-      "effect": "Target enemy unit within 12” takes 4 automatic hits."
+      "effect": "Target enemy unit within 12ï¿½ takes 4 automatic hits."
     },
     {
       "id": "7_qHb",
       "name": "Darkest Abyss",
       "threshold": 5,
-      "effect": "Target enemy unit within 18” gets -1 to hit next time it shoots."
+      "effect": "Target enemy unit within 18ï¿½ gets -1 to hit next time it shoots."
     },
     {
       "id": "A6wNk",
       "name": "Erode Soul",
       "threshold": 5,
-      "effect": "Target enemy model within 12” takes 1 automatic hit with AP(3)."
+      "effect": "Target enemy model within 12ï¿½ takes 1 automatic hit with AP(3)."
     },
     {
       "id": "VZZXN",
       "name": "High Tide",
       "threshold": 6,
-      "effect": "Target piece of terrain within 6” may be moved by up to 6” in any direction or may be removed from play."
+      "effect": "Target piece of terrain within 6ï¿½ may be moved by up to 6ï¿½ in any direction or may be removed from play."
     },
     {
       "id": "L33RD",
       "name": "Crushing Pressure",
       "threshold": 6,
-      "effect": "Target 2 enemy units within 6” take 6 hits with AP(1) each."
+      "effect": "Target 2 enemy units within 6ï¿½ take 6 hits with AP(1) each."
     }
   ],
   "modifiedAt": "2021-10-21T14:36:31.727Z",

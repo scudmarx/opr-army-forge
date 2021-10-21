@@ -1450,10 +1450,11 @@
                       "type": "ArmyBookRule"
                     },
                     {
-                      "key": "tough(+3)",
-                      "name": "Tough(+3)",
-                      "rating": "",
+                      "key": "tough",
+                      "name": "Tough",
+                      "rating": "3",
                       "label": "Tough(+3)",
+                      "modify": true,
                       "type": "ArmyBookRule"
                     }
                   ]
@@ -3990,10 +3991,11 @@
                   "type": "ArmyBookItem",
                   "content": [
                     {
-                      "key": "tough(+6)",
-                      "name": "Tough(+6)",
-                      "rating": "",
+                      "key": "tough",
+                      "name": "Tough",
+                      "rating": "6",
                       "label": "Tough(+6)",
+                      "modify": true,
                       "type": "ArmyBookRule"
                     }
                   ]
@@ -5083,7 +5085,6 @@
   "modifiedAt": "2021-09-29T20:38:59.929Z",
   "official": true,
   "public": false,
-  
   "coverImagePath": null,
   "coverImageCredit": null,
   "isLive": false,
