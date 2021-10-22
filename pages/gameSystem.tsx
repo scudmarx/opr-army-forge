@@ -10,6 +10,7 @@ export default function GameSystem() {
 
   const dispatch = useDispatch();
   const router = useRouter();
+  const isLive = window.location.host === "opr-army-forge.vercel.app";
 
   const selectGameSystem = (gameSystem: string) => {
     dispatch(setGameSystem(gameSystem));
@@ -53,9 +54,9 @@ export default function GameSystem() {
               ["gf", "gff", "aof", "aofs"].map(gameSystem => (
                 <div key={gameSystem} className="column is-half">
                   <Paper>
-                    <img onClick={() => selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
-                      className="game-system-tile interactable"
-                      style={{ borderRadius: "4px", display: "block" }} />
+                    <img onClick={() => isLive && gameSystem !== "gf" ? false : selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
+                      className={"game-system-tile "+ (isLive && gameSystem !== "gf" ? "" : "interactable")}
+                      style={{ borderRadius: "4px", display: "block", opacity: isLive && gameSystem !== "gf" ? 0.5 : 1 }} />
                   </Paper>
                 </div>
               ))
