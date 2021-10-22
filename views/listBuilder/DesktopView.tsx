@@ -9,18 +9,20 @@ import MainMenu from "../components/MainMenu";
 import { Paper } from "@mui/material";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";
 import ListConfigurationDialog from "../ListConfigurationDialog";
+import ValidationErrors from "../ValidationErrors";
 
 export default function DesktopView() {
 
   const list = useSelector((state: RootState) => state.list);
   const [editListOpen, setEditListOpen] = useState(false);
+  const [validationOpen, setValidationOpen] = useState(false);
 
   const columnStyle: any = { overflowY: "scroll", maxHeight: "100%" };
 
   return (
     <>
       <Paper elevation={1} color="primary" square>
-        <MainMenu setListConfigurationOpen={setEditListOpen} />
+        <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
         <div className="column py-0 pr-0" style={columnStyle}>
@@ -37,6 +39,9 @@ export default function DesktopView() {
           <Upgrades />
         </div>
       </div>
+      <ValidationErrors
+        open={validationOpen}
+        setOpen={setValidationOpen} />
       <ListConfigurationDialog
         isEdit={true}
         open={editListOpen}

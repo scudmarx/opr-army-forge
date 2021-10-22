@@ -10,14 +10,18 @@ import { RootState } from "../../data/store";
 import UpgradeService from "../../services/UpgradeService";
 import PersistenceService from "../../services/PersistenceService";
 import { updateCreationTime } from "../../data/listSlice";
+import ValidationErrors from "../ValidationErrors";
+import ValidationService from "../../services/ValidationService";
+import { useMediaQuery } from "react-responsive";
 
-export default function MainMenu({ setListConfigurationOpen }) {
+export default function MainMenu({ setListConfigurationOpen, setValidationOpen }) {
 
   const army = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
   const dispatch = useDispatch();
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
+  const errors = ValidationService.getErrors(list);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -40,6 +44,8 @@ export default function MainMenu({ setListConfigurationOpen }) {
     PersistenceService.download(list);
   };
 
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+
   return (
     <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
       <Toolbar className="p-0">
@@ -56,26 +62,28 @@ export default function MainMenu({ setListConfigurationOpen }) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {list.name}
         </Typography>
-        <IconButton
+        {errors.length > 0 && <IconButton
           size="large"
           edge="start"
           color="inherit"
           aria-label="menu"
-          // onClick={() => router.push("/view")}
+          title="Validation errors"
+          onClick={() => setValidationOpen(true)}
           className="mr-2"
         >
           <WarningIcon />
-        </IconButton>
-        {/* <IconButton
+        </IconButton>}
+        {isBigScreen && <IconButton
           size="large"
           edge="start"
           color="inherit"
           aria-label="menu"
+          title="View list"
           onClick={() => router.push("/view")}
           className="mr-2"
         >
           <VisibilityIcon />
-        </IconButton> */}
+        </IconButton>}
         <IconButton
           size="large"
           edge="start"
