@@ -1,3 +1,4 @@
+import CSS from 'csstype';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../data/store';
@@ -8,7 +9,7 @@ export default function SpellsTable() {
   const spells = army?.spells;
 
   const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
-  const headerStyle = { ...cellStyle, fontWeight: 600, whiteSpace: "nowrap" };
+  const headerStyle: CSS.Properties = { ...cellStyle, fontWeight: 600, whiteSpace: "nowrap"};
 
   return (
     <TableContainer component={Paper} elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
