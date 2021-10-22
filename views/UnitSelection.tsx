@@ -90,7 +90,9 @@ export function UnitSelection({ onSelected }) {
         // For each category
         Object.keys(unitGroups).map((key, i) => (
           <Fragment key={key}>
-            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>{key}</p>}
+            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>
+              {/* {key} */}
+            </p>}
             <ul className="menu-list">
               {
                 // For each unit in category
