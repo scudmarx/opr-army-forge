@@ -12,6 +12,7 @@ import RuleList from "../views/components/RuleList";
 import DataParsingService from "../services/DataParsingService";
 import { IGameRule } from "../data/armySlice";
 import { groupBy } from "../services/Helpers";
+import UnitService from "../services/UnitService";
 
 export default function ViewCards({ showPsychic, showFullRules }) {
 
@@ -152,7 +153,7 @@ function toughFromUnit(unit) {
     return tough;
   }, 0);
 
-  baseTough += unit.selectedUpgrades.map(({gains}) => gains.map(({content}) => content)).flat(2).reduce((tough, {name, rating}) => {
+  baseTough += UnitService.getAllUpgradedRules(unit).reduce((tough, {name, rating}) => {
     if (name === "Tough") {
       tough += parseInt(rating);
     }
