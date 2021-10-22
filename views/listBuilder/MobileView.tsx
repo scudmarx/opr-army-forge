@@ -10,12 +10,12 @@ import 'react-spring-bottom-sheet/dist/style.css';
 import { Upgrades } from "../upgrades/Upgrades";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { AppBar, Paper, Tab, Tabs, Button } from "@mui/material";
-import UpgradeService from "../../services/UpgradeService";
 import { selectUnit } from "../../data/listSlice";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";
 import Add from "@mui/icons-material/Add";
 import MainMenu from "../components/MainMenu";
 import ListConfigurationDialog from "../ListConfigurationDialog";
+import ValidationErrors from "../ValidationErrors";
 
 export default function MobileView() {
 
@@ -28,7 +28,7 @@ export default function MobileView() {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(1);
   const [editListOpen, setEditListOpen] = useState(false);
-
+  const [validationOpen, setValidationOpen] = useState(false);
 
   // Open bottom sheet when unit is selected
   const onUnitSelected = () => {
@@ -60,7 +60,7 @@ export default function MobileView() {
   return (
     <>
       <Paper elevation={1} color="primary" square style={{ position: "sticky", top: 0, zIndex: 1 }}>
-        <MainMenu setListConfigurationOpen={setEditListOpen} />
+        <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
         <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
           <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
             <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
@@ -102,6 +102,9 @@ export default function MobileView() {
         <Upgrades />
       </BottomSheet>
 
+      <ValidationErrors
+        open={validationOpen}
+        setOpen={setValidationOpen} />
       <ListConfigurationDialog
         isEdit={true}
         open={editListOpen}

@@ -1,8 +1,6 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../data/store'
+import { useDispatch } from 'react-redux'
 import { setGameSystem } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { AppBar, IconButton, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 
