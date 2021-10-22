@@ -11,7 +11,7 @@ export function groupBy(xs, key) {
 export function distinct(arr: any[], property?: string) {
   const results = [];
   for (let item of arr)
-    if (!results.filter(r => property ? r[property] === item[property] : r === item).length)
+    if (!results.some(r => property ? r[property] === item[property] : r === item))
       results.push(item);
   return results;
 };

@@ -38,7 +38,7 @@ export default function Data() {
         const distinct = (arr: any[], condition: (a, b) => boolean) => {
             const results = [];
             for (let item of arr)
-                if (!results.filter(r => condition(r, item)).length)
+                if (!results.some(r => condition(r, item)))
                     results.push(item);
             return results;
         }
