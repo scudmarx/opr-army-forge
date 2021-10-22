@@ -12,6 +12,7 @@ import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import UpgradeService from "../services/UpgradeService";
 
+
 export default function View() {
 
   const list = useSelector((state: RootState) => state.list);
@@ -20,7 +21,7 @@ export default function View() {
 
   const [isCardView, setCardView] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [showPsychic, setShowPsychic] = useState(true);
+  const [showPsychic, setShowPsychic] = useState(listContainsPyschic(list));
   const [showFullRules, setShowFullRules] = useState(true);
 
   return (
@@ -86,4 +87,15 @@ export default function View() {
       </div>
     </>
   );
+}
+
+
+// TODO: extract these as global helper functions
+function listContainsPyschic(list) {
+  // TODO: get the special rule def from a well known location
+  return listContainsSpecialRule(list, {key: 'psychic', name: 'Psychic', rating: '1'})
+}
+
+function listContainsSpecialRule(list, specialRule) {
+  return list.units.some(({specialRules}) => Boolean(specialRules.find(({name}) => name === specialRule.name)));
 }
