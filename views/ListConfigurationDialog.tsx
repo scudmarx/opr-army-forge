@@ -35,9 +35,10 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
 
   // Update default name once data comes in
   useEffect(() => {
-    if (!isEdit && !armyName && army.data && army.data.name)
+    if (!isEdit && army.data && army.data.name) {
       setArmyName(army.data.name);
-  }, [army.data]);
+    }
+  }, [army.data, isEdit]);
 
   const create = () => {
 
