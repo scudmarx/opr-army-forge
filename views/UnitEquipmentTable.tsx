@@ -14,13 +14,24 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
 
   const count = e.count;
   const name = e.count > 1 && e.label ? pluralise.plural(e.label) : e.label;
-  const originalCount: number = null;
-  const multiplier = count / unit.size; // 20 / 10 = "2x Weapons...""
-  const displayCount = count > unit.size // 20 hand weapons, unit of 10
+
+  // If the weapon count divides exactly by the unit size, assume each model has the same weapons
+  // otherwise assume models have different weapons and list out just the number of the weapon
+  // in the unit. To "fix" this behaviour this behaviour it's required to know which weapons are
+  // paired with which other weapons.
+  let weaponCount: string;
+  if (count % unit.size) {
+    weaponCount = `${count} x `;
+  } else {
+    const originalCount: number = null;
+    const multiplier = count / unit.size; // 20 / 10 = "2x Weapons...""
+    const displayCount = count > unit.size // 20 hand weapons, unit of 10
     ? originalCount
       ? (count / originalCount)
       : unit.size
     : count;
+    weaponCount = (displayCount > 1 ? `[${displayCount}] ` : " ") + (multiplier > 1 ? `${multiplier}x ` : "");
+  }
 
   const cellStyle = { paddingLeft: "8px", paddingRight: "8px" };
   const borderStyle = {
@@ -34,7 +45,7 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
   return (
     <TableRow>
       <TableCell style={{ ...borderStyle, ...cellStyle, fontWeight: 600 }}>
-        {displayCount > 1 ? `[${displayCount}] ` : " "}{multiplier > 1 ? `${multiplier}x ` : ""}{isProfile ? `- ${name}` : name}
+        {weaponCount}{isProfile ? `- ${name}` : name}
       </TableCell>
       <TableCell style={borderStyle}>{e.range ? e.range + '"' : '-'}</TableCell>
       <TableCell style={borderStyle}>{e.attacks ? "A" + e.attacks : '-'}</TableCell>
