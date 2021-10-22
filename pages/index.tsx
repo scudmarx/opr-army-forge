@@ -14,7 +14,7 @@ export default function Home() {
         <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
           <h1 className="is-size-3 has-text-centered mb-4">Army Forge</h1>
           <div className={styles.homeContainer + " is-flex is-flex-direction-column p-4"}>
-            <Button variant="contained" color="primary" className="mb-4" onClick={() => router.push("/gameSystem")}>
+            <Button disableRipple variant="contained" color="primary" className="mb-4" onClick={() => router.push("/gameSystem")}>
               <AddIcon /> <span className="ml-2">Create A New List</span>
             </Button>
             <Button variant="outlined" onClick={() => router.push("/load")}>
