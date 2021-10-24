@@ -15,9 +15,9 @@ export default class ValidationService {
       errors.push(`Max 1 hero per full 500pts.`);
     if (unitCount > Math.floor(list.points / 200))
       errors.push(`Max 1 unit per full 200pts (combined units count as just 1 unit).`);
-    if (list.units.filter(u => u.combined && u.size === 2).length > 0)
+    if (list.units.some(u => u.combined && u.size === 2))
       errors.push(`Cannot combine units of unit size [1].`);
-    if (Object.values(_.groupBy(list.units, u => u.name)).filter((grp: any[]) => grp.length > 3).length > 0)
+    if (Object.values(_.groupBy(list.units, u => u.name)).some((grp: any[]) => grp.length > 3))
       errors.push(`Cannot have more than 3 copies of a particular unit.`);
 
     return errors;

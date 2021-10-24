@@ -28,13 +28,13 @@ export function UnitSelection({ onSelected }) {
     return null;
 
   // Group army units by category
-  const isTough = (u: IUnit, threshold) => u.specialRules.filter(r => {
+  const isTough = (u: IUnit, threshold) => u.specialRules.some(r => {
     if (r.name !== "Tough")
       return false;
     const toughness = parseInt(r.rating);
     return toughness >= threshold;
-  }).length > 0
-  const hasRule = (u: IUnit, rule: string) => u.specialRules.filter(r => r.name === rule).length > 0;
+  });
+  const hasRule = (u: IUnit, rule: string) => u.specialRules.some(r => r.name === rule);
   const isLarge = (u) => isTough(u, 6);
   const isElite = (u) => isTough(u, 3);
 
@@ -90,7 +90,9 @@ export function UnitSelection({ onSelected }) {
         // For each category
         Object.keys(unitGroups).map((key, i) => (
           <Fragment key={key}>
-            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>{key}</p>}
+            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>
+              {/* {key} */}
+            </p>}
             <ul className="menu-list">
               {
                 // For each unit in category
