@@ -42,9 +42,10 @@ export default function ViewCards({ showPsychic, showFullRules }) {
           const rules = specialRules.filter(r => !!r && r.name != "-");
           const ruleGroups = groupBy(rules, "name");
           const keys = Object.keys(ruleGroups);
+          const toughness = toughFromUnit(u);
+
           // Sort rules alphabetically
           keys.sort((a, b) => a.localeCompare(b));
-          console.log(u);
 
           return (
             <div key={i} className="column is-one-third">
@@ -68,12 +69,12 @@ export default function ViewCards({ showPsychic, showFullRules }) {
                           {u.defense}+
                         </p>
                       </div>
-                      <div className={style.profileStat}>
+                      {toughness > 1 && <div className={style.profileStat}>
                         <p>Tough</p>
                         <p>
-                          {toughFromUnit(u)}
+                          {toughness}
                         </p>
-                      </div>
+                      </div>}
 
                     </div>
                     <UnitEquipmentTable unit={u} />
@@ -153,7 +154,7 @@ function toughFromUnit(unit) {
     return tough;
   }, 0);
 
-  baseTough += UnitService.getAllUpgradedRules(unit).reduce((tough, {name, rating}) => {
+  baseTough += UnitService.getAllUpgradedRules(unit).reduce((tough, { name, rating }) => {
     if (name === "Tough") {
       tough += parseInt(rating);
     }
