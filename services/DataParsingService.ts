@@ -105,7 +105,7 @@ export default class DataParsingService {
     let lastUpgradeText = null;
     for (let line of upgrades.split("\n").filter((l) => !!l?.trim())) {
       try {
-        const parsedUpgrade = /^(\D\s)?(.+?)(?<!to fire):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(line);
+        const parsedUpgrade = null;///^(\D\s)?(.+?)(?<!to fire):|(.+?)\s\((.+)\)\s?([+-]\d+)?/.exec(line);
 
         const setLetter =
           parsedUpgrade && parsedUpgrade[groupNames.setLetter]?.trim();
@@ -246,9 +246,9 @@ export default class DataParsingService {
   public static parseEquipmentList(str) {
 
     const parts = str
-      .split(/(?<!\(\d)\),/)
+      //.split(/(?<!\(\d)\),/)
       .map((part) => part.trim())
-      .map((part) => (/(?<!\(\d)\)/.test(part) ? part : part + ")"))
+      //.map((part) => (/(?<!\(\d)\)/.test(part) ? part : part + ")"))
       .map((part) => {
 
         // TODO: Can't remember why this is here?
@@ -406,7 +406,7 @@ export default class DataParsingService {
     }
 
     // "Camo Cloaks (Stealth)"
-    const itemRuleMatch = /^(([\w\s]+)\(([\w\s]+|Defense \+\d)( in melee)?(?<!A\d)\))\s([-+]\d+)pt/.exec(part);
+    const itemRuleMatch =null;// /^(([\w\s]+)\(([\w\s]+|Defense \+\d)( in melee)?(?<!A\d)\))\s([-+]\d+)pt/.exec(part);
     if (itemRuleMatch) {
       return {
         id: nanoid(7),
@@ -474,7 +474,7 @@ export default class DataParsingService {
     const textParts = text.split(" - ");
     const name = textParts[0].trim();
     const match = /(.+)([+-]\d+)pts$/.exec(textParts[1]);
-    const weaponRegex = /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
+    const weaponRegex =null;// /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
     const weaponMatch = weaponRegex.exec(match[1]);
     const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/).map(this.parseRule);
 
