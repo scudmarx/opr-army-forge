@@ -325,7 +325,7 @@ export default class DataParsingService {
 
         // Thanks Schnickers
         let itemParts = mountMatch[2]
-          .replace(/(?<=\)|\w),/gim, `$1#`)
+          .replace(/(\)|\w),/gim, `$1#`)
           .split(/#/)
           .map(r => r.trim());
 
