@@ -39,13 +39,16 @@ export default function ViewCards({ showPsychic, showFullRules }) {
             .concat(equipmentSpecialRules.map(DataParsingService.parseRule))
             .filter(r => r.name != "-");
 
-          const rules = specialRules.filter(r => !!r && r.name != "-");
+          const equipmentRules = UnitService.getAllUpgradedRules(u);
+          console.log(equipmentRules);
+
+          const rules = specialRules.concat(equipmentRules).filter(r => !!r && r.name != "-");
           const ruleGroups = groupBy(rules, "name");
-          const keys = Object.keys(ruleGroups);
+          const ruleKeys = Object.keys(ruleGroups);
           const toughness = toughFromUnit(u);
 
           // Sort rules alphabetically
-          keys.sort((a, b) => a.localeCompare(b));
+          ruleKeys.sort((a, b) => a.localeCompare(b));
 
           return (
             <div key={i} className="column is-one-third">
@@ -84,9 +87,9 @@ export default function ViewCards({ showPsychic, showFullRules }) {
                                                 <RuleList specialRules={specialRules} />
                                             </div>
                                         </Paper>} */}
-                    {specialRules?.length > 0 && <Paper square elevation={0}>
+                    {rules?.length > 0 && <Paper square elevation={0}>
                       <div className="px-2 my-2">
-                        {keys.map((key, index) => {
+                        {ruleKeys.map((key, index) => {
 
                           const group = ruleGroups[key];
                           const rule = group[0];
