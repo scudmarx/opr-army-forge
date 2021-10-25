@@ -5,16 +5,19 @@ import { ArmyState } from "../data/armySlice";
 export default class ValidationService {
   public static getErrors(army: ArmyState, list: ListState): string[] {
 
+    if (!army || !list)
+      return [];
+
     const errors = [];
 
     if (list.pointsLimit > 0 && list.points > list.pointsLimit)
-        errors.push(`Points limit exceeded: ${list.points}/${list.pointsLimit}`)
+      errors.push(`Points limit exceeded: ${list.points}/${list.pointsLimit}`)
 
     if (army.gameSystem === "gf") {
 
       const unitCount = list.units.filter(u => !u.joinToUnit).length;
       const heroCount = list.units.filter(u => u.specialRules.findIndex(rule => rule.name === "Hero") >= 0).length;
-      
+
       if (heroCount > Math.floor(list.points / 500))
         errors.push(`Max 1 hero per full 500pts.`);
       if (unitCount > Math.floor(list.points / 200))

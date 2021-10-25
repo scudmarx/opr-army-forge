@@ -11,7 +11,7 @@ import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
 import FullCompactToggle from "./components/FullCompactToggle";
-import ValidationErrors from "./ValidationErrors";
+//import _ from "lodash";
 
 export function MainList({ onSelected }) {
 
@@ -34,8 +34,6 @@ export function MainList({ onSelected }) {
 
   return (
     <>
-      {/* <ValidationErrors /> */}
-      {/* <Button onClick={() => router.push("/cards")}>View Cards</Button> */}
       <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       <ul className="mt-2">
         {

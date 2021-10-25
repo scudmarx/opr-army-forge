@@ -21,7 +21,7 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
   const dispatch = useDispatch();
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
-  const errors = ValidationService.getErrors(list);
+  const errors = ValidationService.getErrors(army, list);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -38,10 +38,19 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
   const handleSave = () => {
     const creationTime = PersistenceService.createSave(army, list.name, list);
     dispatch(updateCreationTime(creationTime));
+    return creationTime;
   };
 
   const handleShare = () => {
-    PersistenceService.download(list);
+    if (!list.creationTime) {
+      const creationTime = handleSave();
+      PersistenceService.download({
+        ...list,
+        creationTime
+      });
+    } else {
+      PersistenceService.download(list);
+    }
   };
 
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
