@@ -23,13 +23,15 @@ export default class PersistenceService {
     const list: ListState = existingList
       ? {
         ...existingList,
-        creationTime: creationTime
+        creationTime: creationTime,
+        undoUnitRemove: null
       }
       : {
         creationTime: creationTime,
         name: name,
         units: [],
-        points: 0
+        points: 0,
+        undoUnitRemove: null
       };
 
     const saveData: ISaveData = {
