@@ -1,34 +1,35 @@
-import Head from "next/head";
-import React, { Fragment, useEffect } from "react";
+import React from "react";
 import { useSelector } from 'react-redux'
 import { RootState } from '../data/store'
-import { useRouter } from "next/router";
-import { useMediaQuery } from 'react-responsive';
 import style from "../styles/Cards.module.css";
 import UnitEquipmentTable from "../views/UnitEquipmentTable";
 import { Paper, Card } from "@mui/material";
 import RulesService from "../services/RulesService";
-import RuleList from "../views/components/RuleList";
 import DataParsingService from "../services/DataParsingService";
 import { IGameRule } from "../data/armySlice";
 import { groupBy } from "../services/Helpers";
 import UnitService from "../services/UnitService";
+import _ from "lodash";
 
 export default function ViewCards({ showPsychic, showFullRules }) {
 
   const list = useSelector((state: RootState) => state.list);
   const army = useSelector((state: RootState) => state.army);
-  const router = useRouter();
 
   const gameRules = army.rules;
   const armyRules = army.data?.specialRules;
   const spells = army.data?.spells || [];
   const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
+  const units = list?.units ?? [];
+
+  const unitGroups = _.groupBy(units, u => u.id);
+  console.log("Unit groups", unitGroups);
+
   return (
     <>
       <div className="columns is-multiline">
-        {(list?.units || []).map((u, i) => {
+        {(units).map((u, i) => {
 
           const equipmentSpecialRules = u
             .equipment
