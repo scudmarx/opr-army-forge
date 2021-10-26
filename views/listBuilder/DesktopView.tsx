@@ -10,12 +10,14 @@ import { Paper } from "@mui/material";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";
 import ListConfigurationDialog from "../ListConfigurationDialog";
 import ValidationErrors from "../ValidationErrors";
+import UndoRemoveUnit from "../components/UndoRemoveUnit";
 
 export default function DesktopView() {
 
   const list = useSelector((state: RootState) => state.list);
   const [editListOpen, setEditListOpen] = useState(false);
   const [validationOpen, setValidationOpen] = useState(false);
+  const [showUndoRemove, setShowUndoRemove] = useState(false);
 
   const columnStyle: any = { overflowY: "scroll", maxHeight: "100%" };
 
@@ -29,8 +31,8 @@ export default function DesktopView() {
           <UnitSelection onSelected={() => { }} />
         </div>
         <div className="column p-0" style={columnStyle}>
-          <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}pts`}</h3>
-          <MainList onSelected={() => { }} />
+          <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}pts` + (list.pointsLimit ? `/${list.pointsLimit}pts` : "")}</h3>
+          <MainList onSelected={() => { }} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
         <div className="column py-0 px-0 mr-4" style={columnStyle}>
           <Paper square className="px-4 pt-4">
@@ -48,6 +50,9 @@ export default function DesktopView() {
         setOpen={setEditListOpen}
         showBetaFlag={false}
         customArmies={null} />
+      <UndoRemoveUnit
+        open={showUndoRemove}
+        setOpen={setShowUndoRemove} />
     </>
   );
 }

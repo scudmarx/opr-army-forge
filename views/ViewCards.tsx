@@ -39,12 +39,16 @@ export default function ViewCards({ showPsychic, showFullRules }) {
             .concat(equipmentSpecialRules.map(DataParsingService.parseRule))
             .filter(r => r.name != "-");
 
-          const rules = specialRules.filter(r => !!r && r.name != "-");
+          const equipmentRules = UnitService.getAllUpgradedRules(u);
+          console.log(equipmentRules);
+
+          const rules = specialRules.concat(equipmentRules).filter(r => !!r && r.name != "-");
           const ruleGroups = groupBy(rules, "name");
-          const keys = Object.keys(ruleGroups);
+          const ruleKeys = Object.keys(ruleGroups);
+          const toughness = toughFromUnit(u);
+
           // Sort rules alphabetically
-          keys.sort((a, b) => a.localeCompare(b));
-          console.log(u);
+          ruleKeys.sort((a, b) => a.localeCompare(b));
 
           return (
             <div key={i} className="column is-one-third">
@@ -68,24 +72,26 @@ export default function ViewCards({ showPsychic, showFullRules }) {
                           {u.defense}+
                         </p>
                       </div>
-                      <div className={style.profileStat}>
+                      {toughness > 1 && <div className={style.profileStat}>
                         <p>Tough</p>
                         <p>
-                          {toughFromUnit(u)}
+                          {toughness}
                         </p>
-                      </div>
+                      </div>}
 
                     </div>
-                    <UnitEquipmentTable unit={u} />
+                    <div className="px-2">
+                      <UnitEquipmentTable unit={u} />
+                    </div>
                     {/* {specialRules?.length && <Paper square elevation={0}>
                                             <div className="px-4 mb-4">
                                                 <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
                                                 <RuleList specialRules={specialRules} />
                                             </div>
                                         </Paper>} */}
-                    {specialRules?.length > 0 && <Paper square elevation={0}>
+                    {rules?.length > 0 && <Paper square elevation={0}>
                       <div className="px-2 my-2">
-                        {keys.map((key, index) => {
+                        {ruleKeys.map((key, index) => {
 
                           const group = ruleGroups[key];
                           const rule = group[0];
@@ -153,7 +159,7 @@ function toughFromUnit(unit) {
     return tough;
   }, 0);
 
-  baseTough += UnitService.getAllUpgradedRules(unit).reduce((tough, {name, rating}) => {
+  baseTough += UnitService.getAllUpgradedRules(unit).reduce((tough, { name, rating }) => {
     if (name === "Tough") {
       tough += parseInt(rating);
     }
