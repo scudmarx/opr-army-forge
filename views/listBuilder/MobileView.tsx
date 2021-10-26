@@ -17,6 +17,7 @@ import MainMenu from "../components/MainMenu";
 import ListConfigurationDialog from "../ListConfigurationDialog";
 import ValidationErrors from "../ValidationErrors";
 import UndoRemoveUnit from "../components/UndoRemoveUnit";
+import ArmyImage from "../components/ArmyImage";
 
 export default function MobileView() {
 
@@ -82,6 +83,17 @@ export default function MobileView() {
               <Button variant="outlined" onClick={() => handleSlideChange(null, 0)}>
                 <Add /> Add Units
               </Button>
+              <div className="is-flex mt-6" style={{
+                height: "160px",
+                width: "100%",
+                backgroundImage: `url("img/gf_armies/${army.data.name}.png")`,
+                backgroundPosition: "center",
+                backgroundSize: "contain",
+                backgroundRepeat: 'no-repeat',
+                position: "relative",
+                zIndex: 1,
+                opacity: 0.5
+              }}></div>
             </div>
           )}
         </div>
