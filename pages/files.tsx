@@ -164,7 +164,7 @@ export default function Files() {
                         </Card>
                       </div>
                     ))) : (
-                      <div className="is-flex is-flex-direction-column is-align-items-center	">
+                      <div className="column is-flex is-flex-direction-column is-align-items-center	">
                         <CircularProgress />
                         <p>Loading armies...</p>
                       </div>
