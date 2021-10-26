@@ -76,7 +76,7 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
           edge="start"
           color="inherit"
           aria-label="menu"
-          title="Validation errors"
+          title="Validation warnings"
           onClick={() => setValidationOpen(true)}
           className="mr-2"
         >

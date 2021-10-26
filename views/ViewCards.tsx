@@ -80,7 +80,9 @@ export default function ViewCards({ showPsychic, showFullRules }) {
                       </div>}
 
                     </div>
-                    <UnitEquipmentTable unit={u} />
+                    <div className="px-2">
+                      <UnitEquipmentTable unit={u} />
+                    </div>
                     {/* {specialRules?.length && <Paper square elevation={0}>
                                             <div className="px-4 mb-4">
                                                 <h4 style={{ fontWeight: 600 }}>Special Rules</h4>
