@@ -11,6 +11,7 @@ export interface ListState {
   name: string;
   pointsLimit?: number;
   units: ISelectedUnit[];
+  undoUnitRemove: ISelectedUnit;
   selectedUnitId?: string;
   points: number;
 }
@@ -21,6 +22,7 @@ const initialState: ListState = {
   pointsLimit: 0,
   units: [],
   selectedUnitId: null,
+  undoUnitRemove: null,
   points: 0
 }
 
@@ -40,6 +42,7 @@ export const listSlice = createSlice({
         initialised: false,
         units: [],
         selectedUnitId: null,
+        undoUnitRemove: null,
         points: 0
       };
     },
@@ -87,7 +90,17 @@ export const listSlice = createSlice({
         .units
         .findIndex(u => u.selectionId === action.payload);
 
-      state.units.splice(removeIndex, 1);
+      state.undoUnitRemove = state.units.splice(removeIndex, 1)[0];
+
+      state.points = UpgradeService.calculateListTotal(state.units);
+
+      debounceSave(current(state));
+    },
+    undoRemoveUnit: (state) => {
+
+      state.units.push(state.undoUnitRemove);
+
+      state.undoUnitRemove = null;
 
       state.points = UpgradeService.calculateListTotal(state.units);
 
@@ -166,7 +179,8 @@ export const {
   joinUnit,
   loadSavedList,
   updateListSettings,
-  updateCreationTime
+  updateCreationTime,
+  undoRemoveUnit
 } = listSlice.actions
 
 export default listSlice.reducer

@@ -16,6 +16,7 @@ import Add from "@mui/icons-material/Add";
 import MainMenu from "../components/MainMenu";
 import ListConfigurationDialog from "../ListConfigurationDialog";
 import ValidationErrors from "../ValidationErrors";
+import UndoRemoveUnit from "../components/UndoRemoveUnit";
 
 export default function MobileView() {
 
@@ -29,6 +30,7 @@ export default function MobileView() {
   const [slideIndex, setSlideIndex] = useState(1);
   const [editListOpen, setEditListOpen] = useState(false);
   const [validationOpen, setValidationOpen] = useState(false);
+  const [showUndoRemove, setShowUndoRemove] = useState(false);
 
   // Open bottom sheet when unit is selected
   const onUnitSelected = () => {
@@ -74,7 +76,7 @@ export default function MobileView() {
           <UnitSelection onSelected={() => { }} />
         </div>
         <div className="">
-          {list.units.length > 0 ? <MainList onSelected={onUnitSelected} /> : (
+          {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)} /> : (
             <div className="p-4 has-text-centered">
               <h3 className="is-size-3 mb-4">Your list is empty</h3>
               <Button variant="outlined" onClick={() => handleSlideChange(null, 0)}>
@@ -111,6 +113,9 @@ export default function MobileView() {
         setOpen={setEditListOpen}
         showBetaFlag={false}
         customArmies={null} />
+      <UndoRemoveUnit
+        open={showUndoRemove}
+        setOpen={setShowUndoRemove} />
     </>
   );
 }
