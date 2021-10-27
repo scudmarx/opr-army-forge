@@ -54,7 +54,7 @@ export default function GameSystem() {
                   <Paper>
                     <img onClick={() => isLive && gameSystem !== "gf" ? false : selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
                       className={"game-system-tile "+ (isLive && gameSystem !== "gf" ? "" : "interactable")}
-                      style={{ borderRadius: "4px", display: "block", opacity: isLive && gameSystem !== "gf" ? 0.5 : 1 }} />
+                      style={{ borderRadius: "4px", display: "block", filter: isLive && gameSystem !== "gf" ? "grayscale(95%)" : null }} />
                   </Paper>
                 </div>
               ))
