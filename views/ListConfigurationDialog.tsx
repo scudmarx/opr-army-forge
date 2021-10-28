@@ -29,7 +29,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
   const [armyName, setArmyName] = useState(isEdit ? list.name : "");
   const [pointsLimit, setPointsLimit] = useState(isEdit ? list.pointsLimit : null);
   const [useBeta, setUseBeta] = useState(false);
-  const [autoSave, setAutoSave] = useState(false);
+  const [autoSave, setAutoSave] = useState(true);
   const dispatch = useDispatch();
   const router = useRouter();
 
