@@ -4,10 +4,44 @@
 }
 
 .homeContainer {
-  position: fixed;
+  height: 100vh;
+  background-image: url("../public/img/index_bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 900;
+  color: white;
+  display: inline-block;
+  position: relative;
+  text-shadow: 2px 2px 2px #300;
+  line-height: 90px;
+}
+
+.logo {
+  background-image: url("../public/img/AF_logo.svg");
+  background-position: center;
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+}
+
+.betaTag {
+  position: absolute;
+  bottom: -35px;
+  right: -45px;
+  width: 82px;
+  height: 57px;
+  background-image: url("../public/img/beta_label.png");
+}
+
+.buttonContainer {
+  position: absolute;
   bottom: 16px;
-  left: 16px;
-  right: 16px;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
