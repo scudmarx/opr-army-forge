@@ -15,10 +15,10 @@ export default function Home() {
           <h1 className="is-size-3 has-text-centered mb-4">Army Forge</h1>
           <div className={styles.homeContainer + " is-flex is-flex-direction-column p-4"}>
             <Button variant="contained" color="primary" className="mb-4" onClick={() => router.push("/gameSystem")}>
-              <AddIcon /> <span className="ml-2">Create A New List</span>
+              <AddIcon /> <span className="ml-2" style={{fontWeight:600}}>Create A New List</span>
             </Button>
             <Button variant="outlined" onClick={() => router.push("/load")}>
-              <FolderOpenIcon /> <span className="ml-2">Open A List</span>
+              <FolderOpenIcon /> <span className="ml-2" style={{fontWeight:600}}>Open A List</span>
             </Button>
           </div>
         </div>
