@@ -10,6 +10,7 @@ import { IGameRule } from "../data/armySlice";
 import { groupBy } from "../services/Helpers";
 import UnitService from "../services/UnitService";
 import _ from "lodash";
+import { ISelectedUnit } from "../data/interfaces";
 
 export default function ViewCards({ showPsychic, showFullRules }) {
 
@@ -21,16 +22,21 @@ export default function ViewCards({ showPsychic, showFullRules }) {
   const spells = army.data?.spells || [];
   const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
-  const units = list?.units ?? [];
+  const units = (list?.units ?? []).map(u => ({...u}));
+  for (let unit of units)
+  {
+    delete unit.selectionId;
+  }
 
-  const unitGroups = _.groupBy(units, u => u.id);
-  console.log("Unit groups", unitGroups);
-
+  const unitGroups = _.groupBy(units, u => JSON.stringify(u));
+  console.log(unitGroups);
   return (
     <>
       <div className="columns is-multiline">
-        {(units).map((u, i) => {
+        {Object.values(unitGroups).map((grp: ISelectedUnit[], i) => {
 
+          const u = grp[0];
+          const count = grp.length;
           const equipmentSpecialRules = u
             .equipment
             .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
@@ -56,7 +62,7 @@ export default function ViewCards({ showPsychic, showFullRules }) {
               <Card elevation={1}>
                 <div className="mb-4">
                   <div className="card-body">
-                    <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>{u.name}</h3>
+                    <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>{count > 1 ? `${count}x ` : ""}{u.name}</h3>
                     <hr className="my-0" />
 
                     <div className="is-flex mb-2" style={{ justifyContent: "center" }}>
