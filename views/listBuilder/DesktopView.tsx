@@ -4,7 +4,6 @@ import { RootState } from '../../data/store';
 import { UnitSelection } from "../UnitSelection";
 import { MainList } from "../MainList";
 import { Upgrades } from "../upgrades/Upgrades";
-import UpgradeService from "../../services/UpgradeService";
 import MainMenu from "../components/MainMenu";
 import { Paper } from "@mui/material";
 import UpgradePanelHeader from "../components/UpgradePanelHeader";

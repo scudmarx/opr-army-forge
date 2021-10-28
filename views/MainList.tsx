@@ -11,8 +11,6 @@ import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
 import FullCompactToggle from "./components/FullCompactToggle";
-import UndoRemoveUnit from "./components/UndoRemoveUnit";
-//import _ from "lodash";
 
 export function MainList({ onSelected, onUnitRemoved }) {
 

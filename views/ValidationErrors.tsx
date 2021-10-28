@@ -16,7 +16,7 @@ export default function ValidationErrors({ open, setOpen }) {
       <DialogTitle>Validation Errors</DialogTitle>
       <List>
         {errors.map((error, index) => (
-          <ListItem key={index}>
+          <ListItem key={index} divider>
             <ListItemText>{error}</ListItemText>
           </ListItem>
         ))}
