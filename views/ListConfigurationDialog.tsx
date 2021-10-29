@@ -54,7 +54,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
       router.push('/list');
     };
 
-    if (useBeta) {
+    if (!army.data.units) {
 
       const apiArmy = customArmies.filter(a => a.name === army.data.name && a.official)[0];
 
