@@ -10,7 +10,7 @@
   left: 0;
   bottom: 0;
   background-color: #000;
-  background-image: url("../public/img/index_bg.jpg");
+  /* background-image: url("../public/img/index_bg.jpg"); */
   background-size: cover;
   background-position: center;
   max-width: none !important;
@@ -19,6 +19,39 @@
 @media (min-width: 1024px) {
   .homeContainer {
     background-image: none;
+  }
+}
+
+.outerColumn {
+  margin: auto;
+  height: 100%;
+  position: relative;
+  background-image: url("../public/img/index_bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 1440px) {
+  .outerColumn {
+    
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    max-width: 1440px;
+  }
+}
+
+.homeColumn {
+  max-width: 480px;
+  height: 100%;
+  position: relative;
+}
+
+@media (min-width: 1440px) {
+  .homeColumn {
+    width: 480px;
+    position: absolute;
+    right: 0;
   }
 }
 
@@ -53,9 +86,9 @@
 
 .buttonContainer {
   position: absolute;
-  bottom: 16px;
+  margin: auto;
+  bottom: 64px;
   left: 0;
   right: 0;
+  max-width: 250px;
 }
-
-
