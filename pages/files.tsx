@@ -13,8 +13,6 @@ import ListConfigurationDialog from "../views/ListConfigurationDialog";
 import ArmyImage from "../views/components/ArmyImage";
 import DataService from "../services/DataService";
 
-const isLive = window.location.host === "opr-army-forge.vercel.app";
-
 export default function Files() {
 
   const army = useSelector((state: RootState) => state.army);
@@ -25,6 +23,8 @@ export default function Files() {
   const [newArmyDialogOpen, setNewArmyDialogOpen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const isLive = window.location.host === "opr-army-forge.vercel.app";
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
@@ -234,7 +234,6 @@ export default function Files() {
 }
 
 function Tile({ army, enabled, onSelect, driveArmy }) {
-
 
   return (
     <div className="column is-half-mobile is-one-third-tablet" style={{ filter: (enabled ? null : "saturate(0.25)") }}>
