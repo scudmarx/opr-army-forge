@@ -4,10 +4,22 @@
 }
 
 .homeContainer {
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
   background-image: url("../public/img/index_bg.jpg");
   background-size: cover;
   background-position: center;
+  max-width: none !important;
+}
+
+@media (min-width: 1024px) {
+  .homeContainer {
+    background-image: none;
+  }
 }
 
 .title {
@@ -27,6 +39,7 @@
   background-size: cover;
   width: 60px;
   height: 60px;
+  filter: drop-shadow(2px 2px 2px #300);
 }
 
 .betaTag {
@@ -41,11 +54,8 @@
 .buttonContainer {
   position: absolute;
   bottom: 16px;
-  width: 100%;
+  left: 0;
+  right: 0;
 }
 
-@media (min-width: 1024px) {
-  .homeContainer {
-    position: static;
-  }
-}
+
