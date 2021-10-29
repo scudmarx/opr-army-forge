@@ -94,7 +94,7 @@ export default function Files() {
 
   const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
 
-  const isActiveArmy = (army) => !isLive || ["Alien Hives", "Battle Brothers", "Robot Legions", "Orc Marauders"].some(a => a === army.name);
+  const isActiveArmy = (army) => !isLive || ["Alien Hives", "Battle Brothers", "Robot Legions", "Orc Marauders", "Human Defense Force"].some(a => a === army.name);
   const officialArmies = customArmies?.filter(ca => ca.official && !ca.factionRelation); // Remove detachments
   const officialActiveArmies = officialArmies?.filter(ca => isActiveArmy(ca));
   const officialInactiveArmies = officialArmies?.filter(ca => !isActiveArmy(ca));
