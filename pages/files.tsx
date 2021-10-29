@@ -24,7 +24,7 @@ export default function Files() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = window.location.host === "opr-army-forge.vercel.app";
+  const isLive = true || window.location.host === "opr-army-forge.vercel.app";
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
@@ -146,24 +146,26 @@ export default function Files() {
               army.gameSystem === "gf" && (
                 <>
                   {
-                    customArmies ? (customArmies.filter(ca => ca.official && (isLive ? ["Alien Hives", "Battle Brothers"].indexOf(ca.name) > -1 : true)).map((customArmy, index) => (
-                      <div key={index} className="column is-half-mobile is-one-third-tablet">
-                        <Card
-                          elevation={2}
-                          style={{ cursor: "pointer" }}
-                          className="interactable"
-                          onClick={() => selectCustomList(customArmy)}>
-                          <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
-                            <ArmyImage name={customArmy.name} />
-                            <div className="is-flex is-flex-grow-1 is-align-items-center">
-                              <div className="is-flex-grow-1">
-                                <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{customArmy.name}</p>
+                    customArmies ? (customArmies.filter(ca => ca.official).map((customArmy, index) => {
+                      const enabled = isLive ? ["Alien Hives", "Battle Brothers", "Robot Legions"].indexOf(customArmy.name) > -1 : true;
+                      return (
+                        <div key={index} className="column is-half-mobile is-one-third-tablet" style={{ filter: (enabled ? null : "saturate(0.25)") }}>
+                          <Card
+                            elevation={2}
+                            className={enabled ? "interactable" : null}
+                            onClick={() => selectCustomList(customArmy)}>
+                            <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
+                              <ArmyImage name={customArmy.name} />
+                              <div className="is-flex is-flex-grow-1 is-align-items-center">
+                                <div className="is-flex-grow-1">
+                                  <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{customArmy.name}</p>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </Card>
-                      </div>
-                    ))) : (
+                          </Card>
+                        </div>
+                      );
+                    })) : (
                       <div className="column is-flex is-flex-direction-column is-align-items-center	">
                         <CircularProgress />
                         <p>Loading armies...</p>

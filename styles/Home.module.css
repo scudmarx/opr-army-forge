@@ -5,13 +5,90 @@
 
 .homeContainer {
   position: fixed;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  /* background-image: url("../public/img/index_bg.jpg"); */
+  background-size: cover;
+  background-position: center;
+  max-width: none !important;
 }
 
 @media (min-width: 1024px) {
   .homeContainer {
-    position: static;
+    background-image: none;
   }
+}
+
+.outerColumn {
+  margin: auto;
+  height: 100%;
+  position: relative;
+  background-image: url("../public/img/index_bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 1440px) {
+  .outerColumn {
+    
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    max-width: 1440px;
+  }
+}
+
+.homeColumn {
+  max-width: 480px;
+  height: 100%;
+  position: relative;
+}
+
+@media (min-width: 1440px) {
+  .homeColumn {
+    width: 480px;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 900;
+  color: white;
+  display: inline-block;
+  position: relative;
+  text-shadow: 2px 2px 2px #300;
+  line-height: 90px;
+}
+
+.logo {
+  background-image: url("../public/img/AF_logo.svg");
+  background-position: center;
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(2px 2px 2px #300);
+}
+
+.betaTag {
+  position: absolute;
+  bottom: -35px;
+  right: -45px;
+  width: 82px;
+  height: 57px;
+  background-image: url("../public/img/beta_label.png");
+}
+
+.buttonContainer {
+  position: absolute;
+  margin: auto;
+  bottom: 64px;
+  left: 0;
+  right: 0;
+  max-width: 250px;
 }
