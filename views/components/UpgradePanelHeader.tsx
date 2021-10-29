@@ -31,6 +31,7 @@ export default function UpgradePanelHeader() {
     <div className="is-flex is-align-items-center">
       {editMode ? (
         <TextField
+          autoFocus
           variant="standard"
           className=""
           value={selectedUnit.customName || selectedUnit.name}

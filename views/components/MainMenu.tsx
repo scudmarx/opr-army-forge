@@ -70,7 +70,7 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
               size="large"
               color="inherit"
               title="Validation warnings"
-              style={{ backgroundColor: "#6EAAE7" }}
+              style={{ backgroundColor: Boolean(validationAnchorElement) ? "#6EAAE7" : null }}
               onClick={e => setValidationAnchorElement(e.currentTarget)}
               className="mr-2 p-2"
             >

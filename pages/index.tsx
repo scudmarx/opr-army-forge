@@ -26,10 +26,18 @@ export default function Home() {
             </div>
 
             <div className={styles.buttonContainer + " is-flex is-flex-direction-column p-4"}>
-              <Button variant="outlined" color="primary" sx={{ bgcolor: "white" }} className="mb-4" onClick={() => router.push("/gameSystem")}>
+              <Button variant="contained" color="primary" className="mb-4" onClick={() => router.push("/gameSystem")}>
                 <AddIcon /> <span className="ml-2" style={{ fontWeight: 600 }}>Create A New List</span>
               </Button>
-              <Button variant="outlined" sx={{ borderColor: "white", color: "white" }} onClick={() => router.push("/load")}>
+              <Button variant="outlined" sx={{
+                borderColor: "white",
+                color: "white",
+                background: "rgba(255,255,255,.2)",
+                "&:hover": {
+                  borderColor: "white",
+                  background: "rgba(255,255,255,.3)",
+                }
+              }} onClick={() => router.push("/load")}>
                 <FolderOpenIcon /> <span className="ml-2" style={{ fontWeight: 600 }}>Open A List</span>
               </Button>
             </div>
