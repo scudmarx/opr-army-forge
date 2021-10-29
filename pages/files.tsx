@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
-import { load, setArmyFile } from '../data/armySlice'
+import { loadArmyData, loadChildArmyData, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
 import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -92,6 +92,13 @@ export default function Files() {
       });
   }, []);
 
+  const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
+
+  const isActiveArmy = (army) => !isLive || ["Alien Hives", "Battle Brothers", "Robot Legions"].some(a => a === army.name);
+  const officialArmies = customArmies?.filter(ca => ca.official && !ca.factionRelation); // Remove detachments
+  const officialActiveArmies = officialArmies?.filter(ca => isActiveArmy(ca));
+  const officialInactiveArmies = officialArmies?.filter(ca => !isActiveArmy(ca));
+
   const selectArmy = (filePath: string) => {
     // TODO: Clear existing data
 
@@ -100,27 +107,35 @@ export default function Files() {
 
     // Load army data
     DataService.getJsonData(filePath, data => {
-      dispatch(load(data));
+      dispatch(loadArmyData(data));
       setNewArmyDialogOpen(true);
     });
   };
 
   const selectCustomList = (customArmy: any) => {
 
-    DataService.getApiData(customArmy.uid, afData => {
+    if (customArmy.factionName) {
 
-      dispatch(load(afData));
+      dispatch(loadArmyData(customArmy));
+
+      const related = customArmies.filter(a => a.factionName === customArmy.factionName && a.official === customArmy.official);
+      console.log(related);
+      dispatch(loadChildArmyData(related));
 
       setNewArmyDialogOpen(true);
-    });
+
+    } else {
+
+      dispatch(loadChildArmyData(null));
+
+      DataService.getApiData(customArmy.uid, afData => {
+
+        dispatch(loadArmyData(afData));
+
+        setNewArmyDialogOpen(true);
+      });
+    }
   };
-
-  const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
-
-  const isActiveArmy = (army) => !isLive || ["Alien Hives", "Battle Brothers", "Robot Legions"].some(a => a === army.name);
-  const officialArmies = customArmies?.filter(ca => ca.official);
-  const officialActiveArmies = officialArmies?.filter(ca => isActiveArmy(ca));
-  const officialInactiveArmies = officialArmies?.filter(ca => !isActiveArmy(ca));
 
   const gfSection = (armies, enabled) => armies.map((army, index) => <Tile
     key={index}
