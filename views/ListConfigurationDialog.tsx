@@ -2,13 +2,13 @@ import { useState, forwardRef, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from 'next/router';
-import { Button, CircularProgress, Dialog, Slide, TextField } from "@mui/material";
-import { AppBar, IconButton, Toolbar, Typography, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+import { Button, CircularProgress, Dialog, List, ListItem, ListItemText, Slide, TextField } from "@mui/material";
+import { AppBar, IconButton, Toolbar, Typography, FormGroup, FormControlLabel, Checkbox, Radio } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import { createList, updateListSettings } from "../data/listSlice";
 import { TransitionProps } from "@mui/material/transitions";
 import DataService from "../services/DataService";
-import { load } from "../data/armySlice";
+import { loadArmyData } from "../data/armySlice";
 import ArmyImage from "./components/ArmyImage";
 import PersistenceService from "../services/PersistenceService";
 
@@ -30,6 +30,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
   const [pointsLimit, setPointsLimit] = useState(isEdit ? list.pointsLimit : null);
   const [useBeta, setUseBeta] = useState(false);
   const [autoSave, setAutoSave] = useState(true);
+  const [selectedChild, setSelectedChild] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -37,6 +38,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
   useEffect(() => {
     if (!isEdit && army.data && army.data.name) {
       setArmyName(army.data.name);
+      setSelectedChild(army.data.name);
     }
   }, [army.data, isEdit]);
 
@@ -58,7 +60,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
 
       DataService.getApiData(apiArmy.uid, afData => {
 
-        dispatch(load(afData));
+        dispatch(loadArmyData(afData));
 
         finish({ ...army, data: afData });
       });
@@ -110,6 +112,25 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
                 <Checkbox checked={useBeta} onClick={() => setUseBeta(!useBeta)} />
               } label="Use v2.5 Beta" />
             </FormGroup>}
+            {
+              !isEdit && army.childData && <>
+                <h3 className="mt-4" style={{ fontWeight: 600 }}>{army.childData.filter(c => c.factionRelation)[0].factionRelation}</h3>
+                <List>
+                  {army.childData.map((child, index) => {
+                    return (
+                      <ListItem divider className="px-0">
+                        <ListItemText primary={child.name === army.data.name ? "None" : child.name} />
+                        <Radio
+                          disabled
+                          value={child.name}
+                          checked={selectedChild === child.name}
+                          onChange={e => setSelectedChild(e.target.value)} />
+                      </ListItem>
+                    );
+                  })}
+                </List>
+              </>
+            }
             {
               isEdit
                 ? <Button className="mt-4" variant="contained" onClick={() => update()}>Save Changes</Button>

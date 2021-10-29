@@ -94,8 +94,6 @@ export default class DataService {
       // Group equipment by name
       const groups = groupBy(unit.equipment, "name");
 
-      console.log(groups);
-
       // Take first equipment in each group, with a count set to how many are in the group
       unit.equipment = Object
         .values(groups)
