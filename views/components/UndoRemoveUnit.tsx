@@ -5,7 +5,7 @@ import { undoRemoveUnit } from "../../data/listSlice";
 import { RootState } from "../../data/store";
 
 
-export default function UndoRemoveUnit({ unitName, open, setOpen }) {
+export default function UndoRemoveUnit({ open, setOpen }) {
 
   const unit = useSelector((state: RootState) => state.list.undoUnitRemove);
 
