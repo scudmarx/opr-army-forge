@@ -60,6 +60,10 @@
 
 @media (min-width: 1440px) {
   .homeColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     width: 480px;
     position: absolute;
     right: 0;
@@ -103,4 +107,14 @@
   left: 0;
   right: 0;
   max-width: 250px;
+}
+
+@media (min-width: 1440px) {
+  .buttonContainer {
+    position: static;
+    margin: 0;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
 }

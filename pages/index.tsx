@@ -16,12 +16,14 @@ export default function Home() {
       <div className={styles.homeContainer + " container"}>
         <div className={styles.outerColumn}>
           <div className={styles.homeColumn + " mx-auto has-text-centered p-4 pt-6"}>
-            <h1 className={styles.title} style={{ letterSpacing: "8px" }}>ARMY</h1>
-            <div className={styles.logo + " mx-auto"}></div>
-            <h1 className={styles.title}>
-              FORGE
-              <div className={styles.betaTag}></div>
-            </h1>
+            <div>
+              <h1 className={styles.title} style={{ letterSpacing: "8px" }}>ARMY</h1>
+              <div className={styles.logo + " mx-auto"}></div>
+              <h1 className={styles.title}>
+                FORGE
+                <div className={styles.betaTag}></div>
+              </h1>
+            </div>
 
             <div className={styles.buttonContainer + " is-flex is-flex-direction-column p-4"}>
               <Button variant="outlined" color="primary" sx={{ bgcolor: "white" }} className="mb-4" onClick={() => router.push("/gameSystem")}>
