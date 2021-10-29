@@ -54,7 +54,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
       router.push('/list');
     };
 
-    if (useBeta) {
+    if (!army.data.units) {
 
       const apiArmy = customArmies.filter(a => a.name === army.data.name && a.official)[0];
 
@@ -115,6 +115,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
             {
               !isEdit && army.childData && <>
                 <h3 className="mt-4" style={{ fontWeight: 600 }}>{army.childData.filter(c => c.factionRelation)[0].factionRelation}</h3>
+                <h3>Coming soon...</h3>
                 <List>
                   {army.childData.map((child, index) => {
                     return (
