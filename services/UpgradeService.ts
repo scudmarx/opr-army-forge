@@ -108,6 +108,9 @@ export default class UpgradeService {
                 return false;
             } else if (appliedInGroup >= upgrade.select)
               return false;
+          } else if (unit.combined) {
+            if (appliedInGroup >= 2)
+              return false;
           }
         }
         return true;
@@ -146,6 +149,7 @@ export default class UpgradeService {
   };
 
   public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
+    const combinedAffects = (unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
     if (upgrade.type === "upgrade") {
 
       // "Upgrade any model with:"
@@ -178,7 +182,7 @@ export default class UpgradeService {
       }
       // "Replace one [weapon]:"
       // "Replace all [weapons]:"
-      if (upgrade.affects === 1 || upgrade.affects === "all") {
+      if (combinedAffects === 1 || upgrade.affects === "all") {
         return "radio";
       }
       // "Replace any [weapon]:"
