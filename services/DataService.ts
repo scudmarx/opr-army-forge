@@ -81,7 +81,7 @@ export default class DataService {
             }
             return ({
               ...opt,
-              cost: typeof(opt.cost) === "number" ? opt.cost : parseInt((opt.cost as any).toString().replace(/pts?/, "")),
+              cost: typeof (opt.cost) === "number" ? opt.cost : parseInt((opt.cost as any).toString().replace(/pts?/, "")),
               id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
               gains
             });
@@ -90,6 +90,9 @@ export default class DataService {
       }))
     };
 
+    return data;
+
+    // TODO: Revisit this once we have an example of which unit needs data combining
     for (let unit of data.units) {
       // Group equipment by name
       const groups = groupBy(unit.equipment, "name");
@@ -97,10 +100,14 @@ export default class DataService {
       // Take first equipment in each group, with a count set to how many are in the group
       unit.equipment = Object
         .values(groups)
-        .map((group: any[]) => ({
-          ...group[0],
-          count: group.length * unit.size
-        }))
+        .map((group: any[]) => {
+          const countInGroup = group.reduce((count, next) => count + (next.count ?? 1), 0);
+          console.log("Count: " + countInGroup, group);
+          return {
+            ...group[0],
+            count: countInGroup * unit.size
+          };
+        });
     }
 
     return data;
