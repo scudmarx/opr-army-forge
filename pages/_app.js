@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Head>
-        <title>OPR Army Forge</title>
+        <title>OPR Army Forge Beta</title>
         <meta name="description" content="OPR Army Forge List Builder" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

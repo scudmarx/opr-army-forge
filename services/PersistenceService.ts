@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { ArmyState, load, setGameSystem } from "../data/armySlice";
+import { ArmyState, loadArmyData, setGameSystem } from "../data/armySlice";
 import { ISaveData } from "../data/interfaces";
 import { ListState, loadSavedList } from "../data/listSlice";
 import DataService from "./DataService";
@@ -23,13 +23,15 @@ export default class PersistenceService {
     const list: ListState = existingList
       ? {
         ...existingList,
-        creationTime: creationTime
+        creationTime: creationTime,
+        undoUnitRemove: null
       }
       : {
         creationTime: creationTime,
         name: name,
         units: [],
-        points: 0
+        points: 0,
+        undoUnitRemove: null
       };
 
     const saveData: ISaveData = {
@@ -84,7 +86,7 @@ export default class PersistenceService {
 
     const loaded = data => {
       dispatch(setGameSystem(save.gameSystem));
-      dispatch(load(data));
+      dispatch(loadArmyData(data));
       dispatch(loadSavedList(save.list));
     };
 

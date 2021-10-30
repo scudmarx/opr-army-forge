@@ -5,15 +5,14 @@ import { ISelectedUnit } from "../data/interfaces";
 import RemoveIcon from '@mui/icons-material/Clear';
 import { selectUnit, removeUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
-import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, IconButton, Snackbar } from "@mui/material";
 import { useRouter } from "next/router";
 import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
 import FullCompactToggle from "./components/FullCompactToggle";
-import ValidationErrors from "./ValidationErrors";
 
-export function MainList({ onSelected }) {
+export function MainList({ onSelected, onUnitRemoved }) {
 
   const list = useSelector((state: RootState) => state.list);
 
@@ -29,13 +28,12 @@ export function MainList({ onSelected }) {
   };
 
   const handleRemove = (unit: ISelectedUnit) => {
+    onUnitRemoved(unit);
     dispatch(removeUnit(unit.selectionId));
   };
 
   return (
     <>
-      {/* <ValidationErrors /> */}
-      {/* <Button onClick={() => router.push("/cards")}>View Cards</Button> */}
       <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       <ul className="mt-2">
         {

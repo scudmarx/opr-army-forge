@@ -16,6 +16,8 @@ import Add from "@mui/icons-material/Add";
 import MainMenu from "../components/MainMenu";
 import ListConfigurationDialog from "../ListConfigurationDialog";
 import ValidationErrors from "../ValidationErrors";
+import UndoRemoveUnit from "../components/UndoRemoveUnit";
+import ArmyImage from "../components/ArmyImage";
 
 export default function MobileView() {
 
@@ -29,6 +31,7 @@ export default function MobileView() {
   const [slideIndex, setSlideIndex] = useState(1);
   const [editListOpen, setEditListOpen] = useState(false);
   const [validationOpen, setValidationOpen] = useState(false);
+  const [showUndoRemove, setShowUndoRemove] = useState(false);
 
   // Open bottom sheet when unit is selected
   const onUnitSelected = () => {
@@ -74,12 +77,23 @@ export default function MobileView() {
           <UnitSelection onSelected={() => { }} />
         </div>
         <div className="">
-          {list.units.length > 0 ? <MainList onSelected={onUnitSelected} /> : (
+          {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)} /> : (
             <div className="p-4 has-text-centered">
               <h3 className="is-size-3 mb-4">Your list is empty</h3>
               <Button variant="outlined" onClick={() => handleSlideChange(null, 0)}>
                 <Add /> Add Units
               </Button>
+              <div className="is-flex mt-6" style={{
+                height: "160px",
+                width: "100%",
+                backgroundImage: `url("img/gf_armies/${army.data.name}.png")`,
+                backgroundPosition: "center",
+                backgroundSize: "contain",
+                backgroundRepeat: 'no-repeat',
+                position: "relative",
+                zIndex: 1,
+                opacity: 0.5
+              }}></div>
             </div>
           )}
         </div>
@@ -111,6 +125,9 @@ export default function MobileView() {
         setOpen={setEditListOpen}
         showBetaFlag={false}
         customArmies={null} />
+      <UndoRemoveUnit
+        open={showUndoRemove}
+        setOpen={setShowUndoRemove} />
     </>
   );
 }

@@ -6,16 +6,17 @@ import ValidationService from "../services/ValidationService";
 
 export default function ValidationErrors({ open, setOpen }) {
 
+  const army = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
 
-  const errors = ValidationService.getErrors(list);
+  const errors = ValidationService.getErrors(army, list);
 
   return (
     <Dialog onClose={() => setOpen(false)} open={open}>
       <DialogTitle>Validation Errors</DialogTitle>
       <List>
         {errors.map((error, index) => (
-          <ListItem key={index}>
+          <ListItem key={index} divider>
             <ListItemText>{error}</ListItemText>
           </ListItem>
         ))}

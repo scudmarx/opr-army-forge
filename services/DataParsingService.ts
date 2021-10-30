@@ -322,9 +322,16 @@ export default class DataParsingService {
       if (isOneWeapon) {
         mountWeapon = this.parseEquipment(mountMatch[2], isUpgrade);
       } else {
+
+        // Thanks Schnickers
+        let itemParts = mountMatch[2]
+          .replace(/(\)|\w),/gim, `$1#`)
+          .split(/#/)
+          .map(r => r.trim());
+
         // For each rule/weapon in the (Fast, Impact(1), Weapon (16", A2))
         // Split on any comma that is preceeded by a letter or )
-        for (let rule of mountMatch[2].split(/(?<=\)|\w),/).map(r => r.trim())) {
+        for (let rule of itemParts) {
           // If it's words only, it's a rule
           // or Parameter rules like Impact(1) Tough(2)
           if (/^[^\(\)]+$/.test(rule) || /\w+\(\d+\)/.test(rule)) {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
-import { load, setArmyFile } from '../data/armySlice'
+import { loadArmyData, loadChildArmyData, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
 import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -23,6 +23,8 @@ export default function Files() {
   const [newArmyDialogOpen, setNewArmyDialogOpen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const isLive = window.location.host === "opr-army-forge.vercel.app";
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
@@ -90,6 +92,13 @@ export default function Files() {
       });
   }, []);
 
+  const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
+
+  const isActiveArmy = (army) => !isLive || ["Alien Hives", "Battle Brothers", "Robot Legions"].some(a => a === army.name);
+  const officialArmies = customArmies?.filter(ca => ca.official && !ca.factionRelation); // Remove detachments
+  const officialActiveArmies = officialArmies?.filter(ca => isActiveArmy(ca));
+  const officialInactiveArmies = officialArmies?.filter(ca => !isActiveArmy(ca));
+
   const selectArmy = (filePath: string) => {
     // TODO: Clear existing data
 
@@ -98,22 +107,42 @@ export default function Files() {
 
     // Load army data
     DataService.getJsonData(filePath, data => {
-      dispatch(load(data));
+      dispatch(loadArmyData(data));
       setNewArmyDialogOpen(true);
     });
   };
 
   const selectCustomList = (customArmy: any) => {
 
-    DataService.getApiData(customArmy.uid, afData => {
+    if (customArmy.factionName) {
 
-      dispatch(load(afData));
+      dispatch(loadArmyData(customArmy));
+
+      const related = customArmies.filter(a => a.factionName === customArmy.factionName && a.official === customArmy.official);
+      console.log(related);
+      dispatch(loadChildArmyData(related));
 
       setNewArmyDialogOpen(true);
-    });
+
+    } else {
+
+      dispatch(loadChildArmyData(null));
+
+      DataService.getApiData(customArmy.uid, afData => {
+
+        dispatch(loadArmyData(afData));
+
+        setNewArmyDialogOpen(true);
+      });
+    }
   };
 
-  const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
+  const gfSection = (armies, enabled) => armies.map((army, index) => <Tile
+    key={index}
+    army={army}
+    enabled={enabled}
+    driveArmy={null}
+    onSelect={army => selectCustomList(army)} />);
 
   return (
     <>
@@ -139,81 +168,105 @@ export default function Files() {
       <div className="container">
         <div className="mx-auto p-4">
           <h3 className="is-size-4 has-text-centered mb-4 pt-4">Choose your army</h3>
+          {
+            army.gameSystem === "gf" && (
+              <>
+                {!officialArmies && <div className="column is-flex is-flex-direction-column is-align-items-center	">
+                  <CircularProgress />
+                  <p>Loading armies...</p>
+                </div>}
+                {officialArmies && <>
+                  <div className="columns is-mobile is-multiline">
+                    {gfSection(officialActiveArmies, true)}
+                  </div>
+                  <h3 className="is-size-4 has-text-centered mb-4 pt-4">Coming Soon...</h3>
+                  <div className="columns is-mobile is-multiline">
+                    {gfSection(officialInactiveArmies, false)}
+                  </div>
+                </>}
+              </>
+            )
+          }
           <div className="columns is-mobile is-multiline">
             {
-              !armyFiles ? null : armies.map((file, index) => {
+              army.gameSystem === "gf" || !armyFiles ? null : armies.map((file, index) => {
                 const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
 
                 return (
-                  <div key={index} className="column is-half-mobile is-one-third-tablet">
-                    <Card
-                      elevation={2}
-                      style={{ cursor: "pointer" }}
-                      className="interactable"
-                      onClick={() => selectArmy(file.path)}>
-                      <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
-                        <ArmyImage name={file.name} />
-                        <div className="is-flex is-flex-grow-1 is-align-items-center">
-                          <div className="is-flex-grow-1" onClick={() => setExpandedId(file.name)}>
-                            <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{file.name}</p>
-                          </div>
-                          {driveArmy && driveArmy.version > file.version && <div className="mr-4" title="Army file may be out of date"><WarningIcon /></div>}
-                          {file.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
-                        </div>
-                      </div>
-                    </Card>
-                  </div>
-                  // <li key={index} className="mb-4">
-                  //     <Button variant="contained" color="primary" onClick={() => selectArmy(file.path)}>
-                  //         {file.name}
-                  //     </Button>
-                  // </li>
+                  <Tile
+                    key={index}
+                    army={file}
+                    enabled={true}
+                    driveArmy={driveArmy}
+                    onSelect={army => selectArmy(army.path)} />
                 );
               })
             }
           </div>
-          {
-            customArmies ? (
-              <>
-                <h3>Custom Armies</h3>
-                <div className="columns is-multiline">
-                  {customArmies.filter(a => a.official === false).map((customArmy, i) => (
-                    <div key={i} className="column is-half">
-                      <Card
-                        elevation={1}
-                        className="interactable"
-                        style={{
-                          backgroundColor: customArmy.official ? "#F9FDFF" : null,
-                          borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
-                        }}
-                        onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
-                        <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
-                          <div className="is-flex-grow-1">
-                            <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
-                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                              {customArmy.versionString} by {customArmy.username}
-                            </div>
+          {!isLive && (customArmies ? (
+            <>
+              <h3>Custom Armies</h3>
+              <div className="columns is-multiline">
+                {customArmies.filter(a => a.official === false).map((customArmy, i) => (
+                  <div key={i} className="column is-half">
+                    <Card
+                      elevation={1}
+                      className="interactable"
+                      style={{
+                        backgroundColor: customArmy.official ? "#F9FDFF" : null,
+                        borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
+                      }}
+                      onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                      <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
+                        <div className="is-flex-grow-1">
+                          <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
+                          <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                            {customArmy.versionString} by {customArmy.username}
                           </div>
-                          {/* <p className="mr-2">{u.cost}pts</p> */}
-                          <IconButton color="primary">
-                            <RightIcon />
-                          </IconButton>
                         </div>
-                      </Card>
-                    </div>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <div className="is-flex is-flex-direction-column is-align-items-center	">
-                <CircularProgress />
-                <p>Loading custom armies...</p>
+                        {/* <p className="mr-2">{u.cost}pts</p> */}
+                        <IconButton color="primary">
+                          <RightIcon />
+                        </IconButton>
+                      </div>
+                    </Card>
+                  </div>
+                ))}
               </div>
-            )
-          }
+            </>
+          ) : (
+            <div className="is-flex is-flex-direction-column is-align-items-center	">
+              <CircularProgress />
+              <p>Loading custom armies...</p>
+            </div>
+          )
+          )}
         </div>
       </div>
       <ListConfigurationDialog isEdit={false} open={newArmyDialogOpen} setOpen={setNewArmyDialogOpen} showBetaFlag={army.gameSystem === "gf" && army.data?.uid == null} customArmies={customArmies} />
     </>
+  );
+}
+
+function Tile({ army, enabled, onSelect, driveArmy }) {
+
+  return (
+    <div className="column is-half-mobile is-one-third-tablet" style={{ filter: (enabled ? null : "saturate(0.25)") }}>
+      <Card
+        elevation={2}
+        className={enabled ? "interactable" : null}
+        onClick={() => enabled ? onSelect(army) : null}>
+        <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
+          <ArmyImage name={army.name} />
+          <div className="is-flex is-flex-grow-1 is-align-items-center">
+            <div className="is-flex-grow-1">
+              <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{army.name}</p>
+            </div>
+            {driveArmy && driveArmy.version > army.version && <div className="mr-4" title="Army file may be out of date"><WarningIcon /></div>}
+            {army.dataToolVersion && army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
+          </div>
+        </div>
+      </Card>
+    </div>
   );
 }

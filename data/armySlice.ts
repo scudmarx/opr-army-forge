@@ -12,12 +12,15 @@ export interface ArmyState {
   gameSystem: string;
   armyFile: string;
   data: IArmyData;
+  childData: IArmyData[];
   rules: IGameRule[];
 }
 
 export interface IArmyData {
   uid: string;
   name: string;
+  factionName: string;
+  factionRelation: string;
   versionString: string;
   dataToolVersion: string;
   units: IUnit[];
@@ -31,6 +34,7 @@ const initialState: ArmyState = {
   armyFile: null,
   gameSystem: null,
   data: null,
+  childData: null,
   rules: []
 }
 
@@ -38,11 +42,17 @@ export const armySlice = createSlice({
   name: 'army',
   initialState: initialState,
   reducers: {
-    load: (state, action: PayloadAction<IArmyData>) => {
+    loadArmyData: (state, action: PayloadAction<IArmyData>) => {
       return {
         ...state,
         data: action.payload,
         loaded: true
+      };
+    },
+    loadChildArmyData: (state, action: PayloadAction<IArmyData[]>) => {
+      return {
+        ...state,
+        childData: action.payload
       };
     },
     setGameSystem: (state, action: PayloadAction<string>) => {
@@ -67,6 +77,6 @@ export const armySlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { load, setGameSystem, setArmyFile, setGameRules } = armySlice.actions;
+export const { loadArmyData, loadChildArmyData, setGameSystem, setArmyFile, setGameRules } = armySlice.actions;
 
 export default armySlice.reducer;

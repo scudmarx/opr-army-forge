@@ -20,6 +20,8 @@ export function Upgrades() {
   const spells = army?.spells;
   const dispatch = useDispatch();
 
+  const isLive = window.location.host === "opr-army-forge.vercel.app";
+
   const selectedUnit = UnitService.getSelected(list);
 
   const getUpgradeSet = (id) => army.upgradePackages.filter((s) => s.uid === id)[0];
@@ -65,7 +67,7 @@ export function Upgrades() {
     <div className={styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
-        {!isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {selectedUnit.size > 1 && !isLive && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))
             } />} label="Double Unit Size" className="mr-2" />
@@ -77,7 +79,7 @@ export function Upgrades() {
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Join To Unit</InputLabel>
             <Select
-              value={selectedUnit.joinToUnit}
+              value={selectedUnit?.joinToUnit || ""}
               label="Join To Unit"
               onChange={joinToUnit}
             >
