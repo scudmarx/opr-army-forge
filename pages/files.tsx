@@ -24,7 +24,7 @@ export default function Files() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = window.location.host === "opr-army-forge.vercel.app";
+  const isLive = true || window.location.host === "opr-army-forge.vercel.app";
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
@@ -94,10 +94,9 @@ export default function Files() {
 
   const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
 
-  const isActiveArmy = (army) => !isLive || ["Alien Hives", "Battle Brothers", "Robot Legions", "Orc Marauders", "Human Defense Force"].some(a => a === army.name);
   const officialArmies = customArmies?.filter(ca => ca.official && !ca.factionRelation); // Remove detachments
-  const officialActiveArmies = officialArmies?.filter(ca => isActiveArmy(ca));
-  const officialInactiveArmies = officialArmies?.filter(ca => !isActiveArmy(ca));
+  const officialActiveArmies = officialArmies?.filter(ca => ca.isLive);
+  const officialInactiveArmies = officialArmies?.filter(ca => !ca.isLive);
 
   const selectArmy = (filePath: string) => {
     // TODO: Clear existing data
@@ -179,10 +178,12 @@ export default function Files() {
                   <div className="columns is-mobile is-multiline">
                     {gfSection(officialActiveArmies, true)}
                   </div>
-                  <h3 className="is-size-4 has-text-centered mb-4 pt-4">Coming Soon...</h3>
-                  <div className="columns is-mobile is-multiline">
-                    {gfSection(officialInactiveArmies, false)}
-                  </div>
+                  {officialInactiveArmies.length > 0 && <>
+                    <h3 className="is-size-4 has-text-centered mb-4 pt-4">Coming Soon...</h3>
+                    <div className="columns is-mobile is-multiline">
+                      {gfSection(officialInactiveArmies, false)}
+                    </div>
+                  </>}
                 </>}
               </>
             )
