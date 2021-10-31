@@ -117,11 +117,9 @@ export const listSlice = createSlice({
       const unitId = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
       unit.combined = !unit.combined;
-      if (unit.combined)
-        unit.size *= 2;
-      else
-        unit.size /= 2;
-
+      unit.size *= (unit.combined ? 2 : 0.5)
+      unit.equipment.forEach((equipment) => equipment.count *= (unit.combined ? 2 : 0.5))
+      unit.selectedUpgrades.forEach((upgrade) => console.log(current(upgrade)))
       state.points = UpgradeService.calculateListTotal(state.units);
 
       debounceSave(current(state));

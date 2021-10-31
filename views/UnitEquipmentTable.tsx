@@ -17,8 +17,9 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
 
   // If the weapon count divides exactly by the unit size, assume each model has the same weapons
   // otherwise assume models have different weapons and list out just the number of the weapon
-  // in the unit. To "fix" this behaviour this behaviour it's required to know which weapons are
+  // in the unit. To "fix" this behaviour it's required to know which weapons are
   // paired with which other weapons.
+
   let weaponCount: string;
   if (count % unit.size) {
     weaponCount = `${count} x `;

@@ -15,11 +15,8 @@ export default class UpgradeService {
     let cost = unit.cost * (unit.combined ? 2 : 1);
 
     for (const upgrade of unit.selectedUpgrades) {
-
-      var upgradeGroup = { affects: "all" };
-
       if (upgrade.cost) {
-        cost += upgrade.cost * (unit.combined && upgradeGroup.affects === "all" ? 2 : 1);
+        cost += upgrade.cost;
       }
     }
 
@@ -104,13 +101,14 @@ export default class UpgradeService {
           if (typeof (upgrade.select) === "number") {
             // Any model may replace 1...
             if (upgrade.affects === "any") {
-              if (appliedInGroup >= upgrade.select * unit.size)
+              if (appliedInGroup >= upgrade.select * unit.size) {
                 return false;
-            } else if (appliedInGroup >= upgrade.select)
+              }
+            } else if (appliedInGroup >= upgrade.select) {
               return false;
-          } else if (unit.combined) {
-            if (appliedInGroup >= 2)
-              return false;
+            }
+          } else if (unit.combined && upgrade.affects === 1 && appliedInGroup >= 2) {
+            return false;
           }
         }
         return true;
@@ -190,7 +188,6 @@ export default class UpgradeService {
       if (upgrade.affects === "any" || typeof (upgrade.affects) === "number") {
         return "updown";
       }
-
     }
 
     console.error("No control type for: ", upgrade);
@@ -209,8 +206,10 @@ export default class UpgradeService {
 
     // Function to apply the upgrade option to the unit
     const apply = (available: number) => {
+
       const toApply = {
         ...option,
+        cost: option.cost * (unit.combined && upgrade.affects === "all" ? 2 : 1),
         gains: option.gains.map(g => ({
           ...g,
           count: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
@@ -232,7 +231,6 @@ export default class UpgradeService {
     };
 
     if (upgrade.type === "upgradeRule") {
-
       // TODO: Refactor this - shouldn't be using display name func to compare probably!
       const existingRuleIndex = unit
         .specialRules
@@ -250,7 +248,6 @@ export default class UpgradeService {
       return;
     }
     else if (upgrade.type === "upgrade") {
-
       apply(count);
     }
     else if (upgrade.type === "replace") {
