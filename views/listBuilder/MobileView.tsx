@@ -123,7 +123,6 @@ export default function MobileView() {
         isEdit={true}
         open={editListOpen}
         setOpen={setEditListOpen}
-        showBetaFlag={false}
         customArmies={null} />
       <UndoRemoveUnit
         open={showUndoRemove}

@@ -49,7 +49,9 @@ export default class DataService {
             ...e,
             label: label,
             name: e.name || label,
-            count: e.count ?? (countMatch ? parseInt(countMatch[1]) * u.size : u.size)
+            count: e.count
+              ? e.count * u.size
+              : (countMatch ? parseInt(countMatch[1]) * u.size : u.size)
           }
         })
       })),
@@ -90,9 +92,6 @@ export default class DataService {
       }))
     };
 
-    return data;
-
-    // TODO: Revisit this once we have an example of which unit needs data combining
     for (let unit of data.units) {
       // Group equipment by name
       const groups = groupBy(unit.equipment, "name");
@@ -102,10 +101,9 @@ export default class DataService {
         .values(groups)
         .map((group: any[]) => {
           const countInGroup = group.reduce((count, next) => count + (next.count ?? 1), 0);
-          console.log("Count: " + countInGroup, group);
           return {
             ...group[0],
-            count: countInGroup * unit.size
+            count: countInGroup// * unit.size
           };
         });
     }

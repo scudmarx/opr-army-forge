@@ -47,7 +47,6 @@ export default function DesktopView() {
         isEdit={true}
         open={editListOpen}
         setOpen={setEditListOpen}
-        showBetaFlag={false}
         customArmies={null} />
       <UndoRemoveUnit
         open={showUndoRemove}
