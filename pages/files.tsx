@@ -98,8 +98,6 @@ export default function Files() {
     ? []
     : _.groupBy(customArmies.filter(ca => ca.official && ca.factionName), a => a.factionName);
 
-  console.log(officialFactions);
-
   const officialArmies = customArmies
     ?.filter(ca => ca.official && !ca.factionName)
     .concat(Object.keys(officialFactions).map(key => ({
