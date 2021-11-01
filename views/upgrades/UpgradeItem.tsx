@@ -16,6 +16,7 @@ function UpgradeItemDisplay({ eqp, count }) {
   const name = count > 1 ? pluralise.plural(eqp.name || eqp.label) : eqp.name || eqp.label;
 
   switch (eqp.type) {
+    case "ArmyBookDefense":
     case "ArmyBookRule": {
       const rule = eqp as IUpgradeGainsRule;
       return (

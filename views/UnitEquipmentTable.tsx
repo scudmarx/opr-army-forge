@@ -5,7 +5,6 @@ import pluralise from "pluralize";
 import RuleList from './components/RuleList';
 import UnitService from '../services/UnitService';
 import DataParsingService from '../services/DataParsingService';
-import { groupBy } from '../services/Helpers';
 import RulesService from '../services/RulesService';
 import { Fragment } from 'react';
 import _ from "lodash";
@@ -15,23 +14,7 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
   const count = e.count;
   const name = e.count > 1 && e.label ? pluralise.plural(e.label) : e.label;
 
-  // If the weapon count divides exactly by the unit size, assume each model has the same weapons
-  // otherwise assume models have different weapons and list out just the number of the weapon
-  // in the unit. To "fix" this behaviour this behaviour it's required to know which weapons are
-  // paired with which other weapons.
-  let weaponCount: string;
-  if (count % unit.size) {
-    weaponCount = `${count} x `;
-  } else {
-    const originalCount: number = null;
-    const multiplier = count / unit.size; // 20 / 10 = "2x Weapons...""
-    const displayCount = count > unit.size // 20 hand weapons, unit of 10
-    ? originalCount
-      ? (count / originalCount)
-      : unit.size
-    : count;
-    weaponCount = (displayCount > 1 ? `[${displayCount}] ` : " ") + (multiplier > 1 ? `${multiplier}x ` : "");
-  }
+  const weaponCount = count > 1 ? `${count}x ` : null;
 
   const cellStyle = { paddingLeft: "8px", paddingRight: "8px" };
   const borderStyle = {
@@ -107,7 +90,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
   upgradesAsEquipment.forEach((e) => {
     if (!addedUpgrades.includes(e.label)) {
       const index = combinedWeapons
-      .findIndex((w) => pluralise.singular(w.label) === pluralise.singular(e.label) && w.attacks === e.attacks);
+        .findIndex((w) => pluralise.singular(w.label) === pluralise.singular(e.label) && w.attacks === e.attacks);
 
       if (index !== -1) {
         combinedWeapons[index].count += e.count;
