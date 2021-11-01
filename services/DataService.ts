@@ -49,7 +49,9 @@ export default class DataService {
             ...e,
             label: label,
             name: e.name || label,
-            count: e.count ?? (countMatch ? parseInt(countMatch[1]) * u.size : u.size)
+            count: e.count
+              ? e.count * u.size
+              : (countMatch ? parseInt(countMatch[1]) * u.size : u.size)
           }
         })
       })),
