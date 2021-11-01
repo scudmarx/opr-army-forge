@@ -27,6 +27,7 @@ export interface IArmyData {
   upgradePackages: IUpgradePackage[];
   specialRules: IGameRule[];
   spells: { id: string; name: string; effect: string; threshold: number; }[];
+  isLive: boolean;
 }
 
 const initialState: ArmyState = {
