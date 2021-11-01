@@ -40,7 +40,7 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
         return (
           <Fragment key={index}>
             {index > 0 ? <span className="mr-1">, </span> : null}
-            <RuleItem label={RulesService.displayName({ ...rule, rating: rating.toString() })} description={ruleDefinition?.description || ""} />
+            <RuleItem label={RulesService.displayName({ ...rule, rating: rating > 0 ? rating.toString() : null })} description={ruleDefinition?.description || ""} />
           </Fragment>
         );
       })}
