@@ -328,8 +328,6 @@ export default class UpgradeService {
     const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
     const toRemove = unit.selectedUpgrades[removeAt];
 
-    debugger;
-
     // Remove anything that depends on this upgrade (cascade remove)
     for (let gains of toRemove.gains) {
       if (gains.dependencies) {

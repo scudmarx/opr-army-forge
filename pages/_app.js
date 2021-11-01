@@ -2,6 +2,10 @@ import Head from "next/head";
 import "../styles/globals.css";
 import { store } from "../data/store";
 import { Provider } from "react-redux";
+import pluralise from "pluralize";
+
+// TODO: Better place for global generic things to go?
+pluralise.addSingularRule(/Fuses$/i, "Fuse"); // Spear-Fuses -> Spear-Fuse
 
 function MyApp({ Component, pageProps }) {
   return (
