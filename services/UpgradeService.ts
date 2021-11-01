@@ -132,15 +132,17 @@ export default class UpgradeService {
     // TODO: ...what is this doing?
     if (upgrade.type === "upgrade") {
 
+      // Upgrade with 1:
       if (typeof (upgrade.select) === "number") {
 
         if (appliedInGroup >= upgrade.select) {
           return false;
         }
       }
-      else if (appliedInGroup >= unit.size) {
-        return false;
-      }
+      // TODO: Why was this here? Need to add a test case!
+      // else if (appliedInGroup >= unit.size) {
+      //   return false;
+      // }
     }
 
     return true;
@@ -209,6 +211,8 @@ export default class UpgradeService {
 
       const toApply = {
         ...option,
+        // TODO: This needs to be calculated, not stored?
+        // If you apply this upgrade and THEN toggle combined, the amount will be wrong
         cost: option.cost * (unit.combined && upgrade.affects === "all" ? 2 : 1),
         gains: option.gains.map(g => ({
           ...g,
