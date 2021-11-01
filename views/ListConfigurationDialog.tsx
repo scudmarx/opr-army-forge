@@ -34,6 +34,8 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const isLive = window.location.host === "opr-army-forge.vercel.app";
+
   // Update default name once data comes in
   useEffect(() => {
     if (!isEdit && army.data && army.data.name) {
@@ -113,7 +115,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
               } label="Use v2.5 Beta" />
             </FormGroup>}
             {
-              !isEdit && army.childData && <>
+              !isLive && !isEdit && army.childData && <>
                 <h3 className="mt-4" style={{ fontWeight: 600 }}>{army.childData.filter(c => c.factionRelation)[0].factionRelation}</h3>
                 <h3>Coming soon...</h3>
                 <List>

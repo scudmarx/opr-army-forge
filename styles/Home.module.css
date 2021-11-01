@@ -41,6 +41,7 @@
   /* background-image: url("../public/img/index_bg.jpg"); */
   background-size: cover;
   background-position: center;
+  background: linear-gradient(0deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 100%);
 }
 
 @media (min-width: 1440px) {
@@ -49,6 +50,7 @@
     background-position: left;
     background-repeat: no-repeat;
     max-width: 1920px;
+    
   }
 }
 
@@ -56,10 +58,17 @@
   max-width: 480px;
   height: 100%;
   position: relative;
+  /* background-color: rgba(0,0,0,.75); */
+  
+
 }
 
 @media (min-width: 1440px) {
   .homeColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     width: 480px;
     position: absolute;
     right: 0;
@@ -103,4 +112,14 @@
   left: 0;
   right: 0;
   max-width: 250px;
+}
+
+@media (min-width: 1440px) {
+  .buttonContainer {
+    position: static;
+    margin: 0;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
 }
