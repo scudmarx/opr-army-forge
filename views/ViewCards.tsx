@@ -12,7 +12,7 @@ import UnitService from "../services/UnitService";
 import _ from "lodash";
 import { ISelectedUnit } from "../data/interfaces";
 
-export default function ViewCards({ showPsychic, showFullRules }) {
+export default function ViewCards({ showPsychic, showFullRules, showPointCosts }) {
 
   const list = useSelector((state: RootState) => state.list);
   const army = useSelector((state: RootState) => state.army);

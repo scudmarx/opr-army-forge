@@ -21,7 +21,7 @@ import { ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeap
 import pluralise from "pluralize";
 import _ from "lodash";
 
-export default function ViewList({ showPsychic, showFullRules }) {
+export default function ViewList({ showPsychic, showFullRules, showPointCosts }) {
 
   const list = useSelector((state: RootState) => state.list);
   const army = useSelector((state: RootState) => state.army);
@@ -128,6 +128,7 @@ export default function ViewList({ showPsychic, showFullRules }) {
                       <p className="ml-2">Def {s.defense}+</p>
                     </div>
                   </div>
+                  {showPointCosts && <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>}
                 </div>
               </AccordionSummary>
               <AccordionDetails className="pt-0">
