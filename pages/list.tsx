@@ -55,7 +55,7 @@ export default function List() {
         <title>OPR Army Forge</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {isBigScreen ? <DesktopView /> : <MobileView />}
+      {army.loaded ? (isBigScreen ? <DesktopView /> : <MobileView />) : null}
     </>
   );
 }
