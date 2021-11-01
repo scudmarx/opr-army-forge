@@ -12,6 +12,7 @@ import { resetList } from "../data/listSlice";
 import ListConfigurationDialog from "../views/ListConfigurationDialog";
 import ArmyImage from "../views/components/ArmyImage";
 import DataService from "../services/DataService";
+import _ from "lodash";
 
 export default function Files() {
 
@@ -19,7 +20,6 @@ export default function Files() {
   const [armyFiles, setArmyFiles] = useState(null);
   const [customArmies, setCustomArmies] = useState(null);
   const [driveArmies, setDriveArmies] = useState(null);
-  const [expandedId, setExpandedId] = useState(null);
   const [newArmyDialogOpen, setNewArmyDialogOpen] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -94,9 +94,23 @@ export default function Files() {
 
   const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
 
-  const officialArmies = customArmies?.filter(ca => ca.official && !ca.factionRelation); // Remove detachments
+  const officialFactions = !customArmies
+    ? []
+    : _.groupBy(customArmies.filter(ca => ca.official && ca.factionName), a => a.factionName);
+
+  const officialArmies = customArmies
+    ?.filter(ca => ca.official && !ca.factionName)
+    .concat(Object.keys(officialFactions).map(key => ({
+      name: key,
+      factionName: key,
+      factionRelation: officialFactions[key][0].factionRelation,
+      // Live if any are live
+      isLive: officialFactions[key].reduce((live, next) => live || next.isLive, false)
+    })));
+
   const officialActiveArmies = officialArmies?.filter(ca => ca.isLive);
   const officialInactiveArmies = officialArmies?.filter(ca => !ca.isLive);
+
 
   const selectArmy = (filePath: string) => {
     // TODO: Clear existing data
@@ -117,7 +131,7 @@ export default function Files() {
 
       dispatch(loadArmyData(customArmy));
 
-      const related = customArmies.filter(a => a.factionName === customArmy.factionName && a.official === customArmy.official);
+      const related = customArmies.filter(a => a.factionName === customArmy.factionName && a.official === true);
       console.log(related);
       dispatch(loadChildArmyData(related));
 
@@ -176,7 +190,7 @@ export default function Files() {
                 </div>}
                 {officialArmies && <>
                   <div className="columns is-mobile is-multiline">
-                    {gfSection(officialActiveArmies, true)}
+                    {gfSection(_.sortBy(officialActiveArmies, a => a.name), true)}
                   </div>
                   {officialInactiveArmies.length > 0 && <>
                     <h3 className="is-size-4 has-text-centered mb-4 pt-4">Coming Soon...</h3>
@@ -244,7 +258,11 @@ export default function Files() {
           )}
         </div>
       </div>
-      <ListConfigurationDialog isEdit={false} open={newArmyDialogOpen} setOpen={setNewArmyDialogOpen} showBetaFlag={army.gameSystem === "gf" && army.data?.uid == null} customArmies={customArmies} />
+      <ListConfigurationDialog
+        isEdit={false}
+        open={newArmyDialogOpen}
+        setOpen={setNewArmyDialogOpen}
+        customArmies={customArmies} />
     </>
   );
 }

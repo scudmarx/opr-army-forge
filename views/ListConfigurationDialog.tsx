@@ -21,14 +21,13 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function ListConfigurationDialog({ isEdit, open, setOpen, showBetaFlag, customArmies }) {
+export default function ListConfigurationDialog({ isEdit, open, setOpen, customArmies }) {
 
   const army = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
 
   const [armyName, setArmyName] = useState(isEdit ? list.name : "");
   const [pointsLimit, setPointsLimit] = useState(isEdit ? list.pointsLimit : null);
-  const [useBeta, setUseBeta] = useState(false);
   const [autoSave, setAutoSave] = useState(true);
   const [selectedChild, setSelectedChild] = useState(null);
   const dispatch = useDispatch();
@@ -36,15 +35,19 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
 
   const isLive = window.location.host === "opr-army-forge.vercel.app";
 
+  const factionRelation = army.childData?.filter(c => c.factionRelation)[0]?.factionRelation;
+
   // Update default name once data comes in
   useEffect(() => {
     if (!isEdit && army.data && army.data.name) {
       setArmyName(army.data.name);
-      setSelectedChild(army.data.name);
     }
   }, [army.data, isEdit]);
 
   const create = () => {
+
+    if (army.childData?.length > 0 && !selectedChild)
+      return alert("Must select a " + factionRelation);
 
     const finish = (army) => {
       const name = armyName || "My List";
@@ -56,15 +59,15 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
       router.push('/list');
     };
 
-    if (!army.data.units) {
+    if (factionRelation) {
 
-      const apiArmy = customArmies.filter(a => a.name === army.data.name && a.official)[0];
+      const childArmy = army.childData.find(child => child.name === selectedChild);
 
-      DataService.getApiData(apiArmy.uid, afData => {
+      DataService.getApiData(childArmy.uid, afData => {
 
         dispatch(loadArmyData(afData));
 
-        finish({ ...army, data: afData });
+        finish({ ...childArmy, data: afData });
       });
 
     } else {
@@ -109,22 +112,16 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, showBet
                 <Checkbox checked={autoSave} onClick={() => setAutoSave(!autoSave)} />
               } label="Auto Save List" />
             </FormGroup>}
-            {showBetaFlag && <FormGroup className="is-flex-direction-row is-align-items-center">
-              <FormControlLabel control={
-                <Checkbox checked={useBeta} onClick={() => setUseBeta(!useBeta)} />
-              } label="Use v2.5 Beta" />
-            </FormGroup>}
             {
               !isLive && !isEdit && army.childData && <>
-                <h3 className="mt-4" style={{ fontWeight: 600 }}>{army.childData.filter(c => c.factionRelation)[0].factionRelation}</h3>
-                <h3>Coming soon...</h3>
+                <h3 className="mt-4" style={{ fontWeight: 600 }}>{factionRelation}</h3>
                 <List>
                   {army.childData.map((child, index) => {
                     return (
                       <ListItem divider className="px-0">
                         <ListItemText primary={child.name === army.data.name ? "None" : child.name} />
                         <Radio
-                          disabled
+                          disabled={child.isLive === false}
                           value={child.name}
                           checked={selectedChild === child.name}
                           onChange={e => setSelectedChild(e.target.value)} />

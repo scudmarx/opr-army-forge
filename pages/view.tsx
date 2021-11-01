@@ -23,6 +23,7 @@ export default function View() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [showPsychic, setShowPsychic] = useState(listContainsPyschic(list));
   const [showFullRules, setShowFullRules] = useState(true);
+  const [showPointCosts, setShowPointCosts] = useState(true);
 
   return (
     <>
@@ -69,6 +70,10 @@ export default function View() {
             <ListItemText>Show full special rules text</ListItemText>
             <Switch edge="end" checked={showFullRules} onChange={() => setShowFullRules(!showFullRules)} />
           </ListItem>
+          <ListItem>
+            <ListItemText>Show point costs</ListItemText>
+            <Switch edge="end" checked={showPointCosts} onChange={() => setShowPointCosts(!showPointCosts)} />
+          </ListItem>
         </List>
       </Drawer>
       <div className="is-flex px-4 py-2 no-print" style={{ alignItems: "center" }}>
@@ -81,8 +86,8 @@ export default function View() {
       <div className="px-4">
         {
           isCardView
-            ? <ViewCards showPsychic={showPsychic} showFullRules={showFullRules} />
-            : <ViewList showPsychic={showPsychic} showFullRules={showFullRules} />
+            ? <ViewCards showPsychic={showPsychic} showFullRules={showFullRules} showPointCosts={showPointCosts} />
+            : <ViewList showPsychic={showPsychic} showFullRules={showFullRules} showPointCosts={showPointCosts} />
         }
       </div>
     </>
