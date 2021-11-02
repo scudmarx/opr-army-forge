@@ -11,6 +11,60 @@ export default class UpgradeService {
       .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
   }
 
+  public static displayName(upgrade: IUpgrade, unit: ISelectedUnit): string {
+    const numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"];
+
+    function capitaliseFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    const combinedMultiplier = unit && unit.combined ? 2 : 1;
+
+    const affects = typeof (upgrade.affects) === "number"
+      ? numbers[upgrade.affects * combinedMultiplier]
+      : upgrade.affects;
+
+    const select = upgrade.select
+      ? typeof (upgrade.select) === "number"
+        ? (upgrade.select * combinedMultiplier) > 1
+          ? `up to ${numbers[upgrade.select * combinedMultiplier]}`
+          : numbers[upgrade.select * combinedMultiplier]
+        : upgrade.select
+      : "";
+
+    if (upgrade.type === "upgrade") {
+      if (upgrade.model) {
+        if (upgrade.attachment)
+          return `${capitaliseFirstLetter(affects)} model may take${select ? ` ${select}` : ""} ${upgrade.replaceWhat[0]} attachment`.trim();
+        if (select && !affects)
+          return `Upgrade ${select} models with`.trim();
+        return `Upgrade ${affects} model${affects === "all" ? "s" : ""} with ${select}`.trim();
+      } else {
+        if (upgrade.attachment)
+          return `Take ${select} ${upgrade.replaceWhat[0]} attachment`.trim();
+        else if (upgrade.replaceWhat)
+          return `Upgrade ${affects} ${upgrade.replaceWhat[0]} with ${select}`.trim();
+        return `Upgrade with ${select}`.trim();
+      }
+    }
+    else if (upgrade.type === "replace") {
+      const what = upgrade.replaceWhat.join(" and ");
+      if (affects) {
+        if (upgrade.model) {
+          if (upgrade.attachment) {
+
+          } else {
+            return `${capitaliseFirstLetter(affects)} model may replace${select ? ` ${select}` : ""} ${what}`.trim();
+          }
+        } else {
+          return `Replace ${affects}${select ? ` ${select}` : ""} ${what}`.trim();
+        }
+      } else {
+        return `Replace${select ? ` ${select}` : ""} ${what}`.trim();
+      }
+    }
+  }
+
   static calculateUnitTotal(unit: ISelectedUnit) {
     let cost = unit.cost * (unit.combined ? 2 : 1);
 
@@ -59,6 +113,7 @@ export default class UpgradeService {
     const controlType = this.getControlType(unit, upgrade);
     //const alreadySelected = this.countApplied(unit, upgrade, option);
     const appliedInGroup = upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0);
+    const combinedMultiplier = unit.combined ? 2 : 1;
 
     // if it's a radio, it's valid if any other upgrade in the group is already applied
     if (controlType === "radio")
@@ -104,7 +159,7 @@ export default class UpgradeService {
               if (appliedInGroup >= upgrade.select * unit.size) {
                 return false;
               }
-            } else if (appliedInGroup >= upgrade.select) {
+            } else if (appliedInGroup >= (upgrade.select * combinedMultiplier)) {
               return false;
             }
           } else if (unit.combined && upgrade.affects === 1 && appliedInGroup >= 2) {

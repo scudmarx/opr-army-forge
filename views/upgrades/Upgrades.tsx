@@ -11,6 +11,7 @@ import { toggleUnitCombined, joinUnit } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
+import UpgradeService from '../../services/UpgradeService';
 
 export function Upgrades() {
 
@@ -69,8 +70,11 @@ export function Upgrades() {
       {selectedUnit && <Paper square elevation={0}>
         {selectedUnit.size > 1 && !isLive && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
-            <Checkbox checked={selectedUnit.combined} onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))
-            } />} label="Double Unit Size" className="mr-2" />
+            <Checkbox
+              checked={selectedUnit.combined}
+              onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))} />}
+            label="Double Unit Size"
+            className="mr-2" />
           <CustomTooltip title={"When preparing your army you may merge units by deploying two copies of the same unit as a single big unit, as long as any upgrades that are applied to all models are bought for both."} arrow enterTouchDelay={0} leaveTouchDelay={5000}>
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
@@ -109,7 +113,9 @@ export function Upgrades() {
           {/* <p className="px-2">{set.id}</p> */}
           {pkg.sections.map((u, i) => (
             <div className={"mt-4"} key={i}>
-              <p className="px-4 pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>{u.label}:</p>
+              <p className="px-4 pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>
+                {UpgradeService.displayName(u, selectedUnit)}:
+              </p>
               <UpgradeGroup upgrade={u} />
             </div>
           ))}

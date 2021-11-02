@@ -30,27 +30,39 @@ export default class DataParsingService {
         select: 1
       };
 
-    const takeMatch = /^Take ([\w\d]+)\s(.+?):/.exec(text);
+    const takeMatch = /^Take\s([\d]+|one|two)?\s?(.+?)\sattachments?:/.exec(text);
     if (takeMatch)
       return {
         type: "upgrade",
-        select: parseInt(takeMatch[1]) || this.numberFromName(takeMatch[1]) || takeMatch[1] as any
+        attachment: true,
+        select: takeMatch[1] ? (parseInt(takeMatch[1]) || this.numberFromName(takeMatch[1]) || takeMatch[1] as any) : 1,
+        replaceWhat: [takeMatch[2]]
       };
 
-    const anyModelReplaceMatch = /^Any model may replace (\d+|one|two|three) (.+):/gi.exec(text);
-    if (anyModelReplaceMatch) {
+    const anyModelMatch = /^(any|one) model may (replace|take) (\d+|one|two|three) (.+?)(?: attachment)?:/gi.exec(text);
+    if (anyModelMatch) {
       return {
-        type: "replace",
-        affects: "any",
-        select: parseInt(anyModelReplaceMatch[1]) || this.numberFromName(anyModelReplaceMatch[1]) || anyModelReplaceMatch[1] as any,
-        replaceWhat: [anyModelReplaceMatch[2]]
+        type: anyModelMatch[2] === "replace" ? "replace" : "upgrade",
+        attachment: anyModelMatch[2] === "take",
+        affects: anyModelMatch[1].toLowerCase() === "any" ? "any" : this.numberFromName(anyModelMatch[1].toLowerCase()),
+        model: true,
+        select: parseInt(anyModelMatch[3]) || this.numberFromName(anyModelMatch[3]) || anyModelMatch[3] as any,
+        replaceWhat: [anyModelMatch[4]]
       }
     }
+
+    // Honestly I just don't want to change the monster below...
+    const upgradeUpToModelsMatch = /Upgrade up to two models with/.exec(text);
+    if (upgradeUpToModelsMatch)
+      return {
+        type: "upgrade",
+        model: true,
+        select: 2
+      };
 
     text = text.endsWith(":") ? text.substring(0, text.length - 1) : text;
 
     const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?(?:(.+)\swith)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
-    //const match = /(Upgrade|Replace)\s?(any|one|all)?\s?(?:models?)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)\s)?(.+?)?:/.exec(text);
 
     if (!match) {
       console.error("Cannot match: " + text)
@@ -60,7 +72,8 @@ export default class DataParsingService {
     const replaceWhat = match[groups.replaceWhat];
 
     const result: IUpgrade = {
-      type: match[groups.type]?.toLowerCase() as any
+      type: match[groups.type]?.toLowerCase() as any,
+      model: text.indexOf("model") > -1
     };
 
     if (match[groups.affects])
@@ -88,7 +101,7 @@ export default class DataParsingService {
     }
 
     // TODO: Better way of doing this?
-    if (result.type === "upgrade" && result.replaceWhat && !result.affects && !result.select)
+    if (result.type === "upgrade" && result.replaceWhat && !result.affects && !result.select && !result.model)
       result.type = "upgradeRule";
 
     return result;
