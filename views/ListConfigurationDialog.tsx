@@ -106,7 +106,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
               <ArmyImage name={army.data?.name} />
             </div>
             <TextField variant="filled" label="List Name" className="mb-4" value={armyName} onChange={(e) => setArmyName(e.target.value)} />
-            <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />
+            <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit ?? ""} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />
             {!isEdit && <FormGroup className="mb-0 is-flex-direction-row is-align-items-center">
               <FormControlLabel control={
                 <Checkbox checked={autoSave} onClick={() => setAutoSave(!autoSave)} />
