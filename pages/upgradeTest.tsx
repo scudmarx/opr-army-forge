@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { loadArmyData, loadChildArmyData, setArmyFile } from '../data/armySlice'
@@ -87,14 +87,12 @@ export default function UpgradeTest() {
             <>
               <h3>{a.name}</h3>
               {a.upgradePackages.map(pkg => (
-                <>
+                <Fragment key={pkg.uid}>
                   <h3>{pkg.uid} {pkg.hint}</h3>
-                  {pkg.sections.map(section => (
-                    <>
-                      <p>{section.label}</p>
-                    </>
+                  {pkg.sections.map((section, index) => (
+                    <p key={index}>{section.label}</p>
                   ))}
-                </>
+                </Fragment>
               ))}
             </>
           ))
@@ -102,20 +100,20 @@ export default function UpgradeTest() {
       </div>
       <div className="column">
         {
-          uniqueSections.map(section => (
-            <p>{section}</p>
+          uniqueSections.map((section, index) => (
+            <p key={index}>{section}</p>
           ))
         }
       </div>
       <div className="column">
         {
-          upgrades.map(u => {
+          upgrades.map((u, index) => {
             const { label, ...upgrade } = u;
             const display = UpgradeService.displayName(upgrade, null);
             if (label === display)
               return;
             return (
-              <div className="mb-2">
+              <div className="mb-2" key={index}>
                 <p>{u.label}</p>
                 <p>{display}</p>
                 <p>{JSON.stringify(upgrade)}</p>
