@@ -210,7 +210,8 @@ export default class UpgradeService {
         gains: option.gains.map(g => ({
           ...g,
           count: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
-        }))
+        })),
+        replacedWhat: upgrade.replaceWhat // Keep track of what this option replaced
       };
 
       // Apply counts to item content
@@ -290,7 +291,6 @@ export default class UpgradeService {
           if (toReplace.count <= 0)
             toReplace.count = 0;
 
-
           // If we're replacing an upgrade...
           if (toReplace.type) {
             // ...then track which upgrade replaced it
@@ -327,7 +327,22 @@ export default class UpgradeService {
   public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
     const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
     const toRemove = unit.selectedUpgrades[removeAt];
+
+    // Remove anything that depends on this upgrade (cascade remove)
+    for (let gains of toRemove.gains) {
+      if (gains.dependencies) {
+        for (let upgradeId of gains.dependencies) {
+          const dependency = unit.selectedUpgrades.find(u => u.id === upgradeId);
+          // Might have already been removed!
+          if (dependency)
+            this.remove(unit, { replaceWhat: dependency.replacedWhat, type: "replace" }, dependency);
+        }
+      }
+    }
+
     const count = toRemove.gains[0]?.count;
+
+    // Remove the upgrade
     unit.selectedUpgrades.splice(removeAt, 1);
 
     if (upgrade.type === "upgradeRule") {

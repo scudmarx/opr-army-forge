@@ -26,9 +26,13 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
   return (
     <>
       {keys.map((key, index) => {
-        const group = ruleGroups[key];
+        const group: ISpecialRule[] = ruleGroups[key];
         const rule = group[0];
-        const rating = group.reduce((total, next) => next.rating ? total + parseInt(next.rating) : total, 0);
+        const rating = key === "Psychic"
+          // Take Highest
+          ? Math.max(...group.map(rule => parseInt(rule.rating)))
+          // Sum all occurrences
+          : group.reduce((total, next) => next.rating ? total + parseInt(next.rating) : total, 0);
 
         const ruleDefinition = ruleDefinitions
           .filter(r => /(.+?)(?:\(|$)/.exec(r.name)[0] === rule.name)[0];
@@ -36,7 +40,7 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
         return (
           <Fragment key={index}>
             {index > 0 ? <span className="mr-1">, </span> : null}
-            <RuleItem label={RulesService.displayName({ ...rule, rating })} description={ruleDefinition?.description || ""} />
+            <RuleItem label={RulesService.displayName({ ...rule, rating: rating > 0 ? rating.toString() : null })} description={ruleDefinition?.description || ""} />
           </Fragment>
         );
       })}

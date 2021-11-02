@@ -41,7 +41,7 @@ export function MainList({ onSelected, onUnitRemoved }) {
           list.units.map((s: ISelectedUnit, index: number) => {
 
             const equipmentWeaponNames = s.equipment.filter(e => e.count > 0).map((eqp, i) => eqp.label);
-            const upgradeWeaponNames = UnitService.getAllUpgradeWeapons(s).map(u => u.name);
+            const upgradeWeaponNames = UnitService.getAllUpgradeWeapons(s).filter(e => e.count > 0).map(u => u.name);
 
             return (
               <li key={index}

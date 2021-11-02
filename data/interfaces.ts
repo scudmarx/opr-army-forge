@@ -61,6 +61,7 @@ export interface IUpgradeOption {
   cost: number;
   label: string;
   gains: IUpgradeGains[];// IEquipment[] | ISpecialRule[];
+  replacedWhat?: string[] | string[][];
   type: "ArmyBookUpgradeOption";
 }
 
@@ -69,6 +70,7 @@ export interface IUpgradeGains {
   label: string;
   count?: number;
   type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
+  dependencies?: string[];
 }
 
 export interface IUpgradeGainsItem extends IUpgradeGains {
