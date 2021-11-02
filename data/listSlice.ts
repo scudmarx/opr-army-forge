@@ -116,11 +116,17 @@ export const listSlice = createSlice({
     toggleUnitCombined: (state, action: PayloadAction<string>) => {
       const unitId = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
+
+      //TODO: Don't remove upgrades ?
+      // Remove all upgrades
+      for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
+        const upgrade = unit.selectedUpgrades[i];
+        UpgradeService.remove(unit, { type: upgrade.replacedWhat ? "replace" : "upgrade", replaceWhat: upgrade.replacedWhat }, upgrade);
+      }
+
       unit.combined = !unit.combined;
-      if (unit.combined)
-        unit.size *= 2;
-      else
-        unit.size /= 2;
+      unit.size *= (unit.combined ? 2 : 0.5)
+      unit.equipment.forEach((equipment) => equipment.count *= (unit.combined ? 2 : 0.5))
 
       state.points = UpgradeService.calculateListTotal(state.units);
 

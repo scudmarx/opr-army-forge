@@ -24,7 +24,7 @@ export default function Files() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = true || window.location.host === "opr-army-forge.vercel.app";
+  const isLive = window.location.host === "opr-army-forge.vercel.app";
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
@@ -105,7 +105,7 @@ export default function Files() {
       factionName: key,
       factionRelation: officialFactions[key][0].factionRelation,
       // Live if any are live
-      isLive: officialFactions[key].reduce((live, next) => live || next.isLive, false)
+      isLive:true// officialFactions[key].reduce((live, next) => live || next.isLive, false)
     })));
 
   const officialActiveArmies = officialArmies?.filter(ca => ca.isLive);

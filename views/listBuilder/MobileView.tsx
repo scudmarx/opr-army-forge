@@ -86,7 +86,7 @@ export default function MobileView() {
               <div className="is-flex mt-6" style={{
                 height: "160px",
                 width: "100%",
-                backgroundImage: `url("img/gf_armies/${army.data.name}.png")`,
+                backgroundImage: `url("img/gf_armies/${army?.data?.name}.png")`,
                 backgroundPosition: "center",
                 backgroundSize: "contain",
                 backgroundRepeat: 'no-repeat',
