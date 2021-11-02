@@ -33,8 +33,8 @@ export default function UpgradePanelHeader() {
     }
   };
 
-  const debounceSave = debounce(1000, () => {
-    dispatch(renameUnit({ unitId: selectedUnit.selectionId, name: customName }));
+  const debounceSave = debounce(1000, (name) => {
+    dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }));
   });
 
   return (
@@ -45,7 +45,7 @@ export default function UpgradePanelHeader() {
           variant="standard"
           className=""
           value={customName}
-          onChange={e => { setCustomName(e.target.value); debounceSave(); }}
+          onChange={e => { setCustomName(e.target.value); debounceSave(e.target.value); }}
         />
       ) : (
         <div className="is-flex">
