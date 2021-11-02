@@ -116,11 +116,12 @@ export const listSlice = createSlice({
     toggleUnitCombined: (state, action: PayloadAction<string>) => {
       const unitId = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
-      
-      // About to be disabled...
-      if (unit.combined) {
-        // ...remove all upgrades
-        unit.selectedUpgrades = [];
+
+      //TODO: Don't remove upgrades ?
+      // Remove all upgrades
+      for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
+        const upgrade = unit.selectedUpgrades[i];
+        UpgradeService.remove(unit, { type: upgrade.replacedWhat ? "replace" : "upgrade", replaceWhat: upgrade.replacedWhat }, upgrade);
       }
 
       unit.combined = !unit.combined;
