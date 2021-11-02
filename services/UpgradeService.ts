@@ -11,15 +11,66 @@ export default class UpgradeService {
       .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
   }
 
+  public static displayName(upgrade: IUpgrade, unit: ISelectedUnit): string {
+    const numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"];
+
+    function capitaliseFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    const combinedMultiplier = unit && unit.combined ? 2 : 1;
+
+    const affects = typeof (upgrade.affects) === "number"
+      ? numbers[upgrade.affects * combinedMultiplier]
+      : upgrade.affects;
+
+    const select = upgrade.select
+      ? typeof (upgrade.select) === "number"
+        ? (upgrade.select * combinedMultiplier) > 1
+          ? `up to ${numbers[upgrade.select * combinedMultiplier]}`
+          : numbers[upgrade.select * combinedMultiplier]
+        : upgrade.select
+      : "";
+
+    if (upgrade.type === "upgrade") {
+      if (upgrade.model) {
+        if (upgrade.attachment)
+          return `${capitaliseFirstLetter(affects)} model may take${select ? ` ${select}` : ""} ${upgrade.replaceWhat[0]} attachment`.trim();
+        if (select && !affects)
+          return `Upgrade ${select} models with`.trim();
+        return `Upgrade ${affects} model${affects === "all" ? "s" : ""} with ${select}`.trim();
+      } else {
+        if (upgrade.attachment)
+          return `Take ${select} ${upgrade.replaceWhat[0]} attachment`.trim();
+        else if (upgrade.replaceWhat)
+          return `Upgrade ${affects} ${upgrade.replaceWhat[0]} with ${select}`.trim();
+        return `Upgrade with ${select}`.trim();
+      }
+    }
+    else if (upgrade.type === "replace") {
+      const what = upgrade.replaceWhat.join(" and ");
+      if (affects) {
+        if (upgrade.model) {
+          if (upgrade.attachment) {
+
+          } else {
+            return `${capitaliseFirstLetter(affects)} model may replace${select ? ` ${select}` : ""} ${what}`.trim();
+          }
+        } else {
+          return `Replace ${affects}${select ? ` ${select}` : ""} ${what}`.trim();
+        }
+      } else {
+        return `Replace${select ? ` ${select}` : ""} ${what}`.trim();
+      }
+    }
+  }
+
   static calculateUnitTotal(unit: ISelectedUnit) {
     let cost = unit.cost * (unit.combined ? 2 : 1);
 
     for (const upgrade of unit.selectedUpgrades) {
-
-      var upgradeGroup = { affects: "all" };
-
       if (upgrade.cost) {
-        cost += upgrade.cost * (unit.combined && upgradeGroup.affects === "all" ? 2 : 1);
+        cost += upgrade.cost;
       }
     }
 
@@ -62,6 +113,7 @@ export default class UpgradeService {
     const controlType = this.getControlType(unit, upgrade);
     //const alreadySelected = this.countApplied(unit, upgrade, option);
     const appliedInGroup = upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0);
+    const combinedMultiplier = unit.combined ? 2 : 1;
 
     // if it's a radio, it's valid if any other upgrade in the group is already applied
     if (controlType === "radio")
@@ -104,10 +156,14 @@ export default class UpgradeService {
           if (typeof (upgrade.select) === "number") {
             // Any model may replace 1...
             if (upgrade.affects === "any") {
-              if (appliedInGroup >= upgrade.select * unit.size)
+              if (appliedInGroup >= upgrade.select * unit.size) {
                 return false;
-            } else if (appliedInGroup >= upgrade.select)
+              }
+            } else if (appliedInGroup >= (upgrade.select * combinedMultiplier)) {
               return false;
+            }
+          } else if (unit.combined && upgrade.affects === 1 && appliedInGroup >= 2) {
+            return false;
           }
         }
         return true;
@@ -131,21 +187,24 @@ export default class UpgradeService {
     // TODO: ...what is this doing?
     if (upgrade.type === "upgrade") {
 
+      // Upgrade with 1:
       if (typeof (upgrade.select) === "number") {
 
         if (appliedInGroup >= upgrade.select) {
           return false;
         }
       }
-      else if (appliedInGroup >= unit.size) {
-        return false;
-      }
+      // TODO: Why was this here? Need to add a test case!
+      // else if (appliedInGroup >= unit.size) {
+      //   return false;
+      // }
     }
 
     return true;
   };
 
   public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
+    const combinedAffects = (unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
     if (upgrade.type === "upgrade") {
 
       // "Upgrade any model with:"
@@ -178,7 +237,7 @@ export default class UpgradeService {
       }
       // "Replace one [weapon]:"
       // "Replace all [weapons]:"
-      if (upgrade.affects === 1 || upgrade.affects === "all") {
+      if (combinedAffects === 1 || upgrade.affects === "all") {
         return "radio";
       }
       // "Replace any [weapon]:"
@@ -186,7 +245,6 @@ export default class UpgradeService {
       if (upgrade.affects === "any" || typeof (upgrade.affects) === "number") {
         return "updown";
       }
-
     }
 
     console.error("No control type for: ", upgrade);
@@ -205,8 +263,12 @@ export default class UpgradeService {
 
     // Function to apply the upgrade option to the unit
     const apply = (available: number) => {
+
       const toApply = {
         ...option,
+        // TODO: This needs to be calculated, not stored?
+        // If you apply this upgrade and THEN toggle combined, the amount will be wrong
+        cost: option.cost * (unit.combined && upgrade.affects === "all" ? 2 : 1),
         gains: option.gains.map(g => ({
           ...g,
           count: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
@@ -229,7 +291,6 @@ export default class UpgradeService {
     };
 
     if (upgrade.type === "upgradeRule") {
-
       // TODO: Refactor this - shouldn't be using display name func to compare probably!
       const existingRuleIndex = unit
         .specialRules
@@ -247,7 +308,6 @@ export default class UpgradeService {
       return;
     }
     else if (upgrade.type === "upgrade") {
-
       apply(count);
     }
     else if (upgrade.type === "replace") {

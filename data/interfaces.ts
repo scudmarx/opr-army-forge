@@ -48,11 +48,12 @@ export interface ISelectedUnit extends IUnit {
 
 export interface IUpgrade {
   label?: string;
-  type: "replace" | "upgrade" | "upgradeRule";
+  type: "replace" | "upgrade" | "upgradeRule" | "attachment";
   affects?: "any" | "all" | number;
   select?: string | number;
-  limit?: number;
   replaceWhat?: string[] | string[][];
+  model?: boolean;
+  attachment?: boolean;
   options?: IUpgradeOption[];
 }
 
