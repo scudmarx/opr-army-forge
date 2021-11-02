@@ -1,8 +1,10 @@
 import { Dispatch } from "react";
 import { ArmyState, loadArmyData, setGameSystem } from "../data/armySlice";
-import { ISaveData } from "../data/interfaces";
+import { ISaveData, ISelectedUnit } from "../data/interfaces";
 import { ListState, loadSavedList } from "../data/listSlice";
 import DataService from "./DataService";
+import { groupBy } from "./Helpers";
+import UnitService from "./UnitService";
 import UpgradeService from "./UpgradeService";
 
 export default class PersistenceService {
@@ -115,5 +117,47 @@ export default class PersistenceService {
 
   public static checkExists(list: ListState): boolean {
     return !!localStorage[this.getSaveKey(list)];
+  }
+
+  public static copyAsText(list: ListState) {
+
+    const lines = [
+      `++ ${list.name} [${list.points}pts] ++\n`
+    ];
+
+    const getWeapons = (unit: ISelectedUnit) => {
+      const equipment = unit.equipment.filter(e => e.count > 0);
+      const upgrades = UnitService.getAllUpgradeWeapons(unit).filter(e => e.count > 0);
+
+      return equipment
+        .map(e => `${e.count > 1 ? `${e.count}x ` : ""}${e.label}`)
+        .concat(upgrades.map(e => `${e.count > 1 ? `${e.count}x ` : ""}${e.name}`))
+        .join(", ");
+    };
+
+    const getRules = (unit: ISelectedUnit) => {
+      const rules = (unit.specialRules ?? [])
+        .concat(UnitService.getAllUpgradedRules(unit));
+
+      const ruleGroups = groupBy(rules, "name");
+      const keys = Object.keys(ruleGroups);
+      // Sort rules alphabetically
+      keys.sort((a, b) => a.localeCompare(b));
+
+      return keys.join(", ");
+    };
+
+    // Unit name [size] Qua 3+ Def 4+ 123pts
+    // 2x Hand Weapons, Rifle
+    // Fearless
+    //
+    // ...
+    for (let unit of list.units) {
+      lines.push(`${unit.customName ?? unit.name}${unit.size > 1 ? ` [${unit.size}]` : ""} | Qua ${unit.quality}+ Def ${unit.defense}+ | ${UpgradeService.calculateUnitTotal(unit)}pts`);
+      lines.push(getWeapons(unit));
+      lines.push(getRules(unit) + "\n");
+    }
+
+    navigator.clipboard.writeText(lines.join("\n")).then(() => console.log("Copied to clipboard..."));
   }
 }

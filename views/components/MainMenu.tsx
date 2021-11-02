@@ -46,6 +46,10 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
     }
   };
 
+  const handleTextExport = () => {
+    PersistenceService.copyAsText(list);
+  };
+
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
 
   return (
@@ -137,7 +141,8 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
             <MenuItem onClick={() => setListConfigurationOpen(true)}>Edit Details</MenuItem>
             <MenuItem onClick={() => router.push("/view")}>View</MenuItem>
             {!list.creationTime && <MenuItem onClick={handleSave}>Save</MenuItem>}
-            <MenuItem onClick={handleShare}>Export/Share</MenuItem>
+            <MenuItem onClick={handleShare}>Export as Army Forge File</MenuItem>
+            <MenuItem onClick={handleTextExport}>Export as Text</MenuItem>
             <MenuItem onClick={handleLoad}>Load</MenuItem>
           </Menu>
         </Toolbar>
