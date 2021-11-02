@@ -333,8 +333,9 @@ export default class UpgradeService {
       if (gains.dependencies) {
         for (let upgradeId of gains.dependencies) {
           const dependency = unit.selectedUpgrades.find(u => u.id === upgradeId);
-
-          this.remove(unit, { replaceWhat: dependency.replacedWhat, type: "replace" }, dependency);
+          // Might have already been removed!
+          if (dependency)
+            this.remove(unit, { replaceWhat: dependency.replacedWhat, type: "replace" }, dependency);
         }
       }
     }
