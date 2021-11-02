@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { IconButton, TextField } from "@mui/material";
 import EditIcon from '@mui/icons-material/Create';
@@ -7,14 +7,20 @@ import { renameUnit } from "../../data/listSlice";
 import { ISelectedUnit } from "../../data/interfaces";
 import { RootState } from "../../data/store";
 import UnitService from "../../services/UnitService";
+import { debounce } from 'throttle-debounce';
 
 export default function UpgradePanelHeader() {
 
   const list = useSelector((state: RootState) => state.list);
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
+  const [customName, setCustomName] = useState("");
 
   const selectedUnit = UnitService.getSelected(list);
+
+  useEffect(() => {
+    setCustomName(selectedUnit?.customName ?? selectedUnit?.name ?? "");
+  }, [selectedUnit?.selectionId]);
 
   if (!selectedUnit)
     return null;
@@ -25,7 +31,11 @@ export default function UpgradePanelHeader() {
     if (toggleTo) {
       // Focus
     }
-  }
+  };
+
+  const debounceSave = debounce(1000, () => {
+    dispatch(renameUnit({ unitId: selectedUnit.selectionId, name: customName }));
+  });
 
   return (
     <div className="is-flex is-align-items-center">
@@ -34,8 +44,8 @@ export default function UpgradePanelHeader() {
           autoFocus
           variant="standard"
           className=""
-          value={selectedUnit.customName || selectedUnit.name}
-          onChange={e => dispatch(renameUnit({ unitId: selectedUnit.selectionId, name: e.target.value }))}
+          value={customName}
+          onChange={e => { setCustomName(e.target.value); debounceSave(); }}
         />
       ) : (
         <div className="is-flex">
