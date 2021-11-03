@@ -65,12 +65,13 @@ export const listSlice = createSlice({
     loadSavedList(state, action: PayloadAction<ListState>) {
       return { ...action.payload };
     },
-    addUnit: (state, action: PayloadAction<any>) => {
+    addUnit: (state, action: PayloadAction<any>, mergedWith = null) => {
       state.units.push({
         ...action.payload,
         selectionId: nanoid(5),
         selectedUpgrades: [],
-        combined: false,
+        combined: !!mergedWith,
+        joinToUnit: mergedWith,
         joined: false,
         equipment: action.payload.equipment.map(eqp => ({
           ...eqp,
@@ -112,6 +113,25 @@ export const listSlice = createSlice({
       unit.customName = name;
 
       debounceSave(current(state));
+    },
+    moveUnit: (state, action: PayloadAction<{from: number, to: number}>) => {
+        const { from, to } = action.payload
+        if (from == to) return;
+        const unit = state.units[from]
+        state.units.splice(action.payload.from)
+        state.units.splice(action.payload.to, 0, unit)
+        debounceSave(current(state));
+    },
+    reorderList: (state, action: PayloadAction<Array<number>>) => {
+        let update = false;
+        let newunits = action.payload.map((v, i) => {
+            if (v != i) {update = true}
+            return state.units[v]
+            })
+        if (update) {
+            state.units = newunits
+            debounceSave(current(state));
+        }
     },
     toggleUnitCombined: (state, action: PayloadAction<string>) => {
       const unitId = action.payload;
@@ -175,6 +195,8 @@ export const {
   selectUnit,
   removeUnit,
   renameUnit,
+  moveUnit,
+  reorderList,
   toggleUnitCombined,
   joinUnit,
   loadSavedList,
