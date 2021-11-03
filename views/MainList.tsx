@@ -44,8 +44,11 @@ export function MainList({ onSelected, onUnitRemoved }) {
               <li key={index} className={child ? "my-2" : ""} style={{ backgroundColor: child ? "rgba(0,0,0,.12)" : "" }}>
                 {child && <div className="is-flex px-4 py-2 is-align-items-center">
                   <LinkIcon style={{ fontSize: "24px", color: "rgba(0,0,0,.38)" }} />
-                  <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>{s.name} [{s.size + child.size}]</h3>
-                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(child)}pts</p>
+                  <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>
+                    {s.name}
+                    {s.joinToUnit && !s.combined && ` and ${(child.customName || child.name)}`}
+                    </h3>
+                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(child) + UpgradeService.calculateUnitTotal(grandchild)}pts</p>
                 </div>}
                 <div className={child ? "ml-1" : ""}>
                   <MainListItem
