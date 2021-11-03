@@ -12,14 +12,16 @@ export default class UpgradeService {
   }
 
   static calculateUnitTotal(unit: ISelectedUnit) {
-    let cost = unit.cost * (unit.combined ? 2 : 1);
+    //let cost = unit.cost * (unit.combined ? 2 : 1);
+    let cost = unit.cost;
 
     for (const upgrade of unit.selectedUpgrades) {
 
       var upgradeGroup = { affects: "all" };
 
       if (upgrade.cost) {
-        cost += upgrade.cost * (unit.combined && upgradeGroup.affects === "all" ? 2 : 1);
+        //cost += upgrade.cost * (unit.combined && upgradeGroup.affects === "all" ? 2 : 1);
+        cost += upgrade.cost;
       }
     }
 
