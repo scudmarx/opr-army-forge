@@ -11,6 +11,8 @@ import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
 import FullCompactToggle from "./components/FullCompactToggle";
+import LinkIcon from '@mui/icons-material/Link';
+import ShieldIcon from '@mui/icons-material/Shield';
 
 export function MainList({ onSelected, onUnitRemoved }) {
 
@@ -45,7 +47,19 @@ export function MainList({ onSelected, onUnitRemoved }) {
                   disableGutters
                   elevation={1}>
                   <AccordionSummary>
-                    <h3 style={{ fontWeight: 600 }}>{s.name}</h3>
+                    <div className="is-flex is-flex-grow-1 is-align-items-center">
+                      <div className="is-flex-grow-1">
+                        <p className="mb-1" style={{ fontWeight: 600 }}>{(s.joinToUnit && !s.combined) && <ShieldIcon sx={{fontSize: 14, marginRight: "0.5em"}} />}{s.combined && <LinkIcon sx={{fontSize: 12, marginRight: "0.5em"}} />}{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
+                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                          <p>Qua {s.quality}+</p>
+                          <p className="ml-2">Def {s.defense}+</p>
+                        </div>
+                      </div>
+                      <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>
+                      <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(s); }}>
+                        <RemoveIcon />
+                      </IconButton>
+                    </div>
                   </AccordionSummary>
                 </Accordion>}
                 <div className={child ? "ml-4" : ""}>

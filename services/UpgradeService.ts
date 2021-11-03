@@ -18,7 +18,7 @@ export default class UpgradeService {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    const combinedMultiplier = unit && unit.combined ? 2 : 1;
+    const combinedMultiplier = 1 //unit && unit.combined ? 2 : 1;
 
     const affects = typeof (upgrade.affects) === "number"
       ? numbers[upgrade.affects * combinedMultiplier]
@@ -114,7 +114,7 @@ export default class UpgradeService {
     const controlType = this.getControlType(unit, upgrade);
     //const alreadySelected = this.countApplied(unit, upgrade, option);
     const appliedInGroup = upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0);
-    const combinedMultiplier = unit.combined ? 2 : 1;
+    const combinedMultiplier = 1 //unit.combined ? 2 : 1;
 
     // if it's a radio, it's valid if any other upgrade in the group is already applied
     if (controlType === "radio")
@@ -205,8 +205,8 @@ export default class UpgradeService {
   };
 
   public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
-    const combinedMultiplier = unit.combined ? 2 : 1;
-    const combinedAffects = (unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
+    const combinedMultiplier = 1 //unit.combined ? 2 : 1;
+    const combinedAffects = upgrade.affects //(unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
     if (upgrade.type === "upgrade") {
 
       // "Upgrade any model with:"
@@ -272,7 +272,7 @@ export default class UpgradeService {
         ...option,
         // TODO: This needs to be calculated, not stored?
         // If you apply this upgrade and THEN toggle combined, the amount will be wrong
-        cost: option.cost * (unit.combined && upgrade.affects === "all" ? 2 : 1),
+        cost: option.cost, //* (unit.combined && upgrade.affects === "all" ? 2 : 1),
         gains: option.gains.map(g => ({
           ...g,
           count: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...

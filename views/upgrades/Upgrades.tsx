@@ -7,7 +7,7 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit } from '../../data/listSlice';
+import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit, moveUnit } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
@@ -44,11 +44,16 @@ export function Upgrades() {
 
   const joinToUnit = (e) => {
     const joinToUnitId = e.target.value;
-
+    
     dispatch(joinUnit({
       unitId: selectedUnit.selectionId,
       joinToUnitId: joinToUnitId
     }));
+    if (!!joinToUnitId) {
+       dispatch(moveUnit({
+         from: list.units.findIndex(t => t.selectionId == selectedUnit.selectionId),
+         to: list.units.findIndex(t => t.selectionId == joinToUnitId)
+       }))}
   };
 
   const originalUpgradeSets = (selectedUnit?.upgrades || [])
@@ -95,8 +100,8 @@ export function Upgrades() {
               onChange={joinToUnit}
             >
               <MenuItem value={null}>None</MenuItem>
-              {list.units.filter(u => u.size > 1).map((u, index) => (
-                <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size}]</MenuItem>
+              {list.units.filter(u => u.size > 1 && !(u.combined && !u.joinToUnit)).map((u, index) => (
+                <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size * (u.combined ? 2 : 1)}]</MenuItem>
               ))}
             </Select>
           </FormControl>
