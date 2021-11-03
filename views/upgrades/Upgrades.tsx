@@ -7,11 +7,12 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit } from '../../data/listSlice';
+import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit, moveUnit } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
+import LinkIcon from '@mui/icons-material/Link';
 
 export function Upgrades() {
 
@@ -20,8 +21,6 @@ export function Upgrades() {
   const army = useSelector((state: RootState) => state.army.data);
   const spells = army?.spells;
   const dispatch = useDispatch();
-
-  const isLive = window.location.host === "opr-army-forge.vercel.app";
 
   const selectedUnit = UnitService.getSelected(list);
 
@@ -51,6 +50,12 @@ export function Upgrades() {
       unitId: selectedUnit.selectionId,
       joinToUnitId: joinToUnitId
     }));
+    if (!!joinToUnitId) {
+      dispatch(moveUnit({
+        from: list.units.findIndex(t => t.selectionId == selectedUnit.selectionId),
+        to: list.units.findIndex(t => t.selectionId == joinToUnitId)
+      }))
+    }
   };
 
   const originalUpgradeSets = (selectedUnit?.upgrades || [])
@@ -66,21 +71,21 @@ export function Upgrades() {
 
   const toggleCombined = () => {
     if (selectedUnit.combined) {
-        if (selectedUnit.joinToUnit) {
-            dispatch(removeUnit(selectedUnit.joinToUnit))
-        } else {
-            dispatch(removeUnit(selectedUnit.selectionId))
-        }
+      if (selectedUnit.joinToUnit) {
+        dispatch(removeUnit(selectedUnit.joinToUnit))
       } else {
-        dispatch(addCombinedUnit(selectedUnit.selectionId))
+        dispatch(removeUnit(selectedUnit.selectionId))
       }
+    } else {
+      dispatch(addCombinedUnit(selectedUnit.selectionId))
     }
+  }
 
   return (
     <div className={styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
-        {selectedUnit.size > 1 && !isLive && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {selectedUnit.size > 1 && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
             } />} label="Combined Unit" className="mr-2" />
@@ -97,8 +102,8 @@ export function Upgrades() {
               onChange={joinToUnit}
             >
               <MenuItem value={null}>None</MenuItem>
-              {list.units.filter(u => u.size > 1).map((u, index) => (
-                <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size}]</MenuItem>
+              {list.units.filter(u => u.size > 1 && !(u.combined && !u.joinToUnit)).map((u, index) => (
+                <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size * (u.combined ? 2 : 1)}]</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -122,9 +127,15 @@ export function Upgrades() {
           {/* <p className="px-2">{set.id}</p> */}
           {pkg.sections.map((u, i) => (
             <div className={"mt-4"} key={i}>
-              <p className="px-4 pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>
-                {UpgradeService.displayName(u, selectedUnit)}:
-              </p>
+              <div className="px-4 is-flex is-align-items-center">
+                {(selectedUnit.combined && (u.affects === "all")) &&
+                  <CustomTooltip title="This option will be the same on both combined units." arrow enterTouchDelay={0} leaveTouchDelay={5000}>
+                    <LinkIcon sx={{ fontSize: 22 }} className="mr-2" />
+                  </CustomTooltip>}
+                <p className="pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>
+                  {UpgradeService.displayName(u, selectedUnit)}:
+                </p>
+              </div>
               <UpgradeGroup upgrade={u} />
             </div>
           ))}

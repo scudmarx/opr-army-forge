@@ -105,7 +105,7 @@ export default function Files() {
       factionName: key,
       factionRelation: officialFactions[key][0].factionRelation,
       // Live if any are live
-      isLive:true// officialFactions[key].reduce((live, next) => live || next.isLive, false)
+      isLive: officialFactions[key].reduce((live, next) => live || next.isLive, false)
     })));
 
   const officialActiveArmies = officialArmies?.filter(ca => ca.isLive);
