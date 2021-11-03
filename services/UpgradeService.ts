@@ -95,16 +95,35 @@ export default class UpgradeService {
 
     // Couldn't find the item to replace or there are none left
     if (!toReplace || toReplace.count <= 0) {
+      toReplace = this.findUpgradeToReplace(unit, what);
+    }
 
-      // Try and find an upgrade instead
-      for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
-        const upgrade = unit.selectedUpgrades[i];
-        toReplace = upgrade
-          .gains
-          .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+    return toReplace;
+  }
 
-        if (toReplace && toReplace.count > 0)
-          break;
+  public static findUpgradeToReplace(unit: ISelectedUnit, what: string) {
+    var toReplace = null;
+    // Try and find an upgrade instead
+    for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
+      const upgrade = unit.selectedUpgrades[i];
+      toReplace = upgrade
+        .gains
+        .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+
+      if (toReplace && toReplace.count > 0)
+        break;
+
+      // Check inside items
+      if (upgrade.isModel) {
+        const model = upgrade.gains.find(g => g.type === "ArmyBookItem") as IUpgradeGainsItem;
+        if (model) {
+          toReplace = model
+            .content
+            .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+
+          if (toReplace && toReplace.count > 0)
+            break;
+        }
       }
     }
 
@@ -131,18 +150,7 @@ export default class UpgradeService {
         }
         for (let what of options) {
 
-          var toRestore = null;
-
-          // Try and find an upgrade instead
-          for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
-            const upgrade = unit.selectedUpgrades[i];
-            toRestore = upgrade
-              .gains
-              .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
-
-            if (toRestore && toRestore.count)
-              break;
-          }
+          var toRestore = this.findUpgradeToReplace(unit, what);
 
           // Couldn't find the upgrade to replace
           if (!toRestore || toRestore.count <= 0)
@@ -431,18 +439,7 @@ export default class UpgradeService {
         // For each bit of equipment that was originally replaced
         for (let what of options) {
 
-          var toRestore = null;// EquipmentService.findLast(unit.equipment, what) as { count?: number };
-
-          // Try and find an upgrade instead
-          for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
-            const upgrade = unit.selectedUpgrades[i];
-            toRestore = upgrade
-              .gains
-              .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
-
-            if (toRestore)
-              break;
-          }
+          var toRestore = this.findUpgradeToReplace(unit, what);
 
           // Couldn't find the upgrade to replace
           if (!toRestore)
