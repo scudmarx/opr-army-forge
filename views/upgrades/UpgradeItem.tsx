@@ -91,7 +91,10 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
           }) : <span style={{ color: "#000000" }}>None</span>
         }
       </div>
-      <div>{option?.cost ? `${option.cost * (selectedUnit.combined && upgrade.affects === "all" ? 2 : 1)}pts` : "Free"}&nbsp;</div>
+      <div>{
+         option?.cost ? `${option.cost}pts` : "Free"
+         //option?.cost ? `${option.cost * (selectedUnit.combined && upgrade.affects === "all" ? 2 : 1)}pts` : "Free"
+         }&nbsp;</div>
       {
         (() => {
           switch (controlType) {

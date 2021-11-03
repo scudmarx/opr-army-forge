@@ -7,7 +7,8 @@ import { RootState } from "../../data/store";
 
 export default function UndoRemoveUnit({ open, setOpen }) {
 
-  const unit = useSelector((state: RootState) => state.list.undoUnitRemove);
+  const unit = useSelector((state: RootState) => state.list.undoUnitRemove?.at(0));
+  if (!unit) setOpen(false)
 
   const dispatch = useDispatch();
 

@@ -7,7 +7,7 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { toggleUnitCombined, joinUnit } from '../../data/listSlice';
+import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
@@ -62,17 +62,26 @@ export function Upgrades() {
       originalUpgradeSets[0]
     ].filter((s) => !!s);
 
+  const toggleCombined = () => {
+    if (selectedUnit.combined) {
+        if (selectedUnit.joinToUnit) {
+            dispatch(removeUnit(selectedUnit.joinToUnit))
+        } else {
+            dispatch(removeUnit(selectedUnit.selectionId))
+        }
+      } else {
+        dispatch(addCombinedUnit(selectedUnit.selectionId))
+      }
+    }
+
   return (
     <div className={styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
         {selectedUnit.size > 1 && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
-            <Checkbox
-              checked={selectedUnit.combined}
-              onClick={() => dispatch(toggleUnitCombined(selectedUnit.selectionId))} />}
-            label="Double Unit Size"
-            className="mr-2" />
+            <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
+            } />} label="Combined Unit" className="mr-2" />
           <CustomTooltip title={"When preparing your army you may merge units by deploying two copies of the same unit as a single big unit, as long as any upgrades that are applied to all models are bought for both."} arrow enterTouchDelay={0} leaveTouchDelay={5000}>
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
