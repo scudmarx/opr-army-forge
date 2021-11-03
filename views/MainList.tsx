@@ -33,24 +33,18 @@ export function MainList({ onSelected, onUnitRemoved }) {
           // For each selected unit
           units.map((s: ISelectedUnit, index: number) => {
 
-
             const child = s.joinToUnit
               ? list.units.find(u => u.selectionId === s.joinToUnit)
               : null;
-            if (child)
-              console.log("Child", child);
 
             return (
-              <li key={index}>
-                {child && <Accordion
-                  square
-                  disableGutters
-                  elevation={1}>
-                  <AccordionSummary>
-                    <h3 style={{ fontWeight: 600 }}>{s.name}</h3>
-                  </AccordionSummary>
-                </Accordion>}
-                <div className={child ? "ml-4" : ""}>
+              <li key={index} className={child ? "my-2" : ""} style={{ backgroundColor: child ? "rgba(0,0,0,.12)" : "" }}>
+                {child && <div className="is-flex px-4 py-2 is-align-items-center">
+                  <LinkIcon style={{ fontSize: "24px", color: "rgba(0,0,0,.38)" }} />
+                  <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>{s.name} [{s.size + child.size}]</h3>
+                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(child)}pts</p>
+                </div>}
+                <div className={child ? "ml-1" : ""}>
                   <MainListItem
                     list={list}
                     unit={s}
@@ -99,7 +93,9 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
       elevation={1}
       expanded={expanded}
       onClick={() => handleSelectUnit(unit)}
-      style={{ backgroundColor: (list.selectedUnitId === unit.selectionId ? "rgba(249, 253, 255, 1)" : null) }}>
+      style={{
+        backgroundColor: (list.selectedUnitId === unit.selectionId ? "rgba(249, 253, 255, 1)" : null)
+      }}>
       <AccordionSummary>
         <div className="is-flex is-flex-grow-1 is-align-items-center">
           <div className="is-flex-grow-1">

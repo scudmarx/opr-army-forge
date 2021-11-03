@@ -11,8 +11,6 @@ import pluralise from "pluralize";
 import RulesService from '../../services/RulesService';
 import UnitService from '../../services/UnitService';
 import RuleList from '../components/RuleList';
-import LinkIcon from '@mui/icons-material/Link';
-import { CustomTooltip } from '../components/CustomTooltip';
 
 function UpgradeItemDisplay({ eqp, count }) {
   const name = count > 1 ? pluralise.plural(eqp.name || eqp.label) : eqp.name || eqp.label;
@@ -82,10 +80,6 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
 
   return (
     <div className="is-flex is-align-items-center mb-1">
-      {(selectedUnit.combined && (upgrade.affects === "all")) && 
-         <CustomTooltip title="This option will be the same on both combined units." arrow enterTouchDelay={0} leaveTouchDelay={5000}>
-            <LinkIcon sx={{fontSize: 14, marginRight: "0.5em"}} />
-         </CustomTooltip> }
       <div className="is-flex-grow-1 pr-2">
         {
           gainsGroups ? Object.keys(gainsGroups).map((key, i) => {
