@@ -204,6 +204,7 @@ export default class UpgradeService {
   };
 
   public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
+    const combinedMultiplier = unit.combined ? 2 : 1;
     const combinedAffects = (unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
     if (upgrade.type === "upgrade") {
 
@@ -211,13 +212,15 @@ export default class UpgradeService {
       if (upgrade.affects === "any" && unit?.size > 1)
         return "updown";
 
-      // "Upgrade with one:"
-      if (upgrade.select === 1)
-        return "radio";
-
       // Select > 1
-      if (typeof (upgrade.select) === "number")
+      if (typeof (upgrade.select) === "number") {
+
+        // "Upgrade with one:"
+        if ((upgrade.select * combinedMultiplier) === 1)
+          return "radio";
+
         return "updown";
+      }
 
       return "check";
     }
@@ -391,6 +394,7 @@ export default class UpgradeService {
     // Remove anything that depends on this upgrade (cascade remove)
     for (let gains of toRemove.gains) {
       if (gains.dependencies) {
+        debugger;
         for (let upgradeId of gains.dependencies) {
           const dependency = unit.selectedUpgrades.find(u => u.id === upgradeId);
           // Might have already been removed!
