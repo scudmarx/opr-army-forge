@@ -112,7 +112,7 @@ export default function Load() {
         <div className="mx-auto" style={{ maxWidth: "480px" }}>
           <div className="is-flex is-justify-content-center p-4 my-4">
             <Button variant="contained" color="primary" onClick={() => importFile()}>
-              <FileUploadOutlinedIcon /> <span className="ml-2">Upload A List File</span>
+              <FileUploadOutlinedIcon /> <span className="ml-2">Upload Army Forge File</span>
             </Button>
           </div>
           {loading && <div className="is-flex is-flex-direction-column is-align-items-center	">
