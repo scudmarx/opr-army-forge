@@ -66,6 +66,7 @@ export default class UpgradeService {
   }
 
   static calculateUnitTotal(unit: ISelectedUnit) {
+    if (!unit) return 0;
     //let cost = unit.cost * (unit.combined ? 2 : 1);
     let cost = unit.cost;
 

@@ -37,8 +37,12 @@ export function MainList({ onSelected, onUnitRemoved }) {
             const child = s.joinToUnit
               ? list.units.find(u => u.selectionId === s.joinToUnit)
               : null;
-            if (child)
+            if (child) {
               console.log("Child", child);
+            }
+            const grandchild = child?.joinToUnit
+              ? list.units.find(u => u.selectionId === child?.joinToUnit)
+              : null;
 
             return (
               <li key={index}>
@@ -49,16 +53,12 @@ export function MainList({ onSelected, onUnitRemoved }) {
                   <AccordionSummary>
                     <div className="is-flex is-flex-grow-1 is-align-items-center">
                       <div className="is-flex-grow-1">
-                        <p className="mb-1" style={{ fontWeight: 600 }}>{(s.joinToUnit && !s.combined) && <ShieldIcon sx={{fontSize: 14, marginRight: "0.5em"}} />}{s.combined && <LinkIcon sx={{fontSize: 12, marginRight: "0.5em"}} />}{s.customName || s.name} {s.size > 1 ? `[${s.size}]` : ''}</p>
-                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                          <p>Qua {s.quality}+</p>
-                          <p className="ml-2">Def {s.defense}+</p>
-                        </div>
+                        <p className="mb-1" style={{ fontWeight: 600 }}>
+                          {(s.joinToUnit && !s.combined) && <ShieldIcon sx={{fontSize: 14, marginRight: "0.5em"}} />}
+                          {s.combined && <LinkIcon sx={{fontSize: 12, marginRight: "0.5em"}} />}
+                          {s.customName || s.name}{!s.combined && ` and ${child.customName || child.name}`}</p>
                       </div>
-                      <p className="mr-2">{UpgradeService.calculateUnitTotal(s)}pts</p>
-                      <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(s); }}>
-                        <RemoveIcon />
-                      </IconButton>
+                      <p className="mr-2">{UpgradeService.calculateUnitTotal(s)+UpgradeService.calculateUnitTotal(child)+UpgradeService.calculateUnitTotal(grandchild)}pts</p>
                     </div>
                   </AccordionSummary>
                 </Accordion>}
@@ -72,6 +72,12 @@ export function MainList({ onSelected, onUnitRemoved }) {
                   {child && <MainListItem
                     list={list}
                     unit={child}
+                    expanded={expandAll}
+                    onSelected={onSelected}
+                    onUnitRemoved={onUnitRemoved} />}
+                  {grandchild && <MainListItem
+                    list={list}
+                    unit={grandchild}
                     expanded={expandAll}
                     onSelected={onSelected}
                     onUnitRemoved={onUnitRemoved} />}
