@@ -84,20 +84,23 @@ export const listSlice = createSlice({
       debounceSave(current(state));
     },
     addCombinedUnit: (state, action: PayloadAction<string>) => {
-        const parentindex = state.units.findIndex((t) => action.payload == t.selectionId)
-        
-        let parentUnit = state.units[parentindex]
-        parentUnit.combined = true
-        
-        let newUnit = {...parentUnit}
-        newUnit.selectionId = nanoid(5)
-        
-        parentUnit.joinToUnit = newUnit.selectionId 
-        
-        state.units.splice(parentindex+1, 0, newUnit)
-        state.points = UpgradeService.calculateListTotal(state.units);
+      const parentindex = state.units.findIndex((t) => action.payload == t.selectionId);
 
-        debounceSave(current(state));
+      let parentUnit = state.units[parentindex];
+      parentUnit.combined = true;
+
+      let newUnit = {
+        ...parentUnit,
+        selectionId: nanoid(5)
+      };
+
+      //newUnit.joinToUnit = parentUnit.selectionId;
+      parentUnit.joinToUnit = newUnit.selectionId;
+
+      state.units.splice(parentindex + 1, 0, newUnit);
+      state.points = UpgradeService.calculateListTotal(state.units);
+
+      debounceSave(current(state));
     },
     selectUnit: (state, action: PayloadAction<string>) => {
       state.selectedUnitId = action.payload;
@@ -112,40 +115,40 @@ export const listSlice = createSlice({
       if (unit.combined) {
         console.log(`units is combined - clearing up friend...`)
         if (unit.joinToUnit) {
-            console.log(`unit has child... hopefully it's where I put it.'`)
-            if (state.units.findIndex(t => {return unit.joinToUnit === t.selectionId}) == removeIndex+1)
-                state.undoUnitRemove = state.units.splice(removeIndex, 2);
-            else {
-                let child = state.units.find(t => {return unit.joinToUnit === t.selectionId})
-                console.log(`child: ${child.name} - ${child.selectionId}`)
-                if (child) {
-                    unit.combined = false
-                    unit.joinToUnit = null
-                    child.combined = false
-                }
-                state.undoUnitRemove = state.units.splice(removeIndex, 1);
+          console.log(`unit has child... hopefully it's where I put it.'`)
+          if (state.units.findIndex(t => { return unit.joinToUnit === t.selectionId }) == removeIndex + 1)
+            state.undoUnitRemove = state.units.splice(removeIndex, 2);
+          else {
+            let child = state.units.find(t => { return unit.joinToUnit === t.selectionId })
+            console.log(`child: ${child.name} - ${child.selectionId}`)
+            if (child) {
+              unit.combined = false
+              unit.joinToUnit = null
+              child.combined = false
             }
+            state.undoUnitRemove = state.units.splice(removeIndex, 1);
+          }
         } else {
-            console.log(`unit has no child, so must have parent... finding it.`)
-            let parent = state.units.find(t => {return t.combined && (t.joinToUnit === action.payload)})
-            console.log(`parent: ${parent.name} - ${parent.selectionId}`)
-            if (parent) {
-                parent.combined = false
-                parent.joinToUnit = null
-            }
-            // don't bother saving it in the undoRemove stuff.
-            state.units.splice(removeIndex, 1);
+          console.log(`unit has no child, so must have parent... finding it.`)
+          let parent = state.units.find(t => { return t.combined && (t.joinToUnit === action.payload) })
+          console.log(`parent: ${parent.name} - ${parent.selectionId}`)
+          if (parent) {
+            parent.combined = false
+            parent.joinToUnit = null
+          }
+          // don't bother saving it in the undoRemove stuff.
+          state.units.splice(removeIndex, 1);
         }
-    } else {
+      } else {
         state.undoUnitRemove = state.units.splice(removeIndex, 1);
-    }
+      }
 
       state.points = UpgradeService.calculateListTotal(state.units);
       console.log(state.undoUnitRemove)
       debounceSave(current(state));
     },
     undoRemoveUnit: (state) => {
-      console.log(`restoring unit: `)  
+      console.log(`restoring unit: `)
       console.log(state.undoUnitRemove)
       state.units = state.units.concat(state.undoUnitRemove);
 
@@ -162,28 +165,28 @@ export const listSlice = createSlice({
       if (unit.combined) {
         let partner = state.units.find(t => (t.selectionId === unit.joinToUnit) || (t.combined && t.joinToUnit === unitId))
         partner.customName = name;
-    }
+      }
 
       debounceSave(current(state));
     },
-    moveUnit: (state, action: PayloadAction<{from: number, to: number}>) => {
-        const { from, to } = action.payload
-        if (from == to) return;
-        const unit = state.units[from]
-        state.units.splice(action.payload.from)
-        state.units.splice(action.payload.to, 0, unit)
-        debounceSave(current(state));
+    moveUnit: (state, action: PayloadAction<{ from: number, to: number }>) => {
+      const { from, to } = action.payload
+      if (from == to) return;
+      const unit = state.units[from]
+      state.units.splice(action.payload.from)
+      state.units.splice(action.payload.to, 0, unit)
+      debounceSave(current(state));
     },
     reorderList: (state, action: PayloadAction<Array<number>>) => {
-        let update = false;
-        let newunits = action.payload.map((v, i) => {
-            if (v != i) {update = true}
-            return state.units[v]
-            })
-        if (update) {
-            state.units = newunits
-            debounceSave(current(state));
-        }
+      let update = false;
+      let newunits = action.payload.map((v, i) => {
+        if (v != i) { update = true }
+        return state.units[v]
+      })
+      if (update) {
+        state.units = newunits
+        debounceSave(current(state));
+      }
     },
     toggleUnitCombined: (state, action: PayloadAction<string>) => {
       const unitId = action.payload;
