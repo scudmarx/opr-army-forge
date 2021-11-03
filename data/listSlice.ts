@@ -167,11 +167,12 @@ export const listSlice = createSlice({
       debounceSave(current(state));
     },
     moveUnit: (state, action: PayloadAction<{from: number, to: number}>) => {
-        const { from, to } = action.payload
+        let { from, to } = action.payload
+        to = (to <= from) ? to : to - 1 
         if (from == to) return;
         const unit = state.units[from]
-        state.units.splice(action.payload.from)
-        state.units.splice(action.payload.to, 0, unit)
+        state.units.splice(from, 1)
+        state.units.splice(to, 0, unit)
         debounceSave(current(state));
     },
     reorderList: (state, action: PayloadAction<Array<number>>) => {
