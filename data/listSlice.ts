@@ -11,7 +11,7 @@ export interface ListState {
   name: string;
   pointsLimit?: number;
   units: ISelectedUnit[];
-  undoUnitRemove: ISelectedUnit;
+  undoUnitRemove?: ISelectedUnit[];
   selectedUnitId?: string;
   points: number;
 }
@@ -71,6 +71,7 @@ export const listSlice = createSlice({
         selectionId: nanoid(5),
         selectedUpgrades: [],
         combined: false,
+        joinToUnit: false,
         joined: false,
         equipment: action.payload.equipment.map(eqp => ({
           ...eqp,
@@ -82,6 +83,22 @@ export const listSlice = createSlice({
 
       debounceSave(current(state));
     },
+    addCombinedUnit: (state, action: PayloadAction<string>) => {
+        const parentindex = state.units.findIndex((t) => action.payload == t.selectionId)
+        
+        let parentUnit = state.units[parentindex]
+        parentUnit.combined = true
+        
+        let newUnit = {...parentUnit}
+        newUnit.selectionId = nanoid(5)
+        
+        parentUnit.joinToUnit = newUnit.selectionId 
+        
+        state.units.splice(parentindex+1, 0, newUnit)
+        state.points = UpgradeService.calculateListTotal(state.units);
+
+        debounceSave(current(state));
+    },
     selectUnit: (state, action: PayloadAction<string>) => {
       state.selectedUnitId = action.payload;
     },
@@ -90,15 +107,47 @@ export const listSlice = createSlice({
         .units
         .findIndex(u => u.selectionId === action.payload);
 
-      state.undoUnitRemove = state.units.splice(removeIndex, 1)[0];
+      let unit = state.units[removeIndex]
+      console.log(`removing: ${unit.name} - ${unit.selectionId}`)
+      if (unit.combined) {
+        console.log(`units is combined - clearing up friend...`)
+        if (unit.joinToUnit) {
+            console.log(`unit has child... hopefully it's where I put it.'`)
+            if (state.units.findIndex(t => {return unit.joinToUnit === t.selectionId}) == removeIndex+1)
+                state.undoUnitRemove = state.units.splice(removeIndex, 2);
+            else {
+                let child = state.units.find(t => {return unit.joinToUnit === t.selectionId})
+                console.log(`child: ${child.name} - ${child.selectionId}`)
+                if (child) {
+                    unit.combined = false
+                    unit.joinToUnit = null
+                    child.combined = false
+                }
+                state.undoUnitRemove = state.units.splice(removeIndex, 1);
+            }
+        } else {
+            console.log(`unit has no child, so must have parent... finding it.`)
+            let parent = state.units.find(t => {return t.combined && (t.joinToUnit === action.payload)})
+            console.log(`parent: ${parent.name} - ${parent.selectionId}`)
+            if (parent) {
+                parent.combined = false
+                parent.joinToUnit = null
+            }
+            // don't bother saving it in the undoRemove stuff.
+            state.units.splice(removeIndex, 1);
+        }
+    } else {
+        state.undoUnitRemove = state.units.splice(removeIndex, 1);
+    }
 
       state.points = UpgradeService.calculateListTotal(state.units);
-
+      console.log(state.undoUnitRemove)
       debounceSave(current(state));
     },
     undoRemoveUnit: (state) => {
-
-      state.units.push(state.undoUnitRemove);
+      console.log(`restoring unit: `)  
+      console.log(state.undoUnitRemove)
+      state.units = state.units.concat(state.undoUnitRemove);
 
       state.undoUnitRemove = null;
 
@@ -110,34 +159,49 @@ export const listSlice = createSlice({
       const { unitId, name } = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
       unit.customName = name;
+      if (unit.combined) {
+        let partner = state.units.find(t => (t.selectionId === unit.joinToUnit) || (t.combined && t.joinToUnit === unitId))
+        partner.customName = name;
+    }
 
       debounceSave(current(state));
+    },
+    moveUnit: (state, action: PayloadAction<{from: number, to: number}>) => {
+        const { from, to } = action.payload
+        if (from == to) return;
+        const unit = state.units[from]
+        state.units.splice(action.payload.from)
+        state.units.splice(action.payload.to, 0, unit)
+        debounceSave(current(state));
+    },
+    reorderList: (state, action: PayloadAction<Array<number>>) => {
+        let update = false;
+        let newunits = action.payload.map((v, i) => {
+            if (v != i) {update = true}
+            return state.units[v]
+            })
+        if (update) {
+            state.units = newunits
+            debounceSave(current(state));
+        }
     },
     toggleUnitCombined: (state, action: PayloadAction<string>) => {
       const unitId = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
 
-      //TODO: Don't remove upgrades ?
-      // Remove all upgrades
-      for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
-        const upgrade = unit.selectedUpgrades[i];
-        UpgradeService.remove(unit, { type: upgrade.replacedWhat ? "replace" : "upgrade", replaceWhat: upgrade.replacedWhat }, upgrade);
+      if (unit) {
+
+        state.points = UpgradeService.calculateListTotal(state.units);
+
+        debounceSave(current(state));
       }
-
-      unit.combined = !unit.combined;
-      unit.size *= (unit.combined ? 2 : 0.5)
-      unit.equipment.forEach((equipment) => equipment.count *= (unit.combined ? 2 : 0.5))
-
-      state.points = UpgradeService.calculateListTotal(state.units);
-
-      debounceSave(current(state));
     },
     joinUnit: (state, action: PayloadAction<{ unitId: string, joinToUnitId: string }>) => {
       const { unitId, joinToUnitId } = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
       const joinToUnit = state.units.filter(u => u.selectionId === joinToUnitId)[0];
 
-      unit.joinToUnit = joinToUnit.selectionId;
+      unit.joinToUnit = joinToUnitId;
 
       debounceSave(current(state));
     },
@@ -149,6 +213,10 @@ export const listSlice = createSlice({
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
 
       UpgradeService.apply(unit, upgrade, option);
+      if (unit.combined && upgrade.affects == "all") {
+        const partner = state.units.find(t => (t.selectionId == unit.joinToUnit) || (t.combined && (t.joinToUnit == unit.selectionId)))
+        UpgradeService.apply(partner, upgrade, option);
+      }
 
       state.points = UpgradeService.calculateListTotal(state.units);
 
@@ -162,6 +230,10 @@ export const listSlice = createSlice({
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
 
       UpgradeService.remove(unit, upgrade, option);
+      if (unit.combined && upgrade.affects == "all") {
+        const partner = state.units.find(t => (t.selectionId == unit.joinToUnit) || (t.combined && (t.joinToUnit == unit.selectionId)))
+        UpgradeService.remove(partner, upgrade, option);
+      }
 
       state.points = UpgradeService.calculateListTotal(state.units);
 
@@ -178,9 +250,12 @@ export const {
   addUnit,
   applyUpgrade,
   removeUpgrade,
+  addCombinedUnit,
   selectUnit,
   removeUnit,
   renameUnit,
+  moveUnit,
+  reorderList,
   toggleUnitCombined,
   joinUnit,
   loadSavedList,
