@@ -188,14 +188,8 @@ export const listSlice = createSlice({
     toggleUnitCombined: (state, action: PayloadAction<string>) => {
       const unitId = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
+
       if (unit) {
-        //unit.combined = !unit.combined;
-        /*
-        if (unit.combined)
-            unit.size *= 2;
-        else
-            unit.size /= 2;
-        */
 
         state.points = UpgradeService.calculateListTotal(state.units);
 

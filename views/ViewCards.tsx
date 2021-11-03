@@ -23,9 +23,8 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
   const spells = army.data?.spells || [];
   const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
-  const units = (list?.units ?? []).map(u => ({...u}));
-  for (let unit of units)
-  {
+  const units = (list?.units ?? []).map(u => ({ ...u }));
+  for (let unit of units) {
     delete unit.selectionId;
   }
 
@@ -63,7 +62,10 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
               <Card elevation={1}>
                 <div className="mb-4">
                   <div className="card-body">
-                    <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>{count > 1 ? `${count}x ` : ""}{u.customName || u.name} {(u.size > 1) && <span className='is-size-5 mr-2'>[{u.size}]</span>}{showPointCosts && <span className="is-size-6">- {UpgradeService.calculateUnitTotal(u)}pts</span>}</h3>
+                    <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>
+                      {count > 1 ? `${count}x ` : ""}{u.customName || u.name}
+                      {(u.size > 1) && <span className="" style={{ color: "#666666" }}> [{u.size}]</span>}
+                      {showPointCosts && <span className="is-size-6 ml-1" style={{ color: "#666666" }}>- {UpgradeService.calculateUnitTotal(u)}pts</span>}</h3>
                     <hr className="my-0" />
 
                     <div className="is-flex mb-2" style={{ justifyContent: "center" }}>
