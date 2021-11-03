@@ -79,7 +79,16 @@ export function Upgrades() {
     } else {
       dispatch(addCombinedUnit(selectedUnit.selectionId))
     }
-  }
+  };
+
+  const unitsWithAttachedHeroes = list.units
+    .filter(u => u.specialRules.some(rule => rule.name === "Hero"))
+    .filter(u => u.joinToUnit)
+    .map(u => u.joinToUnit);
+
+  const joinCandidates = list.units
+    .filter(u => u.size > 1 && !(u.combined && !u.joinToUnit))
+    .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit.joinToUnit);
 
   return (
     <div className={styles["upgrade-panel"]}>
@@ -102,7 +111,7 @@ export function Upgrades() {
               onChange={joinToUnit}
             >
               <MenuItem value={null}>None</MenuItem>
-              {list.units.filter(u => u.size > 1 && !(u.combined && !u.joinToUnit)).map((u, index) => (
+              {joinCandidates.map((u, index) => (
                 <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size * (u.combined ? 2 : 1)}]</MenuItem>
               ))}
             </Select>
