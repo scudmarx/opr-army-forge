@@ -32,40 +32,47 @@ export function MainList({ onSelected, onUnitRemoved }) {
           // For each selected unit
           units.map((s: ISelectedUnit, index: number) => {
 
-            const child = s.joinToUnit
+            console.log("Unit", s);
+
+            const joinedUnit = s.joinToUnit
               ? list.units.find(u => u.selectionId === s.joinToUnit)
               : null;
 
-            const grandchild = child?.joinToUnit
-              ? list.units.find(u => u.selectionId === child?.joinToUnit)
+            console.log("Parent unit", joinedUnit);
+
+            const combinedUnit = joinedUnit?.joinToUnit
+              ? list.units.find(u => u.selectionId === joinedUnit?.joinToUnit)
               : null;
 
+            console.log("Grandchild", combinedUnit);
+
             return (
-              <li key={index} className={child ? "my-2" : ""} style={{ backgroundColor: child ? "rgba(0,0,0,.12)" : "" }}>
-                {child && <div className="is-flex px-4 py-2 is-align-items-center">
+              <li key={index} className={joinedUnit ? "my-2" : ""} style={{ backgroundColor: joinedUnit ? "rgba(0,0,0,.12)" : "" }}>
+                {joinedUnit && <div className="is-flex px-4 py-2 is-align-items-center">
                   <LinkIcon style={{ fontSize: "24px", color: "rgba(0,0,0,.38)" }} />
                   <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>
                     {s.customName || s.name}
-                    {s.joinToUnit && !s.combined && ` and ${(child.customName || child.name)}`}
-                    </h3>
-                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(child) + UpgradeService.calculateUnitTotal(grandchild)}pts</p>
+                    {s.joinToUnit && !s.combined && ` and ${(joinedUnit.customName || joinedUnit.name)}`}
+                    {` [${joinedUnit.size + (combinedUnit?.size ?? 0)}]`}
+                  </h3>
+                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
                 </div>}
-                <div className={child ? "ml-1" : ""}>
+                <div className={joinedUnit ? "ml-1" : ""}>
                   <MainListItem
                     list={list}
                     unit={s}
                     expanded={expandAll}
                     onSelected={onSelected}
                     onUnitRemoved={onUnitRemoved} />
-                  {child && <MainListItem
+                  {joinedUnit && <MainListItem
                     list={list}
-                    unit={child}
+                    unit={joinedUnit}
                     expanded={expandAll}
                     onSelected={onSelected}
                     onUnitRemoved={onUnitRemoved} />}
-                  {grandchild && <MainListItem
+                  {combinedUnit && <MainListItem
                     list={list}
-                    unit={grandchild}
+                    unit={combinedUnit}
                     expanded={expandAll}
                     onSelected={onSelected}
                     onUnitRemoved={onUnitRemoved} />}
