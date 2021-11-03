@@ -5,14 +5,13 @@ import { ISelectedUnit } from "../data/interfaces";
 import RemoveIcon from '@mui/icons-material/Clear';
 import { selectUnit, removeUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
-import { Accordion, AccordionDetails, AccordionSummary, IconButton, Paper, Snackbar } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
 import { useRouter } from "next/router";
 import RuleList from "./components/RuleList";
 import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
 import FullCompactToggle from "./components/FullCompactToggle";
 import LinkIcon from '@mui/icons-material/Link';
-import ShieldIcon from '@mui/icons-material/Shield';
 
 export function MainList({ onSelected, onUnitRemoved }) {
 
@@ -37,6 +36,10 @@ export function MainList({ onSelected, onUnitRemoved }) {
               ? list.units.find(u => u.selectionId === s.joinToUnit)
               : null;
 
+            const grandchild = child?.joinToUnit
+              ? list.units.find(u => u.selectionId === child?.joinToUnit)
+              : null;
+
             return (
               <li key={index} className={child ? "my-2" : ""} style={{ backgroundColor: child ? "rgba(0,0,0,.12)" : "" }}>
                 {child && <div className="is-flex px-4 py-2 is-align-items-center">
@@ -54,6 +57,12 @@ export function MainList({ onSelected, onUnitRemoved }) {
                   {child && <MainListItem
                     list={list}
                     unit={child}
+                    expanded={expandAll}
+                    onSelected={onSelected}
+                    onUnitRemoved={onUnitRemoved} />}
+                  {grandchild && <MainListItem
+                    list={list}
+                    unit={grandchild}
                     expanded={expandAll}
                     onSelected={onSelected}
                     onUnitRemoved={onUnitRemoved} />}
