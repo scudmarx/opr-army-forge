@@ -49,7 +49,7 @@ export default function UpgradePanelHeader() {
         />
       ) : (
         <div className="is-flex">
-          <h3 className="is-size-4 has-text-left">{selectedUnit.customName || selectedUnit.name} {`[${selectedUnit.size}]`}</h3>
+          <h3 className="is-size-4 has-text-left">{selectedUnit.customName || selectedUnit.name} {`[${UnitService.getSize(selectedUnit)}]`}</h3>
         </div>
       )}
       <IconButton color="primary" className="ml-2" onClick={() => toggleEditMode()}>

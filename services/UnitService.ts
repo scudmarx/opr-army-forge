@@ -9,14 +9,15 @@ export default class UnitService {
       : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
   }
 
-  public static getAllUpgrades(unit: ISelectedUnit): IUpgradeGains[] {
+  public static getAllUpgrades(unit: ISelectedUnit, excludeModels: boolean): IUpgradeGains[] {
     return unit
       .selectedUpgrades
+      .filter(u => excludeModels ? !u.isModel : true)
       .reduce((value, option) => value.concat(option.gains), []);
   }
 
   public static getAllUpgradedRules(unit: ISelectedUnit): IUpgradeGainsRule[] {
-    const upgrades = this.getAllUpgrades(unit);
+    const upgrades = this.getAllUpgrades(unit, true);
 
     const rules = upgrades.filter(u => u.type === "ArmyBookRule") || [];
     const rulesFromitems = upgrades
@@ -36,7 +37,7 @@ export default class UnitService {
       .reduce((value, i) => value.concat(i.content.filter(isWeapon)), []);
 
     const all = this
-      .getAllUpgrades(unit)
+      .getAllUpgrades(unit, false)
       .filter(isWeapon)
       .concat(itemWeapons) as (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[];
 
@@ -45,7 +46,12 @@ export default class UnitService {
 
   public static getAllUpgradeItems(unit: ISelectedUnit): IUpgradeGainsItem[] {
     return this
-      .getAllUpgrades(unit)
+      .getAllUpgrades(unit, false)
       .filter(u => u.type === "ArmyBookItem") as IUpgradeGainsItem[];
+  }
+
+  public static getSize(unit: ISelectedUnit) : number {
+    const extraModelCount = unit.selectedUpgrades.filter(u => u.isModel).length;
+    return unit.size + extraModelCount;
   }
 }

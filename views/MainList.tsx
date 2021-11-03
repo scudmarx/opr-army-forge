@@ -32,7 +32,7 @@ export function MainList({ onSelected, onUnitRemoved }) {
           // For each selected unit
           units.map((s: ISelectedUnit, index: number) => {
 
-            console.log("Unit", s);
+            const isHero = s.specialRules.some(r => r.name === "Hero");
 
             const joinedUnit = s.joinToUnit
               ? list.units.find(u => u.selectionId === s.joinToUnit)
@@ -43,7 +43,6 @@ export function MainList({ onSelected, onUnitRemoved }) {
             const combinedUnit = joinedUnit?.joinToUnit
               ? list.units.find(u => u.selectionId === joinedUnit?.joinToUnit)
               : null;
-
             console.log("Grandchild", combinedUnit);
 
             return (
@@ -53,7 +52,7 @@ export function MainList({ onSelected, onUnitRemoved }) {
                   <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>
                     {s.customName || s.name}
                     {s.joinToUnit && !s.combined && ` & ${(joinedUnit.customName || joinedUnit.name)}`}
-                    {` [${joinedUnit.size + (combinedUnit?.size ?? 0)}]`}
+                    {` [${UnitService.getSize(joinedUnit) + (isHero ? (combinedUnit ? UnitService.getSize(combinedUnit) : 0) : UnitService.getSize(s))}]`}
                   </h3>
                   <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
                 </div>}
@@ -105,6 +104,8 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
     dispatch(removeUnit(unit.selectionId));
   };
 
+  const unitSize = UnitService.getSize(unit);
+
   return (
     <Accordion
       square
@@ -118,7 +119,7 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
       <AccordionSummary>
         <div className="is-flex is-flex-grow-1 is-align-items-center">
           <div className="is-flex-grow-1">
-            <p className="mb-1" style={{ fontWeight: 600 }}>{unit.customName || unit.name} {unit.size > 1 ? `[${unit.size}]` : ''}</p>
+            <p className="mb-1" style={{ fontWeight: 600 }}>{unit.customName || unit.name} {unitSize > 1 ? `[${unitSize}]` : ''}</p>
             <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
               <p>Qua {unit.quality}+</p>
               <p className="ml-2">Def {unit.defense}+</p>

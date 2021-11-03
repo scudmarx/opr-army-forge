@@ -54,6 +54,7 @@ export interface IUpgrade {
   replaceWhat?: string[] | string[][];
   model?: boolean;
   attachment?: boolean;
+  attachModel?: boolean;
   options?: IUpgradeOption[];
 }
 
@@ -61,6 +62,7 @@ export interface IUpgradeOption {
   id: string;
   cost: number;
   label: string;
+  isModel?: boolean;
   gains: IUpgradeGains[];// IEquipment[] | ISpecialRule[];
   replacedWhat?: string[] | string[][];
   type: "ArmyBookUpgradeOption";

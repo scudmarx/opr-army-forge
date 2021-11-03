@@ -57,38 +57,43 @@ export default class DataService {
       })),
       upgradePackages: input.upgradePackages.map(pkg => ({
         ...pkg,
-        sections: pkg.sections.map(section => ({
-          ...section,
-          ...DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":")),
-          options: section.options.map((opt: IUpgradeOption) => {
-            const gains = [];
-            // Iterate backwards through gains array so we can push new 
-            for (let original of opt.gains) {
-              // Match "2x ", etc
+        sections: pkg.sections.map(section => {
+          const upgrade = DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":"));
 
-              // Replace "2x " in label/name of original gain
-              const gain = {
-                ...original,
-                label: original.label?.replace(countRegex, ""),
-                name: original.name?.replace(countRegex, "")
-              };
-              // Capture the count digit from the name
-              const countMatch = countRegex.exec(original.name);
-              // Parse the count if present, otherwise default to 1
-              const count = countMatch ? parseInt(countMatch[1]) : 1;
-              // Push the gain into the array as many times as the count
-              for (let y = 0; y < count; y++) {
-                gains.push(gain);
+          return {
+            ...section,
+            ...upgrade,
+            options: section.options.map((opt: IUpgradeOption) => {
+              const gains = [];
+              // Iterate backwards through gains array so we can push new 
+              for (let original of opt.gains) {
+                // Match "2x ", etc
+
+                // Replace "2x " in label/name of original gain
+                const gain = {
+                  ...original,
+                  label: original.label?.replace(countRegex, ""),
+                  name: original.name?.replace(countRegex, "")
+                };
+                // Capture the count digit from the name
+                const countMatch = countRegex.exec(original.name);
+                // Parse the count if present, otherwise default to 1
+                const count = countMatch ? parseInt(countMatch[1]) : 1;
+                // Push the gain into the array as many times as the count
+                for (let y = 0; y < count; y++) {
+                  gains.push(gain);
+                }
               }
-            }
-            return ({
-              ...opt,
-              cost: typeof (opt.cost ?? 0) === "number" ? opt.cost : parseInt((opt.cost as any).toString().replace(/pts?/, "")),
-              id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
-              gains
-            });
-          })
-        }))
+              return ({
+                ...opt,
+                isModel: upgrade.attachModel ?? false,
+                cost: typeof (opt.cost ?? 0) === "number" ? opt.cost : parseInt((opt.cost as any).toString().replace(/pts?/, "")),
+                id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
+                gains
+              });
+            })
+          };
+        })
       }))
     };
 

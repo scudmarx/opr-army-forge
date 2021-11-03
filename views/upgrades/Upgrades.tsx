@@ -88,12 +88,13 @@ export function Upgrades() {
 
   const joinCandidates = list.units
     .filter(u => u.size > 1 && !(u.combined && !u.joinToUnit))
-    .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit.joinToUnit);
+    .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit);
 
   return (
     <div className={styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
+        {/* Combine unit */}
         {selectedUnit.size > 1 && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
@@ -102,6 +103,7 @@ export function Upgrades() {
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
         </FormGroup>}
+        {/* Join to unit */}
         {!isSkirmish && isHero && <FormGroup className="px-4 pt-2 pb-3">
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Join To Unit</InputLabel>
@@ -117,12 +119,14 @@ export function Upgrades() {
             </Select>
           </FormControl>
         </FormGroup>}
+        {/* Equipment */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} />
         </div>
         <div className="px-4 pt-2">
           {isPsychic && <SpellsTable />}
         </div>
+        {/* Rules */}
         {specialRules?.length > 0 &&
           <div className="p-4 mb-4">
             <h4 style={{ fontWeight: 600, fontSize: "14px" }}>Special Rules</h4>
@@ -142,7 +146,8 @@ export function Upgrades() {
                     <LinkIcon sx={{ fontSize: 22 }} className="mr-2" />
                   </CustomTooltip>}
                 <p className="pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>
-                  {UpgradeService.displayName(u, selectedUnit)}:
+                  {/* {UpgradeService.displayName(u, selectedUnit)}: */}
+                  {u.label}
                 </p>
               </div>
               <UpgradeGroup upgrade={u} />

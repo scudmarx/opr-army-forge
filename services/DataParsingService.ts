@@ -52,12 +52,20 @@ export default class DataParsingService {
     }
 
     // Honestly I just don't want to change the monster below...
-    const upgradeUpToModelsMatch = /Upgrade up to two models with/.exec(text);
+    const upgradeUpToModelsMatch = /Upgrade up to two models with/i.exec(text);
     if (upgradeUpToModelsMatch)
       return {
         type: "upgrade",
         model: true,
         select: 2
+      };
+
+      const addModelMatch = /Add one model with/i.exec(text);
+    if (addModelMatch)
+      return {
+        type: "upgrade",
+        attachModel: true,
+        select: 1
       };
 
     text = text.endsWith(":") ? text.substring(0, text.length - 1) : text;

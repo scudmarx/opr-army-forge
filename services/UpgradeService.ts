@@ -11,6 +11,7 @@ export default class UpgradeService {
       .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
   }
 
+  // DEPRECATED
   public static displayName(upgrade: IUpgrade, unit: ISelectedUnit): string {
     const numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"];
 
