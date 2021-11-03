@@ -102,7 +102,7 @@ export default class UpgradeService {
           .gains
           .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
 
-        if (toReplace)
+        if (toReplace && toReplace.count > 0)
           break;
       }
     }

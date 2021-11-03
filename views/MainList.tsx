@@ -52,7 +52,7 @@ export function MainList({ onSelected, onUnitRemoved }) {
                   <LinkIcon style={{ fontSize: "24px", color: "rgba(0,0,0,.38)" }} />
                   <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>
                     {s.customName || s.name}
-                    {s.joinToUnit && !s.combined && ` and ${(joinedUnit.customName || joinedUnit.name)}`}
+                    {s.joinToUnit && !s.combined && ` & ${(joinedUnit.customName || joinedUnit.name)}`}
                     {` [${joinedUnit.size + (combinedUnit?.size ?? 0)}]`}
                   </h3>
                   <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
