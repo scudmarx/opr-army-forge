@@ -10,9 +10,7 @@ export default function UndoRemoveUnit({ open, setOpen }) {
   const remove = useSelector((state: RootState) => state.list.undoUnitRemove);
   const unit = remove && Array.isArray(remove)
     ? remove[0]
-    : remove
-      ? remove
-      : null;
+    : null;
   if (!unit)
     setOpen(false)
 
