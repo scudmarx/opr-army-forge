@@ -41,6 +41,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
   useEffect(() => {
     if (!isEdit && army.data && army.data.name) {
       setArmyName(army.data.name);
+      setSelectedChild(army.data.name);
     }
   }, [army.data, isEdit]);
 
@@ -114,12 +115,14 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
             </FormGroup>}
             {
               !isEdit && army.childData && <>
-                <h3 className="mt-4" style={{ fontWeight: 600 }}>{factionRelation}</h3>
-                <List>
+                <h3 className="mt-4 mb-0" style={{ fontWeight: 600 }}>{factionRelation}</h3>
+                <List className="pt-0">
                   {army.childData.map((child, index) => {
                     return (
-                      <ListItem divider className="px-0">
-                        <ListItemText primary={child.name === army.data.name ? "None" : child.name} />
+                      <ListItem divider className="px-0" style={{ cursor: child.isLive ? "pointer" : "" }} onClick={() => setSelectedChild(child.name)}>
+                        <ListItemText
+                          style={{ color: child.isLive === false ? "#999" : "" }}
+                          primary={child.name === army.data.name ? "None" : child.name} />
                         <Radio
                           disabled={child.isLive === false}
                           value={child.name}
