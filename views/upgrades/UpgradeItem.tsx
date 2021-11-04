@@ -88,7 +88,11 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
             const count = group.length
 
             return <UpgradeItemDisplay key={i} eqp={e} count={count} />;
-          }) : <span style={{ color: "#000000" }}>None</span>
+          }) : upgrade.replaceWhat && upgrade.type == "replace" ? 
+          upgrade.replaceWhat.map((e, i) => {
+            return <UpgradeItemDisplay key={`d${i}`} eqp={{...EquipmentService.findLast(selectedUnit.equipment, e), type:"ArmyBookWeapon"}} count={1} />
+          })
+          : <span style={{ color: "#000000" }}>None</span>
         }
       </div>
       <div>
