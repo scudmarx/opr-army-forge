@@ -113,7 +113,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
               } label="Auto Save List" />
             </FormGroup>}
             {
-              !isLive && !isEdit && army.childData && <>
+              !isEdit && army.childData && <>
                 <h3 className="mt-4" style={{ fontWeight: 600 }}>{factionRelation}</h3>
                 <List>
                   {army.childData.map((child, index) => {

@@ -113,8 +113,6 @@ export default function Files() {
 
 
   const selectArmy = (filePath: string) => {
-    // TODO: Clear existing data
-
     // Set army file
     dispatch(setArmyFile(filePath));
 
