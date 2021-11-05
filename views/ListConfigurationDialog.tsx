@@ -33,7 +33,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = window.location.host === "opr-army-forge.vercel.app";
+  const isLive = typeof(window) !== "undefined" ? window.location.host === "opr-army-forge.vercel.app" : true;
 
   const factionRelation = army.childData?.filter(c => c.factionRelation)[0]?.factionRelation;
 

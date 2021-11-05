@@ -20,7 +20,7 @@ export default function List() {
   useEffect(() => {
     // Redirect to game selection screen if no army selected
     if (!army.loaded) {
-      router.push("/", null, { shallow: true });
+      router.push({pathname: "gameSystem/", query: router.query}, null, { shallow: true });
       return;
     }
 

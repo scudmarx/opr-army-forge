@@ -10,10 +10,18 @@ export default function GameSystem() {
   const router = useRouter();
   const isLive = window.location.host === "opr-army-forge.vercel.app";
 
+  const gameSystems = ["gf", "gff", "aof", "aofs"];
+
   const selectGameSystem = (gameSystem: string) => {
     dispatch(setGameSystem(gameSystem));
-    router.push("/files");
+    router.push({pathname: "/files", query: router.query});
   };
+
+  if (router.query) {
+    console.log(router.query)
+    let gameSystem = router.query.gameSystem as string
+    if (gameSystems.includes(gameSystem)) selectGameSystem(gameSystem)
+  } 
 
   return (
     <>
@@ -49,7 +57,7 @@ export default function GameSystem() {
           <div className="columns is-multiline is-mobile">
             {
               // For each game system
-              ["gf", "gff", "aof", "aofs"].map(gameSystem => (
+              gameSystems.map(gameSystem => (
                 <div key={gameSystem} className="column is-half">
                   <Paper>
                     <img onClick={() => isLive && gameSystem !== "gf" ? false : selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
