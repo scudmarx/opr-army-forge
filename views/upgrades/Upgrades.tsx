@@ -106,7 +106,7 @@ export function Upgrades() {
         {/* Join to unit */}
         {!isSkirmish && isHero && <FormGroup className="px-4 pt-2 pb-3">
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label" sx={{zIndex: "unset"}}>Join To Unit</InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{ zIndex: "unset" }}>Join To Unit</InputLabel>
             <Select
               value={selectedUnit?.joinToUnit || ""}
               label="Join To Unit"
@@ -123,9 +123,9 @@ export function Upgrades() {
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} />
         </div>
-        <div className="px-4 pt-2">
-          {isPsychic && <SpellsTable />}
-        </div>
+        {isPsychic && <div className="px-4 pt-2">
+          <SpellsTable />
+        </div>}
         {/* Rules */}
         {specialRules?.length > 0 &&
           <div className="p-4 mb-4">
