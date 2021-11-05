@@ -119,12 +119,16 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
                 <List className="pt-0">
                   {army.childData.map((child, index) => {
                     return (
-                      <ListItem divider className="px-0" style={{ cursor: child.isLive ? "pointer" : "" }} onClick={() => setSelectedChild(child.name)}>
+                      <ListItem
+                        divider
+                        className="px-0"
+                        style={{ cursor: child.isLive ? "pointer" : "" }}
+                        onClick={() => child.isLive ? setSelectedChild(child.name) : null}>
                         <ListItemText
-                          style={{ color: child.isLive === false ? "#999" : "" }}
+                          style={{ color: !child.isLive ? "#999" : "" }}
                           primary={child.name === army.data.name ? "None" : child.name} />
                         <Radio
-                          disabled={child.isLive === false}
+                          disabled={!child.isLive}
                           value={child.name}
                           checked={selectedChild === child.name}
                           onChange={e => setSelectedChild(e.target.value)} />
