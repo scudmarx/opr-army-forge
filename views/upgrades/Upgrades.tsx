@@ -106,7 +106,7 @@ export function Upgrades() {
         {/* Join to unit */}
         {!isSkirmish && isHero && <FormGroup className="px-4 pt-2 pb-3">
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Join To Unit</InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{zIndex: "unset"}}>Join To Unit</InputLabel>
             <Select
               value={selectedUnit?.joinToUnit || ""}
               label="Join To Unit"
