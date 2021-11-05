@@ -34,7 +34,7 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
           // Sum all occurrences
           : group.reduce((total, next) => next.rating ? total + parseInt(next.rating) : total, 0);
 
-          console.log(rule)
+          //console.log(rule)
         const ruleDefinition = ruleDefinitions
           .filter(r => /(.+?)(?:\(|$)/.exec(r.name)[0] === rule.name)[0];
         return (

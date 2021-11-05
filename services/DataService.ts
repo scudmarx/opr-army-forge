@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import { IUnit, IUpgradeOption } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
+import router from "next/router";
 
 export default class DataService {
 
@@ -22,7 +23,8 @@ export default class DataService {
 
   public static getApiData(armyId: string, callback: (armyData: any) => void) {
 
-    fetch(this.webCompanionUrl + `/army-books/${armyId}`)
+    let dataSourceUrl = router.query.dataSourceUrl ? `https://${router.query.dataSourceUrl}.herokuapp.com/api` : this.webCompanionUrl
+    fetch(dataSourceUrl + `/army-books/${armyId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -31,7 +33,7 @@ export default class DataService {
         console.log(afData);
 
         callback(afData);
-      });
+      }).catch(err => {throw new Error(err)})
   }
 
   public static transformApiData(input) {
