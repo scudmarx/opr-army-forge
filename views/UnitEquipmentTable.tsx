@@ -112,7 +112,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
   return (
     <>
-      {hasWeapons && <TableContainer component={Paper} elevation={0} className="mb-2" style={{ border: "1px solid rgba(0,0,0,.12)" }}>
+      {hasWeapons && <TableContainer component={Paper} elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
         <Table size="small">
           <TableHead>
             <TableRow style={{ backgroundColor: "#EBEBEB", fontWeight: 600 }}>
@@ -156,7 +156,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
           </TableBody>
         </Table>
       </TableContainer>}
-      {hasEquipment && <TableContainer component={Paper} className="mb-2" elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
+      {hasEquipment && <TableContainer component={Paper} className="mt-2" elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
         <Table size="small">
           <TableHead>
             <TableRow style={{ backgroundColor: "#EBEBEB", fontWeight: 600 }}>
