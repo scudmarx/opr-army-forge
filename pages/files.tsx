@@ -286,7 +286,7 @@ export default function Files() {
         open={showSnackbar}
         onClose={() => setShowSnackbar(false)}
       >
-        <MuiAlert severity="error" variant="filled">Could not load Army Data.</MuiAlert>
+        <MuiAlert severity="error" variant="filled" sx={{background: "#ff7043"}}>Could not load Army Data.</MuiAlert>
         </Snackbar>
     </>
   );
