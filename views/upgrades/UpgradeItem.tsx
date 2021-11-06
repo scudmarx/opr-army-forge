@@ -88,12 +88,12 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
             const count = group.length
 
             return <UpgradeItemDisplay key={i} eqp={e} count={count} />;
-          }) : <span style={{ color: "#000000" }}>{
+          }) : <span className="is-size-6" style={{ color: "#888888" }}>{
             upgrade.replaceWhat && upgrade.type == "replace" ? 
-              <>Keep {upgrade.replaceWhat.map((e, i) => {
+              <><span className="is-size-6" style={{ color: "#61526c" }}>{upgrade.replaceWhat.map((e, i) => {
                 let w = EquipmentService.findLast(selectedUnit.equipment, e)
-                return `${w ? EquipmentService.formatString(w) : e} `
-              })}</>
+                return `${i > 0 ? ", " : ""}${w ? EquipmentService.formatString(w) : e}`
+              })}</span> (default)</>
             : "None"}</span>
         }
       </div>
