@@ -1,0 +1,1449 @@
+{
+  "gameSystemId": 2,
+  "name": "Wormhole Daemons - Lust",
+  "hint": "Wormhole Daemons - Lust",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.5",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "AHjQZXj",
+      "name": "Greater Daemon of Lust",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "-Svjqov",
+          "label": "Exalted Ritual Blade",
+          "count": 2,
+          "attacks": 12,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18",
+          "modify": false
+        },
+        {
+          "key": "psychic",
+          "name": "Psychic",
+          "rating": "2",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "5Yv29MF",
+      "name": "Daemon Champion of Lust",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "F4EbPrU",
+          "label": "Great Ritual Blade",
+          "attacks": 9,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "B1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "7Lx_A74",
+      "name": "Champion of Lust",
+      "size": 1,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "nHgSxod",
+          "label": "Ritual Blade",
+          "attacks": 6,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "C1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "5G_1rls",
+      "name": "Infernal Harpist",
+      "size": 1,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "xLFhLGg",
+          "label": "Harp",
+          "attacks": 6,
+          "range": 18,
+          "specialRules": [
+            "AP(1)",
+            "Indirect"
+          ]
+        },
+        {
+          "id": "KCEn5Dd",
+          "label": "CCW",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "D1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "CkXi_4E",
+      "name": "Sacred Mirror",
+      "size": 1,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "HZPOqTN",
+          "label": "Horrific Reflection",
+          "attacks": 2,
+          "range": 12,
+          "specialRules": [
+            "AP(3)",
+            "Deadly(3)"
+          ]
+        },
+        {
+          "id": "J28P5_x",
+          "label": "Crew Attacks",
+          "attacks": 3,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "magic-absorption",
+          "name": "Magic Absorption",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        },
+        {
+          "key": "psychic",
+          "name": "Psychic",
+          "rating": "2",
+          "modify": false
+        }
+      ],
+      "upgrades": [],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "kEPVGRW",
+      "name": "Lust Warriors",
+      "size": 5,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "0AyylNr",
+          "label": "CCWs",
+          "attacks": 2,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "E1",
+        "F1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "xxJtoF0",
+      "name": "Lust Beast Riders",
+      "size": 5,
+      "quality": 4,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "cAk9NDY",
+          "label": "CCWs",
+          "attacks": 2,
+          "specialRules": []
+        },
+        {
+          "id": "_1PMgnX",
+          "label": "Claws",
+          "attacks": 1,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "1",
+          "modify": false
+        },
+        {
+          "key": "very-fast",
+          "name": "Very Fast",
+          "rating": "",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "E1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "F69CPiK",
+      "name": "Lust Fiends",
+      "size": 3,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "WLyVube",
+          "label": "Claws",
+          "attacks": 6,
+          "specialRules": []
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "3",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        }
+      ],
+      "upgrades": [],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "B15Vnm7",
+      "name": "Razor-Flail Chariot",
+      "size": 1,
+      "quality": 4,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "j4ohRnJ",
+          "label": "Crew Attacks",
+          "attacks": 8,
+          "specialRules": []
+        },
+        {
+          "id": "izl548I",
+          "label": "Claws",
+          "attacks": 2,
+          "specialRules": [
+            "Poison"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "9",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        },
+        {
+          "key": "very-fast",
+          "name": "Very Fast",
+          "rating": "",
+          "modify": false
+        }
+      ],
+      "upgrades": [],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "0ZGH48g",
+      "name": "Crab Daemon of Lust",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "7ntwuNh",
+          "label": "Lust Cannon",
+          "attacks": 12,
+          "range": 24,
+          "specialRules": []
+        },
+        {
+          "id": "bAZcuS6",
+          "label": "Lust Claw",
+          "attacks": 18,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "G1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Replace any Exalted Ritual Blade",
+          "type": "replace",
+          "model": false,
+          "affects": "any",
+          "replaceWhat": [
+            "Exalted Ritual Blade"
+          ],
+          "options": [
+            {
+              "id": "T9Yq0",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Ritual Hammer (A8, Rending)",
+              "gains": [
+                {
+                  "label": "Exalted Ritual Hammer (A8, Rending)",
+                  "name": "Exalted Ritual Hammer",
+                  "attacks": 8,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ju25w",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Ritual Spear (A4, AP(2), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Exalted Ritual Spear (A4, AP(2), Deadly(3))",
+                  "name": "Exalted Ritual Spear",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "model": false,
+          "select": "any",
+          "options": [
+            {
+              "id": "-F_gs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Limb Strike (12”, A18)",
+              "gains": [
+                {
+                  "label": "Exalted Limb Strike (12”, A18)",
+                  "name": "Exalted Limb Strike",
+                  "attacks": 18,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "-dceX",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Symbol of Lust(4)",
+              "gains": [
+                {
+                  "label": "Symbol of Lust(4)",
+                  "name": "Symbol of Lust",
+                  "content": [
+                    {
+                      "key": "4",
+                      "name": "4",
+                      "rating": "",
+                      "modify": false,
+                      "label": "4",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Replace Great Ritual Blade",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Great Ritual Blade"
+          ],
+          "options": [
+            {
+              "id": "zU-r1",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Ritual Hammer (A6, Rending)",
+              "gains": [
+                {
+                  "label": "Great Ritual Hammer (A6, Rending)",
+                  "name": "Great Ritual Hammer",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tMrVV",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Ritual Spear (A3, AP(2), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Great Ritual Spear (A3, AP(2), Deadly(3))",
+                  "name": "Great Ritual Spear",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "model": false,
+          "select": "any",
+          "options": [
+            {
+              "id": "3Cpmb",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Limb Strike (12”, A12)",
+              "gains": [
+                {
+                  "label": "Great Limb Strike (12”, A12)",
+                  "name": "Great Limb Strike",
+                  "attacks": 12,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "60hjT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Wings (Flying)",
+              "gains": [
+                {
+                  "label": "Wings (Flying)",
+                  "name": "Wings",
+                  "content": [
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "c-139",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Symbol of Lust(2)",
+              "gains": [
+                {
+                  "label": "Symbol of Lust(2)",
+                  "name": "Symbol of Lust",
+                  "content": [
+                    {
+                      "key": "2",
+                      "name": "2",
+                      "rating": "",
+                      "modify": false,
+                      "label": "2",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "uHmdTnq",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Psychic(2)",
+              "gains": [
+                {
+                  "key": "psychic",
+                  "name": "Psychic",
+                  "rating": "2",
+                  "modify": false,
+                  "label": "Psychic(2)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Replace Ritual Blade",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Ritual Blade"
+          ],
+          "options": [
+            {
+              "id": "7KzYu",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Ritual Hammer (A4, Rending)",
+              "gains": [
+                {
+                  "label": "Ritual Hammer (A4, Rending)",
+                  "name": "Ritual Hammer",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "6hM6m",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Ritual Spear (A2, AP(2), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Ritual Spear (A2, AP(2), Deadly(3))",
+                  "name": "Ritual Spear",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "model": false,
+          "select": "any",
+          "options": [
+            {
+              "id": "xPp_x",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Limb Strike (12”, A6)",
+              "gains": [
+                {
+                  "label": "Limb Strike (12”, A6)",
+                  "name": "Limb Strike",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            },
+            {
+              "id": "eaIhy",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Symbol of Lust(1)",
+              "gains": [
+                {
+                  "label": "Symbol of Lust(1)",
+                  "name": "Symbol of Lust",
+                  "content": [
+                    {
+                      "key": "1",
+                      "name": "1",
+                      "rating": "",
+                      "modify": false,
+                      "label": "1",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "99iMYOJ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Psychic(1)",
+              "gains": [
+                {
+                  "key": "psychic",
+                  "name": "Psychic",
+                  "rating": "1",
+                  "modify": false,
+                  "label": "Psychic(1)",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Mount on",
+          "type": "upgrade",
+          "select": 1,
+          "options": [
+            {
+              "id": "wpmGc",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Lust Beast (Claws (A1, Poison), Impact(1), Very Fast)",
+              "gains": [
+                {
+                  "label": "Lust Beast (Claws (A1, Poison), Impact(1), Very Fast)",
+                  "name": "Lust Beast",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "claws-(a1",
+                      "name": "Claws (A1",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Claws (A1",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "poison)",
+                      "name": "Poison)",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Poison)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "modify": false,
+                      "label": "Impact(1)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "very-fast",
+                      "name": "Very Fast",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Very Fast",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "kJo9a",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Daemon Champion (Defense +2, Axe (A6, AP(2)), Fear, Tough(+6))",
+              "gains": [
+                {
+                  "label": "Daemon Champion (Defense +2, Axe (A6, AP(2)), Fear, Tough(+6))",
+                  "name": "Daemon Champion",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "defense",
+                      "name": "Defense",
+                      "rating": "2",
+                      "condition": "",
+                      "label": "Defense +2",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "axe-(a6",
+                      "name": "Axe (A6",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Axe (A6",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "ap(2))",
+                      "name": "AP(2))",
+                      "rating": "",
+                      "modify": false,
+                      "label": "AP(2))",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "fear",
+                      "name": "Fear",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Fear",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough",
+                      "name": "Tough",
+                      "rating": "6",
+                      "modify": true,
+                      "label": "Tough(+6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "model": false,
+          "select": "any",
+          "options": [
+            {
+              "id": "2lVAD3m",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Song of Banishment",
+              "gains": [
+                {
+                  "key": "song-of-banishment",
+                  "name": "Song of Banishment",
+                  "rating": "",
+                  "modify": false,
+                  "label": "Song of Banishment",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            },
+            {
+              "id": "C508AvL",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Song of Summoning",
+              "gains": [
+                {
+                  "key": "song-of-summoning",
+                  "name": "Song of Summoning",
+                  "rating": "",
+                  "modify": false,
+                  "label": "Song of Summoning",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "model": false,
+          "options": [
+            {
+              "id": "tc_vm",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Command Group (Fear)",
+              "gains": [
+                {
+                  "label": "Command Group (Fear)",
+                  "name": "Command Group",
+                  "content": [
+                    {
+                      "key": "fear",
+                      "name": "Fear",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Fear",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Upgrade one model with",
+          "type": "upgrade",
+          "model": true,
+          "affects": 1,
+          "options": [
+            {
+              "id": "YAj5Ev3",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Banner of Lust",
+              "gains": [
+                {
+                  "key": "banner-of-lust",
+                  "name": "Banner of Lust",
+                  "rating": "",
+                  "modify": false,
+                  "label": "Banner of Lust",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace all CCWs",
+          "type": "replace",
+          "model": false,
+          "affects": "all",
+          "replaceWhat": [
+            "CCWs"
+          ],
+          "options": [
+            {
+              "id": "r53ey",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Magical CCWs (A2, Rending)",
+              "gains": [
+                {
+                  "label": "Magical CCWs (A2, Rending)",
+                  "name": "Magical CCWs",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "eDAxd",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Heavy CCWs (A2, AP(2))",
+              "gains": [
+                {
+                  "label": "Heavy CCWs (A2, AP(2))",
+                  "name": "Heavy CCWs",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "LATLZ",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Dual CCWs (A4)",
+              "gains": [
+                {
+                  "label": "Dual CCWs (A4)",
+                  "name": "Dual CCWs",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
+        {
+          "label": "Replace Lust Claw",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Lust Claw"
+          ],
+          "options": [
+            {
+              "id": "9bJg2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Lust Blade (A24)",
+              "gains": [
+                {
+                  "label": "Lust Blade (A24)",
+                  "name": "Lust Blade",
+                  "content": [
+                    {
+                      "key": "a24",
+                      "name": "A24",
+                      "rating": "",
+                      "modify": false,
+                      "label": "A24",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace Lust Cannon",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Lust Cannon"
+          ],
+          "options": [
+            {
+              "id": "-6bX2",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Heavy Lust Cannon (24”, A9, AP(2))",
+              "gains": [
+                {
+                  "label": "Heavy Lust Cannon (24”, A9, AP(2))",
+                  "name": "Heavy Lust Cannon",
+                  "attacks": 9,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "szO8X",
+      "key": "banner-of-lust",
+      "hint": "The model and its unit count as having the Strider special rule.",
+      "name": "Banner of Lust",
+      "tags": [],
+      "label": "Banner of Lust",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The model and its unit count as having the Strider special rule."
+    },
+    {
+      "id": "qIPZf",
+      "key": "daemon",
+      "hint": "This model may be deployed as if it had the Ambush or the Scout rule (pick one).",
+      "name": "Daemon",
+      "tags": [],
+      "label": "Daemon",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model may be deployed as if it had the Ambush or the Scout rule (pick one)."
+    },
+    {
+      "id": "V8qDB",
+      "key": "magic-absorption",
+      "hint": "This model gets +2 to its rolls when blocking enemy spells.",
+      "name": "Magic Absorption",
+      "tags": [],
+      "label": "Magic Absorption",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model gets +2 to its rolls when blocking enemy spells."
+    },
+    {
+      "id": "pWN2t",
+      "key": "song-of-banishment",
+      "hint": "Once per activation, before attacking, pick one enemy unit within 18”, which takes a Dangerous Terrain test.",
+      "name": "Song of Banishment",
+      "tags": [],
+      "label": "Song of Banishment",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Once per activation, before attacking, pick one enemy unit within 18”, which takes a Dangerous Terrain test."
+    },
+    {
+      "id": "7hi6h",
+      "key": "song-of-summoning",
+      "hint": "When this model is activated you may place a unit of 5 Lust Warrior fully within 6” of this unit.",
+      "name": "Song of Summoning",
+      "tags": [],
+      "label": "Song of Summoning",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "When this model is activated you may place a unit of 5 Lust Warrior fully within 6” of this unit."
+    },
+    {
+      "id": "peKP8",
+      "key": "symbol-of-lust(x)",
+      "hint": "Once per activation, before attacking, roll X dice. For each 2+ two enemy units within 12” take 3 automatic hits each.",
+      "name": "Symbol of Lust(X)",
+      "tags": [],
+      "label": "Symbol of Lust(X)",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Once per activation, before attacking, roll X dice. For each 2+ two enemy units within 12” take 3 automatic hits each."
+    },
+    {
+      "id": "bCWk9",
+      "key": "very-fast",
+      "hint": "This model moves 12” when using Advance and 24” when using Rush/Charge.",
+      "name": "Very Fast",
+      "tags": [],
+      "label": "Very Fast",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model moves 12” when using Advance and 24” when using Rush/Charge."
+    }
+  ],
+  "spells": [
+    {
+      "id": "ZD-Sc",
+      "name": "Twisted Ecstasy",
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” gets -1 to hit next time it shoots."
+    },
+    {
+      "id": "q4QIc",
+      "name": "Seizure",
+      "threshold": 4,
+      "effect": "Target enemy unit within 12” takes 1 hit with AP(2) and Deadly(3)."
+    },
+    {
+      "id": "D5NeP",
+      "name": "Pleasure",
+      "threshold": 5,
+      "effect": "Target friendly unit within 12” gets Regeneration next time it takes wounds."
+    },
+    {
+      "id": "ocwnS",
+      "name": "Pain",
+      "threshold": 5,
+      "effect": "Target enemy unit within 12” takes 3 automatic hits with AP(2)."
+    },
+    {
+      "id": "VYQ8T",
+      "name": "Frenzy",
+      "threshold": 6,
+      "effect": "Target friendly unit within 12” may immediately charge by up to 6” and gets +1 to hit for that melee."
+    },
+    {
+      "id": "QGvMV",
+      "name": "Overload",
+      "threshold": 6,
+      "effect": "Target enemy unit within 6” takes 1 automatic hit per model."
+    }
+  ],
+  "modifiedAt": "2021-11-06T17:41:52.840Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "grimdark-future",
+  "fullname": "Grimdark Future",
+  "aberration": "GF",
+  "universe": "Grimdark Future",
+  "shortname": "Grimdark Future"
+}

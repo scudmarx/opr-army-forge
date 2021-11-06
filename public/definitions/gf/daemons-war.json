@@ -1,0 +1,1463 @@
+{
+  "gameSystemId": 2,
+  "name": "Wormhole Daemons - War",
+  "hint": "Wormhole Daemons - War",
+  "background": "",
+  "armyWideRule": {},
+  "versionString": "v2.5",
+  "dataToolVersion": "0.5.3",
+  "units": [
+    {
+      "id": "IEKlcM6",
+      "name": "Greater Daemon of War",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "8mBUTrE",
+          "label": "Exalted Flame Axes",
+          "count": 2,
+          "attacks": 9,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "flying",
+          "name": "Flying",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "A1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "-mPIBbC",
+      "name": "Daemon Champion of War",
+      "size": 1,
+      "quality": 2,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "5edOnjO",
+          "label": "Great Flame Axe",
+          "attacks": 6,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "B1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "bOgNeqn",
+      "name": "Champion of War",
+      "size": 1,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "CwY0Idf",
+          "label": "Flame Axe",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "C1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "AekWMjb",
+      "name": "Cerberus Hound",
+      "size": 1,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "lMh0usZ",
+          "label": "Frenzied Bites",
+          "attacks": 6,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "hero",
+          "name": "Hero",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "D1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "GDN9WPU",
+      "name": "Blood Warriors",
+      "size": 5,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "7I3R02-",
+          "label": "CCWs",
+          "attacks": 1,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "E1",
+        "F1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "IOmEFFs",
+      "name": "Brass Beast Riders",
+      "size": 3,
+      "quality": 3,
+      "defense": 3,
+      "equipment": [
+        {
+          "id": "NVI_mft",
+          "label": "CCWs",
+          "attacks": 1,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "9iomeAq",
+          "label": "Hooves",
+          "attacks": 3,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "impact",
+          "name": "Impact",
+          "rating": "3",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "E1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "3L8sMi8",
+      "name": "Blood Hounds",
+      "size": 5,
+      "quality": 3,
+      "defense": 4,
+      "equipment": [
+        {
+          "id": "pNHKZNO",
+          "label": "Claws",
+          "attacks": 2,
+          "specialRules": [
+            "AP(1)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fast",
+          "name": "Fast",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "3",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "G1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "EmaNk6M",
+      "name": "Cannon Chariot",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "O5C3fX4",
+          "label": "Cannon",
+          "attacks": 2,
+          "range": 30,
+          "specialRules": [
+            "Blast(3)",
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "Wpi3Oa4",
+          "label": "Crew Attacks",
+          "attacks": 3,
+          "specialRules": [
+            "AP(2)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "6",
+          "modify": false
+        }
+      ],
+      "upgrades": [],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    },
+    {
+      "id": "kI7P_Vm",
+      "name": "Crab Daemon of War",
+      "size": 1,
+      "quality": 3,
+      "defense": 2,
+      "equipment": [
+        {
+          "id": "sa48E1n",
+          "label": "Flame Cannon",
+          "attacks": 9,
+          "range": 24,
+          "specialRules": [
+            "AP(2)"
+          ]
+        },
+        {
+          "id": "EYAY7Y0",
+          "label": "Flame Claw",
+          "attacks": 12,
+          "specialRules": [
+            "AP(4)"
+          ]
+        }
+      ],
+      "specialRules": [
+        {
+          "key": "daemon",
+          "name": "Daemon",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "fear",
+          "name": "Fear",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "furious",
+          "name": "Furious",
+          "rating": "",
+          "modify": false
+        },
+        {
+          "key": "tough",
+          "name": "Tough",
+          "rating": "18",
+          "modify": false
+        }
+      ],
+      "upgrades": [
+        "H1"
+      ],
+      "cost": 0,
+      "costMode": "manually",
+      "splitPageNumber": 1
+    }
+  ],
+  "upgradePackages": [
+    {
+      "uid": "A1",
+      "hint": "A1",
+      "sections": [
+        {
+          "label": "Replace any Exalted Flame Axe",
+          "type": "replace",
+          "model": false,
+          "affects": "any",
+          "replaceWhat": [
+            "Exalted Flame Axe"
+          ],
+          "options": [
+            {
+              "id": "x8NRq",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Flame Hammer (A6, AP(4))",
+              "gains": [
+                {
+                  "label": "Exalted Flame Hammer (A6, AP(4))",
+                  "name": "Exalted Flame Hammer",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ZHzw_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Flame Spear (A3, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Exalted Flame Spear (A3, AP(4), Deadly(3))",
+                  "name": "Exalted Flame Spear",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "model": false,
+          "select": "any",
+          "options": [
+            {
+              "id": "7MkQ0",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Exalted Fire Lash (12”, A12, AP(2))",
+              "gains": [
+                {
+                  "label": "Exalted Fire Lash (12”, A12, AP(2))",
+                  "name": "Exalted Fire Lash",
+                  "attacks": 12,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "gNFvs",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Symbol of War(4)",
+              "gains": [
+                {
+                  "label": "Symbol of War(4)",
+                  "name": "Symbol of War",
+                  "content": [
+                    {
+                      "key": "4",
+                      "name": "4",
+                      "rating": "",
+                      "modify": false,
+                      "label": "4",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "B1",
+      "hint": "B1",
+      "sections": [
+        {
+          "label": "Replace Great Flame Axe",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Great Flame Axe"
+          ],
+          "options": [
+            {
+              "id": "NE5Rj",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Flame Hammer (A4, AP(4))",
+              "gains": [
+                {
+                  "label": "Great Flame Hammer (A4, AP(4))",
+                  "name": "Great Flame Hammer",
+                  "attacks": 4,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "ktU9q",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Flame Spear (A2, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Great Flame Spear (A2, AP(4), Deadly(3))",
+                  "name": "Great Flame Spear",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "model": false,
+          "select": "any",
+          "options": [
+            {
+              "id": "FBqnf",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Great Fire Lash (12”, A6, AP(2))",
+              "gains": [
+                {
+                  "label": "Great Fire Lash (12”, A6, AP(2))",
+                  "name": "Great Fire Lash",
+                  "attacks": 6,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "35j9I",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Wings (Flying)",
+              "gains": [
+                {
+                  "label": "Wings (Flying)",
+                  "name": "Wings",
+                  "content": [
+                    {
+                      "key": "flying",
+                      "name": "Flying",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Flying",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            },
+            {
+              "id": "Bz2sT",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Symbol of War(2)",
+              "gains": [
+                {
+                  "label": "Symbol of War(2)",
+                  "name": "Symbol of War",
+                  "content": [
+                    {
+                      "key": "2",
+                      "name": "2",
+                      "rating": "",
+                      "modify": false,
+                      "label": "2",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "C1",
+      "hint": "C1",
+      "sections": [
+        {
+          "label": "Replace Flame Axe",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Flame Axe"
+          ],
+          "options": [
+            {
+              "id": "bFdUi",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Flame Hammer (A2, AP(4))",
+              "gains": [
+                {
+                  "label": "Flame Hammer (A2, AP(4))",
+                  "name": "Flame Hammer",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "OpZgI",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Flame Spear (A1, AP(4), Deadly(3))",
+              "gains": [
+                {
+                  "label": "Flame Spear (A1, AP(4), Deadly(3))",
+                  "name": "Flame Spear",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "deadly",
+                      "name": "Deadly",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Deadly(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with any",
+          "type": "upgrade",
+          "model": false,
+          "select": "any",
+          "options": [
+            {
+              "id": "ts41_",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Fire Lash (12”, A3, AP(2))",
+              "gains": [
+                {
+                  "label": "Fire Lash (12”, A3, AP(2))",
+                  "name": "Fire Lash",
+                  "attacks": 3,
+                  "range": 12,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "8s2aO",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Symbol of War(1)",
+              "gains": [
+                {
+                  "label": "Symbol of War(1)",
+                  "name": "Symbol of War",
+                  "content": [
+                    {
+                      "key": "1",
+                      "name": "1",
+                      "rating": "",
+                      "modify": false,
+                      "label": "1",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "model": false,
+          "select": 1,
+          "options": [
+            {
+              "id": "ud1K7",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Brass Beast (Defense +2, Hooves (A3, AP(1)), Fast, Impact(3), Tough(+3))",
+              "gains": [
+                {
+                  "label": "Brass Beast (Defense +2, Hooves (A3, AP(1)), Fast, Impact(3), Tough(+3))",
+                  "name": "Brass Beast",
+                  "attacks": 3,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "defense",
+                      "name": "Defense",
+                      "rating": "2",
+                      "condition": "",
+                      "label": "Defense +2",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "hooves-(a3",
+                      "name": "Hooves (A3",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Hooves (A3",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "ap(1))",
+                      "name": "AP(1))",
+                      "rating": "",
+                      "modify": false,
+                      "label": "AP(1))",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "fast",
+                      "name": "Fast",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Fast",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Impact(3)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough",
+                      "name": "Tough",
+                      "rating": "3",
+                      "modify": true,
+                      "label": "Tough(+3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "QdI0G",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Throne of Blood (Defense +2, Crew (A6, AP(2)), Fear, Tough(+6))",
+              "gains": [
+                {
+                  "label": "Throne of Blood (Defense +2, Crew (A6, AP(2)), Fear, Tough(+6))",
+                  "name": "Throne of Blood",
+                  "attacks": 6,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "defense",
+                      "name": "Defense",
+                      "rating": "2",
+                      "condition": "",
+                      "label": "Defense +2",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "crew-(a6",
+                      "name": "Crew (A6",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Crew (A6",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "ap(2))",
+                      "name": "AP(2))",
+                      "rating": "",
+                      "modify": false,
+                      "label": "AP(2))",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "fear",
+                      "name": "Fear",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Fear",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "tough",
+                      "name": "Tough",
+                      "rating": "6",
+                      "modify": true,
+                      "label": "Tough(+6)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "D1",
+      "hint": "D1",
+      "sections": [
+        {
+          "label": "Upgrade with one",
+          "type": "upgrade",
+          "model": false,
+          "select": 1,
+          "options": [
+            {
+              "id": "aJ6FU",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Spiked Collar (Impact(3))",
+              "gains": [
+                {
+                  "label": "Spiked Collar (Impact(3))",
+                  "name": "Spiked Collar",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "3",
+                      "modify": false,
+                      "label": "Impact(3)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "5xw1o",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Anti-Psych Collar (Resistance)",
+              "gains": [
+                {
+                  "label": "Anti-Psych Collar (Resistance)",
+                  "name": "Anti-Psych Collar",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "resistance",
+                      "name": "Resistance",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Resistance",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "E1",
+      "hint": "E1",
+      "sections": [
+        {
+          "label": "Upgrade with",
+          "type": "upgrade",
+          "model": false,
+          "options": [
+            {
+              "id": "aOlYC",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Command Group (Fear)",
+              "gains": [
+                {
+                  "label": "Command Group (Fear)",
+                  "name": "Command Group",
+                  "content": [
+                    {
+                      "key": "fear",
+                      "name": "Fear",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Fear",
+                      "type": "ArmyBookRule"
+                    }
+                  ],
+                  "type": "ArmyBookItem"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "F1",
+      "hint": "F1",
+      "sections": [
+        {
+          "label": "Upgrade one model with",
+          "type": "upgrade",
+          "model": true,
+          "affects": 1,
+          "options": [
+            {
+              "id": "huodNUn",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Banner of War",
+              "gains": [
+                {
+                  "key": "banner-of-war",
+                  "name": "Banner of War",
+                  "rating": "",
+                  "modify": false,
+                  "label": "Banner of War",
+                  "type": "ArmyBookRule"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace all CCWs",
+          "type": "replace",
+          "model": false,
+          "affects": "all",
+          "replaceWhat": [
+            "CCWs"
+          ],
+          "options": [
+            {
+              "id": "Rh8Wo",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Magical CCWs (A1, AP(2), Rending)",
+              "gains": [
+                {
+                  "label": "Magical CCWs (A1, AP(2), Rending)",
+                  "name": "Magical CCWs",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    },
+                    {
+                      "key": "rending",
+                      "name": "Rending",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Rending",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "KeOMV",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Heavy CCWs (A1, AP(4))",
+              "gains": [
+                {
+                  "label": "Heavy CCWs (A1, AP(4))",
+                  "name": "Heavy CCWs",
+                  "attacks": 1,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "59vwa",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Dual CCWs (A2, AP(2))",
+              "gains": [
+                {
+                  "label": "Dual CCWs (A2, AP(2))",
+                  "name": "Dual CCWs",
+                  "attacks": 2,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "G1",
+      "hint": "G1",
+      "sections": [
+        {
+          "label": "Upgrade all models with",
+          "type": "upgrade",
+          "model": true,
+          "affects": "all",
+          "options": [
+            {
+              "id": "dxOpI",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Spiked Collars (Impact(1))",
+              "gains": [
+                {
+                  "label": "Spiked Collars (Impact(1))",
+                  "name": "Spiked Collars",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "impact",
+                      "name": "Impact",
+                      "rating": "1",
+                      "modify": false,
+                      "label": "Impact(1)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Upgrade one model with",
+          "type": "upgrade",
+          "model": true,
+          "affects": 1,
+          "options": [
+            {
+              "id": "3JsLy",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Anti-Psych Collar (Resistance)",
+              "gains": [
+                {
+                  "label": "Anti-Psych Collar (Resistance)",
+                  "name": "Anti-Psych Collar",
+                  "type": "ArmyBookItem",
+                  "content": [
+                    {
+                      "key": "resistance",
+                      "name": "Resistance",
+                      "rating": "",
+                      "modify": false,
+                      "label": "Resistance",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "H1",
+      "hint": "H1",
+      "sections": [
+        {
+          "label": "Replace Flame Claw",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Flame Claw"
+          ],
+          "options": [
+            {
+              "id": "ZEAhR",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Flame Blade (A18, AP(2))",
+              "gains": [
+                {
+                  "label": "Flame Blade (A18, AP(2))",
+                  "name": "Flame Blade",
+                  "attacks": 18,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "2",
+                      "modify": false,
+                      "label": "AP(2)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Replace Flame Cannon",
+          "type": "replace",
+          "model": false,
+          "replaceWhat": [
+            "Flame Cannon"
+          ],
+          "options": [
+            {
+              "id": "ocCm8",
+              "type": "ArmyBookUpgradeOption",
+              "cost": 0,
+              "label": "Heavy Flame Cannon (24”, A6, AP(4))",
+              "gains": [
+                {
+                  "label": "Heavy Flame Cannon (24”, A6, AP(4))",
+                  "name": "Heavy Flame Cannon",
+                  "attacks": 6,
+                  "range": 24,
+                  "type": "ArmyBookWeapon",
+                  "specialRules": [
+                    {
+                      "key": "ap",
+                      "name": "AP",
+                      "rating": "4",
+                      "modify": false,
+                      "label": "AP(4)",
+                      "type": "ArmyBookRule"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "specialRules": [
+    {
+      "id": "vK-UG",
+      "key": "banner-of-war",
+      "hint": "The model and its unit count as having the Impact(1) special rule.",
+      "name": "Banner of War",
+      "tags": [],
+      "label": "Banner of War",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "The model and its unit count as having the Impact(1) special rule."
+    },
+    {
+      "id": "oaTD2",
+      "key": "daemon",
+      "hint": "This model may be deployed as if it had the Ambush or the Scout rule (pick one).",
+      "name": "Daemon",
+      "tags": [],
+      "label": "Daemon",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model may be deployed as if it had the Ambush or the Scout rule (pick one)."
+    },
+    {
+      "id": "pHnhX",
+      "key": "resistance",
+      "hint": "This model may block spells as if it had the Psychic(2) special rule.",
+      "name": "Resistance",
+      "tags": [],
+      "label": "Resistance",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "This model may block spells as if it had the Psychic(2) special rule."
+    },
+    {
+      "id": "ZogHj",
+      "key": "symbol-of-war(x)",
+      "hint": "Once per activation, before attacking, roll X dice. For each 2+ one enemy unit within 18” takes 3 hits with AP(2).",
+      "name": "Symbol of War(X)",
+      "tags": [],
+      "label": "Symbol of War(X)",
+      "forUnit": true,
+      "forWeapon": false,
+      "hasRating": false,
+      "description": "Once per activation, before attacking, roll X dice. For each 2+ one enemy unit within 18” takes 3 hits with AP(2)."
+    }
+  ],
+  "spells": [],
+  "modifiedAt": "2021-11-06T17:40:19.615Z",
+  "official": true,
+  "public": false,
+  "coverImagePath": null,
+  "coverImageCredit": null,
+  "isLive": false,
+  "gameSystemSlug": "grimdark-future",
+  "fullname": "Grimdark Future",
+  "aberration": "GF",
+  "universe": "Grimdark Future",
+  "shortname": "Grimdark Future"
+}
