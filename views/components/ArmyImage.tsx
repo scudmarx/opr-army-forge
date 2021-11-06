@@ -19,7 +19,7 @@ export default function ArmyImage({ name }) {
           })
         } else {
           //console.log("didn't get an image, trying web.");
-          setImg(army?.data?.coverImagePath || "img/AF_logo.svg")
+          setImg(army?.data?.coverImagePath || "img/default_army.png")
         }
       })
      //console.log(army)
