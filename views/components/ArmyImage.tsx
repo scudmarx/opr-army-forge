@@ -1,6 +1,32 @@
+import { useSelector } from "react-redux";
+import { useState, useMemo, useEffect } from "react";
+import { RootState } from '../../data/store'
 const rotations = {} as any;
 
+
 export default function ArmyImage({ name }) {
+  const url = `img/gf_armies/${name}.png`
+  const army = useSelector((state: RootState) => state.army);
+  const [img, setImg] = useState(null)
+  useEffect( () => {
+    fetch(url)
+    .then(
+      (data) => {
+        if (data.ok) {
+          //console.log("got an image", data);
+          let b = data.blob().then(blob => {
+            setImg(URL.createObjectURL(blob))
+          })
+        } else {
+          //console.log("didn't get an image, trying web.");
+          setImg(army?.data?.coverImagePath || "img/AF_logo.svg")
+        }
+      })
+     //console.log(army)
+    }, [army]
+  )
+  
+  
   return (
     <div className="is-flex p-2" style={{ position: "relative", height: "100px", boxSizing: "content-box" }}>
       <div style={{
@@ -15,7 +41,7 @@ export default function ArmyImage({ name }) {
       <div className="is-flex" style={{
         height: "100px",
         width: "100%",
-        backgroundImage: `url("img/gf_armies/${name}.png")`,
+        backgroundImage: `url(${img})`,
         backgroundPosition: "center",
         backgroundSize: "contain",
         backgroundRepeat: 'no-repeat',

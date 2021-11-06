@@ -8,7 +8,7 @@ export default function GameSystem() {
 
   const dispatch = useDispatch();
   const router = useRouter();
-  const isLive = window.location.host === "opr-army-forge.vercel.app";
+  const isLive = typeof(window) !== "undefined" ? window.location.host === "opr-army-forge.vercel.app" : true;
 
   const gameSystems = ["gf", "gff", "aof", "aofs"];
 
