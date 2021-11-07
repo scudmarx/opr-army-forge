@@ -131,6 +131,58 @@ export default class UpgradeService {
     return null;
   }
 
+  public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
+    const combinedMultiplier = 1 //unit.combined ? 2 : 1;
+    const combinedAffects = upgrade.affects //(unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
+    if (upgrade.type === "upgrade") {
+
+      // "Upgrade any model with:"
+      if (upgrade.affects === "any" && unit?.size > 1)
+        return "updown";
+
+      // Select > 1
+      if (typeof (upgrade.select) === "number") {
+
+        // "Upgrade with one:"
+        if ((upgrade.select * combinedMultiplier) === 1)
+          return "radio";
+
+        return "updown";
+      }
+
+      return "check";
+    }
+
+    // "Upgrade Psychic(1):"
+    if (upgrade.type === "upgradeRule") {
+      return "check";
+    }
+
+    if (upgrade.type === "replace") {
+
+      // "Replace [weapon]:"
+      if (!upgrade.affects) {
+        if (typeof (upgrade.select) === "number")
+          return "updown";
+        return "radio";
+      }
+      // "Replace one [weapon]:"
+      // "Replace all [weapons]:"
+      if (combinedAffects === 1 || upgrade.affects === "all") {
+        return "radio";
+      }
+      // "Replace any [weapon]:"
+      // "Replace 2 [weapons]:"
+      if (upgrade.affects === "any" || typeof (upgrade.affects) === "number") {
+        return "updown";
+      }
+    }
+
+    console.error("No control type for: ", upgrade);
+
+    return "updown";
+  }
+
   public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
     const controlType = this.getControlType(unit, upgrade);
@@ -214,58 +266,6 @@ export default class UpgradeService {
 
     return true;
   };
-
-  public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
-    const combinedMultiplier = 1 //unit.combined ? 2 : 1;
-    const combinedAffects = upgrade.affects //(unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
-    if (upgrade.type === "upgrade") {
-
-      // "Upgrade any model with:"
-      if (upgrade.affects === "any" && unit?.size > 1)
-        return "updown";
-
-      // Select > 1
-      if (typeof (upgrade.select) === "number") {
-
-        // "Upgrade with one:"
-        if ((upgrade.select * combinedMultiplier) === 1)
-          return "radio";
-
-        return "updown";
-      }
-
-      return "check";
-    }
-
-    // "Upgrade Psychic(1):"
-    if (upgrade.type === "upgradeRule") {
-      return "check";
-    }
-
-    if (upgrade.type === "replace") {
-
-      // "Replace [weapon]:"
-      if (!upgrade.affects) {
-        if (typeof (upgrade.select) === "number")
-          return "updown";
-        return "radio";
-      }
-      // "Replace one [weapon]:"
-      // "Replace all [weapons]:"
-      if (combinedAffects === 1 || upgrade.affects === "all") {
-        return "radio";
-      }
-      // "Replace any [weapon]:"
-      // "Replace 2 [weapons]:"
-      if (upgrade.affects === "any" || typeof (upgrade.affects) === "number") {
-        return "updown";
-      }
-    }
-
-    console.error("No control type for: ", upgrade);
-
-    return "updown";
-  }
 
   public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
@@ -354,15 +354,15 @@ export default class UpgradeService {
           replace.push(toReplace);
         }
 
+        available = replace.reduce((val, next) => Math.min(val, next.count), 999);
+
         // Actual modify the options now we know they're all here
         for (let toReplace of replace) {
 
           console.log("Replacing... ", current(toReplace));
 
-          available = Math.min(available, toReplace.count);
-
           // Decrement the count of the item being replaced
-          toReplace.count -= count;
+          toReplace.count -= Math.min(count, available);
 
           // TODO: Use Math.max... ?
           if (toReplace.count <= 0)
