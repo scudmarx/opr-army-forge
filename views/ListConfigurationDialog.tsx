@@ -98,6 +98,8 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
     </ListItem>
   );
 
+  const rootArmy = army.childData && army.childData.find(c => c.name === army.data.name);
+
   return (
     <Dialog fullScreen open={open} onClose={() => setOpen(false)} TransitionComponent={Transition}>
       <AppBar position="static" elevation={0} color="transparent">
@@ -134,7 +136,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
               !isEdit && army.childData && <>
                 <h3 className="mt-4 mb-0" style={{ fontWeight: 600 }}>{factionRelation}</h3>
                 <List className="pt-0">
-                  {childItem(army.childData.find(c => c.name === army.data.name))}
+                  {rootArmy && childItem(rootArmy)}
                   {army.childData.filter(c => c.name !== army.data.name).map((child, index) => (
                     <Fragment key={index}>
                       {childItem(child)}
