@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 import { Button, createTheme } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import AddIcon from '@mui/icons-material/Add';
-import { style } from "@mui/system";
-import { common } from "@mui/material/colors"
 
 export default function Home() {
 
@@ -13,7 +11,7 @@ export default function Home() {
 
   let canUseRegexLookahead = false;
   try {
-    const match = /q(?=u)/.exec("qu");
+    const match = new RegExp("q(?=u)").exec("qu");
     if (match) {
       canUseRegexLookahead = true;
     }
