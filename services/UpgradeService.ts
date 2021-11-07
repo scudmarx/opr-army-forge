@@ -4,6 +4,7 @@ import "../extensions";
 import DataParsingService from "./DataParsingService";
 import RulesService from "./RulesService";
 import { current } from "immer";
+import { nanoid } from "nanoid";
 
 export default class UpgradeService {
   static calculateListTotal(list: ISelectedUnit[]) {
@@ -95,13 +96,13 @@ export default class UpgradeService {
 
     // Couldn't find the item to replace or there are none left
     if (!toReplace || toReplace.count <= 0) {
-      toReplace = this.findUpgradeToReplace(unit, what);
+      toReplace = this.findAppliedUpgrade(unit, what);
     }
 
     return toReplace;
   }
 
-  public static findUpgradeToReplace(unit: ISelectedUnit, what: string) {
+  public static findAppliedUpgrade(unit: ISelectedUnit, what: string, forRestore: boolean = false) {
     var toReplace = null;
     // Try and find an upgrade instead
     for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
@@ -110,8 +111,8 @@ export default class UpgradeService {
         .gains
         .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
 
-      if (toReplace && toReplace.count > 0)
-        break;
+      if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
+        return toReplace;
 
       // Check inside items
       if (upgrade.isModel) {
@@ -121,13 +122,13 @@ export default class UpgradeService {
             .content
             .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
 
-          if (toReplace && toReplace.count > 0)
-            break;
+          if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
+            return toReplace;
         }
       }
     }
 
-    return toReplace;
+    return null;
   }
 
   public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
@@ -150,7 +151,7 @@ export default class UpgradeService {
         }
         for (let what of options) {
 
-          var toRestore = this.findUpgradeToReplace(unit, what);
+          var toRestore = this.findAppliedUpgrade(unit, what);
 
           // Couldn't find the upgrade to replace
           if (!toRestore || toRestore.count <= 0)
@@ -285,7 +286,9 @@ export default class UpgradeService {
         cost: option.cost, //* (unit.combined && upgrade.affects === "all" ? 2 : 1),
         gains: option.gains.map(g => ({
           ...g,
-          count: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
+          id: nanoid(7),
+          count: Math.min(count, available),
+          originalCount: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
         })),
         replacedWhat: upgrade.replaceWhat // Keep track of what this option replaced
       };
@@ -405,7 +408,6 @@ export default class UpgradeService {
     // Remove anything that depends on this upgrade (cascade remove)
     for (let gains of toRemove.gains) {
       if (gains.dependencies) {
-        debugger;
         for (let upgradeId of gains.dependencies) {
           const dependency = unit.selectedUpgrades.find(u => u.id === upgradeId);
           // Might have already been removed!
@@ -416,6 +418,8 @@ export default class UpgradeService {
     }
 
     const count = toRemove.gains[0]?.count;
+
+    console.log(`Removing ${count} of option...`, option);
 
     // Remove the upgrade
     unit.selectedUpgrades.splice(removeAt, 1);
@@ -439,7 +443,7 @@ export default class UpgradeService {
         // For each bit of equipment that was originally replaced
         for (let what of options) {
 
-          var toRestore = this.findUpgradeToReplace(unit, what);
+          var toRestore = this.findAppliedUpgrade(unit, what, true);
 
           // Couldn't find the upgrade to replace
           if (!toRestore)
@@ -453,6 +457,8 @@ export default class UpgradeService {
 
           items.push(toRestore);
         }
+
+        console.log("Will restore...", items);
 
         for (let toRestore of items) {
 

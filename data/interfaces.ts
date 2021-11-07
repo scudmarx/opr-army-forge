@@ -69,9 +69,11 @@ export interface IUpgradeOption {
 }
 
 export interface IUpgradeGains {
+  id: string;
   name: string;
   label: string;
-  count?: number;
+  count: number;
+  originalCount: number;
   type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
   dependencies?: string[];
 }
