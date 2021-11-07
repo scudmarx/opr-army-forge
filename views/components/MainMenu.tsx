@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Popper, Paper, List, ListItem, ListItemText, ClickAwayListener, Fade } from "@mui/material";
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Popper, Paper, List, ListItem, ListItemText, ClickAwayListener, Fade, Snackbar, bottomNavigationActionClasses } from "@mui/material";
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -22,6 +22,7 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
   const router = useRouter();
   const [menuAnchorElement, setMenuAnchorElement] = useState(null);
   const [validationAnchorElement, setValidationAnchorElement] = useState(null);
+  const [showTextCopiedAlert, setShowTextCopiedAlert] = useState(false);
   const errors = ValidationService.getErrors(army, list);
 
   const handleLoad = () => {
@@ -48,6 +49,7 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
 
   const handleTextExport = () => {
     PersistenceService.copyAsText(list);
+    setShowTextCopiedAlert(true);
   };
 
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
@@ -148,6 +150,12 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
         </Toolbar>
       </AppBar>
       <ValidationErrors open={Boolean(validationAnchorElement) && !isBigScreen} setOpen={setValidationAnchorElement} />
+      <Snackbar
+        open={showTextCopiedAlert}
+        onClose={() => setShowTextCopiedAlert(false)}
+        message="Army list copied to your clipboard."
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        autoHideDuration={4000} />
     </>
   );
 }
