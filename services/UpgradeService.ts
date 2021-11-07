@@ -5,6 +5,7 @@ import DataParsingService from "./DataParsingService";
 import RulesService from "./RulesService";
 import { current } from "immer";
 import { nanoid } from "nanoid";
+import { KeyboardReturnOutlined } from "@mui/icons-material";
 
 export default class UpgradeService {
   static calculateListTotal(list: ISelectedUnit[]) {
@@ -406,15 +407,24 @@ export default class UpgradeService {
     const toRemove = unit.selectedUpgrades[removeAt];
 
     // Remove anything that depends on this upgrade (cascade remove)
-    for (let gains of toRemove.gains) {
-      if (gains.dependencies) {
-        for (let upgradeId of gains.dependencies) {
-          const dependency = unit.selectedUpgrades.find(u => u.id === upgradeId);
-          // Might have already been removed!
-          if (dependency)
-            this.remove(unit, { replaceWhat: dependency.replacedWhat, type: "replace" }, dependency);
-        }
+    const removeDependencies = (dependencies) => {
+      if (!dependencies)
+        return;
+      for (let upgradeId of dependencies) {
+        const dependency = unit.selectedUpgrades.find(u => u.id === upgradeId);
+        // Might have already been removed!
+        if (dependency)
+          this.remove(unit, { replaceWhat: dependency.replacedWhat, type: "replace" }, dependency);
       }
+    }
+    // Remove dependencies for each item gained from this upgrade
+    for (let gains of toRemove.gains) {
+      // Also check the item's children
+      if ((gains as IUpgradeGainsItem).content)
+        for (let content of (gains as IUpgradeGainsItem).content) {
+          removeDependencies(content.dependencies);
+        }
+      removeDependencies(gains.dependencies);
     }
 
     const count = toRemove.gains[0]?.count;
