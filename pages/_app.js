@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
 }
 
 MyApp.getInitialProps = async (ctx) => {
-  console.log("Force disable pre-rendering?");
+  //console.log("Force disable pre-rendering?");
   return {};
 };
 

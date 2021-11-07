@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import { IUnit, IUpgradeOption } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
+import router from "next/router";
 
 export default class DataService {
 
@@ -9,7 +10,7 @@ export default class DataService {
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
   private static webCompanionUrl = 'https://opr-list-bui-feature-po-r8wmtp.herokuapp.com/api';
 
-  public static getJsonData(filePath: string, callback: (armyData: any) => void) {
+  public static getJsonData(filePath: string, callback: (armyData: any) => void, fallback?: (err: string) => void) {
 
     fetch(filePath)
       .then((res) => res.json())
@@ -17,24 +18,26 @@ export default class DataService {
         console.log(data);
 
         callback(data);
-      });
+      }, fallback);
   }
 
-  public static getApiData(armyId: string, callback: (armyData: any) => void) {
+  public static getApiData(armyId: string, callback: (armyData: any) => void, fallback?: (err: string) => void) {
 
-    fetch(this.webCompanionUrl + `/army-books/${armyId}`)
+    let dataSourceUrl = router.query.dataSourceUrl ? `https://${router.query.dataSourceUrl}.herokuapp.com/api` : this.webCompanionUrl
+    fetch(dataSourceUrl + `/army-books/${armyId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
 
-        const afData = DataService.transformApiData(data);
-        console.log(afData);
+        const afData = DataService.transformApiData(data, fallback);
+        //console.log(afData);
 
         callback(afData);
-      });
+      })
   }
 
-  public static transformApiData(input) {
+  public static transformApiData(input, fallback?: (err: string) => void) {
+    try {
     const countRegex = /^(\d+)x\s/;
 
     const data = {
@@ -59,14 +62,13 @@ export default class DataService {
         ...pkg,
         sections: pkg.sections.map(section => {
           const upgrade = DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":"));
-
           return {
             ...section,
             ...upgrade,
             options: section.options.map((opt: IUpgradeOption) => {
               const gains = [];
               // Iterate backwards through gains array so we can push new 
-              for (let original of opt.gains) {
+              if (opt.gains) for (let original of opt.gains) {
                 // Match "2x ", etc
 
                 // Replace "2x " in label/name of original gain
@@ -114,5 +116,6 @@ export default class DataService {
     }
 
     return data;
-  }
+    } catch (err) { if (typeof(fallback) == "function") fallback(err) }
+}
 }

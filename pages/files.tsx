@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { loadArmyData, loadChildArmyData, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress } from '@mui/material';
+import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress, Snackbar } from '@mui/material';
+import MuiAlert from '@mui/material/Alert'
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
@@ -21,10 +22,11 @@ export default function Files() {
   const [customArmies, setCustomArmies] = useState(null);
   const [driveArmies, setDriveArmies] = useState(null);
   const [newArmyDialogOpen, setNewArmyDialogOpen] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = window.location.host === "opr-army-forge.vercel.app";
+  const isLive = typeof(window) !== "undefined" ? window.location.host === "opr-army-forge.vercel.app" : true;
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
@@ -34,7 +36,7 @@ export default function Files() {
 
     // Redirect to game selection screen if no army selected
     if (!army.gameSystem) {
-      router.push("/", null, { shallow: true });
+      router.push({pathname: "gameSystem/", query: router.query}, null, { shallow: true });
       return;
     }
 
@@ -67,7 +69,7 @@ export default function Files() {
             version: match[2]
           };
         }));
-      });
+      }, console.error);
 
     // AF to Web Companion game type mapping
     const slug = (() => {
@@ -80,19 +82,29 @@ export default function Files() {
     })();
 
     // Load custom data books from Web Companion
-    fetch(webCompanionUrl + "/army-books?gameSystemSlug=" + slug)
+    let dataSourceUrl = router.query.dataSourceUrl ? `https://${router.query.dataSourceUrl}.herokuapp.com/api` : webCompanionUrl
+    fetch(dataSourceUrl + "/army-books?gameSystemSlug=" + slug)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         const valid = data
-          .filter(a => a.unitCount > 2)
+        //  .filter(a => a.unitCount > 2)
         //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
 
         setCustomArmies(valid);
-      });
+        return valid
+      })
+      .then((armies) => {
+        if (router.query) {
+        let armyId = router.query.armyId as string
+        let army = armies.find(t => t.uid == armyId)
+        if (army) {
+           selectCustomList(army)
+        }
+      }}, (err) => {throw(err)});
   }, []);
 
-  const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0].items;
+  const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0]?.items;
 
   const officialFactions = !customArmies
     ? []
@@ -120,6 +132,9 @@ export default function Files() {
     DataService.getJsonData(filePath, data => {
       dispatch(loadArmyData(data));
       setNewArmyDialogOpen(true);
+    }, (err) => {
+      console.error(`Failed to get Army data: ${err}`);
+      setNewArmyDialogOpen(false);
     });
   };
 
@@ -143,7 +158,11 @@ export default function Files() {
 
         dispatch(loadArmyData(afData));
 
-        setNewArmyDialogOpen(true);
+        setNewArmyDialogOpen(!!afData);
+      }, (err) => {
+        console.error(`Failed to get Army data: ${err}`)
+        setNewArmyDialogOpen(false);
+        setShowSnackbar(true)
       });
     }
   };
@@ -261,6 +280,14 @@ export default function Files() {
         open={newArmyDialogOpen}
         setOpen={setNewArmyDialogOpen}
         customArmies={customArmies} />
+      <Snackbar
+        autoHideDuration={4000}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        open={showSnackbar}
+        onClose={() => setShowSnackbar(false)}
+      >
+        <MuiAlert severity="error" variant="filled" sx={{background: "#ff7043"}}>Could not load Army Data.</MuiAlert>
+        </Snackbar>
     </>
   );
 }

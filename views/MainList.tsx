@@ -38,12 +38,12 @@ export function MainList({ onSelected, onUnitRemoved }) {
               ? list.units.find(u => u.selectionId === s.joinToUnit)
               : null;
 
-            console.log("Parent unit", joinedUnit);
+            //console.log("Parent unit", joinedUnit);
 
             const combinedUnit = joinedUnit?.joinToUnit
               ? list.units.find(u => u.selectionId === joinedUnit?.joinToUnit)
               : null;
-            console.log("Grandchild", combinedUnit);
+            //console.log("Grandchild", combinedUnit);
 
             return (
               <li key={index} className={joinedUnit ? "my-2" : ""} style={{ backgroundColor: joinedUnit ? "rgba(0,0,0,.12)" : "" }}>

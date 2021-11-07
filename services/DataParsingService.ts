@@ -73,7 +73,7 @@ export default class DataParsingService {
     const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?(?:(.+)\swith)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
 
     if (!match) {
-      console.error("Cannot match: " + text)
+      throw(new Error("Cannot match: " + text))
       return null;
     }
 
