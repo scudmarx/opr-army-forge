@@ -11,7 +11,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import UpgradeService from "../services/UpgradeService";
-
+import ClearIcon from "@mui/icons-material/Clear";
 
 export default function View() {
 
@@ -60,7 +60,12 @@ export default function View() {
         </AppBar>
       </Paper>
       <Drawer anchor="right" open={settingsOpen} onClose={() => setSettingsOpen(false)}>
-        <h3 className="is-size-4 p-4">Display Settings</h3>
+        <div className="is-flex p-4">
+          <h3 className="is-size-4" style={{ flex: 1 }}>Display Settings</h3>
+          <IconButton onClick={() => setSettingsOpen(false)}>
+            <ClearIcon />
+          </IconButton>
+        </div>
         <List>
           <ListItem>
             <ListItemText>Show Psychic Spells</ListItemText>
@@ -98,9 +103,9 @@ export default function View() {
 // TODO: extract these as global helper functions
 function listContainsPyschic(list) {
   // TODO: get the special rule def from a well known location
-  return listContainsSpecialRule(list, {key: 'psychic', name: 'Psychic', rating: '1'})
+  return listContainsSpecialRule(list, { key: 'psychic', name: 'Psychic', rating: '1' })
 }
 
 function listContainsSpecialRule(list, specialRule) {
-  return list.units.some(({specialRules}) => Boolean(specialRules.find(({name}) => name === specialRule.name)));
+  return list.units.some(({ specialRules }) => Boolean(specialRules.find(({ name }) => name === specialRule.name)));
 }
