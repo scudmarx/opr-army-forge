@@ -12,6 +12,8 @@ import UnitService from "../services/UnitService";
 import { distinct } from "../services/Helpers";
 import FullCompactToggle from "./components/FullCompactToggle";
 import LinkIcon from '@mui/icons-material/Link';
+import _ from "lodash";
+import { GroupSharp } from "@mui/icons-material";
 
 export function MainList({ onSelected, onUnitRemoved }) {
 
@@ -89,8 +91,14 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
 
   const dispatch = useDispatch();
 
-  const equipmentWeaponNames = unit.equipment.filter(e => e.count > 0).map((eqp, i) => eqp.label);
-  const upgradeWeaponNames = UnitService.getAllUpgradeWeapons(unit).filter(e => e.count > 0).map(u => u.name);
+  const equipmentWeaponNames = unit.equipment
+    .filter(e => e.count > 0)
+    .map((eqp, i) => ({ name: eqp.label, count: eqp.count }));
+  const upgradeWeaponNames = UnitService.getAllUpgradeWeapons(unit)
+    .filter(e => e.count > 0)
+    .map(u => ({ name: u.name, count: u.count }));
+
+  const weaponGroups = _.groupBy(equipmentWeaponNames.concat(upgradeWeaponNames), x => x.name);
 
   const handleSelectUnit = (unit: ISelectedUnit) => {
     if (list.selectedUnitId !== unit.selectionId) {
@@ -134,15 +142,18 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
       <AccordionDetails className="pt-0">
         <div style={{ fontSize: "14px", color: "#666666" }}>
           <div>
-            {distinct(equipmentWeaponNames.concat(upgradeWeaponNames)).map((label, i) => (
-              <span key={i}>
-                {i > 0 ? ", " : ""}{label}
-              </span>
-            ))}
+            {Object.values(weaponGroups).map((group: any[], i) => {
+              const count = group.reduce((c, next) => c + next.count, 0);
+              return (
+                <span key={i}>
+                  {i > 0 ? ", " : ""}{count > 1 ? `${count}x ` : ""}{group[0].name}
+                </span>
+              );
+            })}
           </div>
           <RuleList specialRules={unit.specialRules.concat(UnitService.getAllUpgradedRules(unit))} />
         </div>
       </AccordionDetails>
     </Accordion>
   );
-}
+};

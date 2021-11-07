@@ -1,4 +1,4 @@
-import { useState, forwardRef, useEffect } from "react";
+import { useState, forwardRef, useEffect, Fragment } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from 'next/router';
@@ -33,7 +33,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = typeof(window) !== "undefined" ? window.location.host === "opr-army-forge.vercel.app" : true;
+  const isLive = typeof (window) !== "undefined" ? window.location.host === "opr-army-forge.vercel.app" : true;
 
   const factionRelation = army.childData?.filter(c => c.factionRelation)[0]?.factionRelation;
 
@@ -81,6 +81,23 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
     setOpen(false);
   };
 
+  const childItem = (child) => (
+    <ListItem
+      divider
+      className="px-0"
+      style={{ cursor: child.isLive ? "pointer" : "" }}
+      onClick={() => child.isLive ? setSelectedChild(child.name) : null}>
+      <ListItemText
+        style={{ color: !child.isLive ? "#999" : "" }}
+        primary={child.name === army.data.name ? "None" : child.name} />
+      <Radio
+        disabled={!child.isLive}
+        value={child.name}
+        checked={selectedChild === child.name}
+        onChange={e => setSelectedChild(e.target.value)} />
+    </ListItem>
+  );
+
   return (
     <Dialog fullScreen open={open} onClose={() => setOpen(false)} TransitionComponent={Transition}>
       <AppBar position="static" elevation={0} color="transparent">
@@ -117,24 +134,12 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
               !isEdit && army.childData && <>
                 <h3 className="mt-4 mb-0" style={{ fontWeight: 600 }}>{factionRelation}</h3>
                 <List className="pt-0">
-                  {army.childData.map((child, index) => {
-                    return (
-                      <ListItem
-                        divider
-                        className="px-0"
-                        style={{ cursor: child.isLive ? "pointer" : "" }}
-                        onClick={() => child.isLive ? setSelectedChild(child.name) : null}>
-                        <ListItemText
-                          style={{ color: !child.isLive ? "#999" : "" }}
-                          primary={child.name === army.data.name ? "None" : child.name} />
-                        <Radio
-                          disabled={!child.isLive}
-                          value={child.name}
-                          checked={selectedChild === child.name}
-                          onChange={e => setSelectedChild(e.target.value)} />
-                      </ListItem>
-                    );
-                  })}
+                  {childItem(army.childData.find(c => c.name === army.data.name))}
+                  {army.childData.filter(c => c.name !== army.data.name).map((child, index) => (
+                    <Fragment key={index}>
+                      {childItem(child)}
+                    </Fragment>
+                  ))}
                 </List>
               </>
             }
