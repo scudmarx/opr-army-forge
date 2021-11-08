@@ -23,7 +23,7 @@ export default class ValidationService {
       if (heroCount > Math.floor(points / 500))
         errors.push(`Max 1 hero per full 500pts.`);
       if (unitCount > Math.floor(points / 200))
-        errors.push(`Max 1 unit per full 200pts (combined units count as just 1 unit).`);
+        errors.push(`Max 1 unit per full 200pts (combined units count as just 1 unit).`); // should Heroes joined to other units count as 'combined' too or not?
       if (list.units.some(u => u.combined && u.size === 2))
         errors.push(`Cannot combine units of unit size [1].`);
       if (Object.values(_.groupBy(list.units.filter(u => !(u.combined && (!u.joinToUnit))), u => u.name)).some((grp: any[]) => grp.length > 3))
