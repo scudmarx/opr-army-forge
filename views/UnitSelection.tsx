@@ -81,10 +81,9 @@ export function UnitSelection({ onSelected }) {
           </h3>
           {army.uid == null && army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
         </div>}
-
-        <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       </div>
-
+      <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
+      
       {
         // For each category
         Object.keys(unitGroups).map((key, i) => (

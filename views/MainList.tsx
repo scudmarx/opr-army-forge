@@ -31,8 +31,9 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
     <>
       <div id="MainListHeader" className="sticky">
         <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}` + (list.pointsLimit ? `/${list.pointsLimit}` : "") + "pts"}</h3>
-        <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       </div>
+      <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
+      
       <ul className="mt-2">
         {
           // For each selected unit
