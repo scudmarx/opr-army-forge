@@ -33,9 +33,9 @@ export default function UpgradePanelHeader() {
     }
   };
 
-  const debounceSave = useCallback(debounce(1000, (name) => {
+  const debounceSave = debounce(1000, (name) => {
     dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }));
-  }), []);
+  });
 
   return (
     <Paper className="px-4 pt-4">
