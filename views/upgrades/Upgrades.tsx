@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, Paper, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, Paper, FormControl, MenuItem, InputLabel, Select, Hidden } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
@@ -13,6 +13,7 @@ import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
+import UpgradePanelHeader from "../components/UpgradePanelHeader";
 
 export function Upgrades() {
 
@@ -23,6 +24,9 @@ export function Upgrades() {
   const dispatch = useDispatch();
 
   const selectedUnit = UnitService.getSelected(list);
+
+  // if I'm gonna be empty, just stop.
+  if (!selectedUnit) return null
 
   const getUpgradeSet = (id) => army.upgradePackages.filter((s) => s.uid === id)[0];
 
@@ -90,10 +94,14 @@ export function Upgrades() {
     .filter(u => u.size > 1 && !(u.combined && !u.joinToUnit))
     .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit);
 
-  return (
-    <div className={styles["upgrade-panel"]}>
+  
 
+  return (
+    <div style={{flex: "column", height: "calc(100% - 56px)", overflowY: "scroll"}}>
+
+      {/* Joining Options and Base Equipment */}
       {selectedUnit && <Paper square elevation={0}>
+
         {/* Combine unit */}
         {selectedUnit.size > 1 && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
@@ -119,6 +127,7 @@ export function Upgrades() {
             </Select>
           </FormControl>
         </FormGroup>}
+
         {/* Equipment */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} />
@@ -135,6 +144,10 @@ export function Upgrades() {
 
       </Paper>}
 
+
+      
+      {/* Upgrades */}
+      <div>
       {upgradeSets.map((pkg: IUpgradePackage) => (
         <div key={pkg.uid}>
           {/* <p className="px-2">{set.id}</p> */}
@@ -155,6 +168,7 @@ export function Upgrades() {
           ))}
         </div>
       ))}
+      </div>
     </div>
   );
 }

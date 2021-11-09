@@ -6,6 +6,7 @@ body {
   margin: 0;
   height: 100%;
   background-color: #FAFAFA;
+  overflow: hidden;
 }
 
 a {
@@ -16,6 +17,11 @@ a {
 * {
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
+}
+
+.container {
+  overflow: auto;
+  height: calc(100vh - 56px);
 }
 
 .full-compact-text {

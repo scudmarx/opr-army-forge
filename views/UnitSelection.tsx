@@ -13,7 +13,7 @@ import { IUnit } from "../data/interfaces";
 import { useMediaQuery } from "react-responsive";
 import FullCompactToggle from "./components/FullCompactToggle";
 
-export function UnitSelection({ onSelected }) {
+export function UnitSelection({ onAdded = (unit) => {}, onSelected = (unit) => {} }) {
 
   // Access the main army definition state
   const armyData = useSelector((state: RootState) => state.army);
@@ -64,18 +64,19 @@ export function UnitSelection({ onSelected }) {
 
   const handleSelection = (unit) => {
     dispatch(addUnit(unit));
-    onSelected(unit);
+    onAdded(unit);
   };
 
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
   const stickyHeader: any = { position: "sticky", top: 0, backgroundColor: "#FAFAFA", zIndex: 10 };
+  const scrolling: any = { overflowY: "scroll", maxHeight: "calc(100% - 88px)"};
 
   return (
     <aside
       className={styles.menu + " menu"}
-      style={{ minHeight: "100%" }}
+      style={{ height: "100%", overflow: "hidden" }}
     >
-      <div style={isBigScreen ? stickyHeader : null}>
+      <div style={isBigScreen ? stickyHeader : null} >
         {isBigScreen && <div className="is-flex is-align-items-center">
           <h3 className="is-size-4 px-4 pt-4 is-flex-grow-1">
             {army.name} - {army.versionString}
@@ -85,72 +86,73 @@ export function UnitSelection({ onSelected }) {
 
         <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       </div>
+      <div style={isBigScreen ? scrolling: null}>
+        {
+          // For each category
+          Object.keys(unitGroups).map((key, i) => (
+            <Fragment key={key}>
+              {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>
+                {/* {key} */}
+              </p>}
+              <ul className="menu-list">
+                {
+                  // For each unit in category
+                  unitGroups[key].map((u, index) => {
 
-      {
-        // For each category
-        Object.keys(unitGroups).map((key, i) => (
-          <Fragment key={key}>
-            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>
-              {/* {key} */}
-            </p>}
-            <ul className="menu-list">
-              {
-                // For each unit in category
-                unitGroups[key].map((u, index) => {
+                    const countInList = list.units.filter(listUnit => listUnit.name === u.name).length;
 
-                  const countInList = list.units.filter(listUnit => listUnit.name === u.name).length;
-
-                  return (
-                    <Accordion
-                      key={u.name}
-                      style={{
-                        backgroundColor: countInList > 0 ? "#F9FDFF" : null,
-                        borderLeft: countInList > 0 ? "2px solid #0F71B4" : null,
-                      }}
-                      disableGutters
-                      square
-                      elevation={1}
-                      expanded={expandedId === u.name || expandAll}
-                      onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
-                      <AccordionSummary>
-                        <div className="is-flex is-flex-grow-1 is-align-items-center">
-                          <div className="is-flex-grow-1" onClick={() => setExpandedId(u.name)}>
-                            <p className="mb-1" style={{ fontWeight: 600 }}>
-                              {countInList > 0 && <span style={{ color: "#0F71B4" }}>{countInList}x </span>}
-                              <span>{u.name} </span>
-                              <span style={{ color: "#656565" }}>{u.size > 1 ? `[${u.size}]` : ''}</span>
-                            </p>
-                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                              <p>Qua {u.quality}+</p>
-                              <p className="ml-2">Def {u.defense}+</p>
+                    return (
+                      <Accordion
+                        key={u.name}
+                        style={{
+                          backgroundColor: countInList > 0 ? "#F9FDFF" : null,
+                          borderLeft: countInList > 0 ? "2px solid #0F71B4" : null,
+                        }}
+                        disableGutters
+                        square
+                        elevation={1}
+                        expanded={expandedId === u.name || expandAll}
+                        onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
+                        <AccordionSummary>
+                          <div className="is-flex is-flex-grow-1 is-align-items-center">
+                            <div className="is-flex-grow-1" onClick={() => setExpandedId(u.name)}>
+                              <p className="mb-1" style={{ fontWeight: 600 }}>
+                                {countInList > 0 && <span style={{ color: "#0F71B4" }}>{countInList}x </span>}
+                                <span>{u.name} </span>
+                                <span style={{ color: "#656565" }}>{u.size > 1 ? `[${u.size}]` : ''}</span>
+                              </p>
+                              <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                                <p>Qua {u.quality}+</p>
+                                <p className="ml-2">Def {u.defense}+</p>
+                              </div>
                             </div>
+                            <p>{u.cost}pts</p>
+                            <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleSelection(u); }}>
+                              <AddIcon />
+                            </IconButton>
                           </div>
-                          <p>{u.cost}pts</p>
-                          <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleSelection(u); }}>
-                            <AddIcon />
-                          </IconButton>
-                        </div>
-                      </AccordionSummary>
-                      <AccordionDetails className="pt-0" style={{ flexDirection: "column", fontSize: "14px", color: "#666", lineHeight: 1.4 }}>
-                        <div>
-                          {u.equipment.map((eqp, i) => (
-                            <p key={i}>
-                              {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
-                            </p>
-                          ))}
-                        </div>
-                        <div>
-                          <RuleList specialRules={u.specialRules} />
-                        </div>
-                      </AccordionDetails>
-                    </Accordion>
-                  );
-                })
-              }
-            </ul>
-          </Fragment>
-        ))
-      }
+                        </AccordionSummary>
+                        <AccordionDetails className="pt-0" style={{ flexDirection: "column", fontSize: "14px", color: "#666", lineHeight: 1.4 }}>
+                          <div>
+                            {u.equipment.map((eqp, i) => (
+                              <p key={i}>
+                                {(eqp.count && eqp.count !== 1 ? `${eqp.count}x ` : "") + EquipmentService.formatString(eqp)}{' '}
+                              </p>
+                            ))}
+                          </div>
+                          <div>
+                            <RuleList specialRules={u.specialRules} />
+                          </div>
+                        </AccordionDetails>
+                      </Accordion>
+                    );
+                  })
+                }
+              </ul>
+            </Fragment>
+          ))
+        }
+      </div>
     </aside >
   );
 }

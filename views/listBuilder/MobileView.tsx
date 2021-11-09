@@ -62,22 +62,24 @@ export default function MobileView() {
 
   return (
     <>
-      <Paper elevation={1} color="primary" square style={{ position: "sticky", top: 0, zIndex: 1 }}>
-        <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
-        <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
-          <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
-            <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
-            <Tab label={`My List - ${list.points}pts`} />
-          </Tabs>
-        </AppBar>
-      </Paper>
+    <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
 
-      <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
+    <Paper elevation={1} color="primary" square style={{ position: "sticky", top: 0, zIndex: 1 }}>
+      <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
+        <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
+          <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
+          <Tab label={`My List - ${list.points}pts`} />
+        </Tabs>
+      </AppBar>
+    </Paper>
+
+    <div className="container">
+      <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "calc(100vh - 48px - 56px)" }}>
         <div>
-          <UnitSelection onSelected={() => { }} />
+          <UnitSelection onAdded={(unit) => { }} />
         </div>
         <div className="">
-          {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)} /> : (
+          {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)}  /> : (
             <div className="p-4 has-text-centered">
               <h3 className="is-size-3 mb-4">Your list is empty</h3>
               <Button variant="outlined" onClick={() => handleSlideChange(null, 0)}>
@@ -127,6 +129,7 @@ export default function MobileView() {
       <UndoRemoveUnit
         open={showUndoRemove}
         setOpen={setShowUndoRemove} />
+    </div>
     </>
   );
 }

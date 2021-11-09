@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
 import { ISelectedUnit } from "../data/interfaces";
@@ -15,74 +15,97 @@ import LinkIcon from '@mui/icons-material/Link';
 import _ from "lodash";
 import { GroupSharp } from "@mui/icons-material";
 
-export function MainList({ onSelected, onUnitRemoved }) {
+export function MainList({ onSelected, onUnitRemoved, scrollOnAdd = false }) {
 
   const list = useSelector((state: RootState) => state.list);
 
   const dispatch = useDispatch();
   const router = useRouter();
   const [expandAll, setExpandAll] = useState(true);
+  const [expandedId, setExpandedId] = useState(null);
 
   const joinedUnitIds = list.units.filter(u => u.joinToUnit).map(u => u.joinToUnit);
   const units = list.units.filter(u => joinedUnitIds.indexOf(u.selectionId) === -1);
 
+  const [knownUnits, setKnownUnits] = useState<string[]>([]);
+  useEffect(() => {
+    let unknownUnits = list.units.map(u => u.selectionId).filter(t => !knownUnits.includes(t));
+    if (unknownUnits.length) {
+      if (scrollOnAdd) scrollToUnit(unknownUnits[0])
+      setKnownUnits(knownUnits.concat(unknownUnits))
+    }
+  }, [list])
+
+  const scrollToUnit = (id) => {
+    let elem = document.getElementById(`Unit${id}`)
+    elem?.scrollIntoView({behavior: "smooth", block: "nearest"});
+  }
+
   return (
     <>
-      <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
-      <ul className="mt-2">
-        {
-          // For each selected unit
-          units.map((s: ISelectedUnit, index: number) => {
+      <div style={{position: "sticky", top: 0, backgroundColor: "#FAFAFA", zIndex: 10, flex: ""}}>
+        <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}` + (list.pointsLimit ? `/${list.pointsLimit}` : "") + "pts"}</h3>
+        <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
+      </div>
+      <div style={{overflowY: "scroll", flexFlow: "column", display: "flex", flex: "1 1 auto"}}>
 
-            const isHero = s.specialRules.some(r => r.name === "Hero");
+        <ul className="mt-2">
+          {
+            // For each selected unit
+            units.map((s: ISelectedUnit, index: number) => {
 
-            const joinedUnit = s.joinToUnit
-              ? list.units.find(u => u.selectionId === s.joinToUnit)
-              : null;
+              const isHero = s.specialRules.some(r => r.name === "Hero");
 
-            //console.log("Parent unit", joinedUnit);
+              const joinedUnit = s.joinToUnit
+                ? list.units.find(u => u.selectionId === s.joinToUnit)
+                : null;
 
-            const combinedUnit = joinedUnit?.joinToUnit
-              ? list.units.find(u => u.selectionId === joinedUnit?.joinToUnit)
-              : null;
-            //console.log("Grandchild", combinedUnit);
+              //console.log("Parent unit", joinedUnit);
 
-            return (
-              <li key={index} className={joinedUnit ? "my-2" : ""} style={{ backgroundColor: joinedUnit ? "rgba(0,0,0,.12)" : "" }}>
-                {joinedUnit && <div className="is-flex px-4 py-2 is-align-items-center">
-                  <LinkIcon style={{ fontSize: "24px", color: "rgba(0,0,0,.38)" }} />
-                  <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>
-                    {s.customName || s.name}
-                    {s.joinToUnit && !s.combined && ` & ${(joinedUnit.customName || joinedUnit.name)}`}
-                    {` [${UnitService.getSize(joinedUnit) + (isHero ? (combinedUnit ? UnitService.getSize(combinedUnit) : 0) : UnitService.getSize(s))}]`}
-                  </h3>
-                  <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
-                </div>}
-                <div className={joinedUnit ? "ml-1" : ""}>
-                  <MainListItem
-                    list={list}
-                    unit={s}
-                    expanded={expandAll}
-                    onSelected={onSelected}
-                    onUnitRemoved={onUnitRemoved} />
-                  {joinedUnit && <MainListItem
-                    list={list}
-                    unit={joinedUnit}
-                    expanded={expandAll}
-                    onSelected={onSelected}
-                    onUnitRemoved={onUnitRemoved} />}
-                  {combinedUnit && <MainListItem
-                    list={list}
-                    unit={combinedUnit}
-                    expanded={expandAll}
-                    onSelected={onSelected}
-                    onUnitRemoved={onUnitRemoved} />}
-                </div>
-              </li>
-            );
-          })
-        }
-      </ul>
+              const combinedUnit = joinedUnit?.joinToUnit
+                ? list.units.find(u => u.selectionId === joinedUnit?.joinToUnit)
+                : null;
+              //console.log("Grandchild", combinedUnit);
+
+              const handleClick = (unit) => {setExpandedId(expandedId == unit.selectionId ? null : unit.selectionId); onSelected(unit);}
+
+              return (
+                <li key={index} className={joinedUnit ? "my-2" : ""} style={{ backgroundColor: joinedUnit ? "rgba(0,0,0,.12)" : "" }}>
+                  {joinedUnit && <div className="is-flex px-4 py-2 is-align-items-center">
+                    <LinkIcon style={{ fontSize: "24px", color: "rgba(0,0,0,.38)" }} />
+                    <h3 className="ml-2" style={{ fontWeight: 400, flexGrow: 1 }}>
+                      {s.customName || s.name}
+                      {s.joinToUnit && !s.combined && ` & ${(joinedUnit.customName || joinedUnit.name)}`}
+                      {` [${UnitService.getSize(joinedUnit) + (isHero ? (combinedUnit ? UnitService.getSize(combinedUnit) : 0) : UnitService.getSize(s))}]`}
+                    </h3>
+                    <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
+                  </div>}
+                  <div className={joinedUnit ? "ml-1" : ""}>
+                    <MainListItem
+                      list={list}
+                      unit={s}
+                      expanded={expandAll || expandedId == s.selectionId}
+                      onSelected={handleClick}
+                      onUnitRemoved={onUnitRemoved} />
+                    {joinedUnit && <MainListItem
+                      list={list}
+                      unit={joinedUnit}
+                      expanded={expandAll || expandedId == joinedUnit.selectionId}
+                      onSelected={handleClick}
+                      onUnitRemoved={onUnitRemoved} />}
+                    {combinedUnit && <MainListItem
+                      list={list}
+                      unit={combinedUnit}
+                      expanded={expandAll || expandedId == combinedUnit.selectionId}
+                      onSelected={handleClick}
+                      onUnitRemoved={onUnitRemoved} />}
+                  </div>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
     </>
   );
 }
@@ -125,7 +148,7 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
         backgroundColor: (list.selectedUnitId === unit.selectionId ? "rgba(249, 253, 255, 1)" : null)
       }}>
       <AccordionSummary>
-        <div className="is-flex is-flex-grow-1 is-align-items-center">
+        <div id={`Unit${unit.selectionId}`}  className="is-flex is-flex-grow-1 is-align-items-center">
           <div className="is-flex-grow-1">
             <p className="mb-1" style={{ fontWeight: 600 }}>{unit.customName || unit.name} {unitSize > 1 ? `[${unitSize}]` : ''}</p>
             <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>

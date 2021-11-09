@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { IconButton, TextField } from "@mui/material";
+import { IconButton, Paper, TextField } from "@mui/material";
 import EditIcon from '@mui/icons-material/Create';
 import UpgradeService from "../../services/UpgradeService";
 import { renameUnit } from "../../data/listSlice";
@@ -33,11 +33,12 @@ export default function UpgradePanelHeader() {
     }
   };
 
-  const debounceSave = debounce(1000, (name) => {
+  const debounceSave = useCallback(debounce(1000, (name) => {
     dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }));
-  });
+  }), []);
 
   return (
+    <Paper className="px-4 pt-4">
     <div className="is-flex is-align-items-center">
       {editMode ? (
         <TextField
@@ -57,5 +58,6 @@ export default function UpgradePanelHeader() {
       </IconButton>
       <p className="ml-4 is-flex-grow-1" style={{ textAlign: "right" }}>{UpgradeService.calculateUnitTotal(selectedUnit)}pts</p>
     </div>
+    </Paper>
   );
 }

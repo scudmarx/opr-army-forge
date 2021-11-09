@@ -51,7 +51,7 @@ export default function GameSystem() {
           </Toolbar>
         </AppBar>
       </Paper>
-      <div className="container">
+      <div className="container" style={{overflow: "auto", height: "calc(100vh - 56px)"}}>
         <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
           <h3 className="is-size-4 has-text-centered mb-4">Select Game System</h3>
           <div className="columns is-multiline is-mobile">
