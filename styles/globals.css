@@ -48,6 +48,12 @@ a {
   top: 0;
   background-color: #FAFAFA;
   z-index: 10;
+  box-shadow: unset;
+}
+.sticky.scrolled {
+  box-shadow: 0px 3px 5px 0px lightgrey;
+  padding-bottom: 1rem;
+  margin-bottom: -1rem;
 }
 
 @media print {

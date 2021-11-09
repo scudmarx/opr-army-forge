@@ -20,8 +20,14 @@ export default function DesktopView() {
 
   const columnStyle: any = { overflowY: "scroll", maxHeight: "100%" };
 
-  const setShadow = (header, scroller) => () => {
-    (document.getElementById(header).style.boxShadow = document.getElementById(scroller).scrollTop ? "0px 3px 5px 0px lightgrey" : "")
+  const setScrolled = (header, scroller) => () => {
+    let scrolled = !!document.getElementById(scroller).scrollTop;
+    let elem = document.getElementById(header);
+    if (scrolled) {
+      elem.classList.add("scrolled")
+    } else {
+      elem.classList.remove("scrolled")
+    }
   }
 
   return (
@@ -30,14 +36,14 @@ export default function DesktopView() {
         <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
-        <div id="ColumnOne" className="column py-0 pr-0" style={columnStyle} onScroll={setShadow("UnitSelectionHeader", "ColumnOne")}>
+        <div id="ColumnOne" className="column py-0 pr-0" style={columnStyle} onScroll={setScrolled("UnitSelectionHeader", "ColumnOne")}>
           <UnitSelection onSelected={() => { }} />
         </div>
-        <div id="ColumnTwo" className="column p-0" style={columnStyle} onScroll={setShadow("MainListHeader", "ColumnTwo")}>
+        <div id="ColumnTwo" className="column p-0" style={columnStyle} onScroll={setScrolled("MainListHeader", "ColumnTwo")}>
           <MainList onSelected={() => { }} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
-        <div id="ColumnThree" className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setShadow("UpgradesHeader", "ColumnThree")}>
-          <Paper id="UpgradesHeader" square className="px-4 pt-4" sx={{position: "sticky", top: 0, backgroundColor: "white", boxShadow: "unset", zIndex: 10}}>
+        <div id="ColumnThree" className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setScrolled("UpgradesHeader", "ColumnThree")}>
+          <Paper id="UpgradesHeader" square className="px-4 pt-4 sticky" sx={{backgroundColor: "white"}}>
             <UpgradePanelHeader />
           </Paper>
           <Upgrades />
