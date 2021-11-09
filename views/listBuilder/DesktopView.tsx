@@ -10,8 +10,6 @@ import UpgradePanelHeader from "../components/UpgradePanelHeader";
 import ListConfigurationDialog from "../ListConfigurationDialog";
 import ValidationErrors from "../ValidationErrors";
 import UndoRemoveUnit from "../components/UndoRemoveUnit";
-import { flexbox } from "@mui/system";
-import { Calculate } from "@mui/icons-material";
 
 export default function DesktopView() {
 
