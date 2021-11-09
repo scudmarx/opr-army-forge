@@ -156,6 +156,7 @@ export default function Files() {
 
       DataService.getApiData(customArmy.uid, afData => {
 
+        router.push({query: {...router.query, armyId: customArmy.uid}}, null, {shallow: true})
         dispatch(loadArmyData(afData));
 
         setNewArmyDialogOpen(!!afData);
@@ -220,50 +221,32 @@ export default function Files() {
                 </>
               )
             }
-            <div className="columns is-mobile is-multiline">
-              {
-                army.gameSystem === "gf" || !armyFiles ? null : armies.map((file, index) => {
-                  const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
-
-                  return (
-                    <Tile
-                      key={index}
-                      army={file}
-                      enabled={true}
-                      driveArmy={driveArmy}
-                      onSelect={army => selectArmy(army.path)} />
-                  );
-                })
-              }
-            </div>
-            {!isLive && (customArmies ? (
-              <>
-                <h3>Custom Armies</h3>
-                <div className="columns is-multiline">
-                  {customArmies.filter(a => a.official === false).map((customArmy, i) => (
-                    <div key={i} className="column is-half">
-                      <Card
-                        elevation={1}
-                        className="interactable"
-                        style={{
-                          backgroundColor: customArmy.official ? "#F9FDFF" : null,
-                          borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
-                        }}
-                        onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
-                        <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
-                          <div className="is-flex-grow-1">
-                            <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
-                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                              {customArmy.versionString} by {customArmy.username}
-                            </div>
-                          </div>
-                          {/* <p className="mr-2">{u.cost}pts</p> */}
-                          <IconButton color="primary">
-                            <RightIcon />
-                          </IconButton>
+          {(!isLive || router.query.dataSourceUrl) && (customArmies ? (
+            <>
+              <h3>Custom Armies</h3>
+              <div className="columns is-multiline">
+                {customArmies.filter(a => a.official === false).map((customArmy, i) => (
+                  <div key={i} className="column is-half">
+                    <Card
+                      elevation={1}
+                      className="interactable"
+                      style={{
+                        backgroundColor: customArmy.official ? "#F9FDFF" : null,
+                        borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
+                      }}
+                      onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                      <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
+                        <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
+                        <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                          {customArmy.versionString} by {customArmy.username}
                         </div>
-                      </Card>
-                    </div>
+                        {/* <p className="mr-2">{u.cost}pts</p> */}
+                        <IconButton color="primary">
+                          <RightIcon />
+                        </IconButton>
+                      </div>
+                    </Card>
+                  </div>
                   ))}
                 </div>
               </>
