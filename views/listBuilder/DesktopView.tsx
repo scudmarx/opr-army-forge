@@ -30,7 +30,6 @@ export default function DesktopView() {
           <UnitSelection onSelected={() => { }} />
         </div>
         <div className="column p-0" style={columnStyle}>
-          <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}` + (list.pointsLimit ? `/${list.pointsLimit}` : "") + "pts"}</h3>
           <MainList onSelected={() => { }} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
         <div className="column py-0 px-0 mr-4" style={columnStyle}>
