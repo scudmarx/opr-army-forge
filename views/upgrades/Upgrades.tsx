@@ -91,7 +91,7 @@ export function Upgrades({mobile = false}) {
     .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit);
 
   return (
-    <div className={mobile ? styles["upgrade-panel"] : styles["upgrade-panel-mobile"]}>
+    <div className={mobile ? styles["upgrade-panel-mobile"] : styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
