@@ -36,8 +36,8 @@ export default function DesktopView() {
         <div id="ColumnTwo" className="column p-0" style={columnStyle} onScroll={setShadow("MainListHeader", "ColumnTwo")}>
           <MainList onSelected={() => { }} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
-        <div className="column py-0 px-0 mr-4" style={columnStyle}>
-          <Paper square className="px-4 pt-4">
+        <div id="ColumnThree" className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setShadow("UpgradesHeader", "ColumnThree")}>
+          <Paper id="UpgradesHeader" square className="px-4 pt-4" sx={{position: "sticky", top: 0, backgroundColor: "white", boxShadow: "unset", zIndex: 10}}>
             <UpgradePanelHeader />
           </Paper>
           <Upgrades />
