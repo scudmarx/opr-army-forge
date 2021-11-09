@@ -14,7 +14,7 @@ import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
 
-export function Upgrades() {
+export function Upgrades({mobile = false}) {
 
   const list = useSelector((state: RootState) => state.list);
   const gameSystem = useSelector((state: RootState) => state.army.gameSystem);
@@ -91,7 +91,7 @@ export function Upgrades() {
     .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit);
 
   return (
-    <div className={styles["upgrade-panel"]}>
+    <div className={mobile ? styles["upgrade-panel"] : styles["upgrade-panel-mobile"]}>
 
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
