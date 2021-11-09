@@ -22,6 +22,12 @@ export default function UpgradePanelHeader() {
     setCustomName(selectedUnit?.customName ?? selectedUnit?.name ?? "");
   }, [selectedUnit?.selectionId]);
 
+  const debounceSaveMemo = useCallback(
+    debounce(1000, 
+      (name) => dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }))
+    )
+    , [list]);
+
   if (!selectedUnit)
     return null;
 
@@ -33,10 +39,6 @@ export default function UpgradePanelHeader() {
     }
   };
 
-  const debounceSave = debounce(1000, (name) => {
-    dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }));
-  });
-
   return (
     <Paper className="px-4 pt-4">
     <div className="is-flex is-align-items-center">
@@ -46,7 +48,7 @@ export default function UpgradePanelHeader() {
           variant="standard"
           className=""
           value={customName}
-          onChange={e => { setCustomName(e.target.value); debounceSave(e.target.value); }}
+          onChange={e => { setCustomName(e.target.value); debounceSaveMemo(e.target.value); }}
         />
       ) : (
         <div className="is-flex">
