@@ -24,7 +24,7 @@ export default function DesktopView() {
   return (
     <>
     <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
-    <div className="container" style={{overflow: "clip", maxHeight: "100vh", maxWidth: "100vw"}}>
+    <div className="appContent">
       <div className="columns my-0" style={{ flex: "1 0 auto", maxHeight: "calc(100vh - 64px)" }}>
         <div className="column py-0 pr-0" style={columnStyle}>
           <UnitSelection onAdded={() => { }} />

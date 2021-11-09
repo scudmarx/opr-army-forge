@@ -9,7 +9,7 @@ import { RootState } from "../../data/store";
 import UnitService from "../../services/UnitService";
 import { debounce } from 'throttle-debounce';
 
-export default function UpgradePanelHeader() {
+export default function UpgradePanelHeader({Mobile = false}) {
 
   const list = useSelector((state: RootState) => state.list);
   const dispatch = useDispatch();

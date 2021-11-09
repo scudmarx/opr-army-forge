@@ -15,7 +15,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import _ from "lodash";
 import { GroupSharp } from "@mui/icons-material";
 
-export function MainList({ onSelected, onUnitRemoved, scrollOnAdd = false }) {
+export function MainList({ onSelected, onUnitRemoved, scrollOnAdd = false, Mobile=false }) {
 
   const list = useSelector((state: RootState) => state.list);
 
@@ -47,7 +47,7 @@ export function MainList({ onSelected, onUnitRemoved, scrollOnAdd = false }) {
         <h3 className="px-4 pt-4 is-size-4 is-hidden-mobile">{`My List - ${list.points}` + (list.pointsLimit ? `/${list.pointsLimit}` : "") + "pts"}</h3>
         <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       </div>
-      <div style={{overflowY: "scroll", flexFlow: "column", display: "flex", flex: "1 1 auto"}}>
+      <div className="scrolling" style={{height: Mobile ? "calc(100vh - 148px)" : "calc(100vh - 156px)"}}>
 
         <ul className="mt-2">
           {

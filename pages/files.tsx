@@ -195,84 +195,86 @@ export default function Files() {
           </Toolbar>
         </AppBar>
       </Paper>
-      <div className="container" style={{width: "100vw", maxWidth: "unset"}}>
-        <div className="mx-auto p-4" style={{maxWidth: "960px"}}>
-          <h3 className="is-size-4 has-text-centered mb-4 pt-4">Choose your army</h3>
-          {
-            army.gameSystem === "gf" && (
-              <>
-                {!officialArmies && <div className="column is-flex is-flex-direction-column is-align-items-center	">
-                  <CircularProgress />
-                  <p>Loading armies...</p>
-                </div>}
-                {officialArmies && <>
-                  <div className="columns is-mobile is-multiline">
-                    {gfSection(_.sortBy(officialActiveArmies, a => a.name), true)}
-                  </div>
-                  {officialInactiveArmies.length > 0 && <>
-                    <h3 className="is-size-4 has-text-centered mb-4 pt-4">Coming Soon...</h3>
-                    <div className="columns is-mobile is-multiline">
-                      {gfSection(officialInactiveArmies, false)}
-                    </div>
-                  </>}
-                </>}
-              </>
-            )
-          }
-          <div className="columns is-mobile is-multiline">
+      <div className="scrolling appContent">
+        <div className="container">
+          <div className="mx-auto p-4">
+            <h3 className="is-size-4 has-text-centered mb-4 pt-4">Choose your army</h3>
             {
-              army.gameSystem === "gf" || !armyFiles ? null : armies.map((file, index) => {
-                const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
-
-                return (
-                  <Tile
-                    key={index}
-                    army={file}
-                    enabled={true}
-                    driveArmy={driveArmy}
-                    onSelect={army => selectArmy(army.path)} />
-                );
-              })
-            }
-          </div>
-          {!isLive && (customArmies ? (
-            <>
-              <h3>Custom Armies</h3>
-              <div className="columns is-multiline">
-                {customArmies.filter(a => a.official === false).map((customArmy, i) => (
-                  <div key={i} className="column is-half">
-                    <Card
-                      elevation={1}
-                      className="interactable"
-                      style={{
-                        backgroundColor: customArmy.official ? "#F9FDFF" : null,
-                        borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
-                      }}
-                      onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
-                      <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
-                        <div className="is-flex-grow-1">
-                          <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
-                          <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
-                            {customArmy.versionString} by {customArmy.username}
-                          </div>
-                        </div>
-                        {/* <p className="mr-2">{u.cost}pts</p> */}
-                        <IconButton color="primary">
-                          <RightIcon />
-                        </IconButton>
+              army.gameSystem === "gf" && (
+                <>
+                  {!officialArmies && <div className="column is-flex is-flex-direction-column is-align-items-center	">
+                    <CircularProgress />
+                    <p>Loading armies...</p>
+                  </div>}
+                  {officialArmies && <>
+                    <div className="columns is-mobile is-multiline">
+                      {gfSection(_.sortBy(officialActiveArmies, a => a.name), true)}
+                    </div>
+                    {officialInactiveArmies.length > 0 && <>
+                      <h3 className="is-size-4 has-text-centered mb-4 pt-4">Coming Soon...</h3>
+                      <div className="columns is-mobile is-multiline">
+                        {gfSection(officialInactiveArmies, false)}
                       </div>
-                    </Card>
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="is-flex is-flex-direction-column is-align-items-center	">
-              <CircularProgress />
-              <p>Loading custom armies...</p>
+                    </>}
+                  </>}
+                </>
+              )
+            }
+            <div className="columns is-mobile is-multiline">
+              {
+                army.gameSystem === "gf" || !armyFiles ? null : armies.map((file, index) => {
+                  const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
+
+                  return (
+                    <Tile
+                      key={index}
+                      army={file}
+                      enabled={true}
+                      driveArmy={driveArmy}
+                      onSelect={army => selectArmy(army.path)} />
+                  );
+                })
+              }
             </div>
-          )
-          )}
+            {!isLive && (customArmies ? (
+              <>
+                <h3>Custom Armies</h3>
+                <div className="columns is-multiline">
+                  {customArmies.filter(a => a.official === false).map((customArmy, i) => (
+                    <div key={i} className="column is-half">
+                      <Card
+                        elevation={1}
+                        className="interactable"
+                        style={{
+                          backgroundColor: customArmy.official ? "#F9FDFF" : null,
+                          borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
+                        }}
+                        onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                        <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
+                          <div className="is-flex-grow-1">
+                            <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
+                            <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
+                              {customArmy.versionString} by {customArmy.username}
+                            </div>
+                          </div>
+                          {/* <p className="mr-2">{u.cost}pts</p> */}
+                          <IconButton color="primary">
+                            <RightIcon />
+                          </IconButton>
+                        </div>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="is-flex is-flex-direction-column is-align-items-center	">
+                <CircularProgress />
+                <p>Loading custom armies...</p>
+              </div>
+            )
+            )}
+          </div>
         </div>
       </div>
       <ListConfigurationDialog

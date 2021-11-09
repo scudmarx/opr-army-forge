@@ -13,7 +13,7 @@ import { IUnit } from "../data/interfaces";
 import { useMediaQuery } from "react-responsive";
 import FullCompactToggle from "./components/FullCompactToggle";
 
-export function UnitSelection({ onAdded = (unit) => {}, onSelected = (unit) => {} }) {
+export function UnitSelection({ onAdded = (unit) => {}, onSelected = (unit) => {}, Mobile = false }) {
 
   // Access the main army definition state
   const armyData = useSelector((state: RootState) => state.army);
@@ -86,7 +86,7 @@ export function UnitSelection({ onAdded = (unit) => {}, onSelected = (unit) => {
 
         <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
       </div>
-      <div style={isBigScreen ? scrolling: null}>
+      <div className="scrolling" style={{height: Mobile ? "calc(100vh - 148px)" : "calc(100vh - 156px)"}}>
         {
           // For each category
           Object.keys(unitGroups).map((key, i) => (

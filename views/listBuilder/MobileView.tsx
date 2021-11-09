@@ -64,72 +64,73 @@ export default function MobileView() {
     <>
     <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
 
-    <Paper elevation={1} color="primary" square style={{ position: "sticky", top: 0, zIndex: 1 }}>
-      <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
-        <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
-          <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
-          <Tab label={`My List - ${list.points}pts`} />
-        </Tabs>
-      </AppBar>
-    </Paper>
+    <div className="appContent">
+      <Paper elevation={1} color="primary" square style={{ position: "sticky", top: 0, zIndex: 1 }}>
+        <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
+          <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
+            <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
+            <Tab label={`My List - ${list.points}pts`} />
+          </Tabs>
+        </AppBar>
+      </Paper>
 
-    <div className="container">
-      <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "calc(100vh - 48px - 56px)" }}>
-        <div>
-          <UnitSelection onAdded={(unit) => { }} />
-        </div>
-        <div className="">
-          {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)}  /> : (
-            <div className="p-4 has-text-centered">
-              <h3 className="is-size-3 mb-4">Your list is empty</h3>
-              <Button variant="outlined" onClick={() => handleSlideChange(null, 0)}>
-                <Add /> Add Units
-              </Button>
-              <div className="is-flex mt-6" style={{
-                height: "160px",
-                width: "100%",
-                backgroundImage: `url("img/gf_armies/${army?.data?.name}.png")`,
-                backgroundPosition: "center",
-                backgroundSize: "contain",
-                backgroundRepeat: 'no-repeat',
-                position: "relative",
-                zIndex: 1,
-                opacity: 0.5
-              }}></div>
-            </div>
-          )}
-        </div>
-      </Slider>
-
-      <BottomSheet
-        open={sheetOpen}
-        onDismiss={onDismissSheet}
-        initialFocusRef={false}
-        expandOnContentDrag={true}
-        onScrollCapture={(e) => e.preventDefault()}
-        defaultSnap={({ snapPoints, lastSnap }) =>
-          lastSnap ?? Math.min(...snapPoints)
-        }
-        snapPoints={({ minHeight, maxHeight }) => [
-          minHeight,
-          maxHeight * 0.9
-        ]}
-        header={<UpgradePanelHeader />}>
-        <Upgrades Mobile />
-      </BottomSheet>
-
-      <ValidationErrors
-        open={validationOpen}
-        setOpen={setValidationOpen} />
-      <ListConfigurationDialog
-        isEdit={true}
-        open={editListOpen}
-        setOpen={setEditListOpen}
-        customArmies={null} />
-      <UndoRemoveUnit
-        open={showUndoRemove}
-        setOpen={setShowUndoRemove} />
+      <div className="container">
+        <Slider {...sliderSettings} ref={slider => setSlider(slider)}>
+          <div>
+            <UnitSelection onAdded={(unit) => { }} />
+          </div>
+          <div>
+            {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)}  /> : (
+              <div className="p-4 has-text-centered">
+                <h3 className="is-size-3 mb-4">Your list is empty</h3>
+                <Button variant="outlined" onClick={() => handleSlideChange(null, 0)}>
+                  <Add /> Add Units
+                </Button>
+                <div className="is-flex mt-6" style={{
+                  height: "160px",
+                  width: "100%",
+                  backgroundImage: `url("img/gf_armies/${army?.data?.name}.png")`,
+                  backgroundPosition: "center",
+                  backgroundSize: "contain",
+                  backgroundRepeat: 'no-repeat',
+                  position: "relative",
+                  zIndex: 1,
+                  opacity: 0.5
+                }}></div>
+              </div>
+            )}
+          </div>
+        </Slider>
+      </div>
     </div>
+    <BottomSheet
+      open={sheetOpen}
+      onDismiss={onDismissSheet}
+      initialFocusRef={false}
+      expandOnContentDrag={true}
+      onScrollCapture={(e) => e.preventDefault()}
+      defaultSnap={({ snapPoints, lastSnap }) =>
+        lastSnap ?? Math.min(...snapPoints)
+      }
+      snapPoints={({ minHeight, maxHeight }) => [
+        minHeight,
+        maxHeight * 0.9
+      ]}
+      header={<UpgradePanelHeader Mobile />}>
+      <Upgrades Mobile />
+    </BottomSheet>
+
+    <ValidationErrors
+      open={validationOpen}
+      setOpen={setValidationOpen} />
+    <ListConfigurationDialog
+      isEdit={true}
+      open={editListOpen}
+      setOpen={setEditListOpen}
+      customArmies={null} />
+    <UndoRemoveUnit
+      open={showUndoRemove}
+      setOpen={setShowUndoRemove} />
     </>
   );
 }

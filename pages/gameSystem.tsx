@@ -51,25 +51,27 @@ export default function GameSystem() {
           </Toolbar>
         </AppBar>
       </Paper>
-      <div className="container">
-        <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
-          <h3 className="is-size-4 has-text-centered mb-4">Select Game System</h3>
-          <div className="columns is-multiline is-mobile">
-            {
-              // For each game system
-              gameSystems.map(gameSystem => (
-                <div key={gameSystem} className="column is-half">
-                  <Paper>
-                    <img onClick={() => isLive && gameSystem !== "gf" ? false : selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
-                      className={"game-system-tile "+ (isLive && gameSystem !== "gf" ? "" : "interactable")}
-                      style={{ borderRadius: "4px", display: "block", filter: isLive && gameSystem !== "gf" ? "grayscale(95%)" : null }} />
-                  </Paper>
-                </div>
-              ))
-            }
+      <div className="scrolling appContent">
+        <div className="container">
+          <div className="mx-auto p-4" style={{ maxWidth: "480px" }}>
+            <h3 className="is-size-4 has-text-centered mb-4">Select Game System</h3>
+            <div className="columns is-multiline is-mobile">
+              {
+                // For each game system
+                gameSystems.map(gameSystem => (
+                  <div key={gameSystem} className="column is-half">
+                    <Paper>
+                      <img onClick={() => isLive && gameSystem !== "gf" ? false : selectGameSystem(gameSystem)} src={`img/${gameSystem}_cover.jpg`}
+                        className={"game-system-tile "+ (isLive && gameSystem !== "gf" ? "" : "interactable")}
+                        style={{ borderRadius: "4px", display: "block", filter: isLive && gameSystem !== "gf" ? "grayscale(95%)" : null }} />
+                    </Paper>
+                  </div>
+                ))
+              }
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </>
   );
