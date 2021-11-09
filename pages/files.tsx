@@ -195,8 +195,8 @@ export default function Files() {
           </Toolbar>
         </AppBar>
       </Paper>
-      <div className="container">
-        <div className="mx-auto p-4">
+      <div className="container" style={{width: "100vw", maxWidth: "unset"}}>
+        <div className="mx-auto p-4" style={{maxWidth: "960px"}}>
           <h3 className="is-size-4 has-text-centered mb-4 pt-4">Choose your army</h3>
           {
             army.gameSystem === "gf" && (
