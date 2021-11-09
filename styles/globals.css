@@ -43,6 +43,14 @@ a {
   transform: scale(1.02);
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: #FAFAFA;
+  z-index: 10;
+  box-shadow: 0px 3px 5px 0px lightgrey;
+}
+
 @media print {
   body {
     zoom: 65%;
