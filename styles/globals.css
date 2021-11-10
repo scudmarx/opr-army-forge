@@ -60,6 +60,13 @@ div[role="tooltip"] {
   background-color: #FAFAFA !important;
   padding-bottom: 1rem;
   margin-bottom: -1rem;
+  overflow: hidden;
+}
+.sticky.scrolled .unitName {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 @media print {
