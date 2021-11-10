@@ -20,10 +20,9 @@ export default function DesktopView() {
 
   const columnStyle: any = { overflowY: "scroll", maxHeight: "100%" };
 
-  const setScrolled = (header, scroller) => () => {
-    let scrolled = !!document.getElementById(scroller).scrollTop;
-    let elem = document.getElementById(header);
-    if (scrolled) {
+  const setScrolled = (e) => {
+    let elem = e.target
+    if (elem.scrollTop) {
       elem.classList.add("scrolled")
     } else {
       elem.classList.remove("scrolled")
@@ -36,14 +35,14 @@ export default function DesktopView() {
         <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
-        <div id="ColumnOne" className="column py-0 pr-0" style={columnStyle} onScroll={setScrolled("UnitSelectionHeader", "ColumnOne")}>
+        <div className="column py-0 pr-0" style={columnStyle} onScroll={setScrolled}>
           <UnitSelection onSelected={() => { }} />
         </div>
-        <div id="ColumnTwo" className="column p-0" style={columnStyle} onScroll={setScrolled("MainListHeader", "ColumnTwo")}>
+        <div className="column p-0" style={columnStyle} onScroll={setScrolled}>
           <MainList onSelected={() => { }} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
-        <div id="ColumnThree" className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setScrolled("UpgradesHeader", "ColumnThree")}>
-          <Paper id="UpgradesHeader" square className="px-4 pt-4 sticky" sx={{backgroundColor: "white"}}>
+        <div className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setScrolled}>
+          <Paper square className="px-4 pt-4 sticky" sx={{backgroundColor: "white"}}>
             <UpgradePanelHeader />
           </Paper>
           <Upgrades />

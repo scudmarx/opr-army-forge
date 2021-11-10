@@ -53,7 +53,7 @@ div[role="tooltip"] {
   background-color: #FAFAFA;
   box-shadow: none !important;
 }
-.sticky.scrolled {
+.scrolled .sticky {
   z-index: 10;
   height: 68px;
   box-shadow: 0px 3px 5px 0px lightgrey !important;
@@ -62,7 +62,7 @@ div[role="tooltip"] {
   margin-bottom: -1rem;
   overflow: hidden;
 }
-.sticky.scrolled .unitName {
+.scrolled .sticky .unitName {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

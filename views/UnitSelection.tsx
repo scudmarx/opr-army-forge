@@ -74,7 +74,7 @@ export function UnitSelection({ onSelected }) {
       className={styles.menu + " menu"}
       style={{ minHeight: "100%" }}
     >
-      <div id="UnitSelectionHeader" className={isBigScreen ? "sticky" : ""}>
+      <div className={isBigScreen ? "sticky" : ""}>
         {isBigScreen && <div className="is-flex is-align-items-center">
           <h3 className="is-size-4 px-4 pt-4 is-flex-grow-1">
             {army.name} - {army.versionString}
