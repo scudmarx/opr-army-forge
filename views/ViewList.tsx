@@ -1,22 +1,14 @@
-import Head from "next/head";
 import React, { Fragment, useEffect } from "react";
 import { useSelector } from 'react-redux'
 import { RootState } from '../data/store'
 import { useRouter } from "next/router";
-import { useMediaQuery } from 'react-responsive';
-import style from "../styles/Cards.module.css";
-import UnitEquipmentTable from "../views/UnitEquipmentTable";
 import { Paper, Card } from "@mui/material";
-import RulesService from "../services/RulesService";
 import RuleList from "../views/components/RuleList";
 import DataParsingService from "../services/DataParsingService";
 import { IGameRule } from "../data/armySlice";
-import RemoveIcon from '@mui/icons-material/Clear';
-import { selectUnit, removeUnit } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
 import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
 import UnitService from "../services/UnitService";
-import { distinct } from "../services/Helpers";
 import { ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
 import pluralise from "pluralize";
 import _ from "lodash";

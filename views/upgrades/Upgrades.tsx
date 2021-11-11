@@ -121,7 +121,7 @@ export function Upgrades() {
         </FormGroup>}
         {/* Equipment */}
         <div className="px-4 pt-2">
-          <UnitEquipmentTable unit={selectedUnit} />
+          <UnitEquipmentTable unit={selectedUnit} square={false} />
         </div>
         {isPsychic && <div className="px-4 pt-2">
           <SpellsTable />

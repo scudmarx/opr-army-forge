@@ -40,7 +40,7 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEqu
   );
 }
 
-export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
+export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUnit, square: boolean }) {
 
   const isWeapon = e => e.attacks;
 
@@ -112,7 +112,7 @@ export default function UnitEquipmentTable({ unit }: { unit: ISelectedUnit }) {
 
   return (
     <>
-      {hasWeapons && <TableContainer component={Paper} elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
+      {hasWeapons && <TableContainer component={Paper} square={square} elevation={0} style={{ border: "1px solid rgba(0,0,0,.12)" }}>
         <Table size="small">
           <TableHead>
             <TableRow style={{ backgroundColor: "#EBEBEB", fontWeight: 600 }}>
