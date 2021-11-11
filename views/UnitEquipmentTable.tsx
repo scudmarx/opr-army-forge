@@ -1,5 +1,5 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { IEquipment, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from '../data/interfaces';
+import { IEquipment, ISelectedUnit, ISpecialRule, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from '../data/interfaces';
 import EquipmentService from '../services/EquipmentService';
 import pluralise from "pluralize";
 import RuleList from './components/RuleList';
@@ -70,6 +70,7 @@ export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUn
       label: upgrade.name,
     };
   };
+
   const upgradesAsEquipment = weaponUpgrades.map(upgradeToEquipment);
 
   // Combine upgradesAsEquipment with weapons
@@ -100,12 +101,17 @@ export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUn
     }
   });
 
-  const weaponGroups = _.groupBy(combinedWeapons, w => w.label + w.attacks);
+  const combinedEquipment = equipment.map(e => ({
+    label: e.label || e.name,
+    specialRules: e.specialRules.map(DataParsingService.parseRule)
+  })).concat(itemUpgrades.map(u => ({
+    label: u.name,
+    specialRules: u.content.filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense") as IUpgradeGainsRule[]
+  })));
 
-  // console.log("Weapon upgrades: ", weaponUpgrades);
-  // console.log("Upgrades as equipment: ", upgradesAsEquipment);
-  // console.log("Combined weapons: ", combinedWeapons);
-  // console.log("Weapon groups", weaponGroups);
+  const weaponGroups = _.groupBy(combinedWeapons, w => w.label + w.attacks);
+  const itemGroups = _.groupBy(combinedEquipment, w => w.label);
+  console.log(itemGroups);
 
   const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
   const headerStyle = { ...cellStyle, fontWeight: 600 };
@@ -166,30 +172,16 @@ export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUn
           </TableHead>
           <TableBody>
             {
-              equipment.filter(e => e.count).map((e, i) => {
-                const isEquippedToAll = e.count === unit.size;
+              Object.values(itemGroups).map((group: any[], index) => {
+
+                const e = group[0];
+                const count = group.reduce((c, next) => c + (next.count || 1), 0);
 
                 return (
-                  <TableRow key={i}>
-                    <TableCell style={cellStyle}>{e.count > 1 && isEquippedToAll ? '' : `${e.count}x`} {e.count > 1 && !isEquippedToAll ? pluralise.plural(e.label) : e.label}</TableCell>
+                  <TableRow key={index}>
+                    <TableCell style={cellStyle}>{count > 1 ? `${count}x ` : ""}{e.label}</TableCell>
                     <TableCell style={cellStyle}>
-                      <RuleList specialRules={e.specialRules.map(DataParsingService.parseRule)} />
-                    </TableCell>
-                  </TableRow>
-                );
-              })
-            }
-            {
-              itemUpgrades.map((e, i) => {
-                const rules = e.content
-                  .filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense") as IUpgradeGainsRule[];
-                console.log(rules);
-
-                return (
-                  <TableRow key={i}>
-                    <TableCell style={cellStyle}>{e.name}</TableCell>
-                    <TableCell style={cellStyle}>
-                      <RuleList specialRules={rules} />
+                      <RuleList specialRules={e.specialRules} />
                     </TableCell>
                   </TableRow>
                 );

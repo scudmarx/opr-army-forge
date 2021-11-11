@@ -564,6 +564,31 @@ test('"Upgrade with any" is valid', () => {
   expect(isValid).toBe(true);
 });
 
+test('"Upgrade any model with up to two" is valid', () => {
+
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const unit: ISelectedUnit = {
+    ...defaultUnit,
+    size: 3,
+    selectedUpgrades: [
+      option,
+      option,
+      option
+    ]
+  };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade any model with up to two:"),
+    options: [
+      option
+    ]
+  };
+
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+
+  expect(isValid).toBe(true);
+});
 
 //#endregion
 
