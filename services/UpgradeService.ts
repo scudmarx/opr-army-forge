@@ -135,6 +135,8 @@ export default class UpgradeService {
   public static getControlType(unit: ISelectedUnit, upgrade: IUpgrade): "check" | "radio" | "updown" {
     const combinedMultiplier = 1 //unit.combined ? 2 : 1;
     const combinedAffects = upgrade.affects //(unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
+
+    console.log("Control type for...", upgrade);
     if (upgrade.type === "upgrade") {
 
       // "Upgrade any model with:"

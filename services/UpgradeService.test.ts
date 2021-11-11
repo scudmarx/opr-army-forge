@@ -689,4 +689,12 @@ test('Control Type "Upgrade with up to two:"', () => {
   expect(type).toBe("updown");
 });
 
+test('Control Type "Replace up to two [weapon]:"', () => {
+
+  const upgrade = DataParsingService.parseUpgradeText("Replace up to two Rocket Launchers:");
+  const type = UpgradeService.getControlType(defaultUnit, upgrade);
+
+  expect(type).toBe("updown");
+});
+
 //#endregion

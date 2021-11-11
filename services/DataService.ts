@@ -62,6 +62,12 @@ export default class DataService {
         ...pkg,
         sections: pkg.sections.map(section => {
           const upgrade = DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":"));
+          
+          // Sanitise dodgy/old data
+          delete section.select;
+          delete section.affects;
+          delete section.replaceWhat;
+
           return {
             ...section,
             ...upgrade,
