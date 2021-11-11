@@ -136,7 +136,6 @@ export default class UpgradeService {
     const combinedMultiplier = 1 //unit.combined ? 2 : 1;
     const combinedAffects = upgrade.affects //(unit.combined && typeof (upgrade.affects) === "number") ? upgrade.affects * 2 : upgrade.affects;
 
-    console.log("Control type for...", upgrade);
     if (upgrade.type === "upgrade") {
 
       // "Upgrade any model with:"
@@ -200,6 +199,10 @@ export default class UpgradeService {
 
     if (upgrade.type === "replace") {
 
+      const replaceCount = typeof (upgrade.affects) === "number"
+        ? upgrade.affects
+        : 1;
+
       const canReplaceSet = (options: string[]) => {
         if (!Array.isArray(options)) {
           options = [options];
@@ -209,14 +212,14 @@ export default class UpgradeService {
           var toRestore = this.findAppliedUpgrade(unit, what);
 
           // Couldn't find the upgrade to replace
-          if (!toRestore || toRestore.count <= 0)
+          if (!toRestore || (toRestore.count - replaceCount) < 0)
             toRestore = EquipmentService.findLast(unit.equipment, what);
 
           if (!toRestore)
             return false;
 
           // Nothing left to replace
-          if (toRestore.count <= 0)
+          if ((toRestore.count - replaceCount) < 0)
             return false;
 
           // May only select up to the limit
@@ -260,9 +263,9 @@ export default class UpgradeService {
         if (appliedInGroup >= upgrade.select) {
           return false;
         }
-      // Upgrade any
+        // Upgrade any
       } else if (upgrade.affects === "any" && appliedInGroup >= unit.size) {
-         return false;
+        return false;
       }
     }
 
@@ -272,15 +275,12 @@ export default class UpgradeService {
 
   public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
 
-    // How many of this upgrade do we need to apply
-    const count = (typeof (upgrade.affects) === "number"
-      ? upgrade.affects
-      : upgrade.affects === "all"
-        ? unit.size || 1 // All in unit
-        : 1); // TODO: Add back multiple count weapons? * (option.count || 1);
-
     // Function to apply the upgrade option to the unit
-    const apply = (available: number) => {
+    const apply = (replacedCount?: number) => {
+
+      const applyCount = gain => replacedCount !== undefined
+        ? (replacedCount * gain.count)
+        : gain.count;
 
       const toApply = {
         ...option,
@@ -290,8 +290,10 @@ export default class UpgradeService {
         gains: option.gains.map(g => ({
           ...g,
           id: nanoid(7),
-          count: Math.min(count, available),
-          originalCount: Math.min(count, available) // e.g. If a unit of 5 has 4 CCWs left...
+          // TODO: Replace 2 with 1
+          // TODO: Replace 1 with 2
+          count: applyCount(g),
+          originalCount: applyCount(g) // e.g. If a unit of 5 has 4 CCWs left...
         })),
         replacedWhat: upgrade.replaceWhat // Keep track of what this option replaced
       };
@@ -310,6 +312,12 @@ export default class UpgradeService {
       unit.selectedUpgrades.push(toApply);
     };
 
+    const affectsCount = typeof (upgrade.affects) === "number"
+      ? upgrade.affects
+      : upgrade.affects === "all"
+        ? unit.size || 1 // All in unit
+        : 1;
+
     if (upgrade.type === "upgradeRule") {
       // TODO: Refactor this - shouldn't be using display name func to compare probably!
       const existingRuleIndex = unit
@@ -320,7 +328,7 @@ export default class UpgradeService {
       if (existingRuleIndex > -1)
         unit.specialRules.splice(existingRuleIndex, 1);
 
-      apply(count);
+      apply();
 
       // Add new rule(s)!
       //unit.specialRules = unit.specialRules.concat(option.gains as ISpecialRule[]);
@@ -328,13 +336,14 @@ export default class UpgradeService {
       return;
     }
     else if (upgrade.type === "upgrade") {
-      apply(count);
+      apply(affectsCount);
     }
     else if (upgrade.type === "replace") {
 
-      console.log("Replace " + count);
+      console.log("Replace " + affectsCount);
 
-      let available = 999;
+      let availableToReplace = 999;
+      let replaceCount = 999;
 
       const replace = (options: string[]) => {
 
@@ -357,7 +366,8 @@ export default class UpgradeService {
           replace.push(toReplace);
         }
 
-        available = replace.reduce((val, next) => Math.min(val, next.count), 999);
+        availableToReplace = replace.reduce((val, next) => Math.min(val, next.count), 999);
+        replaceCount = Math.min(affectsCount, availableToReplace);
 
         // Actual modify the options now we know they're all here
         for (let toReplace of replace) {
@@ -365,7 +375,7 @@ export default class UpgradeService {
           console.log("Replacing... ", current(toReplace));
 
           // Decrement the count of the item being replaced
-          toReplace.count -= Math.min(count, available);
+          toReplace.count -= replaceCount;
 
           // TODO: Use Math.max... ?
           if (toReplace.count <= 0)
@@ -400,7 +410,7 @@ export default class UpgradeService {
           return false;
       }
 
-      apply(available);
+      apply(replaceCount);
     }
   }
 

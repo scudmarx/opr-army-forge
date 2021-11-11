@@ -85,7 +85,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
           gainsGroups ? Object.keys(gainsGroups).map((key, i) => {
             const group: IUpgradeGains[] = gainsGroups[key];
             const e = group[0];
-            const count = group.length
+            const count = group.reduce((c, next) => c + (next.count || 1), 0);
 
             return <UpgradeItemDisplay key={i} eqp={e} count={count} />;
           }) : <span style={{ color: "#000000" }}>None</span>

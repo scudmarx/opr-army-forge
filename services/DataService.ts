@@ -3,6 +3,7 @@ import { IUnit, IUpgradeOption } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
+import _ from "lodash";
 
 export default class DataService {
 
@@ -92,12 +93,25 @@ export default class DataService {
                   gains.push(gain);
                 }
               }
+
+              // Group/combine gains with same name...
+              const gainsGroups = _.groupBy(gains, g => g.label);
+
               return ({
                 ...opt,
                 isModel: upgrade.attachModel ?? false,
                 cost: typeof (opt.cost ?? 0) === "number" ? opt.cost : parseInt((opt.cost as any).toString().replace(/pts?/, "")),
                 id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
-                gains
+
+                // Group same items back together and sum the count
+                gains: Object.values(gainsGroups).map((grp: any[]) => {
+                  const count = grp.reduce((c, next) => c + (next.count || 1), 0);
+                  console.log(grp[0].label + " " + count, grp);
+                  return {
+                    ...grp[0],
+                    count: count
+                  }
+                })
               });
             })
           };
