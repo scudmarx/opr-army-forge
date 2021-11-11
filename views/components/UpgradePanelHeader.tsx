@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { IconButton, TextField } from "@mui/material";
 import EditIcon from '@mui/icons-material/Create';
@@ -22,6 +22,12 @@ export default function UpgradePanelHeader() {
     setCustomName(selectedUnit?.customName ?? selectedUnit?.name ?? "");
   }, [selectedUnit?.selectionId]);
 
+  const debounceSave = useCallback(
+    debounce(1000, 
+      (name) => dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }))
+    )
+    , [list]);
+
   if (!selectedUnit)
     return null;
 
@@ -32,10 +38,6 @@ export default function UpgradePanelHeader() {
       // Focus
     }
   };
-
-  const debounceSave = debounce(1000, (name) => {
-    dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }));
-  });
 
   return (
     <div className="is-flex is-align-items-center">
