@@ -258,12 +258,12 @@ export default class UpgradeService {
         if (appliedInGroup >= upgrade.select) {
           return false;
         }
+      // Upgrade any
+      } else if (upgrade.affects === "any" && appliedInGroup >= unit.size) {
+         return false;
       }
-      // TODO: Why was this here? Need to add a test case!
-      // else if (appliedInGroup >= unit.size) {
-      //   return false;
-      // }
     }
+
 
     return true;
   };
