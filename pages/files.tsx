@@ -94,15 +94,17 @@ export default function Files() {
         setCustomArmies(valid);
         return valid
       })
-      .then((armies) => {
-        if (router.query) {
-        let armyId = router.query.armyId as string
-        let army = armies.find(t => t.uid == armyId)
-        if (army) {
-           selectCustomList(army)
-        }
-      }}, (err) => {throw(err)});
-  }, []);
+  }, [army.gameSystem]);
+
+  useEffect(() => {
+    if (customArmies && router.query) {
+      let armyId = router.query.armyId as string
+      let army = customArmies.find(t => t.uid == armyId)
+      if (army) {
+        selectCustomList(army)
+      }
+    }
+  }, [customArmies])
 
   const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0]?.items;
 
@@ -116,6 +118,7 @@ export default function Files() {
       name: key,
       factionName: key,
       factionRelation: officialFactions[key][0].factionRelation,
+      official: true,
       // Live if any are live
       isLive: officialFactions[key].reduce((live, next) => live || next.isLive, false)
     })));
@@ -138,27 +141,26 @@ export default function Files() {
     });
   };
 
-  const selectCustomList = (customArmy: any) => {
-
+  const chooseArmy = (army) => {
+    router.replace({query: {...router.query, armyId: army.uid}}, null, {shallow: true})
+    selectCustomList(army)
+  }
+  const selectCustomList = (customArmy) => {
     if (customArmy.factionName) {
-
-      dispatch(loadArmyData(customArmy));
-
-      const related = customArmies.filter(a => a.factionName === customArmy.factionName && a.official === true);
-      console.log(related);
-      dispatch(loadChildArmyData(related));
-
-      setNewArmyDialogOpen(true);
-
+      if (customArmies) {
+        const factionArmy = {...customArmy, name: customArmy.factionName}
+        const related = customArmies.filter(a => (a.factionName === customArmy.factionName) && ((a.official === true) || !customArmy.official));
+        
+        console.log(factionArmy);
+        dispatch(loadArmyData(factionArmy));
+        dispatch(loadChildArmyData(related));
+        setNewArmyDialogOpen(!!related);
+      }
     } else {
-
       dispatch(loadChildArmyData(null));
 
       DataService.getApiData(customArmy.uid, afData => {
-
-        router.push({query: {...router.query, armyId: customArmy.uid}}, null, {shallow: true})
         dispatch(loadArmyData(afData));
-
         setNewArmyDialogOpen(!!afData);
       }, (err) => {
         console.error(`Failed to get Army data: ${err}`)
@@ -173,7 +175,7 @@ export default function Files() {
     army={army}
     enabled={enabled}
     driveArmy={null}
-    onSelect={army => selectCustomList(army)} />);
+    onSelect={army => chooseArmy(army)} />);
 
   return (
     <>
@@ -186,7 +188,7 @@ export default function Files() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
-              onClick={() => router.back()}
+              onClick={() => router.push("/gameSystem")}
             >
               <BackIcon />
             </IconButton>
@@ -222,7 +224,7 @@ export default function Files() {
           }
           <div className="columns is-mobile is-multiline">
             {
-              army.gameSystem === "gf" || !armyFiles ? null : armies.map((file, index) => {
+              army.gameSystem === "gf" || !armyFiles ? null : armies?.map((file, index) => {
                 const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
 
                 return (
@@ -249,7 +251,7 @@ export default function Files() {
                         backgroundColor: customArmy.official ? "#F9FDFF" : null,
                         borderLeft: customArmy.official ? "2px solid #0F71B4" : null,
                       }}
-                      onClick={(e) => { e.stopPropagation(); selectCustomList(customArmy); }}>
+                      onClick={(e) => { e.stopPropagation(); chooseArmy(customArmy); }}>
                       <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
                         <div className="is-flex-grow-1">
                           <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>

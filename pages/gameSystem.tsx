@@ -3,6 +3,7 @@ import { setGameSystem } from '../data/armySlice'
 import { useRouter } from 'next/router';
 import { AppBar, IconButton, Paper, Toolbar, Typography } from '@mui/material';
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
+import { useEffect } from 'react';
 
 export default function GameSystem() {
 
@@ -14,14 +15,16 @@ export default function GameSystem() {
 
   const selectGameSystem = (gameSystem: string) => {
     dispatch(setGameSystem(gameSystem));
-    router.push({pathname: "/files", query: router.query});
+    router?.push({pathname: "/files", query: {...router.query, gameSystem: gameSystem}});
   };
 
-  if (router.query) {
-    console.log(router.query)
-    let gameSystem = router.query.gameSystem as string
-    if (gameSystems.includes(gameSystem)) selectGameSystem(gameSystem)
-  } 
+  useEffect(() => {
+    if (router.query) {
+      console.log(router.query)
+      let gameSystem = router.query.gameSystem as string
+      if (gameSystems.includes(gameSystem)) selectGameSystem(gameSystem)
+    } 
+  }, [])
 
   return (
     <>
