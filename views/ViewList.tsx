@@ -34,9 +34,9 @@ export default function ViewList({ showPsychic, showFullRules, showPointCosts })
             label: e.label,
             name: e.name,
             attacks: e.attacks,
-            range: e.range || 0,
-            count: e.count || 1,
-            originalCount: e.count || 1,
+            range: e.range ?? 0,
+            count: e.count,
+            originalCount: e.count,
             specialRules: e.specialRules.map(DataParsingService.parseRule) as IUpgradeGainsRule[],
             type: "ArmyBookWeapon"
           }));
@@ -48,6 +48,9 @@ export default function ViewList({ showPsychic, showFullRules, showPointCosts })
           const displayUpgrade = (eqp: IUpgradeGains, count) => {
 
             const name = count > 1 ? pluralise.plural(eqp.name || eqp.label) : eqp.name || eqp.label;
+
+            if (!count)
+              return null;
 
             switch (eqp.type) {
               case "ArmyBookRule": {
