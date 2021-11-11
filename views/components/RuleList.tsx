@@ -28,6 +28,7 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
       {keys.map((key, index) => {
         const group: ISpecialRule[] = ruleGroups[key];
         const rule = group[0];
+        const count = group.length;
         const rating = key === "Psychic"
           // Take Highest
           ? Math.max(...group.map(rule => parseInt(rule.rating)))
@@ -41,7 +42,7 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
           <Fragment key={index}>
             {index > 0 ? <span className="mr-1">, </span> : null}
             <RuleItem 
-              label={RulesService.displayName({ ...rule, rating: rule.rating ? rating.toString() : null })}
+              label={(count > 1 ? `${count}x ` : "") + RulesService.displayName({ ...rule, rating: rule.rating ? rating.toString() : null })}
               description={ruleDefinition?.description || ""} />
           </Fragment>
         );
