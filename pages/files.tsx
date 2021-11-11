@@ -30,7 +30,7 @@ export default function Files() {
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
-  const webCompanionUrl = 'https://opr-list-bui-feature-po-r8wmtp.herokuapp.com/api';
+  const webCompanionUrl = 'https://webapp.onepagerules.com/api';
 
   useEffect(() => {
 

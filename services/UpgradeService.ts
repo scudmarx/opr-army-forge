@@ -273,6 +273,19 @@ export default class UpgradeService {
       } else if (upgrade.affects === "any" && appliedInGroup >= unit.size) {
         return false;
       }
+
+      if (upgrade.replaceWhat) {
+        for (let what of upgrade.replaceWhat) {
+
+          // Try and find item to replace...
+          const toReplace = this.findToReplace(unit, what as string);
+
+          // Couldn't find the item
+          if (!toReplace) {
+            return false;
+          }
+        }
+      }
     }
 
     return true;
