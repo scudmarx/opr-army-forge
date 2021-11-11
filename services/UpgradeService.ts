@@ -6,6 +6,7 @@ import RulesService from "./RulesService";
 import { current } from "immer";
 import { nanoid } from "nanoid";
 import { KeyboardReturnOutlined } from "@mui/icons-material";
+import { listItemTextClasses } from "@mui/material";
 
 export default class UpgradeService {
   static calculateListTotal(list: ISelectedUnit[]) {
@@ -190,7 +191,6 @@ export default class UpgradeService {
     const controlType = this.getControlType(unit, upgrade);
     //const alreadySelected = this.countApplied(unit, upgrade, option);
     const appliedInGroup = upgrade.options.reduce((total, next) => total + this.countApplied(unit, upgrade, next), 0);
-    const combinedMultiplier = 1 //unit.combined ? 2 : 1;
 
     // if it's a radio, it's valid if any other upgrade in the group is already applied
     if (controlType === "radio")
@@ -229,7 +229,7 @@ export default class UpgradeService {
               if (appliedInGroup >= upgrade.select * unit.size) {
                 return false;
               }
-            } else if (appliedInGroup >= (upgrade.select * combinedMultiplier)) {
+            } else if (appliedInGroup >= upgrade.select) {
               return false;
             }
           } else if (unit.combined && upgrade.affects === 1 && appliedInGroup >= 2) {
@@ -260,7 +260,13 @@ export default class UpgradeService {
       // Upgrade with 1:
       if (typeof (upgrade.select) === "number") {
 
-        if (appliedInGroup >= upgrade.select) {
+        if (upgrade.affects === "any") {
+
+          if (appliedInGroup >= upgrade.select * unit.size) {
+            return false;
+          }
+
+        } else if (appliedInGroup >= upgrade.select) {
           return false;
         }
         // Upgrade any
