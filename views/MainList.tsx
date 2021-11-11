@@ -15,13 +15,14 @@ import LinkIcon from '@mui/icons-material/Link';
 import _ from "lodash";
 import { GroupSharp } from "@mui/icons-material";
 
-export function MainList({ onSelected, onUnitRemoved }) {
+export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
 
   const list = useSelector((state: RootState) => state.list);
 
   const dispatch = useDispatch();
   const router = useRouter();
   const [expandAll, setExpandAll] = useState(true);
+  const [expandedId, setExpandedId] = useState(null);
 
   const joinedUnitIds = list.units.filter(u => u.joinToUnit).map(u => u.joinToUnit);
   const units = list.units.filter(u => joinedUnitIds.indexOf(u.selectionId) === -1);
@@ -47,6 +48,10 @@ export function MainList({ onSelected, onUnitRemoved }) {
               : null;
             //console.log("Grandchild", combinedUnit);
 
+            const handleClick = (unit) => {
+              if (!mobile) setExpandedId(expandedId == unit.selectionId ? null : unit.selectionId);
+              onSelected(unit);}
+
             return (
               <li key={index} className={joinedUnit ? "my-2" : ""} style={{ backgroundColor: joinedUnit ? "rgba(0,0,0,.12)" : "" }}>
                 {joinedUnit && <div className="is-flex px-4 py-2 is-align-items-center">
@@ -62,20 +67,20 @@ export function MainList({ onSelected, onUnitRemoved }) {
                   <MainListItem
                     list={list}
                     unit={s}
-                    expanded={expandAll}
-                    onSelected={onSelected}
+                    expanded={expandAll || expandedId == s.selectionId}
+                    onSelected={handleClick}
                     onUnitRemoved={onUnitRemoved} />
                   {joinedUnit && <MainListItem
                     list={list}
                     unit={joinedUnit}
-                    expanded={expandAll}
-                    onSelected={onSelected}
+                    expanded={expandAll || expandedId == joinedUnit.selectionId}
+                    onSelected={handleClick}
                     onUnitRemoved={onUnitRemoved} />}
                   {combinedUnit && <MainListItem
                     list={list}
                     unit={combinedUnit}
-                    expanded={expandAll}
-                    onSelected={onSelected}
+                    expanded={expandAll || expandedId == combinedUnit.selectionId}
+                    onSelected={handleClick}
                     onUnitRemoved={onUnitRemoved} />}
                 </div>
               </li>
@@ -125,7 +130,7 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
         backgroundColor: (list.selectedUnitId === unit.selectionId ? "rgba(249, 253, 255, 1)" : null)
       }}>
       <AccordionSummary>
-        <div className="is-flex is-flex-grow-1 is-align-items-center">
+        <div id={`Unit${unit.selectionId}`} className="is-flex is-flex-grow-1 is-align-items-center">
           <div className="is-flex-grow-1">
             <p className="mb-1" style={{ fontWeight: 600 }}>{unit.customName || unit.name} {unitSize > 1 ? `[${unitSize}]` : ''}</p>
             <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>

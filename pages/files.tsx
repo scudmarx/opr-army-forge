@@ -156,6 +156,7 @@ export default function Files() {
 
       DataService.getApiData(customArmy.uid, afData => {
 
+        router.push({query: {...router.query, armyId: customArmy.uid}}, null, {shallow: true})
         dispatch(loadArmyData(afData));
 
         setNewArmyDialogOpen(!!afData);
@@ -235,7 +236,7 @@ export default function Files() {
               })
             }
           </div>
-          {!isLive && (customArmies ? (
+          {(!isLive || router.query.dataSourceUrl) && (customArmies ? (
             <>
               <h3>Custom Armies</h3>
               <div className="columns is-multiline">
