@@ -275,7 +275,6 @@ export default class UpgradeService {
       }
     }
 
-
     return true;
   };
 
@@ -311,7 +310,8 @@ export default class UpgradeService {
         const item = gain as IUpgradeGainsItem;
         item.content = item.content.map(c => ({
           ...c,
-          count: gain.count
+          count: gain.count,
+          originalCount: gain.count
         }));
       }
 
@@ -423,7 +423,7 @@ export default class UpgradeService {
   public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
     const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
     const toRemove = unit.selectedUpgrades[removeAt];
-
+debugger;
     // Remove anything that depends on this upgrade (cascade remove)
     const removeDependencies = (dependencies) => {
       if (!dependencies)
