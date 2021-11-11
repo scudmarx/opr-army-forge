@@ -30,7 +30,7 @@ export default class DataParsingService {
         select: 1
       };
 
-    const takeMatch = /^Take\s([\d]+|one|two)?\s?(.+?)\sattachments?:/.exec(text);
+    const takeMatch = /^Take\s([\d]+|one|two|any)?\s?(.+?)\sattachments?:/.exec(text);
     if (takeMatch)
       return {
         type: "upgrade",
@@ -60,7 +60,7 @@ export default class DataParsingService {
         select: 2
       };
 
-      const addModelMatch = /Add one model with/i.exec(text);
+    const addModelMatch = /Add one model ?(?:with)?/i.exec(text);
     if (addModelMatch)
       return {
         type: "upgrade",
@@ -73,7 +73,7 @@ export default class DataParsingService {
     const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?(?:(.+)\swith)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
 
     if (!match) {
-      throw(new Error("Cannot match: " + text))
+      throw (new Error("Cannot match: " + text))
       return null;
     }
 
@@ -102,15 +102,23 @@ export default class DataParsingService {
         result.replaceWhat = replaceWhat
           .split("/")
           .map(part => part.trim())
-          .map(part => part.split(" and "));
+          .map(part => part.split(" and "))
+          .map(part => part.map(p => p.split(", ")).reduce((arr, next) => arr.concat(next), []));
       } else {
-        result.replaceWhat = replaceWhat.split(" and ");
+        result.replaceWhat = replaceWhat
+          .split(" and ")
+          .map(part => part.split(", "))
+          .reduce((arr, next) => arr.concat(next), []);
       }
     }
 
     // TODO: Better way of doing this?
     if (result.type === "upgrade" && result.replaceWhat && !result.affects && !result.select && !result.model)
       result.type = "upgradeRule";
+
+    if (result.model === false) {
+      delete result.model;
+    }
 
     return result;
   }

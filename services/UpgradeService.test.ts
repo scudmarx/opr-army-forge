@@ -208,7 +208,9 @@ test('"Replace one Rifle" is valid, where Rifle is an upgrade', () => {
         label: "Rifle",
         name: "Rifle",
         type: "ArmyBookWeapon",
-        count: 1
+        count: 1,
+        originalCount: 1,
+        id: ""
       }
     ]
   };
@@ -250,7 +252,9 @@ test('"Replace one Rifle" is not valid, where Rifle is an upgrade', () => {
         label: "Rifle",
         name: "Rifle",
         type: "ArmyBookWeapon",
-        count: 0
+        count: 0,
+        originalCount: 1,
+        id: ""
       }
     ]
   };
@@ -683,120 +687,6 @@ test('Control Type "Upgrade with up to two:"', () => {
   const type = UpgradeService.getControlType(defaultUnit, upgrade);
 
   expect(type).toBe("updown");
-});
-
-//#endregion
-
-//#region Apply Upgrade
-
-test("Apply upgradeRule", () => {
-  const unit = { ...defaultUnit, specialRules: ["Tough(3)"] };
-  const option: IEquipment = {
-    name: "Psychic(2)",
-    specialRules: ["Psychic(2)"]
-  };
-  const upgrade: IUpgrade = {
-    type: "upgradeRule",
-    options: [option]
-  };
-  UpgradeService.apply(unit, upgrade, option);
-
-  expect(unit.specialRules).toStrictEqual([
-    "Tough(3)", "Psychic(2)"
-  ])
-});
-
-test("Apply 'Replace one Assault Rifle and CCW'", () => {
-  const unit: ISelectedUnit = {
-    ...defaultUnit,
-    equipment: [
-      {
-        name: 'Pistol',
-        count: 1,
-        cost: 0
-      },
-      {
-        name: 'CCW',
-        count: 1,
-        cost: 0
-      }
-    ]
-  };
-
-  const option: IEquipment = {
-    name: 'Shotgun',
-    cost: 5
-  };
-
-  const upgrade: IUpgrade = {
-    text: 'Replace one Pistol',
-    type: 'replace',
-    affects: 1,
-    replaceWhat: 'Pistol',
-    options: [option]
-  };
-
-  UpgradeService.apply(unit, upgrade, option);
-
-  expect(unit.equipment).toStrictEqual([
-    {
-      name: "Pistol",
-      count: 0,
-      cost: 0
-    },
-    {
-      name: 'CCW',
-      count: 1,
-      cost: 0
-    },
-    {
-      name: 'Shotgun',
-      count: 1,
-      cost: 5,
-      originalCount: 1
-    }
-  ])
-
-});
-
-test("Remove Upgrade", () => {
-
-})
-
-test("Apply option with count", () => {
-  const unit: ISelectedUnit = {
-    ...defaultUnit,
-    equipment: [
-      {
-        name: 'Hand Weapons',
-        count: 1,
-        cost: 0
-      }
-    ]
-  };
-
-  const option: IEquipment = {
-    name: 'Hand Weapons',
-    count: 2
-  };
-
-  const upgrade: IUpgrade = {
-    type: 'replace',
-    affects: 1,
-    replaceWhat: 'Hand Weapons',
-    options: [option]
-  };
-
-  UpgradeService.apply(unit, upgrade, option);
-
-  expect(unit.equipment).toStrictEqual([
-    {
-      name: 'Hand Weapons',
-      count: 2,
-      cost: 0
-    }
-  ])
-
 });
 
 //#endregion
