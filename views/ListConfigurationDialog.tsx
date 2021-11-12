@@ -33,7 +33,9 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = typeof (window) !== "undefined" ? window.location.host === "opr-army-forge.vercel.app" : true;
+  const isLive = typeof (window) !== "undefined"
+    ? window.location.host === "opr-army-forge.vercel.app" || window.location.host === "army-forge.onepagerules.com"
+    : true;
 
   const factionRelation = army.childData?.filter(c => c.factionRelation)[0]?.factionRelation;
 
@@ -84,7 +86,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
 
   const selectChild = (child) => {
     console.log(child)
-    router.replace({query: {...router.query, armyId: child.uid}}, null, {shallow: true});
+    router.replace({ query: { ...router.query, armyId: child.uid } }, null, { shallow: true });
     setSelectedChild(child.name);
   }
 
@@ -106,7 +108,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
   );
 
   const close = () => {
-    router.replace({query: {...router.query, armyId: null}}, null, {shallow: true});
+    router.replace({ query: { ...router.query, armyId: null } }, null, { shallow: true });
     setOpen(false);
   }
 

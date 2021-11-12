@@ -26,7 +26,9 @@ export default function Files() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const isLive = typeof(window) !== "undefined" ? window.location.host === "opr-army-forge.vercel.app" : true;
+  const isLive = typeof (window) !== "undefined"
+    ? window.location.host === "opr-army-forge.vercel.app" || window.location.host === "army-forge.onepagerules.com"
+    : true;
 
   const useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
@@ -36,7 +38,7 @@ export default function Files() {
 
     // Redirect to game selection screen if no army selected
     if (!army.gameSystem) {
-      router.push({pathname: "gameSystem/", query: router.query}, null, { shallow: true });
+      router.push({ pathname: "gameSystem/", query: router.query }, null, { shallow: true });
       return;
     }
 
@@ -142,15 +144,15 @@ export default function Files() {
   };
 
   const chooseArmy = (army) => {
-    router.replace({query: {...router.query, armyId: army.uid}}, null, {shallow: true})
+    router.replace({ query: { ...router.query, armyId: army.uid } }, null, { shallow: true })
     selectCustomList(army)
   }
   const selectCustomList = (customArmy) => {
     if (customArmy.factionName) {
       if (customArmies) {
-        const factionArmy = {...customArmy, name: customArmy.factionName}
+        const factionArmy = { ...customArmy, name: customArmy.factionName }
         const related = customArmies.filter(a => (a.factionName === customArmy.factionName) && ((a.official === true) || !customArmy.official));
-        
+
         console.log(factionArmy);
         dispatch(loadArmyData(factionArmy));
         dispatch(loadChildArmyData(related));
@@ -289,8 +291,8 @@ export default function Files() {
         open={showSnackbar}
         onClose={() => setShowSnackbar(false)}
       >
-        <MuiAlert severity="error" variant="filled" sx={{background: "#ff7043"}}>Could not load Army Data.</MuiAlert>
-        </Snackbar>
+        <MuiAlert severity="error" variant="filled" sx={{ background: "#ff7043" }}>Could not load Army Data.</MuiAlert>
+      </Snackbar>
     </>
   );
 }
