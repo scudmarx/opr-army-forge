@@ -12,7 +12,7 @@ import _ from "lodash";
 export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IEquipment, isProfile: boolean }) {
 
   const count = e.count;
-  const name = e.count > 1 && e.label ? pluralise.plural(e.label) : e.label;
+  const name = e.count > 1 && e.label ? pluralise.plural(e.label) : pluralise.singular(e.label);
 
   const weaponCount = count > 1 ? `${count}x ` : null;
 

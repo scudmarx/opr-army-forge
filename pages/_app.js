@@ -6,6 +6,7 @@ import pluralise from "pluralize";
 
 // TODO: Better place for global generic things to go?
 pluralise.addSingularRule(/Fuses$/i, "Fuse"); // Spear-Fuses -> Spear-Fuse
+pluralise.addSingularRule(/Axes$/i, "Axe"); // Axes -> Axe
 
 function MyApp({ Component, pageProps }) {
   return (
