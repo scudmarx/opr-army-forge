@@ -9,7 +9,7 @@ export default class DataService {
 
   private static useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
-  private static webCompanionUrl = 'https://opr-list-bui-feature-po-r8wmtp.herokuapp.com/api';
+  private static webCompanionUrl = 'https://army-forge.onepagerules.com/api';
 
   public static getJsonData(filePath: string, callback: (armyData: any) => void, fallback?: (err: string) => void) {
 
