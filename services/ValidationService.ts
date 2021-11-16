@@ -17,7 +17,7 @@ export default class ValidationService {
 
     if (army.gameSystem === "gf") {
 
-      const unitCount = list.units.filter(u => !u.joinToUnit).length;
+      const unitCount = list.units.filter(u => !(list.units.some(t => t.selectionId === u.joinToUnit))).length;
       const heroCount = list.units.filter(u => u.specialRules.findIndex(rule => rule.name === "Hero") >= 0).length;
 
       if (heroCount > Math.floor(points / 500))
