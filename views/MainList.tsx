@@ -81,7 +81,7 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
                     {s.joinToUnit && !s.combined && ` & ${(joinedUnit.customName || joinedUnit.name)}`}
                     {` [${UnitService.getSize(joinedUnit) + (isHero ? (combinedUnit ? UnitService.getSize(combinedUnit) : 0) : UnitService.getSize(s))}]`}
                   </h3>
-                  <DuplicateButton units={[s, joinedUnit, combinedUnit]} list={list} />
+                  <DuplicateButton units={[s, joinedUnit, combinedUnit].filter(u => u)} list={list} />
                   <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
                 </div>}
                 <div className={joinedUnit ? "ml-1" : ""}>
