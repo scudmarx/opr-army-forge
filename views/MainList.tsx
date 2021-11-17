@@ -16,21 +16,6 @@ import LinkIcon from '@mui/icons-material/Link';
 import _ from "lodash";
 import { GroupSharp } from "@mui/icons-material";
 
-export function DuplicateButton({units, list}) {
-  const dispatch = useDispatch();
-
-  const unitFamily = (unit: ISelectedUnit, list: ListState) => {
-    return UnitService.getFamily(list, unit)
-  }
-  const duplicateUnits = (units: ISelectedUnit[], list: ListState) => {
-    dispatch(addUnits({units: units, index: list.units.indexOf(units.at(-1)) + 1}))
-  }
-  return (
-  <IconButton color="primary" title="Duplicate this unit." onClick={(e) => { e.stopPropagation(); duplicateUnits(units, list); }}>
-    <ContentCopyIcon />
-  </IconButton>
-)}
-
 export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
 
   const list = useSelector((state: RootState) => state.list);
@@ -81,8 +66,8 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
                     {s.joinToUnit && !s.combined && ` & ${(joinedUnit.customName || joinedUnit.name)}`}
                     {` [${UnitService.getSize(joinedUnit) + (isHero ? (combinedUnit ? UnitService.getSize(combinedUnit) : 0) : UnitService.getSize(s))}]`}
                   </h3>
-                  <DuplicateButton units={[s, joinedUnit, combinedUnit].filter(u => u)} list={list} />
                   <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
+                  <DuplicateButton units={[s, joinedUnit, combinedUnit].filter(u => u)} list={list} />
                 </div>}
                 <div className={joinedUnit ? "ml-1" : ""}>
                   <MainListItem
@@ -184,3 +169,18 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
     </Accordion>
   );
 };
+
+export function DuplicateButton({units, list}) {
+  const dispatch = useDispatch();
+
+  const unitFamily = (unit: ISelectedUnit, list: ListState) => {
+    return UnitService.getFamily(list, unit)
+  }
+  const duplicateUnits = (units: ISelectedUnit[], list: ListState) => {
+    dispatch(addUnits({units: units, index: list.units.indexOf(units.at(-1)) + 1}))
+  }
+  return (
+  <IconButton color="primary" title="Duplicate this unit." onClick={(e) => { e.stopPropagation(); duplicateUnits(units, list); }}>
+    <ContentCopyIcon />
+  </IconButton>
+)}
