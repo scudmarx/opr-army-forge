@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../data/store';
 import { ISelectedUnit } from "../data/interfaces";
 import RemoveIcon from '@mui/icons-material/Clear';
-import { selectUnit, removeUnit } from "../data/listSlice";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { selectUnit, removeUnit, addUnits } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
 import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
 import { useRouter } from "next/router";
@@ -121,6 +122,20 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
     dispatch(removeUnit(unit.selectionId));
   };
 
+  const unitFamily = (unit: ISelectedUnit) => {
+    return UnitService.getFamily(list, unit)
+  }
+  const duplicateUnits = (units: ISelectedUnit[]) => {
+    dispatch(addUnits({units: units, index: list.units.indexOf(units.at(-1))}))
+  }
+  const handleDuplicate = (unit: ISelectedUnit, family: boolean = false) => {
+    if (family) {
+      duplicateUnits(unitFamily(unit))
+    } else {
+      duplicateUnits([unit])
+    }
+  }
+
   const unitSize = UnitService.getSize(unit);
 
   return (
@@ -143,6 +158,10 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
             </div>
           </div>
           <p className="mr-2">{UpgradeService.calculateUnitTotal(unit)}pts</p>
+          <IconButton color="primary" title="Duplicate this unit. Hold shift to only duplicate this exact unit, without duplicating any joined units."
+            onClick={(e) => { e.stopPropagation(); handleDuplicate(unit, !e.shiftKey); }}>
+            <ContentCopyIcon />
+          </IconButton>
           <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(unit); }}>
             <RemoveIcon />
           </IconButton>
