@@ -103,18 +103,18 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
                         {ruleKeys.map((key, index) => {
 
                           const group = ruleGroups[key];
-                          const rule = group[0];
-                          const count = group.length;
-                          const rating = group.reduce((total, next) => next.rating ? total + parseInt(next.rating) : total, 0);
 
                           if (!showFullRules)
                             return (
                               <span key={index} style={{ fontWeight: 600 }}>
                                 {index === 0 ? "" : ", "}
-                                {(count > 1 ? `${count}x ` : "")}
-                                <RuleList specialRules={[{ ...rule, rating }]} />
+                                {/* <RuleList specialRules={[{ ...rule, rating, count }]} /> */}
+                                <RuleList specialRules={group} />
                               </span>
                             );
+
+                          const rule = group[0];
+                          const rating = group.reduce((total, next) => next.rating ? total + parseInt(next.rating) : total, 0);
 
                           const ruleDefinition = ruleDefinitions
                             .filter(r => /(.+?)(?:\(|$)/.exec(r.name)[0] === rule.name)[0];
@@ -122,8 +122,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
                           return (
                             <p key={index}>
                               <span style={{ fontWeight: 600 }}>
-                                {(count > 1 ? `${count}x ` : "")}
-                                {RulesService.displayName({ ...rule, rating })} -
+                                {RulesService.displayName({ ...rule, rating }, count)} -
                               </span>
                               <span>{ruleDefinition?.description || ""}</span>
                             </p>
