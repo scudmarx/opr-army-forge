@@ -100,14 +100,11 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
 
   const dispatch = useDispatch();
 
-  const equipmentWeaponNames = unit.equipment
-    .filter(e => e.count > 0)
-    .map((eqp, i) => ({ name: eqp.label, count: eqp.count }));
-  const upgradeWeaponNames = UnitService.getAllUpgradeWeapons(unit)
+  const weaponNames = UnitService.getAllWeapons(unit)
     .filter(e => e.count > 0)
     .map(u => ({ name: u.name, count: u.count }));
 
-  const weaponGroups = _.groupBy(equipmentWeaponNames.concat(upgradeWeaponNames), x => x.name);
+  const weaponGroups = _.groupBy(weaponNames, x => x.name);
 
   const handleSelectUnit = (unit: ISelectedUnit) => {
     if (list.selectedUnitId !== unit.selectionId) {

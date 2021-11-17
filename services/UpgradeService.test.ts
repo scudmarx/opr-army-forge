@@ -1,4 +1,4 @@
-import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeOption } from "../data/interfaces";
+import { ISelectedUnit, IUpgrade, IUpgradeOption } from "../data/interfaces";
 import UpgradeService from "./UpgradeService";
 import DataParsingService from "./DataParsingService";
 import { nanoid } from "nanoid";
@@ -18,7 +18,8 @@ const defaultUnit: ISelectedUnit = {
   upgrades: [],
   combined: false,
   selectedUpgrades: [],
-  joinToUnit: null
+  joinToUnit: null,
+  disabledUpgradeSections: []
 };
 
 const defaultOption: () => IUpgradeOption = () => ({

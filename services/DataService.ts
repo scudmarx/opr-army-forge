@@ -103,19 +103,24 @@ export default class DataService {
         })
       }));
 
-      const units = input.units.map((u: IUnit) => ({
+      const units: IUnit[] = input.units.map((u: IUnit) => ({
         ...u,
+        // Transform this into a collection of upgrades
         equipment: u.equipment.map(e => {
           // Capture the count digit from the name
           const countMatch = countRegex.exec(e.label);
           const label = e.label.replace(countRegex, "");
+          const count = e.count
+            ? e.count * u.size
+            : (countMatch ? parseInt(countMatch[1]) * u.size : u.size);
           return {
             ...e,
             label: label,
             name: e.name || label,
-            count: e.count
-              ? e.count * u.size
-              : (countMatch ? parseInt(countMatch[1]) * u.size : u.size)
+            count: count,
+            originalCount: count,
+            type: "ArmyBookWeapon",
+            specialRules: e.specialRules.map(DataParsingService.parseRule)
           }
         }),
         disabledUpgradeSections: (() => {
