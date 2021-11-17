@@ -4,7 +4,7 @@ import { RootState } from '../data/store';
 import { ISelectedUnit } from "../data/interfaces";
 import RemoveIcon from '@mui/icons-material/Clear';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { selectUnit, removeUnit, addUnits } from "../data/listSlice";
+import { selectUnit, removeUnit, addUnits, ListState } from "../data/listSlice";
 import UpgradeService from "../services/UpgradeService";
 import { Accordion, AccordionDetails, AccordionSummary, IconButton } from "@mui/material";
 import { useRouter } from "next/router";
@@ -15,6 +15,21 @@ import FullCompactToggle from "./components/FullCompactToggle";
 import LinkIcon from '@mui/icons-material/Link';
 import _ from "lodash";
 import { GroupSharp } from "@mui/icons-material";
+
+export function DuplicateButton({units, list}) {
+  const dispatch = useDispatch();
+
+  const unitFamily = (unit: ISelectedUnit, list: ListState) => {
+    return UnitService.getFamily(list, unit)
+  }
+  const duplicateUnits = (units: ISelectedUnit[], list: ListState) => {
+    dispatch(addUnits({units: units, index: list.units.indexOf(units.at(-1)) + 1}))
+  }
+  return (
+  <IconButton color="primary" title="Duplicate this unit." onClick={(e) => { e.stopPropagation(); duplicateUnits(units, list); }}>
+    <ContentCopyIcon />
+  </IconButton>
+)}
 
 export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
 
@@ -66,6 +81,7 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
                     {s.joinToUnit && !s.combined && ` & ${(joinedUnit.customName || joinedUnit.name)}`}
                     {` [${UnitService.getSize(joinedUnit) + (isHero ? (combinedUnit ? UnitService.getSize(combinedUnit) : 0) : UnitService.getSize(s))}]`}
                   </h3>
+                  <DuplicateButton units={[s, joinedUnit, combinedUnit]} list={list} />
                   <p className="mr-2">{UpgradeService.calculateUnitTotal(s) + UpgradeService.calculateUnitTotal(joinedUnit) + UpgradeService.calculateUnitTotal(combinedUnit)}pts</p>
                 </div>}
                 <div className={joinedUnit ? "ml-1" : ""}>
@@ -122,20 +138,6 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
     dispatch(removeUnit(unit.selectionId));
   };
 
-  const unitFamily = (unit: ISelectedUnit) => {
-    return UnitService.getFamily(list, unit)
-  }
-  const duplicateUnits = (units: ISelectedUnit[]) => {
-    dispatch(addUnits({units: units, index: list.units.indexOf(units.at(-1))}))
-  }
-  const handleDuplicate = (unit: ISelectedUnit, family: boolean = false) => {
-    if (family) {
-      duplicateUnits(unitFamily(unit))
-    } else {
-      duplicateUnits([unit])
-    }
-  }
-
   const unitSize = UnitService.getSize(unit);
 
   return (
@@ -158,10 +160,7 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
             </div>
           </div>
           <p className="mr-2">{UpgradeService.calculateUnitTotal(unit)}pts</p>
-          <IconButton color="primary" title="Duplicate this unit. Hold shift to only duplicate this exact unit, without duplicating any joined units."
-            onClick={(e) => { e.stopPropagation(); handleDuplicate(unit, !e.shiftKey); }}>
-            <ContentCopyIcon />
-          </IconButton>
+          <DuplicateButton units={[unit]} list={list} />
           <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleRemove(unit); }}>
             <RemoveIcon />
           </IconButton>
