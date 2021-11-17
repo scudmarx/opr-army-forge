@@ -184,7 +184,7 @@ export function DuplicateButton({units, list, text=""}) {
   }
 
   return (
-  <MenuItem color="primary" title="Duplicate this unit." onClick={(e) => { duplicateUnits(units, list); }}>
+  <MenuItem color="primary" onClick={(e) => { duplicateUnits(units, list); }}>
     {text ? 
     <><ListItemIcon><ContentCopyIcon /></ListItemIcon>
       <ListItemText>{text}</ListItemText></> :
