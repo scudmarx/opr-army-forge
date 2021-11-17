@@ -35,7 +35,8 @@ export interface IUnit {
   defense: string;
   specialRules?: ISpecialRule[];
   upgrades: string[];
-  equipment: IEquipment[]
+  equipment: IEquipment[];
+  disabledUpgradeSections: string[];
 }
 
 export interface ISelectedUnit extends IUnit {
@@ -47,6 +48,7 @@ export interface ISelectedUnit extends IUnit {
 }
 
 export interface IUpgrade {
+  id: string;
   label?: string;
   type: "replace" | "upgrade" | "upgradeRule" | "attachment";
   affects?: "any" | "all" | number;

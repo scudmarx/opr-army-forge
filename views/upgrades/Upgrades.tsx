@@ -14,7 +14,7 @@ import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
 
-export function Upgrades({mobile = false}) {
+export function Upgrades({ mobile = false }) {
 
   const list = useSelector((state: RootState) => state.list);
   const gameSystem = useSelector((state: RootState) => state.army.gameSystem);
@@ -138,7 +138,7 @@ export function Upgrades({mobile = false}) {
       {upgradeSets.map((pkg: IUpgradePackage) => (
         <div key={pkg.uid}>
           {/* <p className="px-2">{set.id}</p> */}
-          {pkg.sections.map((u, i) => (
+          {pkg.sections.filter(section => selectedUnit.disabledUpgradeSections.indexOf(section.id) === -1).map((u, i) => (
             <div className={"mt-4"} key={i}>
               <div className="px-4 is-flex is-align-items-center">
                 {(selectedUnit.combined && (u.affects === "all")) &&
