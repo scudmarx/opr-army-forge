@@ -28,7 +28,8 @@ export default function RuleList({ specialRules }: { specialRules: ISpecialRule[
       {keys.map((key, index) => {
         const group: ISpecialRule[] = ruleGroups[key];
         const rule = group[0];
-        const rating = key === "Psychic"
+        const rating = (rule.rating == null || rule.rating == "") ? null : key === "Psychic"
+
           // Take Highest
           ? Math.max(...group.map(rule => parseInt(rule.rating)))
           // Sum all occurrences
