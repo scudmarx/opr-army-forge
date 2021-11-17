@@ -1,5 +1,3 @@
-import { EightK, RestartAlt } from '@mui/icons-material';
-import { IEquipment } from '../data/interfaces';
 import DataParsingService from './DataParsingService';
 
 /*

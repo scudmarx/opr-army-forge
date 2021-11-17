@@ -29,19 +29,7 @@ export default function ViewList({ showPsychic, showFullRules, showPointCosts })
       {
         (list?.units || []).map((s: ISelectedUnit, index: number) => {
 
-          const equipmentAsUpgrades: IUpgradeGainsWeapon[] = s.equipment.map(e => ({
-            id: "",
-            label: e.label,
-            name: e.name,
-            attacks: e.attacks,
-            range: e.range ?? 0,
-            count: e.count,
-            originalCount: e.count,
-            specialRules: e.specialRules.map(DataParsingService.parseRule) as IUpgradeGainsRule[],
-            type: "ArmyBookWeapon"
-          }));
-
-          const upgrades: IUpgradeGains[] = equipmentAsUpgrades
+          const upgrades: IUpgradeGains[] = s.equipment
             .concat(s.selectedUpgrades.reduce((val, next) => val.concat(next.gains), []))
             .filter(u => u.count > 0);
 

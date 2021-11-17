@@ -1,12 +1,10 @@
-import { IEquipment, ISelectedUnit, IUpgrade, IUpgradeGainsItem, IUpgradeOption } from "../data/interfaces";
+import { ISelectedUnit, IUpgrade, IUpgradeGains, IUpgradeGainsItem, IUpgradeOption } from "../data/interfaces";
 import EquipmentService from "./EquipmentService";
 import "../extensions";
 import DataParsingService from "./DataParsingService";
 import RulesService from "./RulesService";
 import { current } from "immer";
 import { nanoid } from "nanoid";
-import { KeyboardReturnOutlined } from "@mui/icons-material";
-import { listItemTextClasses } from "@mui/material";
 
 export default class UpgradeService {
   static calculateListTotal(list: ISelectedUnit[]) {
@@ -71,7 +69,6 @@ export default class UpgradeService {
 
   static calculateUnitTotal(unit: ISelectedUnit) {
     if (!unit) return 0;
-    //let cost = unit.cost * (unit.combined ? 2 : 1);
     let cost = unit.cost;
 
     for (const upgrade of unit.selectedUpgrades) {
@@ -92,41 +89,30 @@ export default class UpgradeService {
     return unit.selectedUpgrades.filter(u => u.id === option.id).length;
   }
 
-  public static findToReplace(unit: ISelectedUnit, what: string) {
-    // Try and find item to replace...
-    var toReplace = EquipmentService.findLast(unit.equipment, what) as { count?: number };
+  public static findUpgrade(unit: ISelectedUnit, what: string, forRestore: boolean) {
 
-    // Couldn't find the item to replace or there are none left
-    if (!toReplace || toReplace.count <= 0) {
-      toReplace = this.findAppliedUpgrade(unit, what);
-    }
+    const selectedGains: IUpgradeGains[] = unit.selectedUpgrades.reduce((gains, next) => gains.concat(next.gains), []);
+    const upgradeGains: IUpgradeGains[] = forRestore
+      ? selectedGains.concat(unit.equipment)
+      : (unit.equipment as IUpgradeGains[]).concat(selectedGains);
 
-    return toReplace;
-  }
-
-  public static findAppliedUpgrade(unit: ISelectedUnit, what: string, forRestore: boolean = false) {
-    var toReplace = null;
     // Try and find an upgrade instead
-    for (let i = unit.selectedUpgrades.length - 1; i >= 0; i--) {
-      const upgrade = unit.selectedUpgrades[i];
-      toReplace = upgrade
-        .gains
-        .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+    for (let i = upgradeGains.length - 1; i >= 0; i--) {
+      const gain = upgradeGains[i];
+      const isMatch = EquipmentService.compareEquipmentNames(gain.name, what);
 
-      if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
-        return toReplace;
+      if (isMatch && (forRestore ? gain.count < gain.originalCount : gain.count > 0))
+        return gain;
 
       // Check inside items
-      if (upgrade.isModel) {
-        const model = upgrade.gains.find(g => g.type === "ArmyBookItem") as IUpgradeGainsItem;
-        if (model) {
-          toReplace = model
-            .content
-            .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+      if (gain.type === "ArmyBookItem") {
+        const item = gain as IUpgradeGainsItem;
+        const toReplace = item
+          .content
+          .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0];
 
-          if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
-            return toReplace;
-        }
+        if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
+          return toReplace;
       }
     }
 
@@ -209,11 +195,7 @@ export default class UpgradeService {
         }
         for (let what of options) {
 
-          var toRestore = this.findAppliedUpgrade(unit, what);
-
-          // Couldn't find the upgrade to replace
-          if (!toRestore || (toRestore.count - replaceCount) < 0)
-            toRestore = EquipmentService.findLast(unit.equipment, what);
+          const toRestore = this.findUpgrade(unit, what, false);
 
           if (!toRestore)
             return false;
@@ -254,7 +236,6 @@ export default class UpgradeService {
         return false;
     }
 
-    // TODO: ...what is this doing?
     if (upgrade.type === "upgrade") {
 
       // Upgrade with 1:
@@ -275,13 +256,19 @@ export default class UpgradeService {
       }
 
       if (upgrade.replaceWhat) {
-        for (let what of upgrade.replaceWhat) {
+        for (let what of upgrade.replaceWhat as string[]) {
 
-          // Try and find item to replace...
-          const toReplace = this.findToReplace(unit, what as string);
+          const available = unit.selectedUpgrades
+            // Take all gains from all selected upgrades
+            .reduce((gains, next) => gains.concat(next.gains), [])
+            // Add original equipment
+            .concat(unit.equipment)
+            // Take only the gains that match this dependency
+            .filter(g => EquipmentService.compareEquipmentNames(g.name, what))
+            // Count how many we have
+            .reduce((count, next) => count + next.count, 0);
 
-          // Couldn't find the item
-          if (!toReplace) {
+          if (appliedInGroup >= available) {
             return false;
           }
         }
@@ -337,6 +324,49 @@ export default class UpgradeService {
         ? unit.size || 1 // All in unit
         : 1;
 
+    const replace = (options: string[], replaceAction: (toReplace: any, replaceCount: number) => void) => {
+
+      const replace = [];
+      if (!Array.isArray(options)) {
+        options = [options];
+      }
+      // Check each option to make sure it's present before acting
+      for (let what of options) {
+
+        // Try and find item to replace...
+        const toReplace = this.findUpgrade(unit, what, false);
+
+        // Couldn't find the item to replace
+        if (!toReplace) {
+          console.error(`Cannot find ${upgrade.replaceWhat} to replace!`);
+          return -1;
+        }
+
+        replace.push(toReplace);
+      }
+
+      const availableToReplace = replace.reduce((val, next) => Math.min(val, next.count), 999);
+      const replaceCount = Math.min(affectsCount, availableToReplace);
+
+      // Actual modify the options now we know they're all here
+      for (let toReplace of replace) {
+
+        console.log("Replacing... ", current(toReplace));
+
+        // If we're replacing an upgrade...
+        if (toReplace.type) {
+          // ...then track which upgrade replaced it
+          (toReplace.dependencies || (toReplace.dependencies = [])).push(option.id);
+        }
+
+        replaceAction(toReplace, replaceCount);
+
+        console.log("Replaced... ", current(toReplace));
+      }
+
+      return replaceCount;
+    }
+
     if (upgrade.type === "upgradeRule") {
       // TODO: Refactor this - shouldn't be using display name func to compare probably!
       const existingRuleIndex = unit
@@ -355,69 +385,38 @@ export default class UpgradeService {
       return;
     }
     else if (upgrade.type === "upgrade") {
+
+      // Upgrade might have dependencies (like "attachments")
+      if (upgrade.replaceWhat) {
+
+        // Don't actually do anything, just use this to set the dependencies
+        replace(upgrade.replaceWhat as string[], () => { });
+      }
+
       apply(affectsCount);
     }
     else if (upgrade.type === "replace") {
 
       console.log("Replace " + affectsCount);
 
-      let availableToReplace = 999;
+      const replaceAction = (toReplace, replaceCount) => {
+        // Decrement the count of the item being replaced
+        toReplace.count -= replaceCount;
+
+        // TODO: Use Math.max... ?
+        if (toReplace.count <= 0)
+          toReplace.count = 0;
+      };
+
       let replaceCount = 999;
-
-      const replace = (options: string[]) => {
-
-        const replace = [];
-        if (!Array.isArray(options)) {
-          options = [options];
-        }
-        // Check each option to make sure it's present before acting
-        for (let what of options) {
-
-          // Try and find item to replace...
-          const toReplace = this.findToReplace(unit, what);
-
-          // Couldn't find the item to replace
-          if (!toReplace) {
-            console.error(`Cannot find ${upgrade.replaceWhat} to replace!`);
-            return false;
-          }
-
-          replace.push(toReplace);
-        }
-
-        availableToReplace = replace.reduce((val, next) => Math.min(val, next.count), 999);
-        replaceCount = Math.min(affectsCount, availableToReplace);
-
-        // Actual modify the options now we know they're all here
-        for (let toReplace of replace) {
-
-          console.log("Replacing... ", current(toReplace));
-
-          // Decrement the count of the item being replaced
-          toReplace.count -= replaceCount;
-
-          // TODO: Use Math.max... ?
-          if (toReplace.count <= 0)
-            toReplace.count = 0;
-
-          // If we're replacing an upgrade...
-          if (toReplace.type) {
-            // ...then track which upgrade replaced it
-            (toReplace.dependencies || (toReplace.dependencies = [])).push(option.id);
-          }
-
-          console.log("Replaced... ", current(toReplace));
-        }
-
-        return true;
-      }
 
       // Dealing with a combination of alternate replace options...
       if (typeof (upgrade.replaceWhat[0]) !== "string") {
 
         let applied = false;
         for (let set of upgrade.replaceWhat as string[][]) {
-          applied ||= replace(set);
+          replaceCount = replace(set, replaceAction)
+          applied ||= replaceCount > 0;
           if (applied)
             break;
         }
@@ -425,7 +424,8 @@ export default class UpgradeService {
           return false;
 
       } else {
-        if (!replace(upgrade.replaceWhat as string[]))
+        replaceCount = replace(upgrade.replaceWhat as string[], replaceAction);
+        if (replaceCount <= 0)
           return false;
       }
 
@@ -436,7 +436,7 @@ export default class UpgradeService {
   public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
     const removeAt = unit.selectedUpgrades.findLastIndex(u => u.id === option.id);
     const toRemove = unit.selectedUpgrades[removeAt];
-debugger;
+
     // Remove anything that depends on this upgrade (cascade remove)
     const removeDependencies = (dependencies) => {
       if (!dependencies)
@@ -445,7 +445,7 @@ debugger;
         const dependency = unit.selectedUpgrades.find(u => u.id === upgradeId);
         // Might have already been removed!
         if (dependency)
-          this.remove(unit, { replaceWhat: dependency.replacedWhat, type: "replace" }, dependency);
+          this.remove(unit, { id: "", replaceWhat: dependency.replacedWhat, type: "replace" }, dependency);
       }
     }
     // Remove dependencies for each item gained from this upgrade
@@ -484,11 +484,7 @@ debugger;
         // For each bit of equipment that was originally replaced
         for (let what of options) {
 
-          var toRestore = this.findAppliedUpgrade(unit, what, true);
-
-          // Couldn't find the upgrade to replace
-          if (!toRestore)
-            toRestore = EquipmentService.findLast(unit.equipment, what);
+          const toRestore = this.findUpgrade(unit, what, true);
 
           if (!toRestore) {
             // Uh oh

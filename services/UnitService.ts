@@ -29,6 +29,10 @@ export default class UnitService {
     return allRules;
   }
 
+  public static getAllWeapons(unit: ISelectedUnit): IUpgradeGainsWeapon[] {
+    return unit.equipment.concat(this.getAllUpgradeWeapons(unit) as IUpgradeGainsWeapon[]);
+  }
+
   public static getAllUpgradeWeapons(unit: ISelectedUnit): (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[] {
 
     const isWeapon = u => u.type === "ArmyBookWeapon" || u.type === "ArmyBookMultiWeapon";
@@ -50,7 +54,7 @@ export default class UnitService {
       .filter(u => u.type === "ArmyBookItem") as IUpgradeGainsItem[];
   }
 
-  public static getSize(unit: ISelectedUnit) : number {
+  public static getSize(unit: ISelectedUnit): number {
     const extraModelCount = unit.selectedUpgrades.filter(u => u.isModel).length;
     return unit.size + extraModelCount;
   }
