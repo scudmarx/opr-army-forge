@@ -96,23 +96,20 @@ export default class UpgradeService {
       ? selectedGains.concat(unit.equipment)
       : (unit.equipment as IUpgradeGains[]).concat(selectedGains);
 
-    var toReplace = null;
     // Try and find an upgrade instead
     for (let i = upgradeGains.length - 1; i >= 0; i--) {
       const gain = upgradeGains[i];
       const isMatch = EquipmentService.compareEquipmentNames(gain.name, what);
-      if (isMatch)
-        toReplace = gain;
 
-      if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
-        return toReplace;
+      if (isMatch && (forRestore ? gain.count < gain.originalCount : gain.count > 0))
+        return gain;
 
       // Check inside items
       if (gain.type === "ArmyBookItem") {
         const item = gain as IUpgradeGainsItem;
-        toReplace = item
+        const toReplace = item
           .content
-          .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0] as { count?: number };
+          .filter(e => EquipmentService.compareEquipmentNames(e.name, what))[0];
 
         if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
           return toReplace;
