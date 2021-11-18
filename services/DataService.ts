@@ -91,7 +91,7 @@ export default class DataService {
                 // Group same items back together and sum the count
                 gains: Object.values(gainsGroups).map((grp: any[]) => {
                   const count = grp.reduce((c, next) => c + (next.count || 1), 0);
-                  console.log(grp[0].label + " " + count, grp);
+                  //console.log(grp[0].label + " " + count, grp);
                   return {
                     ...grp[0],
                     count: count
@@ -124,9 +124,9 @@ export default class DataService {
           }
         }),
         disabledUpgradeSections: (() => {
-          const sections: { id: string, options: { gains: { name: string } }[], replaceWhat: string[] }[] = u.upgrades
+          const sections: { id: string, options: { gains: { name: string } }[], replaceWhat: string[] }[] = _.compact(u.upgrades
             // Map all upgrade packages
-            .map(uid => upgradePackages.find(pkg => pkg.uid === uid))
+            .map(uid => upgradePackages.find(pkg => pkg.uid === uid)))
             // Flatten down to array of all upgrade sections
             .reduce((sections, next) => sections.concat(next.sections), []);
 
