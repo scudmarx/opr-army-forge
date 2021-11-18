@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
-import { loadArmyData, loadChildArmyData, setArmyFile } from '../data/armySlice'
+import { IArmyData, loadArmyData, loadChildArmyData, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress, Snackbar } from '@mui/material';
+import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress, Snackbar, TextField, InputAdornment } from '@mui/material';
 import MuiAlert from '@mui/material/Alert'
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
+import ClearIcon from '@mui/icons-material/Clear';
 import { dataToolVersion } from "./data";
 import { resetList } from "../data/listSlice";
 import ListConfigurationDialog from "../views/ListConfigurationDialog";
@@ -15,16 +16,27 @@ import ArmyImage from "../views/components/ArmyImage";
 import DataService from "../services/DataService";
 import _ from "lodash";
 
+interface IFaction {
+  official: boolean,
+  name: string,
+  isLive: boolean,
+  factionName: string,
+  factionRelation: string
+}
+
 export default function Files() {
 
   const army = useSelector((state: RootState) => state.army);
   const [armyFiles, setArmyFiles] = useState(null);
-  const [customArmies, setCustomArmies] = useState(null);
+  const [customArmies, setCustomArmies]: [(IArmyData | IFaction)[], any] = useState(null);
   const [driveArmies, setDriveArmies] = useState(null);
   const [newArmyDialogOpen, setNewArmyDialogOpen] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const filteredArmies = customArmies?.filter(a => new RegExp(searchText, "i").test(a.name))
 
   const isLive = typeof (window) !== "undefined"
     ? window.location.host === "opr-army-forge.vercel.app" || window.location.host === "army-forge.onepagerules.com"
@@ -101,7 +113,7 @@ export default function Files() {
   useEffect(() => {
     if (customArmies && router.query) {
       let armyId = router.query.armyId as string
-      let army = customArmies.find(t => t.uid == armyId)
+      let army = customArmies.find((t : IArmyData) => t.uid == armyId)
       if (army) {
         selectCustomList(army)
       }
@@ -112,9 +124,9 @@ export default function Files() {
 
   const officialFactions = !customArmies
     ? []
-    : _.groupBy(customArmies.filter(ca => ca.official && ca.factionName), a => a.factionName);
+    : _.groupBy(filteredArmies.filter(ca => ca.official && ca.factionName), a => a.factionName);
 
-  const officialArmies = customArmies
+  const officialArmies = filteredArmies
     ?.filter(ca => ca.official && !ca.factionName)
     .concat(Object.keys(officialFactions).map(key => ({
       name: key,
@@ -155,7 +167,7 @@ export default function Files() {
 
         console.log(factionArmy);
         dispatch(loadArmyData(factionArmy));
-        dispatch(loadChildArmyData(related));
+        dispatch(loadChildArmyData(related as IArmyData[]));
         setNewArmyDialogOpen(!!related);
       }
     } else {
@@ -202,7 +214,13 @@ export default function Files() {
       </Paper>
       <div className="container">
         <div className="mx-auto p-4">
-          <h3 className="is-size-4 has-text-centered mb-4 pt-4">Choose your army</h3>
+          <div className="mb-4 has-text-centered is-clearfix">
+            <h3 className="is-size-4 pt-4">Choose your army</h3>
+              <TextField className="is-pulled-right" sx={{marginTop: "-3rem"}} id="searchfield" label="Search" size="medium" variant="standard" onChange={(e) => {setSearchText(e.target.value)}} value={searchText} 
+                InputProps = {{endAdornment: 
+                  <InputAdornment position="end"><IconButton size="small" onClick={() => {setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "")}}><ClearIcon /></IconButton></InputAdornment>
+              }}/>
+          </div>
           {
             army.gameSystem === "gf" && (
               <>
@@ -244,7 +262,7 @@ export default function Files() {
             <>
               <h3>Custom Armies</h3>
               <div className="columns is-multiline">
-                {customArmies.filter(a => a.official === false).map((customArmy, i) => (
+                {filteredArmies.filter(a => a.official === false).map((customArmy : IArmyData, i) => (
                   <div key={i} className="column is-half">
                     <Card
                       elevation={1}
