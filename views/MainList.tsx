@@ -26,7 +26,7 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
 
   const joinedUnitIds = list.units.filter(u => u.joinToUnit).map(u => u.joinToUnit);
   //const units = list.units.filter(u => joinedUnitIds.indexOf(u.selectionId) === -1);
-  const unjoinedUnits = list.units.filter(u => !(u.joinToUnit && list.units.some(t => t.selectionId === u.joinToUnit)))
+  const rootUnits = list.units.filter(u => !(u.joinToUnit && list.units.some(t => t.selectionId === u.joinToUnit)))
 
   return (
     <>
@@ -38,7 +38,7 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
       <ul className="mt-2">
         {
           // For each selected unit
-          unjoinedUnits.map((s: ISelectedUnit, index: number) => {
+          rootUnits.map((s: ISelectedUnit, index: number) => {
 
             const isHero = s.specialRules.some(r => r.name === "Hero");
 
