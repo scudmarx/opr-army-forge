@@ -9,6 +9,7 @@ import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WarningIcon from "@mui/icons-material/Warning";
 import ClearIcon from '@mui/icons-material/Clear';
+import SearchIcon from '@mui/icons-material/Search';
 import { dataToolVersion } from "./data";
 import { resetList } from "../data/listSlice";
 import ListConfigurationDialog from "../views/ListConfigurationDialog";
@@ -219,7 +220,7 @@ export default function Files() {
             <h3 className="is-size-4 pt-4">Choose your army</h3>
               <TextField sx={{['@media (min-width:768px)']: {marginTop: "-3rem", float: "right"}}} id="searchfield" label="Search" size="medium" variant="standard" onChange={(e) => {setSearchText(e.target.value)}} value={searchText} 
                 InputProps = {{endAdornment: 
-                  <InputAdornment position="end"><IconButton size="small" onClick={() => {setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "")}}><ClearIcon /></IconButton></InputAdornment>
+                  <InputAdornment position="end" sx={{width: "2rem"}}>{searchText ? <IconButton size="small" onClick={() => {setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "")}}><ClearIcon /></IconButton> : <SearchIcon />}</InputAdornment>
               }}/>
           </div>
           {
