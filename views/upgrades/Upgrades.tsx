@@ -46,6 +46,17 @@ export function Upgrades({ mobile = false }) {
   const joinToUnit = (e) => {
     const joinToUnitId = e.target.value;
 
+    // if I have any heroes joined to *me*, I need to point them to the new unit instead
+    if ((unitsWithAttachedHeroes.indexOf(selectedUnit.selectionId) !== -1)) {
+      let attachedHeroes = list.units.filter(u => u.specialRules.some(rule => rule.name === "Hero") && u.joinToUnit == selectedUnit.selectionId)
+      attachedHeroes.forEach(u => {
+        dispatch(joinUnit({
+          unitId: u.selectionId,
+          joinToUnitId: joinToUnitId
+        }));
+      })
+    }
+
     dispatch(joinUnit({
       unitId: selectedUnit.selectionId,
       joinToUnitId: joinToUnitId
@@ -87,7 +98,7 @@ export function Upgrades({ mobile = false }) {
     .map(u => u.joinToUnit);
 
   const joinCandidates = list.units
-    .filter(u => (!list.competitive || u.size > 1) && !(u.combined && !u.joinToUnit))
+    .filter(u => (!list.competitive || u.size > 1) && !u.joinToUnit)
     .filter(u => !list.competitive || (unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit));
 
   return (
@@ -95,7 +106,7 @@ export function Upgrades({ mobile = false }) {
 
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
-        {selectedUnit.size > 1 && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {(!list.competitive || selectedUnit.size > 1) && !isHero && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
             } />} label="Combined Unit" className="mr-2" />
@@ -113,7 +124,7 @@ export function Upgrades({ mobile = false }) {
               onChange={joinToUnit}
             >
               <MenuItem value={null}>None</MenuItem>
-              {joinCandidates.map((u, index) => (
+              {joinCandidates.filter(t => t != selectedUnit).map((u, index) => (
                 <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size * (u.combined ? 2 : 1)}]</MenuItem>
               ))}
             </Select>

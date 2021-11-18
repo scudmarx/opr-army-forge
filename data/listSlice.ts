@@ -99,8 +99,8 @@ export const listSlice = createSlice({
         selectionId: nanoid(5)
       };
 
-      //newUnit.joinToUnit = parentUnit.selectionId;
-      parentUnit.joinToUnit = newUnit.selectionId;
+      newUnit.joinToUnit = parentUnit.selectionId;
+      //parentUnit.joinToUnit = newUnit.selectionId;
 
       state.units.splice(parentindex + 1, 0, newUnit);
       state.points = UpgradeService.calculateListTotal(state.units);
