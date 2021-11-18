@@ -87,8 +87,8 @@ export function Upgrades({ mobile = false }) {
     .map(u => u.joinToUnit);
 
   const joinCandidates = list.units
-    .filter(u => u.size > 1 && !(u.combined && !u.joinToUnit))
-    .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit);
+    .filter(u => (!list.competitive || u.size > 1) && !(u.combined && !u.joinToUnit))
+    .filter(u => !list.competitive || (unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit));
 
   return (
     <div className={mobile ? styles["upgrade-panel-mobile"] : styles["upgrade-panel"]}>

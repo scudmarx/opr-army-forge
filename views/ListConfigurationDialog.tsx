@@ -29,6 +29,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
   const [armyName, setArmyName] = useState(isEdit ? list.name : "");
   const [pointsLimit, setPointsLimit] = useState(isEdit ? list.pointsLimit : null);
   const [autoSave, setAutoSave] = useState(true);
+  const [competitive, setCompetitive] = useState(isEdit ? list.competitive : true);
   const [selectedChild, setSelectedChild] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -58,7 +59,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
 
       const creationTime = autoSave ? PersistenceService.createSave(army, name) : null;
 
-      dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime }));
+      dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime: creationTime, competitive: competitive }));
 
       router.push('/list');
     };
@@ -80,7 +81,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
   };
 
   const update = () => {
-    dispatch(updateListSettings({ name: armyName, pointsLimit: pointsLimit || 0 }));
+    dispatch(updateListSettings({ name: armyName, pointsLimit: pointsLimit || 0, competitive: competitive }));
     setOpen(false);
   };
 
@@ -141,6 +142,11 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
             </div>
             <TextField variant="filled" label="List Name" className="mb-4" value={armyName} onChange={(e) => setArmyName(e.target.value)} />
             <TextField variant="filled" label="Points Limit" type="number" className="mb-4" value={pointsLimit ?? ""} onChange={(e) => setPointsLimit(e.target.value ? parseInt(e.target.value) : null)} />
+            <FormGroup className="mb-0 is-flex-direction-row is-align-items-center">
+              <FormControlLabel control={
+                <Checkbox checked={competitive} onClick={() => setCompetitive(!competitive)} />
+              } label="Use Competitive Rules" />
+            </FormGroup>
             {!isEdit && <FormGroup className="mb-0 is-flex-direction-row is-align-items-center">
               <FormControlLabel control={
                 <Checkbox checked={autoSave} onClick={() => setAutoSave(!autoSave)} />

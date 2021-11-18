@@ -14,6 +14,7 @@ export interface ListState {
   undoUnitRemove?: ISelectedUnit[];
   selectedUnitId?: string;
   points: number;
+  competitive: boolean;
 }
 
 const initialState: ListState = {
@@ -23,7 +24,8 @@ const initialState: ListState = {
   units: [],
   selectedUnitId: null,
   undoUnitRemove: null,
-  points: 0
+  points: 0,
+  competitive: true
 }
 
 const debounceSave = debounce(1500, (state: ListState) => {
@@ -43,23 +45,26 @@ export const listSlice = createSlice({
         units: [],
         selectedUnitId: null,
         undoUnitRemove: null,
-        points: 0
+        points: 0,
+        competitive: true
       };
     },
-    createList: (state, action: PayloadAction<{ name: string; pointsLimit?: number; creationTime: string; }>) => {
-      const { name, pointsLimit, creationTime } = action.payload;
+    createList: (state, action: PayloadAction<{ name: string; pointsLimit?: number; creationTime: string; competitive?: boolean }>) => {
+      const { name, pointsLimit, creationTime, competitive } = action.payload;
       state.creationTime = creationTime;
       state.name = name;
       state.pointsLimit = pointsLimit;
+      state.competitive = competitive;
     },
     updateCreationTime: (state, action: PayloadAction<string>) => {
       state.creationTime = action.payload;
       debounceSave(current(state));
     },
-    updateListSettings: (state, action: PayloadAction<{ name: string, pointsLimit?: number }>) => {
-      const { name, pointsLimit } = action.payload;
+    updateListSettings: (state, action: PayloadAction<{ name: string, pointsLimit?: number, competitive?: boolean }>) => {
+      const { name, pointsLimit, competitive } = action.payload;
       state.name = name;
       state.pointsLimit = pointsLimit;
+      state.competitive = competitive;
       debounceSave(current(state));
     },
     loadSavedList(state, action: PayloadAction<ListState>) {
