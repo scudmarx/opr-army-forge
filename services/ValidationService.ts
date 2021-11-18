@@ -23,7 +23,6 @@ export default class ValidationService {
         const heroCount = heroes.length;
         const joinedHeroes = heroes.filter(u => (u.joinToUnit && list.units.some(t => t.selectionId === u.joinToUnit)))
         const joinedIds = joinedHeroes.map(u => u.joinToUnit)
-        console.log(joinedHeroes, joinedIds)
 
         if (heroCount > Math.floor(points / 500))
           errors.push(`Max 1 hero per full 500pts.`);
