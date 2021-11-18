@@ -218,7 +218,7 @@ export default function Files() {
         <div className="mx-auto p-4">
           <div className="mb-4 has-text-centered is-clearfix">
             <h3 className="is-size-4 pt-4">Choose your army</h3>
-              <TextField sx={{['@media (min-width:768px)']: {marginTop: "-3rem", float: "right"}}} id="searchfield" label="Search" size="medium" variant="standard" onChange={(e) => {setSearchText(e.target.value)}} value={searchText} 
+              <TextField sx={{['@media (min-width:768px)']: {marginTop: "-3rem", float: "right"}}} id="searchfield" label="Search" size="medium" variant="standard" autoComplete="off" onChange={(e) => {setSearchText(e.target.value)}} value={searchText} 
                 InputProps = {{endAdornment: 
                   <InputAdornment position="end" sx={{width: "2rem"}}>{searchText ? <IconButton size="small" onClick={() => {setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "")}}><ClearIcon /></IconButton> : <SearchIcon />}</InputAdornment>
               }}/>
