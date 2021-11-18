@@ -38,7 +38,7 @@ export default function Files() {
   const router = useRouter();
 
   const filtered = (armies) => armies && armies.filter(a => new RegExp(searchText, "i").test(a.name))
-  const filteredArmies = filtered(customArmies)
+  const filteredArmies = customArmies ? filtered(customArmies) : []
 
   const isLive = typeof (window) !== "undefined"
     ? window.location.host === "opr-army-forge.vercel.app" || window.location.host === "army-forge.onepagerules.com"
@@ -120,6 +120,7 @@ export default function Files() {
         selectCustomList(army)
       }
     }
+    
   }, [customArmies])
 
   const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0]?.items;
