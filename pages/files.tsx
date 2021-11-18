@@ -36,7 +36,8 @@ export default function Files() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const filteredArmies = customArmies?.filter(a => new RegExp(searchText, "i").test(a.name))
+  const filtered = (armies) => armies && armies.filter(a => new RegExp(searchText, "i").test(a.name))
+  const filteredArmies = filtered(customArmies)
 
   const isLive = typeof (window) !== "undefined"
     ? window.location.host === "opr-army-forge.vercel.app" || window.location.host === "army-forge.onepagerules.com"
@@ -244,7 +245,7 @@ export default function Files() {
           }
           <div className="columns is-mobile is-multiline">
             {
-              army.gameSystem === "gf" || !armyFiles ? null : armies?.map((file, index) => {
+              army.gameSystem === "gf" || !armyFiles ? null : filtered(armies)?.map((file, index) => {
                 const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
 
                 return (
