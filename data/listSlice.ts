@@ -111,39 +111,33 @@ export const listSlice = createSlice({
       state.selectedUnitId = action.payload;
     },
     removeUnit: (state, action: PayloadAction<string>) => {
+      const unitId = action.payload
       const removeIndex = state
         .units
-        .findIndex(u => u.selectionId === action.payload);
+        .findIndex(u => u.selectionId === unitId);
 
       let unit = state.units[removeIndex]
-      console.log(`removing: ${unit.name} - ${unit.selectionId}`)
+      
+      //console.log(`removing: ${unit.name} - ${unitId}`)
       if (unit.combined) {
-        console.log(`units is combined - clearing up friend...`)
-        if (unit.joinToUnit) {
-          console.log(`unit has child... hopefully it's where I put it.'`)
-          if (state.units.findIndex(t => { return unit.joinToUnit === t.selectionId }) == removeIndex + 1)
-            state.undoUnitRemove = state.units.splice(removeIndex, 2);
-          else {
-            let child = state.units.find(t => { return unit.joinToUnit === t.selectionId })
-            console.log(`child: ${child.name} - ${child.selectionId}`)
-            if (child) {
-              unit.combined = false
-              unit.joinToUnit = null
-              child.combined = false
-            }
-            state.undoUnitRemove = state.units.splice(removeIndex, 1);
+        //console.log(`units is combined - clearing up friend...`)
+        if (!unit.joinToUnit) {
+          state.undoUnitRemove = state.units.splice(removeIndex, 1);
+          let childIndex = state.units.findIndex(t => { return (t.combined && t.joinToUnit === unitId) })
+          if (childIndex !== -1) {
+            state.undoUnitRemove = state.undoUnitRemove.concat(state.units.splice(childIndex, 1));
           }
         } else {
-          console.log(`unit has no child, so must have parent... finding it.`)
-          let parent = state.units.find(t => { return t.combined && (t.joinToUnit === action.payload) })
-          console.log(`parent: ${parent.name} - ${parent.selectionId}`)
+          //console.log(`unit has no child, so must have parent... finding it.`)
+          let parent = state.units.find(t => { return t.combined && (unit.joinToUnit === t.selectionId) })
+          //console.log(`parent: ${parent.name} - ${parent.selectionId}`)
           if (parent) {
             parent.combined = false
-            parent.joinToUnit = null
           }
           // don't bother saving it in the undoRemove stuff.
           state.units.splice(removeIndex, 1);
         }
+
       } else {
         state.undoUnitRemove = state.units.splice(removeIndex, 1);
       }

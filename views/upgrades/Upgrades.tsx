@@ -83,9 +83,10 @@ export function Upgrades({ mobile = false }) {
   const toggleCombined = () => {
     if (selectedUnit.combined) {
       if (selectedUnit.joinToUnit) {
-        dispatch(removeUnit(selectedUnit.joinToUnit))
-      } else {
         dispatch(removeUnit(selectedUnit.selectionId))
+      } else {
+        let childId = list.units.find(u => u.combined && u.joinToUnit === selectedUnit.selectionId).selectionId
+        dispatch(removeUnit(childId))
       }
     } else {
       dispatch(addCombinedUnit(selectedUnit.selectionId))

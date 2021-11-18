@@ -26,7 +26,7 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
 
   const joinedUnitIds = list.units.filter(u => u.joinToUnit).map(u => u.joinToUnit);
   //const units = list.units.filter(u => joinedUnitIds.indexOf(u.selectionId) === -1);
-  const unjoinedUnits = list.units.filter(u => !u.joinToUnit)
+  const unjoinedUnits = list.units.filter(u => !(u.joinToUnit && list.units.some(t => t.selectionId === u.joinToUnit)))
 
   return (
     <>
