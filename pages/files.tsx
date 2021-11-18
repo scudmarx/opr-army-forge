@@ -37,7 +37,7 @@ export default function Files() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const filtered = (armies) => armies && armies.filter(a => new RegExp(searchText, "i").test(a.name))
+  const filtered = (armies) => armies && armies.filter(a => a.name.toLowerCase().includes(searchText.toLowerCase()))
   const filteredArmies = customArmies ? filtered(customArmies) : []
 
   const isLive = typeof (window) !== "undefined"
