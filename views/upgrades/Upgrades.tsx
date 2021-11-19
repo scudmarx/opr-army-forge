@@ -5,7 +5,7 @@ import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
 import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
-import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
+import { ISelectedUnit, ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
 import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit, moveUnit } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -14,7 +14,7 @@ import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
 
-export function Upgrades({ mobile = false }) {
+export function Upgrades({ mobile = false, addUnit = (unit: ISelectedUnit) => {}, selected = null }) {
 
   const list = useSelector((state: RootState) => state.list);
   const gameSystem = useSelector((state: RootState) => state.army.gameSystem);

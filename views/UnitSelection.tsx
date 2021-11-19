@@ -1,7 +1,6 @@
 import styles from "../styles/Home.module.css";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../data/store';
-import { addUnit } from '../data/listSlice';
 import { Fragment, useState } from "react";
 import { Accordion, AccordionDetails, AccordionSummary, IconButton, Modal, Paper, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
@@ -9,17 +8,16 @@ import WarningIcon from "@mui/icons-material/Warning";
 import EquipmentService from "../services/EquipmentService";
 import { dataToolVersion } from "../pages/data";
 import RuleList from "./components/RuleList";
-import { IUnit } from "../data/interfaces";
+import { ISelectedUnit, IUnit } from "../data/interfaces";
 import { useMediaQuery } from "react-responsive";
 import FullCompactToggle from "./components/FullCompactToggle";
 
-export function UnitSelection({ onSelected }) {
+export function UnitSelection({ onSelected, addUnit = (unit: ISelectedUnit) => {} }) {
 
   // Access the main army definition state
   const armyData = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
   const army = armyData.data;
-  const dispatch = useDispatch();
   const [expandedId, setExpandedId] = useState(null);
   const [expandAll, setExpandAll] = useState(true);
 
@@ -63,7 +61,7 @@ export function UnitSelection({ onSelected }) {
   }
 
   const handleSelection = (unit) => {
-    dispatch(addUnit(unit));
+    addUnit(unit);
     onSelected(unit);
   };
 

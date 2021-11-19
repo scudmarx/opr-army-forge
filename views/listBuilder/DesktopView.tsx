@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from 'react-redux';
+import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import { UnitSelection } from "../UnitSelection";
 import { MainList } from "../MainList";
@@ -10,13 +10,18 @@ import UpgradePanelHeader from "../components/UpgradePanelHeader";
 import ListConfigurationDialog from "../ListConfigurationDialog";
 import ValidationErrors from "../ValidationErrors";
 import UndoRemoveUnit from "../components/UndoRemoveUnit";
+import { selectUnit, addUnit } from "../../data/listSlice";
+import { ISelectedUnit } from "../../data/interfaces";
 
 export default function DesktopView() {
 
   const list = useSelector((state: RootState) => state.list);
+  const [selectedUnit, setselectedUnit] = useState(null);
   const [editListOpen, setEditListOpen] = useState(false);
   const [validationOpen, setValidationOpen] = useState(false);
   const [showUndoRemove, setShowUndoRemove] = useState(false);
+
+  const dispatch = useDispatch();
 
   const columnStyle: any = { overflowY: "scroll", maxHeight: "100%" };
 
@@ -29,6 +34,10 @@ export default function DesktopView() {
     }
   }
 
+  const onAddUnit = useCallback((unit: ISelectedUnit) => {
+    dispatch(addUnit(unit));
+  }, [])
+
   return (
     <>
       <Paper elevation={1} color="primary" square>
@@ -36,16 +45,16 @@ export default function DesktopView() {
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
         <div className="column py-0 pr-0" style={columnStyle} onScroll={setScrolled}>
-          <UnitSelection onSelected={() => { }} />
+          <UnitSelection onSelected={setselectedUnit} addUnit={onAddUnit} />
         </div>
         <div className="column p-0" style={columnStyle} onScroll={setScrolled}>
-          <MainList onSelected={() => { }} onUnitRemoved={() => setShowUndoRemove(true)} />
+          <MainList onSelected={setselectedUnit} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
         <div className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setScrolled}>
           <Paper square className="px-4 pt-4 sticky" sx={{backgroundColor: "white"}}>
             <UpgradePanelHeader />
           </Paper>
-          <Upgrades />
+          <Upgrades selected={selectedUnit} addUnit={onAddUnit} />
         </div>
       </div>
       <ValidationErrors
