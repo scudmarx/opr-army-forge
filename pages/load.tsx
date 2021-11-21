@@ -130,7 +130,7 @@ export default function Load() {
                     const points = save.listPoints;
                     const title = (
                       <>
-                        <span style={{ fontWeight: 600 }}>{save.gameSystem.toUpperCase()} - {save.list.name}</span>
+                        <span style={{ fontWeight: 600 }}>{save.gameSystem?.toUpperCase()} - {save.list.name}</span>
                         <span style={{ color: "#656565" }}> • {points}pts</span>
                       </>
                     );
