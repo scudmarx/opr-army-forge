@@ -81,7 +81,7 @@ export default function MobileView() {
 
       <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
         <div>
-          <UnitSelection onSelected={() => {}} addUnit={onAddUnit} />
+          <UnitSelection onSelected={() => {}} addUnit={onAddUnit} mobile />
         </div>
         <div className="">
           {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)} mobile /> : (

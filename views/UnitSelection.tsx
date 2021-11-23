@@ -14,7 +14,7 @@ import { useMediaQuery } from "react-responsive";
 import FullCompactToggle from "./components/FullCompactToggle";
 import UnitService from "../services/UnitService";
 
-export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = false) => {} }) {
+export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = false) => {}, mobile = false }) {
 
   // Access the main army definition state
   const armyData = useSelector((state: RootState) => state.army);
@@ -67,7 +67,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
     addUnit(unit);
   };
   const handleSelectClick = (unit: IUnit) => {
-    if (expandAll) {
+    if (expandAll && !mobile) {
       //onSelected({...UnitService.getRealUnit(unit), selectionId: null});
       addUnit(unit, true)
       onSelected({selectionId: "dummy"})
