@@ -37,7 +37,6 @@ export interface ISelectedUnit extends IUnit {
   selectedUpgrades: IUpgradeOption[];
   combined: boolean;
   joinToUnit?: string;
-  dummy?: boolean;
 }
 
 export interface IUpgrade {
