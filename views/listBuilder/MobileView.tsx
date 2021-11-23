@@ -19,6 +19,7 @@ import ValidationErrors from "../ValidationErrors";
 import UndoRemoveUnit from "../components/UndoRemoveUnit";
 import ArmyImage from "../components/ArmyImage";
 import { ISelectedUnit } from "../../data/interfaces";
+import UnitService from "../../services/UnitService";
 
 export default function MobileView() {
 
@@ -37,12 +38,11 @@ export default function MobileView() {
 
   // Open bottom sheet when unit is selected
   const onUnitSelected = useCallback((unit: ISelectedUnit) => {
-    setselectedUnit(unit)
     setSheetOpen(true);
   }, [])
 
   const onAddUnit = useCallback((unit: ISelectedUnit) => {
-    dispatch(addUnit(unit));
+    dispatch(addUnit(UnitService.getRealUnit(unit)));
   }, [])
 
   // Reset selected unit when sheet is closed
@@ -81,7 +81,7 @@ export default function MobileView() {
 
       <Slider {...sliderSettings} ref={slider => setSlider(slider)} style={{ maxHeight: "100%" }}>
         <div>
-          <UnitSelection onSelected={onUnitSelected} addUnit={onAddUnit} />
+          <UnitSelection onSelected={() => {}} addUnit={onAddUnit} />
         </div>
         <div className="">
           {list.units.length > 0 ? <MainList onSelected={onUnitSelected} onUnitRemoved={() => setShowUndoRemove(true)} mobile /> : (
@@ -120,7 +120,7 @@ export default function MobileView() {
           maxHeight * 0.9
         ]}
         header={<UpgradePanelHeader />}>
-        <Upgrades mobile addUnit={onAddUnit} selected={selectedUnit} />
+        <Upgrades mobile />
       </BottomSheet>
 
       <ValidationErrors

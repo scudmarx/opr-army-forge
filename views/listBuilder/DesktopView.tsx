@@ -37,9 +37,7 @@ export default function DesktopView() {
   const onAddUnit = useCallback((unit: IUnit, dummy = false) => {
     if (dummy) {
       if (list.units.some(u => u.selectionId === "dummy")) {
-        console.log("removing previous dummy unit...", list)
         dispatch(removeUnit("dummy"))
-        console.log("removed?", list)
       }
     }
     dispatch(addUnit(UnitService.getRealUnit(unit, dummy)));
@@ -48,7 +46,7 @@ export default function DesktopView() {
   const onSelectUnit = useCallback((unit: ISelectedUnit) => {
     if (list.selectedUnitId !== unit.selectionId) {
       if (list.selectedUnitId === "dummy") {
-        //dispatch(removeUnit("dummy"))
+        dispatch(removeUnit("dummy"))
       }
       dispatch(selectUnit(unit.selectionId));
     }
