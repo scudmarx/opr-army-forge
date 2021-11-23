@@ -73,6 +73,14 @@ export const listSlice = createSlice({
 
       debounceSave(current(state));
     },
+    makeReal: (state) => {
+      const unit = state.units.find(u => u.selectionId === "dummy")
+      state.selectedUnitId = unit.selectionId = nanoid(5)
+
+      state.points = UpgradeService.calculateListTotal(state.units);
+
+      debounceSave(current(state));
+    },
     addCombinedUnit: (state, action: PayloadAction<string>) => {
       const parentindex = state.units.findIndex((t) => action.payload == t.selectionId);
 
@@ -250,6 +258,7 @@ export const {
   addUnit,
   applyUpgrade,
   removeUpgrade,
+  makeReal,
   addCombinedUnit,
   selectUnit,
   removeUnit,

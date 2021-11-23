@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, Paper, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, Paper, FormControl, MenuItem, InputLabel, Select, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
@@ -7,7 +7,7 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISelectedUnit, ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit, moveUnit } from '../../data/listSlice';
+import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit, moveUnit, makeReal } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
@@ -88,6 +88,10 @@ export function Upgrades({ mobile = false }) {
     }
   };
 
+  const makeRealUnit = (e) => {
+    dispatch(makeReal())
+  }
+
   const unitsWithAttachedHeroes = list.units
     .filter(u => u.specialRules.some(rule => rule.name === "Hero"))
     .filter(u => u.joinToUnit)
@@ -128,6 +132,12 @@ export function Upgrades({ mobile = false }) {
             </Select>
           </FormControl>
         </FormGroup>)}
+
+        {dummy &&
+          <FormControl fullWidth>
+            <Button variant="contained" className="mx-4" onClick={makeRealUnit} >Add to List</Button>
+          </FormControl>
+        }
         {/* Equipment */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} square={false} />

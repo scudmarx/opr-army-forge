@@ -105,7 +105,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
                 // For each unit in category
                 unitGroups[key].map((u, index) => {
 
-                  const countInList = list?.units.filter(listUnit => listUnit.name === u.name).length;
+                  const countInList = list?.units.filter(listUnit => ((listUnit.selectionId !== "dummy") && (listUnit.name === u.name))).length;
 
                   return (
                     <Accordion
