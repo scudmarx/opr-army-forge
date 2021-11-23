@@ -135,7 +135,7 @@ export function Upgrades({ mobile = false }) {
 
         {dummy &&
           <FormControl fullWidth>
-            <Button variant="contained" className="mx-4" onClick={makeRealUnit} >Add to List</Button>
+            <Button variant="contained" className="mx-4 my-2 py-2" onClick={makeRealUnit} >Add to List</Button>
           </FormControl>
         }
         {/* Equipment */}
