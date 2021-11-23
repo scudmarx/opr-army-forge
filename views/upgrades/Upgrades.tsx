@@ -13,16 +13,23 @@ import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
+import { useEffect, useState } from 'react';
 
-export function Upgrades({ mobile = false, addUnit = (unit: ISelectedUnit) => {}, selected = null }) {
+export function Upgrades({ mobile = false }) {
 
   const list = useSelector((state: RootState) => state.list);
   const gameSystem = useSelector((state: RootState) => state.army.gameSystem);
   const army = useSelector((state: RootState) => state.army.data);
   const spells = army?.spells;
   const dispatch = useDispatch();
+  const [dummy, setDummy] = useState(false)
 
   const selectedUnit = UnitService.getSelected(list);
+  console.log(selectedUnit)
+
+  useEffect(() => {
+    setDummy(selectedUnit?.selectionId === "dummy")
+  }, [list.selectedUnitId])
 
   const getUpgradeSet = (id) => army.upgradePackages.filter((s) => s.uid === id)[0];
 
@@ -95,16 +102,18 @@ export function Upgrades({ mobile = false, addUnit = (unit: ISelectedUnit) => {}
 
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
-        {selectedUnit.size > 1 && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {!dummy && 
+        selectedUnit.size > 1 && !isSkirmish && (<FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
             } />} label="Combined Unit" className="mr-2" />
           <CustomTooltip title={"When preparing your army you may merge units by deploying two copies of the same unit as a single big unit, as long as any upgrades that are applied to all models are bought for both."} arrow enterTouchDelay={0} leaveTouchDelay={5000}>
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
-        </FormGroup>}
+        </FormGroup>)}
         {/* Join to unit */}
-        {!isSkirmish && isHero && <FormGroup className="px-4 pt-2 pb-3">
+
+        {!dummy && !isSkirmish && isHero && (<FormGroup className="px-4 pt-2 pb-3">
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label" sx={{ zIndex: "unset" }}>Join To Unit</InputLabel>
             <Select
@@ -118,7 +127,7 @@ export function Upgrades({ mobile = false, addUnit = (unit: ISelectedUnit) => {}
               ))}
             </Select>
           </FormControl>
-        </FormGroup>}
+        </FormGroup>)}
         {/* Equipment */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} square={false} />

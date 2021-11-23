@@ -5,6 +5,7 @@ import { debounce } from 'throttle-debounce';
 import { current } from 'immer';
 import PersistenceService from '../services/PersistenceService';
 import { nanoid } from "nanoid";
+import UnitService from '../services/UnitService';
 
 export interface ListState {
   creationTime: string;
@@ -66,18 +67,7 @@ export const listSlice = createSlice({
       return { ...action.payload };
     },
     addUnit: (state, action: PayloadAction<any>) => {
-      state.units.push({
-        ...action.payload,
-        selectionId: nanoid(5),
-        selectedUpgrades: [],
-        combined: false,
-        joinToUnit: false,
-        joined: false,
-        equipment: action.payload.equipment.map(eqp => ({
-          ...eqp,
-          count: eqp.count || action.payload.size // Add count to unit size if not already present
-        }))
-      });
+      state.units.push(action.payload);
 
       state.points = UpgradeService.calculateListTotal(state.units);
 
@@ -110,6 +100,8 @@ export const listSlice = createSlice({
         .units
         .findIndex(u => u.selectionId === action.payload);
 
+      if (removeIndex == -1) return null
+
       let unit = state.units[removeIndex]
       console.log(`removing: ${unit.name} - ${unit.selectionId}`)
       if (unit.combined) {
@@ -140,7 +132,11 @@ export const listSlice = createSlice({
           state.units.splice(removeIndex, 1);
         }
       } else {
-        state.undoUnitRemove = state.units.splice(removeIndex, 1);
+        if (unit.selectionId === "dummy") {
+          state.units.splice(removeIndex, 1);
+        } else {
+          state.undoUnitRemove = state.units.splice(removeIndex, 1);
+        }
       }
 
       state.points = UpgradeService.calculateListTotal(state.units);

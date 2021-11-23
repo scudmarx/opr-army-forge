@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../data/store';
 import { Fragment, useState } from "react";
 import { Accordion, AccordionDetails, AccordionSummary, IconButton, Modal, Paper, Typography } from "@mui/material";
@@ -9,15 +9,18 @@ import EquipmentService from "../services/EquipmentService";
 import { dataToolVersion } from "../pages/data";
 import RuleList from "./components/RuleList";
 import { ISelectedUnit, IUnit } from "../data/interfaces";
+
 import { useMediaQuery } from "react-responsive";
 import FullCompactToggle from "./components/FullCompactToggle";
+import UnitService from "../services/UnitService";
 
-export function UnitSelection({ onSelected, addUnit = (unit: ISelectedUnit) => {} }) {
+export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = false) => {} }) {
 
   // Access the main army definition state
   const armyData = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
   const army = armyData.data;
+
   const [expandedId, setExpandedId] = useState(null);
   const [expandAll, setExpandAll] = useState(true);
 
@@ -60,10 +63,18 @@ export function UnitSelection({ onSelected, addUnit = (unit: ISelectedUnit) => {
       unitGroups["Core"].push(unit);
   }
 
-  const handleSelection = (unit) => {
+  const handleAddClick = (unit: IUnit) => {
     addUnit(unit);
-    onSelected(unit);
   };
+  const handleSelectClick = (unit: IUnit) => {
+    if (expandAll) {
+      //onSelected({...UnitService.getRealUnit(unit), selectionId: null});
+      addUnit(unit, true)
+      onSelected({selectionId: "dummy"})
+    } else {
+      setExpandedId(expandedId === unit.name ? null : unit.name);
+    }
+  }
 
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
 
@@ -94,7 +105,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: ISelectedUnit) => {
                 // For each unit in category
                 unitGroups[key].map((u, index) => {
 
-                  const countInList = list.units.filter(listUnit => listUnit.name === u.name).length;
+                  const countInList = list?.units.filter(listUnit => listUnit.name === u.name).length;
 
                   return (
                     <Accordion
@@ -110,7 +121,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: ISelectedUnit) => {
                       onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
                       <AccordionSummary>
                         <div className="is-flex is-flex-grow-1 is-align-items-center">
-                          <div className="is-flex-grow-1" onClick={() => setExpandedId(u.name)}>
+                          <div className="is-flex-grow-1" onClick={() => {handleSelectClick(u)}}>
                             <p className="mb-1" style={{ fontWeight: 600 }}>
                               {countInList > 0 && <span style={{ color: "#0F71B4" }}>{countInList}x </span>}
                               <span>{u.name} </span>
@@ -122,7 +133,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: ISelectedUnit) => {
                             </div>
                           </div>
                           <p>{u.cost}pts</p>
-                          <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleSelection(u); }}>
+                          <IconButton color="primary" onClick={(e) => { e.stopPropagation(); handleAddClick(u); }}>
                             <AddIcon />
                           </IconButton>
                         </div>
@@ -150,3 +161,4 @@ export function UnitSelection({ onSelected, addUnit = (unit: ISelectedUnit) => {
     </aside >
   );
 }
+
