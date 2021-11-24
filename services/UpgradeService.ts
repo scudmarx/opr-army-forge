@@ -174,6 +174,8 @@ export default class UpgradeService {
   }
 
   public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
+    
+    if (unit.selectionId === "dummy") return false
 
     const controlType = this.getControlType(unit, upgrade);
     //const alreadySelected = this.countApplied(unit, upgrade, option);
