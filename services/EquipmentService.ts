@@ -4,7 +4,7 @@ import RulesService from "./RulesService";
 
 export default class EquipmentService {
 
-  public static GenericTerms = ["weapon", "equipment", "gun", "model"]
+  public static GenericTerms = ["weapon", "equipment", "model"]
 
   public static compareEquipmentNames(hasItem: string, searchItem: string): boolean {
     let find = searchItem.toLowerCase()
