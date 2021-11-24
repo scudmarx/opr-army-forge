@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../data/store'
 import { IArmyData, loadArmyData, loadChildArmyData, setArmyFile } from '../data/armySlice'
 import { useRouter } from 'next/router';
-import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress, Snackbar, TextField, InputAdornment } from '@mui/material';
+import { Card, AppBar, IconButton, Paper, Toolbar, Typography, CircularProgress, Snackbar, InputAdornment, Input } from '@mui/material';
 import MuiAlert from '@mui/material/Alert'
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -194,6 +194,20 @@ export default function Files() {
     driveArmy={null}
     onSelect={army => chooseArmy(army)} />);
 
+  const SearchBox = <Input 
+    sx={{maxWidth: "40%", alignSelf: "center", color: "white", textAlign: "right"}} 
+    id="searchfield" size="medium" margin="none" autoComplete="off" disableUnderline
+    onChange={(e) => {setSearchText(e.target.value)}} 
+    value={searchText} 
+    inputProps={{style: {textAlign:"right"}}}
+    endAdornment={
+      <InputAdornment position="end" sx={{width: "2rem", color: "white"}}>
+        {searchText ? 
+          <IconButton size="small" onClick={() => {setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "")}}><ClearIcon sx={{color: "white"}} /></IconButton>
+        : <SearchIcon onClick={() => {document.getElementById("searchfield").focus()}} />}
+      </InputAdornment>
+    }/>
+
   return (
     <>
       <Paper elevation={2} color="primary" square>
@@ -212,6 +226,7 @@ export default function Files() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Create new list
             </Typography>
+            {SearchBox}
           </Toolbar>
         </AppBar>
       </Paper>
@@ -219,10 +234,6 @@ export default function Files() {
         <div className="mx-auto p-4">
           <div className="mb-4 has-text-centered is-clearfix">
             <h3 className="is-size-4 pt-4">Choose your army</h3>
-              <TextField sx={{['@media (min-width:768px)']: {marginTop: "-3.2rem", float: "right"}}} id="searchfield" label="Search" size="medium" variant="standard" autoComplete="off" onChange={(e) => {setSearchText(e.target.value)}} value={searchText} 
-                InputProps = {{endAdornment: 
-                  <InputAdornment position="end" sx={{width: "2rem"}}>{searchText ? <IconButton size="small" onClick={() => {setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "")}}><ClearIcon /></IconButton> : <SearchIcon />}</InputAdornment>
-              }}/>
           </div>
           {
             army.gameSystem === "gf" && (
