@@ -91,7 +91,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
         }
       </div>
       <div style={{ color: isValid ? null : "rgba(0,0,0,.5)" }}>{option?.cost ? `${option.cost}pts` : "Free"}&nbsp;</div>
-      {
+      { selectedUnit.selectionId !== "dummy" &&
         (() => {
           switch (controlType) {
             case "check": return <UpgradeCheckbox selectedUnit={selectedUnit} upgrade={upgrade} option={option} />;
