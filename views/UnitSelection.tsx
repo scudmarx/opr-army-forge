@@ -76,6 +76,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
     }
   }
 
+  const selected = (list.selectedUnitId === "dummy" && UnitService.getSelected(list).name)
   const isBigScreen = useMediaQuery({ query: '(min-width: 1024px)' });
 
   return (
@@ -111,17 +112,19 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
                     <Accordion
                       key={u.name}
                       style={{
-                        backgroundColor: countInList > 0 ? "#F9FDFF" : null,
+                        backgroundColor: (countInList > 0) || (selected === u.name) ? "#F9FDFF" : null,
                         borderLeft: countInList > 0 ? "2px solid #0F71B4" : null,
+                        cursor: "pointer"
                       }}
                       disableGutters
                       square
                       elevation={1}
                       expanded={expandedId === u.name || expandAll}
-                      onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}>
+                      onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}
+                      onClick={() => {handleSelectClick(u)}}>
                       <AccordionSummary>
                         <div className="is-flex is-flex-grow-1 is-align-items-center">
-                          <div className="is-flex-grow-1" onClick={() => {handleSelectClick(u)}}>
+                          <div className="is-flex-grow-1" >
                             <p className="mb-1" style={{ fontWeight: 600 }}>
                               {countInList > 0 && <span style={{ color: "#0F71B4" }}>{countInList}x </span>}
                               <span>{u.name} </span>
