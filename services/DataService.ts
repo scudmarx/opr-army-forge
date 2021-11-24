@@ -4,6 +4,7 @@ import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
 import _ from "lodash";
+import pluralise from "pluralize";
 import styleFunctionSx from "@mui/system/styleFunctionSx";
 import EquipmentService from "./EquipmentService";
 
@@ -142,8 +143,11 @@ export default class DataService {
           for (let section of sections.filter(s => s.replaceWhat)) {
             for (let what of section.replaceWhat) {
 
+              // Are we just upgrading generic terms?
+              if (EquipmentService.GenericTerms.includes(pluralise.singular(what))) continue
+
               // Does equipment contain this thing?
-              const equipmentMatch = u.equipment.find(e => EquipmentService.compareEquipmentNames(e.name ?? e.label, what));
+              const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipmentNames(e.name ?? e.label.replace(countRegex, ""), what));
               // If equipment, then we won't be disabling this section...
               if (equipmentMatch)
                 continue;

@@ -237,6 +237,8 @@ export default class UpgradeService {
     }
 
     if (upgrade.type === "upgrade") {
+      // Upgrade 'all' doesn't require there to be any; means none if that's all there is?
+      //if (upgrade.affects === "all") return true
 
       // Upgrade with 1:
       if (typeof (upgrade.select) === "number") {

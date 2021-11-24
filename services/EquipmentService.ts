@@ -4,7 +4,11 @@ import RulesService from "./RulesService";
 
 export default class EquipmentService {
 
+  public static GenericTerms = ["weapon", "equipment", "gun", "model"]
+
   public static compareEquipmentNames(a: string, b: string): boolean {
+    // generic terms that match to any equipment
+    if (this.GenericTerms.includes(pluralise.singular(b))) return true
     //return pluralise.singular(a).indexOf(pluralise.singular(b)) > -1;
     return pluralise.singular(a || "") === pluralise.singular(b || "");
   }
