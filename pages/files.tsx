@@ -290,6 +290,7 @@ export default function Files() {
                       }}
                       onClick={(e) => { e.stopPropagation(); chooseArmy(customArmy); }}>
                       <div className="is-flex is-flex-grow-1 is-align-items-center p-4">
+                        <ArmyImage className="mr-2" size="32px" name={customArmy.name} armyData={customArmy} />
                         <div className="is-flex-grow-1">
                           <p className="mb-1" style={{ fontWeight: 600 }}>{customArmy.name}</p>
                           <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
