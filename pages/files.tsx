@@ -197,8 +197,9 @@ export default function Files() {
     onSelect={army => chooseArmy(army)} />);
 
   const SearchBox = <Input 
+    className="mt-1"
     sx={{flexBasis: "5em", flexGrow: 0.25, alignSelf: "center", color: "white", textAlign: "right"}} 
-    id="searchfield" size="small" placeholder="Search" margin="none" autoComplete="off" disableUnderline
+    id="searchfield" size="small" margin="none" autoComplete="off" disableUnderline
     onChange={(e) => {setSearchText(e.target.value)}} 
     value={searchText} 
     inputProps={{style: {textAlign:"right"}}}
