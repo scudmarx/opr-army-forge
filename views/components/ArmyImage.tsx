@@ -23,7 +23,7 @@ export default function ArmyImage({ name }) {
         }
       })
      //console.log(army)
-    }, [army]
+    }, [army, name]
   )
   
   
