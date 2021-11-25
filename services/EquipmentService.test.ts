@@ -31,8 +31,8 @@ test("Item string parts", () => {
   } as any, 1);
 
   expect(parts2).toStrictEqual({
-    name: "Light Shields",
-    rules: ""
+    name: "Shield Bash",
+    rules: "A2"
   });
 });
 
@@ -63,5 +63,51 @@ test("String parts for weapon platform", () => {
   var input = 'Gun Platform (Star Cannon (36”, A2, AP(2))) +20pts';
   var upgrade = DataParsingService.parseEquipment(input, true);
   var parts = EquipmentService.getStringParts(upgrade, 1);
-  expect(parts).toStrictEqual({});
+  expect(parts).not.toStrictEqual({});
 })
+
+//#region compareEquipmentNames
+
+test("Positive: [Weapon] matches [Weapon]", () => {
+  const hasWhat = "Rifle"
+  const replaceWhat = "Rifle"
+  const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Negative: [OtherWeapon] does NOT match [weapon]", () => {
+  const hasWhat = "Rifle"
+  const replaceWhat = "Carbine"
+  const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
+  expect (match).toBe(false)
+})
+
+test("Generic: 'weapon' matches [weapon]", () => {
+  const hasWhat = "Rifle"
+  const replaceWhat = "weapon"
+  const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Case: [Weapon] matches [weapon]", () => {
+  const hasWhat = "Rifle"
+  const replaceWhat = "rifle"
+  const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Plural: [Weapon] matches [Weapons]", () => {
+  const hasWhat = "Rifle"
+  const replaceWhat = "Rifles"
+  const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Case and Plural: [Weapon] matches [weapons]", () => {
+  const hasWhat = "Rifle"
+  const replaceWhat = "rifles"
+  const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+//#endregion
