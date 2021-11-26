@@ -29,8 +29,10 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
     delete unit.selectionId;
   }
 
+  var usedRules = []
+
   const unitGroups = _.groupBy(units, u => JSON.stringify(u));
-  console.log(unitGroups);
+  //console.log(unitGroups);
   return (
     <>
       <div className={style.grid}>
@@ -48,12 +50,14 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
             .filter(r => r.name != "-");
 
           const equipmentRules = UnitService.getAllUpgradedRules(u);
-          console.log(equipmentRules);
+          //console.log(equipmentRules);
 
           const rules = specialRules.concat(equipmentRules).filter(r => !!r && r.name != "-");
           const ruleGroups = groupBy(rules, "name");
           const ruleKeys = Object.keys(ruleGroups);
           const toughness = toughFromUnit(u);
+
+          usedRules = usedRules.concat(ruleKeys)
 
           // Sort rules alphabetically
           ruleKeys.sort((a, b) => a.localeCompare(b));
@@ -136,28 +140,49 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
             </div>
           );
         })}
-        {showPsychic && <div className={style.card}>
-          <Card elevation={1}>
-            <div className="mb-4">
-              <div className="card-body">
-                <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>Psychic/Spells</h3>
-                <hr className="my-0" />
-
-                <Paper square elevation={0}>
-                  <div className="px-2 my-2">
-                    {spells.map(spell => (
-                      <p key={spell.id}>
-                        <span style={{ fontWeight: 600 }}>{spell.name} ({spell.threshold}+): </span>
-                        <span>{spell.effect}</span>
-                      </p>
-                    ))}
-                  </div>
-                </Paper>
-              </div>
-            </div>
-          </Card>
-        </div >}
       </div >
+      {showPsychic && <div className={style.card} >
+        <Card elevation={1}>
+          <div className="mb-4">
+            <div className="card-body">
+              <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>Psychic/Spells</h3>
+              <hr className="my-0" />
+
+              <Paper square elevation={0}>
+                <div className="px-2 my-2">
+                  {spells.map(spell => (
+                    <p key={spell.id}>
+                      <span style={{ fontWeight: 600 }}>{spell.name} ({spell.threshold}+): </span>
+                      <span>{spell.effect}</span>
+                    </p>
+                  ))}
+                </div>
+              </Paper>
+            </div>
+          </div>
+        </Card>
+      </div >}
+      {!showFullRules && <div className={style.card} >
+        <Card elevation={1}>
+          <div className="mb-4">
+            <div className="card-body">
+              <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>Special Rules</h3>
+              <hr className="my-0" />
+
+              <Paper square elevation={0}>
+                <div className="px-2 my-2">
+                  {_.uniq(usedRules).sort().map((r, i) => (
+                    <p key={i}>
+                      <span style={{ fontWeight: 600 }}>{r} - </span>
+                      <span>{ruleDefinitions.find(t => t.name === r).description}</span>
+                    </p>
+                  ))}
+                </div>
+              </Paper>
+            </div>
+          </div>
+        </Card>
+      </div >}
     </>
   );
 }
