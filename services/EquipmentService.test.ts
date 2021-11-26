@@ -1,4 +1,4 @@
-import { IUpgradeGainsItem, IUpgradeGainsRule } from '../data/interfaces';
+import { IUpgradeGainsItem, IUpgradeGainsRule, IUpgradeGainsWeapon } from '../data/interfaces';
 import DataParsingService from './DataParsingService';
 import EquipmentService from './EquipmentService';
 
@@ -82,13 +82,6 @@ test("Negative: [OtherWeapon] does NOT match [weapon]", () => {
   expect (match).toBe(false)
 })
 
-test("Generic: 'weapon' matches [weapon]", () => {
-  const hasWhat = "Rifle"
-  const replaceWhat = "weapon"
-  const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
-  expect (match).toBe(true)
-})
-
 test("Case: [Weapon] matches [weapon]", () => {
   const hasWhat = "Rifle"
   const replaceWhat = "rifle"
@@ -108,6 +101,91 @@ test("Case and Plural: [Weapon] matches [weapons]", () => {
   const replaceWhat = "rifles"
   const match = EquipmentService.compareEquipmentNames(hasWhat, replaceWhat)
   expect (match).toBe(true)
+})
+
+//#endregion
+
+//#region compareEquipment
+
+const defaultWeapon: IUpgradeGainsWeapon = {
+  name: "",
+  type: "ArmyBookWeapon",
+  attacks: 0,
+  range: 0,
+  specialRules: [],
+  id: '',
+  label: '',
+  count: 1,
+  originalCount: 1
+}
+
+test("Positive: Weapon matches [Weapon]", () => {
+  const hasWhat = {...defaultWeapon, 
+    name: "Rifle",
+    label: "Rifle"
+  }
+  const replaceWhat = "Rifle"
+  const match = EquipmentService.compareEquipment(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Negative: Weapon does NOT match [OtherWeapon]", () => {
+  const hasWhat = {...defaultWeapon, 
+    name: "Rifle",
+    label: "Rifle"
+  }
+  const replaceWhat = "Carbine"
+  const match = EquipmentService.compareEquipment(hasWhat, replaceWhat)
+  expect (match).toBe(false)
+})
+
+test("Positive: Generic 'weapon' matches [Weapon]", () => {
+  const hasWhat = defaultWeapon
+  const replaceWhat = "weapon"
+  const match = EquipmentService.compareEquipment(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Positive: Generic 'gun' matches [RangedWeapon]", () => {
+  const hasWhat = {...defaultWeapon, 
+    name: "Rifle",
+    label: "Rifle",
+    range: 24
+  }
+  const replaceWhat = "gun"
+  const match = EquipmentService.compareEquipment(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Negative: Generic 'gun' does NOT match [MeleeWeapon]", () => {
+  const hasWhat = {...defaultWeapon, 
+    name: "CCW",
+    label: "CCW"
+  }
+  const replaceWhat = "gun"
+  const match = EquipmentService.compareEquipment(hasWhat, replaceWhat)
+  expect (match).toBe(false)
+})
+
+test("Positive: Generic 'melee weapon' matches [CCW]", () => {
+  const hasWhat = {...defaultWeapon, 
+    name: "CCW",
+    label: "CCW"
+  }
+  const replaceWhat = "melee weapon"
+  const match = EquipmentService.compareEquipment(hasWhat, replaceWhat)
+  expect (match).toBe(true)
+})
+
+test("Negative: Generic 'melee weapon' does NOT match [RangedWeapon]", () => {
+  const hasWhat = {...defaultWeapon, 
+    name: "Rifle",
+    label: "Rifle",
+    range: 24
+  }
+  const replaceWhat = "melee weapon"
+  const match = EquipmentService.compareEquipment(hasWhat, replaceWhat)
+  expect (match).toBe(false)
 })
 
 //#endregion

@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { IUnit, IUpgradeOption } from "../data/interfaces";
+import { IUnit, IUpgradeGains, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
@@ -7,6 +7,7 @@ import _ from "lodash";
 import pluralise from "pluralize";
 import styleFunctionSx from "@mui/system/styleFunctionSx";
 import EquipmentService from "./EquipmentService";
+import UnitService from "./UnitService";
 
 export default class DataService {
 
@@ -44,7 +45,7 @@ export default class DataService {
     try {
       const countRegex = /^(\d+)x\s/;
 
-      const upgradePackages = input.upgradePackages.map(pkg => ({
+      const upgradePackages: IUpgradePackage[] = input.upgradePackages.map(pkg => ({
         ...pkg,
         sections: pkg.sections.map(section => {
           const upgrade = DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":"));
@@ -131,10 +132,10 @@ export default class DataService {
             // Flatten down to array of all upgrade sections
             .reduce((sections, next) => sections.concat(next.sections), []);
 
-          const allGains: string[] = sections
+          const allGains: IUpgradeGains[] = sections
             .reduce((opts, next) => opts.concat(next.options), [])
             .reduce((gains, next) => gains.concat(next.gains), [])
-            .map(gain => gain.name);
+            //.map(gain => gain.name);
 
           const disabledSections: string[] = [];
 
@@ -143,17 +144,16 @@ export default class DataService {
           for (let section of sections.filter(s => s.replaceWhat)) {
             for (let what of section.replaceWhat) {
 
-              // Are we just upgrading generic terms?
-              if (EquipmentService.GenericTerms.includes(pluralise.singular(what))) continue
-
               // Does equipment contain this thing?
-              const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipmentNames(e.name ?? e.label.replace(countRegex, ""), what));
+              console.log(what)
+              const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipment({...e, label:e.label.replace(countRegex, "")}, what));
               // If equipment, then we won't be disabling this section...
               if (equipmentMatch)
                 continue;
 
+              console.log(what)
               // Do any upgrade sections contain this thing?
-              const upgradeGains = allGains.find(g => EquipmentService.compareEquipmentNames(g, what));
+              const upgradeGains = allGains.find(g => EquipmentService.compareEquipment(g, what));
               // If upgrade gains found, don't disable this
               if (upgradeGains)
                 continue;

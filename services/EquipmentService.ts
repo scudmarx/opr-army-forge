@@ -4,31 +4,60 @@ import RulesService from "./RulesService";
 
 export default class EquipmentService {
 
-  public static GenericTerms = ["weapon", "equipment", "model"]
+  /**
+   * Compares an equipment with a search term.
+   * @param hasItem The equipment to test against.
+   * @param searchItem The term we are seeking a comparison for.
+   * @returns true if the equipment is a match, false otherwise.
+   */
+  public static compareEquipment(hasItem: IUpgradeGains, searchItem: string): boolean {
+    // "replace [nothing] -> always ok"
+    if (!searchItem) return true
+
+    const find = pluralise.singular(searchItem?.toLowerCase() || "")
+
+    if (["equipment"].includes(find)) return !!hasItem
+
+    if (["melee weapon"].includes(find)) {
+      return (
+        (hasItem?.type === "ArmyBookWeapon") &&
+        (hasItem as IUpgradeGainsWeapon).range == 0)
+    }
+
+    if (["gun", "ranged weapon"].includes(find)) {
+      return (
+        (hasItem?.type === "ArmyBookWeapon") &&
+        (hasItem as IUpgradeGainsWeapon).range > 0)
+    }
+
+    if (["weapon"].includes(find)) {
+      return (hasItem?.type === "ArmyBookWeapon")
+    }
+
+    // otherwise match by name
+    return this.compareEquipmentNames(hasItem.name, find) || this.compareEquipmentNames(hasItem.label, find)
+  }
 
   public static compareEquipmentNames(hasItem: string, searchItem: string): boolean {
-    let find = searchItem.toLowerCase()
-    // generic terms that match to any equipment (so long as there is any equipment)
-    if (this.GenericTerms.includes(pluralise.singular(find))) return !!hasItem
-    //return pluralise.singular(a).indexOf(pluralise.singular(b)) > -1;
-    return pluralise.singular(hasItem.toLowerCase() || "") === pluralise.singular(find || "");
+    let find = searchItem?.toLowerCase()
+    return pluralise.singular(hasItem?.toLowerCase() || "") === pluralise.singular(find || "");
   }
 
   public static find(list: IUpgradeGainsWeapon[], match: string): IUpgradeGainsWeapon[] {
     return list
-      .filter(e => this.compareEquipmentNames(e.label, match));
+      .filter(e => this.compareEquipment(e, match));
   }
 
   public static findLast(list: IUpgradeGainsWeapon[], match: string): IUpgradeGainsWeapon {
     const matches = list
-      .filter(e => this.compareEquipmentNames(e.label, match));
+      .filter(e => this.compareEquipment(e, match));
     return matches[matches.length - 1];
   }
 
   public static findLastIndex(array: IUpgradeGainsWeapon[], match: string) {
     let l = array.length;
     while (l--) {
-      if (this.compareEquipmentNames(array[l].label, match))
+      if (this.compareEquipment(array[l], match))
         return l;
     }
     return -1;
