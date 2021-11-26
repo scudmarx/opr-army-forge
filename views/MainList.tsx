@@ -44,18 +44,15 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
 
             const isHero = s.specialRules.some(r => r.name === "Hero");
 
-            const attachedUnits: ISelectedUnit[] = list.units.filter(u => u.joinToUnit === s.selectionId)
+            const attachedUnits: ISelectedUnit[] = UnitService.getAttachedUnits(list, s)
             const [heroes, otherJoined]: [ISelectedUnit[], ISelectedUnit[]] = _.partition(attachedUnits, u => u.specialRules.some(r => r.name === "Hero"))
             const hasJoined = attachedUnits.length > 0
-
-            //console.log("Parent unit", joinedUnit);
 
             const hasHeroes = hasJoined && heroes.length > 0
             const hasNonHeroesJoined = hasJoined && otherJoined.length > 0
 
             const unitSize = otherJoined.reduce((size, u) => {return size + UnitService.getSize(u)}, UnitService.getSize(s))
             const unitPoints = attachedUnits.reduce((cost, u) => {return cost + UpgradeService.calculateUnitTotal(u)}, UpgradeService.calculateUnitTotal(s))
-            //console.log("Grandchild", combinedUnit);
 
             const handleClick = (unit) => {
               if (!mobile) setExpandedId(expandedId == unit.selectionId ? null : unit.selectionId);
@@ -71,7 +68,7 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
                     {` [${unitSize}]`}
                   </h3>
                   <p className="mr-2">{unitPoints}pts</p>
-                  <DropMenu><DuplicateButton units={[s, attachedUnits].filter(u => u)} list={list} text="Duplicate" /></DropMenu>
+                  <DropMenu><DuplicateButton units={[s, ...attachedUnits].filter(u => u)} list={list} text="Duplicate" /></DropMenu>
                 </div>}
                 <div className={hasJoined ? "ml-1" : ""}>
                   {heroes.map(h => <MainListItem
@@ -180,6 +177,7 @@ export function DuplicateButton({units, list, text=""}) {
   const dispatch = useDispatch();
 
   const duplicateUnits = (units: ISelectedUnit[], list: ListState) => {
+    console.log(units)
     dispatch(addUnits({units: units, index: list.units.indexOf(units.at(-1)) + 1}))
   }
 
