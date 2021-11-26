@@ -145,13 +145,11 @@ export default class DataService {
             for (let what of section.replaceWhat) {
 
               // Does equipment contain this thing?
-              console.log(what)
               const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipment({...e, label:e.label.replace(countRegex, "")}, what));
               // If equipment, then we won't be disabling this section...
               if (equipmentMatch)
                 continue;
 
-              console.log(what)
               // Do any upgrade sections contain this thing?
               const upgradeGains = allGains.find(g => EquipmentService.compareEquipment(g, what));
               // If upgrade gains found, don't disable this
