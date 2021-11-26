@@ -1,13 +1,12 @@
 .grid {
-  columns: 6 28rem;
+  column-width: 24rem;
   column-gap: 1rem;
   text-align: center;
 }
 
 .grid .card {
   display: inline-block;
-  width: 28rem;
-  max-width: 100%;
+  width: calc(100% - 2rem);
   margin-top: 1rem;
   margin-bottom: 1rem;
   break-inside: avoid;
@@ -16,7 +15,7 @@
 
 @media print {
   .grid {
-    columns: 3 3in;
+    column-width: 3.5in;
     column-gap: 5mm;
   }
   .grid .card {
