@@ -33,7 +33,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
   console.log(unitGroups);
   return (
     <>
-      <div className="columns is-multiline">
+      <div className={style.grid}>
         {Object.values(unitGroups).map((grp: ISelectedUnit[], i) => {
 
           const u = grp[0];
@@ -59,7 +59,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
           ruleKeys.sort((a, b) => a.localeCompare(b));
 
           return (
-            <div key={i} className="column is-one-third">
+            <div key={i} className={style.card}>
               <Card elevation={1}>
                 <div className="mb-4">
                   <div className="card-body">
@@ -136,7 +136,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
             </div>
           );
         })}
-        {showPsychic && <div className="column is-one-third">
+        {showPsychic && <div className={style.card}>
           <Card elevation={1}>
             <div className="mb-4">
               <div className="card-body">
