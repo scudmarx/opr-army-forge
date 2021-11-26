@@ -30,6 +30,7 @@ export interface IArmyData {
   isLive: boolean;
   official: boolean;
   coverImagePath: string;
+  username?: string;
 }
 
 const initialState: ArmyState = {

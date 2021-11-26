@@ -32,7 +32,7 @@ export default function UpgradeUpDown({ selectedUnit, upgrade, option }: { selec
 
           <DownIcon />
         </IconButton>
-        <div>{countApplied}</div>
+        <div style={{ color: isValid ? "#000000" : "rgba(0,0,0,.5)" }}>{countApplied}</div>
         <IconButton
           disabled={!isValid}
           color={"primary"}

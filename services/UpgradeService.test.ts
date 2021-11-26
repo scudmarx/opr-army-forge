@@ -1,4 +1,4 @@
-import { ISelectedUnit, IUpgrade, IUpgradeOption } from "../data/interfaces";
+import { ISelectedUnit, IUpgrade, IUpgradeGainsWeapon, IUpgradeOption } from "../data/interfaces";
 import UpgradeService from "./UpgradeService";
 import DataParsingService from "./DataParsingService";
 import { nanoid } from "nanoid";
@@ -21,6 +21,18 @@ const defaultUnit: ISelectedUnit = {
   joinToUnit: null,
   disabledUpgradeSections: []
 };
+
+const defaultWeapon: IUpgradeGainsWeapon = {
+  type: "ArmyBookWeapon",
+  attacks: 0,
+  range: 0,
+  specialRules: [],
+  id: "",
+  name: "",
+  label: "",
+  count: 0,
+  originalCount: 0
+}
 
 const defaultOption: () => IUpgradeOption = () => ({
   id: nanoid(5),
@@ -89,6 +101,7 @@ test('"Replace Any Rifle" is valid', () => {
     ...defaultUnit,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Rifle",
         count: 4
       }
@@ -118,6 +131,7 @@ test('"Replace Any Rifle" is not valid', () => {
     ...defaultUnit,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Rifle",
         count: 0
       }
@@ -148,6 +162,7 @@ test('"Replace all Rifles" is valid', () => {
     ...defaultUnit,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Rifle",
         count: 5
       }
@@ -178,6 +193,7 @@ test('Radio is valid when another option in group is applied', () => {
     ...defaultUnit,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Heavy Rifle",
         count: 0
       }
@@ -223,6 +239,7 @@ test('"Replace one Rifle" is valid, where Rifle is an upgrade', () => {
     size: 5,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Gun",
         count: 4
       }
@@ -267,6 +284,7 @@ test('"Replace one Rifle" is not valid, where Rifle is an upgrade', () => {
     size: 5,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Gun",
         count: 4
       }
@@ -296,6 +314,7 @@ test('"Replace up to 2 Rifles" is valid', () => {
     ...defaultUnit,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Rifle",
         count: 4
       }
@@ -325,6 +344,7 @@ test('"Replace up to 2 Rifles" is not valid', () => {
     ...defaultUnit,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Rifle",
         count: 3
       }
@@ -356,6 +376,7 @@ test('"Any model may replace 1 Claw" is valid', () => {
     size: 5,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Claw",
         count: 9
       }
@@ -386,6 +407,7 @@ test('"Any model may replace 1 Claw" is not valid', () => {
     size: 5,
     equipment: [
       {
+        ...defaultWeapon,
         label: "Claw",
         count: 5
       }
@@ -416,6 +438,7 @@ test('"Replace one A / B" is valid', () => {
     size: 5,
     equipment: [
       {
+        ...defaultWeapon,
         label: "ARifle",
         count: 5
       }
@@ -445,6 +468,7 @@ test('"Replace any A / B" is valid', () => {
     size: 5,
     equipment: [
       {
+        ...defaultWeapon,
         label: "BRifle",
         count: 4
       }
@@ -475,6 +499,7 @@ test('"Replace any A / B" is not valid', () => {
     size: 5,
     equipment: [
       {
+        ...defaultWeapon,
         label: "BRifle",
         count: 0
       }

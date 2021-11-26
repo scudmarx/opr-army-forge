@@ -4,9 +4,14 @@ import RulesService from "./RulesService";
 
 export default class EquipmentService {
 
-  public static compareEquipmentNames(a: string, b: string): boolean {
+  public static GenericTerms = ["weapon", "equipment", "model"]
+
+  public static compareEquipmentNames(hasItem: string, searchItem: string): boolean {
+    let find = searchItem.toLowerCase()
+    // generic terms that match to any equipment (so long as there is any equipment)
+    if (this.GenericTerms.includes(pluralise.singular(find))) return !!hasItem
     //return pluralise.singular(a).indexOf(pluralise.singular(b)) > -1;
-    return pluralise.singular(a || "") === pluralise.singular(b || "");
+    return pluralise.singular(hasItem.toLowerCase() || "") === pluralise.singular(find || "");
   }
 
   public static find(list: IUpgradeGainsWeapon[], match: string): IUpgradeGainsWeapon[] {

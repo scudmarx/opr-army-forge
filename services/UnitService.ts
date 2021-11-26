@@ -1,6 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { IUnit, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
 import { ListState } from "../data/listSlice";
+import _ from "lodash";
 
 export default class UnitService {
 
@@ -72,5 +73,18 @@ export default class UnitService {
         count: eqp.count || unit.size // Add count to unit size if not already present
       }))
     }
+
+  public static getParents(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    return list.units.filter(u => u.joinToUnit === unit.selectionId)
+  }
+  public static getChildren(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    return list.units.filter(u => u.selectionId === unit.joinToUnit)
+  }
+  public static getFamily(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    let parents = UnitService.getParents(list, unit)
+    let grandparents = parents.flatMap(u => {return UnitService.getParents(list, u)})
+    let children = UnitService.getChildren(list, unit)
+    let grandchildren = children.flatMap(u => {return UnitService.getChildren(list, u)})
+    return _.uniq([...grandparents, ...parents, unit, ...children, ...grandchildren])
   }
 }
