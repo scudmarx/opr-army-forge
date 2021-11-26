@@ -4,6 +4,7 @@ import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
 import _ from "lodash";
+import pluralise from "pluralize";
 import styleFunctionSx from "@mui/system/styleFunctionSx";
 import EquipmentService from "./EquipmentService";
 
@@ -91,7 +92,7 @@ export default class DataService {
                 // Group same items back together and sum the count
                 gains: Object.values(gainsGroups).map((grp: any[]) => {
                   const count = grp.reduce((c, next) => c + (next.count || 1), 0);
-                  console.log(grp[0].label + " " + count, grp);
+                  //console.log(grp[0].label + " " + count, grp);
                   return {
                     ...grp[0],
                     count: count
@@ -124,9 +125,9 @@ export default class DataService {
           }
         }),
         disabledUpgradeSections: (() => {
-          const sections: { id: string, options: { gains: { name: string } }[], replaceWhat: string[] }[] = u.upgrades
+          const sections: { id: string, options: { gains: { name: string } }[], replaceWhat: string[] }[] = _.compact(u.upgrades
             // Map all upgrade packages
-            .map(uid => upgradePackages.find(pkg => pkg.uid === uid))
+            .map(uid => upgradePackages.find(pkg => pkg.uid === uid)))
             // Flatten down to array of all upgrade sections
             .reduce((sections, next) => sections.concat(next.sections), []);
 
@@ -142,8 +143,11 @@ export default class DataService {
           for (let section of sections.filter(s => s.replaceWhat)) {
             for (let what of section.replaceWhat) {
 
+              // Are we just upgrading generic terms?
+              if (EquipmentService.GenericTerms.includes(pluralise.singular(what))) continue
+
               // Does equipment contain this thing?
-              const equipmentMatch = u.equipment.find(e => EquipmentService.compareEquipmentNames(e.name ?? e.label, what));
+              const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipmentNames(e.name ?? e.label.replace(countRegex, ""), what));
               // If equipment, then we won't be disabling this section...
               if (equipmentMatch)
                 continue;

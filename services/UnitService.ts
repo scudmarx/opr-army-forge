@@ -1,5 +1,6 @@
 import { ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
 import { ListState } from "../data/listSlice";
+import _ from "lodash";
 
 export default class UnitService {
 
@@ -57,5 +58,19 @@ export default class UnitService {
   public static getSize(unit: ISelectedUnit): number {
     const extraModelCount = unit.selectedUpgrades.filter(u => u.isModel).length;
     return unit.size + extraModelCount;
+  }
+
+  public static getParents(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    return list.units.filter(u => u.joinToUnit === unit.selectionId)
+  }
+  public static getChildren(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    return list.units.filter(u => u.selectionId === unit.joinToUnit)
+  }
+  public static getFamily(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    let parents = UnitService.getParents(list, unit)
+    let grandparents = parents.flatMap(u => {return UnitService.getParents(list, u)})
+    let children = UnitService.getChildren(list, unit)
+    let grandchildren = children.flatMap(u => {return UnitService.getChildren(list, u)})
+    return _.uniq([...grandparents, ...parents, unit, ...children, ...grandchildren])
   }
 }

@@ -72,8 +72,8 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
 
         dispatch(loadArmyData(afData));
 
-        finish({ ...childArmy, data: afData });
-      });
+        finish({ ...army, ...childArmy, data: afData });
+      }, err => {throw(err)});
 
     } else {
       finish(army);
