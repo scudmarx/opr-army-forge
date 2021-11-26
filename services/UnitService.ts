@@ -73,6 +73,7 @@ export default class UnitService {
         count: eqp.count || unit.size // Add count to unit size if not already present
       }))
     }
+  }
 
   public static getParents(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
     return list.units.filter(u => u.joinToUnit === unit.selectionId)
