@@ -11,7 +11,7 @@ import { groupBy } from "../services/Helpers";
 import UnitService from "../services/UnitService";
 import UpgradeService from "../services/UpgradeService";
 import _ from "lodash";
-import { ISelectedUnit } from "../data/interfaces";
+import { ISelectedUnit, IUpgradeGainsMultiWeapon, IUpgradeGainsWeapon } from "../data/interfaces";
 import RuleList from "./components/RuleList";
 
 export default function ViewCards({ showPsychic, showFullRules, showPointCosts }) {
@@ -57,8 +57,12 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
           const ruleKeys = Object.keys(ruleGroups);
           const toughness = toughFromUnit(u);
 
-          usedRules = usedRules.concat(ruleKeys)
-
+          const weaponSpecialRules = _.compact(u.equipment.flatMap(e => e.attacks && e.specialRules)).map(r => r.name)
+          const upgradeWeaponsSpecialRules = UnitService.getAllUpgradeWeapons(u).flatMap(w => {
+            if ((w as IUpgradeGainsMultiWeapon).profiles) return (w as IUpgradeGainsMultiWeapon).profiles.flatMap(w => w.specialRules)
+            return (w as IUpgradeGainsWeapon).specialRules
+          }).map(r => r.name)
+          usedRules = usedRules.concat(ruleKeys).concat(weaponSpecialRules).concat(upgradeWeaponsSpecialRules)
           // Sort rules alphabetically
           ruleKeys.sort((a, b) => a.localeCompare(b));
 
@@ -140,28 +144,28 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
             </div>
           );
         })}
-      </div >
-      {showPsychic && <div className={style.card} >
-        <Card elevation={1}>
-          <div className="mb-4">
-            <div className="card-body">
-              <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>Psychic/Spells</h3>
-              <hr className="my-0" />
+        {showPsychic && <div className={style.card} >
+          <Card elevation={1}>
+            <div className="mb-4">
+              <div className="card-body">
+                <h3 className="is-size-4 my-2" style={{ fontWeight: 500, textAlign: "center" }}>Psychic/Spells</h3>
+                <hr className="my-0" />
 
-              <Paper square elevation={0}>
-                <div className="px-2 my-2">
-                  {spells.map(spell => (
-                    <p key={spell.id}>
-                      <span style={{ fontWeight: 600 }}>{spell.name} ({spell.threshold}+): </span>
-                      <span>{spell.effect}</span>
-                    </p>
-                  ))}
-                </div>
-              </Paper>
+                <Paper square elevation={0}>
+                  <div className="px-2 my-2">
+                    {spells.map(spell => (
+                      <p key={spell.id}>
+                        <span style={{ fontWeight: 600 }}>{spell.name} ({spell.threshold}+): </span>
+                        <span>{spell.effect}</span>
+                      </p>
+                    ))}
+                  </div>
+                </Paper>
+              </div>
             </div>
-          </div>
-        </Card>
-      </div >}
+          </Card>
+        </div >}
+      </div >
       {!showFullRules && <div className={style.card} >
         <Card elevation={1}>
           <div className="mb-4">
@@ -174,7 +178,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
                   {_.uniq(usedRules).sort().map((r, i) => (
                     <p key={i}>
                       <span style={{ fontWeight: 600 }}>{r} - </span>
-                      <span>{ruleDefinitions.find(t => t.name === r).description}</span>
+                      <span>{ruleDefinitions.find(t => t.name === r)?.description}</span>
                     </p>
                   ))}
                 </div>
