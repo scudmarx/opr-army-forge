@@ -132,7 +132,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
                               <span style={{ fontWeight: 600 }}>
                                 {RulesService.displayName({ ...rule, rating }, count)} -
                               </span>
-                              <span>{ruleDefinition?.description || ""}</span>
+                              <span> {ruleDefinition?.description || ""}</span>
                             </p>
                           );
                         })}
