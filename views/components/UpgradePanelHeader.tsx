@@ -14,12 +14,14 @@ export default function UpgradePanelHeader() {
   const list = useSelector((state: RootState) => state.list);
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
+  const [dummy, setDummy] = useState(false)
   const [customName, setCustomName] = useState("");
 
   const selectedUnit = UnitService.getSelected(list);
 
   useEffect(() => {
     setCustomName(selectedUnit?.customName ?? selectedUnit?.name ?? "");
+    setDummy(selectedUnit?.selectionId === "dummy")
   }, [selectedUnit?.selectionId]);
 
   const debounceSave = useCallback(
@@ -54,9 +56,9 @@ export default function UpgradePanelHeader() {
           <h3 className="is-size-4 has-text-left unitName">{selectedUnit.customName || selectedUnit.name} {`[${UnitService.getSize(selectedUnit)}]`}</h3>
         </div>
       )}
-      <IconButton color="primary" className="ml-2" onClick={() => toggleEditMode()}>
+      {!dummy && <IconButton color="primary" className="ml-2" onClick={() => toggleEditMode()}>
         <EditIcon />
-      </IconButton>
+      </IconButton>}
       <p className="ml-4 is-flex-grow-1" style={{ textAlign: "right" }}>{UpgradeService.calculateUnitTotal(selectedUnit)}pts</p>
     </div>
   );
