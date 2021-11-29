@@ -9,6 +9,7 @@ export default function UpgradeCheckbox({ selectedUnit, upgrade, option }: { sel
   const dispatch = useDispatch();
 
   const isApplied = (option) => UpgradeService.isApplied(selectedUnit, upgrade, option);
+  const isValid = UpgradeService.isValid(selectedUnit, upgrade, option);
 
   const handleCheck = (option: IUpgradeOption) => {
 
@@ -31,7 +32,9 @@ export default function UpgradeCheckbox({ selectedUnit, upgrade, option }: { sel
     <Checkbox
       checked={isApplied(option)}
       onClick={() => handleCheck(option)}
-      value={option.label} />
+      value={option.label}
+      disabled={!isValid}
+       />
   );
 
   //return ({ upgrade.options.map((opt, i) => (<p></p>)});

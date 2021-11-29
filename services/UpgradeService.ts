@@ -9,6 +9,7 @@ import { nanoid } from "nanoid";
 export default class UpgradeService {
   static calculateListTotal(list: ISelectedUnit[]) {
     return list
+      .filter(u => u.selectionId !== "dummy")
       .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
   }
 
@@ -185,6 +186,8 @@ export default class UpgradeService {
   }
 
   public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
+    
+    //if (unit.selectionId === "dummy") return false
 
     const controlType = this.getControlType(unit, upgrade);
     //const alreadySelected = this.countApplied(unit, upgrade, option);
