@@ -39,7 +39,7 @@ export default function GameSystem() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
-              onClick={() => router.back()}
+              onClick={() => router.push("/")}
             >
               <BackIcon />
             </IconButton>
