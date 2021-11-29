@@ -14,7 +14,7 @@ export default class EquipmentService {
     // "replace [nothing] -> always ok"
     if (!searchItem) return true
 
-    const find = pluralise.singular(searchItem?.toLowerCase() || "")
+    const find = pluralise.singular(searchItem?.toLowerCase().trim() || "")
 
     if (["equipment"].includes(find)) return !!hasItem
 
@@ -39,7 +39,7 @@ export default class EquipmentService {
   }
 
   public static compareEquipmentNames(hasItem: string, searchItem: string): boolean {
-    let find = searchItem?.toLowerCase()
+    let find = searchItem?.toLowerCase().trim()
     return pluralise.singular(hasItem?.toLowerCase() || "") === pluralise.singular(find || "");
   }
 
