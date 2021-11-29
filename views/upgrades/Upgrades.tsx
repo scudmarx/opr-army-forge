@@ -1,18 +1,19 @@
-import { Checkbox, FormControlLabel, FormGroup, Paper, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup, Paper, FormControl, MenuItem, InputLabel, Select, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../data/store';
 import styles from "../../styles/Upgrades.module.css";
 import UpgradeGroup from './UpgradeGroup';
 import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
-import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
+import { ISelectedUnit, ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit, moveUnit } from '../../data/listSlice';
+import { toggleUnitCombined, joinUnit, addCombinedUnit, removeUnit, moveUnit, makeReal } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
+import { useEffect, useState } from 'react';
 
 export function Upgrades({ mobile = false, competitive = true }) {
 
@@ -21,8 +22,14 @@ export function Upgrades({ mobile = false, competitive = true }) {
   const army = useSelector((state: RootState) => state.army.data);
   const spells = army?.spells;
   const dispatch = useDispatch();
+  const [dummy, setDummy] = useState(false)
 
   const selectedUnit = UnitService.getSelected(list);
+  console.log(selectedUnit)
+
+  useEffect(() => {
+    setDummy(selectedUnit?.selectionId === "dummy")
+  }, [list.selectedUnitId])
 
   const getUpgradeSet = (id) => army.upgradePackages.filter((s) => s.uid === id)[0];
 
@@ -93,6 +100,10 @@ export function Upgrades({ mobile = false, competitive = true }) {
     }
   };
 
+  const makeRealUnit = (e) => {
+    dispatch(makeReal())
+  }
+
   const unitsWithAttachedHeroes = list.units
     .filter(u => u.specialRules.some(rule => rule.name === "Hero"))
     .filter(u => u.joinToUnit)
@@ -107,7 +118,8 @@ export function Upgrades({ mobile = false, competitive = true }) {
 
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
-        {(!competitive || selectedUnit.size > 1) && !isHero && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {!dummy && (!competitive || selectedUnit.size > 1) && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
             } />} label="Combined Unit" className="mr-2" />
@@ -116,7 +128,8 @@ export function Upgrades({ mobile = false, competitive = true }) {
           </CustomTooltip>
         </FormGroup>}
         {/* Join to unit */}
-        {!isSkirmish && isHero && <FormGroup className="px-4 pt-2 pb-3">
+
+        {!dummy && !isSkirmish && isHero && (<FormGroup className="px-4 pt-2 pb-3">
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label" sx={{ zIndex: "unset" }}>Join To Unit</InputLabel>
             <Select
@@ -130,7 +143,13 @@ export function Upgrades({ mobile = false, competitive = true }) {
               ))}
             </Select>
           </FormControl>
-        </FormGroup>}
+        </FormGroup>)}
+
+        {dummy &&
+          <FormControl fullWidth>
+            <Button variant="contained" className="mx-4 my-2 py-2" onClick={makeRealUnit} >Add to My List</Button>
+          </FormControl>
+        }
         {/* Equipment */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} square={false} />
