@@ -236,7 +236,7 @@ export const listSlice = createSlice({
       const { unitId, joinToUnitId } = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
       const joinToUnit = state.units.filter(u => u.selectionId === joinToUnitId)[0];
-
+      
       unit.joinToUnit = joinToUnitId;
 
       debounceSave(current(state));
