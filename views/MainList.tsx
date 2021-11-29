@@ -29,7 +29,7 @@ export function MainList({ onSelected, onUnitRemoved, mobile=false }) {
   const realUnits = list.units.filter(u => u.selectionId !== "dummy");  
   const joinedUnitIds = realUnits.filter(u => u.joinToUnit).map(u => u.joinToUnit);
   //const units = list.units.filter(u => joinedUnitIds.indexOf(u.selectionId) === -1);
-  const rootUnits = list.units.filter(u => !(u.joinToUnit && list.units.some(t => t.selectionId === u.joinToUnit)))
+  const rootUnits = realUnits.filter(u => !(u.joinToUnit && list.units.some(t => t.selectionId === u.joinToUnit)))
 
   return (
     <>
