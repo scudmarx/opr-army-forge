@@ -166,7 +166,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
           </Card>
         </div >}
       </div >
-      {!showFullRules && <div className={style.card} >
+      {!showFullRules && <div className={`mx-4 ${style.card}`} >
         <Card elevation={1}>
           <div className="mb-4">
             <div className="card-body">
@@ -174,9 +174,9 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
               <hr className="my-0" />
 
               <Paper square elevation={0}>
-                <div className="px-2 my-2">
+                <div className={`px-2 my-2 ${style.grid} has-text-left`}>
                   {_.uniq(usedRules).sort().map((r, i) => (
-                    <p key={i}>
+                    <p key={i} style={{breakInside: "avoid"}}>
                       <span style={{ fontWeight: 600 }}>{r} - </span>
                       <span>{ruleDefinitions.find(t => t.name === r)?.description}</span>
                     </p>
