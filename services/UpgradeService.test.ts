@@ -763,6 +763,40 @@ test('"Upgrade any Pistol with up to two:" is NOT valid (Hero unit with 2x Pisto
   expect(isValid).toBe(false)
 })
 
+test('"Upgrade three Rifles with up to two:" is valid (infantry unit with Rifles, already selected 5 times)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade three Rifles with up to two:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = {...defaultUnits.infantry, selectedUpgrades: [option, option, option, option, option]}
+
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  expect(isValid).toBe(false)
+})
+
+test('"Upgrade three Rifles with up to two:" is NOT valid (infantry unit with Rifles, already selected 6 times)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade three Rifles with up to two:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = {...defaultUnits.infantry, selectedUpgrades: [option, option, option, option, option, option]}
+
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  expect(isValid).toBe(false)
+})
+
 //#endregion
 
 //#region Control Types
