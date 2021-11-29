@@ -119,7 +119,6 @@ export function Upgrades({ mobile = false, competitive = true }) {
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
         {!dummy && (!competitive || selectedUnit.size > 1) && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
-
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
             } />} label="Combined Unit" className="mr-2" />

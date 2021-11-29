@@ -60,7 +60,7 @@ export default class UnitService {
     const extraModelCount = unit.selectedUpgrades.filter(u => u.isModel).length;
     return unit.size + extraModelCount;
   }
-
+  
   public static getRealUnit(unit: IUnit, dummy = false): ISelectedUnit {
     return {
       ...unit,
