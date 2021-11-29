@@ -14,7 +14,7 @@ import { CustomTooltip } from '../components/CustomTooltip';
 import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
 
-export function Upgrades({ mobile = false }) {
+export function Upgrades({ mobile = false, competitive = true }) {
 
   const list = useSelector((state: RootState) => state.list);
   const gameSystem = useSelector((state: RootState) => state.army.gameSystem);
@@ -99,15 +99,15 @@ export function Upgrades({ mobile = false }) {
     .map(u => u.joinToUnit);
 
   const joinCandidates = list.units
-    .filter(u => (!list.competitive || u.size > 1) && !u.joinToUnit)
-    .filter(u => !list.competitive || (unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit));
+    .filter(u => (!competitive || u.size > 1) && !u.joinToUnit)
+    .filter(u => !competitive || (unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit));
 
   return (
     <div className={mobile ? styles["upgrade-panel-mobile"] : styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
-        {(!list.competitive || selectedUnit.size > 1) && !isHero && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {(!competitive || selectedUnit.size > 1) && !isHero && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
             } />} label="Combined Unit" className="mr-2" />

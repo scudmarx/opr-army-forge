@@ -11,7 +11,7 @@ import ListConfigurationDialog from "../ListConfigurationDialog";
 import ValidationErrors from "../ValidationErrors";
 import UndoRemoveUnit from "../components/UndoRemoveUnit";
 
-export default function DesktopView() {
+export default function DesktopView({competitive = true, setCompetitive = (value: boolean) => {}}) {
 
   const list = useSelector((state: RootState) => state.list);
   const [editListOpen, setEditListOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function DesktopView() {
   return (
     <>
       <Paper elevation={1} color="primary" square>
-        <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
+        <MainMenu competitive={competitive} setCompetitive={setCompetitive} setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
         <div className="column py-0 pr-0" style={columnStyle} onScroll={setScrolled}>
@@ -45,7 +45,7 @@ export default function DesktopView() {
           <Paper square className="px-4 pt-4 sticky" sx={{backgroundColor: "white"}}>
             <UpgradePanelHeader />
           </Paper>
-          <Upgrades />
+          <Upgrades competitive={competitive} />
         </div>
       </div>
       <ValidationErrors
