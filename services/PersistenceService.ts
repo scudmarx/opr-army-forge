@@ -33,7 +33,6 @@ export default class PersistenceService {
         name: name,
         units: [],
         points: 0,
-        competitive: true,
         undoUnitRemove: null
       };
 
