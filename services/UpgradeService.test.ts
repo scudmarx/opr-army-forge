@@ -1,17 +1,62 @@
-import { ISelectedUnit, IUpgrade, IUpgradeGainsWeapon, IUpgradeOption } from "../data/interfaces";
+import { ISelectedUnit, ISpecialRule, IUpgrade, IUpgradeGainsWeapon, IUpgradeOption } from "../data/interfaces";
 import UpgradeService from "./UpgradeService";
 import DataParsingService from "./DataParsingService";
 import { nanoid } from "nanoid";
 
 
+const defaultWeapon: IUpgradeGainsWeapon = {
+  type: "ArmyBookWeapon",
+  attacks: 1,
+  range: 0,
+  specialRules: [],
+  id: "",
+  name: "",
+  label: "",
+  count: 1,
+  originalCount: 0
+}
+
+const SpecialRules = {
+  Hero: {
+    key: "hero",
+    name: "Hero",
+    rating: ""
+  },
+  Tough: (rating) => {
+    return {
+      key: "tough",
+      name: "Tough",
+      rating: rating}
+  }
+}
+
+const defaultWeapons = {
+  rifle: {
+    ...defaultWeapon,
+    name: "Rifle",
+    label: "Rifle",
+    range: 24
+  },
+  ccw: {
+    ...defaultWeapon,
+    name: "CCW",
+    label: "CCW",
+  },
+  pistol: {
+    ...defaultWeapon,
+    name: "Pistol",
+    label: "Pistol",
+    range: 12
+  }
+}
 
 const defaultUnit: ISelectedUnit = {
-  customName: "1",
-  name: "1",
-  selectionId: "asdqwe",
+  customName: "Defaulty McDefaultFace",
+  name: "Unit",
+  selectionId: "default",
   cost: 1,
-  quality: "2+",
-  defense: "2+",
+  quality: "4+",
+  defense: "4+",
   size: 1,
   specialRules: [],
   equipment: [],
@@ -22,16 +67,17 @@ const defaultUnit: ISelectedUnit = {
   disabledUpgradeSections: []
 };
 
-const defaultWeapon: IUpgradeGainsWeapon = {
-  type: "ArmyBookWeapon",
-  attacks: 0,
-  range: 0,
-  specialRules: [],
-  id: "",
-  name: "",
-  label: "",
-  count: 0,
-  originalCount: 0
+const defaultUnits = {
+  hero: {
+    ...defaultUnit,
+    specialRules: [SpecialRules.Hero, SpecialRules.Tough(3)],
+    equipment: [ defaultWeapons.ccw ],
+  },
+  infantry: {
+    ...defaultUnit,
+    size: 5,
+    equipment: [ defaultWeapons.rifle, defaultWeapons.ccw ]
+  }
 }
 
 const defaultOption: () => IUpgradeOption = () => ({
@@ -261,7 +307,7 @@ test('"Replace one Rifle" is valid, where Rifle is an upgrade', () => {
   expect(isValid).toBe(true);
 });
 
-test('"Replace one Rifle" is not valid, where Rifle is an upgrade', () => {
+test('"Replace one Rifle" is not valid, where Rifle is an upgrade (which gives 0 rifles)', () => {
 
   const rifleOption: IUpgradeOption = {
     ...defaultOption(),
@@ -336,7 +382,7 @@ test('"Replace up to 2 Rifles" is valid', () => {
   expect(isValid).toBe(true);
 });
 
-test('"Replace up to 2 Rifles" is not valid', () => {
+test('"Replace up to 2 Rifles" is not valid (already selected twice)', () => {
 
   const option: IUpgradeOption = { ...defaultOption() };
 
@@ -398,7 +444,7 @@ test('"Any model may replace 1 Claw" is valid', () => {
   expect(isValid).toBe(true);
 });
 
-test('"Any model may replace 1 Claw" is not valid', () => {
+test('"Any model may replace 1 Claw" is not valid (already replaced all Claws)', () => {
 
   const option: IUpgradeOption = { ...defaultOption() };
 
@@ -590,7 +636,7 @@ test('"Upgrade with any" is valid', () => {
   expect(isValid).toBe(true);
 });
 
-test('"Upgrade any model with up to two" is valid', () => {
+test('"Upgrade any model with up to two" is valid (3 models in unit, 3 options selected)', () => {
 
   const option: IUpgradeOption = { ...defaultOption() };
 
@@ -615,6 +661,107 @@ test('"Upgrade any model with up to two" is valid', () => {
 
   expect(isValid).toBe(true);
 });
+
+test('"Upgrade any Rifle with one:" is valid (infantry unit with Rifles)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade any Rifle with one:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = defaultUnits.infantry
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  expect(isValid).toBe(true)
+})
+
+test('"Upgrade any Rifle with one:" is NOT valid (size [5] infantry unit with Rifles, already selected 5 times)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade any Rifle with one:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = {...defaultUnits.infantry, selectedUpgrades: [option, option, option, option, option]}
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  if (isValid) console.log(unit, upgrade)
+  expect(isValid).toBe(false)
+})
+
+test('"Upgrade any Pistol with one:" is valid (Hero unit with 2x Pistol, already selected 1 times)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade any Pistol with one:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = {...defaultUnits.hero, equipment: [ {...defaultWeapons.pistol, count: 2} ],
+    selectedUpgrades: [option]}
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  expect(isValid).toBe(true)
+})
+
+test('"Upgrade any Pistol with one:" is NOT valid (Hero unit with 2x Pistol, already selected 2 times)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade any Pistol with one:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = {...defaultUnits.hero, equipment: [ {...defaultWeapons.pistol, count: 2} ],
+  selectedUpgrades: [option, option]}
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  expect(isValid).toBe(false)
+})
+
+test('"Upgrade any Pistol with up to two:" is valid (Hero unit with 2x Pistol, already selected 3 times)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade any Pistol with up to two:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = {...defaultUnits.hero, equipment: [ {...defaultWeapons.pistol, count: 2} ],
+  selectedUpgrades: [option, option, option]}
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  expect(isValid).toBe(true)
+})
+
+test('"Upgrade any Pistol with up to two:" is NOT valid (Hero unit with 2x Pistol, already selected 4 times)', () => {
+  
+  const option: IUpgradeOption = { ...defaultOption() };
+
+  const upgrade: IUpgrade = {
+    ...DataParsingService.parseUpgradeText("Upgrade any Pistol with up to two:"),
+    options: [
+      option
+    ]
+  }
+
+  const unit = {...defaultUnits.hero, equipment: [ {...defaultWeapons.pistol, count: 2} ],
+  selectedUpgrades: [option, option, option, option]}
+  const isValid = UpgradeService.isValid(unit, upgrade, option);
+  expect(isValid).toBe(false)
+})
 
 //#endregion
 
@@ -660,7 +807,7 @@ test('Control Type "Upgrade Psychic(1):"', () => {
   expect(type).toBe("check");
 });
 
-test('Control Type "Upgrade all modes with:"', () => {
+test('Control Type "Upgrade all models with:"', () => {
 
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with:");
   const type = UpgradeService.getControlType(defaultUnit, upgrade);
@@ -668,7 +815,7 @@ test('Control Type "Upgrade all modes with:"', () => {
   expect(type).toBe("check");
 });
 
-test('Control Type "Upgrade all modes with one:"', () => {
+test('Control Type "Upgrade all models with one:"', () => {
 
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with one:");
   const type = UpgradeService.getControlType(defaultUnit, upgrade);
@@ -676,7 +823,7 @@ test('Control Type "Upgrade all modes with one:"', () => {
   expect(type).toBe("radio");
 });
 
-test('Control Type "Upgrade all modes with any:"', () => {
+test('Control Type "Upgrade all models with any:"', () => {
 
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with any:");
   const type = UpgradeService.getControlType(defaultUnit, upgrade);
@@ -684,7 +831,7 @@ test('Control Type "Upgrade all modes with any:"', () => {
   expect(type).toBe("check");
 });
 
-test('Control Type "Upgrade any model with one:"', () => {
+test('Control Type "Upgrade any model with one:" (one model in unit)', () => {
 
   const upgrade = DataParsingService.parseUpgradeText("Upgrade any model with one:");
   const type = UpgradeService.getControlType(defaultUnit, upgrade);
@@ -722,6 +869,54 @@ test('Control Type "Upgrade with one:"', () => {
   const type = UpgradeService.getControlType(defaultUnit, upgrade);
 
   expect(type).toBe("radio");
+});
+
+test('Control Type "Upgrade any Pistol with:" for Hero with one Pistol', () => {
+
+  const upgrade = DataParsingService.parseUpgradeText("Upgrade any Pistol with:");
+  const type = UpgradeService.getControlType(defaultUnits.hero, upgrade);
+
+  expect(type).toBe("updown");
+});
+
+test('Control Type "Upgrade any Pistol with one:" for Hero with one Pistol', () => {
+
+  const upgrade = DataParsingService.parseUpgradeText("Upgrade any Pistol with one:");
+  const type = UpgradeService.getControlType(defaultUnits.hero, upgrade);
+
+  expect(type).toBe("updown");
+});
+
+test('Control Type "Upgrade any Pistol with:" for Hero with two Pistols', () => {
+
+  const upgrade = DataParsingService.parseUpgradeText("Upgrade any Pistol with:");
+  const type = UpgradeService.getControlType({...defaultUnits.hero, equipment: [defaultWeapons.pistol, defaultWeapons.pistol]}, upgrade);
+
+  expect(type).toBe("updown");
+});
+
+test('Control Type "Upgrade any Pistol with one:" for Hero with two Pistols', () => {
+
+  const upgrade = DataParsingService.parseUpgradeText("Upgrade any Pistol with one:");
+  const type = UpgradeService.getControlType({...defaultUnits.hero, equipment: [defaultWeapons.pistol, defaultWeapons.pistol]}, upgrade);
+
+  expect(type).toBe("updown");
+});
+
+test('Control Type "Upgrade any Rifle with:" for infantry squad with one Rifle each', () => {
+
+  const upgrade = DataParsingService.parseUpgradeText("Upgrade any Rifle with:");
+  const type = UpgradeService.getControlType(defaultUnits.infantry, upgrade);
+
+  expect(type).toBe("updown");
+});
+
+test('Control Type "Upgrade any Rifle with one:" for infantry squad with one Rifle each', () => {
+
+  const upgrade = DataParsingService.parseUpgradeText("Upgrade any Rifle with one:");
+  const type = UpgradeService.getControlType(defaultUnits.infantry, upgrade);
+
+  expect(type).toBe("updown");
 });
 
 test('Control Type "Upgrade all [weapons] with one:"', () => {
