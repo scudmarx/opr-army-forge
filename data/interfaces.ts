@@ -56,34 +56,48 @@ export interface ISelectedUnit extends IUnit {
 export interface IUpgrade {
   id: string;
   label?: string;
+  /** how the upgrade affects what it affects */
   type: "replace" | "upgrade" | "upgradeRule" | "attachment";
+  /** how many things the upgrade affects */
   affects?: "any" | "all" | number;
+  /** how many times the upgrade can be selected per thing it affects */
   select?: string | number;
+  /** list of [lists of] possible things to be affected by the upgrade */
   replaceWhat?: string[] | string[][];
+  /** does this upgrade add models to the unit? redundant with .attachModel and options[].isModel? */
   model?: boolean;
+  /** does this upgrade apply a weapon attachment to a weapon? */
   attachment?: boolean;
+  /** does this upgrade add models to the unit? redundant with .model and options[].isModel? */
   attachModel?: boolean;
   options?: IUpgradeOption[];
 }
 
+/**
+ * interface for the options available in an upgrade group
+ */
 export interface IUpgradeOption {
   id: string;
   /** The point cost to select this upgrade option. */
   cost: number;
   label: string;
+  /** does this option add a model to the unit? */
   isModel?: boolean;
   /** Array of upgrades provided by choosing this option. */
   gains: IUpgradeGains[];// IEquipment[] | ISpecialRule[];
+  /** used to track replaced items for restoration after removing this upgrade */
   replacedWhat?: string[] | string[][];
-  type: "ArmyBookUpgradeOption";
 }
 
+/** A thing gained by taking an upgrade option */
 export interface IUpgradeGains {
-  id: string;
+  //id: string; // never used
   name: string;
   label: string;
+  /** how many times this is applied */
   count: number;
-  originalCount: number;
+  /** used to track how many times this was applied previously, for restoring previous state when removing the upgrade */
+  originalCount?: number;
   type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
   dependencies?: string[];
 }
@@ -106,13 +120,16 @@ export interface IUpgradeGainsMultiWeapon extends IUpgradeGains {
   profiles: IUpgradeGainsWeapon[];
 }
 
+/** Upgrade which grants a Special Rule */
 export interface IUpgradeGainsRule extends IUpgradeGains {
   type: "ArmyBookRule" | "ArmyBookDefense";
   /** The key of the Special Rule granted. (The name of the rule in lowercase and with dashes instead of spaces.)*/
   key: string;
+  /** conditions required for rule to apply, e.g. "in melee" */
   condition: string;
   /** Is the rating for this rule a modifier to an existing value, e.g. AP(+1), rather than a set value itself, e.g. AP(3)? */
   modify: boolean; // ?
+  /** The rating of the granted rule, e.g. the 6 in Tough(6) */
   rating: string;
 }
 

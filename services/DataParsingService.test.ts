@@ -1,3 +1,4 @@
+import { IUpgradeGainsMultiWeapon, IUpgradeOption } from '../data/interfaces';
 import DataParsingService from './DataParsingService';
 
 /*
@@ -491,11 +492,13 @@ test("Parse 'Mount on:'", () => {
 //#region Equipment
 
 const parse = (str: string, isUpgrade: boolean = false) => {
-  const e = DataParsingService.parseEquipment(str, isUpgrade);
+  const e = DataParsingService.parseEquipment(str, isUpgrade) as IUpgradeOption;
   delete e.id;
+  /*
   if (e.gains)
     for (let g of e.gains)
       delete g.id;
+      */
   return e;
 }
 
@@ -690,7 +693,7 @@ test("Parse parameterised rule", () => {
 test("Parse weapon pairing with non-standard rules", () => {
   const e = parse("Light Shields (Defense +1 in melee) and Shield Bash (A2) Free", true);
 
-  expect(e).toStrictEqual({
+  expect(e).toMatchObject({
     label: "Light Shields (Defense +1 in melee) and Shield Bash (A2)",
     cost: 0,
     gains: [
@@ -723,7 +726,7 @@ test("Parse weapon pairing with non-standard rules", () => {
 test("Parse weapon pairing", () => {
   const e = parse("Plasma Pistol (12”, A1, AP(2)) and CCW (A2) +5pts", true);
 
-  expect(e).toStrictEqual({
+  expect(e).toMatchObject({
     label: "Plasma Pistol (12”, A1, AP(2)) and CCW (A2)",
     cost: 5,
     gains: [
@@ -757,12 +760,15 @@ test("Parse weapon pairing", () => {
 
 test("multiple profile weapon 1", () => {
   const e = parse('Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3)) +5pts', true);
-  for (let g of e.gains)
+  for (let g of e.gains as IUpgradeGainsMultiWeapon[])
     for (let p of g.profiles)
-      delete p.id;
+      {
+        //delete p.id;
+      }
 
-  expect(e).toStrictEqual({
+  expect(e).toMatchObject({
     label: "Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3))",
+    name: "Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3)) +5pts",
     cost: 5,
     gains: [
       {
@@ -824,6 +830,7 @@ test("Parse equipment with rule", () => {
     name: "Camo Cloaks",
     type: "ArmyBookItem",
     cost: 10,
+    count: 1,
     content: [
       {
         key: "stealth",
@@ -844,6 +851,7 @@ test("Parse equipment with rule", () => {
     name: "Grenadiers",
     type: "ArmyBookItem",
     cost: 10,
+    count: 1,
     content: [
       {
         key: "defense",
@@ -865,6 +873,7 @@ test("Parse equipment with rule", () => {
     name: "Demo Experts",
     type: "ArmyBookItem",
     cost: 10,
+    count: 1,
     content: [
       {
         key: "rending",

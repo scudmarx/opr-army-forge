@@ -12,7 +12,14 @@ export default class UpgradeService {
       .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
   }
 
-  // DEPRECATED
+  
+  /**
+   * (DEPRECATED) Converts an Upgrade object into a string describing it.
+   * @deprecated
+   * @param upgrade The Upgrade being described
+   * @param unit NOT USED - The unit the upgrade is applied to?
+   * @returns English description of the upgrade.
+   */
   public static displayName(upgrade: IUpgrade, unit: ISelectedUnit): string {
     const numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"];
 
@@ -67,6 +74,11 @@ export default class UpgradeService {
     }
   }
 
+  /**
+   * Calculates the total point cost of a unit with its selected upgrades.
+   * @param unit The unit to cost
+   * @returns total point cost of unit with selected upgrades
+   */
   static calculateUnitTotal(unit: ISelectedUnit) {
     if (!unit) return 0;
     let cost = unit.cost;
@@ -309,10 +321,10 @@ export default class UpgradeService {
       };
 
       // Apply counts to item content
-      for (let gain of toApply.gains) {
+      for (let gain of (toApply.gains as any as IUpgradeGainsItem[])) {
         if (gain.type !== "ArmyBookItem")
           continue;
-        const item = gain as IUpgradeGainsItem;
+        const item = gain;
         item.content = item.content.map(c => ({
           ...c,
           count: gain.count,

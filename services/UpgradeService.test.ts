@@ -9,7 +9,7 @@ const defaultWeapon: IUpgradeGainsWeapon = {
   attacks: 1,
   range: 0,
   specialRules: [],
-  id: "",
+  //id: "",
   name: "",
   label: "",
   count: 1,
@@ -84,8 +84,7 @@ const defaultOption: () => IUpgradeOption = () => ({
   id: nanoid(5),
   label: nanoid(5),
   cost: 5,
-  gains: [],
-  type: "ArmyBookUpgradeOption"
+  gains: []
 });
 
 
@@ -273,7 +272,7 @@ test('"Replace one Rifle" is valid, where Rifle is an upgrade', () => {
         type: "ArmyBookWeapon",
         count: 1,
         originalCount: 1,
-        id: ""
+        //id: ""
       }
     ]
   };
@@ -318,7 +317,7 @@ test('"Replace one Rifle" is not valid, where Rifle is an upgrade (which gives 0
         type: "ArmyBookWeapon",
         count: 0,
         originalCount: 1,
-        id: ""
+        //id: ""
       }
     ]
   };

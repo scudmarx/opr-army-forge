@@ -1,4 +1,4 @@
-import { ISpecialRule, IUnit, IUpgrade, IUpgradeGainsRule, IUpgradeGainsWeapon } from '../data/interfaces';
+import { ISpecialRule, IUnit, IUpgrade, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon, IUpgradeOption } from '../data/interfaces';
 import { nanoid } from "nanoid";
 
 export default class DataParsingService {
@@ -22,28 +22,33 @@ export default class DataParsingService {
       replaceWhat: 6
     }
 
+    var upgrade : IUpgrade = {
+      id: nanoid(7),
+      type: "replace"
+    }
+
     const mountMatch = /mount on/i.test(text);
     if (mountMatch)
       return {
-        id: nanoid(7),
+        ...upgrade,
         type: "upgrade",
-        select: 1
-      };
+        select: 1,
+      }
 
     const takeMatch = /^Take\s([\d]+|one|two|any)?\s?(.+?)\sattachments?:/.exec(text);
     if (takeMatch)
       return {
-        id: nanoid(7),
+        ...upgrade,
         type: "upgrade",
         attachment: true,
         select: takeMatch[1] ? (parseInt(takeMatch[1]) || this.numberFromName(takeMatch[1]) || takeMatch[1] as any) : 1,
         replaceWhat: [takeMatch[2]]
-      };
+      }
 
     const anyModelMatch = /^(any|one) model may (replace|take) (\d+|one|two|three) (.+?)(?: attachment)?:/gi.exec(text);
     if (anyModelMatch) {
       return {
-        id: nanoid(7),
+        ...upgrade,
         type: anyModelMatch[2] === "replace" ? "replace" : "upgrade",
         attachment: anyModelMatch[2] === "take",
         affects: anyModelMatch[1].toLowerCase() === "any" ? "any" : this.numberFromName(anyModelMatch[1].toLowerCase()),
@@ -57,20 +62,20 @@ export default class DataParsingService {
     const upgradeUpToModelsMatch = /Upgrade up to two models with/i.exec(text);
     if (upgradeUpToModelsMatch)
       return {
-        id: nanoid(7),
+        ...upgrade,
         type: "upgrade",
         model: true,
         select: 2
-      };
+      }
 
     const addModelMatch = /Add one model ?(?:with)?/i.exec(text);
     if (addModelMatch)
       return {
-        id: nanoid(7),
+        ...upgrade,
         type: "upgrade",
         attachModel: true,
         select: 1
-      };
+      }
 
     text = text.endsWith(":") ? text.substring(0, text.length - 1) : text;
 
@@ -84,7 +89,7 @@ export default class DataParsingService {
     const replaceWhat = match[groups.replaceWhat];
 
     const result: IUpgrade = {
-      id: nanoid(7),
+      ...upgrade,
       type: match[groups.type]?.toLowerCase() as any,
       model: text.indexOf("model") > -1
     };
@@ -179,13 +184,13 @@ export default class DataParsingService {
 
           const countRegex = /^(\d+)x\s/;
           const costRegex = /\s?[+-]\d+pts$/;
-          const option = this.parseEquipment(line, true);
+          const option = this.parseEquipment(line, true) as IUpgradeOption;
           const cost = option.cost;
           const gains = [];
-          for (let e of (option.gains || [option])) {
+          for (let e of (option.gains || [option]) as IUpgradeGains[]) {
             const count = e.count || 1;
-            delete e.id;
-            delete e.cost;
+            //delete e.id;
+            //delete e.cost;
             delete e.count;
             for (let i = 0; i < count; i++) {
               gains.push({ ...e, label: (e.label || e.name)?.replace(countRegex, "").replace(costRegex, "") });
@@ -198,9 +203,9 @@ export default class DataParsingService {
 
           // Add to options!
           section.options.push({
-            id: option.id || nanoid(5),
+            //id: option.id || nanoid(5),
             type: "ArmyBookUpgradeOption",
-            cost: parseInt(cost),
+            cost: cost, //parseInt(cost),
             label: line.replace(costRegex, ""),
             gains: gains
           });
@@ -311,7 +316,7 @@ export default class DataParsingService {
    * @param isUpgrade is this equipment from an upgrade option?
    * @returns the parsed equipment object
    */
-  public static parseEquipment(part, isUpgrade: boolean = false): any {
+  public static parseEquipment(part, isUpgrade: boolean = false): IUpgradeOption|IUpgradeGains {
 
     const groups = {
       count: 1,
@@ -334,6 +339,7 @@ export default class DataParsingService {
       return {
         id: nanoid(7),
         cost: parseInt(/([+-]\d+)pts?$/.exec(part)[1]),
+        name: part,
         label: part.replace(costRegex, "").trim(),
         gains: [
           {
@@ -343,9 +349,9 @@ export default class DataParsingService {
               ...this.parseEquipment(w, isUpgrade),
               type: "ArmyBookWeapon"
             }))
-          }
+          } as IUpgradeGainsMultiWeapon
         ]
-      };
+      } as IUpgradeOption;
     }
 
     // "A (...) and B (...) +10pts"
@@ -359,7 +365,7 @@ export default class DataParsingService {
         label: part.replace(costRegex, "").trim(),
         gains: multiParts
           .map(mp => this.parseEquipment(mp, isUpgrade))
-      };
+      } as IUpgradeOption
     }
 
     // GF/GFF format mount
@@ -412,7 +418,7 @@ export default class DataParsingService {
               }
             ]).filter(e => !!e),
             type: "ArmyBookItem"
-          },
+          } as IUpgradeGainsItem,
 
         ]
       };
@@ -432,10 +438,10 @@ export default class DataParsingService {
             ...this.parseRule(singleRuleMatch[1].trim()),
             label: singleRuleMatch[1].trim(),
             type: "ArmyBookRule"
-          }
+          } as IUpgradeGainsRule
         ],
         cost: parseInt(singleRuleMatch[2]),
-      };
+      }
     }
 
     // Wizard(1)
@@ -449,7 +455,7 @@ export default class DataParsingService {
             ...this.parseRule(paramRuleMatch[1].trim()),
             label: paramRuleMatch[1].trim(),
             type: "ArmyBookRule"
-          }
+          } as IUpgradeGainsRule
         ],
         cost: parseInt(paramRuleMatch[2]),
       };
@@ -471,7 +477,8 @@ export default class DataParsingService {
         ],
         type: "ArmyBookItem",
         cost: parseInt(itemRuleMatch[5]),
-      };
+        count: 1
+      } as IUpgradeGainsItem
     }
 
     const match = /(?:(\d+)x\s?)?(.+?)\((.+)\)\s?([+-]\d+|Free)?/.exec(part);
@@ -541,14 +548,15 @@ export default class DataParsingService {
             rating: r.rating || "",
             condition: "",
             modify: r.modify || false
-          })).concat([
+          } as IUpgradeGainsRule as IUpgradeGains)).concat([
             weaponMatch && {
               ...this.parseEquipment(weaponMatch[1], isUpgrade),
               name: weaponMatch[2].trim()
-            }
+            } as IUpgradeGainsWeapon as IUpgradeGains
           ]).filter(e => !!e),
-          type: "ArmyBookItem"
-        },
+          type: "ArmyBookItem",
+          count: 1,
+        } as IUpgradeGainsItem,
 
       ]
     };
