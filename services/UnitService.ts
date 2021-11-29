@@ -1,4 +1,5 @@
-import { ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
+import { nanoid } from "@reduxjs/toolkit";
+import { IUnit, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
 import { ListState } from "../data/listSlice";
 import _ from "lodash";
 
@@ -58,6 +59,20 @@ export default class UnitService {
   public static getSize(unit: ISelectedUnit): number {
     const extraModelCount = unit.selectedUpgrades.filter(u => u.isModel).length;
     return unit.size + extraModelCount;
+  }
+
+  public static getRealUnit(unit: IUnit, dummy = false): ISelectedUnit {
+    return {
+      ...unit,
+      selectionId: dummy ? "dummy" : nanoid(5),
+      selectedUpgrades: [],
+      combined: false,
+      joinToUnit: null,
+      equipment: unit.equipment.map(eqp => ({
+        ...eqp,
+        count: eqp.count || unit.size // Add count to unit size if not already present
+      }))
+    }
   }
 
   public static getParents(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
