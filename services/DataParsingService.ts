@@ -1,4 +1,4 @@
-import { ISpecialRule, IUpgrade, IUpgradeGainsRule } from '../data/interfaces';
+import { ISpecialRule, IUnit, IUpgrade, IUpgradeGainsRule, IUpgradeGainsWeapon } from '../data/interfaces';
 import { nanoid } from "nanoid";
 
 export default class DataParsingService {
@@ -214,7 +214,13 @@ export default class DataParsingService {
     return Object.keys(results).reduce((curr, next) => curr.concat(results[next]), []);
   }
 
-  public static parseUnits(units: string, pageNumber: number) {
+  /**
+   * Parses rulebook text into an array of units.
+   * @param units text to parse
+   * @param pageNumber what page the unit appears on in the rulebook
+   * @returns Array of Units
+   */
+  public static parseUnits(units: string, pageNumber: number) : IUnit[] {
 
     const results = [];
 
@@ -224,7 +230,6 @@ export default class DataParsingService {
           line
         );
       try {
-
         const parsed = {
           id: nanoid(7),
           name: parsedUnit[1].trim(),
@@ -254,6 +259,11 @@ export default class DataParsingService {
     return results;
   }
 
+  /**
+   * Parses rulebook text as special rules text.
+   * @param r text to parse
+   * @returns SpecialRule object
+   */
   public static parseRule(r): ISpecialRule | IUpgradeGainsRule {
     const defenseMatch = /^(Defense) \+(\d+)\s?(in melee)?/.exec(r);
     if (defenseMatch) {
@@ -277,7 +287,7 @@ export default class DataParsingService {
     return result;
   }
 
-  public static parseEquipmentList(str) {
+  public static parseEquipmentList(str) : IUpgradeGainsWeapon[] {
 
     const parts = str
       .split(/(?<!\(\d)\),/)
@@ -295,6 +305,12 @@ export default class DataParsingService {
     return parts;
   }
 
+  /**
+   * Parses text as a piece of Equipment
+   * @param part text to parse
+   * @param isUpgrade is this equipment from an upgrade option?
+   * @returns the parsed equipment object
+   */
   public static parseEquipment(part, isUpgrade: boolean = false): any {
 
     const groups = {
