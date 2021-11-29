@@ -126,7 +126,7 @@ export default class UpgradeService {
     if (upgrade.type === "upgrade") {
 
       // "Upgrade any model with:"
-      if (upgrade.affects === "any" && unit?.size > 1)
+      if (upgrade.affects === "any" && (unit?.size > 1 || (upgrade.replaceWhat && upgrade.replaceWhat[0]?.length > 0)))
         return "updown";
 
       // Select > 1
@@ -237,43 +237,46 @@ export default class UpgradeService {
     }
 
     if (upgrade.type === "upgrade") {
+      
       // Upgrade 'all' doesn't require there to be any; means none if that's all there is?
       //if (upgrade.affects === "all") return true
 
-      // Upgrade with 1:
+      // upgrade (n? (models|weapons)?) with...
+      var available = unit.size
+      
+      // if replacing equipment, count number of those equipment available
+      if (upgrade.replaceWhat) {
+        for (let what of upgrade.replaceWhat as string[]) {
+
+          available = unit.selectedUpgrades
+            // Take all gains from all selected upgrades
+            .reduce((gains, next) => gains.concat(next.gains), [])
+            // Add original equipment (for each model)
+            .concat(unit.equipment.map(e => {return {...e, count: e.count * unit.size}}))
+            // Take only the gains that match this dependency
+            .filter(g => EquipmentService.compareEquipmentNames(g.name, what))
+            // Count how many we have
+            .reduce((count, next) => count + next.count, 0);
+
+        }
+      }
+
+       // Upgrade [(any)?] with n:
       if (typeof (upgrade.select) === "number") {
 
         if (upgrade.affects === "any") {
 
-          if (appliedInGroup >= upgrade.select * unit.size) {
+          if (appliedInGroup >= upgrade.select * available) {
             return false;
           }
 
         } else if (appliedInGroup >= upgrade.select) {
           return false;
         }
+
         // Upgrade any
-      } else if (upgrade.affects === "any" && appliedInGroup >= unit.size) {
+      } else if (upgrade.affects === "any" && appliedInGroup >= available) {
         return false;
-      }
-
-      if (upgrade.replaceWhat) {
-        for (let what of upgrade.replaceWhat as string[]) {
-
-          const available = unit.selectedUpgrades
-            // Take all gains from all selected upgrades
-            .reduce((gains, next) => gains.concat(next.gains), [])
-            // Add original equipment
-            .concat(unit.equipment)
-            // Take only the gains that match this dependency
-            .filter(g => EquipmentService.compareEquipmentNames(g.name, what))
-            // Count how many we have
-            .reduce((count, next) => count + next.count, 0);
-
-          if (appliedInGroup >= available) {
-            return false;
-          }
-        }
       }
     }
 
