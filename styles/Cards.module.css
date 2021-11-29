@@ -13,6 +13,13 @@
   text-align: left;
 }
 
+.card p {
+  padding-bottom: 8px;
+}
+.card p:last-of-type {
+  padding-bottom: 0px;
+}
+
 @media print {
   .grid {
     column-width: 3.5in;
