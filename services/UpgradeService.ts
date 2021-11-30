@@ -266,8 +266,8 @@ export default class UpgradeService {
           available = unit.selectedUpgrades
             // Take all gains from all selected upgrades
             .reduce((gains, next) => gains.concat(next.gains), [])
-            // Add original equipment (for each model)
-            .concat(unit.equipment.map(e => {return {...e, count: e.count * unit.size}}))
+            // Add original equipment
+            .concat(unit.equipment)
             // Take only the gains that match this dependency
             .filter(g => EquipmentService.compareEquipment(g, what))
             // Count how many we have
