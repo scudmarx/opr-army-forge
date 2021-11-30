@@ -11,7 +11,7 @@ import _ from "lodash";
 export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IUpgradeGainsWeapon, isProfile: boolean }) {
 
   const count = e.count;
-  const name = e.count > 1 ? pluralise.plural(e.name) : pluralise.singular(e.name);
+  const name = e.count > 1 ? pluralise.plural(e.name) : e.name;
   const weaponCount = count > 1 ? `${count}x ` : null;
   const rules = e.specialRules.filter(r => r.name !== "AP");
 
