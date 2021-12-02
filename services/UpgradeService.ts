@@ -99,7 +99,7 @@ export default class UpgradeService {
     // Try and find an upgrade instead
     for (let i = upgradeGains.length - 1; i >= 0; i--) {
       const gain = upgradeGains[i];
-      const isMatch = EquipmentService.compareEquipmentNames(gain.name || gain.label, what);
+      const isMatch = EquipmentService.compareEquipment(gain, what);
 
       if (isMatch && (forRestore ? gain.count < gain.originalCount : gain.count > 0))
         return gain;
@@ -109,7 +109,7 @@ export default class UpgradeService {
         const item = gain as IUpgradeGainsItem;
         const toReplace = item
           .content
-          .filter(e => EquipmentService.compareEquipmentNames(e.name || e.label, what))[0];
+          .filter(e => EquipmentService.compareEquipment(e, what))[0];
 
         if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
           return toReplace;
@@ -254,7 +254,7 @@ export default class UpgradeService {
             // Add original equipment (for each model)
             .concat(unit.equipment.map(e => {return {...e, count: e.count * unit.size}}))
             // Take only the gains that match this dependency
-            .filter(g => EquipmentService.compareEquipmentNames(g.name, what))
+            .filter(g => EquipmentService.compareEquipment(g, what))
             // Count how many we have
             .reduce((count, next) => count + next.count, 0);
 
