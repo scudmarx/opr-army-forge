@@ -9,7 +9,6 @@ import { nanoid } from "nanoid";
 export default class UpgradeService {
   static calculateListTotal(list: ISelectedUnit[]) {
     return list
-      .filter(u => u.selectionId !== "dummy")
       .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
   }
 
@@ -100,7 +99,7 @@ export default class UpgradeService {
     // Try and find an upgrade instead
     for (let i = upgradeGains.length - 1; i >= 0; i--) {
       const gain = upgradeGains[i];
-      const isMatch = EquipmentService.compareEquipmentNames(gain.name || gain.label, what);
+      const isMatch = EquipmentService.compareEquipment(gain, what);
 
       if (isMatch && (forRestore ? gain.count < gain.originalCount : gain.count > 0))
         return gain;
@@ -110,7 +109,7 @@ export default class UpgradeService {
         const item = gain as IUpgradeGainsItem;
         const toReplace = item
           .content
-          .filter(e => EquipmentService.compareEquipmentNames(e.name || e.label, what))[0];
+          .filter(e => EquipmentService.compareEquipment(e, what))[0];
 
         if (toReplace && (forRestore ? toReplace.count < toReplace.originalCount : toReplace.count > 0))
           return toReplace;
@@ -127,7 +126,7 @@ export default class UpgradeService {
     if (upgrade.type === "upgrade") {
 
       // "Upgrade any model with:"
-      if (upgrade.affects === "any" && unit?.size > 1)
+      if (upgrade.affects === "any" && (unit?.size > 1 || (upgrade.replaceWhat && upgrade.replaceWhat[0]?.length > 0)))
         return "updown";
 
       // Select > 1
@@ -174,8 +173,6 @@ export default class UpgradeService {
   }
 
   public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
-    
-    //if (unit.selectionId === "dummy") return false
 
     const controlType = this.getControlType(unit, upgrade);
     //const alreadySelected = this.countApplied(unit, upgrade, option);
@@ -240,43 +237,46 @@ export default class UpgradeService {
     }
 
     if (upgrade.type === "upgrade") {
+      
       // Upgrade 'all' doesn't require there to be any; means none if that's all there is?
       //if (upgrade.affects === "all") return true
 
-      // Upgrade with 1:
+      // upgrade (n? (models|weapons)?) with...
+      var available = unit.size
+      
+      // if replacing equipment, count number of those equipment available
+      if (upgrade.replaceWhat) {
+        for (let what of upgrade.replaceWhat as string[]) {
+
+          available = unit.selectedUpgrades
+            // Take all gains from all selected upgrades
+            .reduce((gains, next) => gains.concat(next.gains), [])
+            // Add original equipment (for each model)
+            .concat(unit.equipment.map(e => {return {...e, count: e.count * unit.size}}))
+            // Take only the gains that match this dependency
+            .filter(g => EquipmentService.compareEquipment(g, what))
+            // Count how many we have
+            .reduce((count, next) => count + next.count, 0);
+
+        }
+      }
+
+       // Upgrade [(any)?] with n:
       if (typeof (upgrade.select) === "number") {
 
         if (upgrade.affects === "any") {
 
-          if (appliedInGroup >= upgrade.select * unit.size) {
+          if (appliedInGroup >= upgrade.select * available) {
             return false;
           }
 
         } else if (appliedInGroup >= upgrade.select) {
           return false;
         }
+
         // Upgrade any
-      } else if (upgrade.affects === "any" && appliedInGroup >= unit.size) {
+      } else if (upgrade.affects === "any" && appliedInGroup >= available) {
         return false;
-      }
-
-      if (upgrade.replaceWhat) {
-        for (let what of upgrade.replaceWhat as string[]) {
-
-          const available = unit.selectedUpgrades
-            // Take all gains from all selected upgrades
-            .reduce((gains, next) => gains.concat(next.gains), [])
-            // Add original equipment
-            .concat(unit.equipment)
-            // Take only the gains that match this dependency
-            .filter(g => EquipmentService.compareEquipmentNames(g.name, what))
-            // Count how many we have
-            .reduce((count, next) => count + next.count, 0);
-
-          if (appliedInGroup >= available) {
-            return false;
-          }
-        }
       }
     }
 

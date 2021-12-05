@@ -78,5 +78,14 @@ export default class UnitService {
   public static getAttachedUnits(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
     return list.units.filter(u => u.joinToUnit === unit.selectionId)
   }
-
+  public static getChildren(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    return list.units.filter(u => u.selectionId === unit.joinToUnit)
+  }
+  public static getFamily(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+    let parents = UnitService.getAttachedUnits(list, unit)
+    let grandparents = parents.flatMap(u => {return UnitService.getAttachedUnits(list, u)})
+    let children = UnitService.getChildren(list, unit)
+    let grandchildren = children.flatMap(u => {return UnitService.getChildren(list, u)})
+    return _.uniq([...grandparents, ...parents, unit, ...children, ...grandchildren])
+  }
 }
