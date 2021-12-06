@@ -15,7 +15,7 @@ import UpgradeService from '../../services/UpgradeService';
 import LinkIcon from '@mui/icons-material/Link';
 import { useEffect, useState } from 'react';
 
-export function Upgrades({ mobile = false }) {
+export function Upgrades({ mobile = false, competitive = true }) {
 
   const list = useSelector((state: RootState) => state.list);
   const gameSystem = useSelector((state: RootState) => state.army.gameSystem);
@@ -53,6 +53,17 @@ export function Upgrades({ mobile = false }) {
   const joinToUnit = (e) => {
     const joinToUnitId = e.target.value;
 
+    // if I have any heroes joined to *me*, I need to point them to the new unit instead
+    if ((unitsWithAttachedHeroes.indexOf(selectedUnit.selectionId) !== -1)) {
+      let attachedHeroes = list.units.filter(u => u.specialRules.some(rule => rule.name === "Hero") && u.joinToUnit == selectedUnit.selectionId)
+      attachedHeroes.forEach(u => {
+        dispatch(joinUnit({
+          unitId: u.selectionId,
+          joinToUnitId: joinToUnitId
+        }));
+      })
+    }
+
     dispatch(joinUnit({
       unitId: selectedUnit.selectionId,
       joinToUnitId: joinToUnitId
@@ -79,9 +90,10 @@ export function Upgrades({ mobile = false }) {
   const toggleCombined = () => {
     if (selectedUnit.combined) {
       if (selectedUnit.joinToUnit) {
-        dispatch(removeUnit(selectedUnit.joinToUnit))
-      } else {
         dispatch(removeUnit(selectedUnit.selectionId))
+      } else {
+        let childId = list.units.find(u => u.combined && u.joinToUnit === selectedUnit.selectionId).selectionId
+        dispatch(removeUnit(childId))
       }
     } else {
       dispatch(addCombinedUnit(selectedUnit.selectionId))
@@ -98,23 +110,22 @@ export function Upgrades({ mobile = false }) {
     .map(u => u.joinToUnit);
 
   const joinCandidates = list.units
-    .filter(u => u.size > 1 && !(u.combined && !u.joinToUnit))
-    .filter(u => unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit);
+    .filter(u => (!competitive || u.size > 1) && !u.joinToUnit)
+    .filter(u => !competitive || (unitsWithAttachedHeroes.indexOf(u.selectionId) === -1 || u.selectionId == selectedUnit?.joinToUnit));
 
   return (
     <div className={mobile ? styles["upgrade-panel-mobile"] : styles["upgrade-panel"]}>
 
       {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
-        {!dummy && 
-        selectedUnit.size > 1 && !isSkirmish && (<FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
+        {!dummy && (!competitive || selectedUnit.size > 1) && !isHero && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
             <Checkbox checked={selectedUnit.combined} onClick={() => toggleCombined()
             } />} label="Combined Unit" className="mr-2" />
           <CustomTooltip title={"When preparing your army you may merge units by deploying two copies of the same unit as a single big unit, as long as any upgrades that are applied to all models are bought for both."} arrow enterTouchDelay={0} leaveTouchDelay={5000}>
             <InfoOutlinedIcon color="primary" />
           </CustomTooltip>
-        </FormGroup>)}
+        </FormGroup>}
         {/* Join to unit */}
 
         {!dummy && !isSkirmish && isHero && (<FormGroup className="px-4 pt-2 pb-3">
@@ -126,7 +137,7 @@ export function Upgrades({ mobile = false }) {
               onChange={joinToUnit}
             >
               <MenuItem value={null}>None</MenuItem>
-              {joinCandidates.map((u, index) => (
+              {joinCandidates.filter(t => t != selectedUnit).map((u, index) => (
                 <MenuItem key={index} value={u.selectionId}>{u.customName || u.name} [{u.size * (u.combined ? 2 : 1)}]</MenuItem>
               ))}
             </Select>

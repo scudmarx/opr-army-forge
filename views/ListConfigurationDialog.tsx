@@ -58,7 +58,7 @@ export default function ListConfigurationDialog({ isEdit, open, setOpen, customA
 
       const creationTime = autoSave ? PersistenceService.createSave(army, name) : null;
 
-      dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime }));
+      dispatch(createList({ name, pointsLimit: pointsLimit || 0, creationTime: creationTime }));
 
       router.push('/list');
     };
