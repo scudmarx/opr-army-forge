@@ -9,6 +9,7 @@ import { nanoid } from "nanoid";
 export default class UpgradeService {
   static calculateListTotal(list: ISelectedUnit[]) {
     return list
+      .filter(u => u.selectionId !== "dummy")
       .reduce((value, current) => value + UpgradeService.calculateUnitTotal(current), 0);
   }
 
