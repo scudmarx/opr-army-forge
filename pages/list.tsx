@@ -14,7 +14,7 @@ export default function List() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const [competitive, setCompetitive] = useState(true);
+  const [competitive, setCompetitive] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   // Load army list file 
