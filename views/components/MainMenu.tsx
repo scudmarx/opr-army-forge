@@ -141,7 +141,7 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen, 
             onClose={_ => setMenuAnchorElement(null)}
           >
             <MenuItem onClick={() => setListConfigurationOpen(true)}>Edit Details</MenuItem>
-            <MenuItem onClick={() => setCompetitive(!competitive)}>Enforce Competitive Rules for Unit Creation <Checkbox checked={competitive} /></MenuItem>
+            {/*<MenuItem onClick={() => setCompetitive(!competitive)}>Enforce Competitive Rules for Unit Creation <Checkbox checked={competitive} /></MenuItem>*/}
             <MenuItem onClick={() => router.push("/view")}>View</MenuItem>
             {!list.creationTime && <MenuItem onClick={handleSave}>Save</MenuItem>}
             <MenuItem onClick={handleShare}>Export as Army Forge File</MenuItem>
