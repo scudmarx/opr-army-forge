@@ -175,12 +175,14 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
 
               <Paper square elevation={0}>
                 <div className={`px-2 my-2 ${style.grid} has-text-left`}>
-                  {_.uniq(usedRules).sort().map((r, i) => (
+                  {_.uniq(usedRules).sort().map((r, i) => {
+                    let desc = ruleDefinitions.find(t => t.name === r)?.description
+                    return desc ?
                     <p key={i} style={{breakInside: "avoid"}}>
                       <span style={{ fontWeight: 600 }}>{r} - </span>
-                      <span>{ruleDefinitions.find(t => t.name === r)?.description}</span>
-                    </p>
-                  ))}
+                      <span>{desc}</span>
+                    </p> : null
+                  })}
                 </div>
               </Paper>
             </div>
