@@ -69,7 +69,7 @@ export default function View() {
             <ClearIcon />
           </IconButton>
         </div>
-        <List>
+        <List sx={{minWidth: "18rem"}}>
           <ListItem sx={{marginTop: "-0.5rem"}}>
             <ListItemText sx={{textAlign: "start"}}>Display Mode</ListItemText>
             <Button onClick={() => setCardView(!isCardView)} sx={{placeContent: "end"}}>
@@ -78,34 +78,37 @@ export default function View() {
             </Button>
           </ListItem>
           <Divider />
-          <ListItem>
-            <ListItemText>Combine Identical Units</ListItemText>
-            <Switch edge="end" checked={combineIdentical} onChange={() => setCombineIdentical(!combineIdentical)} disabled={!isCardView} />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText>Show point costs</ListItemText>
-            <Switch edge="end" checked={showPointCosts} onChange={() => setShowPointCosts(!showPointCosts)} disabled={!isCardView} />
-          </ListItem>
-          <ListItem>
-            <ListItemText>Show full special rules text</ListItemText>
-            <Switch edge="end" checked={showFullRules} onChange={() => setShowFullRules(!showFullRules)} disabled={!isCardView} />
-          </ListItem>
-          <Divider />
-          <ListItem>
-            <ListItemText>Show Rules Summary</ListItemText>
-            <Switch edge="end" checked={showRulesSummary} onChange={() => setShowRulesSummary(!showRulesSummary)} disabled={!isCardView || showFullRules} />
-          </ListItem>
-          <ListItem>
-            <ListItemText>Show Organisation Chart</ListItemText>
-            <Switch edge="end" checked={showOrgChart} onChange={() => setShowOrgChart(!showOrgChart)} disabled={!isCardView} />
-          </ListItem>
+          {isCardView && <>
+            <ListItem>
+              <ListItemText>Combine Identical Units</ListItemText>
+              <Switch edge="end" checked={combineIdentical} onChange={() => setCombineIdentical(!combineIdentical)} disabled={!isCardView} />
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <ListItemText>Show point costs</ListItemText>
+              <Switch edge="end" checked={showPointCosts} onChange={() => setShowPointCosts(!showPointCosts)} disabled={!isCardView} />
+            </ListItem>
+            <ListItem>
+              <ListItemText>Show full special rules text</ListItemText>
+              <Switch edge="end" checked={showFullRules} onChange={() => setShowFullRules(!showFullRules)} disabled={!isCardView} />
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <ListItemText>Show Rules Summary</ListItemText>
+              <Switch edge="end" checked={showRulesSummary} onChange={() => setShowRulesSummary(!showRulesSummary)} disabled={!isCardView || showFullRules} />
+            </ListItem>
+            <ListItem>
+              <ListItemText>Show Organisation Chart</ListItemText>
+              <Switch edge="end" checked={showOrgChart} onChange={() => setShowOrgChart(!showOrgChart)} disabled={!isCardView} />
+            </ListItem>
+          </>}
           <ListItem>
             <ListItemText>Show Psychic Spells</ListItemText>
             <Switch edge="end" checked={showPsychic} onChange={() => setShowPsychic(!showPsychic)} />
           </ListItem>
         </List>
       </Drawer>
+      {/*
       <div className="is-flex px-4 py-2 no-print" style={{ alignItems: "center" }}>
         <div className="is-flex-grow-1"></div>
         <Button onClick={() => setCardView(!isCardView)}>
@@ -113,6 +116,7 @@ export default function View() {
           <span className="pl-1 full-compact-text">{isCardView ? "cards" : "list"}</span>
         </Button>
       </div>
+      */}
       <div className="px-4">
         {
           isCardView
