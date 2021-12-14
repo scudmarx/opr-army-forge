@@ -14,7 +14,7 @@ import _ from "lodash";
 import { ISelectedUnit, IUpgradeGainsMultiWeapon, IUpgradeGainsWeapon } from "../data/interfaces";
 import RuleList from "./components/RuleList";
 
-export default function ViewCards({ showPsychic, showFullRules, showPointCosts, showOrgChart = false }) {
+export default function ViewCards({ showPsychic = false, showFullRules = false, showRulesSummary = true, showPointCosts = true, showOrgChart = false, combineIdentical = true }) {
 
   const list = useSelector((state: RootState) => state.list);
   const army = useSelector((state: RootState) => state.army);
@@ -24,7 +24,13 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts, 
   const spells = army.data?.spells || [];
   const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
-  const units = (list?.units ?? []).map(u => ({ ...u, id: undefined, selectionId: undefined, joinToUnit: undefined, combined: undefined }));
+  const units = (list?.units ?? []).map(u => ({ ...u, id: undefined }));
+  if (combineIdentical) for (let unit of units) {
+    delete unit.selectionId
+    delete unit.joinToUnit
+    delete unit.combined
+  }
+  //console.log(combineIdentical, units)
 
   var usedRules = []
 
@@ -32,14 +38,14 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts, 
   const baseUnits = list.units.filter(u => !u.joinToUnit)
   //console.log(baseUnits)
 
-  const MiniUnit = ({unit, children="", ...props}) => {
+  const MiniUnit = ({unit, children="", sx={}, ...props}) => {
     return (
-      <p style={{paddingLeft: "1rem", textIndent: "-1rem"}} {...props}>
+      <p style={{paddingLeft: "1rem", textIndent: "-1rem", ...sx}} {...props}>
         <span style={{ fontWeight: 600 }}>
           {children}
-          {unit.customName || unit.name}&nbsp;
+          {unit.customName || unit.name}
         </span>
-        {Object.keys(unit.selectedUpgrades).length > 0 ? <span style={{ fontWeight: 400, lineHeight: 1 }}>({Object.entries(_.countBy(unit.selectedUpgrades, upg => upg.label.split(/\s[\(-]/)[0])).map(e => `${e[1] > 1 ? e[1] + "x " : ""}${e[0]}`).join(", ")})</span>: ""}
+        {Object.keys(unit.selectedUpgrades).length > 0 ? <span style={{ fontWeight: 400 }}>&nbsp;({Object.entries(_.countBy(unit.selectedUpgrades, upg => upg.label.split(/\s[\(-]/)[0])).map(e => `${e[1] > 1 ? e[1] + "x " : ""}${e[0]}`).join(", ")})</span>: ""}
       </p>
       )
     }
@@ -204,7 +210,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts, 
           </Card>
         </div >}
       </div >
-      {!showFullRules && <div className={`mx-4 ${style.card}`} >
+      {!showFullRules && showRulesSummary && <div className={`mx-4 ${style.card}`} >
         <Card elevation={1}>
           <div className="mb-4">
             <div className="card-body">

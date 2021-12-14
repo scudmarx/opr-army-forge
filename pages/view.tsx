@@ -24,7 +24,9 @@ export default function View() {
   const [showPsychic, setShowPsychic] = useState(listContainsPyschic(list));
   const [showOrgChart, setShowOrgChart] = useState(false);
   const [showFullRules, setShowFullRules] = useState(false);
+  const [showRulesSummary, setShowRulesSummary] = useState(true);
   const [showPointCosts, setShowPointCosts] = useState(true);
+  const [combineIdentical, setCombineIdentical] = useState(true);
 
   return (
     <>
@@ -69,20 +71,28 @@ export default function View() {
         </div>
         <List>
           <ListItem>
-            <ListItemText>Show Psychic Spells</ListItemText>
-            <Switch edge="end" checked={showPsychic} onChange={() => setShowPsychic(!showPsychic)} />
-          </ListItem>
-          <ListItem>
-            <ListItemText>Show Organisation Chart</ListItemText>
-            <Switch edge="end" checked={showOrgChart} onChange={() => setShowOrgChart(!showOrgChart)} />
-          </ListItem>
-          <ListItem>
-            <ListItemText>Show full special rules text</ListItemText>
-            <Switch edge="end" checked={showFullRules} onChange={() => setShowFullRules(!showFullRules)} />
+            <ListItemText>Combine Identical Units</ListItemText>
+            <Switch edge="end" checked={combineIdentical} onChange={() => setCombineIdentical(!combineIdentical)} disabled={!isCardView} />
           </ListItem>
           <ListItem>
             <ListItemText>Show point costs</ListItemText>
-            <Switch edge="end" checked={showPointCosts} onChange={() => setShowPointCosts(!showPointCosts)} />
+            <Switch edge="end" checked={showPointCosts} onChange={() => setShowPointCosts(!showPointCosts)} disabled={!isCardView} />
+          </ListItem>
+          <ListItem>
+            <ListItemText>Show full special rules text</ListItemText>
+            <Switch edge="end" checked={showFullRules} onChange={() => setShowFullRules(!showFullRules)} disabled={!isCardView} />
+          </ListItem>
+          <ListItem>
+            <ListItemText>Show Rules Summary</ListItemText>
+            <Switch edge="end" checked={showRulesSummary} onChange={() => setShowRulesSummary(!showRulesSummary)} disabled={!isCardView || showFullRules} />
+          </ListItem>
+          <ListItem>
+            <ListItemText>Show Organisation Chart</ListItemText>
+            <Switch edge="end" checked={showOrgChart} onChange={() => setShowOrgChart(!showOrgChart)} disabled={!isCardView} />
+          </ListItem>
+          <ListItem>
+            <ListItemText>Show Psychic Spells</ListItemText>
+            <Switch edge="end" checked={showPsychic} onChange={() => setShowPsychic(!showPsychic)} />
           </ListItem>
         </List>
       </Drawer>
@@ -96,7 +106,7 @@ export default function View() {
       <div className="px-4">
         {
           isCardView
-            ? <ViewCards showPsychic={showPsychic} showFullRules={showFullRules} showPointCosts={showPointCosts} showOrgChart={showOrgChart} />
+            ? <ViewCards showPsychic={showPsychic} showFullRules={showFullRules} showRulesSummary={showRulesSummary} showPointCosts={showPointCosts} showOrgChart={showOrgChart} combineIdentical={combineIdentical} />
             : <ViewList showPsychic={showPsychic} showFullRules={showFullRules} showPointCosts={showPointCosts} />
         }
       </div>
