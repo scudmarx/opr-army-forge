@@ -30,13 +30,11 @@ export default function ViewCards({ showPsychic = false, showFullRules = false, 
     delete unit.joinToUnit
     delete unit.combined
   }
-  //console.log(combineIdentical, units)
 
   var usedRules = []
 
   const unitGroups = _.groupBy(units, u => JSON.stringify(u));
   const baseUnits = list.units.filter(u => !u.joinToUnit)
-  //console.log(baseUnits)
 
   const MiniUnit = ({unit, children="", sx={}, ...props}) => {
     return (
