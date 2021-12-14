@@ -31,8 +31,6 @@ export default function ViewCards({ showPsychic = false, showFullRules = false, 
     delete unit.combined
   }
 
-  console.log(units.map(u => JSON.stringify(u)))
-
   var usedRules = []
 
   const unitGroups = _.groupBy(units, u => JSON.stringify(u));
