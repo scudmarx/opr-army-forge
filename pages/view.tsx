@@ -5,7 +5,7 @@ import { RootState } from '../data/store'
 import { useRouter } from "next/router";
 import ViewCards from "../views/ViewCards";
 import ViewList from "../views/ViewList";
-import { AppBar, Button, IconButton, Paper, Toolbar, Typography, Drawer, List, ListItem, ListItemText, Switch, ListItemButton } from "@mui/material";
+import { AppBar, Button, IconButton, Paper, Toolbar, Typography, Drawer, List, ListItem, ListItemText, Switch, ListItemButton, Divider } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
@@ -70,17 +70,19 @@ export default function View() {
           </IconButton>
         </div>
         <List>
-          <ListItem sx={{marginTop: "-1rem"}}>
+          <ListItem sx={{marginTop: "-0.5rem"}}>
             <ListItemText sx={{textAlign: "start"}}>Display Mode</ListItemText>
             <Button onClick={() => setCardView(!isCardView)} sx={{placeContent: "end"}}>
-              <span className="pl-1">{isCardView ? "Card View" : "List View"}&nbsp;</span>
+              <span>{isCardView ? "Card View" : "List View"}&nbsp;</span>
               {isCardView ? <DashboardIcon /> : <ViewAgendaIcon />}
             </Button>
           </ListItem>
+          <Divider />
           <ListItem>
             <ListItemText>Combine Identical Units</ListItemText>
             <Switch edge="end" checked={combineIdentical} onChange={() => setCombineIdentical(!combineIdentical)} disabled={!isCardView} />
           </ListItem>
+          <Divider />
           <ListItem>
             <ListItemText>Show point costs</ListItemText>
             <Switch edge="end" checked={showPointCosts} onChange={() => setShowPointCosts(!showPointCosts)} disabled={!isCardView} />
@@ -89,6 +91,7 @@ export default function View() {
             <ListItemText>Show full special rules text</ListItemText>
             <Switch edge="end" checked={showFullRules} onChange={() => setShowFullRules(!showFullRules)} disabled={!isCardView} />
           </ListItem>
+          <Divider />
           <ListItem>
             <ListItemText>Show Rules Summary</ListItemText>
             <Switch edge="end" checked={showRulesSummary} onChange={() => setShowRulesSummary(!showRulesSummary)} disabled={!isCardView || showFullRules} />
