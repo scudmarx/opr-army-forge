@@ -39,7 +39,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts, 
           {children}
           {unit.customName || unit.name}&nbsp;
         </span>
-        {Object.keys(unit.selectedUpgrades).length > 0 ? <span style={{ fontWeight: 400, lineHeight: 1 }}>({Object.entries(_.countBy(unit.selectedUpgrades, upg => upg.label)).map(e => `${e[1] > 1 ? e[1] + "x " : ""}${e[0]}`).join(", ")})</span>: ""}
+        {Object.keys(unit.selectedUpgrades).length > 0 ? <span style={{ fontWeight: 400, lineHeight: 1 }}>({Object.entries(_.countBy(unit.selectedUpgrades, upg => upg.label.split(/\s[\(-]/)[0])).map(e => `${e[1] > 1 ? e[1] + "x " : ""}${e[0]}`).join(", ")})</span>: ""}
       </p>
       )
     }
