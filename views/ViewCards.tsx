@@ -24,12 +24,24 @@ export default function ViewCards({ showPsychic = false, showFullRules = false, 
   const spells = army.data?.spells || [];
   const ruleDefinitions: IGameRule[] = gameRules.concat(armyRules);
 
-  const units = (list?.units ?? []).map(u => ({...u, id: undefined, selectedUpgrades: _.sortBy(u.selectedUpgrades.map(up => ({...up, gains: up.gains.map(g => ({...g, id: undefined}))})), [up => up.id]) }));
+  const units = (list?.units ?? []).map(u => (
+    {...u,
+       id: undefined, 
+       equipment: _.sortBy(u.equipment.map(e => (
+        {...e, 
+          dependencies: _.sortBy(e.dependencies)
+        })), [e => e.label]),
+       selectedUpgrades: _.sortBy(u.selectedUpgrades.map(up => (
+        {...up, 
+          gains: up.gains.map(g => ({...g, id: undefined}))
+        })), [up => up.id]) 
+    }));
   if (combineIdentical) for (let unit of units) {
     delete unit.selectionId
     delete unit.joinToUnit
     delete unit.combined
   }
+  //console.log(units.map(u => JSON.stringify(u)))
 
   var usedRules = []
 
