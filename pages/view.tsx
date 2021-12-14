@@ -22,6 +22,7 @@ export default function View() {
   const [isCardView, setCardView] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [showPsychic, setShowPsychic] = useState(listContainsPyschic(list));
+  const [showOrgChart, setShowOrgChart] = useState(false);
   const [showFullRules, setShowFullRules] = useState(false);
   const [showPointCosts, setShowPointCosts] = useState(true);
 
@@ -72,6 +73,10 @@ export default function View() {
             <Switch edge="end" checked={showPsychic} onChange={() => setShowPsychic(!showPsychic)} />
           </ListItem>
           <ListItem>
+            <ListItemText>Show Organisation Chart</ListItemText>
+            <Switch edge="end" checked={showOrgChart} onChange={() => setShowOrgChart(!showOrgChart)} />
+          </ListItem>
+          <ListItem>
             <ListItemText>Show full special rules text</ListItemText>
             <Switch edge="end" checked={showFullRules} onChange={() => setShowFullRules(!showFullRules)} />
           </ListItem>
@@ -91,7 +96,7 @@ export default function View() {
       <div className="px-4">
         {
           isCardView
-            ? <ViewCards showPsychic={showPsychic} showFullRules={showFullRules} showPointCosts={showPointCosts} />
+            ? <ViewCards showPsychic={showPsychic} showFullRules={showFullRules} showPointCosts={showPointCosts} showOrgChart={showOrgChart} />
             : <ViewList showPsychic={showPsychic} showFullRules={showFullRules} showPointCosts={showPointCosts} />
         }
       </div>
