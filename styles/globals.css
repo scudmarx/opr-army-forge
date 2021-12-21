@@ -68,6 +68,9 @@ div[role="tooltip"] {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.onlyScrolled:not(.scrolled *) {
+  display: none !important;
+}
 
 @media print {
   body {
