@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { IconButton, TextField } from "@mui/material";
 import EditIcon from '@mui/icons-material/Create';
-import AddIcon from '@mui/icons-material/AddBox';
+import AddIcon from '@mui/icons-material/Add';
 import UpgradeService from "../../services/UpgradeService";
 import { makeReal, renameUnit } from "../../data/listSlice";
 import { ISelectedUnit } from "../../data/interfaces";
@@ -48,7 +48,7 @@ export default function UpgradePanelHeader() {
 
   return (
     <div className="is-flex is-align-items-center">
-      {dummy && <IconButton size="small" color="primary" className="mr-1 onlyScrolled" onClick={makeRealUnit}>
+      {dummy && <IconButton title="Add to My List" size="small" color="primary" className="mr-1 onlyScrolled" onClick={makeRealUnit}>
         <AddIcon />
       </IconButton>}
       {editMode ? (
