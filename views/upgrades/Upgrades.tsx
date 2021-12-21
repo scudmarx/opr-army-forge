@@ -115,8 +115,12 @@ export function Upgrades({ mobile = false, competitive = true }) {
 
   return (
     <div className={mobile ? styles["upgrade-panel-mobile"] : styles["upgrade-panel"]}>
-
-      {selectedUnit && <Paper className={dummy ? "sticky sticky-2" : ""} square elevation={0}>
+      {dummy &&
+          <FormControl fullWidth className="sticky sticky-2">
+            <Button variant="contained" className="mx-4 my-2 py-2" onClick={makeRealUnit} >Add to My List</Button>
+          </FormControl>
+        }
+      {selectedUnit && <Paper square elevation={0}>
         {/* Combine unit */}
         {!dummy && (!competitive || selectedUnit.size > 1) && !isHero && !isSkirmish && <FormGroup className="px-4 pt-2 is-flex-direction-row is-align-items-center">
           <FormControlLabel control={
@@ -144,11 +148,6 @@ export function Upgrades({ mobile = false, competitive = true }) {
           </FormControl>
         </FormGroup>)}
 
-        {dummy &&
-          <FormControl fullWidth className="sticky">
-            <Button variant="contained" className="mx-4 my-2 py-2" onClick={makeRealUnit} >Add to My List</Button>
-          </FormControl>
-        }
         {/* Equipment */}
         <div className="px-4 pt-2">
           <UnitEquipmentTable unit={selectedUnit} square={false} />
