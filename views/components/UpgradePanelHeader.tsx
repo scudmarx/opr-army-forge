@@ -2,9 +2,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { IconButton, TextField } from "@mui/material";
 import EditIcon from '@mui/icons-material/Create';
-import AddIcon from '@mui/icons-material/Add';
 import UpgradeService from "../../services/UpgradeService";
-import { makeReal, renameUnit } from "../../data/listSlice";
+import { renameUnit } from "../../data/listSlice";
 import { ISelectedUnit } from "../../data/interfaces";
 import { RootState } from "../../data/store";
 import UnitService from "../../services/UnitService";
@@ -25,10 +24,6 @@ export default function UpgradePanelHeader() {
     setDummy(selectedUnit?.selectionId === "dummy")
   }, [selectedUnit?.selectionId]);
 
-  const makeRealUnit = (e) => {
-    dispatch(makeReal())
-  }
-
   const debounceSave = useCallback(
     debounce(1000, 
       (name) => dispatch(renameUnit({ unitId: selectedUnit.selectionId, name }))
@@ -48,9 +43,6 @@ export default function UpgradePanelHeader() {
 
   return (
     <div className="is-flex is-align-items-center">
-      {dummy && <IconButton title="Add to My List" size="small" color="primary" className="mr-1 onlyScrolled" onClick={makeRealUnit}>
-        <AddIcon />
-      </IconButton>}
       {editMode ? (
         <TextField
           autoFocus

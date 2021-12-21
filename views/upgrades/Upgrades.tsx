@@ -145,7 +145,12 @@ export function Upgrades({ mobile = false, competitive = true }) {
         </FormGroup>)}
 
         {dummy &&
-          <FormControl fullWidth>
+          <FormControl fullWidth className="sticky sticky-2">
+            <style>{`
+              .scrolled .sticky-2 {
+                top: 52px;
+              }`}
+            </style>
             <Button variant="contained" className="mx-4 my-2 py-2" onClick={makeRealUnit} >Add to My List</Button>
           </FormControl>
         }
