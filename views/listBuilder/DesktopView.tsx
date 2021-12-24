@@ -65,7 +65,7 @@ export default function DesktopView({competitive = true, setCompetitive = (value
           <MainList onSelected={onSelectUnit} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
         <div className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setScrolled}>
-          <Paper square className="px-4 pt-4 sticky" sx={{backgroundColor: "white"}}>
+          <Paper square className="px-4 pt-4 pb-2 sticky" sx={{backgroundColor: "white"}}>
             <UpgradePanelHeader />
           </Paper>
           <Upgrades competitive={competitive} />
