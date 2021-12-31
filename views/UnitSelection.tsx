@@ -36,14 +36,13 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
     return toughness >= threshold;
   });
   const hasRule = (u: IUnit, rule: string) => u.specialRules.some(r => r.name === rule);
-  const isLarge = (u) => isTough(u, 6);
-  const isElite = (u) => isTough(u, 3);
 
   const unitGroups = {
     "Heroes": [],
     "Core Units": [],
     "Vehicles / Monsters": [],
     "Artillery": [],
+    "Titans": [],
     "Aircraft": [],
   };
 
@@ -54,8 +53,10 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
       unitGroups["Aircraft"].push(unit);
     else if (hasRule(unit, "Artillery"))
       unitGroups["Artillery"].push(unit);
-    else if (isLarge(unit) && unit.defense == "2") // isLarge == Tough(6+)
+    else if (isTough(unit, 6) && unit.defense == "2")
       unitGroups["Vehicles / Monsters"].push(unit);
+      else if (isTough(unit, 18) && unit.defense == "2")
+      unitGroups["Titans"].push(unit);
     else
       unitGroups["Core Units"].push(unit);
   }
