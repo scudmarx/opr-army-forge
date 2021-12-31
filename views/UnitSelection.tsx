@@ -14,7 +14,7 @@ import { useMediaQuery } from "react-responsive";
 import FullCompactToggle from "./components/FullCompactToggle";
 import UnitService from "../services/UnitService";
 
-export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = false) => {}, mobile = false }) {
+export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = false) => { }, mobile = false }) {
 
   // Access the main army definition state
   const armyData = useSelector((state: RootState) => state.army);
@@ -41,9 +41,8 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
 
   const unitGroups = {
     "Heroes": [],
-    "Core": [],
-    "Elite": [],
-    "Large": [],
+    "Core Units": [],
+    "Vehicles / Monsters": [],
     "Artillery": [],
     "Aircraft": [],
   };
@@ -55,12 +54,10 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
       unitGroups["Aircraft"].push(unit);
     else if (hasRule(unit, "Artillery"))
       unitGroups["Artillery"].push(unit);
-    else if (isLarge(unit))
-      unitGroups["Large"].push(unit);
-    else if (isElite(unit))
-      unitGroups["Elite"].push(unit);
+    else if (isLarge(unit) && unit.defense == "2") // isLarge == Tough(6+)
+      unitGroups["Vehicles / Monsters"].push(unit);
     else
-      unitGroups["Core"].push(unit);
+      unitGroups["Core Units"].push(unit);
   }
 
   const handleAddClick = (unit: IUnit) => {
@@ -70,7 +67,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
     if (expandAll && !mobile) {
       //onSelected({...UnitService.getRealUnit(unit), selectionId: null});
       addUnit(unit, true)
-      onSelected({selectionId: "dummy"})
+      onSelected({ selectionId: "dummy" })
     } else {
       setExpandedId(expandedId === unit.name ? null : unit.name);
     }
@@ -93,13 +90,13 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
         </div>}
       </div>
       <FullCompactToggle expanded={expandAll} onToggle={() => setExpandAll(!expandAll)} />
-      
+
       {
         // For each category
         Object.keys(unitGroups).map((key, i) => (
           <Fragment key={key}>
             {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>
-              {/* {key} */}
+              {key}
             </p>}
             <ul className="menu-list">
               {
@@ -121,7 +118,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
                       elevation={1}
                       expanded={expandedId === u.name || expandAll}
                       onChange={() => setExpandedId(expandedId === u.name ? null : u.name)}
-                      onClick={() => {handleSelectClick(u)}}>
+                      onClick={() => { handleSelectClick(u) }}>
                       <AccordionSummary>
                         <div className="is-flex is-flex-grow-1 is-align-items-center">
                           <div className="is-flex-grow-1" >
