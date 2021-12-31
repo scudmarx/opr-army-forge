@@ -126,7 +126,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
                             <p className="mb-1" style={{ fontWeight: 600 }}>
                               {countInList > 0 && <span style={{ color: "#0F71B4" }}>{countInList}x </span>}
                               <span>{u.name} </span>
-                              <span style={{ color: "#656565" }}>{u.size > 1 ? `[${u.size}]` : ''}</span>
+                              <span style={{ color: "#656565" }}>[{u.size}]</span>
                             </p>
                             <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
                               <p>Qua {u.quality}+</p>
