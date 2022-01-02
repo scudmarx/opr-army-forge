@@ -76,7 +76,7 @@ export default class EquipmentService {
     const attacks = eqp.attacks ? `A${eqp.attacks}` : null;
 
     return `${name} (${[range, attacks || null] // Range, then attacks
-      .concat(eqp.specialRules.map(RulesService.displayName)) // then special rules
+      .concat(eqp.specialRules.map(r => RulesService.displayName(r))) // then special rules
       .filter((m) => !!m) // Remove empty/null entries
       .join(", ")})`; // comma separated list
   }
@@ -95,7 +95,7 @@ export default class EquipmentService {
     return {
       name: name,
       rules: [range, attacks] // Range, then attacks
-        .concat(specialRules.map(RulesService.displayName)) // then special rules
+        .concat(specialRules.map(r => RulesService.displayName(r))) // then special rules
         .filter((m) => !!m) // Remove empty/null entries
         .join(", ") // csv
     }
