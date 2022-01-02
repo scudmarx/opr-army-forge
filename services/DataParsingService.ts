@@ -280,7 +280,6 @@ export default class DataParsingService {
 
   public static parseEquipmentList(str) {
 
-    //const parenRE = /\((?:[^\(\)]|(?0))*\)/
     const parts = str
       //.split(/(?<!\(\d)\),/)
       .split(/\D\),/)
@@ -514,7 +513,7 @@ export default class DataParsingService {
     const name = textParts[0].trim();
     const match = /(.+)([+-]\d+)pts$/.exec(textParts[1]);
     //const weaponRegex = /((.+?)(?<!AP|Impact|Tough|Deadly|Blast|Psychic|Wizard)\((.+?)\))[,\s]/;
-    const weaponRegex = /(([^\(]*)\((.*?A\d.*?)\))[,\s]/;
+    const weaponRegex = /(([^\(]*)\((.*A\d(?:[^(]|\(.*?\))*?)\))[,\s]?/;
     const weaponMatch = weaponRegex.exec(match[1]);
     const rules = match[1].replace(weaponRegex, '').trim().split(/,\s+?/).map(this.parseRule);
 
