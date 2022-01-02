@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Popper, Paper, List, ListItem, ListItemText, ClickAwayListener, Fade, Snackbar, bottomNavigationActionClasses } from "@mui/material";
+import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem, Popper, Paper, List, ListItem, ListItemText, ClickAwayListener, Fade, Snackbar, bottomNavigationActionClasses, Checkbox } from "@mui/material";
 import BackIcon from '@mui/icons-material/ArrowBackIosNew';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -14,7 +14,7 @@ import ValidationErrors from "../ValidationErrors";
 import ValidationService from "../../services/ValidationService";
 import { useMediaQuery } from "react-responsive";
 
-export default function MainMenu({ setListConfigurationOpen, setValidationOpen }) {
+export default function MainMenu({ setListConfigurationOpen, setValidationOpen, competitive = true, setCompetitive = (value: boolean) => {} }) {
 
   const army = useSelector((state: RootState) => state.army);
   const list = useSelector((state: RootState) => state.list);
@@ -141,6 +141,7 @@ export default function MainMenu({ setListConfigurationOpen, setValidationOpen }
             onClose={_ => setMenuAnchorElement(null)}
           >
             <MenuItem onClick={() => setListConfigurationOpen(true)}>Edit Details</MenuItem>
+            {/*<MenuItem onClick={() => setCompetitive(!competitive)}>Enforce Competitive Rules for Unit Creation <Checkbox checked={competitive} /></MenuItem>*/}
             <MenuItem onClick={() => router.push("/view")}>View</MenuItem>
             {!list.creationTime && <MenuItem onClick={handleSave}>Save</MenuItem>}
             <MenuItem onClick={handleShare}>Export as Army Forge File</MenuItem>

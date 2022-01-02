@@ -21,7 +21,7 @@ import ArmyImage from "../components/ArmyImage";
 import { ISelectedUnit } from "../../data/interfaces";
 import UnitService from "../../services/UnitService";
 
-export default function MobileView() {
+export default function MobileView({competitive = true, setCompetitive = (value: boolean) => {}}) {
 
   const list = useSelector((state: RootState) => state.list);
   const army = useSelector((state: RootState) => state.army);
@@ -70,7 +70,7 @@ export default function MobileView() {
   return (
     <>
       <Paper elevation={1} color="primary" square style={{ position: "sticky", top: 0, zIndex: 1 }}>
-        <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
+        <MainMenu competitive={competitive} setCompetitive={setCompetitive} setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
         <AppBar elevation={0} style={{ position: "sticky", top: 0, zIndex: 1 }}>
           <Tabs value={slideIndex} onChange={handleSlideChange} centered variant="fullWidth" textColor="inherit" indicatorColor="primary">
             <Tab label={`${army?.data?.name} ${army?.data?.versionString}`} />
@@ -120,7 +120,7 @@ export default function MobileView() {
           maxHeight * 0.9
         ]}
         header={<UpgradePanelHeader />}>
-        <Upgrades mobile />
+        <Upgrades mobile competitive={competitive} />
       </BottomSheet>
 
       <ValidationErrors

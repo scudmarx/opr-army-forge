@@ -60,7 +60,7 @@ export default class UnitService {
     const extraModelCount = unit.selectedUpgrades.filter(u => u.isModel).length;
     return unit.size + extraModelCount;
   }
-
+  
   public static getRealUnit(unit: IUnit, dummy = false): ISelectedUnit {
     return {
       ...unit,
@@ -75,15 +75,15 @@ export default class UnitService {
     }
   }
 
-  public static getParents(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
+  public static getAttachedUnits(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
     return list.units.filter(u => u.joinToUnit === unit.selectionId)
   }
   public static getChildren(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
     return list.units.filter(u => u.selectionId === unit.joinToUnit)
   }
   public static getFamily(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
-    let parents = UnitService.getParents(list, unit)
-    let grandparents = parents.flatMap(u => {return UnitService.getParents(list, u)})
+    let parents = UnitService.getAttachedUnits(list, unit)
+    let grandparents = parents.flatMap(u => {return UnitService.getAttachedUnits(list, u)})
     let children = UnitService.getChildren(list, unit)
     let grandchildren = children.flatMap(u => {return UnitService.getChildren(list, u)})
     return _.uniq([...grandparents, ...parents, unit, ...children, ...grandchildren])

@@ -14,7 +14,7 @@ import { selectUnit, addUnit, removeUnit } from "../../data/listSlice";
 import { ISelectedUnit, IUnit } from "../../data/interfaces";
 import UnitService from "../../services/UnitService";
 
-export default function DesktopView() {
+export default function DesktopView({competitive = true, setCompetitive = (value: boolean) => {}}) {
 
   const list = useSelector((state: RootState) => state.list);
   const [editListOpen, setEditListOpen] = useState(false);
@@ -55,7 +55,7 @@ export default function DesktopView() {
   return (
     <>
       <Paper elevation={1} color="primary" square>
-        <MainMenu setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
+        <MainMenu competitive={competitive} setCompetitive={setCompetitive} setListConfigurationOpen={setEditListOpen} setValidationOpen={setValidationOpen} />
       </Paper>
       <div className="columns my-0" style={{ height: "calc(100vh - 64px)" }}>
         <div className="column py-0 pr-0" style={columnStyle} onScroll={setScrolled}>
@@ -65,10 +65,10 @@ export default function DesktopView() {
           <MainList onSelected={onSelectUnit} onUnitRemoved={() => setShowUndoRemove(true)} />
         </div>
         <div className="column py-0 px-0 mr-4" style={columnStyle} onScroll={setScrolled}>
-          <Paper square className="px-4 pt-4 sticky" sx={{backgroundColor: "white"}}>
+          <Paper square className="px-4 pt-4 pb-2 sticky" sx={{backgroundColor: "white"}}>
             <UpgradePanelHeader />
           </Paper>
-          <Upgrades />
+          <Upgrades competitive={competitive} />
         </div>
       </div>
       <ValidationErrors

@@ -14,6 +14,7 @@ export default function List() {
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const [competitive, setCompetitive] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   // Load army list file 
@@ -55,7 +56,7 @@ export default function List() {
         <title>OPR Army Forge</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {army.loaded ? (isBigScreen ? <DesktopView /> : <MobileView />) : null}
+      {army.loaded ? (isBigScreen ? <DesktopView competitive={competitive} setCompetitive={setCompetitive} /> : <MobileView competitive={competitive} setCompetitive={setCompetitive} />) : null}
     </>
   );
 }
