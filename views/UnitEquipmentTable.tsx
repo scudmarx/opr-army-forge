@@ -72,7 +72,7 @@ export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUn
               <TableCell style={headerStyle}>R</TableCell>
               <TableCell style={headerStyle}>A</TableCell>
               {/*<TableCell style={headerStyle}>AP</TableCell>*/}
-              <TableCell style={cellStyle}>Special</TableCell>
+              <TableCell style={headerStyle}>Special</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
