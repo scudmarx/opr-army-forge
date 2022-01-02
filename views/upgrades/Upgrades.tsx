@@ -7,7 +7,7 @@ import UnitEquipmentTable from '../UnitEquipmentTable';
 import RuleList from '../components/RuleList';
 import { ISpecialRule, IUpgradePackage } from '../../data/interfaces';
 import UnitService from '../../services/UnitService';
-import { joinUnit, addCombinedUnit, removeUnit, moveUnit } from '../../data/listSlice';
+import { joinUnit, addCombinedUnit, removeUnit, moveUnit, selectUnit } from '../../data/listSlice';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
@@ -88,7 +88,9 @@ export function Upgrades({ mobile = false, competitive = true }) {
   const toggleCombined = () => {
     if (selectedUnit.combined) {
       if (selectedUnit.joinToUnit) {
-        dispatch(removeUnit(selectedUnit.selectionId))
+        let me = selectedUnit.selectionId
+        dispatch(selectUnit(selectedUnit.joinToUnit))
+        dispatch(removeUnit(me))
       } else {
         let childId = list.units.find(u => u.combined && u.joinToUnit === selectedUnit.selectionId).selectionId
         dispatch(removeUnit(childId))
