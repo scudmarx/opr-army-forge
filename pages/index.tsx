@@ -9,6 +9,8 @@ export default function Home() {
 
   const router = useRouter();
 
+  let canUseRegexLookahead = true;
+  /*
   let canUseRegexLookahead = false;
   try {
     const match = new RegExp("q(?=u)").exec("qu");
@@ -18,6 +20,7 @@ export default function Home() {
   } catch (e) {
     console.warn('Your browser does not support regex lookahead.');
   }
+  */
 
   return (
     <>

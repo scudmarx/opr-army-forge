@@ -163,7 +163,9 @@ export default function Data() {
             .replace(/Free /gm, '+0pts ') // Replace "Free" with "0pts" so that it hits the next condition...
             .replace(/(\d+)pts?/gm, '$1pts\n') // ...Add a line break after every "pts" 
             .replace(/((Upgrade|Replace)(.+?)with (one|all|any|up to (\d+|one|two|three)|\d+)?:?)/gm, '$1\n') // Add line break to upgrade lines that might not have a colon
-            .replace(/(?<!to fire): /gm, ':\n') // Add line break after every colon that wasn't replaced in the previous case (upgrade text lines) but not multi-profile weapons
+            //.replace(/(?<!to fire): /gm, ':\n') // Add line break after every colon that wasn't replaced in the previous case (upgrade text lines) but not multi-profile weapons
+            .replace(/: /gm, ':\n') // Add line break after every colon that wasn't replaced in the previous case (upgrade text lines) but not multi-profile weapons
+            .replace(/to fire:\n/gm, 'to fire: ') // Add line break after every colon that wasn't replaced in the previous case (upgrade text lines) but not multi-profile weapons
 
         // .replace(/(\swith:?|:)\s?/gm, '$1\n');
         setUpgrades(fixedText.replace(/^\s+/gm, ''));
