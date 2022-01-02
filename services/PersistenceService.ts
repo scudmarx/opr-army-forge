@@ -153,7 +153,7 @@ export default class PersistenceService {
     //
     // ...
     for (let unit of list.units) {
-      lines.push(`${unit.customName ?? unit.name}${unit.size > 1 ? ` [${unit.size}]` : ""} | Qua ${unit.quality}+ Def ${unit.defense}+ | ${UpgradeService.calculateUnitTotal(unit)}pts`);
+      lines.push(`${unit.customName ?? unit.name} [${unit.size}] | Qua ${unit.quality}+ Def ${unit.defense}+ | ${UpgradeService.calculateUnitTotal(unit)}pts`);
       lines.push(getWeapons(unit));
       lines.push(getRules(unit) + "\n");
     }

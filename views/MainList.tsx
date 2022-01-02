@@ -137,7 +137,7 @@ function MainListItem({ list, unit, expanded, onSelected, onUnitRemoved }) {
       <AccordionSummary>
         <div id={`Unit${unit.selectionId}`} className="is-flex is-flex-grow-1 is-align-items-center">
           <div className="is-flex-grow-1">
-            <p className="mb-1" style={{ fontWeight: 600 }}>{unit.customName || unit.name} {unitSize > 1 ? `[${unitSize}]` : ''}</p>
+            <p className="mb-1" style={{ fontWeight: 600 }}>{unit.customName || unit.name} [{unitSize}]</p>
             <div className="is-flex" style={{ fontSize: "14px", color: "#666" }}>
               <p>Qua {unit.quality}+</p>
               <p className="ml-2">Def {unit.defense}+</p>
