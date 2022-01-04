@@ -22,7 +22,7 @@ export default function GameSystem() {
 
   useEffect(() => {
     if (router.query) {
-      console.log(router.query)
+      //console.log(router.query)
       let gameSystem = router.query.gameSystem as string
       if (gameSystems.includes(gameSystem)) selectGameSystem(gameSystem)
     } 

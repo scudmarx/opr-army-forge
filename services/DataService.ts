@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { IUnit, IUpgradeGains, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
+import { IUnit, IUpgradeGains, IUpgradeGainsWeapon, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
@@ -35,8 +35,8 @@ export default class DataService {
     fetch(dataSourceUrl + `/army-books/${armyId}`)
       .then((res) => res.json())
       .then((data) => {
+        
         //console.log(data);
-
         const afData = DataService.transformApiData(data, fallback);
         //console.log(afData);
 
@@ -70,6 +70,7 @@ export default class DataService {
 
                 // Replace "2x " in label/name of original gain
                 const gain = {
+                  count: 1,
                   ...original,
                   label: original.label?.replace(countRegex, ""),
                   name: original.name?.replace(countRegex, "")
@@ -125,7 +126,7 @@ export default class DataService {
             count: count,
             originalCount: count,
             type: "ArmyBookWeapon",
-            specialRules: e.specialRules.map(DataParsingService.parseRule)
+            specialRules: (e as IUpgradeGainsWeapon).specialRules.map(DataParsingService.parseRule)
           }
         }),
         disabledUpgradeSections: (() => {
@@ -160,6 +161,7 @@ export default class DataService {
                 continue;
 
               // If neither was found, then disable this section
+              console.log("Disabled upgrade section:", u, section)
               disabledSections.push(section.id);
             }
           }

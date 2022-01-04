@@ -13,15 +13,6 @@ export default class DataParsingService {
   }
 
   public static parseUpgradeText(text: string): IUpgrade {
-    const groups = {
-      type: 1,
-      affects: 2,
-      upgradeWhat: 3,
-      select: 4,
-      upTo: 5,
-      replaceWhat: 6
-    }
-
     const mountMatch = /mount on/i.test(text);
     if (mountMatch)
       return {
@@ -74,7 +65,16 @@ export default class DataParsingService {
 
     text = text.endsWith(":") ? text.substring(0, text.length - 1) : text;
 
-    const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?(?:(.+)\swith)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
+    const matchRE = /(Upgrade|Replace|Take)\s*(any|all|one|(?:(?:up to )(?:one|two|three|\d+x?)))?\s*(?:models?\s*)?(.*?)\s*(?:attachments?)?(?:$|with)(?: up to )?\s*(any|one|two|three|\d+)?/
+    const groups = {
+      type: 1,
+      affects: 2,
+      upgradeWhat: 3,
+      select: 4,
+      upTo: 4,
+      replaceWhat: 3
+    }
+    const match = matchRE.exec(text);
 
     if (!match) {
       throw (new Error("Cannot match: " + text))
@@ -86,23 +86,26 @@ export default class DataParsingService {
     const result: IUpgrade = {
       id: nanoid(7),
       type: match[groups.type]?.toLowerCase() as any,
-      model: text.indexOf("model") > -1
+      model: false
     };
 
-    if (match[groups.affects])
-      result.affects = parseInt(match[groups.affects]) || this.numberFromName(match[groups.affects]) || match[groups.affects] as any;
+    if (match[groups.affects]) {
+      let affects = match[groups.affects].replace("up to ", "")
+      result.affects = parseInt(affects) || this.numberFromName(affects) || affects as any;
+    }
 
-    if (match[groups.select])
-      result.select = parseInt(match[groups.select]) || this.numberFromName(match[groups.select]) || match[groups.select] as any;
-
-    if (match[groups.upTo])
-      result.select = parseInt(match[groups.upTo]) || this.numberFromName(match[groups.upTo]) || match[groups.upTo] as any;
-
-    if (match[groups.upgradeWhat])
-      result.replaceWhat = [match[groups.upgradeWhat]];
+    if (match[groups.select]) {
+      let selects = match[groups.select].replace("up to ", "")
+      result.select = parseInt(selects) || this.numberFromName(selects) || selects as any;
+    } else if (typeof result.affects == "number") {
+      result.select = result.affects
+      result.affects = 1 
+    } else if (result.type == "replace" && result.affects == "all") {
+      result.select = 1
+    }
 
     if (replaceWhat) {
-      // has alternative replave options like "Replace one R-Carbine and CCW / G-Rifle and CCW:"
+      // has alternative replace options like "Replace one R-Carbine and CCW / G-Rifle and CCW:"
       if (replaceWhat.indexOf("/") > -1) {
         result.replaceWhat = replaceWhat
           .split("/")
@@ -111,9 +114,11 @@ export default class DataParsingService {
           .map(part => part.map(p => p.split(", ")).reduce((arr, next) => arr.concat(next), []));
       } else {
         result.replaceWhat = replaceWhat
-          .split(" and ")
-          .map(part => part.split(", "))
-          .reduce((arr, next) => arr.concat(next), []);
+          .split(/(?:,?\s*and|,)\s*/)
+          .flatMap((part) => {
+            let match = /(\d*)x\s*(.*)/.exec(part);
+            return match && parseInt(match[1]) ? Array(parseInt(match[1])).fill(match[2]) : [part]
+          })
       }
     }
 
@@ -125,6 +130,7 @@ export default class DataParsingService {
       delete result.model;
     }
 
+    //console.log(text, result)
     return result;
   }
 
@@ -319,10 +325,12 @@ export default class DataParsingService {
         id: nanoid(7),
         cost: parseInt(/([+-]\d+)pts?$/.exec(part)[1]),
         label: part.replace(costRegex, "").trim(),
+        count: 1,
         gains: [
           {
             name: multiWeaponName,
             type: "ArmyBookMultiWeapon",
+            count: 1,
             profiles: multiWeaponWeapons.map(w => ({
               ...this.parseEquipment(w, isUpgrade),
               type: "ArmyBookWeapon"
@@ -341,6 +349,7 @@ export default class DataParsingService {
         id: nanoid(7),
         cost: combinedMatch[2] === "Free" ? 0 : parseInt(combinedMatch[3]),
         label: part.replace(costRegex, "").trim(),
+        count: 1,
         gains: multiParts
           .map(mp => this.parseEquipment(mp, isUpgrade))
       };
@@ -380,11 +389,14 @@ export default class DataParsingService {
         id: nanoid(7),
         cost: parseInt(mountMatch[3]),
         label: part.replace(costRegex, ""),
+        count: 1,
         gains: [
           {
             label: mountName,
             name: mountName,
+            count: 1,
             content: mountRules.map(r => ({
+              count: 1, 
               ...r,
               label: r.name,
               rating: r.rating || "",
@@ -411,8 +423,10 @@ export default class DataParsingService {
       return {
         id: nanoid(7),
         label: singleRuleMatch[1].trim(),
+        count: 1,
         gains: [
           {
+            count: 1,
             ...this.parseRule(singleRuleMatch[1].trim()),
             label: singleRuleMatch[1].trim(),
             type: "ArmyBookRule"
@@ -428,8 +442,10 @@ export default class DataParsingService {
       return {
         id: nanoid(7),
         label: paramRuleMatch[1].trim(),
+        count: 1,
         gains: [
           {
+            count: 1,
             ...this.parseRule(paramRuleMatch[1].trim()),
             label: paramRuleMatch[1].trim(),
             type: "ArmyBookRule"
@@ -446,11 +462,13 @@ export default class DataParsingService {
         id: nanoid(7),
         label: part.replace(costRegex, "").trim(),
         name: itemRuleMatch[2].trim(),
+        count: 1,
         content: [
           {
+            count: 1,
             ...this.parseRule((itemRuleMatch[3] + (itemRuleMatch[4] ? itemRuleMatch[4] : "")).trim()),
             label: itemRuleMatch[3].trim(),
-            type: "ArmyBookRule"
+            type: "ArmyBookRule",
           }
         ],
         type: "ArmyBookItem",
@@ -469,7 +487,8 @@ export default class DataParsingService {
     const result: any = {
       id: nanoid(7),
       label: (isUpgrade ? part : match[groups.label]).replace(costRegex, "").trim(),
-      name: isUpgrade ? match[groups.label].trim() : undefined
+      name: isUpgrade ? match[groups.label].trim() : undefined,
+      count: 1,
     };
 
     if (!isUpgrade)
@@ -515,11 +534,14 @@ export default class DataParsingService {
     return {
       id: nanoid(7),
       cost: match[2],
+      count: 1,
       gains: [
         {
           label: name,
           name,
+          count: 1,
           content: rules.map(r => ({
+            count: 1,
             ...r,
             label: r.name + (r.rating ? `(${r.modify ? "+" : ""}${r.rating})` : ""),
             rating: r.rating || "",
@@ -527,8 +549,9 @@ export default class DataParsingService {
             modify: r.modify || false
           })).concat([
             weaponMatch && {
+              count: 1,
               ...this.parseEquipment(weaponMatch[1], isUpgrade),
-              name: weaponMatch[2].trim()
+              name: weaponMatch[2].trim(),
             }
           ]).filter(e => !!e),
           type: "ArmyBookItem"

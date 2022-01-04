@@ -72,7 +72,7 @@ function UpgradeItemDisplay({ eqp, count, isValid }) {
 
 export default function UpgradeItem({ selectedUnit, upgrade, option }: { selectedUnit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption }) {
 
-  const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
+  const controlType = UpgradeService.getControlType(upgrade);
   // Somehow display the count?
   const gainsGroups = option ? groupBy(option.gains, "name") : null;
   const isValid = option ? UpgradeService.isValid(selectedUnit, upgrade, option) : true;

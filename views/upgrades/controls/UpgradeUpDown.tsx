@@ -17,16 +17,14 @@ export default function UpgradeUpDown({ selectedUnit, upgrade, option }: { selec
     dispatch(removeUpgrade({ unitId: unit.selectionId, upgrade, option }));
   };
   try {
-    const isApplied = UpgradeService.isApplied(selectedUnit, upgrade, option);
-    const countApplied = UpgradeService.countApplied(selectedUnit, upgrade, option);
+    const countApplied = UpgradeService.countApplied(selectedUnit, option);
     const isValid = UpgradeService.isValid(selectedUnit, upgrade, option);
-
-    // #endregion
+    const isValidToRemove = countApplied > 0 && UpgradeService.isValidToRemove(selectedUnit, option);
 
     return (
       <>
         <IconButton
-          disabled={countApplied === 0}
+          disabled={!isValidToRemove}
           color={countApplied > 0 ? "primary" : "default"}
           onClick={() => decrementUpgrade(selectedUnit, upgrade, option)}>
 
@@ -44,10 +42,9 @@ export default function UpgradeUpDown({ selectedUnit, upgrade, option }: { selec
     );
   }
   catch (e) {
+    console.log(e)
     console.log(selectedUnit);
     console.log(upgrade);
     console.log(option);
   }
-
-  //return ({ upgrade.options.map((opt, i) => (<p></p>)});
 }

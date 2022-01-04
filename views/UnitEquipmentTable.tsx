@@ -38,26 +38,23 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IUpg
 }
 
 export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUnit, square: boolean }) {
+  console.log("drawing equipment table:", UnitService.getAllEquipment(unit))
 
-  const isWeapon = e => e.attacks;
+  const weapons = UnitService.getAllWeapons(unit) as IUpgradeGainsWeapon[];
+  const items = UnitService.getAllItemsOfType(unit, "ArmyBookItem") as IUpgradeGainsItem[];
+  //const itemUpgrades = UnitService.getAllUpgradeItems(unit);
+  const itemRules = items.map(i => ({
+    label: i.name,
+    specialRules: i.content.filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense") as IUpgradeGainsRule[]
+  }))
 
-  const equipment = unit.equipment.filter(e => !isWeapon(e));
-  const itemUpgrades = UnitService.getAllUpgradeItems(unit);
-  const weapons = UnitService.getAllWeapons(unit);
-
-  const hasEquipment = equipment.length > 0 || itemUpgrades.length > 0;
   const hasWeapons = weapons.length > 0;
-
-  const combinedEquipment = equipment.map(e => ({
-    label: e.label || e.name,
-    specialRules: e.specialRules.map(DataParsingService.parseRule)
-  })).concat(itemUpgrades.map(u => ({
-    label: u.name,
-    specialRules: u.content.filter(c => c.type === "ArmyBookRule" || c.type === "ArmyBookDefense") as IUpgradeGainsRule[]
-  })));
-
+  const hasEquipment = items.length > 0// || itemUpgrades.length > 0;
+  
   const weaponGroups = _.groupBy(weapons, w => w.label + w.attacks);
-  const itemGroups = _.groupBy(combinedEquipment, w => w.label);
+  const itemGroups = _.groupBy(itemRules, w => w.label);
+
+  //console.log("Drawing non weapon groups: ", itemGroups)
 
   const cellStyle = { paddingLeft: "8px", paddingRight: "8px", borderBottom: "none" };
   const headerStyle = { ...cellStyle, fontWeight: 600 };
@@ -84,8 +81,8 @@ export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUn
                 const e = { ...upgrade, count };
 
                 // Upgrade may have been replaced
-                if (!e.count)
-                  return null;
+                /*if (!e.count)
+                  return null;*/
 
                 if (upgrade.type === "ArmyBookMultiWeapon") {
                   console.log(upgrade.profiles);
@@ -124,9 +121,11 @@ export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUn
                 const e = group[0];
                 const count = group.reduce((c, next) => c + (next.count || 1), 0);
 
+                console.log(e)
+
                 return (
                   <TableRow key={index}>
-                    <TableCell style={cellStyle}>{count > 1 ? `${count}x ` : ""}{e.label}</TableCell>
+                    <TableCell style={cellStyle}>{count > 1 ? `${count}x ` : ""}{e.name || e.label}</TableCell>
                     <TableCell style={cellStyle}>
                       <RuleList specialRules={e.specialRules} />
                     </TableCell>

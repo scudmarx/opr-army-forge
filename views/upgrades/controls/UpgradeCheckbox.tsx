@@ -8,7 +8,7 @@ export default function UpgradeCheckbox({ selectedUnit, upgrade, option }: { sel
 
   const dispatch = useDispatch();
 
-  const isApplied = (option) => UpgradeService.isApplied(selectedUnit, upgrade, option);
+  const isApplied = (option) => UpgradeService.isApplied(selectedUnit, option);
   const isValid = UpgradeService.isValid(selectedUnit, upgrade, option);
 
   const handleCheck = (option: IUpgradeOption) => {

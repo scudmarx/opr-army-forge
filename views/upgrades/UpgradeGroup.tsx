@@ -13,7 +13,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
     ? null
     : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
-  const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
+  const controlType = UpgradeService.getControlType(upgrade);
 
   return (
     <Paper className="px-4 py-2" square elevation={0}>

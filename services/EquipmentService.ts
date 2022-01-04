@@ -7,14 +7,23 @@ export default class EquipmentService {
   /**
    * Compares an equipment with a search term.
    * @param hasItem The equipment to test against.
-   * @param searchItem The term we are seeking a comparison for.
+   * @param searchTerm The term we are seeking a comparison for.
    * @returns true if the equipment is a match, false otherwise.
    */
-  public static compareEquipment(hasItem: IUpgradeGains, searchItem: string): boolean {
+  public static compareEquipment(hasItem: IUpgradeGains, searchTerm: any): boolean {
     // "replace [nothing] -> always ok"
-    if (!searchItem) return true
+    if (!searchTerm) return true
 
-    const find = pluralise.singular(searchItem?.toLowerCase().trim() || "")
+    // if asked to compare two actual items
+    if (typeof searchTerm != "string") {
+      let searchItem = searchTerm as IUpgradeGains
+      let match = true;
+      ["type", "attacks", "content"].forEach(param => {if (hasItem[param] !== searchItem[param]) match = false})
+      if (!match) return false
+      searchTerm = searchItem.name
+    }
+
+    const find = pluralise.singular(searchTerm?.toLowerCase().trim() || "")
 
     if (["equipment"].includes(find)) return !!hasItem
 
@@ -40,7 +49,7 @@ export default class EquipmentService {
 
   public static compareEquipmentNames(hasItem: string, searchItem: string): boolean {
     let find = searchItem?.toLowerCase().trim()
-    return pluralise.singular(hasItem?.toLowerCase() || "") === pluralise.singular(find || "");
+    return pluralise.singular(hasItem?.toLowerCase().trim() || "") === pluralise.singular(find || "");
   }
 
   public static find(list: IUpgradeGainsWeapon[], match: string): IUpgradeGainsWeapon[] {

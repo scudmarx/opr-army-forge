@@ -299,6 +299,8 @@ test("Parse 'Replace 2x [weapon]:'", () => {
     type: "replace",
     affects: 2,
     replaceWhat: ["Armblades"]
+    // affects: undefined,
+    // replaceWhat: ["Armblade", "Armblade"]
   });
 });
 
@@ -308,6 +310,8 @@ test("Parse 'Replace 2x [weapon]:'", () => {
     type: "replace",
     affects: 2,
     replaceWhat: ["Walker Fists"]
+    // affects: undefined,
+    // replaceWhat: ["Walker Fist", "Walker Fist"]
   });
 });
 
@@ -408,6 +412,7 @@ test("Parse 'Replace [weapon], [weapon] and [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     replaceWhat: ["Spear-Rifle", "Spear", "2x Destroyers"]
+    //replaceWhat: ["Spear-Rifle", "Spear", "Destroyer", "Destroyer"]
   });
 });
 

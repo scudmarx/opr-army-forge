@@ -2,6 +2,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { IUnit, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
 import { ListState } from "../data/listSlice";
 import _ from "lodash";
+import EquipmentService from "./EquipmentService";
 
 export default class UnitService {
 
@@ -9,6 +10,15 @@ export default class UnitService {
     return list.selectedUnitId === null || list.selectedUnitId === undefined
       ? null
       : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
+  }
+
+  public static getEquipmentCount(unit: ISelectedUnit, item: IUpgradeGains|string): number {
+    return this.getAllEquipment(unit).filter(e => EquipmentService.compareEquipment(e, item)).reduce((count, next) => {return count + next.count}, 0)
+  }
+
+  public static getAllEquipment(unit: ISelectedUnit): IUpgradeGains[] {
+    //return (unit.equipment as IUpgradeGains[]).concat(this.getAllUpgrades(unit, true))
+    return unit.equipment.flatMap(e => {return (e as IUpgradeGainsItem).content ? [e, ...(e as IUpgradeGainsItem).content.map((g) => ({...g, count: e.count * (g.count ?? 1)}))] : [e]})
   }
 
   public static getAllUpgrades(unit: ISelectedUnit, excludeModels: boolean): IUpgradeGains[] {
@@ -31,8 +41,23 @@ export default class UnitService {
     return allRules;
   }
 
+  public static getAllItemsOfTypes(unit: ISelectedUnit, types: IUpgradeGains["type"][]): IUpgradeGains[] {
+    return this.getAllEquipment(unit).filter(e => {return types.includes(e.type) && e.count !== 0});
+  }
+  public static getAllItemsOfType(unit: ISelectedUnit, type: IUpgradeGains["type"]) {
+    return this.getAllItemsOfTypes(unit, [type])
+  }
+  public static getAllItemsNotOfTypes(unit: ISelectedUnit, types: IUpgradeGains["type"][]): IUpgradeGains[] {
+    return this.getAllEquipment(unit).filter(e => {return (!types.includes(e.type)) && e.count > 0})
+  }
+  public static getAllItemsNotOfType(unit: ISelectedUnit, type: IUpgradeGains["type"]): IUpgradeGains[] {
+    return this.getAllItemsNotOfTypes(unit, [type])
+  }
   public static getAllWeapons(unit: ISelectedUnit): IUpgradeGainsWeapon[] {
-    return unit.equipment.concat(this.getAllUpgradeWeapons(unit) as IUpgradeGainsWeapon[]);
+    return this.getAllItemsOfTypes(unit, ["ArmyBookWeapon", "ArmyBookMultiWeapon"]) as IUpgradeGainsWeapon[]
+  }
+  public static getAllNonWeapons(unit: ISelectedUnit): IUpgradeGains[] {
+    return this.getAllItemsNotOfTypes(unit, ["ArmyBookWeapon", "ArmyBookMultiWeapon"])
   }
 
   public static getAllUpgradeWeapons(unit: ISelectedUnit): (IUpgradeGainsWeapon | IUpgradeGainsMultiWeapon)[] {
@@ -87,5 +112,45 @@ export default class UnitService {
     let children = UnitService.getChildren(list, unit)
     let grandchildren = children.flatMap(u => {return UnitService.getChildren(list, u)})
     return _.uniq([...grandparents, ...parents, unit, ...children, ...grandchildren])
+  }
+
+  /**
+   * Adds an item to a unit's equipment table.
+   */
+  public static addItem(unit: ISelectedUnit, item: IUpgradeGains|string) {
+    //console.log("Adding ", item, `to ${unit.name}.`)
+    let count = (item as IUpgradeGains).count ?? 1
+    const currentItem = this.getAllEquipment(unit).find(i => EquipmentService.compareEquipment(i, item))
+    if (currentItem) {
+      currentItem.count = currentItem.count ? currentItem.count + count : count
+    } else {
+      if ((item as IUpgradeGains).type) {
+        unit.equipment.push({...(item as IUpgradeGains), count: count} as IUpgradeGains)
+      } else {
+        // trying to add an item but only have its name, not an actual item? Treat it as a custom special rule.
+        unit.equipment.push({name: item as string, type: "ArmyBookRule", count: count})
+      }
+    }
+  }
+
+  /**
+   * Removes an item from a unit's equipment table.
+   * @param item The item to remove, either as an (IUpgradeGains) actual item or as a (string) search term to validate against.
+   * @returns true if item was removed successfully, false if it was not (presumably because it wasn't there to remove).
+   */
+  public static removeItem(unit: ISelectedUnit, item: IUpgradeGains|string) {
+    //console.log("Removing", item, "from unit", unit)
+    let count = (item as IUpgradeGains).count ?? 1
+    for (let i = 0; i < count; i++) {
+      const currentItem = this.getAllEquipment(unit).find(i => {return EquipmentService.compareEquipment(i, item) && i.count >= count})
+      if (currentItem) {
+        currentItem.count -= 1
+      } else {
+        //console.log(`Failed! Item not found!`)
+        return false
+      }
+    }
+    //console.log(`Succeeded!`, currentItem)
+    return true
   }
 }

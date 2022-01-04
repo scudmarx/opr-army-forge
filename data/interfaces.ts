@@ -27,7 +27,7 @@ export interface IUnit {
   defense: string;
   specialRules?: ISpecialRule[];
   upgrades: string[];
-  equipment: IUpgradeGainsWeapon[]; //IEquipment[];
+  equipment: IUpgradeGains[]; //IEquipment[];
   disabledUpgradeSections: string[];
 }
 
@@ -63,11 +63,11 @@ export interface IUpgradeOption {
 }
 
 export interface IUpgradeGains {
-  id: string;
+  id?: string;
   name: string;
-  label: string;
+  label?: string;
   count: number;
-  originalCount: number;
+  originalCount?: number;
   type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
   dependencies?: string[];
 }
