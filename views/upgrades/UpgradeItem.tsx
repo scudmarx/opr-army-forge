@@ -7,6 +7,7 @@ import UpgradeUpDown from './controls/UpgradeUpDown';
 import { groupBy } from '../../services/Helpers';
 import pluralise from "pluralize";
 import RuleList from '../components/RuleList';
+import UnitService from "../../services/UnitService";
 
 function UpgradeItemDisplay({ eqp, count, isValid }) {
   const name = count > 1 ? pluralise.plural(eqp.name || eqp.label) : eqp.name || eqp.label;
@@ -75,7 +76,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
   const controlType = UpgradeService.getControlType(upgrade);
   // Somehow display the count?
   const gainsGroups = option ? groupBy(option.gains, "name") : null;
-  const isValid = option ? UpgradeService.isValid(selectedUnit, upgrade, option) : true;
+  const isValid = option ? UpgradeService.isValid(selectedUnit, upgrade, option) : UpgradeService.isValidToRemove(selectedUnit, UpgradeService.getApplied(selectedUnit, upgrade));
 
   return (
     <div className="is-flex is-align-items-center mb-1">

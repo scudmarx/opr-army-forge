@@ -33,7 +33,7 @@ export default function UpgradeRadio(
     <Radio
       checked={isApplied}
       onClick={() => handleRadio(option)}
-      disabled={!isValid && !isApplied}
+      disabled={!isValid}
       name={hash(upgrade)}
       color="primary"
       value={option?.label || "None"} />

@@ -108,6 +108,7 @@ export default class UpgradeService {
       if (upgrade.replaceWhat) {
         (upgrade.replaceWhat as string[]).forEach((what, i) => {
           let thisavailable = UnitService.getEquipmentCount(unit, what)
+          //console.log(unit, what, thisavailable)
           available = i==0 ? thisavailable : Math.min(available, thisavailable)
         })
       }
@@ -120,7 +121,7 @@ export default class UpgradeService {
         available *= upgrade.options.length
       }
 
-      if (appliedInGroup >= available) {
+      if (upgrade.type == "upgrade" && appliedInGroup >= available) {
         return false;
       }
 
@@ -206,7 +207,7 @@ export default class UpgradeService {
     upgrade = upgrade ?? {replaceWhat: [], options: [option.id]}
     const newUpgrade = {...upgrade,
       type: "replace",
-      replaceWhat: option.gains || []
+      replaceWhat: option?.gains.flatMap(g => Array(g.count ?? 1).fill(g.name)) || []
     }
     const newOption = {...option,
       gains: upgrade.replaceWhat || []
