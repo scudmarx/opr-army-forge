@@ -1,9 +1,10 @@
 import { Dispatch } from "react";
 import { ArmyState, loadArmyData, setGameSystem } from "../data/armySlice";
-import { ISaveData, ISelectedUnit, IUpgradeGainsWeapon } from "../data/interfaces";
+import { ISaveData, ISelectedUnit, ISpecialRule, IUpgradeGainsWeapon } from "../data/interfaces";
 import { ListState, loadSavedList } from "../data/listSlice";
 import DataService from "./DataService";
 import { groupBy } from "./Helpers";
+import RulesService from "./RulesService";
 import UnitService from "./UnitService";
 import UpgradeService from "./UpgradeService";
 
@@ -144,7 +145,23 @@ export default class PersistenceService {
       // Sort rules alphabetically
       keys.sort((a, b) => a.localeCompare(b));
 
-      return keys.join(", ");
+      return keys.map(key => {
+
+        // This has been copy/pasted from RuleList.tsx - refactor!
+        const group: ISpecialRule[] = ruleGroups[key];
+        const rule = group[0];
+        const rating = (rule.rating == null || rule.rating == "") ? null : key === "Psychic"
+
+          // Take Highest
+          ? Math.max(...group.map(rule => parseInt(rule.rating)))
+          // Sum all occurrences
+          : group.reduce((total, next) => next.rating ? total + parseInt(next.rating) : total, 0);
+
+        // Rules with ratings do not show multiple instances
+        const count = rating > 0 ? 0 : group.length;
+
+        return (count > 1 ? `${count}x ` : "") + RulesService.displayName({ ...rule, rating: rule.rating ? rating.toString() : null });
+      }).join(", ");
     };
 
     // Unit name [size] Qua 3+ Def 4+ 123pts
