@@ -38,7 +38,7 @@ export default class DataService {
         
         //console.log(data);
         const afData = DataService.transformApiData(data, fallback);
-        console.log(afData);
+        //console.log(afData);
 
         callback(afData);
       })
@@ -166,7 +166,7 @@ export default class DataService {
               disable = true
             }
             if (disable) {
-              console.log("Disabled upgrade section:", u, section)
+              //console.log("Disabled upgrade section:", u, section)
               disabledSections.push(section.id);
             }
           }

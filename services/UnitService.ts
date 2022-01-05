@@ -33,7 +33,7 @@ export default class UnitService {
     let mods = UnitService.getModCount(unit, item)
     let modslots = UnitService.getModSlots(unit, item, slots)
     let availableslots = modslots - mods
-    if (unit.name != "TestUnit") console.log("Mod Slots:", availableslots, "being", modslots, "slots and", mods, "mods applied.")
+    //if (unit.name != "TestUnit") console.log("Mod Slots:", availableslots, "being", modslots, "slots and", mods, "mods applied.")
     return availableslots
   }
 
@@ -166,11 +166,11 @@ export default class UnitService {
    * @returns true if item was removed successfully, false if it was not (presumably because it wasn't there to remove).
    */
   public static removeItem(unit: ISelectedUnit, item: IUpgradeGains|string, allowedMods? : number) {
-    if (unit.name != "TestUnit") console.log("Removing", item, "from unit", JSON.parse(JSON.stringify(unit)))
+    //if (unit.name != "TestUnit") console.log("Removing", item, "from unit", JSON.parse(JSON.stringify(unit)))
     let count = (item as IUpgradeGains).count ?? 1
-    if ((UnitService.getEquipmentCount(unit, item) - ((allowedMods ?? true) ? UnitService.getModCount(unit, item) : 0)) < count) {
-      if (unit.name != "TestUnit") console.log(`Failed! Item not found!`)
-      if (unit.name != "TestUnit") console.log("Found : ", UnitService.getEquipmentCount(unit, item), "but wanted:", count)
+    if ((UnitService.getEquipmentCount(unit, (item as any)?.name ?? item) - ((allowedMods ?? true) ? UnitService.getModCount(unit, (item as any)?.name ?? item) : 0)) < count) {
+      //if (unit.name != "TestUnit") console.log(`Failed! Item not found!`)
+      //if (unit.name != "TestUnit") console.log("Found : ", UnitService.getEquipmentCount(unit, (item as any)?.name ?? item), "but wanted:", count)
       return false
     }
     if ((item as IUpgradeGainsItem).content) {
@@ -181,19 +181,19 @@ export default class UnitService {
       let contentReplaced = true;
       (item as IUpgradeGainsItem).content.forEach(gain => {
         if (!UnitService.removeItem(testunit, gain)) {
-          if (testunit.name != "TestUnit") console.log(`Failed! ${(item as IUpgradeGainsItem).name} is incomplete: ${gain.name} is missing!`)
+          //if (testunit.name != "TestUnit") console.log(`Failed! ${(item as IUpgradeGainsItem).name} is incomplete: ${gain.name} is missing!`)
           contentReplaced = false
         }
       });
       if (!contentReplaced) {
-        if (testunit.name != "TestUnit") console.log(`Leaving unit as: `, JSON.parse(JSON.stringify(unit)))
+        //if (testunit.name != "TestUnit") console.log(`Leaving unit as: `, JSON.parse(JSON.stringify(unit)))
         return false
       }
       unit.equipment = testunit.equipment.map(g => ({...g}))
     }
     
     for (let i = 0; i < count; count--) {
-      const currentItem = UnitService.getAllEquipment(unit).find(equ => {return EquipmentService.compareEquipment(equ, item) && equ.count >= 1})
+      const currentItem = UnitService.getAllEquipment(unit).findLast(equ => {return EquipmentService.compareEquipment(equ, (item as any)?.name ?? item) && equ.count >= 1})
       if (currentItem) {
         currentItem.count -= 1
       } else {
@@ -201,7 +201,7 @@ export default class UnitService {
         return false
       }
     }
-    if (unit.name != "TestUnit") console.log(`Success! ${(item as IUpgradeGainsItem).name || (item as any).label || item} removed from unit:`, JSON.parse(JSON.stringify(unit)))
+    //if (unit.name != "TestUnit") console.log(`Success! ${(item as IUpgradeGainsItem).name || (item as any).label || item} removed from unit:`, JSON.parse(JSON.stringify(unit)))
     return true
   }
 }

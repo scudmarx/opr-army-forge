@@ -136,7 +136,7 @@ export default class UpgradeService {
     // TODO: How to replace unit's built-in special rules. e.g. "Replace Psychic(1) with: Psychic(2)"
 
     const addItems = (addItemsUnit) => {
-      if (addItemsUnit.name != "TestUnit") console.log("Adding gains items...")
+      //if (addItemsUnit.name != "TestUnit") console.log("Adding gains items...")
       for (let gain of option.gains) {
         if (upgrade.type as any != "remove") UnitService.addItem(addItemsUnit, gain)
         else {
@@ -146,7 +146,7 @@ export default class UpgradeService {
           }
         }
       }
-      if (addItemsUnit.name != "TestUnit") console.log("Added", option.gains, "to unit:", JSON.parse(JSON.stringify(addItemsUnit)))
+      //if (addItemsUnit.name != "TestUnit") console.log("Added", option.gains, "to unit:", JSON.parse(JSON.stringify(addItemsUnit)))
     }
 
     // Remove the equipment which the upgrade is replacing, if possible. If not, return false and do nothing.
@@ -158,7 +158,7 @@ export default class UpgradeService {
     if (upgrade.replaceWhat) {
 
       const effect = ["replace", "remove"].includes(upgrade.type) ? UnitService.removeItem : (unit: ISelectedUnit, item: IUpgradeGains|string) : boolean => {
-        let upgradedItem = UnitService.getAllEquipment(unit).find(e => EquipmentService.compareEquipment(e, item) && (!e?.mods || e.mods < (e.count * upgrade.select)))
+        let upgradedItem = UnitService.getAllEquipment(unit).findLast(e => EquipmentService.compareEquipment(e, item) && (!e?.mods || e.mods < (e.count * upgrade.select)))
         if (upgradedItem) {
           if (!upgradedItem.mods) upgradedItem.mods = 0
           upgradedItem.mods++
@@ -183,23 +183,23 @@ export default class UpgradeService {
           let altreplaced = true
           let ogequipment = testunit.equipment.map(g => ({...g}))
           let ogupgrades = [...testunit.selectedUpgrades]
-          addItems(testunit)
-          if (testunit.name !== "TestUnit") console.log(i, " - Attempting to replace items:", upgrade.replaceWhat, JSON.parse(JSON.stringify(testunit)))
+          //if (testunit.name !== "TestUnit") console.log(i, " - Attempting to replace items:", upgrade.replaceWhat, JSON.parse(JSON.stringify(testunit)))
           for (let replace of alt) {
             if (!effect(testunit, replace as string)) {
-              if (testunit.name !== "TestUnit") console.log("Failure! Got to:", JSON.parse(JSON.stringify(testunit)), "but could not find: ", replace)
+              //if (testunit.name !== "TestUnit") console.log("Failure! Got to:", JSON.parse(JSON.stringify(testunit)), "but could not find: ", replace)
               altreplaced = false
               break
             }
           }
           if (altreplaced) {
-            if (testunit.name !== "TestUnit") console.log("Success!")
+            //if (testunit.name !== "TestUnit") console.log("Success!")
             replaced = true
+            addItems(testunit)
             break
           } else {
             testunit.equipment = ogequipment.map(g => ({...g}))
             testunit.selectedUpgrades = [...ogupgrades]
-            if (testunit.name !== "TestUnit") console.log("Unit rolled back to:", JSON.parse(JSON.stringify(testunit)))
+            //if (testunit.name !== "TestUnit") console.log("Unit rolled back to:", JSON.parse(JSON.stringify(testunit)))
           }
         }
 
@@ -216,7 +216,7 @@ export default class UpgradeService {
         }
       }
       if (count == 0) {
-        if (unit.name !== "TestUnit") console.log("Failed!", upgrade, JSON.parse(JSON.stringify(unit)))
+        //if (unit.name !== "TestUnit") console.log("Failed!", upgrade, JSON.parse(JSON.stringify(unit)))
         return false
       }
     } else {
@@ -224,15 +224,15 @@ export default class UpgradeService {
         addItems(unit)
       }
     }
-    if (unit.name !== "TestUnit") console.log("Unit upgraded!", JSON.parse(JSON.stringify(unit)))
+    //if (unit.name !== "TestUnit") console.log("Unit upgraded!", JSON.parse(JSON.stringify(unit)))
     return true;
   }
 
   public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-    console.log("Applying option", option, "from upgrade", upgrade, "to unit", JSON.parse(JSON.stringify(unit)))
+    //console.log("Applying option", option, "from upgrade", upgrade, "to unit", JSON.parse(JSON.stringify(unit)))
     if (UpgradeService.applyUpgradeOption(unit, upgrade, option)) {
       unit.selectedUpgrades.push(option)
-      console.log("apply succeeded:", JSON.parse(JSON.stringify(unit)))
+      //console.log("apply succeeded:", JSON.parse(JSON.stringify(unit)))
       return true;
     } else {
       return false
@@ -240,7 +240,7 @@ export default class UpgradeService {
   }
 
   public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-    console.log("Removing option", option, "of upgrade", upgrade, "from unit", JSON.parse(JSON.stringify(unit)))
+    //console.log("Removing option", option, "of upgrade", upgrade, "from unit", JSON.parse(JSON.stringify(unit)))
     // can't remove upgrades that aren't selected
     if (!UpgradeService.isApplied(unit, option)) {
       //console.log("Failed! Option not found!")
@@ -251,10 +251,10 @@ export default class UpgradeService {
     //console.log("Turned them into:", replaceOption, replaceUpgrade)
     if (UpgradeService.applyUpgradeOption(unit, replaceUpgrade, replaceOption)) {
       unit.selectedUpgrades.splice(_.findIndex(unit.selectedUpgrades, upg => upg.id == option.id), 1)
-      console.log("Success!")
+      //console.log("Success!")
       return true
     } else {
-      console.log("Somehow failed!")
+      //console.log("Somehow failed!")
       return false
     }
   }
