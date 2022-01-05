@@ -46,8 +46,6 @@ export interface IUpgrade {
   affects?: "any" | "all" | "unit" | "rule";
   select?: number;
   replaceWhat?: string[][];
-  model?: boolean;
-  attachment?: boolean;
   attachModel?: boolean;
   options?: IUpgradeOption[];
 }

@@ -284,7 +284,7 @@ export const listSlice = createSlice({
       let currentopt = UpgradeService.getApplied(unit, upgrade)
 
       const applied = () => UpgradeService.getApplied(unit, upgrade) == option
-      
+
       if (!applied()) {
         if (UpgradeService.remove(unit, upgrade, currentopt))
           UpgradeService.apply(unit, upgrade, option);
@@ -293,12 +293,6 @@ export const listSlice = createSlice({
         if (UpgradeService.apply(unit, upgrade, option)) 
           UpgradeService.remove(unit, upgrade, currentopt);
       }
-      
-      /*
-      for (let opt of upgrade.options)
-        if (opt && opt?.id != option?.id && UpgradeService.isApplied(unit, opt))
-          UpgradeService.remove(unit, upgrade, opt);
-      */
       
 
       state.points = UpgradeService.calculateListTotal(state.units);

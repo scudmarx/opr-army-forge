@@ -47,6 +47,8 @@ export default class DataService {
   public static transformApiData(input, fallback?: (err: string) => void) {
     try {
       const countRegex = /^(\d+)x\s/;
+      // TODO: Also tell the parser about the rules from the base game system, so it can tell the difference between
+      // "replace Cannon with" and "replace Flying with".
       const rules = input.specialRules.map(rule => rule.label)
 
       const upgradePackages: IUpgradePackage[] = input.upgradePackages.map(pkg => {

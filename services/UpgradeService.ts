@@ -51,11 +51,8 @@ export default class UpgradeService {
     if (upgrade.affects === "rule") return "check"
     if (typeof (upgrade.select) === "number") { 
       if (upgrade.select > 1) return "updown"
-      if (upgrade.type == "replace") {
-        if (upgrade.affects == "any") return "updown"
-        return "radio"
-      }
-      if (upgrade.affects != "any") return "radio"
+      if (upgrade.type == "replace" && upgrade.affects == "any") return "updown"
+      return "radio"
     }
     if (upgrade.affects == "any") return "updown"
     if (upgrade.type == "replace") {

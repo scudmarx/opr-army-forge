@@ -24,14 +24,14 @@ export default class DataParsingService {
         select: 1
       };
 
-    const addModelMatch = /Add one model ?(?:with)?/i.exec(text);
+    const addModelMatch = /^Add(?: up to)? (one|two|three|\d*) models?\s*(?:with)?:?$/i.exec(text);
     if (addModelMatch)
       return {
         id: nanoid(7),
         type: "upgrade",
         affects: "unit",
         attachModel: true,
-        select: 1
+        select: parseInt(addModelMatch[1]) || this.numberFromName(addModelMatch[1]?.replace("up to ", "")),
       };
 
     
@@ -96,6 +96,8 @@ export default class DataParsingService {
         result.affects = replaceWhat ? "all" : "unit"
       }
     }
+    if (!result.affects) delete result.affects
+    if (!result.select) delete result.select
 
     if (replaceWhat) {
       result.replaceWhat = replaceWhat
@@ -106,6 +108,7 @@ export default class DataParsingService {
             return match && parseInt(match[1]) ? Array(parseInt(match[1])).fill(pluralise.singular(match[2])) : [part]
           })))
     }
+    if (!result.replaceWhat) delete result.replaceWhat
 
     if (rules.includes(replaceWhat))
       result.affects == "rule"

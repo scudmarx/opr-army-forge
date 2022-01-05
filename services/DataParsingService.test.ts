@@ -14,24 +14,29 @@ Upgrade with any:
 
 test("Parse 'Upgrade with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade with:");
-  expect(upgrade).toMatchObject({
-    type: "upgrade"
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
+    type: "upgrade",
+    affects: "unit"
   });
 });
 
 test("Parse 'Upgrade with one:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade with one:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 1
   });
 });
 
 test("Parse 'Upgrade with any:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade with any:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
-    select: "any"
+    affects: "unit"
   });
 });
 
@@ -47,15 +52,18 @@ test("Parse 'Upgrade with up to 2:'", () => {
 test("Parse 'Upgrade with up to two:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade with up to two:");
   //console.log(upgrade);
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 2
   });
 });
 
 test("Parse 'Upgrade all models with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "all",
   });
@@ -63,7 +71,8 @@ test("Parse 'Upgrade all models with:'", () => {
 
 test("Parse 'Upgrade any model with one:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade any model with one:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "any",
     select: 1,
@@ -72,36 +81,38 @@ test("Parse 'Upgrade any model with one:'", () => {
 
 test("Parse 'Upgrade all models with any:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all models with any:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "all",
-    select: "any",
   });
 });
 
 test("Parse 'Upgrade one model with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade one model with:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
-    affects: 1,
+    affects: "unit"
   });
 });
 
 test("Parse 'Upgrade one model with one:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade one model with one:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
-    affects: 1,
+    affects: "unit",
     select: 1,
   });
 });
 
 test("Parse 'Upgrade one model with any:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade one model with any:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
-    affects: 1,
-    select: "any",
+    affects: "unit",
   });
 });
 
@@ -124,16 +135,17 @@ test("Parse 'Upgrade any model with one:'", () => {
 
 test("Parse 'Upgrade any model with any:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade any model with any:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "any",
-    select: "any",
   });
 });
 
 test("Parse 'Upgrade any model with up to two:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade any model with up to two:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "any",
     select: 2,
@@ -142,7 +154,8 @@ test("Parse 'Upgrade any model with up to two:'", () => {
 
 test("Parse 'Upgrade all weapons with one:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all weapons with one:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     select: 1,
     affects: "all",
@@ -152,7 +165,8 @@ test("Parse 'Upgrade all weapons with one:'", () => {
 
 test("Parse 'Upgrade all [weapons] with one:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all Crossbows with one:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     select: 1,
     affects: "all",
@@ -162,7 +176,8 @@ test("Parse 'Upgrade all [weapons] with one:'", () => {
 
 test("Parse 'Upgrade all weapons with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all weapons with:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "all",
     replaceWhat: [["weapons"]]
@@ -171,7 +186,8 @@ test("Parse 'Upgrade all weapons with:'", () => {
 
 test("Parse 'Upgrade all [weapons] with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade all Heavy Rifles with:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "all",
     replaceWhat: [["Heavy Rifles"]]
@@ -180,7 +196,8 @@ test("Parse 'Upgrade all [weapons] with:'", () => {
 
 test("Parse 'Upgrade any [weapons] with one:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade any Heavy Rifle with one:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "any",
     select: 1,
@@ -190,7 +207,8 @@ test("Parse 'Upgrade any [weapons] with one:'", () => {
 
 test("Parse 'Upgrade any [weapons] with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade any Heavy Rifle with:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "any",
     replaceWhat: [["Heavy Rifle"]]
@@ -199,8 +217,10 @@ test("Parse 'Upgrade any [weapons] with:'", () => {
 
 test("Parse 'Upgrade up to two models with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade up to two models with:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 2,
   });
 });
@@ -211,18 +231,21 @@ test("Parse 'Upgrade up to two models with:'", () => {
 
 test("Parse 'Take one [weapon] attachment:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Take one Heavy Rifle attachment:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 1,
-    attachment: true,
     replaceWhat: [["Heavy Rifle"]]
   });
 });
 
 test("Parse 'Add one model:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Add one model:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 1,
     attachModel: true
   });
@@ -230,8 +253,10 @@ test("Parse 'Add one model:'", () => {
 
 test("Parse 'Add one model with:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Add one model with:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 1,
     attachModel: true
   });
@@ -242,8 +267,7 @@ test("Parse 'One model may take one [weapon] attachment:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     select: 1,
-    affects: 1,
-    attachment: true,
+    affects: "unit",
     replaceWhat: [["Heavy Rifle"]]
   });
 });
@@ -254,7 +278,6 @@ test("Parse 'Any model may take one [weapon] attachment:'", () => {
     type: "upgrade",
     select: 1,
     affects: "any",
-    attachment: true,
     replaceWhat: [["Heavy Rifle"]]
   });
 });
@@ -265,17 +288,21 @@ test("Parse 'Any model may take one [weapon] attachment:'", () => {
 
 test("Parse 'Replace [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace Gauss Rifle:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
+    affects: "all",
     replaceWhat: [["Gauss Rifle"]]
   });
 });
 
 test("Parse 'Replace one [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace one CCW:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
-    affects: 1,
+    affects: "unit",
+    select: 1,
     replaceWhat: [["CCW"]]
   });
 });
@@ -284,8 +311,7 @@ test("Parse 'Replace 2x [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace 2x Armblades:");
   expect(upgrade).toMatchObject({
     type: "replace",
-    //affects: 2,
-    //replaceWhat: ["Armblades"]
+    affects: "all",
     replaceWhat: [["Armblade", "Armblade"]]
   });
 });
@@ -294,24 +320,25 @@ test("Parse 'Replace 2x [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace 2x Walker Fists:");
   expect(upgrade).toMatchObject({
     type: "replace",
-    //affects: 2,
-    //replaceWhat: ["Walker Fists"]
+    affects: "all",
     replaceWhat: [["Walker Fist", "Walker Fist"]]
   });
 });
 
 test("Parse 'Replace any [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace any Assault Rifle:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
-    affects: "any",
+    affects: "unit",
     replaceWhat: [["Assault Rifle"]]
   });
 });
 
 test("Parse 'Replace all [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace all Assault Rifles:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
     affects: "all",
     replaceWhat: [["Assault Rifles"]]
@@ -320,8 +347,10 @@ test("Parse 'Replace all [weapon]:'", () => {
 
 test("Parse 'Replace up to two [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace up to two Assault Rifles:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
+    affects: "unit",
     select: 2,
     replaceWhat: [["Assault Rifles"]]
   });
@@ -329,8 +358,10 @@ test("Parse 'Replace up to two [weapon]:'", () => {
 
 test("Parse 'Replace up to three [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace up to three Assault Rifles:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
+    affects: "unit",
     select: 3,
     replaceWhat: [["Assault Rifles"]]
   });
@@ -338,33 +369,39 @@ test("Parse 'Replace up to three [weapon]:'", () => {
 
 test("Parse 'Replace [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace Pistol and CCW:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
+    affects: "all",
     replaceWhat: [["Pistol", "CCW"]]
   });
 });
 
 test("Parse 'Replace one [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace one Pistol and CCW:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
-    affects: 1,
+    affects: "unit",
+    select: 1,
     replaceWhat: [["Pistol", "CCW"]]
   });
 });
 
 test("Parse 'Replace any [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace any Pistol and CCW:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
-    affects: "any",
+    affects: "unit",
     replaceWhat: [["Pistol", "CCW"]]
   });
 });
 
 test("Parse 'Replace all [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace all Pistols and CCWs:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
     affects: "all",
     replaceWhat: [["Pistols", "CCWs"]]
@@ -373,8 +410,10 @@ test("Parse 'Replace all [weapon] and [weapon]:'", () => {
 
 test("Parse 'Replace up to two [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace up to two Pistols and CCWs:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
+    affects: "unit",
     select: 2,
     replaceWhat: [["Pistols", "CCWs"]]
   });
@@ -382,19 +421,21 @@ test("Parse 'Replace up to two [weapon] and [weapon]:'", () => {
 
 test("Parse 'Any model may replace one Razor Claws:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("any model may replace one Razor Claws:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
     affects: "any",
     select: 1,
-    replaceWhat: [["Razor Claws"]],
-    attachment: false
+    replaceWhat: [["Razor Claws"]]
   });
 });
 
 test("Parse 'Replace [weapon], [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace Spear-Rifle, Spear and 2x Destroyers:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
+    affects: "all",
     //replaceWhat: ["Spear-Rifle", "Spear", "2x Destroyers"]
     replaceWhat: [["Spear-Rifle", "Spear", "Destroyer", "Destroyer"]]
   });
@@ -402,9 +443,11 @@ test("Parse 'Replace [weapon], [weapon] and [weapon]:'", () => {
 
 test("Parse 'Replace any [weapon1] and [weapon2] / [weapon3] and [weapon4]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace one R-Carbine and CCW / G-Rifle and CCW:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id;
+  expect(upgrade).toStrictEqual({
     type: "replace",
-    affects: 1,
+    affects: "unit",
+    select: 1,
     replaceWhat: [
       ["R-Carbine", "CCW"],
       ["G-Rifle", "CCW"],
@@ -418,8 +461,12 @@ test("Parse 'Replace any [weapon1] and [weapon2] / [weapon3] and [weapon4]:'", (
 
 test("Parse 'Upgrade [rule]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade Psychic(1):");
-  expect(upgrade).toMatchObject({
-    type: "upgradeRule",
+  delete upgrade.id;
+  // This will currently fail since only Army-specific rules are known to the parser at this time.
+  // Leaving failing test in as a goal for the reader. ;)
+  expect(upgrade).toStrictEqual({
+    type: "upgrade",
+    affects: "rule",
     replaceWhat: [["Psychic(1)"]]
   });
 });
@@ -430,10 +477,11 @@ test("Parse 'Upgrade [rule]:'", () => {
 
 test("Parse 'Take one [equipment]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Take one Carbine attachment:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 1,
-    attachment: true,
     replaceWhat: [
       ["Carbine"]
     ]
@@ -444,6 +492,9 @@ test("Parse 'Take one [equipment]:'", () => {
 test("Parse 'Take 1 [equipment]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Take 1 Carbine attachment:");
   delete upgrade.id
+  // "1 Carbine" is ambiguous between taking 1 [Carbine Attachment] and taking (any) [1 Carbine]-Attachment(s)
+  // To enable "replace 2x Prism Cannons with...", digits now parse as part of the replacements.  
+  /*
   expect(upgrade).toStrictEqual({
     type: "upgrade",
     affects: "unit",
@@ -452,6 +503,7 @@ test("Parse 'Take 1 [equipment]:'", () => {
       ["Carbine"]
     ]
   });
+  */
 });
 
 // No examples of this?
