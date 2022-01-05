@@ -1,7 +1,7 @@
 import { Radio } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { ISelectedUnit, IUpgrade, IUpgradeOption } from '../../../data/interfaces';
-import { applyUpgrade, removeUpgrade } from '../../../data/listSlice';
+import { applyUpgrade, removeUpgrade, switchUpgrade } from '../../../data/listSlice';
 import UpgradeService from '../../../services/UpgradeService';
 import hash from "object-hash";
 
@@ -18,7 +18,7 @@ export default function UpgradeRadio(
     if (!isApplied) {
       if (option)
       // Apply the selected upgrade
-      dispatch(applyUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
+      dispatch(switchUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
 
       // Remove any other selections from group
       for (let opt of upgrade.options)

@@ -13,10 +13,28 @@ export default class UnitService {
   }
 
   public static getEquipmentCount(unit: ISelectedUnit, item: IUpgradeGains|string): number {
-    return this.getAllEquipment(unit).filter(e => {
+    return UnitService.getAllEquipment(unit).filter(e => {
       //if (unit.name != "TestUnit") console.log(`comparing`, e, "to", item, ":", EquipmentService.compareEquipment(e, item))
-      return EquipmentService.compareEquipment(e, item)}
+      return EquipmentService.compareEquipment(e, item) && e.count}
       ).reduce((count, next) => {return count + next.count}, 0)
+  }
+  public static getModCount(unit: ISelectedUnit, item: IUpgradeGains|string): number {
+    return UnitService.getAllEquipment(unit).filter(e => {
+      //if (unit.name != "TestUnit") console.log(`comparing`, e, "to", item, ":", EquipmentService.compareEquipment(e, item))
+      return EquipmentService.compareEquipment(e, item) && e.mods}
+      ).reduce((count, next) => {return count + next.mods}, 0)
+  }
+  public static getModSlots(unit: ISelectedUnit, item: IUpgradeGains|string, slots: number): number {
+    let items = UnitService.getEquipmentCount(unit, item)
+    let availableslots = (items * slots)
+    return availableslots
+  }
+  public static getModSlotsAvailable(unit: ISelectedUnit, item: IUpgradeGains|string, slots: number): number {
+    let mods = UnitService.getModCount(unit, item)
+    let modslots = UnitService.getModSlots(unit, item, slots)
+    let availableslots = modslots - mods
+    if (unit.name != "TestUnit") console.log("Mod Slots:", availableslots, "being", modslots, "slots and", mods, "mods applied.")
+    return availableslots
   }
 
   public static getAllEquipment(unit: ISelectedUnit): IUpgradeGains[] {
@@ -147,10 +165,10 @@ export default class UnitService {
    * @param item The item to remove, either as an (IUpgradeGains) actual item or as a (string) search term to validate against.
    * @returns true if item was removed successfully, false if it was not (presumably because it wasn't there to remove).
    */
-  public static removeItem(unit: ISelectedUnit, item: IUpgradeGains|string) {
+  public static removeItem(unit: ISelectedUnit, item: IUpgradeGains|string, allowedMods? : number) {
     if (unit.name != "TestUnit") console.log("Removing", item, "from unit", JSON.parse(JSON.stringify(unit)))
     let count = (item as IUpgradeGains).count ?? 1
-    if (UnitService.getEquipmentCount(unit, item) < count) {
+    if ((UnitService.getEquipmentCount(unit, item) - ((allowedMods ?? true) ? UnitService.getModCount(unit, item) : 0)) < count) {
       if (unit.name != "TestUnit") console.log(`Failed! Item not found!`)
       if (unit.name != "TestUnit") console.log("Found : ", UnitService.getEquipmentCount(unit, item), "but wanted:", count)
       return false
@@ -183,7 +201,7 @@ export default class UnitService {
         return false
       }
     }
-    if (unit.name != "TestUnit") console.log(`Success! ${(item as IUpgradeGainsItem).name} removed from unit:`, JSON.parse(JSON.stringify(unit)))
+    if (unit.name != "TestUnit") console.log(`Success! ${(item as IUpgradeGainsItem).name || (item as any).label || item} removed from unit:`, JSON.parse(JSON.stringify(unit)))
     return true
   }
 }

@@ -274,7 +274,37 @@ export const listSlice = createSlice({
       state.points = UpgradeService.calculateListTotal(state.units);
 
       debounceSave(current(state));
-    }
+    },
+    switchUpgrade:(state, action: PayloadAction<{ unitId: string, upgrade: IUpgrade, option: IUpgradeOption }>) => {
+
+      // TODO: Refactor, break down, unit test...
+
+      const { unitId, upgrade, option } = action.payload;
+      const unit = state.units.filter(u => u.selectionId === unitId)[0];
+      let currentopt = UpgradeService.getApplied(unit, upgrade)
+
+      const applied = () => UpgradeService.getApplied(unit, upgrade) == option
+      
+      if (!applied()) {
+        if (UpgradeService.remove(unit, upgrade, currentopt))
+          UpgradeService.apply(unit, upgrade, option);
+      }
+      if (!applied()) {
+        if (UpgradeService.apply(unit, upgrade, option)) 
+          UpgradeService.remove(unit, upgrade, currentopt);
+      }
+      
+      /*
+      for (let opt of upgrade.options)
+        if (opt && opt?.id != option?.id && UpgradeService.isApplied(unit, opt))
+          UpgradeService.remove(unit, upgrade, opt);
+      */
+      
+
+      state.points = UpgradeService.calculateListTotal(state.units);
+
+      debounceSave(current(state));
+    },
 
   },
 })
@@ -286,6 +316,7 @@ export const {
   addUnit,
   applyUpgrade,
   removeUpgrade,
+  switchUpgrade,
   makeReal,
   addCombinedUnit,
   addUnits,

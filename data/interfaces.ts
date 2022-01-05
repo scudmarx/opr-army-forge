@@ -69,7 +69,7 @@ export interface IUpgradeGains {
   count: number;
   originalCount?: number;
   type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
-  dependencies?: string[];
+  mods?: number;
 }
 
 export interface IUpgradeGainsItem extends IUpgradeGains {

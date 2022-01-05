@@ -129,35 +129,41 @@ export default class UpgradeService {
     if (!upgrade.replaceWhat || upgrade.replaceWhat.length == 0) return -1
     return upgrade.replaceWhat.reduce((count, what) => {
       return count + what.reduce((max, what, index) => {
-        let itemcount = UnitService.getEquipmentCount(unit, what)
+        let itemcount = upgrade.type == "replace" ? UnitService.getEquipmentCount(unit, what) : UnitService.getModSlots(unit, what, upgrade.select ?? 1)
         return index == 0 ? itemcount : Math.min(max, itemcount)
       }, -1)
     }, 0)
   }
 
   public static applyUpgradeOption(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-    // Remove the equipment which the upgrade is replacing, if possible. If not, return false and do nothing.
-    let count = 1
-    if (upgrade.affects == "all" && !upgrade.replaceWhat) count = unit.size
-    if (upgrade.affects == "all" && upgrade.replaceWhat && upgrade.type != "replace") {
-      count = UpgradeService.getUpgradableCount(unit, upgrade)
-    }
 
     const addItems = (addItemsUnit) => {
       if (addItemsUnit.name != "TestUnit") console.log("Adding gains items...")
       for (let gain of option.gains) {
-        UnitService.addItem(addItemsUnit, gain)
+        if (upgrade.type as any != "remove") UnitService.addItem(addItemsUnit, gain)
+        else {
+          let upgradedItem = UnitService.getAllEquipment(addItemsUnit).find(e => EquipmentService.compareEquipment(e, gain) && e.mods)
+          if (upgradedItem) {
+            upgradedItem.mods--
+          }
+        }
       }
       if (addItemsUnit.name != "TestUnit") console.log("Added", option.gains, "to unit:", JSON.parse(JSON.stringify(addItemsUnit)))
     }
 
+    // Remove the equipment which the upgrade is replacing, if possible. If not, return false and do nothing.
+    let count = 1
+    if (upgrade.affects == "all" && !upgrade.replaceWhat) count = unit.size
+    if (upgrade.affects == "all" && upgrade.replaceWhat && !["replace", "remove"].includes(upgrade.type)) {
+      count = UpgradeService.getUpgradableCount(unit, upgrade)
+    }
     if (upgrade.replaceWhat) {
 
-      const effect = upgrade.type == "replace" ? UnitService.removeItem : (unit: ISelectedUnit, item: IUpgradeGains|string) : boolean => {
-        let upgradedItem = UnitService.getAllEquipment(unit).find(e => EquipmentService.compareEquipment(e, item) && (!e?.dependencies || e.dependencies.length < (e.count * upgrade.select)))
+      const effect = ["replace", "remove"].includes(upgrade.type) ? UnitService.removeItem : (unit: ISelectedUnit, item: IUpgradeGains|string) : boolean => {
+        let upgradedItem = UnitService.getAllEquipment(unit).find(e => EquipmentService.compareEquipment(e, item) && (!e?.mods || e.mods < (e.count * upgrade.select)))
         if (upgradedItem) {
-          if (!upgradedItem.dependencies) upgradedItem.dependencies = []
-          upgradedItem.dependencies.push(option.id)
+          if (!upgradedItem.mods) upgradedItem.mods = 0
+          upgradedItem.mods++
           return true
         } else {
           return false
@@ -228,6 +234,7 @@ export default class UpgradeService {
     console.log("Applying option", option, "from upgrade", upgrade, "to unit", JSON.parse(JSON.stringify(unit)))
     if (UpgradeService.applyUpgradeOption(unit, upgrade, option)) {
       unit.selectedUpgrades.push(option)
+      console.log("apply succeeded:", JSON.parse(JSON.stringify(unit)))
       return true;
     } else {
       return false
@@ -257,15 +264,15 @@ export default class UpgradeService {
   public static toRemoveMode(upgrade: IUpgrade, option: IUpgradeOption): [IUpgrade, IUpgradeOption] {
     option = upgrade?.options.find(opt => opt.id == option.id)
     option = option ?? {id: "1", gains: [], cost: 0, label: "option", type: "ArmyBookUpgradeOption"}
-    upgrade = upgrade ?? {id: "2", type: "replace", replaceWhat: [[]], options: [option]}
+    upgrade = upgrade ?? {id: "2", type: "remove" as any, replaceWhat: [[]], options: [option]}
     const newUpgrade = {...upgrade,
-      type: "replace" as any,
+      type: upgrade.type == "replace" ? "replace" : "remove" as any,
       replaceWhat: [option?.gains.flatMap(g => {
         return Array(g.count ?? 1).fill({...g, count: 1})
       }) || []]
     }
     const newOption = {...option,
-      gains: (upgrade.type == "replace" && upgrade.replaceWhat) ? upgrade.replaceWhat[0] as any : []
+      gains: upgrade.replaceWhat ? upgrade.replaceWhat[0] as any : []
     }
     return [newUpgrade, newOption]
   }

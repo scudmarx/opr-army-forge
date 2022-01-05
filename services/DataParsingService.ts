@@ -83,6 +83,7 @@ export default class DataParsingService {
       // Upgrade three with one means "upgrade one, do this up to three times"
       if (result.affects == 1 && result.type == "upgrade") {
         result.affects = (result.select && result.select != 1) ? "any" : "unit"
+        if (replaceWhat) result.select = 1
       } else {
         result.select = result.affects * (result.select ?? 1)
         result.affects = anyModelMatch ? "any" : "unit"
