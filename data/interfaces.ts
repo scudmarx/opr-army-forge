@@ -43,7 +43,7 @@ export interface IUpgrade {
   id: string;
   label?: string;
   type: "replace" | "upgrade";
-  affects?: "any" | "all" | "unit" | "rule";
+  affects: "any" | "all" | "unit";
   select?: number;
   replaceWhat?: string[][];
   attachModel?: boolean;

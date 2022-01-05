@@ -13,7 +13,7 @@ export default class DataParsingService {
     return null;
   }
 
-  public static parseUpgradeText(text: string, rules: string[] = []): IUpgrade {
+  public static parseUpgradeText(text: string): IUpgrade {
     // Start with some specific cases...
     const mountMatch = /mount on/i.test(text);
     if (mountMatch)
@@ -109,9 +109,6 @@ export default class DataParsingService {
           })))
     }
     if (!result.replaceWhat) delete result.replaceWhat
-
-    if (rules.includes(replaceWhat))
-      result.affects == "rule"
 
     //console.log(text, result)
     return result;

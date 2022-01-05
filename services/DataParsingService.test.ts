@@ -462,14 +462,12 @@ test("Parse 'Replace any [weapon1] and [weapon2] / [weapon3] and [weapon4]:'", (
 test("Parse 'Upgrade [rule]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade Psychic(1):");
   delete upgrade.id;
-  // This will currently fail since only Army-specific rules are known to the parser at this time.
-  // Leaving failing test in as a goal for the reader. ;)
   expect(upgrade).toStrictEqual({
     type: "upgrade",
-    affects: "rule",
+    affects: "all",
     replaceWhat: [["Psychic(1)"]]
   });
-});
+}); // there's no difference to the upgrade itself - working out how to replace Psychic(1) is for the implementation to work out, not the upgrade description.
 
 //#endregion
 

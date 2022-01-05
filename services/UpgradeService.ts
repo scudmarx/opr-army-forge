@@ -48,7 +48,6 @@ export default class UpgradeService {
   }
 
   public static getControlType(upgrade: IUpgrade): "check" | "radio" | "updown" {
-    if (upgrade.affects === "rule") return "check"
     if (typeof (upgrade.select) === "number") { 
       if (upgrade.select > 1) return "updown"
       if (upgrade.type == "replace" && upgrade.affects == "any") return "updown"
@@ -133,6 +132,8 @@ export default class UpgradeService {
   }
 
   public static applyUpgradeOption(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
+
+    // TODO: How to replace unit's built-in special rules. e.g. "Replace Psychic(1) with: Psychic(2)"
 
     const addItems = (addItemsUnit) => {
       if (addItemsUnit.name != "TestUnit") console.log("Adding gains items...")
@@ -261,7 +262,7 @@ export default class UpgradeService {
   public static toRemoveMode(upgrade: IUpgrade, option: IUpgradeOption): [IUpgrade, IUpgradeOption] {
     option = upgrade?.options.find(opt => opt.id == option.id)
     option = option ?? {id: "1", gains: [], cost: 0, label: "option", type: "ArmyBookUpgradeOption"}
-    upgrade = upgrade ?? {id: "2", type: "remove" as any, replaceWhat: [[]], options: [option]}
+    upgrade = upgrade ?? {id: "2", affects: "unit", type: "remove" as any, replaceWhat: [[]], options: [option]}
     const newUpgrade = {...upgrade,
       type: upgrade.type == "replace" ? "replace" : "remove" as any,
       replaceWhat: [option?.gains.flatMap(g => {
