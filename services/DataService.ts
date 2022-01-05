@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { IUnit, IUpgradeGains, IUpgradeGainsWeapon, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
+import { IUnit, IUpgrade, IUpgradeGains, IUpgradeGainsWeapon, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
@@ -38,7 +38,7 @@ export default class DataService {
         
         //console.log(data);
         const afData = DataService.transformApiData(data, fallback);
-        //console.log(afData);
+        console.log(afData);
 
         callback(afData);
       })
@@ -47,11 +47,13 @@ export default class DataService {
   public static transformApiData(input, fallback?: (err: string) => void) {
     try {
       const countRegex = /^(\d+)x\s/;
+      const rules = input.specialRules.map(rule => rule.label)
 
-      const upgradePackages: IUpgradePackage[] = input.upgradePackages.map(pkg => ({
+      const upgradePackages: IUpgradePackage[] = input.upgradePackages.map(pkg => {
+        return {
         ...pkg,
         sections: pkg.sections.map(section => {
-          const upgrade = DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":"));
+          const upgrade = DataParsingService.parseUpgradeText(section.label, rules);
 
           // Sanitise dodgy/old data
           delete section.select;
@@ -66,8 +68,6 @@ export default class DataService {
               const gains = [];
               // Iterate backwards through gains array so we can push new 
               if (opt.gains) for (let original of opt.gains) {
-                // Match "2x ", etc
-
                 // Replace "2x " in label/name of original gain
                 const gain = {
                   count: 1,
@@ -107,7 +107,7 @@ export default class DataService {
             })
           };
         })
-      }));
+      }});
 
       const units: IUnit[] = input.units.map((u: IUnit) => ({
         ...u,
@@ -130,15 +130,17 @@ export default class DataService {
           }
         }),
         disabledUpgradeSections: (() => {
-          const sections: { id: string, options: { gains: { name: string } }[], replaceWhat: string[] }[] = _.compact(u.upgrades
+          const sections: IUpgrade[] = _.compact(u.upgrades
             // Map all upgrade packages
             .map(uid => upgradePackages.find(pkg => pkg.uid === uid)))
             // Flatten down to array of all upgrade sections
             .reduce((sections, next) => sections.concat(next.sections), []);
 
           const allGains: IUpgradeGains[] = sections
-            .reduce((opts, next) => opts.concat(next.options), [])
-            .reduce((gains, next) => gains.concat(next.gains), [])
+            .flatMap(section => section.options)
+            .flatMap(option => option.gains)
+            //.reduce((opts, next) => opts.concat(next.options), [])
+            //.reduce((gains, next) => gains.concat(next.gains), [])
             //.map(gain => gain.name);
 
           const disabledSections: string[] = [];
@@ -146,21 +148,25 @@ export default class DataService {
           // For each section, check that the unit has access to the things it wants to replace
           // Only need sections that are replacing (or looking for) something
           for (let section of sections.filter(s => s.replaceWhat)) {
-            for (let what of section.replaceWhat) {
-
-              // Does equipment contain this thing?
-              const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipment({...e, label:e.label.replace(countRegex, "")}, what));
-              // If equipment, then we won't be disabling this section...
-              if (equipmentMatch)
-                continue;
-
-              // Do any upgrade sections contain this thing?
-              const upgradeGains = allGains.find(g => EquipmentService.compareEquipment(g, what));
-              // If upgrade gains found, don't disable this
-              if (upgradeGains)
-                continue;
-
-              // If neither was found, then disable this section
+            let disable = false
+            for (let alt of section.replaceWhat) {
+              let altworks = true
+              for (let what of alt) {
+                // Does equipment contain this thing?
+                const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipment({...e, label:e.label.replace(countRegex, "")}, what));
+                if (equipmentMatch) continue
+                // Do any upgrade sections contain this thing?
+                const upgradeGains = allGains.find(g => EquipmentService.compareEquipment(g, what));
+                if (upgradeGains) continue
+                altworks = false
+                break
+              }
+              if (altworks) {
+                break
+              }
+              disable = true
+            }
+            if (disable) {
               console.log("Disabled upgrade section:", u, section)
               disabledSections.push(section.id);
             }

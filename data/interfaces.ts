@@ -42,10 +42,10 @@ export interface ISelectedUnit extends IUnit {
 export interface IUpgrade {
   id: string;
   label?: string;
-  type: "replace" | "upgrade" | "upgradeRule" | "attachment";
-  affects?: "any" | "all" | number;
-  select?: string | number;
-  replaceWhat?: string[] | string[][];
+  type: "replace" | "upgrade";
+  affects?: "any" | "all" | "unit" | "rule";
+  select?: number;
+  replaceWhat?: string[][];
   model?: boolean;
   attachment?: boolean;
   attachModel?: boolean;

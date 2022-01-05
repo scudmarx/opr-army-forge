@@ -42,8 +42,8 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
           const count = grp.length;
           const equipmentSpecialRules = u
             .equipment
-            .filter(e => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
-            .reduce((value, e) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
+            .filter((e: any) => !e.attacks && e.specialRules?.length) // No weapons, and only equipment with special rules
+            .reduce((value, e: any) => value.concat(e.specialRules), []); // Flatten array of special rules arrays
 
           const specialRules = (u.specialRules || [])
             .concat(equipmentSpecialRules.map(DataParsingService.parseRule))
@@ -57,7 +57,7 @@ export default function ViewCards({ showPsychic, showFullRules, showPointCosts }
           const ruleKeys = Object.keys(ruleGroups);
           const toughness = toughFromUnit(u);
 
-          const weaponSpecialRules = _.compact(u.equipment.flatMap(e => e.attacks && e.specialRules)).map(r => r.name)
+          const weaponSpecialRules = _.compact(u.equipment.flatMap((e: any) => e.attacks && e.specialRules)).map(r => r.name)
           const upgradeWeaponsSpecialRules = UnitService.getAllUpgradeWeapons(u).flatMap(w => {
             if ((w as IUpgradeGainsMultiWeapon).profiles) return (w as IUpgradeGainsMultiWeapon).profiles.flatMap(w => w.specialRules)
             return (w as IUpgradeGainsWeapon).specialRules

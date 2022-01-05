@@ -33,7 +33,7 @@ export default class UpgradeService {
   }
 
   public static getApplied(unit: ISelectedUnit, upgrade: IUpgrade): IUpgradeOption {
-    return upgrade.options.find((opt) => {return this.isApplied(unit, opt)}) ?? null
+    return upgrade.options.find((opt) => {return UpgradeService.isApplied(unit, opt)}) ?? null
   }
 
   public static countApplied(unit: ISelectedUnit, option: IUpgradeOption): number {
@@ -48,41 +48,27 @@ export default class UpgradeService {
   }
 
   public static getControlType(upgrade: IUpgrade): "check" | "radio" | "updown" {
-    // "Upgrade Psychic(1):"
-    if (upgrade.type === "upgradeRule") {
-      return "check";
-    }
-
-    // (upgrade|replace) (_n_|one|any|all) [things] with (n)
-    if (typeof upgrade.affects == "number") {
-      if (upgrade.affects > 1) {
-        return "updown"
+    if (upgrade.affects === "rule") return "check"
+    if (typeof (upgrade.select) === "number") { 
+      if (upgrade.select > 1) return "updown"
+      if (upgrade.type == "replace") {
+        if (upgrade.affects == "any") return "updown"
+        return "radio"
       }
+      if (upgrade.affects != "any") return "radio"
     }
-    
-    // (upgrade|replace) (one|any|all) with (_n_)
-    if (typeof (upgrade.select) === "number") {
-      if (upgrade.select > 1) {
-        return "updown";
-      }
-      else {
-        return "radio";
-      }
+    if (upgrade.affects == "any") return "updown"
+    if (upgrade.type == "replace") {
+      if (upgrade.affects == "unit") return "updown"
+      return "radio"
     }
-    
-    if (upgrade.affects == "any") {
-      if (upgrade.type == "replace") return "updown"
-    }
-
-    if (upgrade.type == "replace") return "radio"
     return "check"
-
   }
 
   public static isValid(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption): boolean {
 
-    const controlType = this.getControlType(upgrade);
-    const appliedInGroup = upgrade.options.reduce((total, next) => total + this.countApplied(unit, next), 0);
+    const controlType = UpgradeService.getControlType(upgrade);
+    const appliedInGroup = upgrade.options.reduce((total, next) => total + UpgradeService.countApplied(unit, next), 0);
 
     // if it's a radio in a group with a selected option, it's valid if the currently selected upgrade can be removed
     if (controlType === "radio")
@@ -92,90 +78,155 @@ export default class UpgradeService {
     
     if (controlType === "check")
       if (unit.selectedUpgrades.includes(option))
-          return true;
+          return UpgradeService.isValidToRemove(unit, option)
 
-      //Upgrade 'all' doesn't require there to be any; means none if that's all there is.
-      if (upgrade.affects === "all") return true
-
-      // "UPGRADE"... Otherwise, count upgrades taken so far and check that not already taken max times...
-      // "upgrade with" means one.
-      var available = 1
-
-      // "upgrade any with" means once per model in the unit
-      if (upgrade.affects == "any") available = unit.size
-
-      // "upgrade (any|x) [things] with" means count those things, that's our limit
-      if (upgrade.replaceWhat) {
-        (upgrade.replaceWhat as string[]).forEach((what, i) => {
-          let thisavailable = UnitService.getEquipmentCount(unit, what)
-          //console.log(unit, what, thisavailable)
-          available = i==0 ? thisavailable : Math.min(available, thisavailable)
-        })
-      }
-
-      // Upgrade [(any)?] with n:
-      if (typeof (upgrade.select) === "number") {
-        available *= upgrade.select
-      }
-      if (upgrade.select === "any") {
-        available *= upgrade.options.length
-      }
-
-      if (upgrade.type == "upgrade" && appliedInGroup >= available) {
-        return false;
-      }
-
-      // for replacing, check if the option can actually be taken (i.e. replaced items are available)
-      if (upgrade.type == "replace") {
-        const testunit = {...unit,
-          equipment: unit.equipment.map(g => ({...g})),
-          selectedUpgrades: [...unit.selectedUpgrades]
-        }
-        if (!this.applyUpgradeOption(testunit, upgrade, option)) return false
-      }
-
-    return true;
-  };
-
-  public static isValidToRemove(unit: ISelectedUnit, option: IUpgradeOption): boolean {
-    const [removeUpgrade, removeOption] = this.toRemoveMode(null, option)
-    return this.isValid(unit, removeUpgrade, removeOption)
-  }
-
-  public static applyUpgradeOption(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-    // Remove the equipment which the upgrade is replacing, if possible. If not, return false and do nothing.
-    if (upgrade.type == "replace") {
-      const testunit = {
-        ...unit,
-        selectionId: "dummy",
+    //Upgrade 'all' doesn't require there to be any; means none if that's all there is.
+    //if (upgrade.affects === "all") return true
+    
+    // for 'replace [thing]' upgrades, test if the option can actually be taken (i.e. replaced items are available)
+    if (upgrade.type == "replace" && upgrade.replaceWhat) {
+      const testunit = {...unit,
+        name: "TestUnit",
         equipment: unit.equipment.map(g => ({...g})),
-        selectedUpgrade: [...unit.selectedUpgrades]
+        selectedUpgrades: [...unit.selectedUpgrades]
       }
-      let replaced = true
-      for (let replace of upgrade.replaceWhat) {
-        if (!UnitService.removeItem(testunit, replace as string)) {
-          replaced = false
-        }
-      }
-      if (replaced) {
-        unit.equipment = testunit.equipment
-        unit.selectedUpgrades = testunit.selectedUpgrades
-      } else {
+      if (!UpgradeService.applyUpgradeOption(testunit, upgrade, option)){
         return false
       }
     }
 
-    // Add the option's granted items to the unit.
-    for (let gain of option.gains) {
-      UnitService.addItem(unit, gain)
+    // "UPGRADE"... Otherwise, count upgrades taken so far and check that not already taken max times...
+    // "upgrade all" or "upgrade [unit]" means one of those available.
+    let available = upgrade.select
+
+    if (upgrade.affects == "any") {
+      available = unit.size * (available ?? 1)
+    } else {
+      if (!upgrade.select) return true
     }
 
+    if (upgrade.replaceWhat) {
+      if (upgrade.affects == "all") {
+        return true
+      } else {
+        let availablereplaces = UpgradeService.getUpgradableCount(unit, upgrade) + (upgrade.type == "replace" ? appliedInGroup : 0)
+        available = Math.min(availablereplaces, available ?? availablereplaces)
+      }
+    }
+
+    return appliedInGroup < available
+  };
+
+  public static isValidToRemove(unit: ISelectedUnit, option: IUpgradeOption): boolean {
+    const [removeUpgrade, removeOption] = UpgradeService.toRemoveMode(null, option)
+    return UpgradeService.isValid(unit, removeUpgrade, removeOption)
+  }
+
+  /**
+   * Calculates the total number of times an upgrade could be taken given the current equipment a unit has.
+   */
+  public static getUpgradableCount(unit: ISelectedUnit, upgrade: IUpgrade): number {
+    if (!upgrade.replaceWhat || upgrade.replaceWhat.length == 0) return -1
+    return upgrade.replaceWhat.reduce((count, what) => {
+      return count + what.reduce((max, what, index) => {
+        let itemcount = UnitService.getEquipmentCount(unit, what)
+        return index == 0 ? itemcount : Math.min(max, itemcount)
+      }, -1)
+    }, 0)
+  }
+
+  public static applyUpgradeOption(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
+    // Remove the equipment which the upgrade is replacing, if possible. If not, return false and do nothing.
+    let count = 1
+    if (upgrade.affects == "all" && !upgrade.replaceWhat) count = unit.size
+    if (upgrade.affects == "all" && upgrade.replaceWhat && upgrade.type != "replace") {
+      count = UpgradeService.getUpgradableCount(unit, upgrade)
+    }
+
+    const addItems = (addItemsUnit) => {
+      if (addItemsUnit.name != "TestUnit") console.log("Adding gains items...")
+      for (let gain of option.gains) {
+        UnitService.addItem(addItemsUnit, gain)
+      }
+      if (addItemsUnit.name != "TestUnit") console.log("Added", option.gains, "to unit:", JSON.parse(JSON.stringify(addItemsUnit)))
+    }
+
+    if (upgrade.replaceWhat) {
+
+      const effect = upgrade.type == "replace" ? UnitService.removeItem : (unit: ISelectedUnit, item: IUpgradeGains|string) : boolean => {
+        let upgradedItem = UnitService.getAllEquipment(unit).find(e => EquipmentService.compareEquipment(e, item) && (!e?.dependencies || e.dependencies.length < (e.count * upgrade.select)))
+        if (upgradedItem) {
+          if (!upgradedItem.dependencies) upgradedItem.dependencies = []
+          upgradedItem.dependencies.push(option.id)
+          return true
+        } else {
+          return false
+        }        
+      }
+
+      const testunit = {
+        ...unit,
+        selectionId: "dummy",
+        equipment: unit.equipment.map(g => ({...g})),
+        selectedUpgrades: [...unit.selectedUpgrades]
+      }
+
+      count = 0
+      for (let i = 0; i <= 255; i++) {
+        if (i == 255) throw(new Error("Replacing item got stuck in a loop!"))
+        let replaced = false
+        for (let alt of upgrade.replaceWhat) {
+          let altreplaced = true
+          let ogequipment = testunit.equipment.map(g => ({...g}))
+          let ogupgrades = [...testunit.selectedUpgrades]
+          addItems(testunit)
+          if (testunit.name !== "TestUnit") console.log(i, " - Attempting to replace items:", upgrade.replaceWhat, JSON.parse(JSON.stringify(testunit)))
+          for (let replace of alt) {
+            if (!effect(testunit, replace as string)) {
+              if (testunit.name !== "TestUnit") console.log("Failure! Got to:", JSON.parse(JSON.stringify(testunit)), "but could not find: ", replace)
+              altreplaced = false
+              break
+            }
+          }
+          if (altreplaced) {
+            if (testunit.name !== "TestUnit") console.log("Success!")
+            replaced = true
+            break
+          } else {
+            testunit.equipment = ogequipment.map(g => ({...g}))
+            testunit.selectedUpgrades = [...ogupgrades]
+            if (testunit.name !== "TestUnit") console.log("Unit rolled back to:", JSON.parse(JSON.stringify(testunit)))
+          }
+        }
+
+        if (replaced) {
+          count++
+          unit.equipment = testunit.equipment.map(g => ({...g}))
+          unit.selectedUpgrades = [...testunit.selectedUpgrades]
+          if (upgrade.affects != "all") {
+            break
+          }
+          replaced = false
+        } else {
+          break
+        }
+      }
+      if (count == 0) {
+        if (unit.name !== "TestUnit") console.log("Failed!", upgrade, JSON.parse(JSON.stringify(unit)))
+        return false
+      }
+    } else {
+      for (let i = 0; i < count; i++) {
+        addItems(unit)
+      }
+    }
+    if (unit.name !== "TestUnit") console.log("Unit upgraded!", JSON.parse(JSON.stringify(unit)))
     return true;
   }
 
   public static apply(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-    console.log("Applying option", option, "from upgrade", upgrade, "to unit", unit)
-    if (this.applyUpgradeOption(unit, upgrade, option)) {
+    console.log("Applying option", option, "from upgrade", upgrade, "to unit", JSON.parse(JSON.stringify(unit)))
+    if (UpgradeService.applyUpgradeOption(unit, upgrade, option)) {
       unit.selectedUpgrades.push(option)
       return true;
     } else {
@@ -184,33 +235,37 @@ export default class UpgradeService {
   }
 
   public static remove(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-    //console.log("Removing option", option, "of upgrade", upgrade, "from unit", unit)
+    console.log("Removing option", option, "of upgrade", upgrade, "from unit", JSON.parse(JSON.stringify(unit)))
     // can't remove upgrades that aren't selected
-    if (!this.isApplied(unit, option)) {
+    if (!UpgradeService.isApplied(unit, option)) {
       //console.log("Failed! Option not found!")
       return false
     }
     
-    let [replaceUpgrade, replaceOption] = this.toRemoveMode(upgrade, option)
-    if (this.applyUpgradeOption(unit, replaceUpgrade, replaceOption)) {
+    let [replaceUpgrade, replaceOption] = UpgradeService.toRemoveMode(upgrade, option)
+    //console.log("Turned them into:", replaceOption, replaceUpgrade)
+    if (UpgradeService.applyUpgradeOption(unit, replaceUpgrade, replaceOption)) {
       unit.selectedUpgrades.splice(_.findIndex(unit.selectedUpgrades, upg => upg.id == option.id), 1)
-      //console.log("Success!")
+      console.log("Success!")
       return true
     } else {
-      //console.log("Somehow failed!")
+      console.log("Somehow failed!")
       return false
     }
   }
 
-  public static toRemoveMode(upgrade, option) {
-    option = option ?? {id: 1, gains: []}
-    upgrade = upgrade ?? {replaceWhat: [], options: [option.id]}
+  public static toRemoveMode(upgrade: IUpgrade, option: IUpgradeOption): [IUpgrade, IUpgradeOption] {
+    option = upgrade?.options.find(opt => opt.id == option.id)
+    option = option ?? {id: "1", gains: [], cost: 0, label: "option", type: "ArmyBookUpgradeOption"}
+    upgrade = upgrade ?? {id: "2", type: "replace", replaceWhat: [[]], options: [option]}
     const newUpgrade = {...upgrade,
-      type: "replace",
-      replaceWhat: option?.gains.flatMap(g => Array(g.count ?? 1).fill(g.name)) || []
+      type: "replace" as any,
+      replaceWhat: [option?.gains.flatMap(g => {
+        return Array(g.count ?? 1).fill({...g, count: 1})
+      }) || []]
     }
     const newOption = {...option,
-      gains: upgrade.replaceWhat || []
+      gains: (upgrade.type == "replace" && upgrade.replaceWhat) ? upgrade.replaceWhat[0] as any : []
     }
     return [newUpgrade, newOption]
   }

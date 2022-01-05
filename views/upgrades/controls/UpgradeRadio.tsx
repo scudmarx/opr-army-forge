@@ -16,15 +16,14 @@ export default function UpgradeRadio(
   const handleRadio = (option: IUpgradeOption | null) => {
 
     if (!isApplied) {
+      if (option)
+      // Apply the selected upgrade
+      dispatch(applyUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
+
       // Remove any other selections from group
       for (let opt of upgrade.options)
-        if (UpgradeService.isApplied(selectedUnit, opt))
+        if (opt && opt?.id != option?.id && UpgradeService.isApplied(selectedUnit, opt))
           dispatch(removeUpgrade({ unitId: selectedUnit.selectionId, upgrade, option: opt }));
-
-      if (option)
-        // Apply the selected upgrade
-        dispatch(applyUpgrade({ unitId: selectedUnit.selectionId, upgrade, option }));
-
     }
   };
 

@@ -109,7 +109,7 @@ export default function UpgradeTest() {
         {
           upgrades.map((u, index) => {
             const { label, ...upgrade } = u;
-            const display = UpgradeService.displayName(upgrade, null);
+            const display = upgrade.label
             if (label === display)
               return;
             return (

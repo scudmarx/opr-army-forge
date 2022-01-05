@@ -58,7 +58,6 @@ test("Parse 'Upgrade all models with:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     affects: "all",
-    model: true
   });
 });
 
@@ -68,7 +67,6 @@ test("Parse 'Upgrade any model with one:'", () => {
     type: "upgrade",
     affects: "any",
     select: 1,
-    model: true
   });
 });
 
@@ -78,7 +76,6 @@ test("Parse 'Upgrade all models with any:'", () => {
     type: "upgrade",
     affects: "all",
     select: "any",
-    model: true
   });
 });
 
@@ -87,7 +84,6 @@ test("Parse 'Upgrade one model with:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     affects: 1,
-    model: true
   });
 });
 
@@ -97,7 +93,6 @@ test("Parse 'Upgrade one model with one:'", () => {
     type: "upgrade",
     affects: 1,
     select: 1,
-    model: true
   });
 });
 
@@ -107,7 +102,6 @@ test("Parse 'Upgrade one model with any:'", () => {
     type: "upgrade",
     affects: 1,
     select: "any",
-    model: true
   });
 });
 
@@ -116,7 +110,6 @@ test("Parse 'Upgrade any model with:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     affects: "any",
-    model: true
   });
 });
 
@@ -126,7 +119,6 @@ test("Parse 'Upgrade any model with one:'", () => {
     type: "upgrade",
     affects: "any",
     select: 1,
-    model: true
   });
 });
 
@@ -136,7 +128,6 @@ test("Parse 'Upgrade any model with any:'", () => {
     type: "upgrade",
     affects: "any",
     select: "any",
-    model: true
   });
 });
 
@@ -146,7 +137,6 @@ test("Parse 'Upgrade any model with up to two:'", () => {
     type: "upgrade",
     affects: "any",
     select: 2,
-    model: true
   });
 });
 
@@ -156,7 +146,7 @@ test("Parse 'Upgrade all weapons with one:'", () => {
     type: "upgrade",
     select: 1,
     affects: "all",
-    replaceWhat: ["weapons"]
+    replaceWhat: [["weapons"]]
   });
 });
 
@@ -166,7 +156,7 @@ test("Parse 'Upgrade all [weapons] with one:'", () => {
     type: "upgrade",
     select: 1,
     affects: "all",
-    replaceWhat: ["Crossbows"]
+    replaceWhat: [["Crossbows"]]
   });
 });
 
@@ -175,7 +165,7 @@ test("Parse 'Upgrade all weapons with:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     affects: "all",
-    replaceWhat: ["weapons"]
+    replaceWhat: [["weapons"]]
   });
 });
 
@@ -184,7 +174,7 @@ test("Parse 'Upgrade all [weapons] with:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     affects: "all",
-    replaceWhat: ["Heavy Rifles"]
+    replaceWhat: [["Heavy Rifles"]]
   });
 });
 
@@ -194,7 +184,7 @@ test("Parse 'Upgrade any [weapons] with one:'", () => {
     type: "upgrade",
     affects: "any",
     select: 1,
-    replaceWhat: ["Heavy Rifle"]
+    replaceWhat: [["Heavy Rifle"]]
   });
 });
 
@@ -203,7 +193,7 @@ test("Parse 'Upgrade any [weapons] with:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     affects: "any",
-    replaceWhat: ["Heavy Rifle"]
+    replaceWhat: [["Heavy Rifle"]]
   });
 });
 
@@ -212,7 +202,6 @@ test("Parse 'Upgrade up to two models with:'", () => {
   expect(upgrade).toMatchObject({
     type: "upgrade",
     select: 2,
-    model: true
   });
 });
 
@@ -226,7 +215,7 @@ test("Parse 'Take one [weapon] attachment:'", () => {
     type: "upgrade",
     select: 1,
     attachment: true,
-    replaceWhat: ["Heavy Rifle"]
+    replaceWhat: [["Heavy Rifle"]]
   });
 });
 
@@ -254,9 +243,8 @@ test("Parse 'One model may take one [weapon] attachment:'", () => {
     type: "upgrade",
     select: 1,
     affects: 1,
-    model: true,
     attachment: true,
-    replaceWhat: ["Heavy Rifle"]
+    replaceWhat: [["Heavy Rifle"]]
   });
 });
 
@@ -266,9 +254,8 @@ test("Parse 'Any model may take one [weapon] attachment:'", () => {
     type: "upgrade",
     select: 1,
     affects: "any",
-    model: true,
     attachment: true,
-    replaceWhat: ["Heavy Rifle"]
+    replaceWhat: [["Heavy Rifle"]]
   });
 });
 
@@ -280,7 +267,7 @@ test("Parse 'Replace [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace Gauss Rifle:");
   expect(upgrade).toMatchObject({
     type: "replace",
-    replaceWhat: ["Gauss Rifle"]
+    replaceWhat: [["Gauss Rifle"]]
   });
 });
 
@@ -289,7 +276,7 @@ test("Parse 'Replace one [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     affects: 1,
-    replaceWhat: ["CCW"]
+    replaceWhat: [["CCW"]]
   });
 });
 
@@ -297,10 +284,9 @@ test("Parse 'Replace 2x [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace 2x Armblades:");
   expect(upgrade).toMatchObject({
     type: "replace",
-    affects: 2,
-    replaceWhat: ["Armblades"]
-    // affects: undefined,
-    // replaceWhat: ["Armblade", "Armblade"]
+    //affects: 2,
+    //replaceWhat: ["Armblades"]
+    replaceWhat: [["Armblade", "Armblade"]]
   });
 });
 
@@ -308,10 +294,9 @@ test("Parse 'Replace 2x [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace 2x Walker Fists:");
   expect(upgrade).toMatchObject({
     type: "replace",
-    affects: 2,
-    replaceWhat: ["Walker Fists"]
-    // affects: undefined,
-    // replaceWhat: ["Walker Fist", "Walker Fist"]
+    //affects: 2,
+    //replaceWhat: ["Walker Fists"]
+    replaceWhat: [["Walker Fist", "Walker Fist"]]
   });
 });
 
@@ -320,7 +305,7 @@ test("Parse 'Replace any [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     affects: "any",
-    replaceWhat: ["Assault Rifle"]
+    replaceWhat: [["Assault Rifle"]]
   });
 });
 
@@ -329,7 +314,7 @@ test("Parse 'Replace all [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     affects: "all",
-    replaceWhat: ["Assault Rifles"]
+    replaceWhat: [["Assault Rifles"]]
   });
 });
 
@@ -338,7 +323,7 @@ test("Parse 'Replace up to two [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     select: 2,
-    replaceWhat: ["Assault Rifles"]
+    replaceWhat: [["Assault Rifles"]]
   });
 });
 
@@ -347,7 +332,7 @@ test("Parse 'Replace up to three [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     select: 3,
-    replaceWhat: ["Assault Rifles"]
+    replaceWhat: [["Assault Rifles"]]
   });
 });
 
@@ -355,7 +340,7 @@ test("Parse 'Replace [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace Pistol and CCW:");
   expect(upgrade).toMatchObject({
     type: "replace",
-    replaceWhat: ["Pistol", "CCW"]
+    replaceWhat: [["Pistol", "CCW"]]
   });
 });
 
@@ -364,7 +349,7 @@ test("Parse 'Replace one [weapon] and [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     affects: 1,
-    replaceWhat: ["Pistol", "CCW"]
+    replaceWhat: [["Pistol", "CCW"]]
   });
 });
 
@@ -373,7 +358,7 @@ test("Parse 'Replace any [weapon] and [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     affects: "any",
-    replaceWhat: ["Pistol", "CCW"]
+    replaceWhat: [["Pistol", "CCW"]]
   });
 });
 
@@ -382,7 +367,7 @@ test("Parse 'Replace all [weapon] and [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     affects: "all",
-    replaceWhat: ["Pistols", "CCWs"]
+    replaceWhat: [["Pistols", "CCWs"]]
   });
 });
 
@@ -391,7 +376,7 @@ test("Parse 'Replace up to two [weapon] and [weapon]:'", () => {
   expect(upgrade).toMatchObject({
     type: "replace",
     select: 2,
-    replaceWhat: ["Pistols", "CCWs"]
+    replaceWhat: [["Pistols", "CCWs"]]
   });
 });
 
@@ -401,8 +386,7 @@ test("Parse 'Any model may replace one Razor Claws:'", () => {
     type: "replace",
     affects: "any",
     select: 1,
-    replaceWhat: ["Razor Claws"],
-    model: true,
+    replaceWhat: [["Razor Claws"]],
     attachment: false
   });
 });
@@ -411,8 +395,8 @@ test("Parse 'Replace [weapon], [weapon] and [weapon]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Replace Spear-Rifle, Spear and 2x Destroyers:");
   expect(upgrade).toMatchObject({
     type: "replace",
-    replaceWhat: ["Spear-Rifle", "Spear", "2x Destroyers"]
-    //replaceWhat: ["Spear-Rifle", "Spear", "Destroyer", "Destroyer"]
+    //replaceWhat: ["Spear-Rifle", "Spear", "2x Destroyers"]
+    replaceWhat: [["Spear-Rifle", "Spear", "Destroyer", "Destroyer"]]
   });
 });
 
@@ -436,7 +420,7 @@ test("Parse 'Upgrade [rule]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Upgrade Psychic(1):");
   expect(upgrade).toMatchObject({
     type: "upgradeRule",
-    replaceWhat: ["Psychic(1)"]
+    replaceWhat: [["Psychic(1)"]]
   });
 });
 
@@ -451,7 +435,7 @@ test("Parse 'Take one [equipment]:'", () => {
     select: 1,
     attachment: true,
     replaceWhat: [
-      "Carbine"
+      ["Carbine"]
     ]
   });
 });
@@ -459,12 +443,13 @@ test("Parse 'Take one [equipment]:'", () => {
 // No examples of this?
 test("Parse 'Take 1 [equipment]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Take 1 Carbine attachment:");
-  expect(upgrade).toMatchObject({
+  delete upgrade.id
+  expect(upgrade).toStrictEqual({
     type: "upgrade",
+    affects: "unit",
     select: 1,
-    attachment: true,
     replaceWhat: [
-      "Carbine"
+      ["Carbine"]
     ]
   });
 });
@@ -474,10 +459,9 @@ test("Parse 'Take any [equipment]:'", () => {
   const upgrade = DataParsingService.parseUpgradeText("Take any Carbine attachments:");
   expect(upgrade).toMatchObject({
     type: "upgrade",
-    select: "any",
-    attachment: true,
+    affects: "any",
     replaceWhat: [
-      "Carbine"
+      ["Carbine"]
     ]
   });
 });
@@ -509,6 +493,7 @@ test("Parse simple melee weapon", () => {
 
   expect(e).toStrictEqual({
     label: "Sword",
+    count: 1,
     attacks: 3,
     specialRules: []
   });
@@ -521,6 +506,7 @@ test("Parse simple melee weapon", () => {
     label: "Razor Claws (A3)",
     name: "Razor Claws",
     cost: 0,
+    count: 1,
     attacks: 3,
     specialRules: [],
     type: "ArmyBookWeapon"
@@ -532,6 +518,7 @@ test("Parse melee weapon with rules", () => {
 
   expect(e).toStrictEqual({
     label: "Sword",
+    count: 1,
     attacks: 3,
     specialRules: ["Rending", "AP(1)"]
   });
@@ -555,6 +542,7 @@ test("Parse melee weapon with rules and cost", () => {
     label: "Sword (A3, Rending, AP(1))",
     name: "Sword",
     cost: 5,
+    count: 1,
     attacks: 3,
     specialRules: [
       {
@@ -583,6 +571,7 @@ test("Parse Free weapon", () => {
     label: "Sword (A3, AP(1))",
     name: "Sword",
     cost: 0,
+    count: 1,
     attacks: 3,
     specialRules: [
       {
@@ -602,6 +591,7 @@ test("Parse simple ranged weapon", () => {
 
   expect(e).toStrictEqual({
     label: "Pistol",
+    count: 1,
     range: 6,
     attacks: 3,
     specialRules: []
@@ -613,6 +603,7 @@ test("Parse ranged weapon with rules", () => {
 
   expect(e).toStrictEqual({
     label: "Pistol",
+    count: 1,
     range: 6,
     attacks: 3,
     specialRules: ["Rending", "AP(1)"]
@@ -625,11 +616,13 @@ test("Parse standard rule", () => {
   expect(e).toStrictEqual({
     label: "Field Radio",
     cost: 5,
+    count: 1,
     gains: [
       {
         key: "field-radio",
         name: "Field Radio",
         label: "Field Radio",
+        count: 1,
         rating: "",
         type: "ArmyBookRule", modify: false
       }
@@ -643,11 +636,13 @@ test("Parse standard rule", () => {
   expect(e).toStrictEqual({
     label: "Gloom-Protocol",
     cost: 5,
+    count: 1,
     gains: [
       {
         key: "gloom-protocol",
         name: "Gloom-Protocol",
         label: "Gloom-Protocol",
+        count: 1,
         rating: "",
         type: "ArmyBookRule", modify: false
       }
@@ -661,11 +656,13 @@ test("Parse standard rule", () => {
   expect(e).toStrictEqual({
     label: "SHOOT!",
     cost: 15,
+    count: 1,
     gains: [
       {
         key: "shoot!",
         name: "SHOOT!",
         label: "SHOOT!",
+        count: 1,
         rating: "",
         type: "ArmyBookRule", modify: false
       }
@@ -679,10 +676,12 @@ test("Parse parameterised rule", () => {
   expect(e).toStrictEqual({
     "label": "Psychic(2)",
     "cost": 15,
+    count: 1,
     "gains": [
       {
         "key": "psychic",
         "name": "Psychic",
+        count: 1,
         "type": "ArmyBookRule",
         "label": "Psychic(2)",
         "rating": "2",
@@ -698,10 +697,12 @@ test("Parse weapon pairing with non-standard rules", () => {
   expect(e).toStrictEqual({
     label: "Light Shields (Defense +1 in melee) and Shield Bash (A2)",
     cost: 0,
+    count: 1,
     gains: [
       {
         label: "Light Shields (Defense +1 in melee)",
         name: "Light Shields",
+        count: 1,
         content: [
           {
             key: "defense",
@@ -717,6 +718,7 @@ test("Parse weapon pairing with non-standard rules", () => {
       {
         label: "Shield Bash (A2)",
         name: "Shield Bash",
+        count: 1,
         attacks: 2,
         specialRules: [],
         type: "ArmyBookWeapon"
@@ -731,10 +733,12 @@ test("Parse weapon pairing", () => {
   expect(e).toStrictEqual({
     label: "Plasma Pistol (12”, A1, AP(2)) and CCW (A2)",
     cost: 5,
+    count: 1,
     gains: [
       {
         label: "Plasma Pistol (12”, A1, AP(2))",
         name: "Plasma Pistol",
+        count: 1,
         range: 12,
         attacks: 1,
         specialRules: [
@@ -752,6 +756,7 @@ test("Parse weapon pairing", () => {
       {
         label: "CCW (A2)",
         name: "CCW",
+        count: 1,
         attacks: 2,
         specialRules: [],
         type: "ArmyBookWeapon"
@@ -769,14 +774,17 @@ test("multiple profile weapon 1", () => {
   expect(e).toStrictEqual({
     label: "Grenade Launcher-pick one to fire: HE (24”,A1,Blast(3)) AT (24”, A1, AP(1), Deadly(3))",
     cost: 5,
+    count: 1,
     gains: [
       {
         name: "Grenade Launcher-pick one to fire",
+        count: 1,
         type: "ArmyBookMultiWeapon",
         profiles: [
           {
             label: "HE (24”,A1,Blast(3))",
             name: "HE",
+            count: 1,
             range: 24,
             attacks: 1,
             specialRules: [
@@ -794,6 +802,7 @@ test("multiple profile weapon 1", () => {
           {
             label: "AT (24”, A1, AP(1), Deadly(3))",
             name: "AT",
+            count: 1,
             range: 24,
             attacks: 1,
             specialRules: [
@@ -829,11 +838,13 @@ test("Parse equipment with rule", () => {
     name: "Camo Cloaks",
     type: "ArmyBookItem",
     cost: 10,
+    count: 1,
     content: [
       {
         key: "stealth",
         name: "Stealth",
         label: "Stealth",
+        count: 1,
         rating: "",
         type: "ArmyBookRule", modify: false
       }
@@ -849,11 +860,13 @@ test("Parse equipment with rule", () => {
     name: "Grenadiers",
     type: "ArmyBookItem",
     cost: 10,
+    count: 1,
     content: [
       {
         key: "defense",
         name: "Defense",
         label: "Defense +1",
+        count: 1,
         rating: "1",
         condition: "",
         type: "ArmyBookRule"
@@ -870,11 +883,13 @@ test("Parse equipment with rule", () => {
     name: "Demo Experts",
     type: "ArmyBookItem",
     cost: 10,
+    count: 1,
     content: [
       {
         key: "rending",
         name: "Rending",
         label: "Rending in melee",
+        count: 1,
         rating: "",
         type: "ArmyBookRule", modify: false,
         condition: "in melee"
@@ -948,9 +963,11 @@ test("Parse GFF format mount", () => {
   const expected = {
     type: "mount",
     cost: 30,
+    count: 1,
     equipment: [
       {
         label: "Combat Bike",
+        count: 1,
         specialRules: [
           "Fast",
           "Impact(1)",
@@ -959,6 +976,7 @@ test("Parse GFF format mount", () => {
       },
       {
         label: "Combat Bike Twin Assault Rifle",
+        count: 1,
         attacks: 2,
         range: 24,
       },
@@ -979,6 +997,7 @@ test("Parse melee weapon with rules and cost", () => {
   expect(e).toStrictEqual({
     label: "Whip Limb and Sword Claw (A3, Deadly(6))",
     name: "Whip Limb and Sword Claw",
+    count: 1,
     cost: 10,
     attacks: 3,
     type: "ArmyBookWeapon",

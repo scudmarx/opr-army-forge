@@ -38,7 +38,7 @@ export function WeaponRow({ unit, e, isProfile }: { unit: ISelectedUnit, e: IUpg
 }
 
 export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUnit, square: boolean }) {
-  console.log("drawing equipment table:", UnitService.getAllEquipment(unit))
+  //console.log("drawing equipment table:", UnitService.getAllEquipment(unit))
 
   const weapons = UnitService.getAllWeapons(unit) as IUpgradeGainsWeapon[];
   const items = UnitService.getAllItemsOfType(unit, "ArmyBookItem") as IUpgradeGainsItem[];
@@ -120,8 +120,6 @@ export default function UnitEquipmentTable({ unit, square }: { unit: ISelectedUn
 
                 const e = group[0];
                 const count = group.reduce((c, next) => c + (next.count || 1), 0);
-
-                console.log(e)
 
                 return (
                   <TableRow key={index}>

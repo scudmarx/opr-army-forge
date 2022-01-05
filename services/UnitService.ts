@@ -13,12 +13,16 @@ export default class UnitService {
   }
 
   public static getEquipmentCount(unit: ISelectedUnit, item: IUpgradeGains|string): number {
-    return this.getAllEquipment(unit).filter(e => EquipmentService.compareEquipment(e, item)).reduce((count, next) => {return count + next.count}, 0)
+    return this.getAllEquipment(unit).filter(e => {
+      //if (unit.name != "TestUnit") console.log(`comparing`, e, "to", item, ":", EquipmentService.compareEquipment(e, item))
+      return EquipmentService.compareEquipment(e, item)}
+      ).reduce((count, next) => {return count + next.count}, 0)
   }
 
   public static getAllEquipment(unit: ISelectedUnit): IUpgradeGains[] {
     //return (unit.equipment as IUpgradeGains[]).concat(this.getAllUpgrades(unit, true))
-    return unit.equipment.flatMap(e => {return (e as IUpgradeGainsItem).content ? [e, ...(e as IUpgradeGainsItem).content.map((g) => ({...g, count: e.count * (g.count ?? 1)}))] : [e]})
+    return unit.equipment;
+    //return unit.equipment.flatMap(e => {return (e as IUpgradeGainsItem).content ? [e, ...(e as IUpgradeGainsItem).content.map((g) => ({...g, count: e.count * (g.count ?? 1)}))] : [e]})
   }
 
   public static getAllUpgrades(unit: ISelectedUnit, excludeModels: boolean): IUpgradeGains[] {
@@ -118,7 +122,7 @@ export default class UnitService {
    * Adds an item to a unit's equipment table.
    */
   public static addItem(unit: ISelectedUnit, item: IUpgradeGains|string) {
-    //console.log("Adding ", item, `to ${unit.name}.`)
+    //console.log("Adding ", item, "to ", JSON.parse(JSON.stringify(unit)))
     let count = (item as IUpgradeGains).count ?? 1
     const currentItem = this.getAllEquipment(unit).find(i => EquipmentService.compareEquipment(i, item))
     if (currentItem) {
@@ -131,6 +135,11 @@ export default class UnitService {
         unit.equipment.push({name: item as string, type: "ArmyBookRule", count: count})
       }
     }
+    if ((item as IUpgradeGainsItem).content) {
+      (item as IUpgradeGainsItem).content.forEach(gain => {
+        this.addItem(unit, gain)
+      });
+    }
   }
 
   /**
@@ -139,18 +148,42 @@ export default class UnitService {
    * @returns true if item was removed successfully, false if it was not (presumably because it wasn't there to remove).
    */
   public static removeItem(unit: ISelectedUnit, item: IUpgradeGains|string) {
-    //console.log("Removing", item, "from unit", unit)
+    if (unit.name != "TestUnit") console.log("Removing", item, "from unit", JSON.parse(JSON.stringify(unit)))
     let count = (item as IUpgradeGains).count ?? 1
-    for (let i = 0; i < count; i++) {
-      const currentItem = this.getAllEquipment(unit).find(i => {return EquipmentService.compareEquipment(i, item) && i.count >= count})
+    if (UnitService.getEquipmentCount(unit, item) < count) {
+      if (unit.name != "TestUnit") console.log(`Failed! Item not found!`)
+      if (unit.name != "TestUnit") console.log("Found : ", UnitService.getEquipmentCount(unit, item), "but wanted:", count)
+      return false
+    }
+    if ((item as IUpgradeGainsItem).content) {
+      let testunit = {
+        ...unit,
+        equipment: unit.equipment.map(g => ({...g}))
+      };
+      let contentReplaced = true;
+      (item as IUpgradeGainsItem).content.forEach(gain => {
+        if (!UnitService.removeItem(testunit, gain)) {
+          if (testunit.name != "TestUnit") console.log(`Failed! ${(item as IUpgradeGainsItem).name} is incomplete: ${gain.name} is missing!`)
+          contentReplaced = false
+        }
+      });
+      if (!contentReplaced) {
+        if (testunit.name != "TestUnit") console.log(`Leaving unit as: `, JSON.parse(JSON.stringify(unit)))
+        return false
+      }
+      unit.equipment = testunit.equipment.map(g => ({...g}))
+    }
+    
+    for (let i = 0; i < count; count--) {
+      const currentItem = UnitService.getAllEquipment(unit).find(equ => {return EquipmentService.compareEquipment(equ, item) && equ.count >= 1})
       if (currentItem) {
         currentItem.count -= 1
       } else {
-        //console.log(`Failed! Item not found!`)
+        //console.log(`Somehow failed! Item expected but not found!`)
         return false
       }
     }
-    //console.log(`Succeeded!`, currentItem)
+    if (unit.name != "TestUnit") console.log(`Success! ${(item as IUpgradeGainsItem).name} removed from unit:`, JSON.parse(JSON.stringify(unit)))
     return true
   }
 }

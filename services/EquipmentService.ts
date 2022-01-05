@@ -18,7 +18,7 @@ export default class EquipmentService {
     if (typeof searchTerm != "string") {
       let searchItem = searchTerm as IUpgradeGains
       let match = true;
-      ["type", "attacks", "content"].forEach(param => {if (hasItem[param] !== searchItem[param]) match = false})
+      ["type", "attacks", "content"].forEach(param => {if (JSON.stringify(hasItem[param]) !== JSON.stringify(searchItem[param])) match = false})
       if (!match) return false
       searchTerm = searchItem.name
     }
