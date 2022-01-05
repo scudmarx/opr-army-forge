@@ -53,7 +53,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
       unitGroups["Aircraft"].push(unit);
     else if (hasRule(unit, "Artillery"))
       unitGroups["Artillery"].push(unit);
-    else if (isTough(unit, 18) && unit.defense == "2" && unit.size === 1)
+    else if (isTough(unit, 18) && unit.defense == "2" && unit.size === 1 && hasRule(unit, "Fear"))
       unitGroups["Titans"].push(unit);
     else if (isTough(unit, 6) && unit.defense == "2" && unit.size === 1)
       unitGroups["Vehicles / Monsters"].push(unit);
