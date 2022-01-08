@@ -185,7 +185,8 @@ export default class DataService {
             const countInGroup = group.reduce((count, next) => count + (next.count ?? 1), 0);
             return {
               ...group[0],
-              count: countInGroup// * unit.size
+              count: countInGroup,
+              originalCount: countInGroup
             };
           });
       }

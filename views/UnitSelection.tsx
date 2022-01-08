@@ -53,9 +53,9 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
       unitGroups["Aircraft"].push(unit);
     else if (hasRule(unit, "Artillery"))
       unitGroups["Artillery"].push(unit);
-    else if (isTough(unit, 18) && unit.defense == "2")
+    else if (isTough(unit, 18) && unit.defense == "2" && unit.size === 1 && hasRule(unit, "Fear"))
       unitGroups["Titans"].push(unit);
-    else if (isTough(unit, 6) && unit.defense == "2")
+    else if (isTough(unit, 6) && unit.defense == "2" && unit.size === 1)
       unitGroups["Vehicles / Monsters"].push(unit);
     else
       unitGroups["Core Units"].push(unit);
@@ -96,7 +96,7 @@ export function UnitSelection({ onSelected, addUnit = (unit: IUnit, dummy = fals
         // For each category
         Object.keys(unitGroups).map((key, i) => (
           <Fragment key={key}>
-            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label px-4 " + (i > 0 ? "pt-3" : "")}>
+            {key !== "undefined" && unitGroups[key].length > 0 && <p className={"menu-label my-2 px-4 " + (i > 0 ? "pt-3" : "")}>
               {key}
             </p>}
             <ul className="menu-list">
