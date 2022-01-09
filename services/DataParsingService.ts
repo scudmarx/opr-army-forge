@@ -160,6 +160,7 @@ export default class DataParsingService {
             hint: groupId,
             sections: [
               {
+                uid: nanoid(7),
                 label: upgradeText,
                 ...DataParsingService.parseUpgradeText(upgradeText + ":"),
                 options: [],
@@ -198,7 +199,7 @@ export default class DataParsingService {
 
           // Add to options!
           section.options.push({
-            id: option.id || nanoid(5),
+            uid: option.uid ?? option.id ?? nanoid(7),
             type: "ArmyBookUpgradeOption",
             cost: parseInt(cost),
             label: line.replace(costRegex, ""),

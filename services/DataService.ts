@@ -59,7 +59,7 @@ export default class DataService {
           delete section.replaceWhat;
 
           return {
-            id: section.id ?? nanoid(7),
+            id: section.uid ?? section.id,
             ...section,
             ...upgrade,
             options: section.options.map((opt: IUpgradeOption) => {
@@ -91,7 +91,7 @@ export default class DataService {
                 ...opt,
                 isModel: upgrade.attachModel ?? false,
                 cost: typeof (opt.cost ?? 0) === "number" ? opt.cost : parseInt((opt.cost as any).toString().replace(/pts?/, "")),
-                id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
+                id: (opt as any).uid ?? opt.id,
 
                 // Group same items back together and sum the count
                 gains: Object.values(gainsGroups).map((grp: any[]) => {
