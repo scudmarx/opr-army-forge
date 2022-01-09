@@ -30,14 +30,13 @@ export default function Files() {
   const army = useSelector((state: RootState) => state.army);
   const [armyFiles, setArmyFiles] = useState(null);
   const [customArmies, setCustomArmies]: [(IArmyData | IFaction)[], any] = useState(null);
-  const [driveArmies, setDriveArmies] = useState(null);
   const [newArmyDialogOpen, setNewArmyDialogOpen] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const filtered = (armies) => armies && armies.filter(a => { 
+  const filtered = (armies) => armies && armies.filter(a => {
     return a.name.toLowerCase().includes(searchText.toLowerCase()) || a.username?.toLowerCase().includes(searchText.toLowerCase())
   })
   const filteredArmies = customArmies ? filtered(customArmies) : []
@@ -68,27 +67,6 @@ export default function Files() {
         setArmyFiles(data);
       });
 
-    const driveIds = {
-      aof: "15XasmVSfFCASeLysRlyjXdx6qA3WKLlf",
-      gf: "1-wSo6Rvi-M5qAcZy-7aQD_kNBynIqWT9",
-      aofs: "1U1TmXXe7NG1VX0SV57nCjNGFMOgJzcSO",
-      gff: "1gXXoQ2Gj5Xz7OjBHMQ_VfsyonUe2Z1wn"
-    };
-
-    fetch("https://www.googleapis.com/drive/v3/files?q='" + driveIds[army.gameSystem] + "'%20in%20parents&key=AIzaSyDsl1Ux-3orA02dV2Mrw4v-Xv0phHUtfnU")
-      .then((res) => res.json())
-      .then((res) => {
-        // No error handling? fingers crossed
-        setDriveArmies(res.files.map(f => {
-          const name = f.name.substring(f.name.indexOf("-") + 1).trim();
-          const match = /(.+)\sv(\d+\.\d+)/.exec(name);
-          return {
-            name: match[1],
-            version: match[2]
-          };
-        }));
-      }, console.error);
-
     // AF to Web Companion game type mapping
     const slug = (() => {
       switch (army.gameSystem) {
@@ -118,12 +96,12 @@ export default function Files() {
   useEffect(() => {
     if (customArmies && router.query) {
       let armyId = router.query.armyId as string
-      let army = customArmies.find((t : IArmyData) => t.uid == armyId)
+      let army = customArmies.find((t: IArmyData) => t.uid == armyId)
       if (army) {
         selectCustomList(army)
       }
     }
-    
+
   }, [customArmies])
 
   const armies = armyFiles?.filter(grp => grp.key === army.gameSystem)[0]?.items;
@@ -194,23 +172,24 @@ export default function Files() {
     key={index}
     army={army}
     enabled={enabled}
-    driveArmy={null}
     onSelect={army => chooseArmy(army)} />);
 
-  const SearchBox = <Input 
+  const SearchBox = <Input
     className="mt-1"
-    sx={{flexBasis: "5em", flexGrow: 0.25, alignSelf: "center", color: "white", textAlign: "right"}} 
+    sx={{ flexBasis: "5em", flexGrow: 0.25, alignSelf: "center", color: "white", textAlign: "right" }}
     id="searchfield" size="small" margin="none" autoComplete="off" disableUnderline
-    onChange={(e) => {setSearchText(e.target.value)}} 
-    value={searchText} 
-    inputProps={{style: {textAlign:"right"}}}
+    onChange={(e) => { setSearchText(e.target.value) }}
+    value={searchText}
+    inputProps={{ style: { textAlign: "right" } }}
     endAdornment={
-      <InputAdornment position="end" sx={{width: "2rem", color: "white"}}>
-        {searchText ? 
-          <IconButton size="small" onClick={() => {setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "")}}><ClearIcon sx={{color: "white"}} /></IconButton>
-        : <SearchIcon onClick={() => {document.getElementById("searchfield").focus()}} />}
+      <InputAdornment position="end" sx={{ width: "2rem", color: "white" }}>
+        {searchText ?
+          <IconButton size="small" onClick={() => { setSearchText((document.getElementById("searchfield") as HTMLInputElement).value = "") }}><ClearIcon sx={{ color: "white" }} /></IconButton>
+          : <SearchIcon onClick={() => { document.getElementById("searchfield").focus() }} />}
       </InputAdornment>
-    }/>
+    } />
+
+  const webAppMode = army.gameSystem === "gf" || army.gameSystem === "aof";
 
   return (
     <>
@@ -240,7 +219,7 @@ export default function Files() {
             <h3 className="is-size-4 pt-4">Choose your army</h3>
           </div>
           {
-            army.gameSystem === "gf" && (
+            webAppMode && (
               <>
                 {!officialArmies && <div className="column is-flex is-flex-direction-column is-align-items-center	">
                   <CircularProgress />
@@ -262,15 +241,13 @@ export default function Files() {
           }
           <div className="columns is-mobile is-multiline">
             {
-              army.gameSystem === "gf" || !armyFiles ? null : filtered(armies)?.map((file, index) => {
-                const driveArmy = driveArmies && driveArmies.filter(army => file.name.toUpperCase() === army?.name?.toUpperCase())[0];
+              webAppMode || !armyFiles ? null : filtered(armies)?.map((file, index) => {
 
                 return (
                   <Tile
                     key={index}
                     army={file}
                     enabled={true}
-                    driveArmy={driveArmy}
                     onSelect={army => selectArmy(army.path)} />
                 );
               })
@@ -280,7 +257,7 @@ export default function Files() {
             <>
               <h3>Custom Armies</h3>
               <div className="columns is-multiline">
-                {filteredArmies.filter(a => a.official === false).map((customArmy : IArmyData, i) => (
+                {filteredArmies.filter(a => a.official === false).map((customArmy: IArmyData, i) => (
                   <div key={i} className="column is-half">
                     <Card
                       elevation={1}
@@ -334,7 +311,7 @@ export default function Files() {
   );
 }
 
-function Tile({ army, enabled, onSelect, driveArmy }) {
+function Tile({ army, enabled, onSelect }) {
 
   return (
     <div className="column is-half-mobile is-one-third-tablet" style={{ filter: (enabled ? null : "saturate(0.25)") }}>
@@ -348,7 +325,6 @@ function Tile({ army, enabled, onSelect, driveArmy }) {
             <div className="is-flex-grow-1">
               <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{army.name}</p>
             </div>
-            {driveArmy && driveArmy.version > army.version && <div className="mr-4" title="Army file may be out of date"><WarningIcon /></div>}
             {army.dataToolVersion && army.dataToolVersion !== dataToolVersion && <div className="mr-4" title="Data file may be out of date"><WarningIcon /></div>}
           </div>
         </div>
