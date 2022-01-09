@@ -106,6 +106,7 @@ export default function Files() {
       .then((data) => {
         //console.log(data);
         const valid = data
+          .map(d => ({...d, official: d.official || d.username === "onepagerules"}))
         //  .filter(a => a.unitCount > 2)
         //.filter(a => useStaging || a.username === "Darguth" || a.username === "adam");
 
@@ -342,7 +343,7 @@ function Tile({ army, enabled, onSelect, driveArmy }) {
         className={enabled ? "interactable" : null}
         onClick={() => enabled ? onSelect(army) : null}>
         <div className="mt-2 is-flex is-flex-direction-column is-flex-grow-1">
-          <ArmyImage name={army.name} />
+          <ArmyImage name={army.name} armyData={army} />
           <div className="is-flex is-flex-grow-1 is-align-items-center">
             <div className="is-flex-grow-1">
               <p className="my-2" style={{ fontWeight: 600, textAlign: "center", fontSize: "14px" }}>{army.name}</p>

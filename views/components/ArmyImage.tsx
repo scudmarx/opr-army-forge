@@ -4,14 +4,16 @@ import { RootState } from '../../data/store'
 const rotations = {} as any;
 
 
-export default function ArmyImage({ imageUrl = null, armyData = null, name = null,  size = "100px", ...props }) {
-  const url = imageUrl ?? `img/gf_armies/${name}.png`
+export default function ArmyImage({ imageUrl = null, armyData = null, name = null, size = "100px", ...props }) {
+
+  const path = armyData.gameSystemId === 4 ? "aof" : "gf_armies";
+
+  const url = imageUrl ?? `img/${path}/${name}.png`;
   const army = armyData ?? useSelector((state: RootState) => state.army).data;
   const [img, setImg] = useState(null)
-  useEffect( () => {
+  useEffect(() => {
     fetch(url)
-    .then(
-      (data) => {
+      .then((data) => {
         if (data.ok) {
           //console.log("got an image", data);
           let b = data.blob().then(blob => {
@@ -21,14 +23,12 @@ export default function ArmyImage({ imageUrl = null, armyData = null, name = nul
           //console.log("didn't get an image, trying web.");
           setImg(army?.coverImagePath || "img/default_army.png")
         }
-      })
-     //console.log(army)
-    }, [army, name]
-  )
-  
-  
+      });
+    //console.log(army)
+  }, [army, name]);
+
   return (
-    <div {...props} className={`${props.className ?? ""} is-flex p-2`} style={{...props.style, position: "relative", height: size, flexBasis: size, boxSizing: "content-box" }}>
+    <div {...props} className={`${props.className ?? ""} is-flex p-2`} style={{ ...props.style, position: "relative", height: size, flexBasis: size, boxSizing: "content-box" }}>
       <div style={{
         zIndex: 0,
         position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
