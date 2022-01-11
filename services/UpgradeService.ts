@@ -73,6 +73,8 @@ export default class UpgradeService {
     if (controlType === "radio")
       if (appliedInGroup > 0) {
         return UpgradeService.isValidToRemove(unit, upgrade, UpgradeService.getApplied(unit, upgrade))
+      } else {
+        if (!option) return true
       }
     
     if (controlType === "check")
@@ -84,11 +86,7 @@ export default class UpgradeService {
     
     // for 'replace [thing]' upgrades, test if the option can actually be taken (i.e. replaced items are available)
     if (upgrade.type == "replace" && upgrade.replaceWhat) {
-      const testunit = {...unit,
-        name: "TestUnit",
-        equipment: unit.equipment.map(g => ({...g})),
-        selectedUpgrades: [...unit.selectedUpgrades]
-      }
+      const testunit = UnitService.createDummyCopy(unit)
       if (!UpgradeService.applyUpgradeOption(testunit, upgrade, option)){
         return false
       }
@@ -161,7 +159,7 @@ export default class UpgradeService {
           
         if (logging) console.log(`Attempt to ${upgrade.type}`, replace, `${replaceResult ? "" : "un"}successful.`, JSON.parse(JSON.stringify(unit)))
 
-        if (!replaceResult) {
+        if (!replaceResult || (typeof replaceResult == "object" && (replaceResult as string[]).length > 0)) {
           altreplaced = false
           break
         } else {
@@ -186,7 +184,7 @@ export default class UpgradeService {
    * @returns true if successful, or false if the upgrade could not be applied
    */
   public static applyUpgradeOption(unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption) {
-    let logging = true
+    let logging = false && unit.name != "Dummy"
     if (logging) console.log("Applying upgrade option:", upgrade, option)
     // TODO: How to replace unit's built-in special rules. e.g. "Replace Psychic(1) with: Psychic(2)"
 
@@ -202,15 +200,55 @@ export default class UpgradeService {
     }
     
     // if we need to upgrade or replace items...
-    const doReplacement = () => {
+    const doGains = () => {
+      if (upgrade.type as any != "remove") {
+        UnitService.addGrantedItems(unit, option)  
+      } else {
+        option.gains.forEach(item => UpgradeService.removeModFromItem(unit, upgrade.id, item))
+      }
+      return true
+    }
+
+    if (upgrade.affects == "all") {
+      let replacedCount = 0
+      let mods = []
+      for (let i = 0; i <= 255; i++) {
+        if (i == 255) {
+          console.log("Got stuck:", unit, upgrade, option)
+          //throw(new Error("Replacing item got stuck in a loop!"))
+          break
+        }
+        let replaceResult = UpgradeService.replaceOrUpgradeItems(unit, upgrade)
+        if (replaceResult) {
+          if (typeof replaceResult == "object" && replaceResult.length > 0) {
+            // is it acceptable to replace modded items?
+            break // computer says no.
+            mods = mods.concat(replaceResult)
+          }
+          replacedCount++
+        } else break
+      }
+      if (replacedCount > 0) {
+        for (let i = 0; i < replacedCount; i++) {
+          doGains()
+        }
+        if (typeof mods == "object" && mods.length > 0) {
+          if (logging) console.log("Removed items had mods:", mods)
+          mods.forEach(mod => {
+            option.gains.forEach(item => {
+              // TODO: Check if that mod can be applied to that item?
+              UpgradeService.addModToItem(unit, mod, item)
+            })
+          })
+        }
+        return true
+      }
+    } else {
       let replaceResult = UpgradeService.replaceOrUpgradeItems(unit, upgrade)
       if (replaceResult) {
-        if (upgrade.type as any != "remove") {
-          UnitService.addGrantedItems(unit, option)  
-        } else {
-          option.gains.forEach(item => UpgradeService.removeModFromItem(unit, upgrade.id, item))
-        }
-        if (typeof replaceResult == "object") {
+        if (logging) console.log(`Item[s] ${upgrade.type}d, adding in gains.`)
+        doGains()
+        if (typeof replaceResult == "object" && replaceResult.length > 0) {
           if (logging) console.log("Removed item had mods:", replaceResult)
           replaceResult.forEach(mod => {
             option.gains.forEach(item => {
@@ -218,22 +256,11 @@ export default class UpgradeService {
               UpgradeService.addModToItem(unit, mod, item)
             })
           })
+          if (logging) console.log("Unit updated:", JSON.parse(JSON.stringify(unit)))
         }
-      }
-      return !!replaceResult
-    }
-
-    if (upgrade.affects == "all") {
-      let replacedCount = 0
-      for (let i = 0; i <= 255; i++) {
-        if (i == 255) throw(new Error("Replacing item got stuck in a loop!"))
-        if (doReplacement()) {
-          replacedCount++
-        } else break
-      }
-      return (replacedCount > 0)
-    } else {
-      return doReplacement()
+        return true
+      } else return false
+      
     }
 
   }

@@ -219,7 +219,12 @@ export default class UnitService {
       const currentItem = UnitService.getAllEquipment(unit).findLast(equ => {return EquipmentService.compareEquipment(equ, (item as any)?.name ?? item) && equ.count >= 1})
       if (currentItem) {
         currentItem.count -= 1
-        mods = _.uniq(currentItem.mods)
+        mods = []
+        let modcounts = _.countBy(currentItem.mods, (mod => mod))
+        for(let mod in modcounts) {
+          if (modcounts[mod] > currentItem.count) mods.push(mod)
+        }
+        mods.forEach(mod => currentItem.mods.splice(currentItem.mods.indexOf(mod), 1))
       } else {
         if (logging) console.log(`Somehow failed! Item expected but not found!`)
         return false
@@ -234,7 +239,7 @@ export default class UnitService {
    * @param mods An array of mods to apply to the new items.
    */
   public static addGrantedItems (unit: ISelectedUnit, option: IUpgradeOption) {
-    let logging = unit.name != "Dummy"
+    let logging = false && unit.name != "Dummy"
     if (logging) console.log("Adding gains items...")
     for (let gain of option.gains) {
       UnitService.addItem(unit, gain)
@@ -246,7 +251,7 @@ export default class UnitService {
    * Removes all items from an Upgrade Option's list of granted upgrade items.
    */
    public static removeGrantedItems (unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption, movedMods: string[] = []) {
-    let logging = unit.name != "Dummy"
+    let logging = false && unit.name != "Dummy"
     if (logging) console.log("Removing granted items...")
     let testunit = UnitService.createDummyCopy(unit)
     let replaced = true

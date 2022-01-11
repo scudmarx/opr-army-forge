@@ -13,6 +13,7 @@ import SpellsTable from '../SpellsTable';
 import { CustomTooltip } from '../components/CustomTooltip';
 import LinkIcon from '@mui/icons-material/Link';
 import { useEffect, useState } from 'react';
+import UpgradeService from '../../services/UpgradeService';
 
 export function Upgrades({ mobile = false, competitive = true }) {
 
@@ -156,21 +157,21 @@ export function Upgrades({ mobile = false, competitive = true }) {
       {upgradeSets.map((pkg: IUpgradePackage) => (
         <div key={pkg.uid}>
           {/* <p className="px-2">{set.id}</p> */}
-          {pkg.sections.filter(section => selectedUnit.disabledUpgradeSections.indexOf(section.id) === -1).map((u, i) => (
-            <div className={"mt-4"} key={i}>
+          {pkg.sections.filter(section => selectedUnit.disabledUpgradeSections.indexOf(section.id) === -1).map((u, i) => {
+            let isValid = u && u?.options && u.options[0] && UpgradeService.isValid(selectedUnit, u, u.options[0]);
+            return (<div className={`mt-4 ${isValid ? "" : "disabled"}`} key={i}>
               <div className="px-4 is-flex is-align-items-center">
                 {(selectedUnit.combined && (u.affects === "all")) &&
                   <CustomTooltip title="This option will be the same on both combined units." arrow enterTouchDelay={0} leaveTouchDelay={5000}>
                     <LinkIcon sx={{ fontSize: 22 }} className="mr-2" />
                   </CustomTooltip>}
                 <p className="pt-0" style={{ fontWeight: "bold", fontSize: "14px", lineHeight: 1.7 }}>
-                  {/* {UpgradeService.displayName(u, selectedUnit)}: */}
                   {u.label}
                 </p>
               </div>
               <UpgradeGroup upgrade={u} />
-            </div>
-          ))}
+            </div>)
+          })}
         </div>
       ))}
     </div>

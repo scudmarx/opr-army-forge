@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { IUnit, IUpgrade, IUpgradeGains, IUpgradeGainsWeapon, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
+import { IUnit, IUpgrade, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsWeapon, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
@@ -139,6 +139,9 @@ export default class DataService {
           const allGains: IUpgradeGains[] = sections
             .flatMap(section => section.options)
             .flatMap(option => option.gains)
+            .flatMap(gain => gain.type == "ArmyBookItem" ? 
+             (gain as IUpgradeGainsItem).content :
+             [gain])
             //.reduce((opts, next) => opts.concat(next.options), [])
             //.reduce((gains, next) => gains.concat(next.gains), [])
             //.map(gain => gain.name);
