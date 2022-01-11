@@ -76,7 +76,7 @@ export default function UpgradeItem({ selectedUnit, upgrade, option }: { selecte
   const controlType = UpgradeService.getControlType(upgrade);
   // Somehow display the count?
   const gainsGroups = option ? groupBy(option.gains, "name") : null;
-  const isValid = option ? UpgradeService.isValid(selectedUnit, upgrade, option) : UpgradeService.isValidToRemove(selectedUnit, UpgradeService.getApplied(selectedUnit, upgrade));
+  const isValid = option ? UpgradeService.isValid(selectedUnit, upgrade, option) : UpgradeService.isValidToRemove(selectedUnit, upgrade, UpgradeService.getApplied(selectedUnit, upgrade));
 
   return (
     <div className="is-flex is-align-items-center mb-1">

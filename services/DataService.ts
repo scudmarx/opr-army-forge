@@ -99,7 +99,8 @@ export default class DataService {
                   //console.log(grp[0].label + " " + count, grp);
                   return {
                     ...grp[0],
-                    count: count
+                    count: count,
+                    mods: []
                   }
                 })
               });
@@ -123,7 +124,7 @@ export default class DataService {
             label: label,
             name: e.name || label,
             count: count,
-            originalCount: count,
+            mods: [],
             type: "ArmyBookWeapon",
             specialRules: (e as IUpgradeGainsWeapon).specialRules.map(DataParsingService.parseRule)
           }

@@ -19,7 +19,7 @@ export default function UpgradeUpDown({ selectedUnit, upgrade, option }: { selec
   try {
     const countApplied = UpgradeService.countApplied(selectedUnit, option);
     const isValid = UpgradeService.isValid(selectedUnit, upgrade, option);
-    const isValidToRemove = countApplied > 0 && UpgradeService.isValidToRemove(selectedUnit, option);
+    const isValidToRemove = countApplied > 0 && UpgradeService.isValidToRemove(selectedUnit, upgrade, option);
 
     return (
       <>

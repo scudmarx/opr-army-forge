@@ -3,7 +3,7 @@ import { CustomTooltip } from "./CustomTooltip";
 export default function RuleItem({ label, description }) {
 
   const bullet = /•|/;
-  const descParts = description.split(bullet).map(part => (<p>{part}</p>));
+  const descParts = description.split(bullet).map((part, i) => (<p key={i}>{part}</p>));
 
   let content = description ?
     <CustomTooltip title={descParts} arrow enterTouchDelay={0} leaveTouchDelay={10000} onClick={e => e.stopPropagation()}>

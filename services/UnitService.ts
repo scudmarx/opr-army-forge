@@ -1,11 +1,12 @@
-import { nanoid } from "@reduxjs/toolkit";
-import { IUnit, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon } from "../data/interfaces";
+import { current, nanoid } from "@reduxjs/toolkit";
+import { IUnit, ISelectedUnit, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsMultiWeapon, IUpgradeGainsRule, IUpgradeGainsWeapon, IUpgrade, IUpgradeOption } from "../data/interfaces";
 import { ListState } from "../data/listSlice";
 import _ from "lodash";
 import EquipmentService from "./EquipmentService";
+import UpgradeService from "./UpgradeService";
 
 export default class UnitService {
-
+  
   public static getSelected(list: ListState): ISelectedUnit {
     return list.selectedUnitId === null || list.selectedUnitId === undefined
       ? null
@@ -14,26 +15,26 @@ export default class UnitService {
 
   public static getEquipmentCount(unit: ISelectedUnit, item: IUpgradeGains|string): number {
     return UnitService.getAllEquipment(unit).filter(e => {
-      //if (unit.name != "TestUnit") console.log(`comparing`, e, "to", item, ":", EquipmentService.compareEquipment(e, item))
+      //if (unit.name != "Dummy") console.log(`comparing`, e, "to", item, ":", EquipmentService.compareEquipment(e, item))
       return EquipmentService.compareEquipment(e, item) && e.count}
       ).reduce((count, next) => {return count + next.count}, 0)
   }
-  public static getModCount(unit: ISelectedUnit, item: IUpgradeGains|string): number {
-    return UnitService.getAllEquipment(unit).filter(e => {
-      //if (unit.name != "TestUnit") console.log(`comparing`, e, "to", item, ":", EquipmentService.compareEquipment(e, item))
-      return EquipmentService.compareEquipment(e, item) && e.mods}
-      ).reduce((count, next) => {return count + next.mods}, 0)
+  public static getModCount(unit: ISelectedUnit, modId?: string, item?: IUpgradeGains|string): number {
+    return UnitService.getAllEquipment(unit).filter(e => EquipmentService.compareEquipment(e, item))
+      .reduce((count, next) => {return count + next.mods.filter(m => !modId || m == modId).length}, 0)
   }
-  public static getModSlots(unit: ISelectedUnit, item: IUpgradeGains|string, slots: number): number {
+  public static getModSlots(unit: ISelectedUnit, item: IUpgradeGains|string, slots: number = 1): number {
     let items = UnitService.getEquipmentCount(unit, item)
     let availableslots = (items * slots)
+    //console.log("Mod Slots:", availableslots, " on unit: ", JSON.parse(JSON.stringify(unit)))
     return availableslots
   }
-  public static getModSlotsAvailable(unit: ISelectedUnit, item: IUpgradeGains|string, slots: number): number {
-    let mods = UnitService.getModCount(unit, item)
+  public static getModSlotsAvailable(unit: ISelectedUnit, modId: string, item: IUpgradeGains|string, slots: number = 1): number {
+    let logging = false
+    let mods = UnitService.getModCount(unit, modId)
     let modslots = UnitService.getModSlots(unit, item, slots)
     let availableslots = modslots - mods
-    //if (unit.name != "TestUnit") console.log("Mod Slots:", availableslots, "being", modslots, "slots and", mods, "mods applied.")
+    if (logging) console.log("Mod Slots:", availableslots, "being", modslots, "slots and", mods, "mods applied.")
     return availableslots
   }
 
@@ -108,6 +109,9 @@ export default class UnitService {
     return unit.size + extraModelCount;
   }
   
+  /**
+   * Converts a Unit into an actual SelectedUnit, with fields.
+   */
   public static getRealUnit(unit: IUnit, dummy = false): ISelectedUnit {
     return {
       ...unit,
@@ -117,9 +121,19 @@ export default class UnitService {
       joinToUnit: null,
       equipment: unit.equipment.map(eqp => ({
         ...eqp,
-        count: eqp.count || unit.size // Add count to unit size if not already present
+        count: eqp.count || unit.size, // Add count to unit size if not already present
+        mods: []
       }))
     }
+  }
+  
+  /**
+   * Creates and returns a copy of a unit.
+   */
+  public static createDummyCopy(unit: ISelectedUnit) {
+    let clone = _.cloneDeep(unit)
+    clone.name = "Dummy"
+    return clone
   }
 
   public static getAttachedUnits(list: ListState, unit: ISelectedUnit) : ISelectedUnit[] {
@@ -139,23 +153,28 @@ export default class UnitService {
   /**
    * Adds an item to a unit's equipment table.
    */
-  public static addItem(unit: ISelectedUnit, item: IUpgradeGains|string) {
-    //console.log("Adding ", item, "to ", JSON.parse(JSON.stringify(unit)))
+  public static addItem(unit: ISelectedUnit, item: IUpgradeGains|string, mods: string[] = []) {
+    let logging = false && unit.name != "Dummy"
+    if (logging) console.log("Adding ", item, "to ", JSON.parse(JSON.stringify(unit)))
+    
     let count = (item as IUpgradeGains).count ?? 1
     const currentItem = this.getAllEquipment(unit).find(i => EquipmentService.compareEquipment(i, item))
     if (currentItem) {
       currentItem.count = currentItem.count ? currentItem.count + count : count
+      mods.forEach(mod => currentItem.mods.push(mod))
     } else {
       if ((item as IUpgradeGains).type) {
-        unit.equipment.push({...(item as IUpgradeGains), count: count} as IUpgradeGains)
+        unit.equipment.push({...(item as IUpgradeGains), count: count, mods: mods} as IUpgradeGains)
       } else {
         // trying to add an item but only have its name, not an actual item? Treat it as a custom special rule.
-        unit.equipment.push({name: item as string, type: "ArmyBookRule", count: count})
+        unit.equipment.push({name: item as string, type: "ArmyBookRule", count: count, mods: mods})
       }
     }
+
+    // if item is a bundle of other items, add those too
     if ((item as IUpgradeGainsItem).content) {
       (item as IUpgradeGainsItem).content.forEach(gain => {
-        this.addItem(unit, gain)
+        UnitService.addItem(unit, gain)
       });
     }
   }
@@ -163,45 +182,83 @@ export default class UnitService {
   /**
    * Removes an item from a unit's equipment table.
    * @param item The item to remove, either as an (IUpgradeGains) actual item or as a (string) search term to validate against.
-   * @returns true if item was removed successfully, false if it was not (presumably because it wasn't there to remove).
+   * @returns true if item was removed successfully, false if it was not (presumably because it wasn't there to remove), or an array of the mods found on the replaced item.
    */
-  public static removeItem(unit: ISelectedUnit, item: IUpgradeGains|string, allowedMods? : number) {
-    //if (unit.name != "TestUnit") console.log("Removing", item, "from unit", JSON.parse(JSON.stringify(unit)))
+  public static removeItem(unit: ISelectedUnit, item: IUpgradeGains|string) {
+    let logging = false && unit.name != "Dummy"
+    if (logging) console.log("Removing", item, "from unit", JSON.parse(JSON.stringify(unit)))
+    
+    // if removing a granted gain which gave multiple of an item, remove them all
     let count = (item as IUpgradeGains).count ?? 1
-    if ((UnitService.getEquipmentCount(unit, (item as any)?.name ?? item) - ((allowedMods ?? true) ? UnitService.getModCount(unit, (item as any)?.name ?? item) : 0)) < count) {
-      //if (unit.name != "TestUnit") console.log(`Failed! Item not found!`)
-      //if (unit.name != "TestUnit") console.log("Found : ", UnitService.getEquipmentCount(unit, (item as any)?.name ?? item), "but wanted:", count)
+    
+    // If unit doesn't have enough items...
+    if (UnitService.getEquipmentCount(unit, (item as any)?.name ?? item) < count) {
+      if (logging) console.log("Insufficient items found : ", UnitService.getEquipmentCount(unit, (item as any)?.name ?? item), ` found but ${count} wanted.`)
       return false
     }
+
+    // if the item we're removing is a bundle of other items, we need to find all of those too...
     if ((item as IUpgradeGainsItem).content) {
-      let testunit = {
-        ...unit,
-        equipment: unit.equipment.map(g => ({...g}))
-      };
+      let testunit = UnitService.createDummyCopy(unit)
       let contentReplaced = true;
       (item as IUpgradeGainsItem).content.forEach(gain => {
         if (!UnitService.removeItem(testunit, gain)) {
-          //if (testunit.name != "TestUnit") console.log(`Failed! ${(item as IUpgradeGainsItem).name} is incomplete: ${gain.name} is missing!`)
+          if (logging) console.log(`Failed! ${(item as IUpgradeGainsItem).name} is incomplete: ${gain.name} is missing!`)
           contentReplaced = false
         }
       });
       if (!contentReplaced) {
-        //if (testunit.name != "TestUnit") console.log(`Leaving unit as: `, JSON.parse(JSON.stringify(unit)))
+        if (logging) console.log(`Leaving unit as: `, JSON.parse(JSON.stringify(unit)))
         return false
       }
       unit.equipment = testunit.equipment.map(g => ({...g}))
     }
     
+    let mods
     for (let i = 0; i < count; count--) {
       const currentItem = UnitService.getAllEquipment(unit).findLast(equ => {return EquipmentService.compareEquipment(equ, (item as any)?.name ?? item) && equ.count >= 1})
       if (currentItem) {
         currentItem.count -= 1
+        mods = _.uniq(currentItem.mods)
       } else {
-        //console.log(`Somehow failed! Item expected but not found!`)
+        if (logging) console.log(`Somehow failed! Item expected but not found!`)
         return false
       }
     }
-    //if (unit.name != "TestUnit") console.log(`Success! ${(item as IUpgradeGainsItem).name || (item as any).label || item} removed from unit:`, JSON.parse(JSON.stringify(unit)))
-    return true
+    if (logging) console.log(`Success! ${(item as IUpgradeGainsItem).name || (item as any).label || item} removed from unit:`, JSON.parse(JSON.stringify(unit)))
+    return mods ?? true
   }
+
+  /**
+   * Adds all items from an Upgrade Option's list of granted upgrade items.
+   * @param mods An array of mods to apply to the new items.
+   */
+  public static addGrantedItems (unit: ISelectedUnit, option: IUpgradeOption) {
+    let logging = unit.name != "Dummy"
+    if (logging) console.log("Adding gains items...")
+    for (let gain of option.gains) {
+      UnitService.addItem(unit, gain)
+    }
+    if (logging) console.log("Added", option.gains, "to unit:", JSON.parse(JSON.stringify(unit)))
+  }
+
+  /**
+   * Removes all items from an Upgrade Option's list of granted upgrade items.
+   */
+   public static removeGrantedItems (unit: ISelectedUnit, upgrade: IUpgrade, option: IUpgradeOption, movedMods: string[] = []) {
+    let logging = unit.name != "Dummy"
+    if (logging) console.log("Removing granted items...")
+    let testunit = UnitService.createDummyCopy(unit)
+    let replaced = true
+    for (let gain of option.gains) {
+      replaced = UnitService.removeItem(unit, gain)
+      if (!replaced) {
+        if (logging) console.log("Failed! Could not remove:", gain)
+        return false
+      }
+    }
+    if (replaced) unit.equipment = testunit.equipment
+    if (logging) console.log("Removed", option.gains, "from unit:", JSON.parse(JSON.stringify(unit)))
+  }
+
 }
