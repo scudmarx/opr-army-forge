@@ -9,14 +9,6 @@ export interface ISaveData {
   listPoints: number;
   list: ListState;
 }
-export interface IEquipment {
-  label?: string;
-  name?: string;
-  range?: number;
-  attacks?: number;
-  count?: number;
-  specialRules?: string[]
-}
 
 export interface ISpecialRule {
   key: string;
@@ -35,7 +27,8 @@ export interface IUnit {
   defense: string;
   specialRules?: ISpecialRule[];
   upgrades: string[];
-  equipment: IEquipment[]
+  equipment: IUpgradeGains[]; //IEquipment[];
+  disabledUpgradeSections: string[];
 }
 
 export interface ISelectedUnit extends IUnit {
@@ -43,17 +36,16 @@ export interface ISelectedUnit extends IUnit {
   customName?: string;
   selectedUpgrades: IUpgradeOption[];
   combined: boolean;
-  joinToUnit: string;
+  joinToUnit?: string;
 }
 
 export interface IUpgrade {
+  id: string;
   label?: string;
-  type: "replace" | "upgrade" | "upgradeRule" | "attachment";
-  affects?: "any" | "all" | number;
-  select?: string | number;
-  replaceWhat?: string[] | string[][];
-  model?: boolean;
-  attachment?: boolean;
+  type: "replace" | "upgrade";
+  affects: "any" | "all" | "unit";
+  select?: number;
+  replaceWhat?: string[][];
   attachModel?: boolean;
   options?: IUpgradeOption[];
 }
@@ -69,13 +61,13 @@ export interface IUpgradeOption {
 }
 
 export interface IUpgradeGains {
-  id: string;
+  id?: string;
   name: string;
-  label: string;
+  label?: string;
   count: number;
-  originalCount: number;
+  originalCount?: number;
   type: "ArmyBookRule" | "ArmyBookWeapon" | "ArmyBookItem" | "ArmyBookDefense" | "ArmyBookMultiWeapon"; // TODO: Add these
-  dependencies?: string[];
+  mods?: string[];
 }
 
 export interface IUpgradeGainsItem extends IUpgradeGains {

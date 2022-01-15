@@ -13,7 +13,7 @@ export default function ValidationErrors({ open, setOpen }) {
 
   return (
     <Dialog onClose={() => setOpen(false)} open={open}>
-      <DialogTitle>Validation Errors</DialogTitle>
+      <DialogTitle>Competitive List Validation</DialogTitle>
       <List>
         {errors.map((error, index) => (
           <ListItem key={index} divider>

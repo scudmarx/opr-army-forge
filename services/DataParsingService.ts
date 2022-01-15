@@ -1,117 +1,116 @@
-import { IEquipment, ISpecialRule, IUpgrade, IUpgradeGainsRule, IUpgradeOption } from '../data/interfaces';
+import { ISpecialRule, IUpgrade, IUpgradeGainsRule } from '../data/interfaces';
 import { nanoid } from "nanoid";
-import { loadOptions } from '@babel/core';
+import pluralise from "pluralize";
 
 export default class DataParsingService {
-
+  
   // Only 0-9 covered - probably OK?
   public static numberFromName(number: string): number {
     const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-    const index = numbers.indexOf(number.toLocaleLowerCase());
+    const index = numbers.indexOf(number?.toLocaleLowerCase());
     if (index >= 0)
       return index;
     return null;
   }
 
   public static parseUpgradeText(text: string): IUpgrade {
-    const groups = {
-      type: 1,
-      affects: 2,
-      upgradeWhat: 3,
-      select: 4,
-      upTo: 5,
-      replaceWhat: 6
-    }
-
+    // Start with some specific cases...
     const mountMatch = /mount on/i.test(text);
     if (mountMatch)
       return {
+        id: nanoid(7),
         type: "upgrade",
+        affects: "all",
         select: 1
       };
 
-    const takeMatch = /^Take\s([\d]+|one|two)?\s?(.+?)\sattachments?:/.exec(text);
-    if (takeMatch)
-      return {
-        type: "upgrade",
-        attachment: true,
-        select: takeMatch[1] ? (parseInt(takeMatch[1]) || this.numberFromName(takeMatch[1]) || takeMatch[1] as any) : 1,
-        replaceWhat: [takeMatch[2]]
-      };
-
-    const anyModelMatch = /^(any|one) model may (replace|take) (\d+|one|two|three) (.+?)(?: attachment)?:/gi.exec(text);
-    if (anyModelMatch) {
-      return {
-        type: anyModelMatch[2] === "replace" ? "replace" : "upgrade",
-        attachment: anyModelMatch[2] === "take",
-        affects: anyModelMatch[1].toLowerCase() === "any" ? "any" : this.numberFromName(anyModelMatch[1].toLowerCase()),
-        model: true,
-        select: parseInt(anyModelMatch[3]) || this.numberFromName(anyModelMatch[3]) || anyModelMatch[3] as any,
-        replaceWhat: [anyModelMatch[4]]
-      }
-    }
-
-    // Honestly I just don't want to change the monster below...
-    const upgradeUpToModelsMatch = /Upgrade up to two models with/i.exec(text);
-    if (upgradeUpToModelsMatch)
-      return {
-        type: "upgrade",
-        model: true,
-        select: 2
-      };
-
-      const addModelMatch = /Add one model with/i.exec(text);
+    const addModelMatch = /^Add(?: up to)? (one|two|three|\d*) models?\s*(?:with)?:?$/i.exec(text);
     if (addModelMatch)
       return {
+        id: nanoid(7),
         type: "upgrade",
+        affects: "unit",
         attachModel: true,
-        select: 1
+        select: parseInt(addModelMatch[1]) || this.numberFromName(addModelMatch[1]?.replace("up to ", "")),
       };
 
-    text = text.endsWith(":") ? text.substring(0, text.length - 1) : text;
+    
+    // And now begin the general pattern matching magic.
+    var result: IUpgrade;
+    var replaceWhat;
+    var matchGroups;
 
-    const match = /(Upgrade|Replace)\s?(any|one|all|\d+x)?\s?(?:models?)?(?:(.+)\swith)?\s?(?:with)?\s?(one|any)?(?:up to (.+?)(?:\s|$))?(.+)?/.exec(text);
+    // Any models may...
+    const anyModelMatchRE = /^(any|all|one|(?:(?:up to )(?:one|two|three|\d+x?)))? models? may (replace|take)\s*(?:up to |any)?(\d+|one|two|three)?\s*(.*?)\s?(?:attachments?)?:?$/i
+    const anyModelMatch = anyModelMatchRE.exec(text);
+    if (anyModelMatch) matchGroups = {
+      affects: 1,
+      replaceWhat: 4,
+      select: 3,
+      type: 2,
+    }
 
+    // upgrade something with...
+    // /(Upgrade|Replace|Take)\s*(any|all|one|(?:(?:up to )(?:one|two|three|\d+x?)))?\s*(?:models?\s*)?(.*?)\s*(?:attachments?)?(?:$|with)(?: up to )?\s*(any|one|two|three|\d+)?/
+    // /^(Upgrade|Replace|Take)\s*(any|all|(?:(?:up to )?(?:one|two|three|\d+x?)))?\s*(?:models?\s*)?(.*?)\s?(?:attachments?)?:?(?:$|with)\s*(?:up to|any)?\s*(\d+|one|two|three)?:?$/i
+    const matchRE = /^(Upgrade|Replace|Take)\s*(any|all|one|(?:(?:up to )(?:one|two|three|\d+x?)))?\s*(?:models?\s*)?(.*?)\s?(?:attachments?)?:?(?:$|with)\s*(?:up to|any)?\s*(\d+|one|two|three)?:?$/i
+    const finalMatch = matchRE.exec(text);
+    if (finalMatch) matchGroups = {
+      affects: 2,
+      replaceWhat: 3,
+      select: 4,
+      type: 1,
+    }
+
+    const match = anyModelMatch || finalMatch
     if (!match) {
-      throw(new Error("Cannot match: " + text))
+      throw (new Error("Cannot match: " + text))
       return null;
     }
 
-    const replaceWhat = match[groups.replaceWhat];
+    result = {
+      id: nanoid(7),
+      affects: parseInt(match[matchGroups.affects]) || this.numberFromName(match[matchGroups.affects]?.replace("up to ", "")) || match[matchGroups.affects]?.toLowerCase() as any,
+      select: parseInt(match[matchGroups.select]) || this.numberFromName(match[matchGroups.select]?.replace("up to ", "")) || match[matchGroups.select]?.toLowerCase() as any,
+      type: match[matchGroups.type]?.toLowerCase() as any,
+    }
+    replaceWhat = match[matchGroups.replaceWhat]
 
-    const result: IUpgrade = {
-      type: match[groups.type]?.toLowerCase() as any,
-      model: text.indexOf("model") > -1
-    };
+    // now do logic to untangle stupid English
+    if (result.type as any == "take") result.type = "upgrade"
 
-    if (match[groups.affects])
-      result.affects = parseInt(match[groups.affects]) || this.numberFromName(match[groups.affects]) || match[groups.affects] as any;
-
-    if (match[groups.select])
-      result.select = parseInt(match[groups.select]) || this.numberFromName(match[groups.select]) || match[groups.select] as any;
-
-    if (match[groups.upTo])
-      result.select = parseInt(match[groups.upTo]) || this.numberFromName(match[groups.upTo]) || match[groups.upTo] as any;
-
-    if (match[groups.upgradeWhat])
-      result.replaceWhat = [match[groups.upgradeWhat]];
-
-    if (replaceWhat) {
-      // has alternative replave options like "Replace one R-Carbine and CCW / G-Rifle and CCW:"
-      if (replaceWhat.indexOf("/") > -1) {
-        result.replaceWhat = replaceWhat
-          .split("/")
-          .map(part => part.trim())
-          .map(part => part.split(" and "));
+    if (typeof result.affects == "number") {
+      // Upgrade three with one means "upgrade one, do this up to three times"
+      if (result.affects == 1 && result.type == "upgrade") {
+        result.affects = (result.select && result.select != 1) ? "any" : "unit"
+        if (replaceWhat) result.select = 1
       } else {
-        result.replaceWhat = replaceWhat.split(" and ");
+        result.select = result.affects * (result.select ?? 1)
+        result.affects = anyModelMatch ? "any" : "unit"
+      }
+    } else {
+      if (result.affects == "any" && result.type == "replace") {
+        result.affects = anyModelMatch ? "any" : "unit"
+      }
+      if (!result.affects) {
+        result.affects = replaceWhat ? "all" : "unit"
       }
     }
+    if (!result.affects) delete result.affects
+    if (!result.select) delete result.select
 
-    // TODO: Better way of doing this?
-    if (result.type === "upgrade" && result.replaceWhat && !result.affects && !result.select && !result.model)
-      result.type = "upgradeRule";
+    if (replaceWhat) {
+      result.replaceWhat = replaceWhat
+        .split(/\s*\/\s*/).map((alt => alt
+          .split(/(?:,?\s*and|,)\s*/)
+          .flatMap((part) => {
+            let match = /(\d*)x\s*(.*)/.exec(part);
+            return match && parseInt(match[1]) ? Array(parseInt(match[1])).fill(pluralise.singular(match[2])) : [part]
+          })))
+    }
+    if (!result.replaceWhat) delete result.replaceWhat
 
+    //console.log(text, result)
     return result;
   }
 
@@ -306,10 +305,12 @@ export default class DataParsingService {
         id: nanoid(7),
         cost: parseInt(/([+-]\d+)pts?$/.exec(part)[1]),
         label: part.replace(costRegex, "").trim(),
+        count: 1,
         gains: [
           {
             name: multiWeaponName,
             type: "ArmyBookMultiWeapon",
+            count: 1,
             profiles: multiWeaponWeapons.map(w => ({
               ...this.parseEquipment(w, isUpgrade),
               type: "ArmyBookWeapon"
@@ -328,8 +329,9 @@ export default class DataParsingService {
         id: nanoid(7),
         cost: combinedMatch[2] === "Free" ? 0 : parseInt(combinedMatch[3]),
         label: part.replace(costRegex, "").trim(),
+        count: 1,
         gains: multiParts
-          .map(mp => this.parseEquipment(mp, isUpgrade) as IEquipment)
+          .map(mp => this.parseEquipment(mp, isUpgrade))
       };
     }
 
@@ -367,11 +369,14 @@ export default class DataParsingService {
         id: nanoid(7),
         cost: parseInt(mountMatch[3]),
         label: part.replace(costRegex, ""),
+        count: 1,
         gains: [
           {
             label: mountName,
             name: mountName,
+            count: 1,
             content: mountRules.map(r => ({
+              count: 1, 
               ...r,
               label: r.name,
               rating: r.rating || "",
@@ -398,8 +403,10 @@ export default class DataParsingService {
       return {
         id: nanoid(7),
         label: singleRuleMatch[1].trim(),
+        count: 1,
         gains: [
           {
+            count: 1,
             ...this.parseRule(singleRuleMatch[1].trim()),
             label: singleRuleMatch[1].trim(),
             type: "ArmyBookRule"
@@ -415,8 +422,10 @@ export default class DataParsingService {
       return {
         id: nanoid(7),
         label: paramRuleMatch[1].trim(),
+        count: 1,
         gains: [
           {
+            count: 1,
             ...this.parseRule(paramRuleMatch[1].trim()),
             label: paramRuleMatch[1].trim(),
             type: "ArmyBookRule"
@@ -433,11 +442,13 @@ export default class DataParsingService {
         id: nanoid(7),
         label: part.replace(costRegex, "").trim(),
         name: itemRuleMatch[2].trim(),
+        count: 1,
         content: [
           {
+            count: 1,
             ...this.parseRule((itemRuleMatch[3] + (itemRuleMatch[4] ? itemRuleMatch[4] : "")).trim()),
             label: itemRuleMatch[3].trim(),
-            type: "ArmyBookRule"
+            type: "ArmyBookRule",
           }
         ],
         type: "ArmyBookItem",
@@ -456,7 +467,8 @@ export default class DataParsingService {
     const result: any = {
       id: nanoid(7),
       label: (isUpgrade ? part : match[groups.label]).replace(costRegex, "").trim(),
-      name: isUpgrade ? match[groups.label].trim() : undefined
+      name: isUpgrade ? match[groups.label].trim() : undefined,
+      count: 1,
     };
 
     if (!isUpgrade)
@@ -502,11 +514,14 @@ export default class DataParsingService {
     return {
       id: nanoid(7),
       cost: match[2],
+      count: 1,
       gains: [
         {
           label: name,
           name,
+          count: 1,
           content: rules.map(r => ({
+            count: 1,
             ...r,
             label: r.name + (r.rating ? `(${r.modify ? "+" : ""}${r.rating})` : ""),
             rating: r.rating || "",
@@ -514,8 +529,9 @@ export default class DataParsingService {
             modify: r.modify || false
           })).concat([
             weaponMatch && {
+              count: 1,
               ...this.parseEquipment(weaponMatch[1], isUpgrade),
-              name: weaponMatch[2].trim()
+              name: weaponMatch[2].trim(),
             }
           ]).filter(e => !!e),
           type: "ArmyBookItem"

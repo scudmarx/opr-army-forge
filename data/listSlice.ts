@@ -5,6 +5,7 @@ import { debounce } from 'throttle-debounce';
 import { current } from 'immer';
 import PersistenceService from '../services/PersistenceService';
 import { nanoid } from "nanoid";
+import UnitService from '../services/UnitService';
 
 export interface ListState {
   creationTime: string;
@@ -23,7 +24,7 @@ const initialState: ListState = {
   units: [],
   selectedUnitId: null,
   undoUnitRemove: null,
-  points: 0
+  points: 0,
 }
 
 const debounceSave = debounce(1500, (state: ListState) => {
@@ -43,7 +44,8 @@ export const listSlice = createSlice({
         units: [],
         selectedUnitId: null,
         undoUnitRemove: null,
-        points: 0
+        points: 0,
+        competitive: true
       };
     },
     createList: (state, action: PayloadAction<{ name: string; pointsLimit?: number; creationTime: string; }>) => {
@@ -56,7 +58,7 @@ export const listSlice = createSlice({
       state.creationTime = action.payload;
       debounceSave(current(state));
     },
-    updateListSettings: (state, action: PayloadAction<{ name: string, pointsLimit?: number }>) => {
+    updateListSettings: (state, action: PayloadAction<{ name: string, pointsLimit?: number}>) => {
       const { name, pointsLimit } = action.payload;
       state.name = name;
       state.pointsLimit = pointsLimit;
@@ -66,18 +68,15 @@ export const listSlice = createSlice({
       return { ...action.payload };
     },
     addUnit: (state, action: PayloadAction<any>) => {
-      state.units.push({
-        ...action.payload,
-        selectionId: nanoid(5),
-        selectedUpgrades: [],
-        combined: false,
-        joinToUnit: false,
-        joined: false,
-        equipment: action.payload.equipment.map(eqp => ({
-          ...eqp,
-          count: eqp.count || action.payload.size // Add count to unit size if not already present
-        }))
-      });
+      state.units.push(action.payload);
+
+      state.points = UpgradeService.calculateListTotal(state.units);
+
+      debounceSave(current(state));
+    },
+    makeReal: (state) => {
+      const unit = state.units.find(u => u.selectionId === "dummy")
+      state.selectedUnitId = unit.selectionId = nanoid(5)
 
       state.points = UpgradeService.calculateListTotal(state.units);
 
@@ -94,10 +93,42 @@ export const listSlice = createSlice({
         selectionId: nanoid(5)
       };
 
-      //newUnit.joinToUnit = parentUnit.selectionId;
-      parentUnit.joinToUnit = newUnit.selectionId;
+      newUnit.joinToUnit = parentUnit.selectionId;
+      //parentUnit.joinToUnit = newUnit.selectionId;
 
       state.units.splice(parentindex + 1, 0, newUnit);
+      state.points = UpgradeService.calculateListTotal(state.units);
+
+      debounceSave(current(state));
+    },
+    addUnits: (state, action: PayloadAction<any>) => {
+      let units = action.payload.units.map(u => {
+        return {
+          ...u,
+          selectionId: nanoid(5)
+        }
+      })
+
+      action.payload.units.forEach((u, i) => {
+        if (u.joinToUnit) {
+          //console.log(action.payload.units)
+          //console.log(`${u.name} is joined to unit ${u.joinToUnit}...`)
+          let joinedIndex = action.payload.units.findIndex((t) => {return t.selectionId === u.joinToUnit})
+          //console.log(`unit ${u.joinToUnit} found at index ${joinedIndex}...`)
+          if (joinedIndex >= 0) {
+            units[i].joinToUnit = units[joinedIndex].selectionId
+          } else {
+            units[i].joinToUnit = null
+            units[i].combined = false
+          }
+        }
+        if (u.combined) {
+          units[i].combined = action.payload.units.some((t) => {return (t.selectionId === u.joinToUnit) || (t.joinToUnit === u.selectionId)})
+        }
+      })
+
+      state.units.splice(action.payload.index ?? -1,0,...units)
+
       state.points = UpgradeService.calculateListTotal(state.units);
 
       debounceSave(current(state));
@@ -106,41 +137,42 @@ export const listSlice = createSlice({
       state.selectedUnitId = action.payload;
     },
     removeUnit: (state, action: PayloadAction<string>) => {
+      const unitId = action.payload
       const removeIndex = state
         .units
-        .findIndex(u => u.selectionId === action.payload);
+        .findIndex(u => u.selectionId === unitId);
+
+      if (removeIndex == -1) return null
 
       let unit = state.units[removeIndex]
-      console.log(`removing: ${unit.name} - ${unit.selectionId}`)
+      
+      //console.log(`removing: ${unit.name} - ${unitId}`)
       if (unit.combined) {
-        console.log(`units is combined - clearing up friend...`)
-        if (unit.joinToUnit) {
-          console.log(`unit has child... hopefully it's where I put it.'`)
-          if (state.units.findIndex(t => { return unit.joinToUnit === t.selectionId }) == removeIndex + 1)
-            state.undoUnitRemove = state.units.splice(removeIndex, 2);
-          else {
-            let child = state.units.find(t => { return unit.joinToUnit === t.selectionId })
-            console.log(`child: ${child.name} - ${child.selectionId}`)
-            if (child) {
-              unit.combined = false
-              unit.joinToUnit = null
-              child.combined = false
-            }
-            state.undoUnitRemove = state.units.splice(removeIndex, 1);
+        //console.log(`units is combined - clearing up friend...`)
+        if (!unit.joinToUnit) {
+          state.undoUnitRemove = state.units.splice(removeIndex, 1);
+          let childIndex = state.units.findIndex(t => { return (t.combined && t.joinToUnit === unitId) })
+          if (childIndex !== -1) {
+            state.undoUnitRemove = state.undoUnitRemove.concat(state.units.splice(childIndex, 1));
           }
         } else {
-          console.log(`unit has no child, so must have parent... finding it.`)
-          let parent = state.units.find(t => { return t.combined && (t.joinToUnit === action.payload) })
-          console.log(`parent: ${parent.name} - ${parent.selectionId}`)
+          //console.log(`unit has no child, so must have parent... finding it.`)
+          let parent = state.units.find(t => { return t.combined && (unit.joinToUnit === t.selectionId) })
+          //console.log(`parent: ${parent.name} - ${parent.selectionId}`)
           if (parent) {
+            console.log(`parent: ${parent.name} - ${parent.selectionId}`)
             parent.combined = false
-            parent.joinToUnit = null
           }
           // don't bother saving it in the undoRemove stuff.
           state.units.splice(removeIndex, 1);
         }
+
       } else {
-        state.undoUnitRemove = state.units.splice(removeIndex, 1);
+        if (unit.selectionId === "dummy") {
+          state.units.splice(removeIndex, 1);
+        } else {
+          state.undoUnitRemove = state.units.splice(removeIndex, 1);
+        }
       }
 
       state.points = UpgradeService.calculateListTotal(state.units);
@@ -204,7 +236,7 @@ export const listSlice = createSlice({
       const { unitId, joinToUnitId } = action.payload;
       const unit = state.units.filter(u => u.selectionId === unitId)[0];
       const joinToUnit = state.units.filter(u => u.selectionId === joinToUnitId)[0];
-
+      
       unit.joinToUnit = joinToUnitId;
 
       debounceSave(current(state));
@@ -242,7 +274,31 @@ export const listSlice = createSlice({
       state.points = UpgradeService.calculateListTotal(state.units);
 
       debounceSave(current(state));
-    }
+    },
+    switchUpgrade:(state, action: PayloadAction<{ unitId: string, upgrade: IUpgrade, option: IUpgradeOption }>) => {
+
+      // TODO: Refactor, break down, unit test...
+
+      const { unitId, upgrade, option } = action.payload;
+      const unit = state.units.filter(u => u.selectionId === unitId)[0];
+      let currentopt = UpgradeService.getApplied(unit, upgrade)
+
+      const applied = () => UpgradeService.getApplied(unit, upgrade) == option
+
+      if (!applied()) {
+        if (UpgradeService.remove(unit, upgrade, currentopt))
+          UpgradeService.apply(unit, upgrade, option);
+      }
+      if (!applied()) {
+        if (UpgradeService.apply(unit, upgrade, option)) 
+          UpgradeService.remove(unit, upgrade, currentopt);
+      }
+      
+
+      state.points = UpgradeService.calculateListTotal(state.units);
+
+      debounceSave(current(state));
+    },
 
   },
 })
@@ -254,7 +310,10 @@ export const {
   addUnit,
   applyUpgrade,
   removeUpgrade,
+  switchUpgrade,
+  makeReal,
   addCombinedUnit,
+  addUnits,
   selectUnit,
   removeUnit,
   renameUnit,

@@ -1,23 +1,31 @@
 import { nanoid } from "nanoid";
-import { IUnit, IUpgradeOption } from "../data/interfaces";
+import { IUnit, IUpgrade, IUpgradeGains, IUpgradeGainsItem, IUpgradeGainsWeapon, IUpgradeOption, IUpgradePackage } from "../data/interfaces";
 import DataParsingService from "./DataParsingService";
 import { groupBy } from "./Helpers";
 import router from "next/router";
+import _ from "lodash";
+import pluralise from "pluralize";
+import styleFunctionSx from "@mui/system/styleFunctionSx";
+import EquipmentService from "./EquipmentService";
+import UnitService from "./UnitService";
 
 export default class DataService {
 
   private static useStaging: boolean = false;
   //const webCompanionUrl = `https://opr-list-builder${useStaging ? "-staging" : ""}.herokuapp.com/api`;
-  private static webCompanionUrl = 'https://opr-list-bui-feature-po-r8wmtp.herokuapp.com/api';
+  private static webCompanionUrl = 'https://webapp.onepagerules.com/api';
 
   public static getJsonData(filePath: string, callback: (armyData: any) => void, fallback?: (err: string) => void) {
 
     fetch(filePath)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
 
-        callback(data);
+        console.log(data);
+        var transformData = this.transformApiData(data);
+        console.log(transformData);
+        callback(transformData);
+
       }, fallback);
   }
 
@@ -27,8 +35,8 @@ export default class DataService {
     fetch(dataSourceUrl + `/army-books/${armyId}`)
       .then((res) => res.json())
       .then((data) => {
+        
         //console.log(data);
-
         const afData = DataService.transformApiData(data, fallback);
         //console.log(afData);
 
@@ -38,41 +46,30 @@ export default class DataService {
 
   public static transformApiData(input, fallback?: (err: string) => void) {
     try {
-    const countRegex = /^(\d+)x\s/;
+      const countRegex = /^(\d+)x\s/;
 
-    const data = {
-      ...input,
-      units: input.units.map((u: IUnit) => ({
-        ...u,
-        equipment: u.equipment.map(e => {
-          // Capture the count digit from the name
-          const countMatch = countRegex.exec(e.label);
-          const label = e.label.replace(countRegex, "");
-          return {
-            ...e,
-            label: label,
-            name: e.name || label,
-            count: e.count
-              ? e.count * u.size
-              : (countMatch ? parseInt(countMatch[1]) * u.size : u.size)
-          }
-        })
-      })),
-      upgradePackages: input.upgradePackages.map(pkg => ({
+      const upgradePackages: IUpgradePackage[] = input.upgradePackages.map(pkg => {
+        return {
         ...pkg,
         sections: pkg.sections.map(section => {
-          const upgrade = DataParsingService.parseUpgradeText(section.label + (section.label.endsWith(":") ? "" : ":"));
+          const upgrade = DataParsingService.parseUpgradeText(section.label);
+
+          // Sanitise dodgy/old data
+          delete section.select;
+          delete section.affects;
+          delete section.replaceWhat;
+
           return {
+            id: section.id ?? nanoid(7),
             ...section,
             ...upgrade,
             options: section.options.map((opt: IUpgradeOption) => {
               const gains = [];
               // Iterate backwards through gains array so we can push new 
               if (opt.gains) for (let original of opt.gains) {
-                // Match "2x ", etc
-
                 // Replace "2x " in label/name of original gain
                 const gain = {
+                  count: 1,
                   ...original,
                   label: original.label?.replace(countRegex, ""),
                   name: original.name?.replace(countRegex, "")
@@ -86,36 +83,125 @@ export default class DataService {
                   gains.push(gain);
                 }
               }
+
+              // Group/combine gains with same name...
+              const gainsGroups = _.groupBy(gains, g => g.label);
+
               return ({
                 ...opt,
                 isModel: upgrade.attachModel ?? false,
                 cost: typeof (opt.cost ?? 0) === "number" ? opt.cost : parseInt((opt.cost as any).toString().replace(/pts?/, "")),
                 id: opt.id || nanoid(5), // Assign ID to upgrade option if one doesn't exist
-                gains
+
+                // Group same items back together and sum the count
+                gains: Object.values(gainsGroups).map((grp: any[]) => {
+                  const count = grp.reduce((c, next) => c + (next.count || 1), 0);
+                  //console.log(grp[0].label + " " + count, grp);
+                  return {
+                    ...grp[0],
+                    count: count,
+                    mods: []
+                  }
+                })
               });
             })
           };
         })
-      }))
-    };
+      }});
 
-    for (let unit of data.units) {
-      // Group equipment by name
-      const groups = groupBy(unit.equipment, "name");
-
-      // Take first equipment in each group, with a count set to how many are in the group
-      unit.equipment = Object
-        .values(groups)
-        .map((group: any[]) => {
-          const countInGroup = group.reduce((count, next) => count + (next.count ?? 1), 0);
+      const units: IUnit[] = input.units.map((u: IUnit) => ({
+        ...u,
+        // Transform this into a collection of upgrades
+        equipment: u.equipment.map(e => {
+          // Capture the count digit from the name
+          const countMatch = countRegex.exec(e.label);
+          const label = e.label.replace(countRegex, "");
+          const count = e.count
+            ? e.count * u.size
+            : (countMatch ? parseInt(countMatch[1]) * u.size : u.size);
           return {
-            ...group[0],
-            count: countInGroup// * unit.size
-          };
-        });
-    }
+            ...e,
+            label: label,
+            name: e.name || label,
+            count: count,
+            mods: [],
+            type: "ArmyBookWeapon",
+            specialRules: (e as IUpgradeGainsWeapon).specialRules.map(DataParsingService.parseRule)
+          }
+        }),
+        disabledUpgradeSections: (() => {
+          const sections: IUpgrade[] = _.compact(u.upgrades
+            // Map all upgrade packages
+            .map(uid => upgradePackages.find(pkg => pkg.uid === uid)))
+            // Flatten down to array of all upgrade sections
+            .reduce((sections, next) => sections.concat(next.sections), []);
 
-    return data;
-    } catch (err) { if (typeof(fallback) == "function") fallback(err) }
-}
+          const allGains: IUpgradeGains[] = sections
+            .flatMap(section => section.options)
+            .flatMap(option => option.gains)
+            .flatMap(gain => gain.type == "ArmyBookItem" ? 
+             (gain as IUpgradeGainsItem).content :
+             [gain])
+            //.reduce((opts, next) => opts.concat(next.options), [])
+            //.reduce((gains, next) => gains.concat(next.gains), [])
+            //.map(gain => gain.name);
+
+          const disabledSections: string[] = [];
+
+          // For each section, check that the unit has access to the things it wants to replace
+          // Only need sections that are replacing (or looking for) something
+          for (let section of sections.filter(s => s.replaceWhat)) {
+            let disable = false
+            for (let alt of section.replaceWhat) {
+              let altworks = true
+              for (let what of alt) {
+                // Does equipment contain this thing?
+                const equipmentMatch = u.equipment.some(e => EquipmentService.compareEquipment({...e, label:e.label.replace(countRegex, "")}, what));
+                if (equipmentMatch) continue
+                // Do any upgrade sections contain this thing?
+                const upgradeGains = allGains.find(g => EquipmentService.compareEquipment(g, what));
+                if (upgradeGains) continue
+                altworks = false
+                break
+              }
+              if (altworks) {
+                break
+              }
+              disable = true
+            }
+            if (disable) {
+              //console.log("Disabled upgrade section:", u, section)
+              disabledSections.push(section.id);
+            }
+          }
+
+          return disabledSections;
+        })()
+      }));
+
+      const data = {
+        ...input,
+        units,
+        upgradePackages
+      };
+
+      for (let unit of data.units) {
+        // Group equipment by name
+        const groups = groupBy(unit.equipment, "name");
+
+        // Take first equipment in each group, with a count set to how many are in the group
+        unit.equipment = Object
+          .values(groups)
+          .map((group: any[]) => {
+            const countInGroup = group.reduce((count, next) => count + (next.count ?? 1), 0);
+            return {
+              ...group[0],
+              count: countInGroup// * unit.size
+            };
+          });
+      }
+
+      return data;
+    } catch (err) { if (typeof (fallback) == "function") fallback(err) }
+  }
 }

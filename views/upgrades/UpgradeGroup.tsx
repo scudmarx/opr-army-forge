@@ -2,7 +2,9 @@ import { Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { IUpgrade } from '../../data/interfaces';
 import { RootState } from '../../data/store';
+import UnitService from '../../services/UnitService';
 import UpgradeService from '../../services/UpgradeService';
+import UpgradeRadio from './controls/UpgradeRadio';
 import UpgradeItem from './UpgradeItem';
 
 export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
@@ -13,11 +15,7 @@ export default function UpgradeGroup({ upgrade }: { upgrade: IUpgrade }) {
     ? null
     : list.units.filter(u => u.selectionId === list.selectedUnitId)[0];
 
-  const controlType = UpgradeService.getControlType(selectedUnit, upgrade);
-
-  // const defaultOpt = controlType === "radio" && upgrade.type === "replace" && typeof (upgrade.replaceWhat) === "string"
-  //     ? EquipmentService.findLast(selectedUnit.equipment, upgrade.replaceWhat as string)
-  //     : null;
+  const controlType = UpgradeService.getControlType(upgrade);
 
   return (
     <Paper className="px-4 py-2" square elevation={0}>
