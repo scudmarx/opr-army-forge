@@ -48,12 +48,11 @@ export default class UpgradeService {
   }
 
   public static getControlType(upgrade: IUpgrade): "check" | "radio" | "updown" {
+    if (upgrade.affects == "any") return "updown"
     if (typeof (upgrade.select) === "number") { 
       if (upgrade.select > 1) return "updown"
-      if (upgrade.replaceWhat && upgrade.affects == "any") return "updown"
       return "radio"
     }
-    if (upgrade.affects == "any") return "updown"
     if (upgrade.type == "replace") {
       if (upgrade.affects == "unit") return "updown"
       return "radio"
