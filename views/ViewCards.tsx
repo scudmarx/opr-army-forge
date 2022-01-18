@@ -38,7 +38,7 @@ export default function ViewCards({ showPsychic = false, showFullRules = false, 
     delete unit.joinToUnit
     delete unit.combined
   }
-  console.log(units)
+  //console.log(units)
 
   var usedRules = []
 
