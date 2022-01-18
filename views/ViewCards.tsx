@@ -27,10 +27,7 @@ export default function ViewCards({ showPsychic = false, showFullRules = false, 
   const units = (list?.units ?? []).filter(u => u.selectionId !== "dummy").map(u => (
     {...u,
        id: undefined, 
-       equipment: _.sortBy(u.equipment.map(e => (
-        {...e, 
-          dependencies: _.sortBy(_.uniq(e.dependencies))
-        })), [e => e.label]),
+       equipment: _.sortBy(u.equipment, [e => e.label]),
        selectedUpgrades: _.sortBy(u.selectedUpgrades.map(up => (
         {...up, 
           gains: up.gains.map(g => ({...g, id: undefined}))
