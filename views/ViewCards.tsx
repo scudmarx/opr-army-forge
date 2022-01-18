@@ -27,7 +27,7 @@ export default function ViewCards({ showPsychic = false, showFullRules = false, 
   const units = (list?.units ?? []).filter(u => u.selectionId !== "dummy").map(u => (
     {...u,
        id: undefined, 
-       equipment: _.sortBy(u.equipment, [e => e.label]),
+       equipment: _.sortBy(u.equipment.filter(e => (e.count > 0)), [e => e.label]),
        selectedUpgrades: _.sortBy(u.selectedUpgrades.map(up => (
         {...up, 
           gains: up.gains.map(g => ({...g, id: undefined}))
@@ -38,7 +38,7 @@ export default function ViewCards({ showPsychic = false, showFullRules = false, 
     delete unit.joinToUnit
     delete unit.combined
   }
-  console.log(units.map(u => JSON.stringify(u)))
+  console.log(units)
 
   var usedRules = []
 
